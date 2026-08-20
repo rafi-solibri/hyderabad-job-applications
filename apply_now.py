@@ -38,10 +38,14 @@ WAIT_SECONDS = 600
 REWARDS = LEARNED["totalRewards"]
 MAX_PER_COMPANY = 3
 SKIP_COMPANIES = {
-    "pega", "salesforce", "servicenow",
+    "pega", "salesforce", "servicenow", "tableau",
     "ttecdigital", "ttec",
     "spectralconsultants",
     "amazonfilters", "amazonrailings", "amazonwood",
+    "vbeyond", "vbeyondcorporation",
+    "michaelpage", "theedgepartnership",
+    "careerpathsolutionsprivatelimited", "careerpathsolutions",
+    "augustainfotech", "intraedge",
 }
 BLOCKED_PATH = ROOT / "data" / "blocked_companies.json"
 SKIP_IDS = {
@@ -121,6 +125,22 @@ VERIFY_ERROR_RE = re.compile(
 )
 
 
+SKIP_TITLE_SCOPE = re.compile(
+    r"salesforce|servicenow|guidewire|\bpega\b|\bsap\b|d365|dynamics 365|"
+    r"blockchain|\bgis\b|esri|firmware|\bmes\b|\berp\b|ruby on rails|\bror\b|"
+    r"\bbpo\b|node\.?js|nodejs|typescript/?javascript|"
+    r"oracle fusion|netsuite|mulesoft|sitecore|"
+    r"characterization|generative ai|data cloud|"
+    r"hyperautomation|\brpa\b|mainframe",
+    re.I,
+)
+STAFFING_COMPANY = re.compile(
+    r"consultant|consultancy|staffing|recruit|vbeyond|michael page|"
+    r"career path|augusta infotech|the edge partnership|intraedge",
+    re.I,
+)
+
+
 def load_blocked() -> set[str]:
     blocked = set(SKIP_COMPANIES)
     if BLOCKED_PATH.exists():
@@ -129,6 +149,33 @@ def load_blocked() -> set[str]:
         except Exception:
             pass
     return blocked
+
+
+def company_out_of_scope(name: str) -> bool:
+    key = company_key(name)
+    if not key:
+        return True
+    if key.startswith("ttec") or key in load_blocked():
+        return True
+    return bool(STAFFING_COMPANY.search(name or ""))
+
+
+def out_of_scope(job: dict) -> bool:
+    """Skip roles/companies the candidate does not want, even if discovery kept them."""
+    title = job.get("title") or ""
+    company = job.get("company") or ""
+    url = f"{job.get('url') or ''} {job.get('apply_url') or ''}".lower()
+    if company_out_of_scope(company):
+        return True
+    if SKIP_TITLE_SCOPE.search(title):
+        return True
+    if "salesforce.wd" in url or "careers.salesforce" in url:
+        return True
+    if re.search(r"\b(ai|gen ai|machine learning)\b", title, re.I) and not re.search(
+        r"\.net|dotnet|c#", title, re.I
+    ):
+        return True
+    return False
 
 
 def block_company(name: str) -> None:
@@ -192,21 +239,34 @@ def apply_url(job: dict) -> str:
     company = (job.get("company") or "").lower()
     jid = str(job.get("job_id") or "")
     url = job.get("url") or ""
+    if "jobs.lever.co/" in url:
+        base = url.split("?")[0].rstrip("/")
+        return base if base.endswith("/apply") else base + "/apply"
+    if "api.smartrecruiters.com/v1/companies/" in url:
+        m = re.search(r"/companies/([^/]+)/postings/([^/?]+)", url)
+        if m:
+            return f"https://jobs.smartrecruiters.com/{m.group(1)}/{m.group(2)}"
     if ats == "Greenhouse" and jid:
-        if company in {"highradius", "inovalon"}:
-            return f"https://boards.greenhouse.io/embed/job_app?for={company}&token={jid}"
-        return f"https://job-boards.greenhouse.io/{company}/jobs/{jid}"
-    if ats == "Lever" and jid and company:
-        return f"https://jobs.lever.co/{company}/{jid}/apply"
+        if "greenhouse.io" in url:
+            return url.split("?")[0]
+        slug = re.sub(r"[^a-z0-9]", "", company)
+        if slug in {"highradius", "inovalon"}:
+            return f"https://boards.greenhouse.io/embed/job_app?for={slug}&token={jid}"
+        return f"https://job-boards.greenhouse.io/{slug}/jobs/{jid}"
+    if ats == "Lever" and jid:
+        m = re.search(r"jobs\.lever\.co/([^/]+)/", url)
+        slug = m.group(1) if m else re.sub(r"[^a-z0-9]", "", company)
+        return f"https://jobs.lever.co/{slug}/{jid}/apply"
     if ats == "Amazon" and jid:
         return f"https://account.amazon.jobs/en-US/applicant/jobs/{jid}/apply"
     if ats == "SmartRecruiters" and jid:
         slug = job.get("company") or company
+        slug = re.sub(r"\s+", "", slug)
         return f"https://jobs.smartrecruiters.com/{slug}/{jid}"
-    if ats == "Workday":
+    if ats == "Workday" or "myworkdayjobs.com" in url or "myworkdaysite.com" in url:
         if url.startswith("http"):
             return url
-        base = WORKDAY_SITES.get(company)
+        base = WORKDAY_SITES.get(re.sub(r"[^a-z0-9]", "", company))
         if base and url.startswith("/"):
             return base.rstrip("/") + url
     return url
@@ -736,7 +796,7 @@ def queue() -> list[dict]:
         company = company_key(job.get("company"))
         if is_applied(job) or jid in skipped_ids:
             continue
-        if company in load_blocked():
+        if out_of_scope(job) or company_out_of_scope(job.get("company") or ""):
             continue
         title = (job.get("title") or "").lower()
         if re.search(
