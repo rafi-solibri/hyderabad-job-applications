@@ -3349,12 +3349,6 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "note": "iCIMS Auth0 rate-limited — retry later",
                     "learned": learned,
                 }
-                return {
-                    "ok": False,
-                    "status": "CAPTCHA",
-                    "note": "parked for owner to solve later",
-                    "learned": learned,
-                }
         except Exception:
             pass
         fp = form_fingerprint(page)
@@ -3724,6 +3718,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         if "instahyre.com/job-" in u:
             stay = min(stay, 25)
         if linkedin_account_restricted(page) or LINKEDIN_RESTRICTED:
+            stay = 0
+        if icims_auth0_blocked(page) and (
+            "icims.com" in u or "icims.com" in (url or "").lower()
+        ):
             stay = 0
         if step == "stuck" and stay <= 15:
             stay = 0
