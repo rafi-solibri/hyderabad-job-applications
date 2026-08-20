@@ -18,6 +18,7 @@ from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright
 
 import apply_now
+import ats_fill
 import form_memory
 import google_auth
 import simplify_copilot
@@ -553,12 +554,15 @@ CLICK_APPLY_GATE_JS = r"""() => {
   const visible = (el) => {
     const r = el.getBoundingClientRect();
     const st = window.getComputedStyle(el);
-    return r.width > 8 && r.height > 8 && st.visibility !== 'hidden' && st.display !== 'none';
+    if (st.visibility === 'hidden' || st.display === 'none') return false;
+    if (r.width > 4 && r.height > 4) return true;
+    const tag = (el.tagName || '').toLowerCase();
+    return tag.startsWith('spl-') || tag === 'button' || (el.shadowRoot && /apply|interested/i.test(el.innerText || el.getAttribute('aria-label') || ''));
   };
   const candidates = [];
   const collect = (root) => {
     if (!root || !root.querySelectorAll) return;
-    root.querySelectorAll('button, a, [role="button"], input[type=button], input[type=submit]').forEach((el) => {
+    root.querySelectorAll('spl-button, button, a, [role="button"], input[type=button], input[type=submit], .c-spl-button').forEach((el) => {
       if (!visible(el)) return;
       const t = labelOf(el);
       if (!t || t.length > 48 || skipRe.test(t)) return;
@@ -1239,20 +1243,27 @@ def click_spl_button(page, label: str) -> bool:
     """Click the inner shadow-root control of a SmartRecruiters spl-button."""
     try:
         hit = page.evaluate(
-            """(label) => {
+            _with_walk("""(label) => {
               const want = String(label || '').trim().toLowerCase();
-              const hosts = [...document.querySelectorAll('spl-button')];
+              const hosts = [];
+              walk(document, el => {
+                if (el.tagName === 'SPL-BUTTON') hosts.push(el);
+              });
               const match = hosts.filter(h => {
                 const t = ((h.innerText || h.getAttribute('aria-label') || '') + '').replace(/\\s+/g, ' ').trim().toLowerCase();
-                return t === want || t.startsWith(want);
+                return t === want || t.startsWith(want) || t.includes(want);
               });
               const host = match.length ? match[match.length - 1] : null;
               if (!host) return '';
-              const btn = (host.shadowRoot && (host.shadowRoot.querySelector('button, .c-spl-button, [role=button]')))
-                || host.querySelector('button, .c-spl-button, [role=button]') || host;
-              btn.click();
+              let btn = null;
+              walk(host, el => {
+                if (btn) return;
+                const cls = (el.className || '').toString();
+                if (cls.includes('c-spl-button') || el.tagName === 'BUTTON') btn = el;
+              });
+              (btn || host).click();
               return (host.innerText || label).trim().slice(0, 40);
-            }""",
+            }"""),
             label,
         )
         if hit:
@@ -1657,6 +1668,8 @@ def unstick_stuck_form(page, job: dict, resume: str) -> str:
         pass
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
+    ats_fill.fill_phenom_acknowledgment(page)
+    ats_fill.fill_empty_dropdowns(page, form_memory.infer_answer)
     accept_terms(page)
     # Prefer the ATS Next/Submit, not Copilot Continue on an invalid form.
     if click_spl_button(page, "Submit") or click_spl_button(page, "Submit application"):
@@ -1917,6 +1930,8 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     apply_now.set_india_phone(page)
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
+    ats_fill.fill_phenom_acknowledgment(page)
+    ats_fill.fill_empty_dropdowns(page, form_memory.infer_answer)
     accept_terms(page)
     try:
         upload_resume(page, resume)
@@ -1929,6 +1944,8 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     form_memory.fill_india_state_typeahead(page)
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
+    ats_fill.fill_phenom_acknowledgment(page)
+    ats_fill.fill_empty_dropdowns(page, form_memory.infer_answer)
     accept_terms(page)
     if captcha_puzzle_visible(page):
         return "captcha"

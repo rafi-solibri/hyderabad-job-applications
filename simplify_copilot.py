@@ -314,6 +314,13 @@ def follow(page) -> str:
             return ""
         if low in {"next", "continue", "continue application"}:
             try:
+                url = (page.url or "").lower()
+            except Exception:
+                url = ""
+            if "stepname=applicantacknowledgment" in url or "stepname=acknowledg" in url:
+                print(f"  Skipping Copilot '{action}' on acknowledgment — ATS checkboxes first.", flush=True)
+                return ""
+            try:
                 blocked = page.locator(
                     "spl-input.ng-invalid, .c-spl-form-field--invalid, "
                     "spl-button[aria-label*='Cancel adding' i]"

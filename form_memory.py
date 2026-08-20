@@ -466,10 +466,25 @@ def _fill_one(page, field: dict, value: str) -> bool:
                 if tag == "select":
                     loc.select_option(label=value, timeout=800)
                     return True
+                try:
+                    import ats_fill
+                    if ats_fill.native_fill(loc, str(value)):
+                        return True
+                except Exception:
+                    pass
                 loc.fill(str(value), timeout=800)
                 return True
         box = page.get_by_label(re.compile(re.escape(label[:50]), re.I)).first
         if box.count():
+            try:
+                import ats_fill
+                if (box.evaluate("el => (el.tagName||'').toLowerCase()") or "") == "select" or box.get_attribute("role") == "combobox":
+                    if ats_fill.handle_dropdown(page, box, str(value)):
+                        return True
+                if ats_fill.native_fill(box, str(value)):
+                    return True
+            except Exception:
+                pass
             box.fill(str(value), timeout=800)
             return True
     except Exception:
@@ -577,9 +592,11 @@ def fill_visible(page) -> int:
                       }
                     } else {
                       if ((el.value || '').trim()) return false;
-                      el.value = value;
-                      el.dispatchEvent(new Event('input', {bubbles: true}));
-                      el.dispatchEvent(new Event('change', {bubbles: true}));
+                      const proto = el.tagName === 'TEXTAREA' ? window.HTMLTextAreaElement.prototype : window.HTMLInputElement.prototype;
+                      const desc = Object.getOwnPropertyDescriptor(proto, 'value');
+                      if (desc && desc.set) desc.set.call(el, value); else el.value = value;
+                      el.dispatchEvent(new Event('input', {bubbles: true, composed: true}));
+                      el.dispatchEvent(new Event('change', {bubbles: true, composed: true}));
                       return true;
                     }
                   }
