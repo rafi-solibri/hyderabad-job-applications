@@ -237,6 +237,7 @@ def fill_portal_account(page) -> str:
         except Exception:
             continue
     filled_pw = 0
+    seen: set[tuple] = set()
     for sel in (
         "[data-automation-id='password']",
         "[data-automation-id='verifyPassword']",
@@ -245,12 +246,16 @@ def fill_portal_account(page) -> str:
         "input[autocomplete='current-password']",
         "input[type=password]",
     ):
+        if filled_pw >= 2:
+            break
         try:
             loc = page.locator(sel)
             n = loc.count()
         except Exception:
             n = 0
         for i in range(min(n, 4)):
+            if filled_pw >= 2:
+                break
             el = loc.nth(i)
             try:
                 if not el.is_visible():
@@ -258,13 +263,19 @@ def fill_portal_account(page) -> str:
                 meta = ((el.get_attribute("name") or "") + " " + (el.get_attribute("id") or "") + " " + (el.get_attribute("aria-label") or "") + " " + (el.get_attribute("placeholder") or "")).lower()
                 if any(x in meta for x in ("honey", "honeypot", "website", "robot")):
                     continue
+                box = el.bounding_box() or {}
+                key = (
+                    round(box.get("x") or 0),
+                    round(box.get("y") or 0),
+                    el.get_attribute("data-automation-id") or el.get_attribute("id") or sel,
+                )
+                if key in seen:
+                    continue
+                seen.add(key)
                 el.fill(password, timeout=2000)
                 filled_pw += 1
             except Exception:
                 continue
-    if filled_pw:
-        # de-dupe: we may have filled the same box via multiple selectors
-        pass
     if filled_email or filled_pw:
         print(
             f"  Filled career-site account fields (email={int(filled_email)} password_boxes={filled_pw}).",
