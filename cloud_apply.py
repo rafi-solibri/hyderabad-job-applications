@@ -27,7 +27,10 @@ LESSONS = ROOT / "data" / "applications" / "headed_lessons.jsonl"
 RESUME = str((ROOT / apply_now.C["resumePath"]).resolve())
 C = apply_now.C
 CHROME = os.environ.get("CHROME_BIN", "/usr/local/bin/google-chrome")
+# Always the rafi.success@gmail.com Chrome profile. Never a throwaway session.
 PROFILE = ROOT / "data" / "chrome_profile"
+CDP = "http://127.0.0.1:9222"
+PROFILE_EMAIL = "rafi.success@gmail.com"
 
 LOGIN_HOSTS = (
     "linkedin.com", "www.linkedin.com", "foundit.in", "www.foundit.in",
@@ -439,9 +442,18 @@ def save_cloud(rows: list[dict]) -> None:
 def launch_context(pw, headed: bool):
     args = ["--no-sandbox", "--disable-dev-shm-usage"]
     if headed:
-        PROFILE.mkdir(parents=True, exist_ok=True)
         os.environ.setdefault("DISPLAY", ":1")
-        args.append("--start-maximized")
+        # Reuse the already-open rafi.success@gmail.com Chrome. Never spawn a second profile.
+        try:
+            browser = pw.chromium.connect_over_cdp(CDP)
+            context = browser.contexts[0]
+            page = context.pages[0] if context.pages else context.new_page()
+            print(f"  Using open Chrome profile {PROFILE_EMAIL} ({PROFILE})", flush=True)
+            return None, context, page
+        except Exception as exc:
+            print(f"  CDP attach failed ({exc}); launching {PROFILE_EMAIL} profile.", flush=True)
+        PROFILE.mkdir(parents=True, exist_ok=True)
+        args += ["--start-maximized", f"--remote-debugging-port=9222", "--profile-directory=Default"]
         kwargs = {
             "user_data_dir": str(PROFILE),
             "headless": False,
@@ -497,13 +509,10 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 apply_now.log({"event": "cloud_apply", **{k: v for k, v in row.items() if k != "confirmation"}})
             save_cloud(results)
             print(f"  {row.get('status')} ok={row.get('ok')} {row.get('final_url')}", flush=True)
-            for extra in context.pages[1:]:
-                try:
-                    extra.close()
-                except Exception:
-                    pass
             time.sleep(1.0)
-        if browser:
+        if headed:
+            print("  Leaving rafi.success@gmail.com Chrome open.", flush=True)
+        elif browser:
             browser.close()
         else:
             context.close()

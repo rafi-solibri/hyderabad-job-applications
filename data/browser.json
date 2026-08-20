@@ -1,7 +1,10 @@
 {
-  "browser": "firefox",
+  "browser": "chrome",
   "profileEmail": "rafi.success@gmail.com",
-  "profilePath": "C:\\Users\\MohammedAhmed\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\1f3myy1c.default-release",
+  "profilePath": "data/chrome_profile",
+  "profileDirectory": "Default",
+  "cdp": "http://127.0.0.1:9222",
   "extension": "Simplify Copilot",
-  "alwaysUse": true
+  "alwaysUse": true,
+  "note": "Always attach to this Chrome user-data-dir. Never launch a second anonymous profile."
 }
