@@ -1736,6 +1736,19 @@ def fill_icims_login(page) -> int:
     email = google_auth.EMAIL
     phone = apply_now.C.get("phoneNational") or "8790251698"
     filled = 0
+    for name in ("Returning candidate login", "Log in >", "Log in"):
+        try:
+            loc = page.get_by_role("link", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
+            if not loc.count():
+                loc = page.get_by_text(re.compile(rf"^{re.escape(name)}$", re.I)).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=2000)
+                print(f"  Clicked iCIMS '{name}'.", flush=True)
+                page.wait_for_timeout(1600)
+                filled += 1
+                break
+        except Exception:
+            continue
     try:
         fr = page.frame_locator(
             "iframe[name='icims_content_iframe'], iframe#icims_content_iframe, iframe"
@@ -3698,6 +3711,7 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
 def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[dict]:
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
+    seed_parked_captcha_urls()
     persist_existing_closed()
     queue = apply_now.queue()
     try_jobs, blocked_board = public_queue(queue, allow_aggregators=True)
