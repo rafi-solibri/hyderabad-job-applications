@@ -2140,6 +2140,16 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             apply_now.persist_skipped(row, row["note"])
             print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
             return row
+        try:
+            u = (page.url or "").lower()
+        except Exception:
+            u = ""
+        if "passport.amazon.jobs" in u:
+            row["status"] = "WAITING_EXPIRED"
+            row["note"] = "Amazon sign-in needs the owner; not a CAPTCHA"
+            row["final_url"] = page.url
+            print("  Amazon passport sign-in needs you. Opening the next leftover now.", flush=True)
+            return row
         apply_now.set_india_phone(page)
         try:
             upload_resume(page, resume)
