@@ -75,8 +75,9 @@ Leave honeypot fields empty.
 - Career portals first (Greenhouse, Lever, Workday, Phenom, SmartRecruiters,
   Oracle Cloud, iCIMS). Naukri / LinkedIn / Indeed / Cutshort / Foundit /
   Instahyre are other automations.
-- Max 3 applications per company. Skip Salesforce/SAP/PEGA, Java-mandatory,
-  DevOps-primary, and out-of-scope titles already in `apply_now.py`.
+- Career portals are **not** capped per company. Aggregator boards stay at 3 per
+  company. Skip Salesforce/SAP/PEGA, Java-mandatory, DevOps-primary, and
+  out-of-scope titles already in `apply_now.py`.
 - Do **not** invent skills on the resume. Persist submitted, closed-404, and
   locked/rejected-login jobs in `data/applied_ids.json` so they are never reopened.
 

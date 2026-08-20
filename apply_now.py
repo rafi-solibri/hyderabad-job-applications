@@ -41,7 +41,7 @@ RESULTS = ROOT / "data" / "applications" / "apply_now_results.json"
 LOG = ROOT / "data" / "applications" / "log.jsonl"
 WAIT_SECONDS = 600
 REWARDS = LEARNED["totalRewards"]
-MAX_PER_COMPANY = 3
+MAX_PER_COMPANY = 3  # aggregator boards only; career portals are not capped
 SKIP_COMPANIES = {
     "pega", "salesforce", "servicenow", "tableau",
     "ttecdigital", "ttec",
@@ -1025,10 +1025,7 @@ def match_score(job: dict) -> int:
 
 
 def pick_best_per_company(jobs: list[dict], used: dict[str, set] | None = None) -> list[dict]:
-    """Keep only the best leftover slots per company (cap minus already applied).
-
-    Career-portal listings fill a company's slots before aggregator-board copies.
-    """
+    """Dedupe by company+title. Career portals are not capped. Aggregator boards stay at MAX_PER_COMPANY."""
     used = used or {}
     jobs = sorted(jobs, key=queue_sort_key)
     planned: dict[str, int] = {}
@@ -1039,9 +1036,11 @@ def pick_best_per_company(jobs: list[dict], used: dict[str, set] | None = None) 
         title_key = company + "|" + re.sub(r"\s+", " ", (job.get("title") or "").strip().lower())
         if title_key in seen_titles:
             continue
-        room = MAX_PER_COMPANY - len(used.get(company, set())) - planned.get(company, 0)
-        if room <= 0:
-            continue
+        career = is_company_career_portal(job)
+        if not career:
+            room = MAX_PER_COMPANY - len(used.get(company, set())) - planned.get(company, 0)
+            if room <= 0:
+                continue
         seen_titles.add(title_key)
         chosen.append(job)
         planned[company] = planned.get(company, 0) + 1
