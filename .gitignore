@@ -1,4 +1,5 @@
 # Secrets and browser sessions — never push
+data/.secrets.env
 .env
 .env.*
 *.pem
@@ -7,7 +8,9 @@ credentials.json
 **/cookies*
 data/firefox_apply_profile/
 data/browser_profile/
+data/chrome_profile/
 data/tools/simplify-xpi/
+data/tools/simplify-ext/
 data/tools/geckodriver*
 data/applications/screenshots/
 *.exe

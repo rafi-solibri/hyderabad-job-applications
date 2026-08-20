@@ -1,7 +1,12 @@
 {
-  "browser": "firefox",
+  "browser": "chrome",
   "profileEmail": "rafi.success@gmail.com",
-  "profilePath": "C:\\Users\\MohammedAhmed\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\1f3myy1c.default-release",
+  "profilePath": "data/chrome_profile",
+  "profileDirectory": "Default",
+  "cdp": "http://127.0.0.1:9222",
+  "chromeBin": "/opt/google/chrome/chrome",
   "extension": "Simplify Copilot",
-  "alwaysUse": true
+  "extensionId": "pbanhockgagggenencehbnadejlgchfc",
+  "alwaysUse": true,
+  "neverClick": ["Tailor Resume", "Resume Builder"]
 }

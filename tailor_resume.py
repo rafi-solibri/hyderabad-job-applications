@@ -402,9 +402,15 @@ def upload(page, path: str | None = None) -> bool:
         try:
             loc = page.locator(sel)
             n = loc.count() if hasattr(loc, "count") else 0
-            for i in range(min(n or 1, 4)):
+            for i in range(min(n or 0, 3)):
                 try:
-                    loc.nth(i).set_input_files(path, timeout=2500)
+                    el = loc.nth(i)
+                    try:
+                        if not el.is_visible():
+                            continue
+                    except Exception:
+                        continue
+                    el.set_input_files(path, timeout=800)
                     ok = True
                 except Exception:
                     continue
