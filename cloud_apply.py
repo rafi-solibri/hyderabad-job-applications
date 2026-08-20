@@ -633,6 +633,8 @@ def click_apply_entry(page) -> bool:
             if not loc.count() or not loc.is_visible():
                 continue
             label = (loc.inner_text() or "")[:80]
+            if re.search(r"upload|attach|browse|choose file", label, re.I):
+                continue
             with page.expect_navigation(timeout=8000, wait_until="domcontentloaded") if "company web" in label.lower() else _null_ctx():
                 loc.click(timeout=1500)
             page.wait_for_timeout(900)
@@ -667,6 +669,8 @@ def fill_core_fields(page) -> None:
         ("input[name='urls[LinkedIn]'], input[name='linkedin'], input[placeholder*='linkedin' i]", LINKEDIN),
         ("input[name='job_title'], input[name='title']", TITLE),
         ("#location-input, input[name='location'], input[placeholder*='Location' i]", "Hyderabad, India"),
+        ("input[placeholder='Email' i], input[aria-label='Email']", EMAIL),
+        ("input[placeholder='Number' i], input[aria-label='Number']", PHONE),
     ]
     for sel, value in pairs:
         try:
@@ -684,6 +688,21 @@ def fill_core_fields(page) -> None:
         except Exception:
             continue
     apply_now.set_india_phone(page)
+    # iCIMS / Schwab privacy gate
+    try:
+        for sel, val in (("input[placeholder='Email']", EMAIL), ("input[placeholder='Number']", PHONE)):
+            loc = page.locator(sel).first
+            if loc.count() and loc.is_visible() and not (loc.input_value() or "").strip():
+                loc.fill(val, timeout=1500)
+        cc = page.locator("select").filter(has_text=re.compile(r"phone country|make a selection", re.I)).first
+        if cc.count():
+            try:
+                cc.select_option(label=re.compile(r"india", re.I), timeout=1200)
+            except Exception:
+                pass
+        quiet_click(page.get_by_role("button", name=re.compile(r"acknowledge the privacy notice", re.I)), 1500)
+    except Exception:
+        pass
 
 
 def upload_resume(page, path: str) -> bool:
@@ -734,6 +753,8 @@ def click_next_or_submit(page) -> str:
             if not loc.count() or not loc.is_visible() or not loc.is_enabled():
                 continue
             label = (loc.inner_text() or loc.get_attribute("value") or "")[:80]
+            if re.search(r"upload|attach|browse|choose file|resume builder", label, re.I):
+                continue
             loc.click(timeout=1500)
             page.wait_for_timeout(1200)
             if re.search(r"submit|send application", label, re.I):
@@ -801,6 +822,19 @@ def apply_one(page, job: dict) -> dict:
         job["resume_path"] = RESUME_MASTER
         print(f"  Resume tailor failed ({exc}); using master resume.", flush=True)
     resume_path = job["resume_path"]
+
+    def _on_files(chooser):
+        try:
+            chooser.set_files(resume_path)
+        except Exception:
+            pass
+
+    try:
+        page.remove_listener("filechooser", getattr(page, "_rafi_file_handler", lambda *_: None))
+    except Exception:
+        pass
+    page.on("filechooser", _on_files)
+    page._rafi_file_handler = _on_files
 
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=45000)
