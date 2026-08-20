@@ -70,7 +70,8 @@ LOGIN_RE = re.compile(
 CAPTCHA_RE = re.compile(r"captcha|recaptcha|hcaptcha|cf-challenge|challenge-platform", re.I)
 SUCCESS_RE = re.compile(
     r"thanks for (your )?appl|application (was |has been )?(submitted|received)|"
-    r"thank you for applying|we.?ve received your application|application received|"
+    r"thank you for applying|thank you for your job application|"
+    r"we.?ve received your application|application received|"
     r"already applied|you previously applied|successfully submitted|application submitted",
     re.I,
 )
@@ -621,6 +622,10 @@ def click_apply_gate(page) -> str:
                 except Exception:
                     continue
         return hit
+    for label in ("I'm interested", "Easy Apply", "Apply"):
+        if click_spl_button(page, label):
+            print(f"  Clicked SmartRecruiters '{label}'.", flush=True)
+            return label
     for sel in (
         '[data-automation-id="applyManually"]',
         '[data-automation-id="adventureButton"]',
@@ -671,8 +676,389 @@ def click_apply_gate(page) -> str:
     return ""
 
 
+def collapse_copilot_panel(page) -> str:
+    """Copilot's sidebar covers Oracle Next and PIN boxes. Collapse it; never close the tab."""
+    try:
+        hit = page.evaluate(
+            """() => {
+              const ids = ['close-button'];
+              for (const id of ids) {
+                const el = document.getElementById(id);
+                if (el) { el.click(); return '#' + id; }
+              }
+              for (const el of document.querySelectorAll('button, [role=button]')) {
+                const t = ((el.getAttribute('aria-label') || el.title || el.id || '') + '').toLowerCase();
+                if (/collapse|close copilot|hide copilot/.test(t)) {
+                  el.click();
+                  return t.slice(0, 40);
+                }
+              }
+              const overlay = document.querySelector('.simplify-jobs-shadow-root');
+              if (overlay) overlay.style.pointerEvents = 'none';
+              return overlay ? 'pointer-events-none' : '';
+            }"""
+        ) or ""
+    except Exception:
+        hit = ""
+    if hit:
+        try:
+            page.wait_for_timeout(200)
+        except Exception:
+            pass
+    return hit
+
+
+def fill_oracle_hidden_radios(page) -> int:
+    """Oracle Yes/No radios are 0×0. Click the visible aria-labelledby label."""
+    try:
+        groups = page.evaluate(
+            """() => {
+              const groups = {};
+              for (const el of document.querySelectorAll('input[type=radio]')) {
+                const name = el.name || el.id;
+                const labId = (el.getAttribute('aria-labelledby') || '').split(' ')[0];
+                const lab = labId ? document.getElementById(labId)
+                  : document.querySelector('label[for="' + el.id + '"]');
+                const opt = ((lab && lab.innerText) || '').trim();
+                const wrap = el.closest('fieldset, [class*=question], [role=group], li, section')
+                  || el.parentElement;
+                const qlab = wrap && wrap.querySelector('label, legend, h3, h4');
+                const q = ((qlab && qlab.innerText) || (wrap && wrap.innerText) || '')
+                  .replace(/\\s+/g, ' ').trim().slice(0, 240);
+                groups[name] = groups[name] || {q, options: [], checked: false};
+                if (el.checked) groups[name].checked = true;
+                groups[name].options.push({id: el.id, opt});
+              }
+              return groups;
+            }"""
+        ) or {}
+    except Exception:
+        return 0
+    n = 0
+    for group in groups.values():
+        if group.get("checked"):
+            continue
+        q = group.get("q") or ""
+        opts = [o.get("opt") or "" for o in group.get("options") or []]
+        want = form_memory.infer_answer(q, opts)
+        if not want:
+            continue
+        want_l = want.strip().lower()
+        target = None
+        for opt in group.get("options") or []:
+            t = (opt.get("opt") or "").strip().lower()
+            if t == want_l or t.startswith(want_l) or want_l in t:
+                target = opt
+                break
+        if not target:
+            continue
+        try:
+            page.evaluate(
+                """(id) => {
+                  const el = document.getElementById(id);
+                  if (!el || el.checked) return;
+                  const labId = (el.getAttribute('aria-labelledby') || '').split(' ')[0];
+                  const lab = labId ? document.getElementById(labId)
+                    : document.querySelector('label[for="' + id + '"]');
+                  if (lab) lab.click();
+                  else {
+                    el.checked = true;
+                    el.dispatchEvent(new Event('input', {bubbles: true}));
+                    el.dispatchEvent(new Event('change', {bubbles: true}));
+                  }
+                }""",
+                target.get("id"),
+            )
+            n += 1
+        except Exception:
+            continue
+    if n:
+        print(f"  Selected {n} Oracle Yes/No answer(s).", flush=True)
+    return n
+
+
+def fill_oracle_pills(page) -> int:
+    """Oracle multi-choice pills (how-heard, degree). Click the inferred option only."""
+    try:
+        groups = page.evaluate(
+            """() => {
+              return [...document.querySelectorAll('ul.cx-select-pills-container')]
+                .filter(ul => ul.offsetParent)
+                .map(ul => {
+                  const lab = (ul.parentElement && ul.parentElement.querySelector('label'))
+                    || ul.previousElementSibling;
+                  const q = ((lab && lab.innerText) || '').replace(/\\s+/g, ' ').trim().slice(0, 200);
+                  const pills = [...ul.querySelectorAll('button.cx-select-pill-section')].map(b => ({
+                    t: (b.innerText || '').trim(),
+                    sel: (b.className || '').includes('--selected'),
+                  }));
+                  return {q, pills};
+                });
+            }"""
+        ) or []
+    except Exception:
+        return 0
+    n = 0
+    for group in groups:
+        pills = group.get("pills") or []
+        if any(p.get("sel") for p in pills):
+            continue
+        labels = [p.get("t") or "" for p in pills]
+        want = form_memory.infer_answer(group.get("q") or "", labels)
+        if not want:
+            continue
+        want_l = want.strip().lower()
+        match = ""
+        for text in labels:
+            t = text.strip().lower()
+            if t == want_l or want_l in t or t.startswith(want_l):
+                match = text
+                break
+            if "bachelor" in want_l and "bachelor" in t:
+                match = text
+                break
+            if "career" in want_l and "career site" in t:
+                match = text
+                break
+        if not match:
+            continue
+        try:
+            loc = page.locator("button.cx-select-pill-section").filter(has_text=match)
+            if loc.count():
+                loc.first.scroll_into_view_if_needed(timeout=2000)
+                loc.first.click(timeout=2500, force=True)
+                n += 1
+                page.wait_for_timeout(250)
+        except Exception:
+            continue
+    if n:
+        print(f"  Selected {n} Oracle pill choice(s).", flush=True)
+    return n
+
+
+def fill_oracle_comboboxes(page) -> int:
+    """Type into visible Oracle cx-select inputs and click the matching list item."""
+    try:
+        boxes = page.evaluate(
+            """() => [...document.querySelectorAll('input[role=combobox]')].map(el => {
+              const r = el.getBoundingClientRect();
+              const lab = document.querySelector('label[for="' + el.id + '"]');
+              const wrap = el.closest('div, li, section');
+              const qlab = wrap && wrap.querySelector('label');
+              return {
+                id: el.id,
+                name: el.name || '',
+                value: (el.value || '').trim(),
+                invalid: el.getAttribute('aria-invalid') === 'true',
+                vis: r.width > 8 && r.height > 8,
+                q: ((lab && lab.innerText) || (qlab && qlab.innerText) || el.name || '')
+                  .replace(/\\s+/g, ' ').trim().slice(0, 160),
+              };
+            }).filter(x => x.vis || x.invalid)"""
+        ) or []
+    except Exception:
+        return 0
+    n = 0
+    for box in boxes:
+        if (box.get("value") or "").strip() and not box.get("invalid"):
+            continue
+        q = box.get("q") or box.get("name") or ""
+        want = form_memory.infer_answer(q, [])
+        name = (box.get("name") or "").lower()
+        if not want:
+            if name in {"country", "countrycode"}:
+                want = "India"
+            elif name in {"region2", "state", "stateprovincecode"}:
+                want = "Telangana"
+            elif "edu" in name or "highest" in q.lower():
+                want = "Bachelor's degree"
+            elif "please specify" in q.lower():
+                want = "DTCC.com"
+            elif name in {"educationalestablishment"}:
+                want = "Acharya Nagarjuna University"
+        if not want:
+            continue
+        sel = f'[id="{box["id"]}"]'
+        try:
+            loc = page.locator(sel).first
+            if not loc.count():
+                continue
+            loc.scroll_into_view_if_needed(timeout=2000)
+            loc.click(timeout=2000, force=True)
+            loc.fill("")
+            query = want.split("(")[0].strip()
+            loc.type(query[:24], delay=25)
+            page.wait_for_timeout(700)
+            picked = page.evaluate(
+                """(want) => {
+                  const w = String(want || '').toLowerCase();
+                  const items = [...document.querySelectorAll('.cx-select__list-item')];
+                  for (const el of items) {
+                    const t = (el.innerText || '').replace(/\\s+/g, ' ').trim();
+                    if (!t || t.length > 90) continue;
+                    const r = el.getBoundingClientRect();
+                    if (r.width < 8 || r.height < 8) continue;
+                    const low = t.toLowerCase();
+                    if (low === w || low.startsWith(w) || w.includes(low) || low.includes(w.split(' ')[0])) {
+                      el.click();
+                      return t;
+                    }
+                  }
+                  return '';
+                }""",
+                want,
+            )
+            if picked:
+                n += 1
+                page.wait_for_timeout(250)
+        except Exception:
+            continue
+    if n:
+        print(f"  Filled {n} Oracle combobox(es).", flush=True)
+    return n
+
+
+def _gmail_tab(page):
+    try:
+        ctx = page.context
+    except Exception:
+        return None
+    for p in ctx.pages:
+        try:
+            if "mail.google.com" in (p.url or ""):
+                return p
+        except Exception:
+            continue
+    return None
+
+
+def latest_gmail_identity_code(page, job: dict | None = None) -> str:
+    """Read a 6-digit identity code from the already-open Gmail tab. Never print it."""
+    gmail = _gmail_tab(page)
+    if not gmail:
+        return ""
+    skip = {str((job or {}).get("job_id") or "")}
+    try:
+        url = (job or {}).get("apply_url") or (job or {}).get("url") or page.url or ""
+        skip |= {m.group(1) for m in re.finditer(r"/job/(\d{5,})", url)}
+    except Exception:
+        pass
+    skip.discard("")
+    try:
+        blob = gmail.inner_text("body") or ""
+    except Exception:
+        blob = ""
+    patterns = (
+        r"using this code:\s*(\d{6})",
+        r"one-time pass code:\s*(\d{6})",
+        r"code to confirm your identity[^0-9]{0,40}(\d{6})",
+        r"verification code[^0-9]{0,40}(\d{6})",
+        r"confirm your identity using this code:\s*(\d{6})",
+    )
+    for pat in patterns:
+        for match in re.finditer(pat, blob, re.I):
+            code = match.group(1)
+            if code in skip or code.startswith("202"):
+                continue
+            return code
+    return ""
+
+
+def fill_email_identity_code(page, job: dict | None = None) -> bool:
+    """Oracle PIN / VERIFY screens: paste the Gmail identity code and continue."""
+    try:
+        blob = page_text(page)[:1800]
+    except Exception:
+        blob = ""
+    has_pin = False
+    try:
+        has_pin = bool(page.locator('[id="pin-code-1"]').count())
+    except Exception:
+        has_pin = False
+    if not has_pin and not re.search(
+        r"verify it'?s you|we've sent a verification code|enter verification code",
+        blob,
+        re.I,
+    ):
+        return False
+    code = latest_gmail_identity_code(page, job)
+    if not code:
+        print("  Identity code screen: no code in the open Gmail tab yet.", flush=True)
+        return False
+    filled = False
+    try:
+        filled = bool(
+            page.evaluate(
+                """(code) => {
+                  const digits = String(code).split('');
+                  let n = 0;
+                  for (let i = 0; i < digits.length; i++) {
+                    const el = document.getElementById('pin-code-' + (i + 1));
+                    if (!el) continue;
+                    el.value = digits[i];
+                    el.dispatchEvent(new Event('input', {bubbles: true}));
+                    el.dispatchEvent(new Event('change', {bubbles: true}));
+                    n++;
+                  }
+                  const single = document.querySelector(
+                    'input[autocomplete="one-time-code"], input[name*=pin i], input[aria-label*="verification code" i]'
+                  );
+                  if (!n && single) {
+                    single.value = code;
+                    single.dispatchEvent(new Event('input', {bubbles: true}));
+                    n = 1;
+                  }
+                  return n > 0;
+                }""",
+                code,
+            )
+        )
+    except Exception:
+        filled = False
+    if not filled:
+        return False
+    print("  Filled identity verification code from Gmail.", flush=True)
+    try:
+        loc = page.get_by_text("Keep me signed in", exact=False).first
+        if loc.count() and loc.is_visible():
+            loc.click(timeout=800, force=True)
+    except Exception:
+        pass
+    try:
+        page.evaluate(
+            """() => {
+              for (const b of document.querySelectorAll('button')) {
+                if (/^verify$/i.test((b.innerText || '').trim())) { b.click(); return true; }
+              }
+              return false;
+            }"""
+        )
+        page.wait_for_timeout(2500)
+    except Exception:
+        pass
+    return True
+
+
+def fill_oracle_form(page, job: dict | None = None) -> int:
+    """Oracle Cloud easy-apply: hidden radios, pills, comboboxes, email PIN."""
+    n = 0
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "oraclecloud.com" not in url:
+        fill_email_identity_code(page, job)
+        return 0
+    n += fill_oracle_hidden_radios(page)
+    n += fill_oracle_pills(page)
+    n += fill_oracle_comboboxes(page)
+    fill_email_identity_code(page, job)
+    return n
+
+
 def click_next_or_submit(page) -> str:
     """Click one navigation control. Returns clicked|submitted|none."""
+    collapse_copilot_panel(page)
     dismiss_overlays(page)
     if is_success(page):
         return "submitted"
@@ -711,6 +1097,10 @@ def click_next_or_submit(page) -> str:
         "button:has-text('Save and continue')",
         "button:has-text('Save & Continue')",
         "button:has-text('Review')",
+        "button:has-text('I Acknowledge')",
+        "button:has-text('Acknowledge')",
+        "button.btn-primary:has-text('Next')",
+        "button.btn-primary:has-text('Continue')",
         "spl-button:has-text('Next')",
         "spl-button:has-text('Continue')",
     ):
@@ -720,11 +1110,21 @@ def click_next_or_submit(page) -> str:
                 text = loc.inner_text() or loc.get_attribute("aria-label") or ""
                 if SIMPLIFY_RE.search(text) or SKIP_APPLY_LABEL.search(text):
                     continue
-                loc.click(timeout=2000)
+                loc.click(timeout=2000, force=True)
                 page.wait_for_timeout(1400)
                 return "clicked"
         except Exception:
             continue
+    try:
+        loc = page.locator("button.apply-flow-pagination__button.theme-color-1").last
+        if loc.count() and loc.is_enabled():
+            aria = (loc.get_attribute("aria-label") or loc.inner_text() or "").strip()
+            if aria and not re.search(r"required fields to continue", aria, re.I):
+                loc.click(timeout=2000, force=True)
+                page.wait_for_timeout(1600)
+                return "submitted" if is_success(page) else "clicked"
+    except Exception:
+        pass
     return "none"
 
 
@@ -1256,6 +1656,7 @@ def unstick_stuck_form(page, job: dict, resume: str) -> str:
     except Exception:
         pass
     fill_smartrecruiters_form(page, job)
+    fill_oracle_form(page, job)
     accept_terms(page)
     # Prefer the ATS Next/Submit, not Copilot Continue on an invalid form.
     if click_spl_button(page, "Submit") or click_spl_button(page, "Submit application"):
@@ -1386,7 +1787,7 @@ def accept_terms(page) -> int:
     try:
         n = page.evaluate(
             """() => {
-              const re = /terms|privacy|agree|consent|certify|disclaimer|i have read|you declare/i;
+              const re = /terms|privacy|agree|consent|certify|disclaimer|i have read|you declare|acknowledg/i;
               let n = 0;
               const fire = (el) => {
                 try { el.click(); } catch (e) {}
@@ -1420,26 +1821,40 @@ def accept_terms(page) -> int:
         ) or 0
     except Exception:
         n = 0
-    for name in (
-        "You declare that you have read and agree",
-        "I agree with the terms and conditions",
-        "I agree to the terms",
-        "I have read and agree",
-    ):
+    def _legal_on() -> bool:
         try:
-            loc = page.get_by_text(name, exact=False).first
-            if loc.count() and loc.is_visible():
-                loc.click(timeout=800, force=True)
+            return bool(
+                page.evaluate(
+                    "() => { const el = document.querySelector('#legal-disclaimer-checkbox'); return !!(el && el.checked); }"
+                )
+            )
+        except Exception:
+            return False
+    if not _legal_on():
+        try:
+            box = page.locator(".apply-flow-input-checkbox__button, [class*='checkbox__button']").first
+            if box.count() and box.is_visible():
+                box.click(timeout=800, force=True)
                 n += 1
         except Exception:
-            continue
-    try:
-        box = page.locator(".apply-flow-input-checkbox__button, [class*='checkbox__button']").first
-        if box.count() and box.is_visible():
-            box.click(timeout=800, force=True)
-            n += 1
-    except Exception:
-        pass
+            pass
+    if not _legal_on():
+        for name in (
+            "You declare that you have read and agree",
+            "I agree with the terms and conditions",
+            "I agree to the terms",
+            "I have read and agree",
+        ):
+            if _legal_on():
+                break
+            try:
+                loc = page.get_by_text(name, exact=False).first
+                if loc.count() and loc.is_visible():
+                    loc.click(timeout=800, force=True)
+                    n += 1
+                    page.wait_for_timeout(150)
+            except Exception:
+                continue
     if n:
         print(f"  Accepted {n} terms/privacy control(s).", flush=True)
     return n
@@ -1501,6 +1916,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         return "auth_failed"
     apply_now.set_india_phone(page)
     fill_smartrecruiters_form(page, job)
+    fill_oracle_form(page, job)
     accept_terms(page)
     try:
         upload_resume(page, resume)
@@ -1512,6 +1928,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     form_memory.fill_visible(page)
     form_memory.fill_india_state_typeahead(page)
     fill_smartrecruiters_form(page, job)
+    fill_oracle_form(page, job)
     accept_terms(page)
     if captcha_puzzle_visible(page):
         return "captcha"
@@ -1970,21 +2387,24 @@ def reset_chrome_tabs(context) -> None:
         if p is google:
             continue
         try:
-            if not p.is_closed():
-                p.close()
+            if p.is_closed():
+                continue
+            if _keep_tab(p.url):
+                continue
+            p.close()
         except Exception:
             continue
     try:
         if google and not google.is_closed():
-            google.goto("https://www.google.com/", wait_until="domcontentloaded", timeout=20000)
-        elif context.pages:
-            pass
-        else:
+            u = (google.url or "").lower()
+            if "google.com" not in u and "mail.google.com" not in u:
+                google.goto("https://www.google.com/", wait_until="domcontentloaded", timeout=20000)
+        elif not any(True for p in context.pages if not p.is_closed()):
             page = context.new_page()
             page.goto("https://www.google.com/", wait_until="domcontentloaded", timeout=20000)
     except Exception:
         pass
-    print("  Closed all application tabs. Fresh Google tab only.", flush=True)
+    print("  Closed leftover apply tabs. Google/Gmail and parked CAPTCHA tabs stay open.", flush=True)
 
 
 def close_apply_page(page) -> None:

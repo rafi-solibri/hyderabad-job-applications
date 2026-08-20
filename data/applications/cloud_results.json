@@ -255,10 +255,11 @@
     "job_id": "60574327",
     "apply_url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer,-Software",
     "ok": false,
-    "status": "ERROR",
-    "note": "name 'recover_wrong_board' is not defined",
-    "final_url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer-Software",
-    "ts": "2026-08-20T09:13:55.257363+00:00"
+    "status": "WAITING_EXPIRED",
+    "note": "waited 40s; learned 0 fields",
+    "final_url": "https://jobs.thermofisher.com/global/en/apply?jobSeqNo=TFSCGLOBALR01351780EXTERNALENGLOBAL&step=1&stepname=applicantAcknowledgment&ref=Simplify&src=Simplify&utm_source=Simplify",
+    "ts": "2026-08-20T11:34:21.728721+00:00",
+    "fields_learned": 0
   },
   {
     "company": "Microsoft Corp",
@@ -283,10 +284,10 @@
     "job_id": "62508091",
     "apply_url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
     "ok": false,
-    "status": "ERROR",
-    "note": "name 'recover_wrong_board' is not defined",
-    "final_url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
-    "ts": "2026-08-20T09:14:27.614978+00:00"
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305/apply/applyManually",
+    "ts": "2026-08-20T11:38:11.178667+00:00"
   },
   {
     "company": "Cyara",
@@ -311,10 +312,11 @@
     "job_id": "61456572",
     "apply_url": "https://jobs.smartrecruiters.com/Experian/744000141445829-sr-engineering-manager",
     "ok": false,
-    "status": "ERROR",
-    "note": "name 'recover_wrong_board' is not defined",
+    "status": "WAITING_EXPIRED",
+    "note": "waited 40s; learned 0 fields",
     "final_url": "https://jobs.smartrecruiters.com/Experian/744000141445829-sr-engineering-manager",
-    "ts": "2026-08-20T09:14:58.863560+00:00"
+    "ts": "2026-08-20T11:38:28.547620+00:00",
+    "fields_learned": 0
   },
   {
     "company": "JP Morgan Chase & Co.",
@@ -414,5 +416,34 @@
     "note": "Simplify Copilot",
     "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/40c2115a-9c8b-4789-b3ec-70fee90867cd/success?dcr_ci=Freshworks&ref=Simplify&src=Simplify&utm_source=Simplify",
     "ts": "2026-08-20T11:32:08.583902+00:00"
+  },
+  {
+    "company": "Freshworks",
+    "title": "Staff Engineer - Systems",
+    "location": "Hyderabad  in",
+    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000136138109",
+    "ats": "SmartRecruiters",
+    "job_id": "744000136138109",
+    "apply_url": "https://jobs.smartrecruiters.com/Freshworks/744000136138109",
+    "ok": false,
+    "status": "WAITING_EXPIRED",
+    "note": "waited 40s; learned 0 fields",
+    "final_url": "https://jobs.smartrecruiters.com/Freshworks/744000136138109",
+    "ts": "2026-08-20T11:33:02.407293+00:00",
+    "fields_learned": 0
+  },
+  {
+    "company": "DTCC",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214139",
+    "ats": "Oracle",
+    "job_id": "214139",
+    "apply_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214139",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted in headed Chrome (Oracle easy-apply + Gmail identity code)",
+    "final_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/my-profile",
+    "ts": "2026-08-20T11:57:16.201074+00:00"
   }
 ]

@@ -662,5 +662,44 @@
     "status": "SUBMITTED",
     "note": "Simplify Copilot",
     "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/40c2115a-9c8b-4789-b3ec-70fee90867cd/success?dcr_ci=Freshworks&ref=Simplify&src=Simplify&utm_source=Simplify"
+  },
+  {
+    "company": "Concentrix",
+    "title": "Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
+    "ats": "Foundit",
+    "job_id": "62508091",
+    "apply_url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305/apply/applyManually"
+  },
+  {
+    "company": "DTCC",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214139",
+    "ats": "Oracle",
+    "job_id": "214139",
+    "apply_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214139",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted in headed Chrome (Oracle easy-apply + Gmail identity code)",
+    "final_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/my-profile"
+  },
+  {
+    "company": "The Depository Trust & clearing Corporation",
+    "title": "Lead Software Engineer",
+    "location": null,
+    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214139/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
+    "ats": null,
+    "job_id": "60956587",
+    "apply_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214139/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted in headed Chrome (same DTCC Oracle 214139)",
+    "final_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/my-profile"
   }
 ]

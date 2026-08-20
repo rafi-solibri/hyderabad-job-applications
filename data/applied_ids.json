@@ -1497,5 +1497,64 @@
     "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000134600399",
     "note": "Simplify Copilot",
     "ts": "2026-08-20T11:33:01.134261+00:00"
+  },
+  "concentrix|engineering manager": {
+    "company": "Concentrix",
+    "title": "Engineering Manager",
+    "job_id": "62508091",
+    "url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-20T11:38:27.898769+00:00"
+  },
+  "62508091": {
+    "company": "Concentrix",
+    "title": "Engineering Manager",
+    "job_id": "62508091",
+    "url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-20T11:38:27.898769+00:00"
+  },
+  "R1743305": {
+    "company": "Concentrix",
+    "title": "Engineering Manager",
+    "job_id": "62508091",
+    "url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-20T11:38:27.898769+00:00"
+  },
+  "dtcc|lead software engineer": {
+    "company": "DTCC",
+    "title": "Lead Software Engineer",
+    "job_id": "214139",
+    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214139",
+    "note": "submitted in headed Chrome (Oracle easy-apply + Gmail identity code)",
+    "ts": "2026-08-20T11:57:16.198613+00:00"
+  },
+  "214139": {
+    "company": "The Depository Trust & clearing Corporation",
+    "title": "Lead Software Engineer",
+    "job_id": "60956587",
+    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214139/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
+    "note": "submitted in headed Chrome (same DTCC Oracle 214139)",
+    "ts": "2026-08-20T11:57:23.605183+00:00"
+  },
+  "thedepositorytrustclearingcorporation|lead software engineer": {
+    "company": "The Depository Trust & clearing Corporation",
+    "title": "Lead Software Engineer",
+    "job_id": "60956587",
+    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214139/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
+    "note": "submitted in headed Chrome (same DTCC Oracle 214139)",
+    "ts": "2026-08-20T11:57:23.605183+00:00"
+  },
+  "60956587": {
+    "company": "The Depository Trust & clearing Corporation",
+    "title": "Lead Software Engineer",
+    "job_id": "60956587",
+    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214139/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
+    "note": "submitted in headed Chrome (same DTCC Oracle 214139)",
+    "ts": "2026-08-20T11:57:23.605183+00:00"
   }
 }

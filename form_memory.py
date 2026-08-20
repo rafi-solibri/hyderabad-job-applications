@@ -237,6 +237,18 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("yes", "citizen", "permanently") or "Yes"
     if "previously employed" in q or "previously applied" in q or "worked here" in q or "worked for" in q:
         return pick("no") or "No"
+    if "applied here before" in q or "applied before" in q:
+        return pick("no") or "No"
+    if "senior government" in q or re.search(r"\bsgo\b", q):
+        return pick("no") or "No"
+    if "securities industry" in q:
+        return pick("no") or "No"
+    if "alongside" in q or "maintain your employment" in q or "self employed" in q:
+        return pick("no") or "No"
+    if "rescinded" in q:
+        return pick("no") or "No"
+    if "covenant" in q or "non-solicit" in q:
+        return pick("no") or "No"
     if "work permit" in q:
         return pick("yes") or "Yes"
     if "nationality" in q:
@@ -312,7 +324,9 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
     if "graduation" in q or "year of passing" in q or "passed out" in q:
         return a["gradYear"]
     if "how did you" in q or "how did you hear" in q or "how did you learn" in q:
-        return pick("career", "company website", "website") or a["howHeard"]
+        return pick("career site", "career", "company website", "website") or a["howHeard"]
+    if "please specify" in q:
+        return pick("career", "company", "dtcc.com", "website") or a["howHeard"]
     if "right to work document" in q or "document type" in q:
         return pick("passport", "indian") or a["rtw"]
     if "city of residence" in q or (q == "city") or "current city" in q:
@@ -554,8 +568,13 @@ def fill_visible(page) -> int:
                       }
                     } else if (type === 'radio' || type === 'checkbox') {
                       if (el.checked) return false;
-                      const t = ((el.closest('label') || {}).innerText || el.value || '').toLowerCase();
-                      if (t.includes(String(value).toLowerCase())) { el.click(); return true; }
+                      const labId = (el.getAttribute('aria-labelledby') || '').split(' ')[0];
+                      const lab = labId ? document.getElementById(labId) : (el.closest('label') || document.querySelector('label[for="'+el.id+'"]'));
+                      const t = ((lab && lab.innerText) || el.value || '').toLowerCase();
+                      if (t.includes(String(value).toLowerCase()) || t === String(value).toLowerCase()) {
+                        if (lab) lab.click(); else el.click();
+                        return true;
+                      }
                     } else {
                       if ((el.value || '').trim()) return false;
                       el.value = value;

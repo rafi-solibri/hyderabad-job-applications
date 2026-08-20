@@ -18,19 +18,19 @@ path.
 3. After each **SUBMITTED** application, tell the owner in **this agent chat**
    (company, title, URL). Also append `data/applications/SUBMITTED.md`.
 4. If a CAPTCHA / 2FA puzzle appears, **notify the owner in this agent chat**
-   immediately (company, title, URL, what to solve). Leave Chrome on that tab
-   and wait. The owner will solve it in **Desktop / Take control**. Do not skip
-   the job. After it is solved, keep filling this same application and submit.
+   immediately (company, title, URL, what to solve). **Keep that CAPTCHA tab
+   open.** Do not wait idle for hours. Open a **new tab** and start the next
+   leftover. When the owner is back they solve parked CAPTCHAs in
+   **Desktop / Take control**; then continue those same applications.
 5. After filling everything the runner can, if leftover fields still need a
-   human (**notify in this agent chat**): list the fields, leave Chrome on that
-   tab, and wait. Same for identity codes if Gmail is already open — otherwise
-   ask the owner. Do not silently sit on a blocked form.
-6. **One application at a time.** Open a single job tab. Do not open another until
-   that application is **SUBMITTED**. Then close the tab and move to the next.
-   Close the tab and open the next leftover when the posting is **404/closed**, or
-   when **Sign In / Create Account rejects every portal password** (wrong password
-   or locked account). Do not sit on a locked login. CAPTCHA and leftover fields
-   still wait on the same tab.
+   human: try to fill them. If the owner is away, **do not wait** — move to the
+   next leftover. If the owner is present, notify in this agent chat, list the
+   fields, and wait on that tab. Same for identity codes if Gmail is already
+   open.
+6. **One live application at a time**, except parked CAPTCHA tabs stay open.
+   Close the current apply tab and open the next leftover after **SUBMITTED**,
+   **404/closed**, or **Sign In / Create Account rejects every portal password**.
+   Do not sit on a locked login.
 
 ## Chrome (always)
 
@@ -38,7 +38,10 @@ path.
 - Binary: `/opt/google/chrome/chrome` — **never** `/usr/local/bin/google-chrome`
   (that wrapper forces `~/.config/google-chrome` and `--test-type`).
 - Profile dir: `data/chrome_profile` (Default), CDP `http://127.0.0.1:9222`.
-- Apply in **one new tab**. Never more than one application tab. Do not navigate or close Google / Gmail tabs. After a successful submit, a closed/404 posting, or a locked/rejected portal login, close that apply tab and open the next leftover.
+- Apply in **one new tab** for the live job. Parked CAPTCHA tabs stay open.
+  Do not navigate or close Google / Gmail tabs. After a successful submit,
+  a closed/404 posting, or a locked/rejected portal login, close that apply
+  tab and open the next leftover.
 - Google password lives in gitignored `.env` (`GOOGLE_PASSWORD`) and automation
   memory `secrets.md`. Load via `google_auth.py`. Never commit it. Never put it
   in `field_memory.json` or `DAILY_REPORT.md`. 2FA: Nothing Phone (3).
@@ -80,6 +83,8 @@ Leave honeypot fields empty.
   out-of-scope titles already in `apply_now.py`.
 - Do **not** invent skills on the resume. Persist submitted, closed-404, and
   locked/rejected-login jobs in `data/applied_ids.json` so they are never reopened.
+- After each apply-runner code fix, commit, push the feature branch, and
+  **merge into `main`** (`git push origin HEAD:main`). Do not leave PRs sitting.
 
 ## Code map (this is the apply stack)
 
