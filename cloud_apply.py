@@ -40,10 +40,10 @@ PROFILE_EMAIL = "rafi.success@gmail.com"
 # a closed/404 posting, or a career-site login that rejects every portal password.
 MAX_OPEN_APPLICATIONS = 1
 DONE_STATUSES = frozenset({"SUBMITTED", "CLOSED", "AUTH_FAILED"})
-# Park these and open the next leftover (owner solves CAPTCHAs / Amazon sign-in).
-PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED", "OWNER_SIGNIN"})
+# Park these and open the next leftover. STUCK = Copilot/form loop; do not sit on it.
+PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED", "OWNER_SIGNIN", "STUCK"})
 KEEP_TAB_STATUSES = frozenset({"CAPTCHA", "OWNER_SIGNIN"})
-TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES
+TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES | frozenset({"ERROR"})
 PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
 
@@ -646,6 +646,23 @@ SKIP_APPLY_LABEL = re.compile(
 )
 
 
+def _looks_like_copilot(loc) -> bool:
+    """Copilot lives on the right. Clicking it as ATS Apply loops Start Application."""
+    try:
+        el_id = (loc.get_attribute("id") or "").lower()
+        if el_id in {"start-application-button", "proxy-submit-button", "fill-button"}:
+            return True
+        box = loc.bounding_box() or {}
+        vw = 1400
+        try:
+            vw = loc.page.evaluate("() => window.innerWidth") or 1400
+        except Exception:
+            pass
+        return (box.get("x") or 0) > float(vw) * 0.58
+    except Exception:
+        return False
+
+
 def click_apply_gate(page) -> str:
     """Click Apply / Start application / Apply Manually. Never Tailor Resume or Indeed."""
     try:
@@ -695,8 +712,6 @@ def click_apply_gate(page) -> str:
         "Apply Now",
         "Apply now",
         "I'm interested",
-        "Start application",
-        "Start Application",
         "Start applying",
         "Easy Apply",
         "Apply as a guest",
@@ -710,7 +725,7 @@ def click_apply_gate(page) -> str:
                 if not loc.count() or not loc.is_visible():
                     continue
                 text = (loc.inner_text() or name)
-                if SKIP_APPLY_LABEL.search(text) or SIMPLIFY_RE.search(text):
+                if SKIP_APPLY_LABEL.search(text) or SIMPLIFY_RE.search(text) or _looks_like_copilot(loc):
                     continue
                 loc.click(timeout=1500, force=True)
                 print(f"  Clicked '{text.strip()[:40]}'.", flush=True)
@@ -2034,6 +2049,11 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     copilot_step = simplify_copilot.follow(page)
     if copilot_step == "submitted" or is_success(page):
         return "submitted"
+    if copilot_step == "stuck":
+        step = click_next_or_submit(page)
+        if step == "submitted" or is_success(page) or simplify_copilot.submitted(page):
+            return "submitted"
+        return "stuck"
     form_memory.fill_visible(page)
     form_memory.fill_india_state_typeahead(page)
     fill_smartrecruiters_form(page, job)
@@ -2069,6 +2089,8 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     stuck_required = 0
     last_fp = ""
     same_fp = 0
+    unsticks = 0
+    step = ""
     while time.time() < deadline:
         try:
             changed = form_memory.remember(page, job) or []
@@ -2121,6 +2143,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             last_fp = fp
         if same_fp >= 3:
             step = unstick_stuck_form(page, job, resume)
+            unsticks += 1
             same_fp = 0
             last_fp = form_fingerprint(page)
             if step == "submitted" or is_success(page):
@@ -2131,6 +2154,22 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "note": "submitted after unstick",
                     "learned": learned,
                 }
+            if unsticks >= 2:
+                print("  Form is looping. Moving to the next leftover now.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "STUCK",
+                    "note": "copilot/form loop — skipped to next job",
+                    "learned": learned,
+                }
+        if step == "stuck":
+            print("  No progress. Moving to the next leftover now.", flush=True)
+            return {
+                "ok": False,
+                "status": "STUCK",
+                "note": "no page progress after fill/click",
+                "learned": learned,
+            }
         req = required_field_issues(page)
         if req:
             stuck_required += 1
@@ -2267,7 +2306,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         learned += len(form_memory.remember(page, job) or [])
 
         stuck_none = 0
-        for _ in range(14):
+        last_apply_url = ""
+        same_apply = 0
+        step = ""
+        for _ in range(6):
             dismiss_overlays(page)
             recover_wrong_board(page)
             if is_success(page) or simplify_copilot.submitted(page):
@@ -2297,13 +2339,26 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 row["final_url"] = page.url
                 print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
                 return row
+            if step == "stuck":
+                break
+            try:
+                now_url = page.url or ""
+            except Exception:
+                now_url = ""
+            if now_url == last_apply_url:
+                same_apply += 1
+            else:
+                same_apply = 0
+                last_apply_url = now_url
+            if same_apply >= 2:
+                break
             if step == "none":
                 stuck_none += 1
                 if stuck_none >= 3:
                     break
             else:
                 stuck_none = 0
-            page.wait_for_timeout(700)
+            page.wait_for_timeout(400)
 
         if captcha_puzzle_visible(page):
             notify_captcha(job, page)
@@ -2313,13 +2368,19 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
             return row
 
-        # Use --wait when the owner is present; default 40s when they are away.
-        stay = wait_seconds if wait_seconds else 40
-        human = wait_for_human(page, job, stay, resume)
-        row["ok"] = human["ok"]
-        row["status"] = human["status"]
-        row["note"] = human["note"]
-        learned += int(human.get("learned") or 0)
+        # Short stay only. Long waits were looping Copilot Continue for minutes.
+        stay = min(wait_seconds if wait_seconds else 20, 20)
+        if step == "stuck":
+            stay = 0
+        if stay:
+            human = wait_for_human(page, job, stay, resume)
+            row["ok"] = human["ok"]
+            row["status"] = human["status"]
+            row["note"] = human["note"]
+            learned += int(human.get("learned") or 0)
+        else:
+            row["status"] = "STUCK"
+            row["note"] = "no page progress — next job"
         row["fields_learned"] = learned
         try:
             row["final_url"] = page.url
@@ -2637,30 +2698,8 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 for extra in list(context.pages):
                     close_apply_page(extra)
                 page = context.new_page()
-                stay = wait_seconds if wait_seconds else 40
+                stay = min(wait_seconds if wait_seconds else 20, 20)
                 row = apply_one(page, job, wait_seconds=stay, navigate=True)
-                while row.get("status") not in TERMINAL_STATUSES:
-                    print(
-                        f"  Still not submitted ({row.get('status')}). "
-                        f"Retrying this same application once more.",
-                        flush=True,
-                    )
-                    try:
-                        if page.is_closed():
-                            page = context.new_page()
-                            row = apply_one(page, job, wait_seconds=stay, navigate=True)
-                        else:
-                            row = apply_one(page, job, wait_seconds=stay, navigate=False)
-                    except Exception as exc:
-                        print(f"  Retrying same application after error: {exc}", flush=True)
-                        try:
-                            if page.is_closed():
-                                page = context.new_page()
-                        except Exception:
-                            page = context.new_page()
-                        row = apply_one(page, job, wait_seconds=stay, navigate=True)
-                    if row.get("status") in PARK_STATUSES:
-                        break
                 results.append(row)
                 SESSION_SKIP_KEYS.update(apply_now.job_match_keys(row) | apply_now.job_match_keys(job))
                 if row.get("ok") and row.get("status") == "SUBMITTED":

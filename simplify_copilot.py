@@ -298,6 +298,9 @@ def submitted(page) -> bool:
     return False
 
 
+_LAST_FOLLOW: dict[str, object] = {"url": "", "action": "", "n": 0}
+
+
 def follow(page) -> str:
     """Click Copilot Continue / Create account / Submit. Skip Tailor Resume."""
     watch(page)
@@ -308,18 +311,30 @@ def follow(page) -> str:
     actions = [a for a in (st.get("actions") or []) if a]
     action = (st.get("action") or "").strip()
     for preferred in (
-        "Start Application",
-        "Continue Application",
-        "Continue with application",
         "Submit application",
         "Submit Application",
         "Submit",
+        "Continue Application",
+        "Continue with application",
+        "Start Application",
     ):
         if any(preferred.lower() == a.lower() for a in actions):
             action = next(a for a in actions if a.lower() == preferred.lower())
             break
     if action:
         low = action.lower()
+        try:
+            url = (page.url or "").split("?")[0]
+        except Exception:
+            url = ""
+        if (
+            _LAST_FOLLOW.get("url") == url
+            and str(_LAST_FOLLOW.get("action") or "").lower() == low
+            and int(_LAST_FOLLOW.get("n") or 0) >= 1
+        ):
+            print(f"  Skipping repeated Copilot '{action}' — no page change.", flush=True)
+            _LAST_FOLLOW["n"] = int(_LAST_FOLLOW.get("n") or 0) + 1
+            return "stuck"
         if "tailor" in low or "resume builder" in low:
             print(f"  Skipping Copilot '{action}'.", flush=True)
             return ""
@@ -328,6 +343,10 @@ def follow(page) -> str:
         ):
             print(f"  Skipping ATS '{action}' (portal auth is handled separately).", flush=True)
             return ""
+        if "save and continue" in low or low in {"continue", "next", "continue application"}:
+            if "stepname=applicantacknowledgment" in (page.url or "").lower() or "stepname=acknowledg" in (page.url or "").lower():
+                print(f"  Skipping Copilot '{action}' on acknowledgment — ATS checkboxes first.", flush=True)
+                return ""
         if "submit" in low:
             # Copilot #proxy-submit-button has pointer-events:none and does not submit Phenom.
             try:
@@ -362,8 +381,11 @@ def follow(page) -> str:
                 loc = page.get_by_text(action, exact=exact).first
             if loc.count():
                 loc.click(timeout=2000)
+                _LAST_FOLLOW["url"] = url
+                _LAST_FOLLOW["action"] = low
+                _LAST_FOLLOW["n"] = 1
                 print(f"  Simplify Copilot needs '{action}'. Clicked it.", flush=True)
-                page.wait_for_timeout(2500)
+                page.wait_for_timeout(800)
                 return "clicked"
         except Exception:
             pass
