@@ -83,10 +83,10 @@
     "state of residence": {
       "label": "state of residence",
       "value": "Telangana",
-      "count": 1,
-      "name": "",
+      "count": 2,
+      "name": "region2",
       "updated": "2026-08-17T15:19:58.388368+00:00",
-      "source": "seed"
+      "source": "form"
     },
     "linkedin profile": {
       "label": "LinkedIn Profile",
@@ -432,14 +432,6 @@
       "updated": "2026-08-17T15:42:45.072570+00:00",
       "source": "form"
     },
-    "password password is visible *": {
-      "label": "Password Password is visible *",
-      "value": "Passion5%Passion5%",
-      "count": 1,
-      "name": "password",
-      "updated": "2026-08-17T15:42:53.247295+00:00",
-      "source": "form"
-    },
     "email or phone": {
       "label": "Email or Phone",
       "value": "rafi.success@gmail.com",
@@ -449,11 +441,11 @@
       "source": "form"
     },
     "phone number": {
-      "label": "Phone number",
-      "value": "+91 87902 51698",
-      "count": 5,
-      "name": "applicant_primary_phone_number",
-      "updated": "2026-08-17T15:45:36.413561+00:00",
+      "label": "Phone Number",
+      "value": "+91",
+      "count": 6,
+      "name": "phoneNumber",
+      "updated": "2026-08-20T09:27:14.200049+00:00",
       "source": "form"
     },
     "enter code": {
@@ -775,75 +767,121 @@
       "name": "notifiedEmail",
       "updated": "2026-08-20T08:58:37.446922+00:00",
       "source": "form"
+    },
+    "i agree with the terms and conditions": {
+      "label": "I agree with the terms and conditions",
+      "value": "I agree with the terms and conditions",
+      "count": 1,
+      "name": "legal-disclaimer-checkbox",
+      "updated": "2026-08-20T09:05:00.651384+00:00",
+      "source": "form"
+    },
+    "enter verification code digit 1 of six.": {
+      "label": "Enter verification code digit 1 of six.",
+      "value": "5",
+      "count": 1,
+      "name": "pin-code-1",
+      "updated": "2026-08-20T09:27:07.040063+00:00",
+      "source": "form"
+    },
+    "enter verification code digit 2 of six.": {
+      "label": "Enter verification code digit 2 of six.",
+      "value": "7",
+      "count": 1,
+      "name": "pin-code-2",
+      "updated": "2026-08-20T09:27:07.040112+00:00",
+      "source": "form"
+    },
+    "enter verification code digit 3 of six.": {
+      "label": "Enter verification code digit 3 of six.",
+      "value": "1",
+      "count": 1,
+      "name": "pin-code-3",
+      "updated": "2026-08-20T09:27:07.040123+00:00",
+      "source": "form"
+    },
+    "enter verification code digit 4 of six.": {
+      "label": "Enter verification code digit 4 of six.",
+      "value": "1",
+      "count": 1,
+      "name": "pin-code-4",
+      "updated": "2026-08-20T09:27:07.040132+00:00",
+      "source": "form"
+    },
+    "enter verification code digit 5 of six.": {
+      "label": "Enter verification code digit 5 of six.",
+      "value": "8",
+      "count": 1,
+      "name": "pin-code-5",
+      "updated": "2026-08-20T09:27:07.040137+00:00",
+      "source": "form"
+    },
+    "enter verification code digit 6 of six.": {
+      "label": "Enter verification code digit 6 of six.",
+      "value": "8",
+      "count": 1,
+      "name": "pin-code-6",
+      "updated": "2026-08-20T09:27:07.040146+00:00",
+      "source": "form"
+    },
+    "personal details": {
+      "label": "PERSONAL DETAILS",
+      "value": "Mohammed",
+      "count": 3,
+      "name": "firstName",
+      "updated": "2026-08-20T09:42:40.748529+00:00",
+      "source": "form"
+    },
+    "address please enter your home address.": {
+      "label": "Address Please enter your home address.",
+      "value": "India",
+      "count": 1,
+      "name": "country",
+      "updated": "2026-08-20T09:27:14.200059+00:00",
+      "source": "form"
+    },
+    "state": {
+      "label": "State",
+      "value": "Telangana",
+      "count": 1,
+      "name": "region2",
+      "updated": "2026-08-20T09:30:00+00:00",
+      "source": "form"
+    },
+    "state *": {
+      "label": "State *",
+      "value": "Telangana",
+      "count": 1,
+      "name": "region2",
+      "updated": "2026-08-20T09:30:00+00:00",
+      "source": "form"
+    },
+    "region2": {
+      "label": "region2",
+      "value": "Telangana",
+      "count": 1,
+      "name": "region2",
+      "updated": "2026-08-20T09:30:00+00:00",
+      "source": "form"
+    },
+    "preferred locations": {
+      "label": "Preferred Locations",
+      "value": "Towers",
+      "count": 1,
+      "name": "preferredLocations",
+      "updated": "2026-08-20T09:42:40.748585+00:00",
+      "source": "form"
+    },
+    "e-signature": {
+      "label": "E-Signature",
+      "value": "Rafi Ahmed Mohammed Abdul",
+      "count": 1,
+      "name": "fullName",
+      "updated": "2026-08-20T09:43:37.070496+00:00",
+      "source": "form"
     }
   },
   "history": [
-    {
-      "ts": "2026-08-17T15:42:53.247324+00:00",
-      "company": "Amazon",
-      "title": "Principal Software Engineer, Amazon Shipping",
-      "fields": [
-        {
-          "label": "Password Password is visible *",
-          "value": "Passion5%Passion5%"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-17T15:43:18.362885+00:00",
-      "company": "Amazon",
-      "title": "Principal Software Engineer, Amazon Shipping",
-      "fields": [
-        {
-          "label": "Email or phone",
-          "value": "rafi.su"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-17T15:43:20.396125+00:00",
-      "company": "Amazon",
-      "title": "Principal Software Engineer, Amazon Shipping",
-      "fields": [
-        {
-          "label": "Email or phone",
-          "value": "rafi.success"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-17T15:43:41.245928+00:00",
-      "company": "Amazon",
-      "title": "Principal Software Engineer, Amazon Shipping",
-      "fields": [
-        {
-          "label": "Email or Phone",
-          "value": "raf"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-17T15:43:43.281264+00:00",
-      "company": "Amazon",
-      "title": "Principal Software Engineer, Amazon Shipping",
-      "fields": [
-        {
-          "label": "Email or Phone",
-          "value": "rafi.s"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-17T15:43:45.315924+00:00",
-      "company": "Amazon",
-      "title": "Principal Software Engineer, Amazon Shipping",
-      "fields": [
-        {
-          "label": "Email or Phone",
-          "value": "rafi.success"
-        }
-      ]
-    },
     {
       "ts": "2026-08-17T15:43:47.354247+00:00",
       "company": "Amazon",
@@ -1711,6 +1749,104 @@
         {
           "label": "Please enter your email address",
           "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-20T09:05:00.651398+00:00",
+      "company": "JP Morgan Chase & Co.",
+      "title": "Principal Software Engineer",
+      "fields": [
+        {
+          "label": "I agree with the terms and conditions",
+          "value": "I agree with the terms and conditions"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-20T09:27:07.040154+00:00",
+      "company": "JP Morgan Chase & Co.",
+      "title": "Principal Software Engineer",
+      "fields": [
+        {
+          "label": "Enter verification code digit 1 of six.",
+          "value": "5"
+        },
+        {
+          "label": "Enter verification code digit 2 of six.",
+          "value": "7"
+        },
+        {
+          "label": "Enter verification code digit 3 of six.",
+          "value": "1"
+        },
+        {
+          "label": "Enter verification code digit 4 of six.",
+          "value": "1"
+        },
+        {
+          "label": "Enter verification code digit 5 of six.",
+          "value": "8"
+        },
+        {
+          "label": "Enter verification code digit 6 of six.",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-20T09:27:11.148931+00:00",
+      "company": "JP Morgan Chase & Co.",
+      "title": "Principal Software Engineer",
+      "fields": [
+        {
+          "label": "PERSONAL DETAILS",
+          "value": "Mohammed Abdul Rafi"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-20T09:27:14.200067+00:00",
+      "company": "JP Morgan Chase & Co.",
+      "title": "Principal Software Engineer",
+      "fields": [
+        {
+          "label": "PERSONAL DETAILS",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "Phone Number",
+          "value": "+91"
+        },
+        {
+          "label": "Address Please enter your home address.",
+          "value": "India"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-20T09:42:40.748589+00:00",
+      "company": "JP Morgan Chase & Co.",
+      "title": "Principal Software Engineer",
+      "fields": [
+        {
+          "label": "PERSONAL DETAILS",
+          "value": "Mohammed"
+        },
+        {
+          "label": "Preferred Locations",
+          "value": "Towers"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-20T09:43:37.070510+00:00",
+      "company": "JP Morgan Chase & Co.",
+      "title": "Principal Software Engineer",
+      "fields": [
+        {
+          "label": "E-Signature",
+          "value": "Rafi Ahmed Mohammed Abdul"
         }
       ]
     }

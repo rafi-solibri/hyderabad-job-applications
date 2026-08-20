@@ -71,7 +71,7 @@ LIST_FIELDS_JS = """() => {
     value = String(value).replace(/\\s+/g, ' ').trim().slice(0, 800);
     const label = questionLabel(el);
     if (!label || label.length < 2) continue;
-    const key = label.toLowerCase();
+    const key = label.toLowerCase() + '|' + (el.id || el.name || '');
     if (seen.has(key)) continue;
     seen.add(key);
     items.push({label, value, name: el.name || el.id || '', type, options});
@@ -190,6 +190,8 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return None
     if q in {"yes", "no", "search", "password"}:
         return None
+    if "last working day" in q or ("serving" in q and "notice" in q):
+        return None
     mem = load_memory()["by_label"]
     if q in mem:
         val = (mem[q].get("value") or "").strip()
@@ -248,7 +250,11 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
     if q.strip() == "gender" or q.startswith("gender"):
         return pick("male") or a["gender"]
     if "notice" in q:
-        return a["notice"]
+        return pick("available immediately", "immediate") or a["notice"]
+    if "proficiency" in q:
+        return pick("expert", "advanced") or "Expert"
+    if "hands-on" in q and any(x in q for x in ("docker", "kubernetes", "k8s")):
+        return pick("yes") or "Yes"
     if "when can you start" in q or "start date" in q or "available to start" in q or "joining" in q:
         return a["start"]
     if "current" in q and any(x in q for x in ("ctc", "salary", "compensation", "pay")):
@@ -264,6 +270,11 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
     if "current title" in q or "current role" in q or "job title" in q:
         return a["title"]
     if "years of experience" in q or "total experience" in q or "how many years" in q:
+        if options:
+            for needle in ("12+", "10+", "8-12", "8+", "5-8"):
+                hit = pick(needle)
+                if hit:
+                    return hit
         if "cloud security" in q:
             return "8"
         if "aws" in q or "azure" in q or ".net" in q or "cloud" in q:
@@ -271,7 +282,7 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return a["years"]
     if "date of birth" in q or q == "dob" or "birth date" in q:
         return a["dob"]
-    if "university" in q or "college" in q or "school name" in q:
+    if "university" in q or "college" in q or "school name" in q or "institution" in q:
         return a["school"]
     if "degree" in q or "highest education" in q or "qualification" in q:
         return pick("bachelor", "b.tech", "btech") or "B.Tech"
@@ -451,8 +462,35 @@ def apply_memory(page) -> int:
 
 
 def fill_visible(page) -> int:
-    fields = snapshot(page)
     filled = 0
+    email = _answers()["email"]
+    try:
+        loc = page.locator("input[type=email], #confirm-email-input, input[id*='email' i], input[name*='email' i]")
+        for i in range(min(loc.count(), 8)):
+            el = loc.nth(i)
+            try:
+                if not el.is_visible():
+                    continue
+                cur = (el.input_value() or "").strip()
+                if cur.lower() == email.lower():
+                    continue
+                target = el
+                try:
+                    tag = (el.evaluate("n => (n.tagName || '').toLowerCase()") or "")
+                except Exception:
+                    tag = ""
+                if tag not in {"input", "textarea"}:
+                    inner = el.locator("input:not([type=hidden]), textarea").first
+                    if inner.count():
+                        target = inner
+                target.scroll_into_view_if_needed(timeout=1200)
+                target.fill(email, timeout=1500)
+                filled += 1
+            except Exception:
+                continue
+    except Exception:
+        pass
+    fields = snapshot(page)
     for field in fields:
         label = field.get("label") or ""
         name = (field.get("name") or "").lower()

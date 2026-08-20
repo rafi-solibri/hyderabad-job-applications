@@ -133,10 +133,10 @@
     "job_id": "48986309",
     "apply_url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210722037/?location=India&locationId=300000000289360&locationLevel=country",
     "ok": false,
-    "status": "CAPTCHA",
-    "note": "blocked after Apply",
-    "final_url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210722037/apply/email",
-    "ts": "2026-08-20T08:52:57.697324+00:00"
+    "status": "INCOMPLETE",
+    "note": "false submit on apply/section/2 — still filling",
+    "final_url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210722037/apply/section/2",
+    "ts": "2026-08-20T09:30:47.216642+00:00"
   },
   {
     "company": "Solera",
@@ -147,10 +147,10 @@
     "job_id": "62350523",
     "apply_url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
+    "status": "ERROR",
+    "note": "name 'recover_wrong_board' is not defined",
     "final_url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229",
-    "ts": "2026-08-20T08:53:07.504340+00:00"
+    "ts": "2026-08-20T09:11:51.974775+00:00"
   },
   {
     "company": "The Wells Fargo Foundation",
@@ -175,10 +175,10 @@
     "job_id": "744000139205539",
     "apply_url": "https://jobs.smartrecruiters.com/Freshworks/744000139205539",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
-    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/8f7e9147-ffd0-4cfd-8b47-bc52c5734fc4?dcr_ci=Freshworks",
-    "ts": "2026-08-20T08:54:21.958606+00:00"
+    "status": "ERROR",
+    "note": "name 'recover_wrong_board' is not defined",
+    "final_url": "https://jobs.smartrecruiters.com/Freshworks/744000139205539",
+    "ts": "2026-08-20T09:12:53.258088+00:00"
   },
   {
     "company": "Freshworks",
@@ -189,10 +189,10 @@
     "job_id": "744000134600339",
     "apply_url": "https://jobs.smartrecruiters.com/Freshworks/744000134600339",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
-    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/c17fc54c-944b-49a4-af75-88fd9c977c23?dcr_ci=Freshworks",
-    "ts": "2026-08-20T08:54:50.145431+00:00"
+    "status": "ERROR",
+    "note": "name 'recover_wrong_board' is not defined",
+    "final_url": "https://jobs.smartrecruiters.com/Freshworks/744000134600339",
+    "ts": "2026-08-20T09:13:24.038301+00:00"
   },
   {
     "company": "Charles Schwab",
@@ -239,16 +239,16 @@
   {
     "company": "Experian",
     "title": "Senior Staff Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
-    "ats": "Foundit",
     "job_id": "60726562",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
     "apply_url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
-    "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
-    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Experian/publication/bd9a7ebd-b593-42b1-8c44-3f170b555a6a?dcr_ci=Experian&ref=Simplify&src=Simplify&utm_source=Simplify",
-    "ts": "2026-08-20T08:53:48.524460+00:00"
+    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Experian/publication/bd9a7ebd-b593-42b1-8c44-3f170b555a6a/success?dcr_ci=Experian",
+    "ats": "SmartRecruiters",
+    "location": "Hyderabad, India",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
+    "ts": "2026-08-20T11:17:52.477820+00:00"
   },
   {
     "company": "Thermo Fisher Scientific",
@@ -259,10 +259,10 @@
     "job_id": "60574327",
     "apply_url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer,-Software",
     "ok": false,
-    "status": "CAPTCHA",
-    "note": "blocked after Apply",
-    "final_url": "https://jobs.thermofisher.com/global/en/apply?jobSeqNo=TFSCGLOBALR01351780EXTERNALENGLOBAL&step=1&stepname=applicantAcknowledgment",
-    "ts": "2026-08-20T08:55:22.906090+00:00"
+    "status": "ERROR",
+    "note": "name 'recover_wrong_board' is not defined",
+    "final_url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer-Software",
+    "ts": "2026-08-20T09:13:55.257363+00:00"
   },
   {
     "company": "Microsoft Corp",
@@ -287,10 +287,10 @@
     "job_id": "62508091",
     "apply_url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
+    "status": "ERROR",
+    "note": "name 'recover_wrong_board' is not defined",
     "final_url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
-    "ts": "2026-08-20T08:55:40.203503+00:00"
+    "ts": "2026-08-20T09:14:27.614978+00:00"
   },
   {
     "company": "Cyara",
@@ -315,10 +315,10 @@
     "job_id": "61456572",
     "apply_url": "https://jobs.smartrecruiters.com/Experian/744000141445829-sr-engineering-manager",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
+    "status": "ERROR",
+    "note": "name 'recover_wrong_board' is not defined",
     "final_url": "https://jobs.smartrecruiters.com/Experian/744000141445829-sr-engineering-manager",
-    "ts": "2026-08-20T08:56:21.472182+00:00"
+    "ts": "2026-08-20T09:14:58.863560+00:00"
   },
   {
     "company": "JP Morgan Chase & Co.",
@@ -343,10 +343,10 @@
     "job_id": "60956587",
     "apply_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214139/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
-    "final_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214139/easy-apply/email?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
-    "ts": "2026-08-20T08:56:51.899898+00:00"
+    "status": "ERROR",
+    "note": "name 'recover_wrong_board' is not defined",
+    "final_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/214139?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
+    "ts": "2026-08-20T09:15:31.425015+00:00"
   },
   {
     "company": "Zf Friedrich",
@@ -357,10 +357,10 @@
     "job_id": "63218456",
     "apply_url": "https://jobs.zf.com/job/Hyderabad-Sr-Technical-Lead-TG-500032/1427361033/",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
+    "status": "ERROR",
+    "note": "name 'recover_wrong_board' is not defined",
     "final_url": "https://jobs.zf.com/job/Hyderabad-Sr-Technical-Lead-TG-500032/1427361033/",
-    "ts": "2026-08-20T08:57:19.107838+00:00"
+    "ts": "2026-08-20T09:16:03.963799+00:00"
   },
   {
     "company": "Currenex State Street Trust Company",

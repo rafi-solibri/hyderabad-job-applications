@@ -584,5 +584,44 @@
     "status": "SUBMITTED",
     "note": "already applied (same Schwab EM req, iCIMS dashboard)",
     "final_url": "https://www.schwabjobs.com/job/hyderabad/senior-engineering-manager-software-development-and-engineering-pl/33727/99161515632"
+  },
+  {
+    "company": "JP Morgan Chase & Co.",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210722037/?location=India&locationId=300000000289360&locationLevel=country",
+    "ats": "Oracle",
+    "job_id": "48986309",
+    "apply_url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210722037",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "JPMC My Applications: Applied 08/20/2026 Under Consideration (210722037)",
+    "final_url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/my-profile"
+  },
+  {
+    "company": "Solera",
+    "title": "Principal Software Engineer",
+    "location": null,
+    "url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229",
+    "ats": "Workday",
+    "job_id": "62350523",
+    "apply_url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked — skipped, next leftover",
+    "final_url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229"
+  },
+  {
+    "company": "Experian",
+    "title": "Senior Staff Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
+    "ats": "SmartRecruiters",
+    "job_id": "60726562",
+    "apply_url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
+    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Experian/publication/bd9a7ebd-b593-42b1-8c44-3f170b555a6a/success?dcr_ci=Experian"
   }
 ]

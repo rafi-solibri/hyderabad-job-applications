@@ -1,8 +1,8 @@
-"""Apply to company career-portal jobs from the ready queue using Chromium.
+"""Apply to leftover Hyderabad / Remote-India jobs in headed Chrome.
 
-Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are recorded as
-OTHER_AUTOMATION without opening them. Company career sites (Greenhouse, Lever,
-Workday, Phenom, SmartRecruiters, etc.) are tried first.
+Every run: discover, then apply leftover company career portals (Greenhouse,
+Lever, Workday, Phenom, SmartRecruiters, Oracle, etc.). Only after that queue
+is empty, apply Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre.
 """
 from __future__ import annotations
 
@@ -39,6 +39,11 @@ PROFILE_EMAIL = "rafi.success@gmail.com"
 # a closed/404 posting, or a career-site login that rejects every portal password.
 MAX_OPEN_APPLICATIONS = 1
 DONE_STATUSES = frozenset({"SUBMITTED", "CLOSED", "AUTH_FAILED"})
+# Park these and open the next leftover (owner solves CAPTCHAs when back).
+PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED"})
+TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES
+PARKED_CAPTCHA_URLS: set[str] = set()
+SESSION_SKIP_KEYS: set[str] = set()
 
 # These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
@@ -78,16 +83,16 @@ def _host(url: str) -> str:
         return ""
 
 
-def classify_url(url: str, job: dict | None = None) -> str:
-    """Career portals are tried. Aggregator boards are left to other automations."""
+def classify_url(url: str, job: dict | None = None, allow_aggregators: bool = False) -> str:
+    """Career portals are always tried. Aggregator boards wait until career leftovers are empty."""
     row = dict(job or {})
     if url:
         row["apply_url"] = url
     if apply_now.is_aggregator_board(row):
-        return "OTHER_AUTOMATION"
+        return "TRY" if allow_aggregators else "OTHER_AUTOMATION"
     host = _host(url)
     if host in LOGIN_HOSTS or any(host.endswith("." + h) for h in ("linkedin.com", "naukri.com", "indeed.com", "foundit.in", "instahyre.com", "cutshort.io")):
-        return "OTHER_AUTOMATION"
+        return "TRY" if allow_aggregators else "OTHER_AUTOMATION"
     if (url or "").startswith("http"):
         return "TRY"
     return "LOGIN_BLOCKED"
@@ -183,12 +188,11 @@ def is_success(page) -> bool:
 def fill_identity(page) -> None:
     pairs = [
         ("input[name='name'], input[name='full_name'], #name", C["fullName"]),
-        ("input[name='first_name'], #first_name, input[autocomplete='given-name']", C["firstName"]),
-        ("input[name='last_name'], #last_name, input[autocomplete='family-name']", C["lastName"]),
-        ("input[name='email'], #email, input[type=email], input[name='primary-email']", C["email"]),
+        ("input[name='first_name'], #first_name, input[autocomplete='given-name'], #first-name-input", C["firstName"]),
+        ("input[name='last_name'], #last_name, input[autocomplete='family-name'], #last-name-input", C["lastName"]),
         ("input[name='phone'], #phone, input[type=tel]", C["phoneNational"]),
         ("input[name='org'], input[name='company']", C["currentEmployer"]),
-        ("input[name='urls[LinkedIn]'], input[name='linkedin'], input[placeholder*='LinkedIn' i]", C["linkedIn"]),
+        ("input[name='urls[LinkedIn]'], input[name='linkedin'], #linkedin-input, input[placeholder*='LinkedIn' i]", C["linkedIn"]),
         ("#location-input, input[name='location'], input[placeholder*='Location' i]", "Hyderabad, India"),
     ]
     for sel, value in pairs:
@@ -204,6 +208,82 @@ def fill_identity(page) -> None:
                     loc.fill(str(value), timeout=1500)
         except Exception:
             continue
+    fill_email_fields(page)
+
+
+def fill_email_fields(page) -> int:
+    """Fill Email and Confirm/Verify email with the same address. Never log it."""
+    email = C.get("email") or google_auth.EMAIL
+    if not email:
+        return 0
+    filled = 0
+    try:
+        loc = page.locator(
+            "input[type=email], #email, #email-input, #confirm-email-input, "
+            "spl-input[type=email], spl-input[id*='email' i], "
+            "input[id*='email' i], input[name*='email' i], input[autocomplete='email']"
+        )
+        n = loc.count()
+    except Exception:
+        n = 0
+    seen: set[tuple] = set()
+    for i in range(min(n, 8)):
+        el = loc.nth(i)
+        try:
+            if not el.is_visible():
+                continue
+            meta = (
+                (el.get_attribute("name") or "")
+                + " "
+                + (el.get_attribute("id") or "")
+                + " "
+                + (el.get_attribute("aria-label") or "")
+                + " "
+                + (el.get_attribute("placeholder") or "")
+            ).lower()
+            if any(x in meta for x in ("honey", "honeypot", "robot")):
+                continue
+            box = el.bounding_box() or {}
+            key = (round(box.get("x") or 0), round(box.get("y") or 0), el.get_attribute("id") or str(i))
+            if key in seen:
+                continue
+            seen.add(key)
+            target = el
+            try:
+                tag = (el.evaluate("n => (n.tagName || '').toLowerCase()") or "")
+            except Exception:
+                tag = ""
+            if tag not in {"input", "textarea"}:
+                inner = el.locator("input:not([type=hidden]), textarea").first
+                if inner.count():
+                    target = inner
+            cur = ""
+            try:
+                cur = (target.input_value() or "").strip()
+            except Exception:
+                pass
+            if cur.lower() == str(email).lower():
+                host_invalid = False
+                try:
+                    host_invalid = "ng-invalid" in (el.get_attribute("class") or "")
+                except Exception:
+                    pass
+                if not host_invalid:
+                    continue
+            target.scroll_into_view_if_needed(timeout=1500)
+            target.click(timeout=2000)
+            target.fill("", timeout=2000)
+            target.press_sequentially(str(email), delay=15)
+            try:
+                target.press("Tab")
+            except Exception:
+                pass
+            filled += 1
+        except Exception:
+            continue
+    if filled:
+        print(f"  Filled {filled} email / confirm-email field(s).", flush=True)
+    return filled
 
 
 def fill_portal_account(page, password: str | None = None) -> str:
@@ -596,6 +676,11 @@ def click_next_or_submit(page) -> str:
     dismiss_overlays(page)
     if is_success(page):
         return "submitted"
+    for label in ("Submit application", "Submit Application", "Submit", "Next"):
+        if click_spl_button(page, label):
+            print(f"  Clicked ATS '{label}'.", flush=True)
+            page.wait_for_timeout(800)
+            return "submitted" if is_success(page) else "clicked"
     for sel in (
         "button:has-text('Submit application')",
         "button:has-text('Submit Application')",
@@ -606,6 +691,7 @@ def click_next_or_submit(page) -> str:
         "[data-automation-id='bottom-navigation-next-button'][aria-label*='Submit' i]",
         "[data-automation-id='pageFooterNextButton']",
         "button:has-text('Submit')",
+        "spl-button:has-text('Submit')",
     ):
         try:
             loc = page.locator(sel).first
@@ -625,6 +711,8 @@ def click_next_or_submit(page) -> str:
         "button:has-text('Save and continue')",
         "button:has-text('Save & Continue')",
         "button:has-text('Review')",
+        "spl-button:has-text('Next')",
+        "spl-button:has-text('Continue')",
     ):
         try:
             loc = page.locator(sel).first
@@ -654,10 +742,14 @@ def notify_captcha(job: dict, page) -> None:
         f"  CAPTCHA — please solve it now in Desktop / Take control\n"
         f"  {company}: {title}\n"
         f"  {url}\n"
-        f"  After you solve it I will continue this same application.\n"
+        f"  Parked this tab. Starting the next leftover now.\n"
+        f"  When you return, solve parked CAPTCHAs in Desktop / Take control.\n"
         f"{'!' * 72}\n"
     )
     print(banner, flush=True)
+    if url:
+        PARKED_CAPTCHA_URLS.add(url)
+        PARKED_CAPTCHA_URLS.add(url.split("?")[0])
     path = ROOT / "data" / "applications" / "CAPTCHA.md"
     path.parent.mkdir(parents=True, exist_ok=True)
     line = f"- **NEED CAPTCHA** {company} — {title}\n  {url}\n"
@@ -676,10 +768,425 @@ def required_field_issues(page) -> list[str]:
     out: list[str] = []
     for raw in blob.splitlines():
         line = re.sub(r"\s+", " ", raw).strip()
-        if re.search(r"this information is required|is required \(|no results were found", line, re.I):
-            if 12 < len(line) < 220 and line not in out:
+        if re.search(
+            r"this information is required|is required \(|no results were found|"
+            r"please provide a valid email|confirm your email|"
+            r"^institution\*|^institution required",
+            line,
+            re.I,
+        ):
+            if 8 < len(line) < 220 and line not in out:
                 out.append(line)
     return out[:12]
+
+
+def form_fingerprint(page) -> str:
+    """Stable signature of the current form so we can detect a repeat loop."""
+    try:
+        url = (page.url or "").split("?")[0]
+    except Exception:
+        url = ""
+    issues = "|".join(required_field_issues(page)[:8])
+    invalid = ""
+    try:
+        invalid = page.evaluate(
+            """() => [...document.querySelectorAll('.ng-invalid[id], [aria-invalid="true"][id], spl-input.ng-invalid, spl-autocomplete[errorstate]')]
+              .map(el => el.id || el.getAttribute('label') || el.tagName).filter(Boolean).slice(0,12).join('|')"""
+        ) or ""
+    except Exception:
+        pass
+    editor = ""
+    try:
+        if page.locator("spl-button[aria-label*='Cancel adding' i]").count():
+            editor = "open-editor"
+    except Exception:
+        pass
+    return f"{url}::{issues}::{invalid}::{editor}"
+
+
+def cancel_incomplete_editors(page) -> int:
+    """Close Add Experience / Add Education drawers that block Submit."""
+    n = 0
+    try:
+        n = int(
+            page.evaluate(
+                """() => {
+                  const hosts = [...document.querySelectorAll('spl-button')].filter(h =>
+                    /cancel adding/i.test(h.getAttribute('aria-label') || '')
+                  );
+                  for (const h of hosts) {
+                    const btn = (h.shadowRoot && h.shadowRoot.querySelector('button, .c-spl-button, [role=button]'))
+                      || h.querySelector('button, .c-spl-button') || h;
+                    btn.click();
+                  }
+                  return hosts.length;
+                }"""
+            )
+            or 0
+        )
+    except Exception:
+        n = 0
+    if n:
+        print(f"  Cancelled {n} incomplete Add Experience/Education editor(s).", flush=True)
+        try:
+            page.wait_for_timeout(600)
+        except Exception:
+            pass
+    return n
+
+
+def click_spl_button(page, label: str) -> bool:
+    """Click the inner shadow-root control of a SmartRecruiters spl-button."""
+    try:
+        hit = page.evaluate(
+            """(label) => {
+              const want = String(label || '').trim().toLowerCase();
+              const hosts = [...document.querySelectorAll('spl-button')];
+              const match = hosts.filter(h => {
+                const t = ((h.innerText || h.getAttribute('aria-label') || '') + '').replace(/\\s+/g, ' ').trim().toLowerCase();
+                return t === want || t.startsWith(want);
+              });
+              const host = match.length ? match[match.length - 1] : null;
+              if (!host) return '';
+              const btn = (host.shadowRoot && (host.shadowRoot.querySelector('button, .c-spl-button, [role=button]')))
+                || host.querySelector('button, .c-spl-button, [role=button]') || host;
+              btn.click();
+              return (host.innerText || label).trim().slice(0, 40);
+            }""",
+            label,
+        )
+        if hit:
+            page.wait_for_timeout(1200)
+            return True
+    except Exception:
+        pass
+    try:
+        host = page.locator("spl-button").filter(has_text=re.compile(rf"^{re.escape(label)}$", re.I))
+        if host.count():
+            host.last.click(force=True, timeout=2500)
+            page.wait_for_timeout(1200)
+            return True
+    except Exception:
+        pass
+    return False
+
+
+WALK_DOM_JS = """
+const walk = (root, fn) => {
+  if (!root) return;
+  if (root.nodeType === 1) fn(root);
+  const kids = root.querySelectorAll ? root.querySelectorAll('*') : [];
+  for (const el of kids) {
+    fn(el);
+    if (el.shadowRoot) walk(el.shadowRoot, fn);
+  }
+  if (root.shadowRoot) walk(root.shadowRoot, fn);
+};
+"""
+
+
+def _with_walk(js_fn: str) -> str:
+    """Playwright evaluate() needs one function. Define walk, then call js_fn."""
+    return "((...args) => { " + WALK_DOM_JS + " return (" + js_fn + ")(...args); })"
+
+
+def fill_spl_autocomplete(page, needle: str, want: str) -> bool:
+    """Pick a SmartRecruiters spl-autocomplete option (nested shadow DOM)."""
+    if not needle or not want:
+        return False
+    try:
+        result = page.evaluate(
+            _with_walk(
+            """({needle, want}) => {
+              const n = String(needle).toLowerCase();
+              const wantL = String(want).toLowerCase();
+              let host = null;
+              walk(document, el => {
+                if (host || !el.tagName) return;
+                if (el.tagName === 'SPL-AUTOCOMPLETE') {
+                  const t = ((el.getAttribute('aria-label') || '') + ' ' + (el.innerText || '')).toLowerCase();
+                  if (t.includes(n)) host = el;
+                }
+              });
+              if (!host) return {ok: false, err: 'no host'};
+              const opts = [];
+              walk(host, el => {
+                if (el.tagName === 'SPL-SELECT-OPTION') {
+                  const t = (el.innerText || '').replace(/\\s+/g, ' ').trim();
+                  if (t) opts.push(t);
+                }
+              });
+              const uniq = [...new Set(opts)];
+              const match = uniq.find(o => o.toLowerCase() === wantL)
+                || uniq.find(o => o.toLowerCase().includes(wantL))
+                || uniq.find(o => wantL.includes(o.toLowerCase()));
+              if (!match) return {ok: false, err: 'no match', opts: uniq};
+              let trigger = null;
+              walk(host, el => {
+                if (!trigger && (el.className || '').toString().includes('c-spl-dropdown-trigger')) trigger = el;
+              });
+              if (trigger) trigger.click();
+              let picked = null;
+              walk(host, el => {
+                if (picked) return;
+                if (el.tagName === 'SPL-SELECT-OPTION' || el.tagName === 'SPL-DROPDOWN-ITEM') {
+                  const t = (el.innerText || '').replace(/\\s+/g, ' ').trim();
+                  if (t === match) picked = el;
+                }
+              });
+              if (picked) {
+                const inner = (picked.shadowRoot && picked.shadowRoot.querySelector('.c-spl-dropdown-item, [role=option]')) || picked;
+                inner.click();
+                picked.click();
+              }
+              let inp = null;
+              walk(host, el => { if (!inp && el.tagName === 'INPUT') inp = el; });
+              return {ok: !!picked, picked: match, value: inp && inp.value, opts: uniq};
+            }"""),
+            {"needle": needle, "want": want},
+        ) or {}
+        if result.get("ok"):
+            print(f"  SmartRecruiters select {needle[:40]!r} -> {result.get('picked')}", flush=True)
+            page.wait_for_timeout(250)
+            return True
+    except Exception:
+        return False
+    return False
+
+
+def fill_spl_text(page, needle: str, value: str) -> bool:
+    """Type into a SmartRecruiters spl-input so Angular validates."""
+    if not needle or not value:
+        return False
+    try:
+        box = page.evaluate(
+            _with_walk("""(needle) => {
+              const n = String(needle).toLowerCase();
+              let host = null;
+              walk(document, el => {
+                if (host || !el.tagName) return;
+                if (el.tagName === 'SPL-INPUT') {
+                  const t = ((el.innerText || '') + ' ' + (el.getAttribute('aria-label') || '') + ' ' + (el.id || '')).toLowerCase();
+                  if (t.includes(n)) host = el;
+                }
+              });
+              if (!host) return null;
+              let inp = null;
+              walk(host, el => { if (!inp && el.tagName === 'INPUT') inp = el; });
+              if (!inp) return null;
+              inp.scrollIntoView({block: 'center'});
+              const r = inp.getBoundingClientRect();
+              return {x: r.x, y: r.y, w: r.width, h: r.height, cur: inp.value || ''};
+            }"""),
+            needle,
+        )
+        if not box:
+            return False
+        if (box.get("cur") or "").strip() == value.strip():
+            return False
+        page.mouse.click(box["x"] + 16, box["y"] + (box["h"] or 18) / 2)
+        page.keyboard.press("Control+A")
+        page.keyboard.type(value, delay=12)
+        page.keyboard.press("Tab")
+        print(f"  SmartRecruiters typed {needle[:40]!r}", flush=True)
+        return True
+    except Exception:
+        return False
+
+
+def click_spl_radio(page, label: str) -> bool:
+    try:
+        hit = page.evaluate(
+            _with_walk("""(label) => {
+              const want = String(label).toLowerCase();
+              const radios = [];
+              walk(document, el => {
+                if (el.tagName === 'SPL-RADIO') {
+                  const t = ((el.getAttribute('aria-label') || '') + ' ' + (el.innerText || '')).toLowerCase();
+                  radios.push({el, t, val: String(el.value || el.getAttribute('value') || '')});
+                }
+              });
+              let host = radios.find(r => r.t.trim() === want || r.t.includes(want));
+              if (!host && (want === 'yes' || want === '1')) host = radios.find(r => r.val === '1') || radios[0];
+              if (!host) return false;
+              host.el.scrollIntoView({block: 'center'});
+              let inner = null;
+              walk(host.el, el => {
+                if (inner) return;
+                if ((el.className || '').toString().includes('c-spl-radio') || (el.tagName === 'INPUT' && el.type === 'radio')) inner = el;
+              });
+              (inner || host.el).click();
+              host.el.click();
+              return true;
+            }"""),
+            label,
+        )
+        if hit:
+            print(f"  SmartRecruiters radio {label}", flush=True)
+            page.wait_for_timeout(200)
+            return True
+    except Exception:
+        return False
+    return False
+
+
+def check_spl_checkbox(page) -> int:
+    """Check Lit/Angular spl-checkbox (privacy consent). Native .click() is ignored."""
+    n = 0
+    try:
+        n = int(
+            page.evaluate(
+                _with_walk("""() => {
+                  let n = 0;
+                  walk(document, el => {
+                    if (!el.tagName || el.tagName !== 'SPL-CHECKBOX') return;
+                    const t = ((el.innerText || '') + ' ' + (el.getAttribute('data-test') || ''));
+                    if (!/terms|privacy|agree|consent|certify|declare|consent-box/i.test(t) && el.getAttribute('data-test') !== 'consent-box') return;
+                    try { el.checked = true; } catch (e) {}
+                    try { el.value = true; el.setAttribute('value', 'true'); } catch (e) {}
+                    let inp = null;
+                    walk(el, node => {
+                      if (!inp && node.tagName === 'INPUT' && node.type === 'checkbox') inp = node;
+                    });
+                    if (inp) {
+                      inp.checked = true;
+                      inp.dispatchEvent(new Event('input', {bubbles: true, composed: true}));
+                      inp.dispatchEvent(new Event('change', {bubbles: true, composed: true}));
+                    }
+                    try { el.dispatchEvent(new CustomEvent('spl-change', {bubbles: true, composed: true, detail: {checked: true}})); } catch (e) {}
+                    n++;
+                  });
+                  return n;
+                }""")
+            )
+            or 0
+        )
+    except Exception:
+        n = 0
+    return n
+
+
+def fill_smartrecruiters_form(page, job: dict | None = None) -> int:
+    """Fill SmartRecruiters OneClick / screening questions inside nested shadow roots."""
+    url = ""
+    try:
+        url = page.url or ""
+    except Exception:
+        url = ""
+    if "smartrecruiters.com" not in url.lower():
+        return 0
+    filled = 0
+    try:
+        autos = page.evaluate(
+            _with_walk("""() => {
+              const rows = [];
+              walk(document, el => {
+                if (el.tagName !== 'SPL-AUTOCOMPLETE') return;
+                const q = ((el.getAttribute('aria-label') || '') + ' ' + (el.innerText || '')).replace(/\\s+/g, ' ').trim();
+                const opts = [];
+                walk(el, node => {
+                  if (node.tagName === 'SPL-SELECT-OPTION') {
+                    const t = (node.innerText || '').replace(/\\s+/g, ' ').trim();
+                    if (t) opts.push(t);
+                  }
+                });
+                let inp = null;
+                walk(el, node => { if (!inp && node.tagName === 'INPUT') inp = node; });
+                rows.push({id: el.id, q: q.slice(0, 160), opts: [...new Set(opts)], value: (inp && inp.value) || ''});
+              });
+              return rows;
+            }""")
+        ) or []
+    except Exception:
+        autos = []
+    for row in autos:
+        if (row.get("value") or "").strip():
+            continue
+        q = row.get("q") or ""
+        want = form_memory.infer_answer(q, row.get("opts") or [])
+        if not want:
+            continue
+        needle = re.sub(r"^select\s+", "", q, flags=re.I)[:48]
+        if fill_spl_autocomplete(page, needle, want):
+            filled += 1
+    try:
+        texts = page.evaluate(
+            _with_walk("""() => {
+              const rows = [];
+              walk(document, el => {
+                if (el.tagName !== 'SPL-INPUT') return;
+                const q = (el.innerText || el.getAttribute('aria-label') || '').replace(/\\s+/g, ' ').trim();
+                if (!q || /email|confirm/i.test(q)) return;
+                let inp = null;
+                walk(el, node => { if (!inp && node.tagName === 'INPUT') inp = node; });
+                const r = el.getBoundingClientRect();
+                if (r.height < 8) return;
+                rows.push({q: q.slice(0, 160), value: (inp && inp.value) || ''});
+              });
+              return rows;
+            }""")
+        ) or []
+    except Exception:
+        texts = []
+    for row in texts:
+        if (row.get("value") or "").strip():
+            continue
+        q = row.get("q") or ""
+        want = form_memory.infer_answer(q, [])
+        if not want:
+            continue
+        if fill_spl_text(page, q[:40], want):
+            filled += 1
+    blob = ""
+    try:
+        blob = page.evaluate(
+            _with_walk("""() => {
+              let t = '';
+              walk(document, el => {
+                if (el.tagName === 'SPL-RADIO-GROUP' || el.tagName === 'SR-QUESTION-FIELD-SELECT') {
+                  t += ' ' + (el.innerText || '');
+                }
+              });
+              return t;
+            }""")
+        ) or ""
+    except Exception:
+        blob = ""
+    if re.search(r"docker|kubernetes|hands-on", blob, re.I) or re.search(r"docker|kubernetes", page_text(page), re.I):
+        if click_spl_radio(page, "Yes"):
+            filled += 1
+    filled += check_spl_checkbox(page)
+    if filled:
+        print(f"  Filled {filled} SmartRecruiters screening control(s).", flush=True)
+    return filled
+
+
+def unstick_stuck_form(page, job: dict, resume: str) -> str:
+    """After the same issue repeats, change tactics instead of clicking Next again."""
+    print("  Same issue repeated 3 times. Changing tactics on this form.", flush=True)
+    cancel_incomplete_editors(page)
+    fill_email_fields(page)
+    fill_identity(page)
+    try:
+        form_memory.fill_visible(page)
+        form_memory.fill_india_state_typeahead(page)
+    except Exception:
+        pass
+    try:
+        upload_resume(page, resume)
+    except Exception:
+        pass
+    fill_smartrecruiters_form(page, job)
+    accept_terms(page)
+    # Prefer the ATS Next/Submit, not Copilot Continue on an invalid form.
+    if click_spl_button(page, "Submit") or click_spl_button(page, "Submit application"):
+        page.wait_for_timeout(1500)
+        if is_success(page):
+            return "submitted"
+        return "clicked"
+    if click_spl_button(page, "Next") or click_spl_button(page, "Continue"):
+        return "clicked"
+    return click_next_or_submit(page)
 
 
 def notify_needs_input(job: dict, page, fields: list[str] | None = None) -> None:
@@ -796,25 +1303,56 @@ def captcha_puzzle_visible(page) -> bool:
 
 def accept_terms(page) -> int:
     """Check terms/privacy boxes, including hidden Oracle/Workday checkboxes."""
-    n = 0
+    n = check_spl_checkbox(page)
     try:
         n = page.evaluate(
             """() => {
-              const re = /terms|privacy|agree|consent|certify|disclaimer|i have read/i;
+              const re = /terms|privacy|agree|consent|certify|disclaimer|i have read|you declare/i;
               let n = 0;
-              for (const el of document.querySelectorAll('input[type=checkbox]')) {
-                const wrap = el.closest('label') || el.parentElement || el;
-                const t = ((wrap.innerText || '') + ' ' + (el.getAttribute('aria-label') || '') + ' ' + (el.id || '') + ' ' + (el.name || ''));
-                if (!re.test(t)) continue;
-                if (el.checked) continue;
-                try { el.click(); n++; } catch (e) {}
-                if (!el.checked) {
+              const fire = (el) => {
+                try { el.click(); } catch (e) {}
+                if (el.tagName === 'INPUT' && el.type === 'checkbox') {
                   el.checked = true;
-                  el.dispatchEvent(new Event('input', {bubbles: true}));
-                  el.dispatchEvent(new Event('change', {bubbles: true}));
-                  n++;
+                  el.dispatchEvent(new Event('input', {bubbles: true, composed: true}));
+                  el.dispatchEvent(new Event('change', {bubbles: true, composed: true}));
                 }
-              }
+                n++;
+              };
+              const walk = (root) => {
+                if (!root || !root.querySelectorAll) return;
+                for (const host of root.querySelectorAll('spl-checkbox, [data-test="consent-box"]')) {
+                  const t = ((host.innerText || '') + ' ' + (host.getAttribute('aria-label') || '') + ' ' + (host.id || ''));
+                  if (!re.test(t) && host.getAttribute('data-test') !== 'consent-box') continue;
+                  if ((host.className || '').toString().includes('ng-valid') && host.getAttribute('value') === 'true') continue;
+                  const innerWalk = (node) => {
+                    if (!node) return null;
+                    if (node.querySelector) {
+                      const inp = node.querySelector('input[type=checkbox], .c-spl-checkbox, .c-spl-checkbox-wrapper');
+                      if (inp) return inp;
+                    }
+                    const all = node.querySelectorAll ? node.querySelectorAll('*') : [];
+                    for (const el of all) {
+                      if (el.shadowRoot) {
+                        const hit = innerWalk(el.shadowRoot);
+                        if (hit) return hit;
+                      }
+                    }
+                    return null;
+                  };
+                  fire(innerWalk(host.shadowRoot) || innerWalk(host) || host);
+                }
+                for (const el of root.querySelectorAll('input[type=checkbox]')) {
+                  const wrap = el.closest('label') || el.parentElement || el;
+                  const t = ((wrap.innerText || '') + ' ' + (el.getAttribute('aria-label') || '') + ' ' + (el.id || '') + ' ' + (el.name || ''));
+                  if (!re.test(t)) continue;
+                  if (el.checked) continue;
+                  fire(el);
+                }
+                for (const el of root.querySelectorAll('*')) {
+                  if (el.shadowRoot) walk(el.shadowRoot);
+                }
+              };
+              walk(document);
               const honey = document.querySelector('input[name="honey-pot"], #honey-pot-1, input[aria-label="honeypot"]');
               if (honey && honey.value) { honey.value = ''; honey.dispatchEvent(new Event('input', {bubbles: true})); }
               return n;
@@ -823,6 +1361,7 @@ def accept_terms(page) -> int:
     except Exception:
         n = 0
     for name in (
+        "You declare that you have read and agree",
         "I agree with the terms and conditions",
         "I agree to the terms",
         "I have read and agree",
@@ -892,6 +1431,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if is_success(page) or simplify_copilot.submitted(page):
         return "submitted"
     recover_wrong_board(page)
+    cancel_incomplete_editors(page)
     copilot_start = simplify_copilot.start_application(page)
     if copilot_start:
         page.wait_for_timeout(600)
@@ -900,6 +1440,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if auth == "failed":
         return "auth_failed"
     apply_now.set_india_phone(page)
+    fill_smartrecruiters_form(page, job)
     accept_terms(page)
     try:
         upload_resume(page, resume)
@@ -910,6 +1451,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         return "submitted"
     form_memory.fill_visible(page)
     form_memory.fill_india_state_typeahead(page)
+    fill_smartrecruiters_form(page, job)
     accept_terms(page)
     if captcha_puzzle_visible(page):
         return "captcha"
@@ -937,6 +1479,8 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     notified_captcha = False
     notified_input = False
     stuck_required = 0
+    last_fp = ""
+    same_fp = 0
     while time.time() < deadline:
         try:
             changed = form_memory.remember(page, job) or []
@@ -944,16 +1488,14 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         except Exception:
             pass
         if captcha_puzzle_visible(page):
-            if not notified_captcha:
-                notify_captcha(job, page)
-                notified_captcha = True
-            # Keep this tab open while the owner solves the puzzle.
-            deadline = max(deadline, time.time() + 90)
-            page.wait_for_timeout(3000)
-            continue
-        if notified_captcha:
-            print("  CAPTCHA cleared. Continuing this same application.", flush=True)
-            notified_captcha = False
+            notify_captcha(job, page)
+            print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
+            return {
+                "ok": False,
+                "status": "CAPTCHA",
+                "note": "parked for owner to solve later",
+                "learned": learned,
+            }
         try:
             step = fill_and_advance(page, job, resume)
             if step == "submitted" or is_success(page):
@@ -973,24 +1515,44 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "learned": learned,
                 }
             if step == "captcha":
-                if not notified_captcha:
-                    notify_captcha(job, page)
-                    notified_captcha = True
-                deadline = max(deadline, time.time() + 90)
-                page.wait_for_timeout(3000)
-                continue
+                notify_captcha(job, page)
+                print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "CAPTCHA",
+                    "note": "parked for owner to solve later",
+                    "learned": learned,
+                }
         except Exception:
             pass
+        fp = form_fingerprint(page)
+        if fp == last_fp:
+            same_fp += 1
+        else:
+            same_fp = 0
+            last_fp = fp
+        if same_fp >= 3:
+            step = unstick_stuck_form(page, job, resume)
+            same_fp = 0
+            last_fp = form_fingerprint(page)
+            if step == "submitted" or is_success(page):
+                print("  Submitted after unstick. Learning this form for later runs.", flush=True)
+                return {
+                    "ok": True,
+                    "status": "SUBMITTED",
+                    "note": "submitted after unstick",
+                    "learned": learned,
+                }
         req = required_field_issues(page)
         if req:
             stuck_required += 1
             if stuck_required >= 2 and not notified_input:
                 notify_needs_input(job, page, req)
                 notified_input = True
-            deadline = max(deadline, time.time() + 90)
+            # Owner is away — do not sit on leftover fields. Keep filling until stay expires.
         else:
             stuck_required = 0
-        page.wait_for_timeout(2000)
+        page.wait_for_timeout(1200)
     print(f"  Still no confirmation after {seconds}s. Learned {learned} field(s).", flush=True)
     return {
         "ok": False,
@@ -1000,9 +1562,9 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     }
 
 
-def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True) -> dict:
+def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = False) -> dict:
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
-    kind = classify_url(url, job)
+    kind = classify_url(url, job, allow_aggregators=allow_aggregators)
     row = {
         **{k: job.get(k) for k in ("company", "title", "location", "url", "ats", "job_id")},
         "apply_url": url,
@@ -1117,21 +1679,31 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True) -> 
                 apply_now.persist_skipped(row, row["note"])
                 print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
                 return row
-            if step == "none" or step == "captcha":
+            if step == "captcha":
+                notify_captcha(job, page)
+                row["status"] = "CAPTCHA"
+                row["note"] = "parked for owner to solve later"
+                row["final_url"] = page.url
+                print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
+                return row
+            if step == "none":
                 stuck_none += 1
-                if step == "captcha":
-                    break
                 if stuck_none >= 3:
                     break
             else:
                 stuck_none = 0
             page.wait_for_timeout(700)
 
-        # Stay on the live form. User solves CAPTCHA in the cloud desktop.
-        stay = wait_seconds if wait_seconds else 360
         if captcha_puzzle_visible(page):
-            stay = max(stay, 360)
             notify_captcha(job, page)
+            row["status"] = "CAPTCHA"
+            row["note"] = "parked for owner to solve later"
+            row["final_url"] = page.url
+            print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
+            return row
+
+        # Fill a bit longer, then move on if the owner is away.
+        stay = min(wait_seconds if wait_seconds else 40, 40)
         human = wait_for_human(page, job, stay, resume)
         row["ok"] = human["ok"]
         row["status"] = human["status"]
@@ -1183,7 +1755,7 @@ def public_queue(jobs: list[dict]) -> tuple[list[dict], list[dict]]:
                 "apply_url": url,
                 "ok": False,
                 "status": "OTHER_AUTOMATION" if kind == "OTHER_AUTOMATION" else "LOGIN_BLOCKED",
-                "note": "Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre left to other automations",
+                "note": "held until leftover career-portal jobs are empty",
             })
     return try_jobs, blocked
 
@@ -1302,7 +1874,15 @@ def _keep_tab(url: str) -> bool:
     u = (url or "").lower()
     if u.startswith("chrome://") or u.startswith("chrome-extension://"):
         return True
-    return any(x in u for x in ("www.google.com", "mail.google.com", "accounts.google.com"))
+    if any(x in u for x in ("www.google.com", "mail.google.com", "accounts.google.com")):
+        return True
+    if not u:
+        return False
+    for parked in PARKED_CAPTCHA_URLS:
+        p = (parked or "").lower()
+        if p and (p in u or u in p or u.split("?")[0] == p.split("?")[0]):
+            return True
+    return False
 
 
 def reset_chrome_tabs(context) -> None:
@@ -1384,6 +1964,9 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
     for job in try_jobs:
         if apply_now.is_applied(job):
             continue
+        keys = apply_now.job_match_keys(job)
+        if keys & SESSION_SKIP_KEYS:
+            continue
         out.append(job)
     return out
 
@@ -1430,12 +2013,12 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 for extra in list(context.pages):
                     close_apply_page(extra)
                 page = context.new_page()
-                stay = wait_seconds if wait_seconds else 360
+                stay = min(wait_seconds if wait_seconds else 40, 40)
                 row = apply_one(page, job, wait_seconds=stay, navigate=True)
-                while row.get("status") not in DONE_STATUSES:
+                while row.get("status") not in TERMINAL_STATUSES:
                     print(
                         f"  Still not submitted ({row.get('status')}). "
-                        f"Keeping this one application open. Not starting another.",
+                        f"Retrying this same application once more.",
                         flush=True,
                     )
                     try:
@@ -1452,18 +2035,28 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                         except Exception:
                             page = context.new_page()
                         row = apply_one(page, job, wait_seconds=stay, navigate=True)
+                    if row.get("status") in PARK_STATUSES:
+                        break
                 results.append(row)
+                SESSION_SKIP_KEYS.update(apply_now.job_match_keys(row) | apply_now.job_match_keys(job))
                 if row.get("ok") and row.get("status") == "SUBMITTED":
                     apply_now.persist_applied(row, row.get("note") or "cloud_apply submitted")
                     notify_submitted(job, row)
                     print("  Submitted. Closing this tab and moving to the next application.", flush=True)
+                    close_apply_page(page)
                 elif row.get("status") == "CLOSED":
                     print("  Posting closed. Closing this tab and moving to the next application.", flush=True)
+                    close_apply_page(page)
                 elif row.get("status") == "AUTH_FAILED":
                     if not apply_now.is_applied(row):
                         apply_now.persist_skipped(row, row.get("note") or "all portal passwords rejected or account locked")
                     print("  Portal login failed. Closing this tab and opening the next leftover.", flush=True)
-                close_apply_page(page)
+                    close_apply_page(page)
+                elif row.get("status") == "CAPTCHA":
+                    print("  Left CAPTCHA tab open. Starting the next leftover.", flush=True)
+                else:
+                    print("  Could not finish this form while you are away. Moving to the next leftover.", flush=True)
+                    close_apply_page(page)
                 save_cloud(results)
                 print(f"  {row.get('status')} ok={row.get('ok')} {row.get('final_url')}", flush=True)
                 time.sleep(0.6)

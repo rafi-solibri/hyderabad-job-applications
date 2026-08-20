@@ -312,6 +312,17 @@ def follow(page) -> str:
         ):
             print(f"  Skipping ATS '{action}' (portal auth is handled separately).", flush=True)
             return ""
+        if low in {"next", "continue", "continue application"}:
+            try:
+                blocked = page.locator(
+                    "spl-input.ng-invalid, .c-spl-form-field--invalid, "
+                    "spl-button[aria-label*='Cancel adding' i]"
+                ).count()
+            except Exception:
+                blocked = 0
+            if blocked:
+                print(f"  Skipping Copilot '{action}' until leftover invalid fields are fixed.", flush=True)
+                return ""
         exact = len(action) <= 16
         try:
             loc = page.get_by_role("button", name=action, exact=exact).first

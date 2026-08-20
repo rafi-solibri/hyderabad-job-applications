@@ -1433,5 +1433,21 @@
     "url": "",
     "note": "backfill from skip list",
     "ts": "2026-08-20T10:08:55.043315+00:00"
+  },
+  "60726562": {
+    "company": "Experian",
+    "title": "Senior Staff Software Engineer",
+    "job_id": "60726562",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
+    "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
+    "ts": "2026-08-20T11:17:52.477834+00:00"
+  },
+  "experian|senior staff software engineer": {
+    "company": "Experian",
+    "title": "Senior Staff Software Engineer",
+    "job_id": "60726562",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
+    "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
+    "ts": "2026-08-20T11:17:52.477834+00:00"
   }
 }
