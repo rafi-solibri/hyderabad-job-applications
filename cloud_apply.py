@@ -75,7 +75,8 @@ SUCCESS_RE = re.compile(
     r"thank you for applying|thank you for your job application|"
     r"you have successfully applied|successfully applied|"
     r"we.?ve received your application|application received|"
-    r"already applied|you previously applied|successfully submitted|application submitted",
+    r"already applied|you previously applied|successfully submitted|application submitted|"
+    r"application sent",
     re.I,
 )
 
@@ -217,6 +218,14 @@ def is_success(page) -> bool:
     if any(x in url for x in MID_WIZARD_URL) or "stepname=" in url:
         return False
     return bool(SUCCESS_RE.search(page_text(page)[:3000]))
+
+
+def already_applied_visible(page) -> bool:
+    try:
+        blob = page_text(page)[:3000]
+    except Exception:
+        blob = ""
+    return bool(re.search(r"application sent|already applied|you previously applied", blob, re.I))
 
 
 def fill_identity(page) -> None:
@@ -2872,6 +2881,14 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         try:
             step = fill_and_advance(page, job, resume)
             if step == "submitted" or is_success(page):
+                if already_applied_visible(page):
+                    print("  Already applied on this board. Next leftover.", flush=True)
+                    return {
+                        "ok": True,
+                        "status": "SUBMITTED",
+                        "note": "already applied",
+                        "learned": learned,
+                    }
                 print("  Submitted. Learning this form for later runs.", flush=True)
                 return {
                     "ok": True,
@@ -3554,8 +3571,12 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 SESSION_SKIP_KEYS.update(apply_now.job_match_keys(row) | apply_now.job_match_keys(job))
                 if row.get("ok") and row.get("status") == "SUBMITTED":
                     apply_now.persist_applied(row, row.get("note") or "cloud_apply submitted")
-                    notify_submitted(job, row)
-                    print("  Submitted. Closing this tab and moving to the next application.", flush=True)
+                    note = (row.get("note") or "").lower()
+                    if "already applied" in note:
+                        print("  Already applied earlier. Closing this tab and moving on.", flush=True)
+                    else:
+                        notify_submitted(job, row)
+                        print("  Submitted. Closing this tab and moving to the next application.", flush=True)
                     close_apply_page(page)
                 elif row.get("status") == "CLOSED":
                     print("  Posting closed. Closing this tab and moving to the next application.", flush=True)
