@@ -1,0 +1,119 @@
+{
+  "named_hub_exact": 462,
+  "hyderabad_listed": 143,
+  "all_in_scope": 605,
+  "excluding_interns": 604,
+  "senior_architect_subset": 474,
+  "by_company_all": [
+    [
+      "databricks",
+      150
+    ],
+    [
+      "Amazon",
+      108
+    ],
+    [
+      "highradius",
+      59
+    ],
+    [
+      "mongodb",
+      40
+    ],
+    [
+      "elastic",
+      34
+    ],
+    [
+      "stripe",
+      29
+    ],
+    [
+      "ttecdigital",
+      29
+    ],
+    [
+      "gitlab",
+      24
+    ],
+    [
+      "datadog",
+      19
+    ],
+    [
+      "Micron",
+      18
+    ],
+    [
+      "okta",
+      13
+    ],
+    [
+      "zscaler",
+      12
+    ],
+    [
+      "crunchyroll",
+      10
+    ],
+    [
+      "keyloop",
+      10
+    ],
+    [
+      "NVIDIA",
+      9
+    ],
+    [
+      "dnb",
+      8
+    ],
+    [
+      "twilio",
+      7
+    ],
+    [
+      "cprime",
+      7
+    ],
+    [
+      "inovalon",
+      4
+    ],
+    [
+      "newrelic",
+      4
+    ],
+    [
+      "postman",
+      3
+    ],
+    [
+      "thoughtworks",
+      2
+    ],
+    [
+      "coinbase",
+      2
+    ],
+    [
+      "cloudflare",
+      1
+    ],
+    [
+      "meesho",
+      1
+    ],
+    [
+      "mindtickle",
+      1
+    ]
+  ],
+  "by_ats": {
+    "Greenhouse": 413,
+    "Lever": 56,
+    "Amazon": 108,
+    "Workday": 27
+  }
+}

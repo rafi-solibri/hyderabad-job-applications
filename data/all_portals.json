@@ -1,0 +1,1598 @@
+{
+  "job_boards": [
+    {
+      "id": "naukri",
+      "name": "Naukri",
+      "url": "https://www.naukri.com",
+      "region": "India"
+    },
+    {
+      "id": "indeed",
+      "name": "Indeed India",
+      "url": "https://in.indeed.com",
+      "region": "India"
+    },
+    {
+      "id": "instahyre",
+      "name": "Instahyre",
+      "url": "https://www.instahyre.com",
+      "region": "India"
+    },
+    {
+      "id": "foundit",
+      "name": "Foundit (Monster India)",
+      "url": "https://www.foundit.in",
+      "region": "India"
+    },
+    {
+      "id": "cutshort",
+      "name": "Cutshort",
+      "url": "https://cutshort.io",
+      "region": "India"
+    },
+    {
+      "id": "shine",
+      "name": "Shine",
+      "url": "https://www.shine.com",
+      "region": "India"
+    },
+    {
+      "id": "timesjobs",
+      "name": "TimesJobs",
+      "url": "https://www.timesjobs.com",
+      "region": "India"
+    },
+    {
+      "id": "hirist",
+      "name": "Hirist",
+      "url": "https://www.hirist.tech",
+      "region": "India"
+    },
+    {
+      "id": "iimjobs",
+      "name": "IIMJobs",
+      "url": "https://www.iimjobs.com",
+      "region": "India"
+    },
+    {
+      "id": "internshala",
+      "name": "Internshala",
+      "url": "https://internshala.com",
+      "skip": "intern/campus"
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn Jobs",
+      "url": "https://www.linkedin.com/jobs",
+      "region": "Global"
+    },
+    {
+      "id": "wellfound",
+      "name": "Wellfound",
+      "url": "https://wellfound.com",
+      "region": "Global"
+    },
+    {
+      "id": "otta",
+      "name": "Otta",
+      "url": "https://otta.com",
+      "region": "Global"
+    },
+    {
+      "id": "yc",
+      "name": "YC Work at a Startup",
+      "url": "https://www.workatastartup.com",
+      "region": "Global"
+    },
+    {
+      "id": "dice",
+      "name": "Dice",
+      "url": "https://www.dice.com",
+      "region": "Global"
+    },
+    {
+      "id": "glassdoor",
+      "name": "Glassdoor",
+      "url": "https://www.glassdoor.co.in",
+      "region": "India"
+    },
+    {
+      "id": "monster",
+      "name": "Monster",
+      "url": "https://www.monster.com",
+      "region": "Global"
+    },
+    {
+      "id": "simplyhired",
+      "name": "SimplyHired",
+      "url": "https://www.simplyhired.co.in",
+      "region": "India"
+    },
+    {
+      "id": "jooble",
+      "name": "Jooble",
+      "url": "https://in.jooble.org",
+      "region": "India"
+    },
+    {
+      "id": "adzuna",
+      "name": "Adzuna",
+      "url": "https://www.adzuna.in",
+      "region": "India"
+    },
+    {
+      "id": "google_jobs",
+      "name": "Google Jobs",
+      "url": "https://www.google.com/search?ibp=htl;jobs",
+      "region": "Global"
+    },
+    {
+      "id": "builtin",
+      "name": "Built In",
+      "url": "https://builtin.com",
+      "region": "US"
+    },
+    {
+      "id": "arc",
+      "name": "Arc.dev",
+      "url": "https://arc.dev",
+      "region": "Remote"
+    },
+    {
+      "id": "turing",
+      "name": "Turing",
+      "url": "https://www.turing.com",
+      "skip": "contract-first"
+    },
+    {
+      "id": "toptal",
+      "name": "Toptal",
+      "url": "https://www.toptal.com",
+      "skip": "contract-first"
+    },
+    {
+      "id": "upwork",
+      "name": "Upwork",
+      "url": "https://www.upwork.com",
+      "skip": "freelance"
+    },
+    {
+      "id": "weworkremotely",
+      "name": "We Work Remotely",
+      "url": "https://weworkremotely.com",
+      "region": "Remote"
+    },
+    {
+      "id": "remoteok",
+      "name": "Remote OK",
+      "url": "https://remoteok.com",
+      "region": "Remote"
+    },
+    {
+      "id": "remotive",
+      "name": "Remotive",
+      "url": "https://remotive.com",
+      "region": "Remote"
+    }
+  ],
+  "ats": [
+    {
+      "id": "greenhouse",
+      "name": "Greenhouse",
+      "url": "https://boards-api.greenhouse.io"
+    },
+    {
+      "id": "lever",
+      "name": "Lever",
+      "url": "https://api.lever.co"
+    },
+    {
+      "id": "ashby",
+      "name": "Ashby",
+      "url": "https://api.ashbyhq.com"
+    },
+    {
+      "id": "smartrecruiters",
+      "name": "SmartRecruiters",
+      "url": "https://api.smartrecruiters.com"
+    },
+    {
+      "id": "workable",
+      "name": "Workable",
+      "url": "https://apply.workable.com"
+    },
+    {
+      "id": "workday",
+      "name": "Workday",
+      "url": "https://*.myworkdayjobs.com"
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon.jobs",
+      "url": "https://www.amazon.jobs"
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft Careers",
+      "url": "https://jobs.careers.microsoft.com"
+    },
+    {
+      "id": "google",
+      "name": "Google Careers",
+      "url": "https://careers.google.com"
+    },
+    {
+      "id": "recruitee",
+      "name": "Recruitee",
+      "url": "https://*.recruitee.com"
+    },
+    {
+      "id": "breezy",
+      "name": "Breezy",
+      "url": "https://*.breezy.hr"
+    },
+    {
+      "id": "bamboohr",
+      "name": "BambooHR",
+      "url": "https://*.bamboohr.com"
+    },
+    {
+      "id": "personio",
+      "name": "Personio",
+      "url": "https://*.jobs.personio.de"
+    },
+    {
+      "id": "teamtailor",
+      "name": "Teamtailor",
+      "url": "https://*.teamtailor.com"
+    },
+    {
+      "id": "freshteam",
+      "name": "Freshteam",
+      "url": "https://*.freshteam.com"
+    },
+    {
+      "id": "eightfold",
+      "name": "Eightfold",
+      "url": "https://app.eightfold.ai"
+    },
+    {
+      "id": "icims",
+      "name": "iCIMS",
+      "url": "https://*.icims.com"
+    },
+    {
+      "id": "successfactors",
+      "name": "SAP SuccessFactors",
+      "url": "https://*.successfactors.com"
+    },
+    {
+      "id": "taleo",
+      "name": "Oracle Taleo",
+      "url": "https://*.taleo.net"
+    },
+    {
+      "id": "jobvite",
+      "name": "Jobvite",
+      "url": "https://jobs.jobvite.com"
+    },
+    {
+      "id": "rippling",
+      "name": "Rippling ATS",
+      "url": "https://ats.rippling.com"
+    },
+    {
+      "id": "comeet",
+      "name": "Comeet",
+      "url": "https://www.comeet.com"
+    },
+    {
+      "id": "jazzhr",
+      "name": "JazzHR",
+      "url": "https://*.applytojob.com"
+    },
+    {
+      "id": "zoho",
+      "name": "Zoho Recruit",
+      "url": "https://*.zohorecruit.com"
+    }
+  ],
+  "hyd_career_portals": [
+    {
+      "company": "Charles Schwab",
+      "url": "https://www.schwabjobs.com/",
+      "hub": "Financial District",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 9
+    },
+    {
+      "company": "Charles Schwab India",
+      "url": "https://www.schwabjobs.com/India",
+      "hub": "Financial District",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Fidelity",
+      "url": "https://jobs.fidelity.com/",
+      "hub": "Gachibowli / FD",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Vanguard",
+      "url": "https://www.vanguardjobs.com/",
+      "hub": "Gachibowli",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Vanguard India",
+      "url": "https://vanguard.in/",
+      "hub": "Gachibowli",
+      "kind": "listed",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "American Express",
+      "url": "https://jobs.americanexpress.com/",
+      "hub": "Gachibowli / FD",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "DTCC",
+      "url": "https://careers.dtcc.com/",
+      "hub": "Financial District",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "State Street",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 4
+    },
+    {
+      "company": "BNY Mellon",
+      "url": "https://bnymellon.wd1.myworkdayjobs.com/en-US/BNY",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "BlackRock",
+      "url": "https://blackrock.wd1.myworkdayjobs.com/en-US/BlackRock_External_Career_US",
+      "hub": "Gachibowli / FD",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Invesco",
+      "url": "https://careers.invesco.com/",
+      "hub": "Financial District",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Franklin Templeton",
+      "url": "https://franklintempleton.wd5.myworkdayjobs.com/en-US/FTCareers",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Synchrony",
+      "url": "https://jobs.synchrony.com/",
+      "hub": "Gachibowli",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "UBS",
+      "url": "https://jobs.ubs.com/",
+      "hub": "Financial District",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "DBS",
+      "url": "https://careers.dbs.com/",
+      "hub": "Financial District",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "ANZ",
+      "url": "https://careers.anz.com/",
+      "hub": "Gachibowli",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Macquarie",
+      "url": "https://www.macquarie.com/careers.html",
+      "hub": "Gachibowli",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Nomura",
+      "url": "https://www.nomuraholdings.com/careers/",
+      "hub": "Financial District",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Societe Generale",
+      "url": "https://careers.societegenerale.com/",
+      "hub": "Financial District",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "BNP Paribas",
+      "url": "https://group.bnpparibas/en/careers",
+      "hub": "Financial District",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Wells Fargo",
+      "url": "https://wellsfargo.wd5.myworkdayjobs.com/en-US/External",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "JPMorgan",
+      "url": "https://jpmorgan.wd5.myworkdayjobs.com/en-US/jpmcjobs",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Bank of America",
+      "url": "https://bankofamerica.wd1.myworkdayjobs.com/en-US/External_Careers",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Goldman Sachs",
+      "url": "https://goldmansachs.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Morgan Stanley",
+      "url": "https://morganstanley.wd1.myworkdayjobs.com/en-US/external",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Citi",
+      "url": "https://citi.wd5.myworkdayjobs.com/en-US/2",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Barclays",
+      "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "HSBC",
+      "url": "https://hsbc.wd3.myworkdayjobs.com/en-US/External",
+      "hub": "Gachibowli / FD",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Deutsche Bank",
+      "url": "https://db.wd3.myworkdayjobs.com/en-US/ExternalCareerSite",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Standard Chartered",
+      "url": "https://standardchartered.wd3.myworkdayjobs.com/en-US/Careers",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Capital One",
+      "url": "https://capitalone.wd1.myworkdayjobs.com/en-US/Capital_One",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Visa",
+      "url": "https://visa.wd1.myworkdayjobs.com/en-US/Visa",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Mastercard",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "PayPal",
+      "url": "https://paypal.wd1.myworkdayjobs.com/en-US/jobs",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Broadridge",
+      "url": "https://broadridge.wd1.myworkdayjobs.com/en-US/Careers",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "FactSet",
+      "url": "https://factset.wd1.myworkdayjobs.com/en-US/FactSetCareers",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "S&P Global",
+      "url": "https://spglobal.wd1.myworkdayjobs.com/en-US/SPGlobal_Careers",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Thomson Reuters",
+      "url": "https://thomsonreuters.wd1.myworkdayjobs.com/en-US/External_Career_Site",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Moodys",
+      "url": "https://moodys.wd1.myworkdayjobs.com/en-US/MoodysCareers",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "SS&C",
+      "url": "https://ssnc.wd1.myworkdayjobs.com/en-US/SSNC",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "FIS",
+      "url": "https://fisglobal.wd5.myworkdayjobs.com/en-US/FIS_Careers",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Fiserv",
+      "url": "https://fiserv.wd5.myworkdayjobs.com/en-US/FISERVCAREERS",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Experian",
+      "url": "https://experian.wd5.myworkdayjobs.com/en-US/Experian_Careers",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Equifax",
+      "url": "https://equifax.wd5.myworkdayjobs.com/en-US/Equifax",
+      "hub": "Gachibowli",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "TransUnion",
+      "url": "https://transunion.wd5.myworkdayjobs.com/en-US/TransUnion",
+      "hub": "Gachibowli",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "FICO",
+      "url": "https://fico.wd1.myworkdayjobs.com/en-US/FICO",
+      "hub": "Gachibowli",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Nasdaq",
+      "url": "https://nasdaq.wd1.myworkdayjobs.com/en-US/Nasdaq_Careers",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "ICE",
+      "url": "https://careers.ice.com/",
+      "hub": "Financial District",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "LSEG",
+      "url": "https://lseg.wd3.myworkdayjobs.com/en-US/LSEG",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Aon",
+      "url": "https://aon.wd1.myworkdayjobs.com/en-US/aoncareers",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "WTW",
+      "url": "https://wtw.wd1.myworkdayjobs.com/en-US/WTW_Careers",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "ADP",
+      "url": "https://adp.wd5.myworkdayjobs.com/en-US/External",
+      "hub": "Gachibowli / Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "UKG",
+      "url": "https://ukg.wd1.myworkdayjobs.com/en-US/UKGCareers",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Workday",
+      "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Microsoft",
+      "url": "https://jobs.careers.microsoft.com/",
+      "hub": "Gachibowli / Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Google",
+      "url": "https://careers.google.com/",
+      "hub": "Gachibowli / Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Amazon",
+      "url": "https://www.amazon.jobs/",
+      "hub": "Financial District / Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Apple",
+      "url": "https://jobs.apple.com/",
+      "hub": "Gachibowli / FD",
+      "kind": "apple",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Meta",
+      "url": "https://www.metacareers.com/",
+      "hub": "Gachibowli",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "LinkedIn",
+      "url": "https://careers.linkedin.com/",
+      "hub": "Gachibowli",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Uber",
+      "url": "https://uber.wd1.myworkdayjobs.com/en-US/UberJobs",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Walmart",
+      "url": "https://walmart.wd5.myworkdayjobs.com/en-US/WalmartExternal",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Qualcomm",
+      "url": "https://qualcomm.wd5.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec / Madhapur",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "NVIDIA",
+      "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "AMD",
+      "url": "https://amd.wd1.myworkdayjobs.com/en-US/careers",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Intel",
+      "url": "https://intel.wd1.myworkdayjobs.com/en-US/external",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Micron",
+      "url": "https://micron.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Broadcom",
+      "url": "https://broadcom.wd1.myworkdayjobs.com/en-US/External_Career",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Analog Devices",
+      "url": "https://analog.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Texas Instruments",
+      "url": "https://careers.ti.com/",
+      "hub": "Hitec / Gachibowli",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "NXP",
+      "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers",
+      "hub": "Hitec",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Western Digital",
+      "url": "https://westerndigital.wd5.myworkdayjobs.com/en-US/WesternDigital",
+      "hub": "Hitec",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Samsung",
+      "url": "https://www.samsungcareers.com/",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Synopsys",
+      "url": "https://sjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid=25235&siteid=5359",
+      "hub": "Hitec / Madhapur",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Cadence",
+      "url": "https://cadence.wd1.myworkdayjobs.com/en-US/External_Careers",
+      "hub": "Hitec",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Ansys",
+      "url": "https://ansys.wd1.myworkdayjobs.com/en-US/Ansys",
+      "hub": "Hitec / Gachibowli",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Applied Materials",
+      "url": "https://amat.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Lam Research",
+      "url": "https://careers.lamresearch.com/",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "KLA",
+      "url": "https://kla.wd1.myworkdayjobs.com/en-US/KLA",
+      "hub": "Hitec",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Cisco",
+      "url": "https://cisco.wd5.myworkdayjobs.com/en-US/cisco_careers",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Dell",
+      "url": "https://dell.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "IBM",
+      "url": "https://ibm.wd1.myworkdayjobs.com/en-US/search",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Oracle",
+      "url": "https://oracle.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Adobe",
+      "url": "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Intuit",
+      "url": "https://intuit.wd1.myworkdayjobs.com/en-US/IntuitCareers",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Red Hat",
+      "url": "https://redhat.wd5.myworkdayjobs.com/en-US/jobs",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "VMware",
+      "url": "https://vmware.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Nutanix",
+      "url": "https://nutanix.wd1.myworkdayjobs.com/en-US/NutanixCareers",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "NetApp",
+      "url": "https://netapp.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Palo Alto Networks",
+      "url": "https://paloaltonetworks.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Snowflake",
+      "url": "https://snowflake.wd1.myworkdayjobs.com/en-US/Snowflake",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Databricks",
+      "url": "https://www.databricks.com/company/careers",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "SAP",
+      "url": "https://jobs.sap.com/",
+      "hub": "Gachibowli / Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "ServiceNow",
+      "url": "https://careers.servicenow.com/",
+      "hub": "Gachibowli",
+      "kind": "listed",
+      "note": "titles skipped",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Salesforce",
+      "url": "https://careers.salesforce.com/",
+      "hub": "Gachibowli",
+      "kind": "listed",
+      "note": "titles skipped",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Coupa",
+      "url": "https://www.coupa.com/careers",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Infor",
+      "url": "https://careers.infor.com/",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Teradata",
+      "url": "https://careers.teradata.com/",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Informatica",
+      "url": "https://careers.informatica.com/",
+      "hub": "Hitec / Gachibowli",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "OpenText",
+      "url": "https://careers.opentext.com/",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "SAS",
+      "url": "https://www.sas.com/en_us/careers.html",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Autodesk",
+      "url": "https://autodesk.wd1.myworkdayjobs.com/en-US/Ext",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Optum",
+      "url": "https://optum.wd5.myworkdayjobs.com/en-US/OptumCareers",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "UnitedHealth",
+      "url": "https://careers.unitedhealthgroup.com/",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Cotiviti",
+      "url": "https://careers.cotiviti.com/",
+      "hub": "Hitec / Gachibowli",
+      "kind": "smashfly",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Inovalon",
+      "url": "https://www.inovalon.com/company/careers/",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "HighRadius",
+      "url": "https://www.highradius.com/careers/",
+      "hub": "Madhapur / Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Innovaccer",
+      "url": "https://innovaccer.com/careers",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Medtronic",
+      "url": "https://medtronic.wd1.myworkdayjobs.com/en-US/MedtronicCareers",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Amgen",
+      "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Novartis",
+      "url": "https://novartis.wd3.myworkdayjobs.com/en-US/careers",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Pfizer",
+      "url": "https://pfizer.wd1.myworkdayjobs.com/en-US/PfizerCareers",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "GSK",
+      "url": "https://gsk.wd5.myworkdayjobs.com/en-US/GSKCareers",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "J&J",
+      "url": "https://johnsonandjohnson.wd5.myworkdayjobs.com/en-US/jnj",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Philips",
+      "url": "https://philips.wd3.myworkdayjobs.com/en-US/jobs-and-careers",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Accenture",
+      "url": "https://www.accenture.com/in-en/careers",
+      "hub": "Hitec / Gachibowli / FD",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Deloitte",
+      "url": "https://deloitte.wd1.myworkdayjobs.com/en-US/DeloitteCareers",
+      "hub": "Financial District / Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "PwC",
+      "url": "https://pwc.wd3.myworkdayjobs.com/en-US/External_Careers",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "EY",
+      "url": "https://ey.wd1.myworkdayjobs.com/en-US/EYCareers",
+      "hub": "Financial District",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "KPMG",
+      "url": "https://kpmg.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Financial District",
+      "kind": "workday",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Cognizant",
+      "url": "https://careers.cognizant.com/",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Infosys",
+      "url": "https://www.infosys.com/careers/",
+      "hub": "Gachibowli / Pocharam",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Wipro",
+      "url": "https://careers.wipro.com/",
+      "hub": "Gachibowli / Manikonda",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "TCS",
+      "url": "https://www.tcs.com/careers",
+      "hub": "Gachibowli / Deccan Park",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "HCLTech",
+      "url": "https://www.hcltech.com/careers",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Tech Mahindra",
+      "url": "https://careers.techmahindra.com/",
+      "hub": "Hitec / Madhapur",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Capgemini",
+      "url": "https://www.capgemini.com/careers/",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "LTIMindtree",
+      "url": "https://www.ltimindtree.com/careers/",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Genpact",
+      "url": "https://www.genpact.com/careers",
+      "hub": "Hitec / Gachibowli",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Hexaware",
+      "url": "https://hexaware.com/careers/",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Mphasis",
+      "url": "https://www.mphasis.com/home/careers.html",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Virtusa",
+      "url": "https://www.virtusa.com/careers",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Persistent",
+      "url": "https://www.persistent.com/careers/",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Cyient",
+      "url": "https://www.cyient.com/careers",
+      "hub": "Hitec / Madhapur",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "ValueLabs",
+      "url": "https://www.valuelabs.com/careers/",
+      "hub": "Hitec / Madhapur",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "EPAM",
+      "url": "https://www.epam.com/careers",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "GlobalLogic",
+      "url": "https://www.globallogic.com/careers/",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Thoughtworks",
+      "url": "https://www.thoughtworks.com/careers",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Nagarro",
+      "url": "https://www.nagarro.com/en/careers",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Publicis Sapient",
+      "url": "https://careers.publicissapient.com/",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Honeywell",
+      "url": "https://honeywell.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Gachibowli / Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Siemens",
+      "url": "https://siemens.wd3.myworkdayjobs.com/en-US/External",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "GE",
+      "url": "https://ge.wd5.myworkdayjobs.com/en-US/GE_ExternalCareer",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Bosch",
+      "url": "https://bosch.wd1.myworkdayjobs.com/en-US/External",
+      "hub": "Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "ABB",
+      "url": "https://abb.wd3.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Schneider",
+      "url": "https://schneider.wd3.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Cummins",
+      "url": "https://cummins.wd5.myworkdayjobs.com/en-US/External",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Eaton",
+      "url": "https://eaton.wd1.myworkdayjobs.com/en-US/EatonExternal",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Freshworks",
+      "url": "https://www.freshworks.com/company/careers/",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Zoho",
+      "url": "https://careers.zoho.com/",
+      "hub": "listed (Chennai-primary)",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Flipkart",
+      "url": "https://www.flipkartcareers.com/",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Darwinbox",
+      "url": "https://darwinbox.com/careers",
+      "hub": "Hitec / Madhapur",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Keka",
+      "url": "https://www.keka.com/careers",
+      "hub": "Hitec / Madhapur",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Icertis",
+      "url": "https://www.icertis.com/careers/",
+      "hub": "Hitec",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "o9 Solutions",
+      "url": "https://o9solutions.com/careers/",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Sprinklr",
+      "url": "https://www.sprinklr.com/careers/",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Prodapt",
+      "url": "https://www.prodapt.com/careers/",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "SenecaGlobal",
+      "url": "https://www.senecaglobal.com/careers/",
+      "hub": "Hitec / Madhapur",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Infor India",
+      "url": "https://careers.infor.com/",
+      "hub": "Hitec",
+      "kind": "listed",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Arcesium",
+      "url": "https://www.arcesium.com/careers",
+      "hub": "Financial District / Gachibowli",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Blue Yonder",
+      "url": "https://blueyonder.com/careers",
+      "hub": "Hitec / Gachibowli",
+      "kind": "existing",
+      "note": "",
+      "matched_jobs": 0
+    },
+    {
+      "company": "Cubic",
+      "url": "https://www.cubic.com/careers",
+      "hub": "Hitec",
+      "kind": "custom",
+      "note": "",
+      "matched_jobs": 0
+    }
+  ]
+}

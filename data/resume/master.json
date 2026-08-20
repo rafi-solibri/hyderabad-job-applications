@@ -1,0 +1,153 @@
+{
+  "fullName": "MOHAMMED ABDUL RAFI AHMED",
+  "headlineDefault": "Technical Architect | Technical Lead — .NET, Cloud & Distributed Systems",
+  "location": "Hyderabad, India",
+  "phone": "+91 8790251698",
+  "email": "rafi.success@gmail.com",
+  "linkedin": "https://linkedin.com/in/rafi-ahmed-mohammed-abdul-151644ba",
+  "years": 15,
+  "summaryDefault": "Technical Architect and Technical Lead with 15+ years designing distributed, cloud-native platforms and leading engineering teams to deliver them, across healthcare, retail, and telecom. Owns end-to-end architecture decisions across service boundaries, API contracts, event-driven messaging (Kafka/RabbitMQ), data models, and deployment topology on AWS and Azure, spanning multiple internal and partner-facing systems. Equally comfortable leading cross-functional engineering teams day-to-day — setting technical direction, running code reviews, mentoring engineers, and owning delivery through CI/CD. Deep hands-on background in .NET Core, C#, and Kubernetes/Docker-based deployment, with a track record translating business requirements into scalable, maintainable system design and shipped software.",
+  "skillGroups": {
+    "Architecture & Systems Design": [
+      "System & Distributed Systems Design",
+      "Microservices Architecture",
+      "API & Integration Design",
+      "Event-Driven Architecture (Kafka, RabbitMQ)",
+      "Domain-Driven Design",
+      "Design Patterns",
+      "Non-Functional Requirements (Scalability, Reliability, Performance)",
+      "Solution Architecture"
+    ],
+    "Cloud & Infrastructure": [
+      "Cloud Architecture (AWS, Azure)",
+      "AWS",
+      "Azure",
+      "Containerization & Orchestration (Docker, Kubernetes)",
+      "CI/CD (Jenkins, Git)",
+      "High Availability & Disaster Recovery"
+    ],
+    "Development": [
+      ".NET Core / ASP.NET Core",
+      "C#",
+      "REST / Web API Design",
+      "React",
+      "Angular",
+      "SQL Server",
+      "PostgreSQL",
+      "Scala"
+    ],
+    "Leadership & Delivery": [
+      "Technical Standards & Governance",
+      "Code Reviews & Mentoring",
+      "Cross-Team Architecture Alignment",
+      "Stakeholder Management",
+      "Agile/Scrum Delivery",
+      "Engineering Leadership"
+    ]
+  },
+  "ownedSkills": [
+    ".net", "dotnet", ".net core", "asp.net", "asp.net core", "c#", "csharp",
+    "microservices", "distributed systems", "system design", "solution architecture",
+    "technical architecture", "software architecture", "cloud architecture",
+    "api", "rest", "web api", "integration", "event-driven", "kafka", "rabbitmq",
+    "ddd", "domain-driven", "design patterns", "scalability", "reliability",
+    "performance", "aws", "azure", "docker", "kubernetes", "k8s", "jenkins",
+    "git", "ci/cd", "react", "angular", "sql server", "postgresql", "postgres",
+    "scala", "agile", "scrum", "mentoring", "code review", "technical lead",
+    "engineering manager", "stakeholder", "high availability", "disaster recovery"
+  ],
+  "roles": [
+    {
+      "title": "Principal Analyst (Technical Architect)",
+      "company": "Nemetschek",
+      "dates": "Apr 2024 – Present",
+      "domains": ["aec", "construction", "building", "saas", "product"],
+      "bullets": [
+        "Own end-to-end architecture decisions for scalable microservices spanning multiple internal and partner-facing systems, built on .NET Core and AWS.",
+        "Architected 20+ microservices and 50+ REST APIs for distributed building-data platforms, serving millions of users across multiple product lines.",
+        "Improved application performance by 20% through architecture and database optimization; reduced infrastructure costs by 20% through cloud optimization.",
+        "Lead backend architecture reviews and mentor engineers across teams, establishing consistent design standards."
+      ]
+    },
+    {
+      "title": "PS IV Engineer (Technical Architect)",
+      "company": "NCR",
+      "dates": "Jul 2023 – Feb 2024",
+      "domains": ["retail", "pos", "payments", "transactions"],
+      "bullets": [
+        "Architected enterprise POS backend services on .NET Core and Azure for high-volume, transaction-heavy retail environments.",
+        "Designed event-driven architecture using Kafka to support high-throughput transaction processing across distributed services.",
+        "Solved concurrent message delivery issues using SemaphoreSlim, improving reliability of payment and transaction workflows under peak load."
+      ]
+    },
+    {
+      "title": "Technical Lead",
+      "company": "UnitedHealth Group",
+      "dates": "May 2020 – Jul 2023",
+      "domains": ["healthcare", "health", "insurance", "payer", "claims"],
+      "bullets": [
+        "Led a team of 10 engineers delivering an enterprise-scale, cloud-native healthcare platform built on microservices architecture.",
+        "Architected and built scalable backend services using .NET Core and Scala supporting enterprise healthcare workflows.",
+        "Directed containerized deployment strategy using Docker and Kubernetes, improving deployment consistency across environments.",
+        "Reduced deployment time from 2 hours to 15 minutes (87.5% improvement) by automating CI/CD pipelines with Jenkins."
+      ]
+    },
+    {
+      "title": "Senior Consultant / Project Lead",
+      "company": "ADP",
+      "dates": "Dec 2019 – Mar 2020",
+      "domains": ["hr", "payroll", "enterprise"],
+      "bullets": [
+        "Built an enterprise application from scratch as project lead — owning architecture, technical design, implementation, and deployment.",
+        "Drove code review standards and object-oriented design practices across the team to maintain design and code quality."
+      ]
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": "EPAM Systems",
+      "dates": "Feb 2019 – Dec 2019",
+      "domains": ["telecom", "media", "delivery"],
+      "bullets": [
+        "Developed backend services for the Ericsson media delivery platform using .NET Core, supporting large-scale media delivery workloads.",
+        "Implemented scalable microservices architecture for high-throughput content delivery, collaborating closely with cross-functional delivery teams."
+      ]
+    },
+    {
+      "title": "Senior Software Engineer / Technical Lead",
+      "company": "NCR",
+      "dates": "May 2016 – Jan 2019",
+      "domains": ["retail", "pos", "payments"],
+      "bullets": [
+        "Led a development team building POS systems using .NET Core, React, and RabbitMQ for enterprise retail clients, owning delivery from design through release.",
+        "Built and scaled APIs and messaging systems supporting high-volume enterprise retail applications.",
+        "Guided junior and mid-level engineers through code reviews and technical mentoring, raising team-wide coding standards."
+      ]
+    },
+    {
+      "title": "Senior Developer",
+      "company": "ADP / CDK Global",
+      "dates": "Jan 2014 – Apr 2016",
+      "domains": ["retail", "inventory", "enterprise"],
+      "bullets": [
+        "Designed enterprise inventory management system architecture supporting multi-location retail operations.",
+        "Optimized database performance and backend service design, improving system responsiveness."
+      ]
+    },
+    {
+      "title": "Senior Systems Engineer",
+      "company": "Infosys",
+      "dates": "Jul 2010 – Dec 2013",
+      "domains": ["enterprise", "workforce"],
+      "bullets": [
+        "Designed workforce management system architecture using ASP.NET and SQL Server for enterprise clients.",
+        "Designed system modules and improved scheduling workflow architecture across business units."
+      ]
+    }
+  ],
+  "education": {
+    "degree": "B.Tech, Information Technology",
+    "school": "V.R. Siddhartha Engineering College, Acharya Nagarjuna University",
+    "year": "2010",
+    "dates": "July 2006 – May 2010"
+  }
+}

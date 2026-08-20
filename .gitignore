@@ -1,0 +1,33 @@
+# Secrets and browser sessions — never push
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+**/cookies*
+data/firefox_apply_profile/
+data/browser_profile/
+data/tools/simplify-xpi/
+data/tools/geckodriver*
+data/applications/screenshots/
+*.exe
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Large generated / cache
+data/resume/jds/
+data/resume/tailored/
+data/resume/Rafi_Resume_Latest.docx
+*.log

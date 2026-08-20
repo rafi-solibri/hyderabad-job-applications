@@ -1,0 +1,1176 @@
+{
+  "crunchyroll:8074590": {
+    "title": "Staff Software Engineer",
+    "location": "Hyderabad, Telangana, India",
+    "questions": [
+      {
+        "label": "First Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Last Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "last_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Email",
+        "required": true,
+        "fields": [
+          {
+            "name": "email",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Phone",
+        "required": false,
+        "fields": [
+          {
+            "name": "phone",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Resume/CV",
+        "required": false,
+        "fields": [
+          {
+            "name": "resume",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "resume_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Cover Letter",
+        "required": false,
+        "fields": [
+          {
+            "name": "cover_letter",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "cover_letter_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "LinkedIn Profile",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_68158596",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Are you subject to a non-competition agreement or other agreement that would preclude or restrict your employment with Crunchyroll?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_68158597",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes",
+                "value": 1
+              },
+              {
+                "label": "No",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Do you currently, or will you in the future, require any immigration-related support or sponsorship from Crunchyroll in order to begin or continue employment with Crunchyroll?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_68158598",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes",
+                "value": 1
+              },
+              {
+                "label": "No",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Please describe your Total Rewards expectations in order to consider a new role with Crunchyroll.",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_68158599",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      }
+    ]
+  },
+  "crunchyroll:7985640": {
+    "title": "Staff Software Engineer, AI/ML",
+    "location": "Hyderabad, Telangana, India",
+    "questions": [
+      {
+        "label": "First Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Last Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "last_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Email",
+        "required": true,
+        "fields": [
+          {
+            "name": "email",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Phone",
+        "required": true,
+        "fields": [
+          {
+            "name": "phone",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Resume/CV",
+        "required": true,
+        "fields": [
+          {
+            "name": "resume",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "resume_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Cover Letter",
+        "required": false,
+        "fields": [
+          {
+            "name": "cover_letter",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "cover_letter_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "LinkedIn Profile",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_67432409",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Are you subject to a non-competition agreement or other agreement that would preclude or restrict your employment with Crunchyroll?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_67432410",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes",
+                "value": 1
+              },
+              {
+                "label": "No",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Do you currently, or will you in the future, require any immigration-related support or sponsorship from Crunchyroll in order to begin or continue employment with Crunchyroll?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_67432411",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes",
+                "value": 1
+              },
+              {
+                "label": "No",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "If you answered yes to the above question, and you are currently located in the U.S., please indicate your current U.S. immigration status/visa and type of sponsorship required (if known):",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_67432412",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Please describe your Total Rewards expectations in order to consider a new role with Crunchyroll.",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_67432413",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      }
+    ]
+  },
+  "zscaler:5177393007": {
+    "title": "Sr. Staff Software Development Engineer - Java/Go + Distributed Systems",
+    "location": "Bangalore, IND; Hyderabad, IND",
+    "questions": [
+      {
+        "label": "First Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Last Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "last_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Email",
+        "required": true,
+        "fields": [
+          {
+            "name": "email",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Phone",
+        "required": true,
+        "fields": [
+          {
+            "name": "phone",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Resume/CV",
+        "required": true,
+        "fields": [
+          {
+            "name": "resume",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "resume_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Cover Letter",
+        "required": false,
+        "fields": [
+          {
+            "name": "cover_letter",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "cover_letter_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Website",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_12404521007",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "LinkedIn Profile",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_12404522007",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "How did you learn about this job?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404523007[]",
+            "type": "multi_value_multi_select",
+            "values": [
+              {
+                "label": "BuiltIn",
+                "value": 34000471007
+              },
+              {
+                "label": "Glassdoor",
+                "value": 34000472007
+              },
+              {
+                "label": "Google search",
+                "value": 34000473007
+              },
+              {
+                "label": "Indeed",
+                "value": 34000474007
+              },
+              {
+                "label": "Linkedin",
+                "value": 34000475007
+              },
+              {
+                "label": "Referral",
+                "value": 34000476007
+              },
+              {
+                "label": "Zscaler Careers Page",
+                "value": 34000477007
+              },
+              {
+                "label": "Zscaler Talent Team",
+                "value": 34000478007
+              },
+              {
+                "label": "Other",
+                "value": 34000479007
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "If you selected Other please tell us how you learned about this job.",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_12404524007",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Do you have the legal right to work in the country where you are applying to work?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404525007",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes",
+                "value": 1
+              },
+              {
+                "label": "No",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Do you require a work permit, visa or additional right to work support for the country where you are applying to work?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404526007",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes",
+                "value": 1
+              },
+              {
+                "label": "No",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "If yes, please advise what support is needed:",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_12404527007",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "In what city and state is your primary residence? (e.g. San Jose, CA)",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404528007",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Do you currently work for, or have you previously worked for Zscaler?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404529007",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes, I currently work for Zscaler",
+                "value": 34000480007
+              },
+              {
+                "label": "Yes, I have previously worked for Zscaler",
+                "value": 34000481007
+              },
+              {
+                "label": "No, I have never worked for Zscaler",
+                "value": 34000482007
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Current Company",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404530007",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Current Title",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404531007",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Zscaler Confidential Information",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404532007[]",
+            "type": "multi_value_multi_select",
+            "values": [
+              {
+                "label": "I Agree",
+                "value": 34000483007
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Zscaler Privacy Policy",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404533007[]",
+            "type": "multi_value_multi_select",
+            "values": [
+              {
+                "label": "I Agree",
+                "value": 34000484007
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Have you been involved in procurement or contract award activities involving Zscaler as a government employee or official?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404534007",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes",
+                "value": 1
+              },
+              {
+                "label": "No",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Home Address",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_12404535007",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      }
+    ]
+  },
+  "inovalon:7517648003": {
+    "title": "Staff Software Development Engineer L5",
+    "location": "Hyderabad, India",
+    "questions": [
+      {
+        "label": "First Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Last Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "last_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Email",
+        "required": true,
+        "fields": [
+          {
+            "name": "email",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Phone",
+        "required": true,
+        "fields": [
+          {
+            "name": "phone",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Resume/CV",
+        "required": true,
+        "fields": [
+          {
+            "name": "resume",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "resume_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Cover Letter",
+        "required": false,
+        "fields": [
+          {
+            "name": "cover_letter",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "cover_letter_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "What is your Legal First Name?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_28574404003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "What is your Legal Last Name?",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_28574405003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Suffix (if applicable)",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_28574406003",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Jr.",
+                "value": 147300561003
+              },
+              {
+                "label": "Sr.",
+                "value": 147300562003
+              },
+              {
+                "label": "II",
+                "value": 147300563003
+              },
+              {
+                "label": "III",
+                "value": 147300564003
+              },
+              {
+                "label": "IV",
+                "value": 147300565003
+              },
+              {
+                "label": "V",
+                "value": 147300566003
+              },
+              {
+                "label": "VI",
+                "value": 147300567003
+              },
+              {
+                "label": "VII",
+                "value": 147300568003
+              },
+              {
+                "label": "VIII",
+                "value": 147300569003
+              },
+              {
+                "label": "IX",
+                "value": 147300570003
+              },
+              {
+                "label": "X",
+                "value": 147300571003
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "LinkedIn Profile",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_28574407003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Website",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_28574408003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "City of Residence ",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_28574409003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "State of Residence ",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_28574410003",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Arunachal Pradesh",
+                "value": 147300572003
+              },
+              {
+                "label": "Assam",
+                "value": 147300573003
+              },
+              {
+                "label": "Bihar",
+                "value": 147300574003
+              },
+              {
+                "label": "Chhattisgarh",
+                "value": 147300575003
+              },
+              {
+                "label": "Goa",
+                "value": 147300576003
+              },
+              {
+                "label": "Gujarat",
+                "value": 147300577003
+              },
+              {
+                "label": "Haryana",
+                "value": 147300578003
+              },
+              {
+                "label": "Himachal Pradesh",
+                "value": 147300579003
+              },
+              {
+                "label": "Jharkhand",
+                "value": 147300580003
+              },
+              {
+                "label": "Karnataka",
+                "value": 147300581003
+              },
+              {
+                "label": "Kerala",
+                "value": 147300582003
+              },
+              {
+                "label": "Madhya Pradesh",
+                "value": 147300583003
+              },
+              {
+                "label": "Maharashtra",
+                "value": 147300584003
+              },
+              {
+                "label": "Manipur",
+                "value": 147300585003
+              },
+              {
+                "label": "Meghalaya",
+                "value": 147300586003
+              },
+              {
+                "label": "Mizoram",
+                "value": 147300587003
+              },
+              {
+                "label": "Nagaland",
+                "value": 147300588003
+              },
+              {
+                "label": "Odisha",
+                "value": 147300589003
+              },
+              {
+                "label": "Punjab",
+                "value": 147300590003
+              },
+              {
+                "label": "Rajasthan",
+                "value": 147300591003
+              },
+              {
+                "label": "Sikkim",
+                "value": 147300592003
+              },
+              {
+                "label": "Tamil Nadu",
+                "value": 147300593003
+              },
+              {
+                "label": "Telangana",
+                "value": 147300594003
+              },
+              {
+                "label": "Tripura",
+                "value": 147300595003
+              },
+              {
+                "label": "Uttar Pradesh",
+                "value": 147300596003
+              },
+              {
+                "label": "Uttarakhand",
+                "value": 147300597003
+              },
+              {
+                "label": "West Bengal",
+                "value": 147300598003
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "I understand this position requires on-call rotational support outside standard business hours (evenings, weekends, and holidays) every 6-8 weeks. I will be notified at least 21 calendar days prior to the on-call shift. In exchange for the on-call shift, I will be granted one day off during my normal schedule. ",
+        "required": true,
+        "fields": [
+          {
+            "name": "question_28574411003",
+            "type": "multi_value_single_select",
+            "values": [
+              {
+                "label": "Yes",
+                "value": 1
+              },
+              {
+                "label": "No",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "highradius:7490280003": {
+    "title": "Java Architect",
+    "location": "Hyderabad, Telangana, India",
+    "questions": [
+      {
+        "label": "First Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Last Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "last_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Email",
+        "required": true,
+        "fields": [
+          {
+            "name": "email",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Phone",
+        "required": false,
+        "fields": [
+          {
+            "name": "phone",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Resume/CV",
+        "required": false,
+        "fields": [
+          {
+            "name": "resume",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "resume_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Cover Letter",
+        "required": false,
+        "fields": [
+          {
+            "name": "cover_letter",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "cover_letter_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "LinkedIn Profile",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_28306553003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Website",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_28306554003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      }
+    ]
+  },
+  "highradius:7807746003": {
+    "title": "Forward Deployed Architect II",
+    "location": "Hyderabad, Telangana, India",
+    "questions": [
+      {
+        "label": "First Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Last Name",
+        "required": true,
+        "fields": [
+          {
+            "name": "last_name",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Email",
+        "required": true,
+        "fields": [
+          {
+            "name": "email",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Phone",
+        "required": false,
+        "fields": [
+          {
+            "name": "phone",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Resume/CV",
+        "required": false,
+        "fields": [
+          {
+            "name": "resume",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "resume_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Cover Letter",
+        "required": false,
+        "fields": [
+          {
+            "name": "cover_letter",
+            "type": "input_file",
+            "values": []
+          },
+          {
+            "name": "cover_letter_text",
+            "type": "textarea",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "LinkedIn Profile",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_31436547003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      },
+      {
+        "label": "Website",
+        "required": false,
+        "fields": [
+          {
+            "name": "question_31436548003",
+            "type": "input_text",
+            "values": []
+          }
+        ]
+      }
+    ]
+  }
+}
