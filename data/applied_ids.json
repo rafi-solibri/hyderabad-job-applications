@@ -1481,5 +1481,21 @@
     "url": "https://jobs.smartrecruiters.com/Freshworks/744000134600339",
     "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
     "ts": "2026-08-20T11:30:41.312291+00:00"
+  },
+  "744000134600399": {
+    "company": "Freshworks",
+    "title": "Staff Engineer - Full Stack",
+    "job_id": "744000134600399",
+    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000134600399",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-20T11:33:01.134261+00:00"
+  },
+  "freshworks|staff engineer - full stack": {
+    "company": "Freshworks",
+    "title": "Staff Engineer - Full Stack",
+    "job_id": "744000134600399",
+    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000134600399",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-20T11:33:01.134261+00:00"
   }
 }

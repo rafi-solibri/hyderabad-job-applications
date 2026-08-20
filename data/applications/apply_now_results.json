@@ -649,5 +649,18 @@
     "status": "SUBMITTED",
     "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
     "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/c17fc54c-944b-49a4-af75-88fd9c977c23/success?dcr_ci=Freshworks&ref=Simplify&src=Simplify&utm_source=Simplify"
+  },
+  {
+    "company": "Freshworks",
+    "title": "Staff Engineer - Full Stack",
+    "location": "Hyderabad  in",
+    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000134600399",
+    "ats": "SmartRecruiters",
+    "job_id": "744000134600399",
+    "apply_url": "https://jobs.smartrecruiters.com/Freshworks/744000134600399",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "Simplify Copilot",
+    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/40c2115a-9c8b-4789-b3ec-70fee90867cd/success?dcr_ci=Freshworks&ref=Simplify&src=Simplify&utm_source=Simplify"
   }
 ]

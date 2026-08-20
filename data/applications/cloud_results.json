@@ -398,7 +398,21 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 40s; learned 0 fields",
     "final_url": "https://passport.amazon.jobs/",
-    "ts": "2026-08-20T11:26:27.593786+00:00",
+    "ts": "2026-08-20T11:30:52.940430+00:00",
     "fields_learned": 0
+  },
+  {
+    "company": "Freshworks",
+    "title": "Staff Engineer - Full Stack",
+    "location": "Hyderabad  in",
+    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000134600399",
+    "ats": "SmartRecruiters",
+    "job_id": "744000134600399",
+    "apply_url": "https://jobs.smartrecruiters.com/Freshworks/744000134600399",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "Simplify Copilot",
+    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/40c2115a-9c8b-4789-b3ec-70fee90867cd/success?dcr_ci=Freshworks&ref=Simplify&src=Simplify&utm_source=Simplify",
+    "ts": "2026-08-20T11:32:08.583902+00:00"
   }
 ]
