@@ -1750,12 +1750,26 @@ def icims_auth0_blocked(page) -> bool:
         try:
             if p.is_closed():
                 continue
-            if "login.icims.com" not in (p.url or "").lower():
-                continue
-            t = ((p.inner_text("body") or "") + " " + (p.title() or ""))[:2500].lower()
+            u = (p.url or "").lower()
         except Exception:
             continue
-        if "rate limit" in t or "oops, something went wrong" in t:
+        if "login.icims.com" not in u:
+            continue
+        blob = ""
+        try:
+            blob += " " + (p.title() or "")
+        except Exception:
+            pass
+        try:
+            blob += " " + (p.inner_text("body") or "")[:2000]
+        except Exception:
+            pass
+        try:
+            blob += " " + (p.evaluate("() => (document.body && document.body.innerText) || ''") or "")[:2000]
+        except Exception:
+            pass
+        t = blob.lower()
+        if "rate limit" in t or "oops, something went wrong" in t or "invalid_request" in t:
             return True
     return False
 
@@ -3327,6 +3341,20 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "note": "parked for owner to solve later",
                     "learned": learned,
                 }
+            if step == "stuck" and icims_auth0_blocked(page):
+                print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "STUCK",
+                    "note": "iCIMS Auth0 rate-limited — retry later",
+                    "learned": learned,
+                }
+                return {
+                    "ok": False,
+                    "status": "CAPTCHA",
+                    "note": "parked for owner to solve later",
+                    "learned": learned,
+                }
         except Exception:
             pass
         fp = form_fingerprint(page)
@@ -3556,6 +3584,12 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             else:
                 print("  Job-board login wall. Not marking skipped; next leftover.", flush=True)
             return row
+        if "icims.com" in (url or "").lower() and icims_auth0_blocked(page):
+            print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
+            row["status"] = "STUCK"
+            row["note"] = "iCIMS Auth0 rate-limited — retry later"
+            row["final_url"] = page.url
+            return row
         try:
             u = (page.url or "").lower()
         except Exception:
@@ -3645,6 +3679,12 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
                 return row
             if step == "stuck":
+                if icims_auth0_blocked(page):
+                    print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
+                    row["status"] = "STUCK"
+                    row["note"] = "iCIMS Auth0 rate-limited — retry later"
+                    row["final_url"] = page.url
+                    return row
                 break
             try:
                 now_url = page.url or ""
