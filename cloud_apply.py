@@ -568,7 +568,6 @@ CLICK_APPLY_GATE_JS = r"""() => {
   const ranked = [
     /^apply manually$/i,
     /^autofill with resume$/i,
-    /^start application$/i,
     /^apply for this job$/i,
     /^apply now$/i,
     /^i'?m interested$/i,
@@ -605,6 +604,10 @@ CLICK_APPLY_GATE_JS = r"""() => {
     if (!root || !root.querySelectorAll) return;
     root.querySelectorAll('spl-button, button, a, [role="button"], input[type=button], input[type=submit], .c-spl-button').forEach((el) => {
       if (!visible(el)) return;
+      const id = (el.id || '').toLowerCase();
+      if (id === 'start-application-button' || id === 'proxy-submit-button' || id === 'fill-button') return;
+      const r = el.getBoundingClientRect();
+      if (r.left > window.innerWidth * 0.58) return;
       const t = labelOf(el);
       if (!t || t.length > 48 || skipRe.test(t)) return;
       const auto = el.getAttribute('data-automation-id') || '';
