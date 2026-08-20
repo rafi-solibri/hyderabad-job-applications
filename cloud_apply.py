@@ -51,6 +51,7 @@ LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-0
 _RECAPTCHA_CLICKS = 0
 ICIMS_LOGIN_CLICKED = False
 ICIMS_CONTINUE_CLICKS = 0
+ICIMS_PASSWORD_SUBMITS = 0
 
 # These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
@@ -1821,7 +1822,7 @@ def _prune_icims_login_tabs(page) -> None:
 
 def _fill_icims_universal_login(page) -> int:
     """Fill username/email + Continue on login.icims.com Auth0. Never log secrets."""
-    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS
+    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS
     email = google_auth.EMAIL
     filled = 0
     _prune_icims_login_tabs(page)
@@ -1841,50 +1842,52 @@ def _fill_icims_universal_login(page) -> int:
             p.bring_to_front()
         except Exception:
             pass
-        for sel in (
-            "input[name='username']",
-            "input[name='email']",
-            "input[type=email]",
-            "#username",
-            "input[autocomplete='username']",
-        ):
-            try:
-                loc = p.locator(sel).first
-                if loc.count() and loc.is_visible():
-                    loc.fill(email, timeout=2500)
-                    filled += 1
-                    print("  Filled iCIMS username/email.", flush=True)
-                    break
-            except Exception:
-                continue
-        pw_visible = False
-        try:
-            pw = p.locator("input[type=password]").first
-            pw_visible = bool(pw.count() and pw.is_visible())
-        except Exception:
+        if "/login/password" not in u:
+            for sel in (
+                "input[name='username']",
+                "input[name='email']",
+                "input[type=email]",
+                "#username",
+                "input[autocomplete='username']",
+            ):
+                try:
+                    loc = p.locator(sel).first
+                    if loc.count() and loc.is_visible():
+                        loc.fill(email, timeout=2500)
+                        filled += 1
+                        print("  Filled iCIMS username/email.", flush=True)
+                        break
+                except Exception:
+                    continue
             pw_visible = False
-        if not pw_visible and ICIMS_CONTINUE_CLICKS < 2:
             try:
-                btn = p.get_by_role("button", name=re.compile(r"^continue$", re.I)).first
-                if btn.count() and btn.is_visible():
-                    btn.click(timeout=2500)
-                    ICIMS_CONTINUE_CLICKS += 1
-                    print("  Clicked iCIMS Continue.", flush=True)
-                    p.wait_for_timeout(2000)
-                    filled += 1
+                pw = p.locator("input[type=password]").first
+                pw_visible = bool(pw.count() and pw.is_visible())
             except Exception:
-                pass
+                pw_visible = False
+            if not pw_visible and ICIMS_CONTINUE_CLICKS < 2:
+                try:
+                    btn = p.get_by_role("button", name=re.compile(r"^continue$", re.I)).first
+                    if btn.count() and btn.is_visible():
+                        btn.click(timeout=2500)
+                        ICIMS_CONTINUE_CLICKS += 1
+                        print("  Clicked iCIMS Continue.", flush=True)
+                        p.wait_for_timeout(2000)
+                        filled += 1
+                except Exception:
+                    pass
         passwords = google_auth.load_portal_passwords()
-        if passwords:
+        if passwords and ICIMS_PASSWORD_SUBMITS < len(passwords):
             try:
                 pw = p.locator("input[type=password]").first
                 if pw.count() and pw.is_visible():
-                    pw.fill(passwords[0], timeout=2500)
+                    pw.fill(passwords[ICIMS_PASSWORD_SUBMITS], timeout=2500)
                     nxt = p.get_by_role("button", name=re.compile(r"^(continue|log in|sign in)$", re.I)).first
                     if nxt.count() and nxt.is_visible():
                         nxt.click(timeout=2500)
+                    ICIMS_PASSWORD_SUBMITS += 1
                     print("  Submitted iCIMS password.", flush=True)
-                    p.wait_for_timeout(2000)
+                    p.wait_for_timeout(2500)
                     filled += 1
             except Exception:
                 pass
@@ -3368,7 +3371,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
 
 
 def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = True) -> dict:
-    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS
+    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
     kind = classify_url(url, job, allow_aggregators=allow_aggregators)
     row = {
