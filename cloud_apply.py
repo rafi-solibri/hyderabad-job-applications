@@ -6,7 +6,9 @@ LOGIN_BLOCKED without opening them.
 """
 from __future__ import annotations
 
+import argparse
 import json
+import os
 import re
 import time
 from datetime import datetime, timezone
@@ -21,8 +23,11 @@ import tailor_resume
 
 ROOT = Path(__file__).resolve().parent
 RESULTS = ROOT / "data" / "applications" / "cloud_results.json"
+LESSONS = ROOT / "data" / "applications" / "headed_lessons.jsonl"
 RESUME = str((ROOT / apply_now.C["resumePath"]).resolve())
 C = apply_now.C
+CHROME = os.environ.get("CHROME_BIN", "/usr/local/bin/google-chrome")
+PROFILE = ROOT / "data" / "chrome_profile"
 
 LOGIN_HOSTS = (
     "linkedin.com", "www.linkedin.com", "foundit.in", "www.foundit.in",
@@ -176,8 +181,15 @@ def click_apply_gate(page) -> None:
         "button:has-text('Apply Now')",
         "a:has-text('I'm interested')",
         "button:has-text('I'm interested')",
+        "a[data-automation-id='jobPostingApplyButton']",
+        "button[data-automation-id='jobPostingApplyButton']",
+        "a[data-automation-id='adventureButton']",
+        "button[data-automation-id='adventureButton']",
+        "a:has-text('Start application')",
+        "button:has-text('Start application')",
         "a[href*='/apply']",
         "button:has-text('Apply')",
+        "a:has-text('Apply')",
     ):
         try:
             loc = page.locator(sel).first
@@ -237,7 +249,57 @@ def click_next_or_submit(page) -> str:
     return "none"
 
 
-def apply_one(page, job: dict) -> dict:
+def record_lesson(job: dict, row: dict, learned: int = 0) -> None:
+    LESSONS.parent.mkdir(parents=True, exist_ok=True)
+    event = {
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "company": job.get("company"),
+        "title": job.get("title"),
+        "ats": job.get("ats"),
+        "url": row.get("final_url") or job.get("apply_url") or job.get("url"),
+        "status": row.get("status"),
+        "note": row.get("note"),
+        "fields_learned": learned,
+        "host": _host(row.get("final_url") or job.get("apply_url") or ""),
+    }
+    with LESSONS.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(event, ensure_ascii=False) + "\n")
+
+
+def wait_for_human(page, job: dict, seconds: int) -> dict:
+    """Leave Chrome on this application so a human can finish CAPTCHA/login/submit."""
+    print(
+        f"  Chrome is on this form. Finish CAPTCHA, login, leftover fields, then Submit. "
+        f"I will learn answers and wait up to {seconds}s.",
+        flush=True,
+    )
+    deadline = time.time() + seconds
+    learned = 0
+    while time.time() < deadline:
+        try:
+            changed = form_memory.remember(page, job) or []
+            learned += len(changed)
+        except Exception:
+            pass
+        if is_success(page):
+            print("  Submitted. Learning this form for later runs.", flush=True)
+            return {
+                "ok": True,
+                "status": "SUBMITTED",
+                "note": "submitted in headed Chrome (human + autofill)",
+                "learned": learned,
+            }
+        page.wait_for_timeout(2500)
+    print(f"  Still no confirmation after {seconds}s. Learned {learned} field(s).", flush=True)
+    return {
+        "ok": False,
+        "status": "WAITING_EXPIRED",
+        "note": f"waited {seconds}s; learned {learned} fields",
+        "learned": learned,
+    }
+
+
+def apply_one(page, job: dict, wait_seconds: int = 0) -> dict:
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
     kind = classify_url(url)
     row = {
@@ -254,24 +316,19 @@ def apply_one(page, job: dict) -> dict:
         return row
 
     resume = job.get("resume_path") or RESUME
+    learned = 0
     try:
-        page.goto(url, wait_until="domcontentloaded", timeout=25000)
-        page.wait_for_timeout(1500)
+        page.goto(url, wait_until="domcontentloaded", timeout=35000)
+        page.wait_for_timeout(1800)
         dismiss_overlays(page)
         block = is_login_or_captcha(page)
-        if block:
+        if block and not wait_seconds:
             row["status"] = block
             row["final_url"] = page.url
             row["note"] = "blocked before fill"
             return row
         click_apply_gate(page)
         dismiss_overlays(page)
-        block = is_login_or_captcha(page)
-        if block:
-            row["status"] = block
-            row["final_url"] = page.url
-            row["note"] = "blocked on apply gate"
-            return row
         if is_success(page):
             row["ok"] = True
             row["status"] = "SUBMITTED"
@@ -283,7 +340,7 @@ def apply_one(page, job: dict) -> dict:
         apply_now.set_india_phone(page)
         upload_resume(page, resume)
         form_memory.fill_visible(page)
-        form_memory.remember(page, job)
+        learned += len(form_memory.remember(page, job) or [])
 
         for _ in range(6):
             dismiss_overlays(page)
@@ -293,10 +350,12 @@ def apply_one(page, job: dict) -> dict:
                 row["final_url"] = page.url
                 return row
             block = is_login_or_captcha(page)
-            if block:
+            if block and not wait_seconds:
                 row["status"] = block
                 row["final_url"] = page.url
                 return row
+            if block and wait_seconds:
+                break
             fill_identity(page)
             upload_resume(page, resume)
             form_memory.fill_visible(page)
@@ -310,6 +369,17 @@ def apply_one(page, job: dict) -> dict:
                 break
             page.wait_for_timeout(900)
 
+        if wait_seconds:
+            human = wait_for_human(page, job, wait_seconds)
+            row["ok"] = human["ok"]
+            row["status"] = human["status"]
+            row["note"] = human["note"]
+            row["final_url"] = page.url
+            learned += int(human.get("learned") or 0)
+            row["fields_learned"] = learned
+            record_lesson(job, row, learned)
+            return row
+
         row["status"] = "INCOMPLETE"
         row["final_url"] = page.url
         row["note"] = "form still open after fill; no submit confirmation"
@@ -321,6 +391,14 @@ def apply_one(page, job: dict) -> dict:
             row["final_url"] = page.url
         except Exception:
             pass
+        if wait_seconds:
+            try:
+                human = wait_for_human(page, job, wait_seconds)
+                if human.get("ok"):
+                    row.update({k: human[k] for k in ("ok", "status", "note")})
+                    row["final_url"] = page.url
+            except Exception:
+                pass
         return row
 
 
@@ -361,28 +439,51 @@ def save_cloud(rows: list[dict]) -> None:
     RESULTS.write_text(json.dumps(list(by_id.values()), indent=2, ensure_ascii=False), encoding="utf-8")
 
 
-def main(limit: int = 12) -> list[dict]:
+def launch_context(pw, headed: bool):
+    args = ["--no-sandbox", "--disable-dev-shm-usage"]
+    if headed:
+        PROFILE.mkdir(parents=True, exist_ok=True)
+        os.environ.setdefault("DISPLAY", ":1")
+        args.append("--start-maximized")
+        kwargs = {
+            "user_data_dir": str(PROFILE),
+            "headless": False,
+            "args": args,
+            "locale": "en-IN",
+            "viewport": {"width": 1600, "height": 1000},
+            "accept_downloads": True,
+        }
+        if Path(CHROME).exists():
+            kwargs["executable_path"] = CHROME
+        context = pw.chromium.launch_persistent_context(**kwargs)
+        page = context.pages[0] if context.pages else context.new_page()
+        return None, context, page
+    browser = pw.chromium.launch(headless=True, args=args)
+    context = browser.new_context(
+        locale="en-IN",
+        viewport={"width": 1400, "height": 900},
+        user_agent=(
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+        ),
+    )
+    return browser, context, context.new_page()
+
+
+def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[dict]:
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
     queue = apply_now.queue()
     try_jobs, blocked_board = public_queue(queue)
     print(f"Queue {len(queue)} | public ATS {len(try_jobs)} | login boards {len(blocked_board)}", flush=True)
+    if headed:
+        print(f"Headed Chrome on DISPLAY={os.environ.get('DISPLAY', ':1')} — complete CAPTCHA/login in the desktop view.", flush=True)
     results: list[dict] = []
-    # Do not persist hundreds of LinkedIn skips as applied — report only.
-    login_sample = blocked_board[:8]
-    results.extend(login_sample)
+    if not headed:
+        results.extend(blocked_board[:8])
 
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=True, args=["--no-sandbox", "--disable-dev-shm-usage"])
-        context = browser.new_context(
-            locale="en-IN",
-            viewport={"width": 1400, "height": 900},
-            user_agent=(
-                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
-            ),
-        )
-        page = context.new_page()
+        browser, context, page = launch_context(pw, headed)
         for i, job in enumerate(try_jobs[:limit], 1):
             print(f"\n[{i}/{min(limit, len(try_jobs))}] {job.get('company')}: {job.get('title')}", flush=True)
             try:
@@ -391,7 +492,7 @@ def main(limit: int = 12) -> list[dict]:
             except Exception as exc:
                 job["resume_path"] = RESUME
                 print(f"  Tailor failed ({exc}); using architect resume.", flush=True)
-            row = apply_one(page, job)
+            row = apply_one(page, job, wait_seconds=wait_seconds)
             results.append(row)
             if row.get("ok") and row.get("status") == "SUBMITTED":
                 apply_now.persist_applied(row, row.get("note") or "cloud_apply submitted")
@@ -399,14 +500,16 @@ def main(limit: int = 12) -> list[dict]:
                 apply_now.log({"event": "cloud_apply", **{k: v for k, v in row.items() if k != "confirmation"}})
             save_cloud(results)
             print(f"  {row.get('status')} ok={row.get('ok')} {row.get('final_url')}", flush=True)
-            # One job at a time: close extra pages so we never batch-navigate.
             for extra in context.pages[1:]:
                 try:
                     extra.close()
                 except Exception:
                     pass
-            time.sleep(1.2)
-        browser.close()
+            time.sleep(1.0)
+        if browser:
+            browser.close()
+        else:
+            context.close()
 
     submitted = sum(1 for r in results if r.get("ok") and r.get("status") == "SUBMITTED")
     print(f"\nCloud apply done. Submitted {submitted}. Tried {len(try_jobs[:limit])} public ATS jobs.", flush=True)
@@ -414,4 +517,10 @@ def main(limit: int = 12) -> list[dict]:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--headed", action="store_true", help="Open visible Chrome on the cloud desktop")
+    parser.add_argument("--wait", type=int, default=0, help="Seconds to wait for human CAPTCHA/login/submit")
+    parser.add_argument("--limit", type=int, default=12)
+    args = parser.parse_args()
+    wait = args.wait if args.wait else (420 if args.headed else 0)
+    main(limit=args.limit, headed=args.headed, wait_seconds=wait)

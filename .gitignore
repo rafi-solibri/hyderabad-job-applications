@@ -7,6 +7,7 @@ credentials.json
 **/cookies*
 data/firefox_apply_profile/
 data/browser_profile/
+data/chrome_profile/
 data/tools/simplify-xpi/
 data/tools/geckodriver*
 data/applications/screenshots/
