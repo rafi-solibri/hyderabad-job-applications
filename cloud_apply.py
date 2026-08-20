@@ -494,8 +494,21 @@ def _switch_to_sign_in(page) -> None:
         pass
 
 
+def _click_sign_in_with_email(page) -> None:
+    """Workday often hides password until Sign in with email is clicked."""
+    try:
+        loc = page.locator("[data-automation-id='SignInWithEmailButton']").first
+        if loc.count() and loc.is_visible():
+            loc.click(timeout=2500)
+            page.wait_for_timeout(900)
+            print("  Clicked Sign in with email.", flush=True)
+    except Exception:
+        pass
+
+
 def try_portal_auth(page) -> str:
     """Sign In with each portal password. Create Account only if no account exists. Never log secrets."""
+    _click_sign_in_with_email(page)
     if not on_account_gate(page):
         return fill_portal_account(page)
     passwords = google_auth.load_portal_passwords()
