@@ -676,7 +676,7 @@ def click_apply_gate(page) -> str:
         print(f"  Clicked '{hit}'.", flush=True)
         page.wait_for_timeout(1200)
         if re.match(r"^apply( now)?$", hit.strip(), re.I):
-            for name in ("Apply Manually", "Start Application", "Autofill with Resume"):
+            for name in ("Apply Manually", "Autofill with Resume"):
                 try:
                     loc = page.get_by_text(name, exact=True).first
                     if loc.count() and loc.is_visible():
