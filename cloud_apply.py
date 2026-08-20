@@ -40,8 +40,9 @@ PROFILE_EMAIL = "rafi.success@gmail.com"
 # a closed/404 posting, or a career-site login that rejects every portal password.
 MAX_OPEN_APPLICATIONS = 1
 DONE_STATUSES = frozenset({"SUBMITTED", "CLOSED", "AUTH_FAILED"})
-# Park these and open the next leftover (owner solves CAPTCHAs when back).
-PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED"})
+# Park these and open the next leftover (owner solves CAPTCHAs / Amazon sign-in).
+PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED", "OWNER_SIGNIN"})
+KEEP_TAB_STATUSES = frozenset({"CAPTCHA", "OWNER_SIGNIN"})
 TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES
 PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
@@ -1199,6 +1200,35 @@ def notify_captcha(job: dict, page) -> None:
     path.write_text(prev + line, encoding="utf-8")
 
 
+def park_tab_url(url: str) -> None:
+    if not url:
+        return
+    PARKED_CAPTCHA_URLS.add(url)
+    PARKED_CAPTCHA_URLS.add(url.split("?")[0])
+
+
+def notify_amazon_signin(job: dict, page) -> None:
+    """Keep the Amazon sign-in tab open so the owner can log in when they are here."""
+    company = job.get("company") or "Amazon"
+    title = job.get("title") or ""
+    url = ""
+    try:
+        url = page.url
+    except Exception:
+        url = job.get("apply_url") or ""
+    park_tab_url(url)
+    park_tab_url("https://passport.amazon.jobs/")
+    banner = (
+        f"\n{'!' * 72}\n"
+        f"  AMAZON SIGN-IN — please sign in on this tab (Desktop / Take control)\n"
+        f"  {company}: {title}\n"
+        f"  {url}\n"
+        f"  Leaving this tab open. Starting the next leftover now.\n"
+        f"{'!' * 72}\n"
+    )
+    print(banner, flush=True)
+
+
 def required_field_issues(page) -> list[str]:
     """Visible required-field messages the owner may need to complete."""
     try:
@@ -2209,10 +2239,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         except Exception:
             u = ""
         if "passport.amazon.jobs" in u:
-            row["status"] = "WAITING_EXPIRED"
-            row["note"] = "Amazon sign-in needs the owner; not a CAPTCHA"
+            notify_amazon_signin(job, page)
+            row["status"] = "OWNER_SIGNIN"
+            row["note"] = "Amazon sign-in parked for the owner; tab stays open"
             row["final_url"] = page.url
-            print("  Amazon passport sign-in needs you. Opening the next leftover now.", flush=True)
             return row
         apply_now.set_india_phone(page)
         try:
@@ -2270,8 +2300,8 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
             return row
 
-        # Fill a bit longer, then move on if the owner is away.
-        stay = min(wait_seconds if wait_seconds else 40, 40)
+        # Use --wait when the owner is present; default 40s when they are away.
+        stay = wait_seconds if wait_seconds else 40
         human = wait_for_human(page, job, stay, resume)
         row["ok"] = human["ok"]
         row["status"] = human["status"]
@@ -2581,10 +2611,20 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 except Exception as exc:
                     job["resume_path"] = RESUME
                     print(f"  Tailor failed ({exc}); using architect resume.", flush=True)
+                apply_url = (job.get("apply_url") or job.get("url") or "").lower()
+                amazon_parked = any(
+                    "passport.amazon.jobs" in ((p.url or "").lower())
+                    for p in context.pages
+                    if not p.is_closed()
+                )
+                if amazon_parked and "amazon.jobs" in apply_url:
+                    print("  Amazon sign-in already parked. Leaving that tab; skipping this duplicate.", flush=True)
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    continue
                 for extra in list(context.pages):
                     close_apply_page(extra)
                 page = context.new_page()
-                stay = min(wait_seconds if wait_seconds else 40, 40)
+                stay = wait_seconds if wait_seconds else 40
                 row = apply_one(page, job, wait_seconds=stay, navigate=True)
                 while row.get("status") not in TERMINAL_STATUSES:
                     print(
@@ -2623,10 +2663,10 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                         apply_now.persist_skipped(row, row.get("note") or "all portal passwords rejected or account locked")
                     print("  Portal login failed. Closing this tab and opening the next leftover.", flush=True)
                     close_apply_page(page)
-                elif row.get("status") == "CAPTCHA":
-                    print("  Left CAPTCHA tab open. Starting the next leftover.", flush=True)
+                elif row.get("status") in KEEP_TAB_STATUSES:
+                    print("  Left this tab open for you. Starting the next leftover.", flush=True)
                 else:
-                    print("  Could not finish this form while you are away. Moving to the next leftover.", flush=True)
+                    print("  Could not finish this form. Moving to the next leftover.", flush=True)
                     close_apply_page(page)
                 save_cloud(results)
                 print(f"  {row.get('status')} ok={row.get('ok')} {row.get('final_url')}", flush=True)
