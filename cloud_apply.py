@@ -101,6 +101,12 @@ def _stable_apply_url(url: str) -> str:
     return u.rstrip("/")
 
 
+def _ats_loop_host(url: str) -> bool:
+    """Career ATS pages that loop required fields / skills without changing URL."""
+    u = (url or "").lower()
+    return "myworkdayjobs" in u or "avature.net" in u
+
+
 def seed_parked_captcha_urls() -> None:
     path = ROOT / "data" / "applications" / "CAPTCHA.md"
     if not path.exists():
@@ -3338,12 +3344,12 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         if now_url != hold_url:
             hold_url = now_url
             url_hold_from = time.time()
-        elif "myworkdayjobs" in now_url and time.time() - url_hold_from > 30:
-            print("  Workday page did not advance. Next leftover.", flush=True)
+        elif _ats_loop_host(now_url) and time.time() - url_hold_from > 30:
+            print("  ATS page did not advance. Next leftover.", flush=True)
             return {
                 "ok": False,
                 "status": "STUCK",
-                "note": "Workday URL unchanged — next job",
+                "note": "ATS URL unchanged — next job",
                 "learned": learned,
             }
         page.wait_for_timeout(1200)
@@ -3535,10 +3541,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             if now_stable != apply_hold:
                 apply_hold = now_stable
                 apply_hold_from = time.time()
-            elif "myworkdayjobs" in now_stable and time.time() - apply_hold_from > 30:
-                print("  Workday page did not advance. Next leftover.", flush=True)
+            elif _ats_loop_host(now_stable) and time.time() - apply_hold_from > 30:
+                print("  ATS page did not advance. Next leftover.", flush=True)
                 row["status"] = "STUCK"
-                row["note"] = "Workday URL unchanged — next job"
+                row["note"] = "ATS URL unchanged — next job"
                 row["final_url"] = page.url
                 return row
             step = fill_and_advance(page, job, resume)
@@ -3549,10 +3555,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             if after_stable != apply_hold:
                 apply_hold = after_stable
                 apply_hold_from = time.time()
-            elif "myworkdayjobs" in after_stable and time.time() - apply_hold_from > 30:
-                print("  Workday page did not advance. Next leftover.", flush=True)
+            elif _ats_loop_host(after_stable) and time.time() - apply_hold_from > 30:
+                print("  ATS page did not advance. Next leftover.", flush=True)
                 row["status"] = "STUCK"
-                row["note"] = "Workday URL unchanged — next job"
+                row["note"] = "ATS URL unchanged — next job"
                 row["final_url"] = page.url
                 return row
             if step == "submitted" or is_success(page):
