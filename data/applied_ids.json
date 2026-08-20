@@ -1572,5 +1572,29 @@
     "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000136138109",
     "note": "closed posting — cannot submit",
     "ts": "2026-08-20T12:08:18.047808+00:00"
+  },
+  "R-01351780": {
+    "company": "Thermo Fisher Scientific",
+    "title": "Staff Engineer, Software",
+    "job_id": "R-01351780",
+    "url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer,-Software",
+    "note": "submitted in headed Chrome (ATS Submit, skipped Copilot overlay)",
+    "ts": "2026-08-20T12:19:03.970916+00:00"
+  },
+  "thermofisherscientific|staff engineer, software": {
+    "company": "Thermo Fisher Scientific",
+    "title": "Staff Engineer, Software",
+    "job_id": "R-01351780",
+    "url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer,-Software",
+    "note": "submitted in headed Chrome (ATS Submit, skipped Copilot overlay)",
+    "ts": "2026-08-20T12:19:03.970916+00:00"
+  },
+  "R01351780": {
+    "company": "Thermo Fisher Scientific",
+    "title": "Staff Engineer, Software",
+    "job_id": "R-01351780",
+    "url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer,-Software",
+    "note": "submitted in headed Chrome (ATS Submit, skipped Copilot overlay)",
+    "ts": "2026-08-20T12:19:03.970916+00:00"
   }
 }

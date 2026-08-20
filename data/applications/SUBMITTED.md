@@ -12,3 +12,5 @@
   https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/40c2115a-9c8b-4789-b3ec-70fee90867cd/success?dcr_ci=Freshworks&ref=Simplify&src=Simplify&utm_source=Simplify
 - **2026-08-20T11:57:16Z** SUBMITTED **DTCC** — Lead Software Engineer
   https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/my-profile
+- **2026-08-20T12:19:03Z** SUBMITTED **Thermo Fisher Scientific** — Staff Engineer, Software
+  https://jobs.thermofisher.com/global/en/applythankyou?status=success&jobSeqNo=TFSCGLOBALR01351780EXTERNALENGLOBAL&jobTitle=Staff%20Engineer%2C%20Software&jobId=R-01351780&candidateHomeUrl=https://thermofisher.wd5.myworkdayjobs.com/en-US/ThermoFisherCareers/login?Job_Application_ID=5ec0c848409290019bfc24811c5c0002&jobApplicationId=5ec0c848409290019bfc24811c5c0002&candidateId=C4865290&thankYouUri=aeJvX6IcxCAp0nqFOywKtR8XtBmXvoG8o9UhR3ysYzDCMLr2YxOx0sZo%2FAXthnK8qsZVWvgUchqYgPiioIzDg5y9V3JZSfwe

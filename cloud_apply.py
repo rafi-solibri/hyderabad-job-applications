@@ -72,6 +72,7 @@ CAPTCHA_RE = re.compile(r"captcha|recaptcha|hcaptcha|cf-challenge|challenge-plat
 SUCCESS_RE = re.compile(
     r"thanks for (your )?appl|application (was |has been )?(submitted|received)|"
     r"thank you for applying|thank you for your job application|"
+    r"you have successfully applied|successfully applied|"
     r"we.?ve received your application|application received|"
     r"already applied|you previously applied|successfully submitted|application submitted",
     re.I,
@@ -196,6 +197,7 @@ SUCCESS_URL = (
     "application-success",
     "/thank-you",
     "/thankyou",
+    "applythankyou",
     "stepname=applicationcomplete",
     "stepname=thank",
     "stepname=confirmation",
