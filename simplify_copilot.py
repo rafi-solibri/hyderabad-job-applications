@@ -6,6 +6,7 @@ or Resume Builder.
 from __future__ import annotations
 
 import io
+import re
 import struct
 import time
 import urllib.request
@@ -141,6 +142,9 @@ COPILOT_STATE_JS = """() => {
       if (!t || t.length > 80) return;
       if (!out.done && doneRe.test(t)) out.done = t.slice(0, 80);
       if (el.tagName && /BUTTON|A/.test(el.tagName) && visible(el) && actRe.test(t) && !skipRe.test(t) && t.length < 48) {
+        const r = el.getBoundingClientRect();
+        if (r.left < window.innerWidth * 0.55) return;
+        if (/^(create account|sign in|log in)$/i.test(t)) return;
         out.actions.push(t);
         if (!out.action) out.action = t;
       }
@@ -302,6 +306,11 @@ def follow(page) -> str:
         low = action.lower()
         if "tailor" in low or "resume builder" in low:
             print(f"  Skipping Copilot '{action}'.", flush=True)
+            return ""
+        if re.fullmatch(r"create account|sign in|log in", low) or (
+            low.startswith("create account") and "autofill" not in low
+        ):
+            print(f"  Skipping ATS '{action}' (portal auth is handled separately).", flush=True)
             return ""
         exact = len(action) <= 16
         try:

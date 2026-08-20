@@ -89,6 +89,9 @@ SKIP_IDS = {
     "R-216344",
     "Principal-Solution-Architect_R-216678",  # Amgen PSA — submitted 19 Aug
     "R-216678",
+    "62350523",  # Solera Principal SWE JR-019229 — Workday login locked / all passwords rejected
+    "JR-019229",
+    "Principal-Software-Engineer_JR-019229",
     "7741187",  # Coinbase EM Customer Experience AI — user submitted
     "Software-Engineering-Mgr_R71759-1",  # Medtronic SEM — applied 18 Aug
     "R71759-1",
@@ -587,6 +590,36 @@ def persist_applied(job: dict, note: str = "") -> dict:
         "ok": True,
         "status": "SUBMITTED",
         "note": note or "submitted",
+        "final_url": job.get("final_url") or job.get("url") or "",
+    }
+    save_results([row])
+    log({"event": "apply_now", **{k: v for k, v in row.items() if k != "confirmation"}})
+    return row
+
+
+def persist_skipped(job: dict, note: str = "") -> dict:
+    """Do not reopen this posting. Not a successful submit."""
+    jid = str(job.get("job_id") or "")
+    meta = {
+        "company": job.get("company"),
+        "title": job.get("title"),
+        "job_id": jid,
+        "url": job.get("url") or job.get("apply_url") or job.get("final_url") or "",
+        "note": note or job.get("note") or "skipped",
+        "status": job.get("status") or "SKIPPED",
+        "ts": datetime.now(timezone.utc).isoformat(),
+    }
+    store = load_applied_ids()
+    for key in job_match_keys(job) or ({jid} if jid else set()):
+        SKIP_IDS.add(key)
+        store[key] = meta
+    if store:
+        _write_applied_store(store)
+    row = {
+        **{k: job.get(k) for k in ("company", "title", "location", "url", "ats", "job_id", "apply_url")},
+        "ok": False,
+        "status": job.get("status") or "SKIPPED",
+        "note": note or "skipped",
         "final_url": job.get("final_url") or job.get("url") or "",
     }
     save_results([row])

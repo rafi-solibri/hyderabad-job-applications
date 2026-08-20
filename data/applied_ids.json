@@ -1366,5 +1366,72 @@
     "url": "https://www.schwabjobs.com/job/hyderabad/senior-engineering-manager-software-development-and-engineering-pl/33727/99161515632",
     "note": "already applied (same Schwab EM req, iCIMS dashboard)",
     "ts": "2026-08-20T09:02:09.136556+00:00"
+  },
+  "48986309": {
+    "company": "JP Morgan Chase & Co.",
+    "title": "Principal Software Engineer",
+    "job_id": "48986309",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210722037/?location=India&locationId=300000000289360&locationLevel=country",
+    "note": "JPMC My Applications: Applied 08/20/2026 Under Consideration (210722037)",
+    "ts": "2026-08-20T09:52:32.738364+00:00"
+  },
+  "jpmorganchaseco|principal software engineer": {
+    "company": "JP Morgan Chase & Co.",
+    "title": "Principal Software Engineer",
+    "job_id": "48986309",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210722037/?location=India&locationId=300000000289360&locationLevel=country",
+    "note": "JPMC My Applications: Applied 08/20/2026 Under Consideration (210722037)",
+    "ts": "2026-08-20T09:52:32.738364+00:00"
+  },
+  "210722037": {
+    "company": "JP Morgan Chase & Co.",
+    "title": "Principal Software Engineer",
+    "job_id": "48986309",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210722037/?location=India&locationId=300000000289360&locationLevel=country",
+    "note": "JPMC My Applications: Applied 08/20/2026 Under Consideration (210722037)",
+    "ts": "2026-08-20T09:52:32.738364+00:00"
+  },
+  "JR-019229": {
+    "company": null,
+    "title": null,
+    "job_id": "JR-019229",
+    "url": "",
+    "note": "backfill from skip list",
+    "ts": "2026-08-20T10:08:55.043132+00:00"
+  },
+  "solera|principal software engineer": {
+    "company": "Solera",
+    "title": "Principal Software Engineer",
+    "job_id": "62350523",
+    "url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229",
+    "note": "all portal passwords rejected or account locked — skipped, next leftover",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-20T10:08:55.786729+00:00"
+  },
+  "R-019229": {
+    "company": "Solera",
+    "title": "Principal Software Engineer",
+    "job_id": "62350523",
+    "url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229",
+    "note": "all portal passwords rejected or account locked — skipped, next leftover",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-20T10:08:55.786729+00:00"
+  },
+  "62350523": {
+    "company": "Solera",
+    "title": "Principal Software Engineer",
+    "job_id": "62350523",
+    "url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229",
+    "note": "all portal passwords rejected or account locked — skipped, next leftover",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-20T10:08:55.786729+00:00"
+  },
+  "Principal-Software-Engineer_JR-019229": {
+    "company": null,
+    "title": null,
+    "job_id": "Principal-Software-Engineer_JR-019229",
+    "url": "",
+    "note": "backfill from skip list",
+    "ts": "2026-08-20T10:08:55.043315+00:00"
   }
 }

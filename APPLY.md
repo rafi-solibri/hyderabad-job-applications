@@ -27,7 +27,10 @@ path.
    ask the owner. Do not silently sit on a blocked form.
 6. **One application at a time.** Open a single job tab. Do not open another until
    that application is **SUBMITTED**. Then close the tab and move to the next.
-   Closed/404 postings are the only exception (nothing to submit).
+   Close the tab and open the next leftover when the posting is **404/closed**, or
+   when **Sign In / Create Account rejects every portal password** (wrong password
+   or locked account). Do not sit on a locked login. CAPTCHA and leftover fields
+   still wait on the same tab.
 
 ## Chrome (always)
 
@@ -35,7 +38,7 @@ path.
 - Binary: `/opt/google/chrome/chrome` — **never** `/usr/local/bin/google-chrome`
   (that wrapper forces `~/.config/google-chrome` and `--test-type`).
 - Profile dir: `data/chrome_profile` (Default), CDP `http://127.0.0.1:9222`.
-- Apply in **one new tab**. Never more than one application tab. Do not navigate or close Google / Gmail tabs. After a successful submit, close that apply tab and open the next job.
+- Apply in **one new tab**. Never more than one application tab. Do not navigate or close Google / Gmail tabs. After a successful submit, a closed/404 posting, or a locked/rejected portal login, close that apply tab and open the next leftover.
 - Google password lives in gitignored `.env` (`GOOGLE_PASSWORD`) and automation
   memory `secrets.md`. Load via `google_auth.py`. Never commit it. Never put it
   in `field_memory.json` or `DAILY_REPORT.md`. 2FA: Nothing Phone (3).
@@ -74,8 +77,8 @@ Leave honeypot fields empty.
   Instahyre are other automations.
 - Max 3 applications per company. Skip Salesforce/SAP/PEGA, Java-mandatory,
   DevOps-primary, and out-of-scope titles already in `apply_now.py`.
-- Do **not** invent skills on the resume. Persist submitted and closed-404 jobs
-  in `data/applied_ids.json` so they are never reopened.
+- Do **not** invent skills on the resume. Persist submitted, closed-404, and
+  locked/rejected-login jobs in `data/applied_ids.json` so they are never reopened.
 
 ## Code map (this is the apply stack)
 

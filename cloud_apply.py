@@ -35,9 +35,10 @@ CHROME = os.environ.get("CHROME_BIN", "/opt/google/chrome/chrome")
 PROFILE = ROOT / "data" / "chrome_profile"
 CDP = "http://127.0.0.1:9222"
 PROFILE_EMAIL = "rafi.success@gmail.com"
-# One application tab only. Open the next job only after a successful submit
-# (or a closed/404 posting that cannot be submitted).
+# One application tab only. Open the next job after a successful submit,
+# a closed/404 posting, or a career-site login that rejects every portal password.
 MAX_OPEN_APPLICATIONS = 1
+DONE_STATUSES = frozenset({"SUBMITTED", "CLOSED", "AUTH_FAILED"})
 
 # These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
@@ -222,6 +223,7 @@ def fill_portal_account(page, password: str | None = None) -> str:
     filled_email = False
     for sel in (
         "[data-automation-id='email']",
+        "[data-automation-id='emailAddress']",
         "input[type=email]",
         "input[autocomplete='username']",
         "input[autocomplete='email']",
@@ -236,6 +238,16 @@ def fill_portal_account(page, password: str | None = None) -> str:
                 break
         except Exception:
             continue
+    if not filled_email:
+        for pattern in (r"email address", r"^email$", r"username"):
+            try:
+                loc = page.get_by_label(re.compile(pattern, re.I)).first
+                if loc.count() and loc.is_visible():
+                    loc.fill(email, timeout=2000)
+                    filled_email = True
+                    break
+            except Exception:
+                continue
     filled_pw = 0
     seen: set[tuple] = set()
     for sel in (
@@ -341,41 +353,51 @@ def _click_account_button(page, label: str) -> bool:
     return False
 
 
+def _on_sign_in_form(page) -> bool:
+    title = ""
+    try:
+        title = (page.title() or "").lower()
+    except Exception:
+        pass
+    blob = _account_gate_blob(page).lower()
+    if "forgot your password" in blob or "don't have an account" in blob:
+        return True
+    return "sign in" in title and "create account" not in title
+
+
+def _switch_to_sign_in(page) -> None:
+    if _on_sign_in_form(page):
+        return
+    try:
+        loc = page.locator("[data-automation-id='signInContent'], [data-automation-id='auth_signin_link']")
+        if loc.count() and loc.first.is_visible():
+            loc.first.click(timeout=2000)
+            page.wait_for_timeout(800)
+            return
+    except Exception:
+        pass
+    try:
+        if page.get_by_role("button", name="Sign In", exact=True).count():
+            page.get_by_role("button", name="Sign In", exact=True).last.click(timeout=2000)
+            page.wait_for_timeout(800)
+    except Exception:
+        pass
+
+
 def try_portal_auth(page) -> str:
-    """Create Account with the primary password, then Sign In trying each fallback. Never log secrets."""
+    """Sign In with each portal password. Create Account only if no account exists. Never log secrets."""
     if not on_account_gate(page):
         return fill_portal_account(page)
     passwords = google_auth.load_portal_passwords()
     if not passwords:
         print("  APPLY_ACCOUNT_PASSWORD missing from .env; cannot create/sign-in accounts.", flush=True)
         return "missing"
-    title = ""
-    try:
-        title = (page.title() or "").lower()
-    except Exception:
-        title = ""
-    create_visible = "create account" in title
-    try:
-        create_visible = create_visible or bool(page.locator("[data-automation-id='verifyPassword']").count())
-    except Exception:
-        pass
-    if create_visible:
-        fill_portal_account(page, passwords[0])
-        if _click_account_button(page, "createAccountSubmitButton") or _click_account_button(page, "Create Account"):
-            page.wait_for_timeout(2500)
-        if not on_account_gate(page) and not account_auth_rejected(page):
-            print("  Created career-site account with portal password #1.", flush=True)
-            return "ok"
+    _switch_to_sign_in(page)
     for i, password in enumerate(passwords, 1):
-        try:
-            sign_link = page.locator("[data-automation-id='signInContent'], [data-automation-id='auth_signin_link']")
-            if "create account" in ((page.title() or "").lower()) and page.get_by_role("button", name="Sign In", exact=True).count():
-                page.get_by_role("button", name="Sign In", exact=True).last.click(timeout=2000)
-                page.wait_for_timeout(800)
-        except Exception:
-            pass
         fill_portal_account(page, password)
-        clicked = _click_account_button(page, "signInSubmitButton") or _click_account_button(page, "Sign In")
+        clicked = _click_account_button(page, "signInSubmitButton")
+        if not clicked and _on_sign_in_form(page):
+            clicked = _click_account_button(page, "Sign In")
         if not clicked:
             continue
         page.wait_for_timeout(2800)
@@ -386,6 +408,30 @@ def try_portal_auth(page) -> str:
             print(f"  Signed in with portal password #{i}.", flush=True)
             return "ok"
         print(f"  Portal password #{i} did not advance; trying next.", flush=True)
+    blob = _account_gate_blob(page).lower()
+    if account_auth_rejected(page) and re.search(r"locked|wrong email|incorrect password|invalid password", blob, re.I):
+        print("  All portal passwords rejected or account locked. Closing this application.", flush=True)
+        return "failed"
+    title = ""
+    try:
+        title = (page.title() or "").lower()
+    except Exception:
+        title = ""
+    need_create = "create account" in title or bool(re.search(r"don'?t have an account|no account (found|exists)", blob, re.I))
+    try:
+        need_create = need_create or bool(page.locator("[data-automation-id='verifyPassword']").count())
+    except Exception:
+        pass
+    if need_create and not account_auth_rejected(page):
+        fill_portal_account(page, passwords[0])
+        if _click_account_button(page, "createAccountSubmitButton") or _click_account_button(page, "Create Account"):
+            page.wait_for_timeout(2500)
+        if not on_account_gate(page) and not account_auth_rejected(page):
+            print("  Created career-site account with portal password #1.", flush=True)
+            return "ok"
+        if account_auth_rejected(page):
+            print("  Create Account rejected. Closing this application.", flush=True)
+            return "failed"
     print("  All portal passwords rejected on this Sign In / Create Account page.", flush=True)
     return "failed"
 
@@ -850,7 +896,9 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if copilot_start:
         page.wait_for_timeout(600)
     fill_identity(page)
-    try_portal_auth(page)
+    auth = try_portal_auth(page)
+    if auth == "failed":
+        return "auth_failed"
     apply_now.set_india_phone(page)
     accept_terms(page)
     try:
@@ -914,6 +962,14 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "ok": True,
                     "status": "SUBMITTED",
                     "note": "submitted in headed Chrome (autofill + Copilot)",
+                    "learned": learned,
+                }
+            if step == "auth_failed":
+                print("  Portal login failed. Will close this tab and open the next leftover.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "AUTH_FAILED",
+                    "note": "all portal passwords rejected or account locked",
                     "learned": learned,
                 }
             if step == "captcha":
@@ -1020,7 +1076,14 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True) -> 
             return row
 
         fill_identity(page)
-        try_portal_auth(page)
+        auth = try_portal_auth(page)
+        if auth == "failed":
+            row["status"] = "AUTH_FAILED"
+            row["note"] = "all portal passwords rejected or account locked"
+            row["final_url"] = page.url
+            apply_now.persist_skipped(row, row["note"])
+            print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
+            return row
         apply_now.set_india_phone(page)
         try:
             upload_resume(page, resume)
@@ -1047,6 +1110,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True) -> 
                 row["final_url"] = page.url
                 row["note"] = "Simplify Copilot"
                 return row
+            if step == "auth_failed":
+                row["status"] = "AUTH_FAILED"
+                row["note"] = "all portal passwords rejected or account locked"
+                row["final_url"] = page.url
+                apply_now.persist_skipped(row, row["note"])
+                print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
+                return row
             if step == "none" or step == "captcha":
                 stuck_none += 1
                 if step == "captcha":
@@ -1072,10 +1142,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True) -> 
             row["final_url"] = page.url
         except Exception:
             pass
+        if row.get("status") == "AUTH_FAILED":
+            apply_now.persist_skipped(row, row.get("note") or "all portal passwords rejected or account locked")
+            print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
         record_lesson(job, row, learned)
         return row
     except Exception as exc:
-        if row.get("status") in {"SUBMITTED", "WAITING_EXPIRED", "CAPTCHA", "CLOSED"}:
+        if row.get("status") in {"SUBMITTED", "WAITING_EXPIRED", "CAPTCHA", "CLOSED", "AUTH_FAILED"}:
             row["note"] = (row.get("note") or "") + f" ({exc})"
             return row
         row["status"] = "ERROR"
@@ -1211,7 +1284,7 @@ def launch_context(pw, headed: bool):
             print("  Chrome already signed in; leaving Google tabs alone.", flush=True)
         reset_chrome_tabs(context)
         print(f"  Using open Chrome profile {PROFILE_EMAIL} ({PROFILE}) + Simplify Copilot", flush=True)
-        print(f"  One application at a time. Next job only after a successful submit.", flush=True)
+        print(f"  One application at a time. Next job after submit, closed posting, or locked/rejected portal login.", flush=True)
         return None, context, None
     browser = pw.chromium.launch(headless=True, args=args)
     context = browser.new_context(
@@ -1302,8 +1375,8 @@ def persist_existing_closed() -> None:
     except Exception:
         return
     for row in rows:
-        if row.get("status") == "CLOSED" and not apply_now.is_applied(row):
-            apply_now.persist_applied(row, row.get("note") or "closed posting — cannot submit")
+        if row.get("status") in {"CLOSED", "AUTH_FAILED"} and not apply_now.is_applied(row):
+            apply_now.persist_skipped(row, row.get("note") or "closed posting — cannot submit")
 
 
 def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
@@ -1347,7 +1420,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
             )
             for i, job in enumerate(leftover, 1):
                 print(f"\n[{i}/{len(leftover)}] {job.get('company')}: {job.get('title')}", flush=True)
-                print("  Opening this application only. Will not open another until it is submitted.", flush=True)
+                print("  Opening this application only. Will close it on submit, closed posting, or locked login.", flush=True)
                 try:
                     job["resume_path"] = tailor_resume.for_job(job)
                     print(f"  Tailored: {tailor_resume.CURRENT.get('headline')}", flush=True)
@@ -1359,7 +1432,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 page = context.new_page()
                 stay = wait_seconds if wait_seconds else 360
                 row = apply_one(page, job, wait_seconds=stay, navigate=True)
-                while row.get("status") not in {"SUBMITTED", "CLOSED"}:
+                while row.get("status") not in DONE_STATUSES:
                     print(
                         f"  Still not submitted ({row.get('status')}). "
                         f"Keeping this one application open. Not starting another.",
@@ -1386,6 +1459,10 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     print("  Submitted. Closing this tab and moving to the next application.", flush=True)
                 elif row.get("status") == "CLOSED":
                     print("  Posting closed. Closing this tab and moving to the next application.", flush=True)
+                elif row.get("status") == "AUTH_FAILED":
+                    if not apply_now.is_applied(row):
+                        apply_now.persist_skipped(row, row.get("note") or "all portal passwords rejected or account locked")
+                    print("  Portal login failed. Closing this tab and opening the next leftover.", flush=True)
                 close_apply_page(page)
                 save_cloud(results)
                 print(f"  {row.get('status')} ok={row.get('ok')} {row.get('final_url')}", flush=True)
