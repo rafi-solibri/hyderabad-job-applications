@@ -2836,6 +2836,11 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     step = ""
     linkedin_checkpoint_hits = 0
     linkedin_signup_hits = 0
+    try:
+        hold_url = (page.url or "").split("?")[0]
+    except Exception:
+        hold_url = ""
+    url_hold_from = time.time()
     while time.time() < deadline:
         try:
             changed = form_memory.remember(page, job) or []
@@ -2970,6 +2975,21 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                 }
         else:
             stuck_required = 0
+        try:
+            now_url = (page.url or "").split("?")[0]
+        except Exception:
+            now_url = hold_url
+        if now_url != hold_url:
+            hold_url = now_url
+            url_hold_from = time.time()
+        elif "myworkdayjobs" in now_url and time.time() - url_hold_from > 45:
+            print("  Workday page did not advance. Next leftover.", flush=True)
+            return {
+                "ok": False,
+                "status": "STUCK",
+                "note": "Workday URL unchanged — next job",
+                "learned": learned,
+            }
         page.wait_for_timeout(1200)
     print(f"  Still no confirmation after {seconds}s. Learned {learned} field(s).", flush=True)
     return {
