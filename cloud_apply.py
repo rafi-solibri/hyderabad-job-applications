@@ -1185,7 +1185,7 @@ def _pick_workday_list_option(page, typed: str = "Career Site") -> bool:
     for pat in preferred:
         try:
             hit = opts.filter(has_text=re.compile(pat, re.I)).first
-            if hit.count() and hit.is_visible():
+            if hit.count():
                 hit.click(timeout=1500, force=True)
                 page.wait_for_timeout(350)
                 return True
@@ -1199,8 +1199,6 @@ def _pick_workday_list_option(page, typed: str = "Career Site") -> bool:
     for i in range(n):
         try:
             opt = opts.nth(i)
-            if not opt.is_visible():
-                continue
             text = (opt.inner_text() or "").strip()
             if text.lower() in skip or len(text) > 80:
                 continue
@@ -1219,30 +1217,86 @@ def _pick_workday_list_option(page, typed: str = "Career Site") -> bool:
         return False
 
 
+WORKDAY_CLICK_NO_JS = """(root) => {
+  if (!root) return 'missing';
+  const radios = [...root.querySelectorAll('input[type=radio], [role=radio]')];
+  for (const el of radios) {
+    const t = ((el.getAttribute('aria-label') || '') + ' ' + (el.innerText || '') + ' ' + (el.value || '')).toLowerCase();
+    const on = el.checked || el.getAttribute('aria-checked') === 'true';
+    if (on && /\\bno\\b/.test(t)) return 'already';
+  }
+  let target = radios.find((el) => {
+    const t = ((el.getAttribute('aria-label') || '') + ' ' + (el.innerText || '') + ' ' + (el.value || '')).trim().toLowerCase();
+    return t === 'no' || t === 'false' || el.value === 'false';
+  });
+  if (!target && radios.length >= 2) target = radios[1];
+  if (!target) {
+    const lab = [...root.querySelectorAll('label')].find((l) => /^\\s*No\\s*$/i.test((l.innerText || '').trim()));
+    if (lab) { lab.click(); return 'label'; }
+    return 'none';
+  }
+  const lab = target.id ? root.querySelector('label[for="' + target.id + '"]') : null;
+  (lab || target).click();
+  if (target.tagName === 'INPUT') {
+    target.checked = true;
+    target.dispatchEvent(new Event('input', {bubbles: true, composed: true}));
+    target.dispatchEvent(new Event('change', {bubbles: true, composed: true}));
+  }
+  return 'clicked';
+}"""
+
+
+def _workday_prompt_committed(field) -> bool:
+    try:
+        return bool(
+            field.locator(
+                "[data-automation-id='multiselectlistItem'], "
+                "[data-automation-id='selectedItem'], "
+                "[data-automation-id='promptSelectedItem']"
+            ).count()
+        )
+    except Exception:
+        return False
+
+
 def _workday_select_prompt(page, field, typed: str) -> bool:
-    """Open a Workday prompt/combobox, type, and commit a list option."""
+    """Open a Workday prompt and click a list option. Typed search text is not a value."""
     try:
         if not field.count():
             return False
+        if _workday_prompt_committed(field):
+            return True
+        collapse_copilot_panel(page)
         field.scroll_into_view_if_needed(timeout=1500)
         box = field.locator(
-            "input:not([type=hidden]):not([type=radio]):not([type=checkbox]), "
-            "[role=combobox], [data-automation-id='selectWidget'], button"
+            "input:not([type=hidden]):not([type=radio]):not([type=checkbox])"
         ).first
+        if not box.count():
+            box = field.locator(
+                "[role=combobox], [data-automation-id='selectWidget'], button"
+            ).first
         if not box.count():
             box = field
         box.click(timeout=1500, force=True)
-        page.wait_for_timeout(200)
+        page.wait_for_timeout(250)
+        # Short filter so the list is not empty. Full phrases like
+        # "Company Careers Website" often match zero Workday options.
+        needle = (typed or "Career").split()[0]
         try:
             box.fill("")
-            box.type(typed, delay=35)
+            box.type(needle, delay=40)
         except Exception:
             try:
                 page.keyboard.press("Control+a")
-                page.keyboard.type(typed, delay=35)
+                page.keyboard.type(needle, delay=40)
             except Exception:
                 pass
-        page.wait_for_timeout(450)
+        try:
+            page.wait_for_selector(
+                "[data-automation-id='promptOption']", timeout=2500, state="attached"
+            )
+        except Exception:
+            pass
         return _pick_workday_list_option(page, typed)
     except Exception:
         return False
@@ -1261,33 +1315,32 @@ def fill_workday_required_questions(page) -> int:
     except Exception:
         pass
     filled = 0
+    collapse_copilot_panel(page)
     prev = _workday_form_field(page, r"previously worked")
     try:
         if prev.count():
-            no = prev.get_by_role("radio", name=re.compile(r"^No$", re.I)).first
-            if not no.count():
-                no = prev.get_by_text("No", exact=True).first
-            if no.count() and no.is_visible():
-                no.scroll_into_view_if_needed(timeout=1500)
-                box = no.bounding_box() or {}
-                x = (box.get("x") or 0) + max((box.get("width") or 8) / 2, 4)
-                y = (box.get("y") or 0) + max((box.get("height") or 8) / 2, 4)
-                # Radio circle sits left of the No label.
-                page.mouse.click(max(x - 16, (box.get("x") or 16) - 14), y)
-                page.wait_for_timeout(120)
-                no.click(timeout=1500, force=True)
+            hit = prev.evaluate(WORKDAY_CLICK_NO_JS)
+            if hit in {"clicked", "label", "already"}:
                 filled += 1
-                print("  Workday: previously worked = No.", flush=True)
+                print(f"  Workday: previously worked = No ({hit}).", flush=True)
+            else:
+                no = prev.get_by_text("No", exact=True).first
+                if no.count():
+                    box = no.bounding_box() or {}
+                    y = (box.get("y") or 0) + max((box.get("height") or 8) / 2, 4)
+                    page.mouse.click(max((box.get("x") or 24) - 12, 8), y)
+                    filled += 1
+                    print("  Workday: previously worked = No (mouse).", flush=True)
     except Exception:
         pass
     hear = _workday_form_field(page, r"how did you hear")
-    if _workday_select_prompt(page, hear, "Company Careers Website"):
+    if _workday_select_prompt(page, hear, "Career"):
         filled += 1
         print("  Workday: how did you hear — selected an option.", flush=True)
         try:
             extra = page.locator("[data-automation-id='promptOption']").first
-            if extra.count() and extra.is_visible():
-                _pick_workday_list_option(page, "Career Site")
+            if extra.count():
+                _pick_workday_list_option(page, "Career")
         except Exception:
             pass
     device = _workday_form_field(page, r"phone device type|device type")
