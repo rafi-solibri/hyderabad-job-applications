@@ -544,20 +544,90 @@ def _aggregator_host(url: str) -> bool:
     )
 
 
+def _google_chooser_pages(page) -> list:
+    pages = []
+    ctx = getattr(page, "context", None)
+    for p in (ctx.pages if ctx is not None else [page]):
+        try:
+            if p.is_closed():
+                continue
+            url = (p.url or "").lower()
+        except Exception:
+            continue
+        if "accounts.google.com" not in url:
+            continue
+        if any(x in url for x in ("rotatecookies", "passive", "checkcookie", "mail.google.com")):
+            continue
+        pages.append(p)
+    return pages
+
+
+def click_google_account_chooser(page) -> bool:
+    """Pick rafi.success@gmail.com on the Google GSI/OAuth popup. Do not navigate the apply tab."""
+    email = google_auth.EMAIL
+    hit = False
+    for p in _google_chooser_pages(page):
+        try:
+            p.bring_to_front()
+        except Exception:
+            pass
+        for sel in (
+            f"div[data-identifier='{email}']",
+            f"li[data-identifier='{email}']",
+            f"[data-identifier='{email}']",
+            f"[data-email='{email}']",
+        ):
+            try:
+                loc = p.locator(sel).first
+                if loc.count() and loc.is_visible():
+                    loc.click(timeout=2500)
+                    print(f"  Chose Google account {email}.", flush=True)
+                    p.wait_for_timeout(2200)
+                    return True
+            except Exception:
+                continue
+        try:
+            loc = p.get_by_text(email, exact=False).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=2500)
+                print(f"  Chose Google account {email}.", flush=True)
+                p.wait_for_timeout(2200)
+                return True
+        except Exception:
+            pass
+        try:
+            loc = p.get_by_text(re.compile(r"Rafi Ahmed Mohammed Abdul", re.I)).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=2500)
+                print(f"  Chose Google account {email}.", flush=True)
+                p.wait_for_timeout(2200)
+                return True
+        except Exception:
+            pass
+    return hit
+
+
 def try_board_google_signin(page) -> str:
     """LinkedIn/Naukri guest walls: use the already-open Google session, not portal passwords."""
     try:
         url = (page.url or "").lower()
     except Exception:
         url = ""
-    if not _aggregator_host(url):
+    if not _aggregator_host(url) and "accounts.google.com" not in url:
         return "skip"
+    if click_google_account_chooser(page):
+        return "ok"
+    if _google_chooser_pages(page):
+        return "ok"
     if not any(x in url for x in ("/signup", "/login", "/uas/login", "cold-join", "auth", "checkpoint")):
         try:
             if not page.get_by_role("button", name=re.compile(r"google", re.I)).count():
                 return "skip"
         except Exception:
             return "skip"
+    if getattr(page, "_google_signin_clicked", False):
+        click_google_account_chooser(page)
+        return "ok"
     for name in (
         "Continue with Google",
         "Sign in with Google",
@@ -571,7 +641,12 @@ def try_board_google_signin(page) -> str:
             if loc.count() and loc.is_visible():
                 loc.click(timeout=2500)
                 print(f"  Clicked '{name}' on the job board.", flush=True)
-                page.wait_for_timeout(2500)
+                try:
+                    page._google_signin_clicked = True
+                except Exception:
+                    pass
+                page.wait_for_timeout(2800)
+                click_google_account_chooser(page)
                 return "ok"
         except Exception:
             continue
@@ -1600,6 +1675,7 @@ def fill_leftover_dropdowns(page) -> int:
         (r"salutation", "Mr"),
         (r"preferred language", "English"),
         (r"how did you hear", "Career"),
+        (r"^degree$|degree \*|highest (degree|education)", "Bachelor"),
     )
     for pat, value in pairs:
         try:
@@ -1618,6 +1694,26 @@ def fill_leftover_dropdowns(page) -> int:
                 print(f"  Selected '{value}' for {pat}.", flush=True)
         except Exception:
             continue
+    texts = (
+        (r"name of university|university/college|school or university", "Acharya Nagarjuna University"),
+        (r"^grade$|grade \*|overall result|gpa", "First Class"),
+    )
+    for pat, value in texts:
+        try:
+            box = page.get_by_label(re.compile(pat, re.I)).first
+            if not box.count() or not box.is_visible():
+                continue
+            try:
+                cur = (box.input_value() or "").strip()
+            except Exception:
+                cur = ""
+            if cur:
+                continue
+            box.fill(value, timeout=2000)
+            filled += 1
+            print(f"  Filled '{value}' for {pat}.", flush=True)
+        except Exception:
+            continue
     return filled
 
 
@@ -1634,7 +1730,7 @@ def click_next_or_submit(page) -> str:
                 return "submitted"
             page.wait_for_timeout(800)
         return "clicked"
-    for label in ("Submit application", "Submit Application", "Submit", "Next"):
+    for label in ("Submit application", "Submit Application", "Submit", "Save and Next", "Next"):
         if click_spl_button(page, label):
             print(f"  Clicked ATS '{label}'.", flush=True)
             page.wait_for_timeout(800)
@@ -1668,6 +1764,8 @@ def click_next_or_submit(page) -> str:
         "[data-automation-id='bottom-navigation-next-button']",
         "button:has-text('Next')",
         "button:has-text('Continue')",
+        "button:has-text('Save and Next')",
+        "button:has-text('Save & Next')",
         "button:has-text('Save and continue')",
         "button:has-text('Save & Continue')",
         "button:has-text('Review')",
@@ -2406,37 +2504,118 @@ def captcha_puzzle_visible(page) -> bool:
                 return True
     except Exception:
         pass
+    try:
+        loc = page.locator("iframe[src*='recaptcha'][src*='bframe']")
+        n = loc.count()
+        for i in range(min(n, 4)):
+            el = loc.nth(i)
+            try:
+                if not el.is_visible():
+                    continue
+            except Exception:
+                continue
+            box = el.bounding_box() or {}
+            if (box.get("width") or 0) > 280 and (box.get("height") or 0) > 200:
+                return True
+    except Exception:
+        pass
     return False
 
 
-def click_recaptcha_checkbox(page) -> bool:
-    """Tick 'I'm not a robot'. Only a following image puzzle needs the owner."""
+def _xdotool_click(x: float, y: float) -> None:
+    import subprocess
+    env = os.environ.copy()
+    env.setdefault("DISPLAY", ":1")
     try:
-        url = (page.url or "").lower()
+        subprocess.run(
+            ["xdotool", "search", "--onlyvisible", "--class", "Google-chrome", "windowactivate", "--sync"],
+            env=env,
+            timeout=2,
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
     except Exception:
-        url = ""
-    if "recaptcha" not in url and "checkpoint" not in url and "security check" not in (page_text(page)[:400].lower()):
-        # still try if the widget is on the page
         pass
+    try:
+        subprocess.run(
+            ["xdotool", "mousemove", "--sync", str(int(x)), str(int(y)), "click", "1"],
+            env=env,
+            timeout=3,
+            check=False,
+        )
+    except Exception:
+        pass
+
+
+def click_recaptcha_checkbox(page) -> bool:
+    """Tick 'I'm not a robot' with a real mouse click. Image puzzles stay for the owner."""
+    if getattr(page, "_recaptcha_clicks", 0) >= 2:
+        return True
     clicked = False
-    for sel in (
-        "iframe[title='reCAPTCHA']",
-        "iframe[title*='reCAPTCHA' i]",
-        "iframe[src*='recaptcha/api2/anchor']",
-        "iframe[src*='recaptcha']",
-    ):
+    try:
+        info = page.evaluate(
+            """() => {
+              const frames = [...document.querySelectorAll(
+                'iframe[src*="recaptcha"][src*="anchor"], iframe[title*="reCAPTCHA" i], iframe[title="reCAPTCHA"]'
+              )];
+              const vis = [];
+              for (const el of frames) {
+                const r = el.getBoundingClientRect();
+                const st = getComputedStyle(el);
+                if (st.visibility === 'hidden' || st.display === 'none' || st.opacity === '0') continue;
+                if (r.width < 120 || r.height < 40 || r.width > 420) continue;
+                vis.push({x: r.x, y: r.y, w: r.width, h: r.height});
+              }
+              return {
+                boxes: vis,
+                sx: window.screenX || 0,
+                sy: window.screenY || 0,
+                oh: window.outerHeight || 0,
+                ih: window.innerHeight || 0,
+              };
+            }"""
+        )
+    except Exception:
+        info = None
+    boxes = (info or {}).get("boxes") or []
+    if boxes:
+        collapse_copilot_panel(page)
+        b = boxes[0]
+        chrome_top = max(0, int((info.get("oh") or 0) - (info.get("ih") or 0)))
+        # Checkbox sits on the left of the 304x78 widget, not on the label text.
+        screen_x = (info.get("sx") or 0) + b["x"] + min(28, max(18, (b["w"] or 80) * 0.12))
+        screen_y = (info.get("sy") or 0) + chrome_top + b["y"] + (b["h"] or 74) / 2
+        _xdotool_click(screen_x, screen_y)
+        print("  Clicked reCAPTCHA I'm not a robot.", flush=True)
         try:
-            fr = page.frame_locator(sel).first
-            box = fr.locator("#recaptcha-anchor, .recaptcha-checkbox-border, .recaptcha-checkbox").first
-            if box.count():
-                box.click(timeout=2000)
-                print("  Clicked reCAPTCHA I'm not a robot.", flush=True)
-                page.wait_for_timeout(1500)
-                clicked = True
-                break
+            page._recaptcha_clicks = getattr(page, "_recaptcha_clicks", 0) + 1
+        except Exception:
+            pass
+        try:
+            page.wait_for_timeout(1600)
+        except Exception:
+            pass
+        clicked = True
+    if clicked:
+        return True
+    for frame in page.frames:
+        try:
+            furl = (frame.url or "").lower()
+            if "recaptcha" not in furl or "anchor" not in furl:
+                continue
+            box = frame.locator("#recaptcha-anchor").first
+            if not box.count():
+                continue
+            if (box.get_attribute("aria-checked") or "") == "true":
+                continue
+            box.click(timeout=2000, force=True)
+            print("  Clicked reCAPTCHA I'm not a robot.", flush=True)
+            page.wait_for_timeout(1500)
+            return True
         except Exception:
             continue
-    return clicked
+    return False
 
 
 def accept_terms(page) -> int:
@@ -2567,6 +2746,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     _dismiss_native_file_dialog()
     dismiss_overlays(page)
     click_recaptcha_checkbox(page)
+    click_google_account_chooser(page)
     if is_success(page) or simplify_copilot.submitted(page):
         return "submitted"
     recover_wrong_board(page, job)
@@ -2640,6 +2820,8 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     same_fp = 0
     unsticks = 0
     step = ""
+    linkedin_checkpoint_hits = 0
+    linkedin_signup_hits = 0
     while time.time() < deadline:
         try:
             changed = form_memory.remember(page, job) or []
@@ -2647,6 +2829,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         except Exception:
             pass
         click_recaptcha_checkbox(page)
+        click_google_account_chooser(page)
         if captcha_puzzle_visible(page):
             notify_captcha(job, page)
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
@@ -2656,6 +2839,31 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                 "note": "parked for owner to solve later",
                 "learned": learned,
             }
+        try:
+            wall_url = (page.url or "").lower()
+        except Exception:
+            wall_url = ""
+        if "linkedin.com/checkpoint" in wall_url:
+            linkedin_checkpoint_hits += 1
+            if linkedin_checkpoint_hits >= 12:
+                notify_captcha(job, page)
+                print("  LinkedIn security check parked. Opening the next leftover now.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "CAPTCHA",
+                    "note": "parked LinkedIn checkpoint for owner",
+                    "learned": learned,
+                }
+        elif any(x in wall_url for x in ("linkedin.com/signup", "cold-join")):
+            linkedin_signup_hits += 1
+            if linkedin_signup_hits >= 16:
+                print("  LinkedIn Google sign-in did not finish. Next leftover.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "STUCK",
+                    "note": "LinkedIn guest wall — Google chooser not completed",
+                    "learned": learned,
+                }
         try:
             step = fill_and_advance(page, job, resume)
             if step == "submitted" or is_success(page):
@@ -2705,6 +2913,19 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "learned": learned,
                 }
             if unsticks >= 2:
+                try:
+                    loop_url = (page.url or "").lower()
+                except Exception:
+                    loop_url = ""
+                if "linkedin.com/checkpoint" in loop_url:
+                    notify_captcha(job, page)
+                    print("  LinkedIn security check parked. Opening the next leftover now.", flush=True)
+                    return {
+                        "ok": False,
+                        "status": "CAPTCHA",
+                        "note": "parked LinkedIn checkpoint for owner",
+                        "learned": learned,
+                    }
                 print("  Form is looping. Moving to the next leftover now.", flush=True)
                 return {
                     "ok": False,
@@ -2897,8 +3118,11 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 row["status"] = "AUTH_FAILED"
                 row["note"] = "all portal passwords rejected or account locked"
                 row["final_url"] = page.url
-                apply_now.persist_skipped(row, row["note"])
-                print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
+                if not _aggregator_host(url or page.url or ""):
+                    apply_now.persist_skipped(row, row["note"])
+                    print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
+                else:
+                    print("  Job-board login wall. Not marking skipped; next leftover.", flush=True)
                 return row
             if step == "captcha":
                 notify_captcha(job, page)
@@ -3018,13 +3242,13 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
     def board_rank(job: dict) -> int:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
         if "linkedin.com" in u:
-            return 0
-        if "instahyre.com" in u or "cutshort" in u:
-            return 1
-        if "indeed.com" in u:
             return 2
-        if "naukri.com" in u:
+        if "instahyre.com" in u or "cutshort" in u:
+            return 0
+        if "indeed.com" in u:
             return 3
+        if "naukri.com" in u:
+            return 1
         if "foundit.in" in u:
             return 9
         return 5
@@ -3306,6 +3530,15 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 )
                 if amazon_parked and "amazon.jobs" in apply_url:
                     print("  Amazon sign-in already parked. Leaving that tab; skipping this duplicate.", flush=True)
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    continue
+                linkedin_parked = any(
+                    "linkedin.com/checkpoint" in ((p.url or "").lower())
+                    for p in context.pages
+                    if not p.is_closed()
+                )
+                if linkedin_parked and "linkedin.com" in apply_url:
+                    print("  LinkedIn checkpoint already parked. Skipping other LinkedIn leftovers this round.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 for extra in list(context.pages):
