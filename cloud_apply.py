@@ -83,6 +83,7 @@ PHONE = "8790251698"
 LINKEDIN = C["linkedIn"]
 COMPANY = C["currentEmployer"]
 TITLE = C["currentRole"]
+LINKEDIN_OK = False
 
 SUCCESS_RE = re.compile(
     r"thanks for (your )?appl|application (was |has been )?(submitted|received)|"
@@ -101,7 +102,8 @@ LOGIN_RE = re.compile(
 )
 CAPTCHA_RE = re.compile(
     r"captcha|recaptcha|hcaptcha|i.?m not a robot|verify you are human|"
-    r"unusual traffic|are you a robot",
+    r"unusual traffic|are you a robot|drag the shape|security check|"
+    r"let.?s do a quick security check",
     re.I,
 )
 SIMPLIFY_RE = re.compile(r"^unused$", re.I)  # Simplify buttons are used on purpose now.
@@ -559,6 +561,13 @@ def close_overlays(page) -> None:
 
 def is_login_wall(page) -> bool:
     url = (page.url or "").lower()
+    text = body_text(page, 2500)
+    if re.search(r"join linkedin|agree & join|already on linkedin", text, re.I):
+        return True
+    if "linkedin.com/checkpoint" in url or "linkedin.com/signup" in url:
+        return True
+    if "foundit.in" in url and re.search(r"login|register|sign in to apply", text, re.I):
+        return True
     try:
         if page.locator("button:has-text('Easy Apply'), button:has-text('Apply with Simplify'), button:has-text('Apply with LinkedIn')").count():
             return False
@@ -570,7 +579,6 @@ def is_login_wall(page) -> bool:
         return True
     if "/login" in url and "linkedin.com/login" in url:
         return True
-    text = body_text(page, 2500)
     if re.search(r"sign in to apply|join to apply|log in to apply|please sign in to continue", text, re.I):
         if "easy apply" in text.lower() or "apply with simplify" in text.lower():
             return False
@@ -612,13 +620,13 @@ def click_apply_entry(page) -> bool:
         "a:has-text('Apply on company website')",
         "a:has-text('Apply on company site')",
         "button:has-text('Apply on company website')",
-        "a:has-text('Apply for this job')",
         "button:has-text('Apply for this job')",
-        "a:has-text('Apply now')",
+        "a:has-text('Apply for this job')",
         "button:has-text('Apply now')",
-        "button:has-text('I'm interested')",
-        "a:has-text('I'm interested')",
-        "a:has-text('Submit application')",
+        "a:has-text('Apply now')",
+        "button:has-text('Apply')",
+        "a:has-text('Apply')",
+        "input[value='Apply']",
     ]:
         try:
             loc = page.locator(sel).first
@@ -781,6 +789,11 @@ def apply_one(page, job: dict) -> dict:
     if skip:
         persist_skipped(job, skip)
         return {**job, "ok": False, "status": "SKIPPED", "note": skip}
+
+    host = url.lower()
+    if not LINKEDIN_OK and any(h in host for h in ("linkedin.com", "foundit.in", "instahyre.com", "naukri.com")):
+        persist_skipped(job, "login")
+        return {**job, "ok": False, "status": "LOGIN", "note": "board requires login (Google session not available)", "final_url": url}
 
     try:
         job["resume_path"] = tailor_resume.for_job(job)
@@ -950,6 +963,7 @@ def rebuild_pending_queue(jobs: list[dict]) -> None:
 
 
 def main() -> None:
+    global LINKEDIN_OK
     form_memory.seed_from_learned()
     apply_now.C["firstName"] = FIRST
     apply_now.C["lastName"] = LAST
@@ -1003,8 +1017,11 @@ def main() -> None:
         page = context.pages[0] if context.pages else context.new_page()
         try:
             google_ok = login_google(page)
-            linkedin_ok = login_linkedin(page)
+            # LinkedIn email/password trips a security checkpoint from this VM.
+            # Only use LinkedIn after a working Google session (Continue with Google).
+            linkedin_ok = login_linkedin(page) if google_ok else False
             simplify_ok = login_simplify(page) if google_ok else False
+            LINKEDIN_OK = bool(linkedin_ok)
             print(
                 f"  Sessions: google={google_ok} linkedin={linkedin_ok} simplify={simplify_ok}",
                 flush=True,
@@ -1027,6 +1044,11 @@ def main() -> None:
                 except Exception as exc:
                     row = {**job, "ok": False, "status": "ERROR", "note": str(exc)[:300]}
                     persist_skipped(job, str(exc)[:180])
+                if row.get("status") == "LOGIN" and "board requires login" in str(row.get("note") or ""):
+                    attempted -= 1
+                    print(f"  {row.get('status')} {row.get('note')}", flush=True)
+                    results.append(row)
+                    continue
                 results.append(row)
                 if row.get("ok") and row.get("status") == "SUBMITTED":
                     submitted += 1
