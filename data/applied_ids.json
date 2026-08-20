@@ -1596,5 +1596,57 @@
     "url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer,-Software",
     "note": "submitted in headed Chrome (ATS Submit, skipped Copilot overlay)",
     "ts": "2026-08-20T12:19:03.970916+00:00"
+  },
+  "experian|sr engineering manager": {
+    "company": "Experian",
+    "title": "Sr Engineering Manager",
+    "job_id": "61456572",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000141445829-sr-engineering-manager",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-20T12:20:02.459964+00:00"
+  },
+  "61456572": {
+    "company": "Experian",
+    "title": "Sr Engineering Manager",
+    "job_id": "61456572",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000141445829-sr-engineering-manager",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-20T12:20:02.459964+00:00"
+  },
+  "3202138": {
+    "company": "Amazon",
+    "title": "Solution Architect, AGS-APJ-India-ISV-SA",
+    "job_id": "3202138",
+    "url": "https://www.amazon.jobs/en/jobs/3202138",
+    "note": "owner asked to skip Amazon for now",
+    "status": "SKIPPED",
+    "ts": "2026-08-20T15:28:46.851224+00:00"
+  },
+  "amazon|solution architect, ags-apj-india-isv-sa": {
+    "company": "Amazon",
+    "title": "Solution Architect, AGS-APJ-India-ISV-SA",
+    "job_id": "3202138",
+    "url": "https://www.amazon.jobs/en/jobs/3202138",
+    "note": "owner asked to skip Amazon for now",
+    "status": "SKIPPED",
+    "ts": "2026-08-20T15:28:46.851224+00:00"
+  },
+  "3190158": {
+    "company": "Amazon",
+    "title": "Sr. Software Development Engineer, Payroll Tax & Accounting Tech",
+    "job_id": "3190158",
+    "url": "https://www.amazon.jobs/en/jobs/3190158",
+    "note": "owner asked to skip Amazon for now",
+    "status": "SKIPPED",
+    "ts": "2026-08-20T15:28:46.853124+00:00"
+  },
+  "amazon|sr. software development engineer, payroll tax & accounting tech": {
+    "company": "Amazon",
+    "title": "Sr. Software Development Engineer, Payroll Tax & Accounting Tech",
+    "job_id": "3190158",
+    "url": "https://www.amazon.jobs/en/jobs/3190158",
+    "note": "owner asked to skip Amazon for now",
+    "status": "SKIPPED",
+    "ts": "2026-08-20T15:28:46.853124+00:00"
   }
 }
