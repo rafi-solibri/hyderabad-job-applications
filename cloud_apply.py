@@ -1752,7 +1752,10 @@ def record_lesson(job: dict, row: dict, learned: int = 0) -> None:
 
 def on_application_form(page) -> bool:
     url = (page.url or "").lower()
-    if any(x in url for x in ("/apply/email", "/apply", "oneclick-ui", "/application", "stepname=")):
+    # SmartRecruiters listings are not the form until OneClick / publication apply.
+    if "smartrecruiters.com" in url and "oneclick-ui" not in url and "/publication/" not in url:
+        return False
+    if any(x in url for x in ("/apply/email", "/easy-apply", "/apply/section/", "oneclick-ui", "/application", "stepname=")):
         if "indeed.com" not in url:
             return True
     try:
@@ -1763,10 +1766,22 @@ def on_application_form(page) -> bool:
     except Exception:
         pass
     try:
-        if page.locator("input[type=file]").count():
-            return True
-        if page.locator("input[type=email], input[name='email'], input[name='first_name']").count():
-            return True
+        files = page.locator("input[type=file]")
+        for i in range(min(files.count(), 4)):
+            el = files.nth(i)
+            if el.is_visible():
+                return True
+        emails = page.locator("input[type=email], input[name='email'], input[name='first_name']")
+        for i in range(min(emails.count(), 8)):
+            el = emails.nth(i)
+            try:
+                if not el.is_visible():
+                    continue
+                box = el.bounding_box() or {}
+                if (box.get("width") or 0) > 80:
+                    return True
+            except Exception:
+                continue
     except Exception:
         return False
     return False
