@@ -1742,6 +1742,24 @@ def fill_workday_form(page) -> int:
     return filled
 
 
+def icims_auth0_blocked(page) -> bool:
+    """Auth0 /u/login/password rate-limit or Oops page. Do not keep POSTing."""
+    ctx = getattr(page, "context", None)
+    pages = list(ctx.pages) if ctx is not None else [page]
+    for p in pages:
+        try:
+            if p.is_closed():
+                continue
+            if "login.icims.com" not in (p.url or "").lower():
+                continue
+            t = ((p.inner_text("body") or "") + " " + (p.title() or ""))[:2500].lower()
+        except Exception:
+            continue
+        if "rate limit" in t or "oops, something went wrong" in t:
+            return True
+    return False
+
+
 def fill_icims_login(page) -> int:
     """Schwab iCIMS: open Returning candidate login once, then Auth0 email/Continue."""
     global ICIMS_LOGIN_CLICKED
@@ -1751,6 +1769,9 @@ def fill_icims_login(page) -> int:
         url = ""
     # Do not hijack unrelated leftover jobs just because an Auth0 tab is parked.
     if "icims.com" not in url:
+        return 0
+    if icims_auth0_blocked(page):
+        print("  iCIMS Auth0 rate-limited. Not submitting another password.", flush=True)
         return 0
     email = google_auth.EMAIL
     phone = apply_now.C.get("phoneNational") or "8790251698"
@@ -3125,6 +3146,8 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if auth == "failed":
         return "auth_failed"
     fill_icims_login(page)
+    if icims_auth0_blocked(page):
+        return "stuck"
     click_dhl_apply_method(page)
     fill_leftover_dropdowns(page)
     apply_now.set_india_phone(page)
@@ -3198,6 +3221,18 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             page = follow_apply_tab(page)
         except Exception:
             pass
+        try:
+            job_url = (job.get("apply_url") or job.get("url") or "").lower()
+        except Exception:
+            job_url = ""
+        if "icims.com" in job_url and icims_auth0_blocked(page):
+            print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
+            return {
+                "ok": False,
+                "status": "STUCK",
+                "note": "iCIMS Auth0 rate-limited — retry later",
+                "learned": learned,
+            }
         try:
             changed = form_memory.remember(page, job) or []
             learned += len(changed)
