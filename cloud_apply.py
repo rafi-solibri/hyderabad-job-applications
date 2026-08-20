@@ -325,10 +325,8 @@ def click_apply_entry(page) -> bool:
             label = (loc.inner_text() or "")[:80]
             if SIMPLIFY_RE.search(label):
                 continue
-            if re.search(r"easy apply|simplify|tailor resume", label, re.I):
-                # LinkedIn Easy Apply requires login; skip that button.
-                if "easy apply" in label.lower():
-                    continue
+            if re.search(r"easy apply|simplify|tailor resume|apply with linkedin|sign in|log in|authorize sharing", label, re.I):
+                continue
             with page.expect_navigation(timeout=8000, wait_until="domcontentloaded") if "company web" in label.lower() else _null_ctx():
                 loc.click(timeout=1500)
             page.wait_for_timeout(900)
@@ -429,6 +427,8 @@ def click_next_or_submit(page) -> str:
                 continue
             label = (loc.inner_text() or loc.get_attribute("value") or "")[:80]
             if SIMPLIFY_RE.search(label):
+                continue
+            if re.search(r"apply with linkedin|sign in|log in|authorize sharing|tailor resume|resume builder", label, re.I):
                 continue
             loc.click(timeout=1500)
             page.wait_for_timeout(1200)
