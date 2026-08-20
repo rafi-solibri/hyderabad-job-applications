@@ -1142,67 +1142,40 @@ def fill_oracle_form(page, job: dict | None = None) -> int:
     return n
 
 
-WORKDAY_PREVIOUS_NO_JS = """() => {
-  const norm = (s) => String(s || '').replace(/\\s+/g, ' ').trim();
-  const fire = (el) => {
-    if (!el) return false;
-    try { el.scrollIntoView({block: 'center', inline: 'nearest'}); } catch (e) {}
-    try { el.click(); } catch (e) {
-      try { el.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window})); } catch (e2) {}
-    }
-    return true;
-  };
-  const prevRe = /previously worked|previous worker|former employee|worked for (our|this|the) org/i;
-  const idRe = /previousWorker|candidateIsPreviousWorker|previous-worker/i;
-  const roots = [];
-  document.querySelectorAll('[data-automation-id], fieldset, [role="radiogroup"], [role="group"]').forEach((el) => {
-    const id = el.getAttribute('data-automation-id') || '';
-    const t = norm(el.innerText).slice(0, 500);
-    if (idRe.test(id) || prevRe.test(t)) {
-      roots.push(el.closest('[data-automation-id^="formField"]') || el);
-    }
-  });
-  const seen = new Set();
-  for (const root of roots) {
-    if (!root || seen.has(root)) continue;
-    seen.add(root);
-    const nodes = [...root.querySelectorAll('input[type=radio], button, [role=radio], label, span, div')];
-    const no = nodes.find((el) => {
-      const t = norm(el.innerText || el.getAttribute('aria-label') || el.value);
-      const v = String(el.value || '').toLowerCase();
-      const id = el.getAttribute('data-automation-id') || '';
-      if (t.length > 18) return false;
-      return /^(no)$/i.test(t) || v === 'false' || v === 'no'
-        || /previousWorker.*no|selectOne-?no|radio.*no/i.test(id);
-    });
-    if (no && fire(no.closest('label') || no)) return true;
-  }
-  return false;
-}"""
+def _dismiss_native_file_dialog() -> None:
+    """Copilot/Workday sometimes opens a GTK file picker that blocks every click."""
+    try:
+        import subprocess
+        env = os.environ.copy()
+        env.setdefault("DISPLAY", ":1")
+        subprocess.run(["xdotool", "key", "Escape"], env=env, timeout=2, check=False)
+    except Exception:
+        pass
 
 
-def _pick_workday_list_option(page) -> bool:
-    """Pick Career Site, else the first real Workday prompt option (not Select)."""
-    page.wait_for_timeout(350)
-    for sel in (
-        "[data-automation-id='searchBox']",
-        "input[placeholder*='Search' i]",
-        "input[type='search']",
-        "[role='listbox'] input",
-    ):
-        try:
-            box = page.locator(sel).last
-            if box.count() and box.is_visible():
-                box.fill("Career Site")
-                page.wait_for_timeout(450)
-                break
-        except Exception:
-            continue
+def _workday_form_field(page, pattern: str):
+    loc = page.locator("[data-automation-id^='formField-']").filter(
+        has_text=re.compile(pattern, re.I)
+    ).first
+    if loc.count():
+        return loc
+    q = page.get_by_text(re.compile(pattern, re.I)).first
+    if q.count():
+        return q.locator("xpath=ancestor::*[starts-with(@data-automation-id,'formField')][1]")
+    return page.locator("[data-automation-id='__missing__']")
+
+
+def _pick_workday_list_option(page, typed: str = "Career Site") -> bool:
+    """Click a Workday promptOption. Typed text in the search box is not a selection."""
+    page.wait_for_timeout(300)
     preferred = (
+        re.escape(typed) if typed else r"career site",
         r"career site",
         r"company careers? website",
         r"company website",
         r"careers website",
+        r"mobile",
+        r"cell",
         r"job board",
         r"linkedin",
     )
@@ -1236,109 +1209,91 @@ def _pick_workday_list_option(page) -> bool:
             return True
         except Exception:
             continue
-    return False
+    try:
+        page.keyboard.press("ArrowDown")
+        page.wait_for_timeout(120)
+        page.keyboard.press("Enter")
+        page.wait_for_timeout(300)
+        return True
+    except Exception:
+        return False
+
+
+def _workday_select_prompt(page, field, typed: str) -> bool:
+    """Open a Workday prompt/combobox, type, and commit a list option."""
+    try:
+        if not field.count():
+            return False
+        field.scroll_into_view_if_needed(timeout=1500)
+        box = field.locator(
+            "input:not([type=hidden]):not([type=radio]):not([type=checkbox]), "
+            "[role=combobox], [data-automation-id='selectWidget'], button"
+        ).first
+        if not box.count():
+            box = field
+        box.click(timeout=1500, force=True)
+        page.wait_for_timeout(200)
+        try:
+            box.fill("")
+            box.type(typed, delay=35)
+        except Exception:
+            try:
+                page.keyboard.press("Control+a")
+                page.keyboard.type(typed, delay=35)
+            except Exception:
+                pass
+        page.wait_for_timeout(450)
+        return _pick_workday_list_option(page, typed)
+    except Exception:
+        return False
 
 
 def fill_workday_required_questions(page) -> int:
-    """Workday How did you hear + previously-worked stay empty until the widgets are clicked.
+    """Click Workday widgets Copilot cannot fill: how-heard, previously-worked, device type.
 
-    Copilot fills text boxes but Next stays disabled without these two answers.
+    Typed text in a how-heard search box is not a selection — Next stays disabled
+    until a promptOption is clicked. Previously-worked is a Yes/No radio; click
+    the circle to the left of No. Phone Device Type must be Mobile, not the phone number.
     """
-    filled = 0
+    _dismiss_native_file_dialog()
     try:
-        if page.evaluate(WORKDAY_PREVIOUS_NO_JS):
-            filled += 1
-            print("  Workday: previously worked = No.", flush=True)
+        page.keyboard.press("Escape")
     except Exception:
         pass
-    if not filled:
-        try:
-            scope = page.locator(
-                "[data-automation-id*='previousWorker'], "
-                "[data-automation-id*='PreviousWorker'], "
-                "[data-automation-id*='candidateIsPreviousWorker']"
-            ).first
-            if not scope.count():
-                q = page.get_by_text(re.compile(r"previously worked", re.I)).first
-                if q.count():
-                    scope = q.locator(
-                        "xpath=ancestor::*[starts-with(@data-automation-id,'formField')][1]"
-                    )
-            no = scope.get_by_text(re.compile(r"^No$"), exact=True).first
+    filled = 0
+    prev = _workday_form_field(page, r"previously worked")
+    try:
+        if prev.count():
+            no = prev.get_by_role("radio", name=re.compile(r"^No$", re.I)).first
+            if not no.count():
+                no = prev.get_by_text("No", exact=True).first
             if no.count() and no.is_visible():
+                no.scroll_into_view_if_needed(timeout=1500)
+                box = no.bounding_box() or {}
+                x = (box.get("x") or 0) + max((box.get("width") or 8) / 2, 4)
+                y = (box.get("y") or 0) + max((box.get("height") or 8) / 2, 4)
+                # Radio circle sits left of the No label.
+                page.mouse.click(max(x - 16, (box.get("x") or 16) - 14), y)
+                page.wait_for_timeout(120)
                 no.click(timeout=1500, force=True)
                 filled += 1
                 print("  Workday: previously worked = No.", flush=True)
-            else:
-                widget = scope.locator(
-                    "[data-automation-id='selectWidget'], button, [role=combobox]"
-                ).first
-                if widget.count() and widget.is_visible():
-                    cur = (widget.inner_text() or "").strip().lower()
-                    if cur in {"", "select", "select one", "select an option"}:
-                        widget.click(timeout=1500, force=True)
-                        page.wait_for_timeout(300)
-                        no_opt = page.locator(
-                            "[data-automation-id='promptOption'], [role='option']"
-                        ).filter(has_text=re.compile(r"^No$", re.I)).first
-                        if no_opt.count():
-                            no_opt.click(timeout=1500, force=True)
-                            filled += 1
-                            print("  Workday: previously worked = No.", flush=True)
-        except Exception:
-            pass
-    already = False
-    hear_selectors = (
-        "[data-automation-id='source--source']",
-        "[data-automation-id='formField-source'] [data-automation-id='selectWidget']",
-        "[data-automation-id='formField-source'] [role='combobox']",
-        "[data-automation-id='formField-source'] button",
-        "[data-automation-id*='source'] [data-automation-id='selectWidget']",
-        "[aria-label*='How Did You Hear' i]",
-        "[aria-label*='how did you hear' i]",
-    )
-    opened = False
-    for sel in hear_selectors:
-        try:
-            loc = page.locator(sel).first
-            if not loc.count() or not loc.is_visible():
-                continue
-            text = (loc.inner_text() or loc.get_attribute("value") or loc.get_attribute("aria-label") or "").strip()
-            if text and not re.search(r"select|search|choose|^how did you hear", text, re.I) and len(text) > 2:
-                already = True
-                break
-            loc.click(timeout=1500, force=True)
-            opened = True
-            break
-        except Exception:
-            continue
-    if not opened and not already:
-        try:
-            q = page.get_by_text(re.compile(r"How Did You Hear About Us", re.I)).first
-            if q.count():
-                scope = q.locator(
-                    "xpath=ancestor::*[starts-with(@data-automation-id,'formField')][1]"
-                )
-                btn = scope.locator(
-                    "button, [role=combobox], [data-automation-id='selectWidget']"
-                ).first
-                if btn.count() and btn.is_visible():
-                    btn.click(timeout=1500, force=True)
-                    opened = True
-        except Exception:
-            pass
-    if already:
-        filled += 1
-    elif opened and _pick_workday_list_option(page):
+    except Exception:
+        pass
+    hear = _workday_form_field(page, r"how did you hear")
+    if _workday_select_prompt(page, hear, "Company Careers Website"):
         filled += 1
         print("  Workday: how did you hear — selected an option.", flush=True)
-        # Nested source lists (category then site) — pick a leaf if another list opened.
         try:
             extra = page.locator("[data-automation-id='promptOption']").first
             if extra.count() and extra.is_visible():
-                _pick_workday_list_option(page)
+                _pick_workday_list_option(page, "Career Site")
         except Exception:
             pass
+    device = _workday_form_field(page, r"phone device type|device type")
+    if _workday_select_prompt(page, device, "Mobile"):
+        filled += 1
+        print("  Workday: phone device type = Mobile.", flush=True)
     return filled
 
 
@@ -1350,6 +1305,7 @@ def fill_workday_form(page) -> int:
         url = ""
     if "myworkdayjobs.com" not in url and "myworkdaysite.com" not in url:
         return 0
+    _dismiss_native_file_dialog()
     a = form_memory._answers()
     mapping = [
         ("legalNameSection_firstName", a["firstName"]),
@@ -1465,9 +1421,17 @@ def click_dhl_apply_method(page) -> bool:
         url = ""
     if "avature.net" not in url and "careers.dhl.com" not in url:
         return False
+    if "applicationmethods" not in url and "without resume" not in (page_text(page)[:1500].lower()):
+        try:
+            if not page.get_by_text("Upload resume", exact=False).count():
+                return False
+        except Exception:
+            pass
     for name in ("Upload resume", "Without Resume", "Start", "Apply"):
         try:
-            loc = page.get_by_role("button", name=name, exact=True).first
+            loc = page.get_by_role("button", name=name, exact=False).first
+            if not loc.count():
+                loc = page.get_by_role("link", name=name, exact=False).first
             if not loc.count():
                 loc = page.get_by_text(name, exact=True).first
             if loc.count() and loc.is_visible():
@@ -2389,6 +2353,7 @@ def adopt_newest_page(page, before_ids: set[int] | None = None):
 
 def fill_and_advance(page, job: dict, resume: str) -> str:
     """Fill Copilot + memory and click Next/Submit. Returns submitted|clicked|none."""
+    _dismiss_native_file_dialog()
     dismiss_overlays(page)
     if is_success(page) or simplify_copilot.submitted(page):
         return "submitted"

@@ -243,6 +243,10 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         scored.sort(reverse=True)
         return scored[0][2]
 
+    if "salutation" in q:
+        return pick("mr", "mr.") or "Mr."
+    if "preferred language" in q or "language for communication" in q:
+        return pick("english") or "English"
     if "united states" in q or "u.s." in q or "us citizen" in q:
         if "authoriz" in q or "eligible" in q or "right to work" in q:
             return pick("no") or "No"
@@ -382,6 +386,8 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return a["lastName"]
     if "full name" in q or q.strip() in {"name", "name *", "name ✱"}:
         return a["fullName"]
+    if "device type" in q or "phone type" in q or "phone device" in q:
+        return pick("mobile", "cell") or "Mobile"
     if "email" in q:
         return a["email"]
     if "phone" in q or "mobile" in q:
