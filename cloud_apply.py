@@ -1499,13 +1499,14 @@ def click_dhl_apply_method(page) -> bool:
         url = ""
     if "avature.net" not in url and "careers.dhl.com" not in url:
         return False
-    if "applicationmethods" not in url and "without resume" not in (page_text(page)[:1500].lower()):
+    # Only the method-picker page. "Start" on later steps is a progress tab, not Apply.
+    if "applicationmethods" not in url:
         try:
-            if not page.get_by_text("Upload resume", exact=False).count():
+            if not page.get_by_text("Upload resume", exact=True).count():
                 return False
         except Exception:
-            pass
-    for name in ("Upload resume", "Without Resume", "Start", "Apply"):
+            return False
+    for name in ("Upload resume", "Without Resume"):
         try:
             loc = page.get_by_role("button", name=name, exact=False).first
             if not loc.count():
@@ -1520,6 +1521,34 @@ def click_dhl_apply_method(page) -> bool:
         except Exception:
             continue
     return False
+
+
+def fill_leftover_dropdowns(page) -> int:
+    """Salutation / preferred language / similar selects Copilot leaves on 'Select an option'."""
+    filled = 0
+    pairs = (
+        (r"salutation", "Mr"),
+        (r"preferred language", "English"),
+        (r"how did you hear", "Career"),
+    )
+    for pat, value in pairs:
+        try:
+            lab = page.get_by_text(re.compile(pat, re.I)).first
+            if not lab.count() or not lab.is_visible():
+                continue
+            box = page.get_by_label(re.compile(pat, re.I)).first
+            if not box.count():
+                box = lab.locator(
+                    "xpath=ancestor::*[self::div or self::li or self::fieldset][1]"
+                ).locator("select, [role=combobox], button, [class*='select']").first
+            if not box.count():
+                continue
+            if ats_fill.handle_dropdown(page, box, value):
+                filled += 1
+                print(f"  Selected '{value}' for {pat}.", flush=True)
+        except Exception:
+            continue
+    return filled
 
 
 def click_next_or_submit(page) -> str:
@@ -2446,6 +2475,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         return "auth_failed"
     fill_icims_login(page)
     click_dhl_apply_method(page)
+    fill_leftover_dropdowns(page)
     apply_now.set_india_phone(page)
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
