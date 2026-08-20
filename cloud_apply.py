@@ -533,8 +533,60 @@ def _click_sign_in_with_email(page) -> None:
         pass
 
 
+def _aggregator_host(url: str) -> bool:
+    host = _host(url)
+    return any(
+        host == h or host.endswith("." + h)
+        for h in (
+            "linkedin.com", "naukri.com", "indeed.com", "foundit.in",
+            "instahyre.com", "cutshort.io", "cutshort.com",
+        )
+    )
+
+
+def try_board_google_signin(page) -> str:
+    """LinkedIn/Naukri guest walls: use the already-open Google session, not portal passwords."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if not _aggregator_host(url):
+        return "skip"
+    if not any(x in url for x in ("/signup", "/login", "/uas/login", "cold-join", "auth", "checkpoint")):
+        try:
+            if not page.get_by_role("button", name=re.compile(r"google", re.I)).count():
+                return "skip"
+        except Exception:
+            return "skip"
+    for name in (
+        "Continue with Google",
+        "Sign in with Google",
+        "Sign in using Google",
+        "Google",
+    ):
+        try:
+            loc = page.get_by_role("button", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
+            if not loc.count():
+                loc = page.get_by_text(re.compile(name, re.I)).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=2500)
+                print(f"  Clicked '{name}' on the job board.", flush=True)
+                page.wait_for_timeout(2500)
+                return "ok"
+        except Exception:
+            continue
+    return "skip"
+
+
 def try_portal_auth(page) -> str:
     """Sign In with each portal password. Create Account only if no account exists. Never log secrets."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if _aggregator_host(url):
+        try_board_google_signin(page)
+        return "skip"
     _click_sign_in_with_email(page)
     if not on_account_gate(page):
         return fill_portal_account(page)
@@ -2436,9 +2488,13 @@ def accept_terms(page) -> int:
     return n
 
 
-def recover_wrong_board(page) -> bool:
-    """Leave Indeed/LinkedIn apply intercepts and return to the company form."""
+def recover_wrong_board(page, job: dict | None = None) -> bool:
+    """Leave Indeed/LinkedIn intercepts on company-portal applies. Stay on aggregator Easy Apply."""
+    if job and apply_now.is_aggregator_board(job):
+        return False
     url = (page.url or "").lower()
+    if job and _aggregator_host(job.get("apply_url") or job.get("url") or ""):
+        return False
     if "indeed.com" in url or "linkedin.com/jobs" in url:
         print(f"  Left aggregator intercept {url[:80]}", flush=True)
         try:
@@ -2482,7 +2538,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     dismiss_overlays(page)
     if is_success(page) or simplify_copilot.submitted(page):
         return "submitted"
-    recover_wrong_board(page)
+    recover_wrong_board(page, job)
     cancel_incomplete_editors(page)
     copilot_start = simplify_copilot.start_application(page)
     if copilot_start:
@@ -2630,7 +2686,13 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             if stuck_required >= 2 and not notified_input:
                 notify_needs_input(job, page, req)
                 notified_input = True
-            # Owner is away — do not sit on leftover fields. Keep filling until stay expires.
+                print("  Owner is away. Leftover fields remain — next job.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "STUCK",
+                    "note": "leftover fields; owner sleeping — next job",
+                    "learned": learned,
+                }
         else:
             stuck_required = 0
         page.wait_for_timeout(1200)
@@ -2694,7 +2756,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         last_url = page.url
         same_url_hits = 0
         for _ in range(6):
-            recover_wrong_board(page)
+            recover_wrong_board(page, job)
             dismiss_overlays(page)
             if is_success(page):
                 row["ok"] = True
@@ -2723,7 +2785,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 last_url = page.url
             if not hit or same_url_hits >= 3:
                 break
-        recover_wrong_board(page)
+        recover_wrong_board(page, job)
         if is_success(page):
             row["ok"] = True
             row["status"] = "SUBMITTED"
@@ -2737,8 +2799,11 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             row["status"] = "AUTH_FAILED"
             row["note"] = "all portal passwords rejected or account locked"
             row["final_url"] = page.url
-            apply_now.persist_skipped(row, row["note"])
-            print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
+            if not _aggregator_host(url or page.url or ""):
+                apply_now.persist_skipped(row, row["note"])
+                print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
+            else:
+                print("  Job-board login wall. Not marking skipped; next leftover.", flush=True)
             return row
         try:
             u = (page.url or "").lower()
@@ -2765,7 +2830,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         step = ""
         for _ in range(6):
             dismiss_overlays(page)
-            recover_wrong_board(page)
+            recover_wrong_board(page, job)
             if is_success(page) or simplify_copilot.submitted(page):
                 row["ok"] = True
                 row["status"] = "SUBMITTED"
@@ -2846,8 +2911,9 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         except Exception:
             pass
         if row.get("status") == "AUTH_FAILED":
-            apply_now.persist_skipped(row, row.get("note") or "all portal passwords rejected or account locked")
-            print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
+            if not _aggregator_host(url or row.get("final_url") or ""):
+                apply_now.persist_skipped(row, row.get("note") or "all portal passwords rejected or account locked")
+                print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
         record_lesson(job, row, learned)
         return row
     except Exception as exc:
@@ -2899,6 +2965,22 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
             career.append(job)
         else:
             boards.append(job)
+
+    def board_rank(job: dict) -> int:
+        u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
+        if "naukri.com" in u:
+            return 0
+        if "foundit.in" in u:
+            return 1
+        if "instahyre.com" in u or "cutshort" in u:
+            return 2
+        if "indeed.com" in u:
+            return 3
+        if "linkedin.com" in u:
+            return 4
+        return 5
+
+    boards.sort(key=board_rank)
     out: list[dict] = []
     b = c = 0
     while len(out) < (limit or 10**9) and (b < len(boards) or c < len(career)):
@@ -3192,7 +3274,8 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     print("  Posting closed. Closing this tab and moving to the next application.", flush=True)
                     close_apply_page(page)
                 elif row.get("status") == "AUTH_FAILED":
-                    if not apply_now.is_applied(row):
+                    u = row.get("apply_url") or row.get("url") or row.get("final_url") or ""
+                    if not apply_now.is_applied(row) and not _aggregator_host(u):
                         apply_now.persist_skipped(row, row.get("note") or "all portal passwords rejected or account locked")
                     print("  Portal login failed. Closing this tab and opening the next leftover.", flush=True)
                     close_apply_page(page)
@@ -3236,7 +3319,47 @@ if __name__ == "__main__":
         help="Seconds to wait for human CAPTCHA/login/submit. 0 skips blocked jobs (cron default).",
     )
     parser.add_argument("--limit", type=int, default=80)
+    parser.add_argument(
+        "--until-submitted",
+        type=int,
+        default=0,
+        help="Keep applying until this many NEW submits are logged (overnight).",
+    )
     args = parser.parse_args()
     # Headed: wait for human CAPTCHA. Unattended cron can pass --wait 0.
     wait = (360 if args.headed else 0) if args.wait is None else args.wait
-    main(limit=args.limit, headed=args.headed, wait_seconds=wait)
+    if args.until_submitted:
+        def _submitted_n() -> int:
+            if not SUBMITTED_LOG.exists():
+                return 0
+            return sum(
+                1
+                for line in SUBMITTED_LOG.read_text(encoding="utf-8").splitlines()
+                if line.startswith("- **") and "SUBMITTED" in line
+            )
+
+        start = _submitted_n()
+        goal = start + args.until_submitted
+        print(
+            f"Overnight apply until {args.until_submitted} new submits "
+            f"(now {start}, goal {goal}).",
+            flush=True,
+        )
+        idle = 0
+        while _submitted_n() < goal:
+            before = _submitted_n()
+            SESSION_SKIP_KEYS.clear()
+            main(limit=args.limit, headed=args.headed, wait_seconds=wait)
+            after = _submitted_n()
+            if after <= before:
+                idle += 1
+                print(f"  No new submit this round ({idle}). Continuing.", flush=True)
+                if idle >= 8:
+                    print("  Several empty rounds. Still looping leftover jobs.", flush=True)
+                    idle = 0
+            else:
+                idle = 0
+            print(f"  Submitted so far: {after - start} new / {after} total.", flush=True)
+            time.sleep(2)
+    else:
+        main(limit=args.limit, headed=args.headed, wait_seconds=wait)
