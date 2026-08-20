@@ -2726,9 +2726,26 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
     try:
         if navigate:
             page.goto(url, wait_until="domcontentloaded", timeout=35000)
-            page.wait_for_timeout(1800)
+            page.wait_for_timeout(800)
         else:
             page.wait_for_timeout(400)
+        title0 = ""
+        try:
+            title0 = page.title() or ""
+        except Exception:
+            title0 = ""
+        blob0 = page_text(page)[:2000]
+        if re.search(
+            r"access denied|don't have permission to access|errors\.edgesuite\.net",
+            title0 + " " + blob0,
+            re.I,
+        ):
+            row["status"] = "CLOSED"
+            row["final_url"] = page.url
+            row["note"] = "board blocked this environment (access denied)"
+            apply_now.persist_skipped(row, row["note"])
+            print("  Board blocked this environment. Next leftover.", flush=True)
+            return row
         dismiss_overlays(page)
         copilot_start = simplify_copilot.start_application(page)
         if copilot_start:
@@ -2968,16 +2985,16 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
 
     def board_rank(job: dict) -> int:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
-        if "naukri.com" in u:
-            return 0
-        if "foundit.in" in u:
-            return 1
-        if "instahyre.com" in u or "cutshort" in u:
-            return 2
-        if "indeed.com" in u:
-            return 3
         if "linkedin.com" in u:
-            return 4
+            return 0
+        if "instahyre.com" in u or "cutshort" in u:
+            return 1
+        if "indeed.com" in u:
+            return 2
+        if "naukri.com" in u:
+            return 3
+        if "foundit.in" in u:
+            return 9
         return 5
 
     boards.sort(key=board_rank)
