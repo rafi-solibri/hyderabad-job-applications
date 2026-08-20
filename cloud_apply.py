@@ -436,6 +436,51 @@ def notify_captcha(job: dict, page) -> None:
     path.write_text(prev + line, encoding="utf-8")
 
 
+def required_field_issues(page) -> list[str]:
+    """Visible required-field messages the owner may need to complete."""
+    try:
+        blob = page_text(page)
+    except Exception:
+        return []
+    out: list[str] = []
+    for raw in blob.splitlines():
+        line = re.sub(r"\s+", " ", raw).strip()
+        if re.search(r"this information is required|is required \(|no results were found", line, re.I):
+            if 12 < len(line) < 220 and line not in out:
+                out.append(line)
+    return out[:12]
+
+
+def notify_needs_input(job: dict, page, fields: list[str] | None = None) -> None:
+    """Tell the owner in the agent log that leftover fields need them."""
+    company = job.get("company") or ""
+    title = job.get("title") or ""
+    url = ""
+    try:
+        url = page.url
+    except Exception:
+        url = job.get("apply_url") or ""
+    fields = fields or required_field_issues(page)
+    bullets = "\n".join(f"  - {f}" for f in fields) or "  - leftover required fields on this page"
+    banner = (
+        f"\n{'!' * 72}\n"
+        f"  NEED YOUR INPUT — enter the leftover fields in Desktop / Take control\n"
+        f"  {company}: {title}\n"
+        f"  {url}\n"
+        f"{bullets}\n"
+        f"  After you fill them I will continue this same application.\n"
+        f"{'!' * 72}\n"
+    )
+    print(banner, flush=True)
+    path = ROOT / "data" / "applications" / "NEED_INPUT.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    line = f"- **NEED INPUT** {company} — {title}\n  {url}\n" + "".join(f"  - {f}\n" for f in fields)
+    prev = path.read_text(encoding="utf-8") if path.exists() else "# Fields that need the owner\n\n"
+    if url and url in prev and "NEED INPUT" in prev:
+        return
+    path.write_text(prev + line + "\n", encoding="utf-8")
+
+
 def notify_submitted(job: dict, row: dict) -> None:
     """Print a clear submit notice and append it so this chat can report it."""
     company = job.get("company") or row.get("company") or ""
@@ -656,6 +701,8 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     deadline = time.time() + seconds
     learned = 0
     notified_captcha = False
+    notified_input = False
+    stuck_required = 0
     while time.time() < deadline:
         try:
             changed = form_memory.remember(page, job) or []
@@ -692,6 +739,15 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                 continue
         except Exception:
             pass
+        req = required_field_issues(page)
+        if req:
+            stuck_required += 1
+            if stuck_required >= 2 and not notified_input:
+                notify_needs_input(job, page, req)
+                notified_input = True
+            deadline = max(deadline, time.time() + 90)
+        else:
+            stuck_required = 0
         page.wait_for_timeout(2000)
     print(f"  Still no confirmation after {seconds}s. Learned {learned} field(s).", flush=True)
     return {

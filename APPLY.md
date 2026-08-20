@@ -21,7 +21,11 @@ path.
    immediately (company, title, URL, what to solve). Leave Chrome on that tab
    and wait. The owner will solve it in **Desktop / Take control**. Do not skip
    the job. After it is solved, keep filling this same application and submit.
-5. **One application at a time.** Open a single job tab. Do not open another until
+5. After filling everything the runner can, if leftover fields still need a
+   human (**notify in this agent chat**): list the fields, leave Chrome on that
+   tab, and wait. Same for identity codes if Gmail is already open — otherwise
+   ask the owner. Do not silently sit on a blocked form.
+6. **One application at a time.** Open a single job tab. Do not open another until
    that application is **SUBMITTED**. Then close the tab and move to the next.
    Closed/404 postings are the only exception (nothing to submit).
 
