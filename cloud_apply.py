@@ -49,6 +49,8 @@ SESSION_SKIP_KEYS: set[str] = set()
 LINKEDIN_RESTRICTED = False
 LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-08-22"
 _RECAPTCHA_CLICKS = 0
+ICIMS_LOGIN_CLICKED = False
+ICIMS_CONTINUE_CLICKS = 0
 
 # These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
@@ -485,6 +487,10 @@ def fill_portal_account(page, password: str | None = None) -> str:
                 f"  Filled iframe account fields (email={int(filled_email)} password_boxes={filled_pw}).",
                 flush=True,
             )
+            # iCIMS Auth0 / Returning candidate login is owned by fill_icims_login.
+            # Clicking Log in / Continue here opens extra login.icims.com tabs.
+            if "icims.com" in url:
+                return "ok"
             try:
                 fl.get_by_role("button", name=re.compile(r"sign in|log in|continue", re.I)).first.click(timeout=2500)
             except Exception:
@@ -1726,29 +1732,39 @@ def fill_workday_form(page) -> int:
 
 
 def fill_icims_login(page) -> int:
-    """Schwab iCIMS login is email+phone in icims_content_iframe, not a password box."""
+    """Schwab iCIMS: open Returning candidate login once, then Auth0 email/Continue."""
+    global ICIMS_LOGIN_CLICKED
     try:
         url = (page.url or "").lower()
     except Exception:
         url = ""
+    # Do not hijack unrelated leftover jobs just because an Auth0 tab is parked.
     if "icims.com" not in url:
         return 0
     email = google_auth.EMAIL
     phone = apply_now.C.get("phoneNational") or "8790251698"
     filled = 0
-    for name in ("Returning candidate login", "Log in >", "Log in"):
-        try:
-            loc = page.get_by_role("link", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
-            if not loc.count():
-                loc = page.get_by_text(re.compile(rf"^{re.escape(name)}$", re.I)).first
-            if loc.count() and loc.is_visible():
-                loc.click(timeout=2000)
-                print(f"  Clicked iCIMS '{name}'.", flush=True)
-                page.wait_for_timeout(1600)
-                filled += 1
-                break
-        except Exception:
-            continue
+    filled += _fill_icims_universal_login(page)
+    if ICIMS_LOGIN_CLICKED:
+        return filled
+    if "login.icims.com" not in url:
+        for name in ("Returning candidate login", "Log in >"):
+            try:
+                loc = page.get_by_role("link", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
+                if not loc.count():
+                    loc = page.get_by_text(re.compile(rf"^{re.escape(name)}$", re.I)).first
+                if loc.count() and loc.is_visible():
+                    loc.click(timeout=2000)
+                    print(f"  Clicked iCIMS '{name}'.", flush=True)
+                    ICIMS_LOGIN_CLICKED = True
+                    page.wait_for_timeout(2000)
+                    filled += 1
+                    break
+            except Exception:
+                continue
+    filled += _fill_icims_universal_login(page)
+    if filled:
+        return filled
     try:
         fr = page.frame_locator(
             "iframe[name='icims_content_iframe'], iframe#icims_content_iframe, iframe"
@@ -1762,16 +1778,110 @@ def fill_icims_login(page) -> int:
             ph.fill(str(phone), timeout=2500)
             filled += 1
         btn = fr.locator("#enterEmailSubmitButton").first
-        if btn.count():
+        if btn.count() and not ICIMS_LOGIN_CLICKED:
             btn.click(timeout=2500)
             print("  Clicked iCIMS email continue.", flush=True)
             page.wait_for_timeout(1500)
             filled += 1
     except Exception:
-        return filled
+        pass
     if filled:
         print(f"  Filled {filled} iCIMS login control(s).", flush=True)
     return filled
+
+
+def _prune_icims_login_tabs(page) -> None:
+    """Keep one Auth0 identifier tab. Extra Returning-candidate clicks used to open many."""
+    ctx = getattr(page, "context", None)
+    if ctx is None:
+        return
+    tabs = []
+    for p in list(ctx.pages):
+        try:
+            if p.is_closed():
+                continue
+            if "login.icims.com" in (p.url or "").lower():
+                tabs.append(p)
+        except Exception:
+            continue
+    for extra in tabs[:-1]:
+        try:
+            extra.close()
+        except Exception:
+            continue
+
+
+def _fill_icims_universal_login(page) -> int:
+    """Fill username/email + Continue on login.icims.com Auth0. Never log secrets."""
+    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS
+    email = google_auth.EMAIL
+    filled = 0
+    _prune_icims_login_tabs(page)
+    ctx = getattr(page, "context", None)
+    pages = list(ctx.pages) if ctx is not None else [page]
+    for p in pages:
+        try:
+            if p.is_closed():
+                continue
+            u = (p.url or "").lower()
+        except Exception:
+            continue
+        if "login.icims.com" not in u:
+            continue
+        ICIMS_LOGIN_CLICKED = True
+        try:
+            p.bring_to_front()
+        except Exception:
+            pass
+        for sel in (
+            "input[name='username']",
+            "input[name='email']",
+            "input[type=email]",
+            "#username",
+            "input[autocomplete='username']",
+        ):
+            try:
+                loc = p.locator(sel).first
+                if loc.count() and loc.is_visible():
+                    loc.fill(email, timeout=2500)
+                    filled += 1
+                    print("  Filled iCIMS username/email.", flush=True)
+                    break
+            except Exception:
+                continue
+        pw_visible = False
+        try:
+            pw = p.locator("input[type=password]").first
+            pw_visible = bool(pw.count() and pw.is_visible())
+        except Exception:
+            pw_visible = False
+        if not pw_visible and ICIMS_CONTINUE_CLICKS < 2:
+            try:
+                btn = p.get_by_role("button", name=re.compile(r"^continue$", re.I)).first
+                if btn.count() and btn.is_visible():
+                    btn.click(timeout=2500)
+                    ICIMS_CONTINUE_CLICKS += 1
+                    print("  Clicked iCIMS Continue.", flush=True)
+                    p.wait_for_timeout(2000)
+                    filled += 1
+            except Exception:
+                pass
+        passwords = google_auth.load_portal_passwords()
+        if passwords:
+            try:
+                pw = p.locator("input[type=password]").first
+                if pw.count() and pw.is_visible():
+                    pw.fill(passwords[0], timeout=2500)
+                    nxt = p.get_by_role("button", name=re.compile(r"^(continue|log in|sign in)$", re.I)).first
+                    if nxt.count() and nxt.is_visible():
+                        nxt.click(timeout=2500)
+                    print("  Submitted iCIMS password.", flush=True)
+                    p.wait_for_timeout(2000)
+                    filled += 1
+            except Exception:
+                pass
+        return filled
+    return 0
 
 
 def click_dhl_apply_method(page) -> bool:
@@ -1868,6 +1978,18 @@ def click_next_or_submit(page) -> str:
     dismiss_overlays(page)
     if is_success(page):
         return "submitted"
+    try:
+        nav_url = (page.url or "").lower()
+    except Exception:
+        nav_url = ""
+    # Auth0 Continue / Schwab Log in are owned by fill_icims_login. Generic Continue
+    # here reopened extra identifier tabs and never reached the password step.
+    if "login.icims.com" in nav_url or (
+        "icims.com" in nav_url and "/login" in nav_url and ICIMS_LOGIN_CLICKED
+    ):
+        if fill_icims_login(page):
+            return "clicked"
+        return "none"
     # Real ATS Submit, not Copilot #proxy-submit-button (Phenom review stays put otherwise).
     if ats_fill.click_ats_submit(page):
         for _ in range(6):
@@ -3169,6 +3291,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
 
 
 def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = True) -> dict:
+    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
     kind = classify_url(url, job, allow_aggregators=allow_aggregators)
     row = {
@@ -3189,6 +3312,9 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         apply_now.persist_skipped(row, row["note"])
         print("  Foundit is blocked in this environment. Next leftover.", flush=True)
         return row
+    if "icims.com" not in (url or "").lower():
+        ICIMS_LOGIN_CLICKED = False
+        ICIMS_CONTINUE_CLICKS = 0
 
     resume = job.get("resume_path") or RESUME
     learned = 0
@@ -3610,6 +3736,8 @@ def _keep_tab(url: str) -> bool:
         return True
     if any(x in u for x in ("www.google.com", "mail.google.com", "accounts.google.com")):
         return True
+    if "login.icims.com" in u:
+        return True
     if "passport.amazon.jobs" in u or u.rstrip("/").endswith("passport.amazon.jobs"):
         return True
     for parked in PARKED_CAPTCHA_URLS:
@@ -3692,8 +3820,14 @@ def persist_existing_closed() -> None:
     except Exception:
         return
     for row in rows:
-        if row.get("status") in {"CLOSED", "AUTH_FAILED"} and not apply_now.is_applied(row):
-            apply_now.persist_skipped(row, row.get("note") or "closed posting — cannot submit")
+        if row.get("status") not in {"CLOSED", "AUTH_FAILED"}:
+            continue
+        if apply_now.is_applied(row):
+            continue
+        u = row.get("apply_url") or row.get("url") or row.get("final_url") or ""
+        if row.get("status") == "AUTH_FAILED" and _aggregator_host(u):
+            continue
+        apply_now.persist_skipped(row, row.get("note") or "closed posting — cannot submit")
 
 
 def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
