@@ -110,13 +110,9 @@ def wait_captcha_or_submit(page, job: dict, seconds: int = 300) -> dict:
             pass
         if cloud_apply.is_success(page):
             return {"ok": True, "status": "SUBMITTED", "note": "submitted after human captcha/login"}
+        # Do not fill_visible here — it resets dropdowns while a human is on CAPTCHA.
         if not captcha_visible(page):
             try_login(page)
-            try:
-                cloud_apply.fill_identity(page)
-                form_memory.fill_visible(page)
-            except Exception:
-                pass
             if cloud_apply.is_success(page):
                 return {"ok": True, "status": "SUBMITTED", "note": "submitted after captcha cleared"}
         page.wait_for_timeout(3000)
@@ -185,8 +181,15 @@ def main() -> None:
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
     queue = apply_now.queue()
-    try_jobs, _ = cloud_apply.public_queue(queue)
-    print(f"Session driver: {len(try_jobs)} public ATS jobs. Chrome stays open.", flush=True)
+    try_jobs = []
+    for job in queue:
+        url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
+        if not url.startswith("http"):
+            continue
+        job = dict(job)
+        job["apply_url"] = url
+        try_jobs.append(job)
+    print(f"Session driver: {len(try_jobs)} queued jobs (no company skips). Chrome stays open.", flush=True)
     pw = sync_playwright().start()
     browser = pw.chromium.connect_over_cdp(CDP)
     page = browser.contexts[0].pages[0]
@@ -211,7 +214,7 @@ def main() -> None:
         seen.add(k)
         jobs.append(j)
 
-    for i, job in enumerate(jobs[:10], 1):
+    for i, job in enumerate(jobs[:8], 1):
         url = job.get("apply_url") or apply_now.apply_url(job)
         print(f"\n[{i}] {job.get('company')}: {job.get('title')}", flush=True)
         if url and url.split("?")[0].rstrip("/") not in (page.url or "").split("?")[0]:
@@ -221,16 +224,15 @@ def main() -> None:
         persist(row)
         print(f"  {row.get('status')} ok={row.get('ok')} {row.get('final_url')}", flush=True)
         if not row.get("ok"):
-            print("  Staying on this job until it is submitted or you skip it.", flush=True)
-            # keep waiting a bit more rather than abandoning
-            extra = wait_captcha_or_submit(page, job, 180)
+            print("  Waiting on this company (no skip). Solve CAPTCHA/login if needed.", flush=True)
+            extra = wait_captcha_or_submit(page, job, 300)
             if extra.get("ok"):
                 row.update(extra)
                 row["final_url"] = page.url
                 persist(row)
                 print("  submitted after extra wait", flush=True)
             else:
-                print("  still blocked; moving to next public ATS job", flush=True)
+                print("  still blocked on this company; leaving tab open and continuing so more companies get a try", flush=True)
         time.sleep(1)
 
     print("Session driver finished. Chrome is still open.", flush=True)

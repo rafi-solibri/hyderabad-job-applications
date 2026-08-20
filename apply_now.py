@@ -161,15 +161,9 @@ def company_out_of_scope(name: str) -> bool:
 
 
 def out_of_scope(job: dict) -> bool:
-    """Skip roles/companies the candidate does not want, even if discovery kept them."""
+    """Title filters only. Do not skip companies."""
     title = job.get("title") or ""
-    company = job.get("company") or ""
-    url = f"{job.get('url') or ''} {job.get('apply_url') or ''}".lower()
-    if company_out_of_scope(company):
-        return True
     if SKIP_TITLE_SCOPE.search(title):
-        return True
-    if "salesforce.wd" in url or "careers.salesforce" in url:
         return True
     if re.search(r"\b(ai|gen ai|machine learning)\b", title, re.I) and not re.search(
         r"\.net|dotnet|c#", title, re.I
@@ -796,7 +790,7 @@ def queue() -> list[dict]:
         company = company_key(job.get("company"))
         if is_applied(job) or jid in skipped_ids:
             continue
-        if out_of_scope(job) or company_out_of_scope(job.get("company") or ""):
+        if out_of_scope(job):
             continue
         title = (job.get("title") or "").lower()
         if re.search(

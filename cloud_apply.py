@@ -65,12 +65,8 @@ def _host(url: str) -> str:
 
 
 def classify_url(url: str) -> str:
-    host = _host(url)
-    if any(host == h or host.endswith("." + h) for h in LOGIN_HOSTS):
-        return "LOGIN_BLOCKED"
-    if any(h in host for h in PUBLIC_HOST_HINTS):
-        return "TRY"
-    if host:
+    """Never skip a company by host. Login/CAPTCHA are handled on the page."""
+    if (url or "").startswith("http"):
         return "TRY"
     return "LOGIN_BLOCKED"
 
@@ -175,7 +171,8 @@ def click_apply_gate(page) -> None:
     for sel in (
         "a:has-text('Apply for this job')",
         "button:has-text('Apply for this job')",
-        "a:has-text('Apply now')",
+        "button:has-text('Easy Apply')",
+        "button:has-text('Apply on company website')",
         "button:has-text('Apply now')",
         "a:has-text('Apply Now')",
         "button:has-text('Apply Now')",
