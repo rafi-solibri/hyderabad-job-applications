@@ -619,9 +619,11 @@ def try_board_google_signin(page) -> str:
         return "ok"
     if _google_chooser_pages(page):
         return "ok"
-    if not any(x in url for x in ("/signup", "/login", "/uas/login", "cold-join", "auth", "checkpoint")):
+    if not any(x in url for x in ("/signup", "/login", "/uas/login", "cold-join", "auth", "checkpoint", "/register")):
         try:
-            if not page.get_by_role("button", name=re.compile(r"google", re.I)).count():
+            n = page.get_by_role("button", name=re.compile(r"google", re.I)).count()
+            n += page.get_by_role("link", name=re.compile(r"google", re.I)).count()
+            if not n:
                 return "skip"
         except Exception:
             return "skip"
@@ -634,22 +636,23 @@ def try_board_google_signin(page) -> str:
         "Sign in using Google",
         "Google",
     ):
-        try:
-            loc = page.get_by_role("button", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
-            if not loc.count():
-                loc = page.get_by_text(re.compile(name, re.I)).first
-            if loc.count() and loc.is_visible():
-                loc.click(timeout=2500)
-                print(f"  Clicked '{name}' on the job board.", flush=True)
-                try:
-                    page._google_signin_clicked = True
-                except Exception:
-                    pass
-                page.wait_for_timeout(2800)
-                click_google_account_chooser(page)
-                return "ok"
-        except Exception:
-            continue
+        for role in ("button", "link"):
+            try:
+                loc = page.get_by_role(role, name=re.compile(rf"{re.escape(name)}", re.I)).first
+                if not loc.count():
+                    loc = page.get_by_text(re.compile(name, re.I)).first
+                if loc.count() and loc.is_visible():
+                    loc.click(timeout=2500)
+                    print(f"  Clicked '{name}' on the job board.", flush=True)
+                    try:
+                        page._google_signin_clicked = True
+                    except Exception:
+                        pass
+                    page.wait_for_timeout(2800)
+                    click_google_account_chooser(page)
+                    return "ok"
+            except Exception:
+                continue
     return "skip"
 
 
