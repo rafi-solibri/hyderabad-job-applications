@@ -1166,47 +1166,61 @@ def _workday_form_field(page, pattern: str):
 
 
 def _pick_workday_list_option(page, typed: str = "Career Site") -> bool:
-    """Click a Workday promptOption. Typed text in the search box is not a selection."""
+    """Click a Workday promptOption, including nested source lists (category → site)."""
     page.wait_for_timeout(300)
-    preferred = (
-        re.escape(typed) if typed else r"career site",
-        r"career site",
-        r"company careers? website",
-        r"company website",
-        r"careers website",
-        r"mobile",
-        r"cell",
-        r"job board",
-        r"linkedin",
-    )
-    opts = page.locator("[data-automation-id='promptOption']")
-    if not opts.count():
-        opts = page.locator("[role='option']")
-    for pat in preferred:
-        try:
-            hit = opts.filter(has_text=re.compile(pat, re.I)).first
-            if hit.count():
-                hit.click(timeout=1500, force=True)
-                page.wait_for_timeout(350)
-                return True
-        except Exception:
-            continue
-    skip = {"", "select", "select one", "select an option", "search", "no options"}
-    try:
-        n = min(opts.count(), 20)
-    except Exception:
-        n = 0
-    for i in range(n):
-        try:
-            opt = opts.nth(i)
-            text = (opt.inner_text() or "").strip()
-            if text.lower() in skip or len(text) > 80:
+    picked = False
+    for _ in range(4):
+        opts = page.locator("[data-automation-id='promptOption']")
+        if not opts.count():
+            opts = page.locator("[role='option']")
+        if not opts.count():
+            break
+        preferred = (
+            r"^naukri$",
+            r"^iimjobs$",
+            r"^linkedin$",
+            r"career site",
+            r"company website",
+            re.escape(typed) if typed else r"career",
+            r"english",
+            r"mobile",
+            r"cell",
+        )
+        clicked = False
+        for pat in preferred:
+            try:
+                hit = opts.filter(has_text=re.compile(pat, re.I)).first
+                if hit.count():
+                    hit.click(timeout=1500, force=True)
+                    page.wait_for_timeout(400)
+                    clicked = True
+                    picked = True
+                    break
+            except Exception:
                 continue
-            opt.click(timeout=1500, force=True)
-            page.wait_for_timeout(350)
-            return True
-        except Exception:
-            continue
+        if not clicked:
+            skip = {"", "select", "select one", "select an option", "search", "no options"}
+            try:
+                n = min(opts.count(), 20)
+            except Exception:
+                n = 0
+            for i in range(n):
+                try:
+                    opt = opts.nth(i)
+                    text = (opt.inner_text() or "").strip()
+                    if text.lower() in skip or len(text) > 80:
+                        continue
+                    opt.click(timeout=1500, force=True)
+                    page.wait_for_timeout(400)
+                    clicked = True
+                    picked = True
+                    break
+                except Exception:
+                    continue
+        if not clicked:
+            break
+    if picked:
+        return True
     try:
         page.keyboard.press("ArrowDown")
         page.wait_for_timeout(120)
@@ -1325,6 +1339,16 @@ def fill_workday_required_questions(page) -> int:
     except Exception:
         pass
     collapse_copilot_panel(page)
+    # How-heard overlay covers the Yes/No radios — pick a source leaf first, then No.
+    hear = _workday_form_field(page, r"how did you hear")
+    if _workday_select_prompt(page, hear, "Naukri"):
+        filled += 1
+        print("  Workday: how did you hear — selected an option.", flush=True)
+    try:
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(200)
+    except Exception:
+        pass
     prev = _workday_form_field(page, r"previously worked")
     try:
         if prev.count():
@@ -1342,16 +1366,6 @@ def fill_workday_required_questions(page) -> int:
                     print("  Workday: previously worked = No (mouse).", flush=True)
     except Exception:
         pass
-    hear = _workday_form_field(page, r"how did you hear")
-    if _workday_select_prompt(page, hear, "Career"):
-        filled += 1
-        print("  Workday: how did you hear — selected an option.", flush=True)
-        try:
-            extra = page.locator("[data-automation-id='promptOption']").first
-            if extra.count():
-                _pick_workday_list_option(page, "Career")
-        except Exception:
-            pass
     device = _workday_form_field(page, r"phone device type|device type")
     if _workday_select_prompt(page, device, "Mobile"):
         filled += 1
