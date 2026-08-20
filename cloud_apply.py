@@ -1777,12 +1777,20 @@ def click_dhl_apply_method(page) -> bool:
 def fill_leftover_dropdowns(page) -> int:
     """Salutation / preferred language / similar selects Copilot leaves on 'Select an option'."""
     filled = 0
-    pairs = (
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    pairs = [
         (r"salutation", "Mr"),
         (r"preferred language", "English"),
-        (r"how did you hear", "Career"),
         (r"^degree$|degree \*|highest (degree|education)", "Bachelor"),
-    )
+    ]
+    # Workday how-heard is a nested prompt (Career → Asia Job Boards → Naukri).
+    # Typing "Career" here undoes fill_workday_required_questions().
+    if "myworkdayjobs" not in url and "workday" not in url:
+        pairs.insert(2, (r"how did you hear", "Career"))
+    pairs = tuple(pairs)
     for pat, value in pairs:
         try:
             lab = page.get_by_text(re.compile(pat, re.I)).first

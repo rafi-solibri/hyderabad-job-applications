@@ -392,6 +392,8 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return a["fullName"]
     if "device type" in q or "phone type" in q or "phone device" in q:
         return pick("mobile", "cell") or "Mobile"
+    if "phone extension" in q or (q.strip() in {"extension", "ext", "ext."}):
+        return ""
     if "email" in q:
         return a["email"]
     if "phone" in q or "mobile" in q:
