@@ -47,4 +47,14 @@ Microsoft, Google, Infosys, Deloitte, Wells Fargo, JPMC, and most Workday sites 
 - Education: B.Tech IT, Acharya Nagarjuna University, 2006–2010  
 - DOB: 16 Jan 1989 | Gender: Male  
 - LinkedIn: https://linkedin.com/in/rafi-ahmed-mohammed-abdul-151644ba  
-- Phone country: India (+91) | Phone: 8790251698  
+- Phone country: India (+91) | Phone: 8790251698
+
+## Today (20 Aug 2026)
+
+Cloud headed-Chrome apply with Simplify Copilot loaded. **Submitted 0**.
+
+Google sign-in failed: saved form password is not the Google password. Requested `GOOGLE_PASSWORD` secret for rafi.success@gmail.com. LinkedIn email/password hit a security checkpoint/CAPTCHA.
+
+Without a Google session, LinkedIn/Foundit/Instahyre were recorded as login-blocked. Coupa Lever and JPMC Oracle Cloud hit CAPTCHA. Schwab/Workday/SmartRecruiters Apply was clicked but privacy/sign-in gates were not completed.
+
+Next run after GOOGLE_PASSWORD: Sign in with Google, then LinkedIn Easy Apply + Simplify Autofill.
