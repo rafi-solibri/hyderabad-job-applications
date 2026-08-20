@@ -399,6 +399,8 @@ def fill_portal_account(page, password: str | None = None) -> str:
         url = ""
     if "accounts.google.com" in url:
         return "skip"
+    if "icims.com" in url:
+        return "skip"
     password = password or google_auth.load_portal_password()
     if not password:
         print("  APPLY_ACCOUNT_PASSWORD missing from .env; cannot create/sign-in accounts.", flush=True)
@@ -1880,11 +1882,11 @@ def _fill_icims_universal_login(page) -> int:
         if passwords and ICIMS_PASSWORD_SUBMITS < len(passwords):
             try:
                 pw = p.locator("input[type=password]").first
-                if pw.count() and pw.is_visible():
+                if pw.count():
                     pw.fill(passwords[ICIMS_PASSWORD_SUBMITS], timeout=2500)
                     nxt = p.get_by_role("button", name=re.compile(r"^(continue|log in|sign in)$", re.I)).first
-                    if nxt.count() and nxt.is_visible():
-                        nxt.click(timeout=2500)
+                    if nxt.count():
+                        nxt.click(timeout=2500, force=True)
                     ICIMS_PASSWORD_SUBMITS += 1
                     print("  Submitted iCIMS password.", flush=True)
                     p.wait_for_timeout(2500)
@@ -3086,7 +3088,9 @@ def follow_apply_tab(page):
             continue
         if "mail.google.com" in u or "linkedin.com/checkpoint" in u:
             continue
-        if "login.icims.com" in u and "icims.com" not in cur:
+        if "login.icims.com" in u:
+            if "icims.com" in cur:
+                return p
             continue
         if any(
             x in u
@@ -3395,6 +3399,9 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
     if "icims.com" not in (url or "").lower():
         ICIMS_LOGIN_CLICKED = False
         ICIMS_CONTINUE_CLICKS = 0
+        ICIMS_PASSWORD_SUBMITS = 0
+    else:
+        ICIMS_PASSWORD_SUBMITS = 0
 
     resume = job.get("resume_path") or RESUME
     learned = 0
