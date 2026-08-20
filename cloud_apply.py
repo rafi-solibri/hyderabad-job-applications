@@ -3021,7 +3021,69 @@ def adopt_newest_page(page, before_ids: set[int] | None = None):
         except Exception:
             continue
     if opened:
+        for p in reversed(opened):
+            try:
+                u = (p.url or "").lower()
+            except Exception:
+                continue
+            if any(
+                x in u
+                for x in (
+                    "myworkdayjobs",
+                    "login.icims.com",
+                    "oraclecloud.com",
+                    "avature.net",
+                    "smartrecruiters.com",
+                    "/apply",
+                )
+            ):
+                return p
         return opened[-1]
+    return page
+
+
+def follow_apply_tab(page):
+    """Fill the ATS apply tab, not the careers listing that opened it."""
+    try:
+        cur = (page.url or "").lower()
+    except Exception:
+        return page
+    if any(
+        x in cur
+        for x in (
+            "myworkdayjobs",
+            "login.icims.com",
+            "oraclecloud.com",
+            "avature.net",
+            "smartrecruiters.com",
+            "/apply",
+            "applymanually",
+        )
+    ):
+        return page
+    ctx = getattr(page, "context", None)
+    if ctx is None:
+        return page
+    for p in reversed(list(ctx.pages)):
+        try:
+            if p.is_closed():
+                continue
+            u = (p.url or "").lower()
+        except Exception:
+            continue
+        if "mail.google.com" in u or "linkedin.com/checkpoint" in u:
+            continue
+        if any(
+            x in u
+            for x in (
+                "myworkdayjobs",
+                "login.icims.com",
+                "oraclecloud.com",
+                "avature.net",
+                "smartrecruiters.com",
+            )
+        ):
+            return p
     return page
 
 
@@ -3114,6 +3176,10 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         hold_url = ""
     url_hold_from = time.time()
     while time.time() < deadline:
+        try:
+            page = follow_apply_tab(page)
+        except Exception:
+            pass
         try:
             changed = form_memory.remember(page, job) or []
             learned += len(changed)
