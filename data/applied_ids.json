@@ -1648,5 +1648,139 @@
     "note": "owner asked to skip Amazon for now",
     "status": "SKIPPED",
     "ts": "2026-08-20T15:28:46.853124+00:00"
+  },
+  "zffriedrich|sr technical lead": {
+    "company": "Zf Friedrich",
+    "title": "Sr Technical Lead",
+    "job_id": "63218456",
+    "url": "https://jobs.zf.com/job/Hyderabad-Sr-Technical-Lead-TG-500032/1427361033/",
+    "note": "listing only — no apply form after repeated Copilot Start Application loops",
+    "status": "SKIPPED",
+    "ts": "2026-08-20T16:47:26.172980+00:00"
+  },
+  "63218456": {
+    "company": "Zf Friedrich",
+    "title": "Sr Technical Lead",
+    "job_id": "63218456",
+    "url": "https://jobs.zf.com/job/Hyderabad-Sr-Technical-Lead-TG-500032/1427361033/",
+    "note": "listing only — no apply form after repeated Copilot Start Application loops",
+    "status": "SKIPPED",
+    "ts": "2026-08-20T16:47:26.172980+00:00"
+  },
+  "ansr|principal engineer - it software (.net)": {
+    "company": "ANSR",
+    "title": "Principal Engineer - IT Software (.Net)",
+    "job_id": "62960104",
+    "url": "https://www.linkedin.com/jobs/view/4453078686/",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-20T17:13:59.565062+00:00"
+  },
+  "62960104": {
+    "company": "ANSR",
+    "title": "Principal Engineer - IT Software (.Net)",
+    "job_id": "62960104",
+    "url": "https://www.linkedin.com/jobs/view/4453078686/",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-20T17:13:59.565062+00:00"
+  },
+  "kekahr|principal software engineer": {
+    "company": "Keka HR",
+    "title": "Principal Software Engineer",
+    "job_id": "405915",
+    "url": "https://www.instahyre.com/job-405915-principal-software-engineer-at-keka-hr-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-20T17:42:42.722968+00:00"
+  },
+  "405915": {
+    "company": "Keka HR",
+    "title": "Principal Software Engineer",
+    "job_id": "405915",
+    "url": "https://www.instahyre.com/job-405915-principal-software-engineer-at-keka-hr-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-20T17:42:42.722968+00:00"
+  },
+  "amazon|staff software engineer": {
+    "company": "Amazon",
+    "title": "Staff Software Engineer",
+    "job_id": "439305",
+    "url": "https://www.instahyre.com/job-439305-staff-software-engineer-at-amazon-hyderabad/",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-20T17:42:44.639370+00:00"
+  },
+  "439305": {
+    "company": "Amazon",
+    "title": "Staff Software Engineer",
+    "job_id": "439305",
+    "url": "https://www.instahyre.com/job-439305-staff-software-engineer-at-amazon-hyderabad/",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-20T17:42:44.639370+00:00"
+  },
+  "439255": {
+    "company": "Amazon",
+    "title": "Sr. Software Engineer",
+    "job_id": "439255",
+    "url": "https://www.instahyre.com/job-439255-sr-software-engineer-at-amazon-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-20T17:42:46.846763+00:00"
+  },
+  "amazon|sr. software engineer": {
+    "company": "Amazon",
+    "title": "Sr. Software Engineer",
+    "job_id": "439255",
+    "url": "https://www.instahyre.com/job-439255-sr-software-engineer-at-amazon-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-20T17:42:46.846763+00:00"
+  },
+  "439288": {
+    "company": "Cubic Corporation",
+    "title": "Senior Software Engineer",
+    "job_id": "439288",
+    "url": "https://www.instahyre.com/job-439288-senior-software-engineer-at-cubic-corporation-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-20T17:46:19.054902+00:00"
+  },
+  "cubiccorporation|senior software engineer": {
+    "company": "Cubic Corporation",
+    "title": "Senior Software Engineer",
+    "job_id": "439288",
+    "url": "https://www.instahyre.com/job-439288-senior-software-engineer-at-cubic-corporation-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-20T17:46:19.054902+00:00"
+  },
+  "399694": {
+    "company": "Google",
+    "title": "Senior Software Engineer",
+    "job_id": "399694",
+    "url": "https://www.instahyre.com/job-399694-senior-software-engineer-at-google-2-bangalore-delhi-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-20T17:50:39.057959+00:00"
+  },
+  "google|senior software engineer": {
+    "company": "Google",
+    "title": "Senior Software Engineer",
+    "job_id": "399694",
+    "url": "https://www.instahyre.com/job-399694-senior-software-engineer-at-google-2-bangalore-delhi-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-20T17:50:39.057959+00:00"
+  },
+  "47560501": {
+    "company": "Ensemble Health Partners",
+    "title": "Lead Software Engineer",
+    "job_id": "47560501",
+    "url": "https://ensemblehpi.com/career-technology/?jobId=Y92dQFznrJ8X",
+    "note": "board blocked this environment (access denied)",
+    "status": "CLOSED",
+    "ts": "2026-08-20T17:50:40.766995+00:00"
+  },
+  "ensemblehealthpartners|lead software engineer": {
+    "company": "Ensemble Health Partners",
+    "title": "Lead Software Engineer",
+    "job_id": "47560501",
+    "url": "https://ensemblehpi.com/career-technology/?jobId=Y92dQFznrJ8X",
+    "note": "board blocked this environment (access denied)",
+    "status": "CLOSED",
+    "ts": "2026-08-20T17:50:40.766995+00:00"
   }
 }

@@ -738,6 +738,8 @@ def try_portal_auth(page) -> str:
     if _aggregator_host(url):
         try_board_google_signin(page)
         return "skip"
+    if "login.icims.com" in url:
+        return "skip"
     _click_sign_in_with_email(page)
     if not on_account_gate(page):
         return fill_portal_account(page)
@@ -3023,6 +3025,9 @@ def adopt_newest_page(page, before_ids: set[int] | None = None):
                 continue
             if "mail.google.com" in url:
                 continue
+            # Parked Schwab Auth0 is not the new Apply tab for Workday/DHL.
+            if "login.icims.com" in url.lower() and "icims.com" not in (page.url or "").lower():
+                continue
             opened.append(p)
         except Exception:
             continue
@@ -3036,7 +3041,6 @@ def adopt_newest_page(page, before_ids: set[int] | None = None):
                 x in u
                 for x in (
                     "myworkdayjobs",
-                    "login.icims.com",
                     "oraclecloud.com",
                     "avature.net",
                     "smartrecruiters.com",
@@ -3079,11 +3083,12 @@ def follow_apply_tab(page):
             continue
         if "mail.google.com" in u or "linkedin.com/checkpoint" in u:
             continue
+        if "login.icims.com" in u and "icims.com" not in cur:
+            continue
         if any(
             x in u
             for x in (
                 "myworkdayjobs",
-                "login.icims.com",
                 "oraclecloud.com",
                 "avature.net",
                 "smartrecruiters.com",
@@ -3490,7 +3495,17 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             row["status"] = "AUTH_FAILED"
             row["note"] = "all portal passwords rejected or account locked"
             row["final_url"] = page.url
-            if not _aggregator_host(url or page.url or ""):
+            pu = ""
+            try:
+                pu = (page.url or "").lower()
+            except Exception:
+                pu = ""
+            parked_other = "login.icims.com" in pu and "icims.com" not in (url or "").lower()
+            if parked_other:
+                print("  Parked iCIMS login is not this job. Next leftover.", flush=True)
+                row["status"] = "STUCK"
+                row["note"] = "did not consume parked iCIMS Auth0 as this job"
+            elif not _aggregator_host(url or page.url or ""):
                 apply_now.persist_skipped(row, row["note"])
                 print("  Skipping this job. Closing the tab and opening the next leftover.", flush=True)
             else:
