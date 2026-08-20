@@ -1315,6 +1315,15 @@ def fill_workday_required_questions(page) -> int:
     except Exception:
         pass
     filled = 0
+    try:
+        btn = page.get_by_role("button", name=re.compile(r"autofill \d+ skills?", re.I)).first
+        if btn.count() and btn.is_visible():
+            btn.click(timeout=1500)
+            print("  Clicked Copilot Autofill skill(s).", flush=True)
+            page.wait_for_timeout(800)
+            filled += 1
+    except Exception:
+        pass
     collapse_copilot_panel(page)
     prev = _workday_form_field(page, r"previously worked")
     try:
@@ -1347,6 +1356,22 @@ def fill_workday_required_questions(page) -> int:
     if _workday_select_prompt(page, device, "Mobile"):
         filled += 1
         print("  Workday: phone device type = Mobile.", flush=True)
+    lang = page.locator(
+        "[data-automation-id='formField-language'], [data-automation-id='language']"
+    ).first
+    if not lang.count():
+        lang = _workday_form_field(page, r"field language|languages")
+    if _workday_select_prompt(page, lang, "English"):
+        filled += 1
+        print("  Workday: language = English.", flush=True)
+    skills = page.locator(
+        "[data-automation-id*='skill' i], [data-automation-id='formField-skills']"
+    ).first
+    if not skills.count():
+        skills = _workday_form_field(page, r"add skills|type to add")
+    if _workday_select_prompt(page, skills, "Azure"):
+        filled += 1
+        print("  Workday: added a skill.", flush=True)
     return filled
 
 
