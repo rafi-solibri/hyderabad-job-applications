@@ -324,9 +324,15 @@ def follow(page) -> str:
     if action:
         low = action.lower()
         try:
-            url = (page.url or "").split("?")[0]
+            url = page.evaluate(
+                """() => {
+                  const step = ((document.querySelector('[data-automation-id="progressBar"], [data-automation-id="wizardProgress"]')||{}).innerText||'');
+                  const vals = [...document.querySelectorAll('input,textarea,select')].slice(0,12).map(el => (el.value||el.id||'')).join('|');
+                  return (location.pathname + '|' + step.replace(/\\s+/g,' ').slice(0,60) + '|' + vals).slice(0,350);
+                }"""
+            ) or (page.url or "").split("?")[0]
         except Exception:
-            url = ""
+            url = (page.url or "").split("?")[0]
         if (
             _LAST_FOLLOW.get("url") == url
             and str(_LAST_FOLLOW.get("action") or "").lower() == low

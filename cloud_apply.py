@@ -404,6 +404,29 @@ def fill_portal_account(page, password: str | None = None) -> str:
             flush=True,
         )
         return "ok"
+    # iCIMS / Avature often put the login in an iframe.
+    try:
+        fl = page.frame_locator("iframe").first
+        box = fl.locator("input[type=email], input[name='email'], input[name='username']").first
+        if box.count():
+            box.fill(email, timeout=2500)
+            filled_email = True
+        pbox = fl.locator("input[type=password]").first
+        if pbox.count():
+            pbox.fill(password, timeout=2500)
+            filled_pw = 1
+        if filled_email or filled_pw:
+            print(
+                f"  Filled iframe account fields (email={int(filled_email)} password_boxes={filled_pw}).",
+                flush=True,
+            )
+            try:
+                fl.get_by_role("button", name=re.compile(r"sign in|log in|continue", re.I)).first.click(timeout=2500)
+            except Exception:
+                pass
+            return "ok"
+    except Exception:
+        pass
     return "none"
 
 
@@ -1119,6 +1142,83 @@ def fill_oracle_form(page, job: dict | None = None) -> int:
     return n
 
 
+def fill_workday_form(page) -> int:
+    """Fill Workday easy-apply fields by data-automation-id. Copilot often never attaches."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "myworkdayjobs.com" not in url and "myworkdaysite.com" not in url:
+        return 0
+    a = form_memory._answers()
+    mapping = [
+        ("legalNameSection_firstName", a["firstName"]),
+        ("legalNameSection_lastName", a["lastName"]),
+        ("legalNameSection_middleName", "Abdul Rafi"),
+        ("addressSection_addressLine1", "303, Vishnu Homes, Whitefields"),
+        ("addressSection_addressLine2", "Kondapur"),
+        ("addressSection_city", a["city"]),
+        ("addressSection_postalCode", "500084"),
+        ("phone-number", a["phone"]),
+        ("phoneNumber", a["phone"]),
+        ("email", a["email"]),
+        ("candidateEmail", a["email"]),
+        ("linkedinQuestion", a["linkedin"] or ""),
+    ]
+    filled = 0
+    for auto_id, value in mapping:
+        if not value:
+            continue
+        try:
+            loc = page.locator(f"[data-automation-id='{auto_id}']").first
+            if not loc.count():
+                continue
+            target = loc
+            tag = ""
+            try:
+                tag = (loc.evaluate("el => (el.tagName||'').toLowerCase()") or "")
+            except Exception:
+                tag = ""
+            if tag not in {"input", "textarea"}:
+                inner = loc.locator("input:not([type=hidden]):not([type=checkbox]):not([type=radio]), textarea").first
+                if inner.count():
+                    target = inner
+            if not target.is_visible():
+                continue
+            cur = ""
+            try:
+                cur = (target.input_value() or "").strip()
+            except Exception:
+                pass
+            if cur:
+                continue
+            target.click(timeout=1200)
+            ats_fill.native_fill(target, str(value))
+            filled += 1
+        except Exception:
+            continue
+    # Country / state typeaheads
+    try:
+        form_memory.fill_india_state_typeahead(page)
+    except Exception:
+        pass
+    form_memory.fill_visible(page)
+    if filled:
+        print(f"  Filled {filled} Workday field(s).", flush=True)
+    # Workday Next / Submit on the form, not Copilot.
+    try:
+        nxt = page.locator("[data-automation-id='bottom-navigation-next-button']").first
+        if nxt.count() and nxt.is_enabled():
+            collapse_copilot_panel(page)
+            nxt.click(timeout=2000, force=True)
+            page.wait_for_timeout(1200)
+            print("  Clicked Workday Next.", flush=True)
+            filled += 1
+    except Exception:
+        pass
+    return filled
+
+
 def click_next_or_submit(page) -> str:
     """Click one navigation control. Returns clicked|submitted|none."""
     collapse_copilot_panel(page)
@@ -1765,6 +1865,7 @@ def unstick_stuck_form(page, job: dict, resume: str) -> str:
         pass
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
+    fill_workday_form(page)
     ats_fill.fill_phenom_acknowledgment(page)
     ats_fill.fill_empty_dropdowns(page, form_memory.infer_answer)
     accept_terms(page)
@@ -2042,6 +2143,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     apply_now.set_india_phone(page)
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
+    fill_workday_form(page)
     ats_fill.fill_phenom_acknowledgment(page)
     ats_fill.fill_empty_dropdowns(page, form_memory.infer_answer)
     accept_terms(page)
@@ -2061,6 +2163,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     form_memory.fill_india_state_typeahead(page)
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
+    fill_workday_form(page)
     ats_fill.fill_phenom_acknowledgment(page)
     ats_fill.fill_empty_dropdowns(page, form_memory.infer_answer)
     accept_terms(page)
@@ -2372,8 +2475,14 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             return row
 
         # Short stay only. Long waits were looping Copilot Continue for minutes.
-        stay = min(wait_seconds if wait_seconds else 20, 20)
-        if step == "stuck":
+        stay = 15
+        try:
+            u = (page.url or "").lower()
+        except Exception:
+            u = ""
+        if any(x in u for x in ("applymanually", "/apply/", "icims.com", "avature.net", "myworkdayjobs", "oraclecloud", "smartrecruiters")):
+            stay = min(wait_seconds if wait_seconds else 90, 90)
+        if step == "stuck" and stay < 30:
             stay = 0
         if stay:
             human = wait_for_human(page, job, stay, resume)
