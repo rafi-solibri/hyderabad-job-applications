@@ -274,6 +274,8 @@ def on_apply_wizard(page) -> bool:
         url = (page.url or "").lower()
     except Exception:
         return False
+    if any(x in url for x in ("stepname=applicationcomplete", "stepname=thank", "stepname=confirmation")):
+        return False
     return any(x in url for x in ("/apply/section/", "/apply/email", "/apply/form", "stepname="))
 
 
@@ -318,6 +320,15 @@ def follow(page) -> str:
         ):
             print(f"  Skipping ATS '{action}' (portal auth is handled separately).", flush=True)
             return ""
+        if "submit" in low:
+            # Copilot #proxy-submit-button has pointer-events:none and does not submit Phenom.
+            try:
+                proxy = page.locator("#proxy-submit-button").count()
+            except Exception:
+                proxy = 0
+            if proxy:
+                print(f"  Skipping Copilot '{action}' — using ATS Submit instead of overlay proxy.", flush=True)
+                return ""
         if low in {"next", "continue", "continue application"}:
             try:
                 url = (page.url or "").lower()

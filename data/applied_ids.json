@@ -1556,5 +1556,21 @@
     "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214139/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
     "note": "submitted in headed Chrome (same DTCC Oracle 214139)",
     "ts": "2026-08-20T11:57:23.605183+00:00"
+  },
+  "744000136138109": {
+    "company": "Freshworks",
+    "title": "Staff Engineer - Systems",
+    "job_id": "744000136138109",
+    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000136138109",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-20T12:08:18.047808+00:00"
+  },
+  "freshworks|staff engineer - systems": {
+    "company": "Freshworks",
+    "title": "Staff Engineer - Systems",
+    "job_id": "744000136138109",
+    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000136138109",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-20T12:08:18.047808+00:00"
   }
 }

@@ -220,11 +220,28 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
     options = options or []
 
     def pick(*needles):
+        """Prefer whole-word / shortest option so 'India' beats 'British Indian Ocean Territory'."""
+        scored: list[tuple[float, int, str]] = []
         for opt in options:
-            low = opt.lower()
-            if any(n in low for n in needles):
-                return opt
-        return None
+            low = (opt or "").lower().strip()
+            if not low:
+                continue
+            for n in needles:
+                n = (n or "").lower().strip()
+                if not n:
+                    continue
+                if low == n:
+                    scored.append((1.0, -len(low), opt))
+                    continue
+                if re.search(r"\b" + re.escape(n) + r"\b", low):
+                    extra = abs(len(low.split()) - len(n.split()))
+                    scored.append((0.9 - extra * 0.05, -len(low), opt))
+                elif n in low:
+                    scored.append((0.4, -len(low), opt))
+        if not scored:
+            return None
+        scored.sort(reverse=True)
+        return scored[0][2]
 
     if "united states" in q or "u.s." in q or "us citizen" in q:
         if "authoriz" in q or "eligible" in q or "right to work" in q:
@@ -235,6 +252,12 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("no") or "No"
     if any(x in q for x in ("authoriz", "right to work", "legally permitted", "eligible to work", "work eligibility")):
         return pick("yes", "citizen", "permanently") or "Yes"
+    if "currently a" in q and "employee" in q:
+        return pick("no") or "No"
+    if "agency worker" in q or ("contractor" in q and "employee" not in q):
+        return pick("no") or "No"
+    if "ever worked" in q and "affiliates" in q:
+        return pick("no") or "No"
     if "previously employed" in q or "previously applied" in q or "worked here" in q or "worked for" in q:
         return pick("no") or "No"
     if "applied here before" in q or "applied before" in q:
@@ -269,7 +292,9 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("asian") or a["race"]
     if q.strip() == "gender" or q.startswith("gender"):
         return pick("male") or a["gender"]
-    if "notice" in q:
+    if "privacy notice" in q or ("accept" in q and "privacy" in q):
+        return pick("agree") or "Agree"
+    if "notice" in q and "privacy" not in q:
         return pick("available immediately", "immediate") or a["notice"]
     if "proficiency" in q:
         return pick("expert", "advanced") or "Expert"

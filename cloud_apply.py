@@ -177,13 +177,38 @@ def is_login_or_captcha(page) -> str | None:
     return None
 
 
+MID_WIZARD_URL = (
+    "/apply/section/",
+    "/apply/email",
+    "/apply/form",
+    "stepname=applicant",
+    "stepname=myinformation",
+    "stepname=myexperience",
+    "stepname=voluntary",
+    "stepname=applicationreview",
+    "stepname=acknowledg",
+    "stepname=eoe",
+    "stepname=selfidentify",
+)
+SUCCESS_URL = (
+    "/thanks",
+    "/confirmation",
+    "application-success",
+    "/thank-you",
+    "/thankyou",
+    "stepname=applicationcomplete",
+    "stepname=thank",
+    "stepname=confirmation",
+)
+
+
 def is_success(page) -> bool:
     url = (page.url or "").lower()
-    # Mid-wizard URLs are not a submit confirmation.
-    if any(x in url for x in ("/apply/section/", "/apply/email", "/apply/form", "stepname=")):
-        return False
-    if any(x in url for x in ("/thanks", "/confirmation", "application-success", "/thank-you", "/thankyou")):
+    if any(x in url for x in SUCCESS_URL):
         return True
+    # Mid-wizard URLs are not a submit confirmation.
+    if any(x in url for x in MID_WIZARD_URL) or "stepname=" in url:
+        return False
     return bool(SUCCESS_RE.search(page_text(page)[:3000]))
 
 
@@ -1066,6 +1091,13 @@ def click_next_or_submit(page) -> str:
     dismiss_overlays(page)
     if is_success(page):
         return "submitted"
+    # Real ATS Submit, not Copilot #proxy-submit-button (Phenom review stays put otherwise).
+    if ats_fill.click_ats_submit(page):
+        for _ in range(6):
+            if is_success(page) or simplify_copilot.submitted(page):
+                return "submitted"
+            page.wait_for_timeout(800)
+        return "clicked"
     for label in ("Submit application", "Submit Application", "Submit", "Next"):
         if click_spl_button(page, label):
             print(f"  Clicked ATS '{label}'.", flush=True)
@@ -1087,9 +1119,11 @@ def click_next_or_submit(page) -> str:
             loc = page.locator(sel).first
             if loc.count() and loc.is_visible() and loc.is_enabled():
                 text = loc.inner_text() or loc.get_attribute("value") or loc.get_attribute("aria-label") or ""
-                if SIMPLIFY_RE.search(text) or SKIP_APPLY_LABEL.search(text):
+                el_id = loc.get_attribute("id") or ""
+                if el_id == "proxy-submit-button" or SIMPLIFY_RE.search(text) or SKIP_APPLY_LABEL.search(text):
                     continue
-                loc.click(timeout=2000)
+                loc.scroll_into_view_if_needed(timeout=1500)
+                loc.click(timeout=2000, force=True)
                 page.wait_for_timeout(1800)
                 return "submitted" if is_success(page) else "clicked"
         except Exception:
