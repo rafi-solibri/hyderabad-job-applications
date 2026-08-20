@@ -35,7 +35,24 @@ def load_google_password() -> str:
 
 def load_portal_password() -> str:
     """Career-site Create Account / Sign In password. Never print it."""
-    return load_env_value("APPLY_ACCOUNT_PASSWORD") or load_env_value("PORTAL_PASSWORD")
+    passwords = load_portal_passwords()
+    return passwords[0] if passwords else ""
+
+
+def load_portal_passwords() -> list[str]:
+    """Primary plus fallbacks. Never print the values."""
+    out: list[str] = []
+    for key in ("APPLY_ACCOUNT_PASSWORD", "PORTAL_PASSWORD"):
+        val = load_env_value(key)
+        if val and val not in out:
+            out.append(val)
+    extra = load_env_value("APPLY_ACCOUNT_PASSWORD_FALLBACKS")
+    if extra:
+        for part in extra.split(","):
+            item = part.strip().strip("'").strip('"')
+            if item and item not in out:
+                out.append(item)
+    return out
 
 
 def sign_in_chrome(page) -> str:

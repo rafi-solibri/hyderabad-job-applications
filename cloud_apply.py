@@ -205,7 +205,7 @@ def fill_identity(page) -> None:
             continue
 
 
-def fill_portal_account(page) -> str:
+def fill_portal_account(page, password: str | None = None) -> str:
     """Fill Create Account / Sign In email + password on any career ATS. Never log the secret."""
     url = ""
     try:
@@ -214,7 +214,7 @@ def fill_portal_account(page) -> str:
         url = ""
     if "accounts.google.com" in url:
         return "skip"
-    password = google_auth.load_portal_password()
+    password = password or google_auth.load_portal_password()
     if not password:
         print("  APPLY_ACCOUNT_PASSWORD missing from .env; cannot create/sign-in accounts.", flush=True)
         return "missing"
@@ -283,6 +283,111 @@ def fill_portal_account(page) -> str:
         )
         return "ok"
     return "none"
+
+
+def _account_gate_blob(page) -> str:
+    try:
+        return (page_text(page) or "")[:2500]
+    except Exception:
+        return ""
+
+
+def on_account_gate(page) -> bool:
+    try:
+        url = (page.url or "").lower()
+        title = (page.title() or "").lower()
+    except Exception:
+        return False
+    if "accounts.google.com" in url:
+        return False
+    try:
+        if not page.locator("input[type=password]").count():
+            return False
+    except Exception:
+        return False
+    blob = _account_gate_blob(page).lower()
+    return any(
+        x in url + " " + title + " " + blob
+        for x in ("create account", "sign in", "/login", "verify new password", "already have an account")
+    )
+
+
+def account_auth_rejected(page) -> bool:
+    return bool(
+        re.search(
+            r"wrong email address or password|account might be locked|invalid password|"
+            r"incorrect password|already (have an account|exists)",
+            _account_gate_blob(page),
+            re.I,
+        )
+    )
+
+
+def _click_account_button(page, label: str) -> bool:
+    try:
+        loc = page.locator(f"[data-automation-id='{label}']")
+        if loc.count() and loc.first.is_visible():
+            loc.first.click(force=True, timeout=3000)
+            return True
+    except Exception:
+        pass
+    try:
+        loc = page.get_by_role("button", name=re.compile(rf"^{re.escape(label)}$", re.I))
+        if loc.count():
+            loc.last.click(force=True, timeout=3000)
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def try_portal_auth(page) -> str:
+    """Create Account with the primary password, then Sign In trying each fallback. Never log secrets."""
+    if not on_account_gate(page):
+        return fill_portal_account(page)
+    passwords = google_auth.load_portal_passwords()
+    if not passwords:
+        print("  APPLY_ACCOUNT_PASSWORD missing from .env; cannot create/sign-in accounts.", flush=True)
+        return "missing"
+    title = ""
+    try:
+        title = (page.title() or "").lower()
+    except Exception:
+        title = ""
+    create_visible = "create account" in title
+    try:
+        create_visible = create_visible or bool(page.locator("[data-automation-id='verifyPassword']").count())
+    except Exception:
+        pass
+    if create_visible:
+        fill_portal_account(page, passwords[0])
+        if _click_account_button(page, "createAccountSubmitButton") or _click_account_button(page, "Create Account"):
+            page.wait_for_timeout(2500)
+        if not on_account_gate(page) and not account_auth_rejected(page):
+            print("  Created career-site account with portal password #1.", flush=True)
+            return "ok"
+    for i, password in enumerate(passwords, 1):
+        try:
+            sign_link = page.locator("[data-automation-id='signInContent'], [data-automation-id='auth_signin_link']")
+            if "create account" in ((page.title() or "").lower()) and page.get_by_role("button", name="Sign In", exact=True).count():
+                page.get_by_role("button", name="Sign In", exact=True).last.click(timeout=2000)
+                page.wait_for_timeout(800)
+        except Exception:
+            pass
+        fill_portal_account(page, password)
+        clicked = _click_account_button(page, "signInSubmitButton") or _click_account_button(page, "Sign In")
+        if not clicked:
+            continue
+        page.wait_for_timeout(2800)
+        if account_auth_rejected(page):
+            print(f"  Portal password #{i} rejected; trying next.", flush=True)
+            continue
+        if not on_account_gate(page) or "sign in" not in ((page.title() or "").lower()):
+            print(f"  Signed in with portal password #{i}.", flush=True)
+            return "ok"
+        print(f"  Portal password #{i} did not advance; trying next.", flush=True)
+    print("  All portal passwords rejected on this Sign In / Create Account page.", flush=True)
+    return "failed"
 
 
 def upload_resume(page, path: str) -> bool:
@@ -745,7 +850,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if copilot_start:
         page.wait_for_timeout(600)
     fill_identity(page)
-    fill_portal_account(page)
+    try_portal_auth(page)
     apply_now.set_india_phone(page)
     accept_terms(page)
     try:
@@ -915,7 +1020,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True) -> 
             return row
 
         fill_identity(page)
-        fill_portal_account(page)
+        try_portal_auth(page)
         apply_now.set_india_phone(page)
         try:
             upload_resume(page, resume)

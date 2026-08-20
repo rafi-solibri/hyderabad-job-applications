@@ -40,8 +40,9 @@ path.
   memory `secrets.md`. Load via `google_auth.py`. Never commit it. Never put it
   in `field_memory.json` or `DAILY_REPORT.md`. 2FA: Nothing Phone (3).
 - Career-site **Create Account / Sign In** (Workday, Oracle, Greenhouse, etc.)
-  uses gitignored `.env` `APPLY_ACCOUNT_PASSWORD`. Fill it on every create-account
-  form. Never commit it. Never store it in `field_memory.json`.
+  uses gitignored `.env` `APPLY_ACCOUNT_PASSWORD`, then
+  `APPLY_ACCOUNT_PASSWORD_FALLBACKS`. Fill them on every create-account / sign-in
+  form. Never commit them. Never store them in `field_memory.json`.
 
 ## Simplify Copilot (always)
 
