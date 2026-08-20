@@ -1,0 +1,4 @@
+# Third-party runtime dependencies. Everything else used by the scripts is in the
+# Python standard library.
+playwright>=1.40
+selenium>=4.15
