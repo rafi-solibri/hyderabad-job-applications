@@ -1219,6 +1219,64 @@ def fill_workday_form(page) -> int:
     return filled
 
 
+def fill_icims_login(page) -> int:
+    """Schwab iCIMS login is email+phone in icims_content_iframe, not a password box."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "icims.com" not in url:
+        return 0
+    email = google_auth.EMAIL
+    phone = apply_now.C.get("phoneNational") or "8790251698"
+    filled = 0
+    try:
+        fr = page.frame_locator(
+            "iframe[name='icims_content_iframe'], iframe#icims_content_iframe, iframe"
+        ).first
+        em = fr.locator("#email, input[name='css_loginName'], input[type=email]").first
+        if em.count():
+            em.fill(email, timeout=2500)
+            filled += 1
+        ph = fr.locator("#phoneNumber, input[name='css_phoneNumber']").first
+        if ph.count():
+            ph.fill(str(phone), timeout=2500)
+            filled += 1
+        btn = fr.locator("#enterEmailSubmitButton").first
+        if btn.count():
+            btn.click(timeout=2500)
+            print("  Clicked iCIMS email continue.", flush=True)
+            page.wait_for_timeout(1500)
+            filled += 1
+    except Exception:
+        return filled
+    if filled:
+        print(f"  Filled {filled} iCIMS login control(s).", flush=True)
+    return filled
+
+
+def click_dhl_apply_method(page) -> bool:
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "avature.net" not in url and "careers.dhl.com" not in url:
+        return False
+    for name in ("Upload resume", "Without Resume", "Start", "Apply"):
+        try:
+            loc = page.get_by_role("button", name=name, exact=True).first
+            if not loc.count():
+                loc = page.get_by_text(name, exact=True).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=2000)
+                print(f"  Clicked DHL '{name}'.", flush=True)
+                page.wait_for_timeout(1500)
+                return True
+        except Exception:
+            continue
+    return False
+
+
 def click_next_or_submit(page) -> str:
     """Click one navigation control. Returns clicked|submitted|none."""
     collapse_copilot_panel(page)
@@ -2140,6 +2198,8 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     auth = try_portal_auth(page)
     if auth == "failed":
         return "auth_failed"
+    fill_icims_login(page)
+    click_dhl_apply_method(page)
     apply_now.set_india_phone(page)
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
@@ -2155,10 +2215,12 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if copilot_step == "submitted" or is_success(page):
         return "submitted"
     if copilot_step == "stuck":
+        fill_workday_form(page)
+        form_memory.fill_visible(page)
         step = click_next_or_submit(page)
         if step == "submitted" or is_success(page) or simplify_copilot.submitted(page):
             return "submitted"
-        return "stuck"
+        return step or "clicked"
     form_memory.fill_visible(page)
     form_memory.fill_india_state_typeahead(page)
     fill_smartrecruiters_form(page, job)
@@ -2268,14 +2330,6 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "note": "copilot/form loop — skipped to next job",
                     "learned": learned,
                 }
-        if step == "stuck":
-            print("  No progress. Moving to the next leftover now.", flush=True)
-            return {
-                "ok": False,
-                "status": "STUCK",
-                "note": "no page progress after fill/click",
-                "learned": learned,
-            }
         req = required_field_issues(page)
         if req:
             stuck_required += 1
