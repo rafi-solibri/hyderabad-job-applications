@@ -2474,8 +2474,8 @@ def _keep_tab(url: str) -> bool:
         return True
     if any(x in u for x in ("www.google.com", "mail.google.com", "accounts.google.com")):
         return True
-    if not u:
-        return False
+    if "passport.amazon.jobs" in u or u.rstrip("/").endswith("passport.amazon.jobs"):
+        return True
     for parked in PARKED_CAPTCHA_URLS:
         p = (parked or "").lower()
         if p and (p in u or u in p or u.split("?")[0] == p.split("?")[0]):

@@ -199,6 +199,14 @@ def start_application(page) -> str:
         url = ""
     if "stepname=applicantacknowledgment" in url or "stepname=acknowledg" in url:
         return ""
+    # Listing pages: Copilot Start Application often does nothing (ZF, DHL, Schwab).
+    # Use the ATS Apply button instead of looping Start Application for 360s.
+    if (
+        any(h in url for h in ("jobs.zf.com", "careers.dhl.com", "schwabjobs.com", "careers.statestreet.com"))
+        and "/apply/" not in url
+        and "applymanually" not in url
+    ):
+        return ""
     watch(page)
     hit = ""
     try:
