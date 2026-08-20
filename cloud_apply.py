@@ -2099,8 +2099,15 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         copilot_start = simplify_copilot.start_application(page)
         if copilot_start:
             page.wait_for_timeout(800)
-        blob = page_text(page)[:2500]
-        if re.search(
+        closed = False
+        try:
+            closed = bool(
+                page.get_by_text(re.compile(r"job has expired|no longer accepting applications", re.I)).count()
+            )
+        except Exception:
+            closed = False
+        blob = page_text(page)[:8000]
+        if closed or re.search(
             r"page you are looking for doesn.?t exist|job (is )?no longer available|"
             r"this job has been closed|sorry, this job has expired|this job has expired|"
             r"no longer accepting applications|\b404\b",
