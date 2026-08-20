@@ -46,6 +46,8 @@ KEEP_TAB_STATUSES = frozenset({"CAPTCHA", "OWNER_SIGNIN"})
 TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES | frozenset({"ERROR"})
 PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
+LINKEDIN_RESTRICTED = False
+LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-08-22"
 
 # These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
@@ -226,6 +228,37 @@ def already_applied_visible(page) -> bool:
     except Exception:
         blob = ""
     return bool(re.search(r"application sent|already applied|you previously applied", blob, re.I))
+
+
+def linkedin_account_restricted(page) -> bool:
+    try:
+        url = (page.url or "").lower()
+        blob = ((page.title() or "") + " " + page_text(page)[:3500]).lower()
+    except Exception:
+        return False
+    if "linkedin.com" not in url:
+        return False
+    return bool(re.search(r"temporarily restricted|restriction will be lifted", blob))
+
+
+def persist_skip_all_linkedin(note: str | None = None) -> int:
+    """Account restriction is not a guest wall. Do not reopen LinkedIn until it lifts."""
+    global LINKEDIN_RESTRICTED
+    LINKEDIN_RESTRICTED = True
+    note = note or LINKEDIN_RESTRICTED_NOTE
+    apply_now.BATCH = apply_now.load_all_discovered()
+    n = 0
+    for job in apply_now.queue():
+        u = (job.get("apply_url") or job.get("url") or "").lower()
+        if "linkedin.com" not in u:
+            continue
+        if apply_now.is_applied(job):
+            continue
+        apply_now.persist_skipped({**job, "status": "SKIPPED"}, note)
+        SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+        n += 1
+    print(f"  Skipping {n} LinkedIn leftovers — {note}.", flush=True)
+    return n
 
 
 def fill_identity(page) -> None:
@@ -833,8 +866,66 @@ def _looks_like_copilot(loc) -> bool:
         return False
 
 
+def click_instahyre_apply(page) -> str:
+    """Instahyre's header Apply ignores synthetic clicks — use a real mouse click."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        return ""
+    if "instahyre.com" not in url or "/job-" not in url:
+        return ""
+    if already_applied_visible(page):
+        return ""
+    try:
+        box = page.evaluate(
+            """() => {
+              const hits = [];
+              for (const el of document.querySelectorAll('a, button')) {
+                const t = ((el.innerText || '') + '').replace(/\\s+/g, ' ').trim();
+                if (!/^apply( to .+)?$/i.test(t)) continue;
+                const r = el.getBoundingClientRect();
+                if (r.width < 50 || r.height < 22) continue;
+                if (r.y < 60 || r.y > 340) continue;
+                hits.push({x: r.x, y: r.y, w: r.width, h: r.height, t});
+              }
+              hits.sort((a, b) => a.y - b.y || b.w - a.w);
+              return hits[0] || null;
+            }"""
+        )
+    except Exception:
+        box = None
+    if not box:
+        return ""
+    try:
+        info = page.evaluate(
+            """() => ({
+              sx: window.screenX || 0,
+              sy: window.screenY || 0,
+              oh: window.outerHeight || 0,
+              ih: window.innerHeight || 0,
+            })"""
+        )
+    except Exception:
+        info = {}
+    chrome_top = max(0, int((info.get("oh") or 0) - (info.get("ih") or 0)))
+    _xdotool_click(
+        (info.get("sx") or 0) + box["x"] + box["w"] / 2,
+        (info.get("sy") or 0) + chrome_top + box["y"] + box["h"] / 2,
+    )
+    label = (box.get("t") or "Apply").strip()[:40]
+    print(f"  Clicked Instahyre '{label}'.", flush=True)
+    try:
+        page.wait_for_timeout(2200)
+    except Exception:
+        pass
+    return label
+
+
 def click_apply_gate(page) -> str:
     """Click Apply / Start application / Apply Manually. Never Tailor Resume or Indeed."""
+    insta = click_instahyre_apply(page)
+    if insta:
+        return insta
     try:
         hit = page.evaluate(CLICK_APPLY_GATE_JS) or ""
     except Exception:
@@ -2849,6 +2940,15 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             pass
         click_recaptcha_checkbox(page)
         click_google_account_chooser(page)
+        if linkedin_account_restricted(page):
+            persist_skip_all_linkedin()
+            print("  LinkedIn account is restricted. Skipping remaining LinkedIn leftovers.", flush=True)
+            return {
+                "ok": False,
+                "status": "CLOSED",
+                "note": LINKEDIN_RESTRICTED_NOTE,
+                "learned": learned,
+            }
         if captcha_puzzle_visible(page):
             notify_captcha(job, page)
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
@@ -3065,6 +3165,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             row["note"] = "job posting gone"
             apply_now.persist_applied(row, "closed posting — cannot submit")
             return row
+        if linkedin_account_restricted(page):
+            persist_skip_all_linkedin()
+            row["status"] = "CLOSED"
+            row["final_url"] = page.url
+            row["note"] = LINKEDIN_RESTRICTED_NOTE
+            print("  LinkedIn account is restricted. Skipping remaining LinkedIn leftovers.", flush=True)
+            return row
         last_url = page.url
         same_url_hits = 0
         for _ in range(6):
@@ -3209,6 +3316,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             u = ""
         if any(x in u for x in ("applymanually", "/apply/", "icims.com", "avature.net", "myworkdayjobs", "oraclecloud", "smartrecruiters", "linkedin.com", "naukri.com", "indeed.com", "foundit.in", "instahyre", "cutshort")):
             stay = wait_seconds if wait_seconds else 90
+        if "instahyre.com/job-" in u:
+            stay = min(stay, 25)
+        if linkedin_account_restricted(page) or LINKEDIN_RESTRICTED:
+            stay = 0
         if step == "stuck" and stay <= 15:
             stay = 0
         if stay:
@@ -3284,7 +3395,7 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
     def board_rank(job: dict) -> int:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
         if "linkedin.com" in u:
-            return 2
+            return 8
         if "instahyre.com" in u or "cutshort" in u:
             return 0
         if "indeed.com" in u:
@@ -3573,6 +3684,12 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 if amazon_parked and "amazon.jobs" in apply_url:
                     print("  Amazon sign-in already parked. Leaving that tab; skipping this duplicate.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    continue
+                if LINKEDIN_RESTRICTED and "linkedin.com" in apply_url:
+                    if not apply_now.is_applied(job):
+                        apply_now.persist_skipped(job, LINKEDIN_RESTRICTED_NOTE)
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    print("  LinkedIn restricted until 22 Aug. Skipping this leftover.", flush=True)
                     continue
                 linkedin_parked = any(
                     "linkedin.com/checkpoint" in ((p.url or "").lower())
