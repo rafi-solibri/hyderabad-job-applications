@@ -39,6 +39,9 @@ path.
 - Google password lives in gitignored `.env` (`GOOGLE_PASSWORD`) and automation
   memory `secrets.md`. Load via `google_auth.py`. Never commit it. Never put it
   in `field_memory.json` or `DAILY_REPORT.md`. 2FA: Nothing Phone (3).
+- Career-site **Create Account / Sign In** (Workday, Oracle, Greenhouse, etc.)
+  uses gitignored `.env` `APPLY_ACCOUNT_PASSWORD`. Fill it on every create-account
+  form. Never commit it. Never store it in `field_memory.json`.
 
 ## Simplify Copilot (always)
 

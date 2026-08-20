@@ -9,9 +9,9 @@ EMAIL = "rafi.success@gmail.com"
 ENV_PATHS = (ROOT / ".env", ROOT / "data" / ".secrets.env")
 
 
-def load_google_password() -> str:
-    if os.environ.get("GOOGLE_PASSWORD"):
-        return os.environ["GOOGLE_PASSWORD"]
+def load_env_value(key: str) -> str:
+    if os.environ.get(key):
+        return os.environ[key]
     for path in ENV_PATHS:
         if not path.exists():
             continue
@@ -19,14 +19,23 @@ def load_google_password() -> str:
             line = raw.strip()
             if not line or line.startswith("#") or "=" not in line:
                 continue
-            key, val = line.split("=", 1)
+            name, val = line.split("=", 1)
             val = val.strip().strip("'").strip('"')
-            if key.strip() == "GOOGLE_PASSWORD" and val:
-                os.environ["GOOGLE_PASSWORD"] = val
+            if name.strip() == key and val:
+                os.environ[key] = val
                 return val
-            if key.strip() == "GOOGLE_EMAIL" and val:
+            if name.strip() == "GOOGLE_EMAIL" and val:
                 os.environ.setdefault("GOOGLE_EMAIL", val)
     return ""
+
+
+def load_google_password() -> str:
+    return load_env_value("GOOGLE_PASSWORD")
+
+
+def load_portal_password() -> str:
+    """Career-site Create Account / Sign In password. Never print it."""
+    return load_env_value("APPLY_ACCOUNT_PASSWORD") or load_env_value("PORTAL_PASSWORD")
 
 
 def sign_in_chrome(page) -> str:

@@ -205,6 +205,75 @@ def fill_identity(page) -> None:
             continue
 
 
+def fill_portal_account(page) -> str:
+    """Fill Create Account / Sign In email + password on any career ATS. Never log the secret."""
+    url = ""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "accounts.google.com" in url:
+        return "skip"
+    password = google_auth.load_portal_password()
+    if not password:
+        print("  APPLY_ACCOUNT_PASSWORD missing from .env; cannot create/sign-in accounts.", flush=True)
+        return "missing"
+    email = google_auth.EMAIL
+    filled_email = False
+    for sel in (
+        "[data-automation-id='email']",
+        "input[type=email]",
+        "input[autocomplete='username']",
+        "input[autocomplete='email']",
+        "input[name='email']",
+        "input[id*='email' i]",
+    ):
+        try:
+            loc = page.locator(sel).first
+            if loc.count() and loc.is_visible():
+                loc.fill(email, timeout=2000)
+                filled_email = True
+                break
+        except Exception:
+            continue
+    filled_pw = 0
+    for sel in (
+        "[data-automation-id='password']",
+        "[data-automation-id='verifyPassword']",
+        "[data-automation-id='confirmPassword']",
+        "input[autocomplete='new-password']",
+        "input[autocomplete='current-password']",
+        "input[type=password]",
+    ):
+        try:
+            loc = page.locator(sel)
+            n = loc.count()
+        except Exception:
+            n = 0
+        for i in range(min(n, 4)):
+            el = loc.nth(i)
+            try:
+                if not el.is_visible():
+                    continue
+                meta = ((el.get_attribute("name") or "") + " " + (el.get_attribute("id") or "") + " " + (el.get_attribute("aria-label") or "") + " " + (el.get_attribute("placeholder") or "")).lower()
+                if any(x in meta for x in ("honey", "honeypot", "website", "robot")):
+                    continue
+                el.fill(password, timeout=2000)
+                filled_pw += 1
+            except Exception:
+                continue
+    if filled_pw:
+        # de-dupe: we may have filled the same box via multiple selectors
+        pass
+    if filled_email or filled_pw:
+        print(
+            f"  Filled career-site account fields (email={int(filled_email)} password_boxes={filled_pw}).",
+            flush=True,
+        )
+        return "ok"
+    return "none"
+
+
 def upload_resume(page, path: str) -> bool:
     return tailor_resume.upload(page, path)
 
@@ -665,6 +734,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if copilot_start:
         page.wait_for_timeout(600)
     fill_identity(page)
+    fill_portal_account(page)
     apply_now.set_india_phone(page)
     accept_terms(page)
     try:
@@ -834,6 +904,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True) -> 
             return row
 
         fill_identity(page)
+        fill_portal_account(page)
         apply_now.set_india_phone(page)
         try:
             upload_resume(page, resume)
