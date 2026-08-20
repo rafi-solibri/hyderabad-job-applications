@@ -14,7 +14,11 @@ path.
    or tailor. Queue first (`apply_now.queue()`), then discover more if the
    career-portal queue is empty.
 2. Run headed Chrome on `DISPLAY=:1`:
-   `python3 cloud_apply.py --headed --wait 360 --limit 80`
+   `python3 cloud_apply.py --headed --wait 12 --limit 80`
+   Do **not** wait long on one form. Cap is 12 seconds, then the next leftover.
+   Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre run in the **same**
+   short-wait loop (3 other-board jobs per 1 career portal). One Chrome profile —
+   do not attach a second Playwright to CDP 9222.
 3. After each **SUBMITTED** application, tell the owner in **this agent chat**
    (company, title, URL). Also append `data/applications/SUBMITTED.md`.
 4. If a CAPTCHA / 2FA puzzle appears, **notify the owner in this agent chat**
@@ -75,9 +79,9 @@ Leave honeypot fields empty.
 
 ## Queue / matching
 
-- Career portals first (Greenhouse, Lever, Workday, Phenom, SmartRecruiters,
-  Oracle Cloud, iCIMS). Naukri / LinkedIn / Indeed / Cutshort / Foundit /
-  Instahyre are other automations.
+- Career portals and other boards in the same short-wait loop (3:1).
+  Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are Easy Apply —
+  start them immediately; do not hold them behind slow Workday forms.
 - No per-company application cap. Duplicate company+title listings are still
   collapsed. Skip Salesforce/SAP/PEGA, Java-mandatory, DevOps-primary, and
   out-of-scope titles already in `apply_now.py`.

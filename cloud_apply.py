@@ -39,6 +39,12 @@ PROFILE_EMAIL = "rafi.success@gmail.com"
 # One application tab only. Open the next job after a successful submit,
 # a closed/404 posting, or a career-site login that rejects every portal password.
 MAX_OPEN_APPLICATIONS = 1
+SHORT_WAIT = 12  # Owner: do not sit on one application. Move on fast.
+
+
+def cap_wait(wait_seconds: int) -> int:
+    w = wait_seconds if wait_seconds else SHORT_WAIT
+    return max(0, min(int(w), SHORT_WAIT))
 DONE_STATUSES = frozenset({"SUBMITTED", "CLOSED", "AUTH_FAILED"})
 # Park these and open the next leftover. STUCK = Copilot/form loop; do not sit on it.
 PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED", "OWNER_SIGNIN", "STUCK"})
@@ -87,8 +93,12 @@ def _host(url: str) -> str:
         return ""
 
 
-def classify_url(url: str, job: dict | None = None, allow_aggregators: bool = False) -> str:
-    """Career portals are always tried. Aggregator boards wait until career leftovers are empty."""
+def classify_url(url: str, job: dict | None = None, allow_aggregators: bool = True) -> str:
+    """Career portals and aggregator boards (Naukri/LinkedIn/Indeed/…) are both tried.
+
+    Aggregators used to wait until career leftovers were empty; that blocked
+    hundreds of Easy Apply jobs behind slow Workday forms.
+    """
     row = dict(job or {})
     if url:
         row["apply_url"] = url
@@ -2639,7 +2649,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     }
 
 
-def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = False) -> dict:
+def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = True) -> dict:
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
     kind = classify_url(url, job, allow_aggregators=allow_aggregators)
     row = {
@@ -2818,16 +2828,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
             return row
 
-        # Short stay only. Long waits were looping Copilot Continue for minutes.
-        stay = 15
-        try:
-            u = (page.url or "").lower()
-        except Exception:
-            u = ""
-        if any(x in u for x in ("applymanually", "/apply/", "icims.com", "avature.net", "myworkdayjobs", "oraclecloud", "smartrecruiters")):
-            stay = min(wait_seconds if wait_seconds else 90, 90)
-        if step == "stuck" and stay < 30:
-            stay = 0
+        # Owner: do not wait long. Same short cap for Workday and Easy Apply.
+        stay = cap_wait(wait_seconds)
+        if step == "stuck" and stay > 8:
+            stay = 8
         if stay:
             human = wait_for_human(page, job, stay, resume)
             row["ok"] = human["ok"]
@@ -2858,7 +2862,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         except Exception:
             pass
         try:
-            human = wait_for_human(page, job, wait_seconds or 90, resume)
+            human = wait_for_human(page, job, cap_wait(wait_seconds), resume)
             if human.get("ok"):
                 row.update({k: human[k] for k in ("ok", "status", "note")})
                 row["final_url"] = page.url
@@ -2867,14 +2871,14 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         return row
 
 
-def public_queue(jobs: list[dict]) -> tuple[list[dict], list[dict]]:
+def public_queue(jobs: list[dict], allow_aggregators: bool = True) -> tuple[list[dict], list[dict]]:
     try_jobs = []
     blocked = []
     for job in jobs:
         url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
         job = dict(job)
         job["apply_url"] = url
-        kind = classify_url(url, job)
+        kind = classify_url(url, job, allow_aggregators=allow_aggregators)
         if kind == "TRY":
             try_jobs.append(job)
         else:
@@ -2886,6 +2890,27 @@ def public_queue(jobs: list[dict]) -> tuple[list[dict], list[dict]]:
                 "note": "held until leftover career-portal jobs are empty",
             })
     return try_jobs, blocked
+
+
+def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
+    """Other-board Easy Apply first (3:1), then a career portal. Do not stall on Workday."""
+    career, boards = [], []
+    for job in jobs:
+        if apply_now.is_company_career_portal(job) and not apply_now.is_aggregator_board(job):
+            career.append(job)
+        else:
+            boards.append(job)
+    out: list[dict] = []
+    b = c = 0
+    while len(out) < (limit or 10**9) and (b < len(boards) or c < len(career)):
+        for _ in range(3):
+            if b < len(boards) and len(out) < (limit or 10**9):
+                out.append(boards[b])
+                b += 1
+        if c < len(career) and len(out) < (limit or 10**9):
+            out.append(career[c])
+            c += 1
+    return out
 
 
 def save_cloud(rows: list[dict]) -> None:
@@ -3106,22 +3131,26 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
     persist_existing_closed()
+    wait_seconds = cap_wait(wait_seconds)
     queue = apply_now.queue()
-    try_jobs, blocked_board = public_queue(queue)
+    try_jobs, blocked_board = public_queue(queue, allow_aggregators=True)
     try_jobs = leftover_career_jobs(try_jobs)
+    career_n = sum(
+        1 for j in try_jobs
+        if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
+    )
+    board_n = len(try_jobs) - career_n
     print(
-        f"Queue {len(queue)} | leftover career portals {len(try_jobs)} | "
-        f"other-board automations {len(blocked_board)}",
+        f"Queue {len(queue)} | leftover career portals {career_n} | "
+        f"leftover other-board {board_n} | skipped {len(blocked_board)} | "
+        f"max {wait_seconds}s per job",
         flush=True,
     )
     if headed:
         print(f"Headed Chrome on DISPLAY={os.environ.get('DISPLAY', ':1')} — complete CAPTCHA/login in the desktop view.", flush=True)
     results: list[dict] = []
-    if not headed:
-        results.extend(blocked_board[:8])
 
-    # Retry incomplete career-portal jobs until submitted or closed.
-    pending = try_jobs[:limit] if limit else try_jobs
+    pending = interleave_boards_and_career(try_jobs, limit)
     with sync_playwright() as pw:
         browser, context, page = launch_context(pw, headed)
         for attempt in range(1, 4):
@@ -3129,7 +3158,8 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
             if not leftover:
                 break
             print(
-                f"\n=== Apply one at a time: {len(leftover)} leftover career-portal job(s) ===",
+                f"\n=== Short-wait apply ({wait_seconds}s max): "
+                f"{len(leftover)} leftover job(s), other-boards mixed in ===",
                 flush=True,
             )
             for i, job in enumerate(leftover, 1):
@@ -3187,10 +3217,14 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
             context.close()
 
     submitted = sum(1 for r in results if r.get("ok") and r.get("status") == "SUBMITTED")
-    still = leftover_career_jobs(try_jobs[:limit] if limit else try_jobs)
+    still = leftover_career_jobs(try_jobs)
+    still_career = sum(
+        1 for j in still
+        if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
+    )
     print(
         f"\nCloud apply done. Submitted {submitted}. "
-        f"Still leftover career-portal jobs: {len(still)}.",
+        f"Still leftover: {len(still)} ({still_career} career portals).",
         flush=True,
     )
     return results
@@ -3207,6 +3241,6 @@ if __name__ == "__main__":
     )
     parser.add_argument("--limit", type=int, default=80)
     args = parser.parse_args()
-    # Headed: wait for human CAPTCHA. Unattended cron can pass --wait 0.
-    wait = (360 if args.headed else 0) if args.wait is None else args.wait
+    # Owner: do not wait long on one form. Default 12s even when headed.
+    wait = SHORT_WAIT if args.wait is None else args.wait
     main(limit=args.limit, headed=args.headed, wait_seconds=wait)
