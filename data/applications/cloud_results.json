@@ -181,16 +181,14 @@
   {
     "company": "Freshworks",
     "title": "Senior Staff Software Engineer - Full Stack",
-    "location": "Hyderabad  in",
-    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000134600339",
-    "ats": "SmartRecruiters",
     "job_id": "744000134600339",
+    "url": "https://jobs.smartrecruiters.com/Freshworks/744000134600339",
     "apply_url": "https://jobs.smartrecruiters.com/Freshworks/744000134600339",
-    "ok": false,
-    "status": "ERROR",
-    "note": "name 'recover_wrong_board' is not defined",
-    "final_url": "https://jobs.smartrecruiters.com/Freshworks/744000134600339",
-    "ts": "2026-08-20T09:13:24.038301+00:00"
+    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/c17fc54c-944b-49a4-af75-88fd9c977c23/success?dcr_ci=Freshworks&ref=Simplify&src=Simplify&utm_source=Simplify",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
+    "ts": "2026-08-20T11:30:41.312274+00:00"
   },
   {
     "company": "Charles Schwab",
@@ -400,7 +398,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 40s; learned 0 fields",
     "final_url": "https://passport.amazon.jobs/",
-    "ts": "2026-08-20T11:20:44.668331+00:00",
+    "ts": "2026-08-20T11:26:27.593786+00:00",
     "fields_learned": 0
   }
 ]

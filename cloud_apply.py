@@ -909,6 +909,11 @@ def fill_spl_autocomplete(page, needle: str, want: str) -> bool:
                 }
               });
               if (!host) return {ok: false, err: 'no host'};
+              let trigger = null;
+              walk(host, el => {
+                if (!trigger && (el.className || '').toString().includes('c-spl-dropdown-trigger')) trigger = el;
+              });
+              if (trigger) trigger.click();
               const opts = [];
               walk(host, el => {
                 if (el.tagName === 'SPL-SELECT-OPTION') {
@@ -921,11 +926,6 @@ def fill_spl_autocomplete(page, needle: str, want: str) -> bool:
                 || uniq.find(o => o.toLowerCase().includes(wantL))
                 || uniq.find(o => wantL.includes(o.toLowerCase()));
               if (!match) return {ok: false, err: 'no match', opts: uniq};
-              let trigger = null;
-              walk(host, el => {
-                if (!trigger && (el.className || '').toString().includes('c-spl-dropdown-trigger')) trigger = el;
-              });
-              if (trigger) trigger.click();
               let picked = null;
               walk(host, el => {
                 if (picked) return;
@@ -1399,28 +1399,9 @@ def accept_terms(page) -> int:
               };
               const walk = (root) => {
                 if (!root || !root.querySelectorAll) return;
-                for (const host of root.querySelectorAll('spl-checkbox, [data-test="consent-box"]')) {
-                  const t = ((host.innerText || '') + ' ' + (host.getAttribute('aria-label') || '') + ' ' + (host.id || ''));
-                  if (!re.test(t) && host.getAttribute('data-test') !== 'consent-box') continue;
-                  if ((host.className || '').toString().includes('ng-valid') && host.getAttribute('value') === 'true') continue;
-                  const innerWalk = (node) => {
-                    if (!node) return null;
-                    if (node.querySelector) {
-                      const inp = node.querySelector('input[type=checkbox], .c-spl-checkbox, .c-spl-checkbox-wrapper');
-                      if (inp) return inp;
-                    }
-                    const all = node.querySelectorAll ? node.querySelectorAll('*') : [];
-                    for (const el of all) {
-                      if (el.shadowRoot) {
-                        const hit = innerWalk(el.shadowRoot);
-                        if (hit) return hit;
-                      }
-                    }
-                    return null;
-                  };
-                  fire(innerWalk(host.shadowRoot) || innerWalk(host) || host);
-                }
+                // spl-checkbox is handled by check_spl_checkbox() (Lit host.click()).
                 for (const el of root.querySelectorAll('input[type=checkbox]')) {
+                  if (el.closest && el.closest('spl-checkbox')) continue;
                   const wrap = el.closest('label') || el.parentElement || el;
                   const t = ((wrap.innerText || '') + ' ' + (el.getAttribute('aria-label') || '') + ' ' + (el.id || '') + ' ' + (el.name || ''));
                   if (!re.test(t)) continue;
