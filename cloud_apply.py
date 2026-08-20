@@ -589,13 +589,15 @@ def is_login_wall(page) -> bool:
 def is_captcha(page) -> bool:
     text = body_text(page, 2500)
     if CAPTCHA_RE.search(text):
-        try:
-            if page.locator("iframe[src*='recaptcha'], iframe[src*='hcaptcha'], .g-recaptcha").count():
-                return True
-        except Exception:
+        return True
+    try:
+        if page.locator(
+            "iframe[src*='recaptcha'], iframe[src*='hcaptcha'], iframe[src*='arkoselabs'], "
+            "iframe[src*='funcaptcha'], .g-recaptcha, [class*='captcha' i]"
+        ).count():
             return True
-        if re.search(r"verify you are human|i.?m not a robot", text, re.I):
-            return True
+    except Exception:
+        pass
     return False
 
 
@@ -1008,7 +1010,7 @@ def main() -> None:
         jid = str(job.get("job_id") or job.get("url") or "")
         if jid in skipped_store:
             reason = str(skipped_store[jid].get("reason") or "")
-            if reason.startswith(("title-skip", "domain-skip", "blocked", "python-", "wrong-city", "staffing")):
+            if reason.startswith(("title-skip", "domain-skip", "blocked", "python-", "wrong-city", "staffing", "captcha")):
                 continue
         queue.append(job)
 
