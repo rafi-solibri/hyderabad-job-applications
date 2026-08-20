@@ -8,6 +8,7 @@ credentials.json
 data/firefox_apply_profile/
 data/browser_profile/
 data/tools/simplify-xpi/
+data/tools/simplify-ext/
 data/tools/geckodriver*
 data/applications/screenshots/
 *.exe

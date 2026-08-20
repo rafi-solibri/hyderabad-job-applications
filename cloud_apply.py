@@ -1,7 +1,7 @@
 """Cloud-browser apply: headed Chrome on DISPLAY, one job at a time.
 
-Walks the existing ready-to-apply queue first. Skips login/CAPTCHA walls.
-Does not click Simplify Tailor Resume / Resume Builder.
+Walks the existing ready-to-apply queue first. Signs into Google, uses
+Simplify Copilot / Apply with LinkedIn, and skips only CAPTCHA walls.
 """
 from __future__ import annotations
 
@@ -72,6 +72,8 @@ RUN_RESULTS = ROOT / "data" / "applications" / "cloud_apply_results.json"
 SKIPPED_PATH = ROOT / "data" / "skipped_jobs.json"
 REPORT = ROOT / "DAILY_REPORT.md"
 APPLICATIONS = ROOT / "APPLICATIONS.md"
+PROFILE_DIR = ROOT / "data" / "browser_profile"
+EXT_DIR = ROOT / "data" / "tools" / "simplify-ext"
 
 FIRST = LEARNED.get("legalFirstName") or "Mohammed Abdul Rafi"
 LAST = LEARNED.get("legalLastName") or "Ahmed"
@@ -102,7 +104,7 @@ CAPTCHA_RE = re.compile(
     r"unusual traffic|are you a robot",
     re.I,
 )
-SIMPLIFY_RE = re.compile(r"tailor resume|resume builder|simplify copilot|autofill with simplify", re.I)
+SIMPLIFY_RE = re.compile(r"^unused$", re.I)  # Simplify buttons are used on purpose now.
 
 SKIP_TITLE = re.compile(
     r"salesforce|servicenow|\bsap\b|\bpega\b|guidewire|d365|dynamics 365|"
@@ -145,6 +147,296 @@ HARD_SKIP_SUBSTRINGS = (
 
 def company_key(name: str) -> str:
     return apply_now.company_key(name)
+
+
+def stored_password() -> str:
+    """Password saved from a previous form fill. Never log the value."""
+    env = os.environ.get("GOOGLE_PASSWORD") or os.environ.get("ACCOUNT_PASSWORD") or ""
+    if env:
+        return env
+    mem = form_memory.load_memory().get("by_label") or {}
+    for key, row in mem.items():
+        if "password" not in key:
+            continue
+        val = str((row or {}).get("value") or "")
+        if val and "@" not in val and len(val) >= 8:
+            return val
+    return ""
+
+
+def _click_text(page, *labels, timeout=2500) -> bool:
+    for label in labels:
+        try:
+            loc = page.get_by_role("button", name=re.compile(rf"^{re.escape(label)}$", re.I))
+            if loc.count() and loc.first.is_visible():
+                loc.first.click(timeout=timeout)
+                page.wait_for_timeout(800)
+                return True
+        except Exception:
+            pass
+        try:
+            loc = page.get_by_text(re.compile(rf"^{re.escape(label)}$", re.I), exact=False)
+            if loc.count() and loc.first.is_visible():
+                loc.first.click(timeout=timeout)
+                page.wait_for_timeout(800)
+                return True
+        except Exception:
+            pass
+    return False
+
+
+def google_signed_in(page) -> bool:
+    url = (page.url or "").lower()
+    try:
+        text = body_text(page, 1500)
+    except Exception:
+        text = ""
+    if "myaccount.google.com" in url:
+        return True
+    if "accounts.google.com" in url and re.search(r"choose an account|signed in as", text, re.I):
+        return True
+    if EMAIL.lower() in text.lower() and "sign in" not in text.lower()[:200]:
+        if "myaccount" in url or "google.com" in url:
+            return True
+    return False
+
+
+def login_google(page) -> bool:
+    password = stored_password()
+    if not password:
+        print("  No stored Google password. Cannot sign in.", flush=True)
+        return False
+    print(f"  Signing into Google as {EMAIL}...", flush=True)
+    try:
+        page.goto(
+            "https://accounts.google.com/ServiceLogin?hl=en&continue=https://myaccount.google.com/",
+            wait_until="domcontentloaded",
+            timeout=45000,
+        )
+    except Exception as exc:
+        print(f"  Google login page failed to load: {exc}", flush=True)
+        return False
+    page.wait_for_timeout(1500)
+    close_overlays(page)
+    if "myaccount.google.com" in (page.url or "") and "signin" not in (page.url or "").lower():
+        print("  Google session already active.", flush=True)
+        return True
+    # Account chooser
+    try:
+        acc = page.locator(f"[data-email='{EMAIL}'], div[data-identifier='{EMAIL}']").first
+        if acc.count() and acc.is_visible():
+            acc.click(timeout=2000)
+            page.wait_for_timeout(1200)
+    except Exception:
+        pass
+    try:
+        email_box = page.locator("input[type='email'], input[name='identifier'], #identifierId").first
+        if email_box.count() and email_box.is_visible():
+            email_box.fill(EMAIL, timeout=3000)
+            page.wait_for_timeout(400)
+            if not _click_text(page, "Next", "Continue"):
+                page.keyboard.press("Enter")
+            page.wait_for_timeout(1800)
+    except Exception:
+        pass
+    try:
+        pw = page.locator("input[type='password'], input[name='Passwd']").first
+        if pw.count() and pw.is_visible():
+            pw.click()
+            pw.fill(password, timeout=3000)
+            page.wait_for_timeout(400)
+            if not _click_text(page, "Next", "Continue"):
+                page.keyboard.press("Enter")
+            page.wait_for_timeout(2500)
+    except Exception:
+        pass
+    for _ in range(8):
+        close_overlays(page)
+        _click_text(page, "Not now", "Skip", "I understand", "Don't use passkey", "Cancel", "Ask later", "No thanks")
+        url = page.url or ""
+        if "myaccount.google.com" in url and "signin" not in url.lower():
+            print("  Google sign-in succeeded.", flush=True)
+            shot(page, "google-signed-in")
+            return True
+        if re.search(r"2-step|two.?step|verify it.?s you|phone|authenticator|recovery", body_text(page, 2000), re.I):
+            print("  Google asked for 2FA. Waiting up to 90s for it to clear...", flush=True)
+            shot(page, "google-2fa")
+            deadline = time.time() + 90
+            while time.time() < deadline:
+                page.wait_for_timeout(3000)
+                if "myaccount.google.com" in (page.url or "") and "signin" not in (page.url or "").lower():
+                    print("  Google sign-in succeeded after 2FA.", flush=True)
+                    return True
+            print("  Google 2FA still blocking.", flush=True)
+            return False
+        if re.search(r"couldn.?t sign you in|browser or app may not be secure|unusual activity", body_text(page, 2000), re.I):
+            print("  Google blocked automated sign-in.", flush=True)
+            shot(page, "google-blocked")
+            return False
+        page.wait_for_timeout(1000)
+    print(f"  Google sign-in unfinished at {page.url}", flush=True)
+    shot(page, "google-unfinished")
+    return False
+
+
+def login_linkedin(page) -> bool:
+    password = stored_password()
+    print("  Signing into LinkedIn via Google...", flush=True)
+    try:
+        page.goto("https://www.linkedin.com/login", wait_until="domcontentloaded", timeout=45000)
+    except Exception as exc:
+        print(f"  LinkedIn login page failed: {exc}", flush=True)
+        return False
+    page.wait_for_timeout(1500)
+    close_overlays(page)
+    if "feed" in (page.url or "") or "/in/" in (page.url or ""):
+        print("  LinkedIn session already active.", flush=True)
+        return True
+    # Sign in with Google
+    google_btn = None
+    for sel in (
+        "button:has-text('Sign in with Google')",
+        "a:has-text('Sign in with Google')",
+        "[data-test-id='sign-in-with-google']",
+        "iframe[title*='Sign in with Google']",
+    ):
+        try:
+            loc = page.locator(sel).first
+            if loc.count() and loc.is_visible():
+                google_btn = loc
+                break
+        except Exception:
+            continue
+    if google_btn is not None:
+        try:
+            with page.expect_popup(timeout=5000) as pop:
+                google_btn.click(timeout=2000)
+            extra = pop.value
+            extra.wait_for_timeout(1500)
+            _click_text(extra, EMAIL.split("@")[0])
+            try:
+                extra.locator(f"text={EMAIL}").first.click(timeout=2000)
+            except Exception:
+                pass
+            extra.wait_for_timeout(2000)
+        except Exception:
+            try:
+                google_btn.click(timeout=2000)
+                page.wait_for_timeout(2000)
+                try:
+                    page.locator(f"text={EMAIL}").first.click(timeout=2500)
+                except Exception:
+                    pass
+            except Exception:
+                pass
+    # Email + password fallback (same stored credentials)
+    if password and ("login" in (page.url or "") or "checkpoint" in (page.url or "")):
+        try:
+            user = page.locator("#username, input[name='session_key']").first
+            if user.count() and user.is_visible():
+                user.fill(EMAIL, timeout=2000)
+            pw = page.locator("#password, input[name='session_password']").first
+            if pw.count() and pw.is_visible():
+                pw.fill(password, timeout=2000)
+                _click_text(page, "Sign in", "Sign in ")
+                page.keyboard.press("Enter")
+                page.wait_for_timeout(2500)
+        except Exception:
+            pass
+    close_overlays(page)
+    url = page.url or ""
+    if any(x in url for x in ("/feed", "/in/", "linkedin.com/jobs")) and "login" not in url:
+        print("  LinkedIn sign-in succeeded.", flush=True)
+        shot(page, "linkedin-signed-in")
+        return True
+    # LinkedIn sometimes lands on challenge
+    if "checkpoint" in url or "challenge" in url:
+        print("  LinkedIn challenge/CAPTCHA. Skipping LinkedIn session.", flush=True)
+        shot(page, "linkedin-challenge")
+        return False
+    print(f"  LinkedIn sign-in unfinished at {url}", flush=True)
+    shot(page, "linkedin-unfinished")
+    return False
+
+
+def login_simplify(page) -> bool:
+    print("  Opening Simplify so Copilot can use the Google session...", flush=True)
+    try:
+        page.goto("https://simplify.jobs/auth/sign-in", wait_until="domcontentloaded", timeout=40000)
+    except Exception:
+        try:
+            page.goto("https://simplify.jobs/", wait_until="domcontentloaded", timeout=40000)
+        except Exception as exc:
+            print(f"  Simplify site failed: {exc}", flush=True)
+            return False
+    page.wait_for_timeout(1500)
+    close_overlays(page)
+    if re.search(r"dashboard|profile|copilot", page.url or "", re.I) and "sign-in" not in (page.url or ""):
+        print("  Simplify session already active.", flush=True)
+        return True
+    for sel in (
+        "button:has-text('Continue with Google')",
+        "button:has-text('Sign in with Google')",
+        "a:has-text('Continue with Google')",
+        "a:has-text('Sign in with Google')",
+    ):
+        try:
+            loc = page.locator(sel).first
+            if loc.count() and loc.is_visible():
+                try:
+                    with page.expect_popup(timeout=4000) as pop:
+                        loc.click(timeout=2000)
+                    extra = pop.value
+                    extra.wait_for_timeout(1200)
+                    extra.locator(f"text={EMAIL}").first.click(timeout=2500)
+                    extra.wait_for_timeout(2000)
+                except Exception:
+                    loc.click(timeout=2000)
+                    page.wait_for_timeout(1500)
+                    try:
+                        page.locator(f"text={EMAIL}").first.click(timeout=2500)
+                    except Exception:
+                        pass
+                break
+        except Exception:
+            continue
+    page.wait_for_timeout(2500)
+    _click_text(page, "Allow", "Continue", "Accept")
+    if "sign-in" not in (page.url or "").lower() or "simplify.jobs" in (page.url or ""):
+        print(f"  Simplify auth page: {page.url}", flush=True)
+        shot(page, "simplify-auth")
+        return True
+    return False
+
+
+def click_simplify(page) -> bool:
+    """Use Simplify Copilot controls when they appear."""
+    for sel in (
+        "button:has-text('Autofill this page')",
+        "button:has-text('Autofill This Page')",
+        "button:has-text('Autofill with Simplify')",
+        "button:has-text('Apply with Simplify')",
+        "button:has-text('Fill with Simplify')",
+        "button:has-text('Autofill')",
+        "#simplify-icon-apply",
+        "#simplify-icon",
+        "[id*='simplify' i]",
+    ):
+        try:
+            loc = page.locator(sel).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=1500)
+                print(f"  Clicked Simplify: {sel}", flush=True)
+                page.wait_for_timeout(2500)
+                return True
+        except Exception:
+            continue
+    try:
+        page.keyboard.press("Alt+Shift+F")
+        page.wait_for_timeout(1500)
+    except Exception:
+        pass
+    return False
 
 
 def load_skipped() -> dict:
@@ -262,22 +554,22 @@ def close_overlays(page) -> None:
 
 def is_login_wall(page) -> bool:
     url = (page.url or "").lower()
-    if any(x in url for x in ("/login", "/uas/login", "signup", "auth0.com", "signin", "accounts.google.com")):
-        if "apply" not in url and "job" not in url:
-            return True
-        if "/login" in url or "signin" in url or "accounts.google.com" in url:
-            return True
-    text = body_text(page, 2500)
-    if LOGIN_RE.search(text) and not SUCCESS_RE.search(text):
-        # Guest LinkedIn job pages mention Sign in but still show Apply on company website.
-        if "apply on company website" in text.lower() or "apply on company site" in text.lower():
+    try:
+        if page.locator("button:has-text('Easy Apply'), button:has-text('Apply with Simplify'), button:has-text('Apply with LinkedIn')").count():
             return False
-        if re.search(r"sign in to apply|join to apply|log in to apply|please sign in to", text, re.I):
-            return True
-        if "linkedin.com" in url and re.search(r"sign in|join now", text, re.I) and "easy apply" not in text.lower():
-            # LinkedIn guest view often still usable; only treat as wall if apply is gated.
-            if re.search(r"sign in to view|join linkedin", text, re.I):
-                return True
+    except Exception:
+        pass
+    if any(x in url for x in ("/uas/login", "auth0.com")):
+        return True
+    if "accounts.google.com" in url and "signin" in url:
+        return True
+    if "/login" in url and "linkedin.com/login" in url:
+        return True
+    text = body_text(page, 2500)
+    if re.search(r"sign in to apply|join to apply|log in to apply|please sign in to continue", text, re.I):
+        if "easy apply" in text.lower() or "apply with simplify" in text.lower():
+            return False
+        return True
     return False
 
 
@@ -305,7 +597,13 @@ def is_success(page) -> bool:
 
 
 def click_apply_entry(page) -> bool:
+    click_simplify(page)
     for sel in [
+        "button:has-text('Easy Apply')",
+        "button:has-text('Apply with Simplify')",
+        "a:has-text('Apply with Simplify')",
+        "button:has-text('Apply with LinkedIn')",
+        "a:has-text('Apply with LinkedIn')",
         "a:has-text('Apply on company website')",
         "a:has-text('Apply on company site')",
         "button:has-text('Apply on company website')",
@@ -313,7 +611,6 @@ def click_apply_entry(page) -> bool:
         "button:has-text('Apply for this job')",
         "a:has-text('Apply now')",
         "button:has-text('Apply now')",
-        "a:has-text('Apply')",
         "button:has-text('I'm interested')",
         "a:has-text('I'm interested')",
         "a:has-text('Submit application')",
@@ -323,13 +620,10 @@ def click_apply_entry(page) -> bool:
             if not loc.count() or not loc.is_visible():
                 continue
             label = (loc.inner_text() or "")[:80]
-            if SIMPLIFY_RE.search(label):
-                continue
-            if re.search(r"easy apply|simplify|tailor resume|apply with linkedin|sign in|log in|authorize sharing", label, re.I):
-                continue
             with page.expect_navigation(timeout=8000, wait_until="domcontentloaded") if "company web" in label.lower() else _null_ctx():
                 loc.click(timeout=1500)
             page.wait_for_timeout(900)
+            print(f"  Clicked apply control: {label or sel}", flush=True)
             return True
         except Exception:
             try:
@@ -406,19 +700,20 @@ def answer_yes_no(page) -> None:
 
 def click_next_or_submit(page) -> str:
     close_overlays(page)
-    # Never click Simplify / resume builder
+    click_simplify(page)
     for sel in [
         "button:has-text('Submit application')",
         "button:has-text('Submit Application')",
+        "button:has-text('Submit with Simplify')",
         "input[type='submit'][value*='Submit']",
         "button[type='submit']:has-text('Submit')",
         "button:has-text('Submit')",
         "button:has-text('Send application')",
+        "button:has-text('Review')",
         "button:has-text('Save and continue')",
         "button:has-text('Save & continue')",
         "button:has-text('Continue')",
         "button:has-text('Next')",
-        "button:has-text('Review')",
         "input[type='submit']",
     ]:
         try:
@@ -426,10 +721,6 @@ def click_next_or_submit(page) -> str:
             if not loc.count() or not loc.is_visible() or not loc.is_enabled():
                 continue
             label = (loc.inner_text() or loc.get_attribute("value") or "")[:80]
-            if SIMPLIFY_RE.search(label):
-                continue
-            if re.search(r"apply with linkedin|sign in|log in|authorize sharing|tailor resume|resume builder", label, re.I):
-                continue
             loc.click(timeout=1500)
             page.wait_for_timeout(1200)
             if re.search(r"submit|send application", label, re.I):
@@ -443,6 +734,7 @@ def click_next_or_submit(page) -> str:
 def fill_and_advance(page, job: dict, resume_path: str, steps: int = 8) -> str:
     for _ in range(steps):
         close_overlays(page)
+        click_simplify(page)
         if is_success(page):
             return "SUBMITTED"
         if is_captcha(page):
@@ -677,13 +969,25 @@ def main() -> None:
     results: list[dict] = []
     attempted = 0
     submitted = 0
+    PROFILE_DIR.mkdir(parents=True, exist_ok=True)
+    ext = str(EXT_DIR) if (EXT_DIR / "manifest.json").exists() else ""
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(
+        launch_args = [
+            "--no-sandbox",
+            "--disable-dev-shm-usage",
+            "--window-size=1440,1100",
+            "--disable-blink-features=AutomationControlled",
+        ]
+        if ext:
+            launch_args += [f"--disable-extensions-except={ext}", f"--load-extension={ext}"]
+            print(f"  Loading Simplify Copilot from {ext}", flush=True)
+        context = p.chromium.launch_persistent_context(
+            str(PROFILE_DIR),
             headless=False,
-            args=["--no-sandbox", "--disable-dev-shm-usage", "--window-size=1440,1100"],
-        )
-        context = browser.new_context(
+            executable_path="/usr/bin/google-chrome",
+            args=launch_args,
+            ignore_default_args=["--enable-automation"],
             viewport={"width": 1440, "height": 1100},
             user_agent=(
                 "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -691,8 +995,15 @@ def main() -> None:
             ),
             accept_downloads=True,
         )
-        page = context.new_page()
+        page = context.pages[0] if context.pages else context.new_page()
         try:
+            google_ok = login_google(page)
+            linkedin_ok = login_linkedin(page)
+            simplify_ok = login_simplify(page) if google_ok else False
+            print(
+                f"  Sessions: google={google_ok} linkedin={linkedin_ok} simplify={simplify_ok}",
+                flush=True,
+            )
             for job in queue:
                 if submitted >= submit_limit or attempted >= browser_limit:
                     break
@@ -723,13 +1034,11 @@ def main() -> None:
                     for extra in pages[1:]:
                         extra.close()
                     page = keep
-                    if not page.url or page.url == "about:blank":
-                        pass
                 except Exception:
                     page = context.new_page()
                 time.sleep(0.6)
         finally:
-            browser.close()
+            context.close()
 
     apply_now.BATCH = apply_now.load_all_discovered()
     leftover = apply_now.queue()
