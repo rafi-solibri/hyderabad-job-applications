@@ -1,4 +1,8 @@
-"""Headed apply for the open discovery batch. Greenhouse first, then Lever."""
+"""Headed apply for the open discovery batch.
+
+Company career portals (Greenhouse, Lever, Workday, Phenom, company sites) first.
+Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre last — other automations cover those boards.
+"""
 from __future__ import annotations
 
 import json
@@ -6,6 +10,7 @@ import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 
 import firefox_real
 import form_memory
@@ -826,16 +831,116 @@ def queue() -> list[dict]:
                 continue
         row = dict(job)
         row["apply_url"] = apply_url(job)
+        row["portal_rank"] = portal_rank(row)
         row["match_score"] = match_score(row)
         jobs.append(row)
     return pick_best_per_company(jobs, used)
 
 
+# Boards already covered by other automations — keep them last in this queue.
+AGGREGATOR_ATS = {
+    "linkedin", "naukri", "indeed", "cutshort", "foundit", "instahyre",
+}
+AGGREGATOR_HOST_SUFFIXES = (
+    "linkedin.com",
+    "naukri.com",
+    "indeed.com",
+    "cutshort.io",
+    "cutshort.com",
+    "foundit.in",
+    "instahyre.com",
+)
+CAREER_ATS = {
+    "workday", "greenhouse", "lever", "ashby", "amazon", "smartrecruiters",
+    "icims", "taleo", "phenom", "successfactors", "eightfold", "jobvite",
+    "workable", "bamboohr", "dayforce", "oracle",
+}
+CAREER_HOST_HINTS = (
+    "jobs.lever.co", "greenhouse.io", "ashbyhq.com", "smartrecruiters.com",
+    "myworkdayjobs.com", "myworkdaysite.com", "workday.com",
+    "oraclecloud.com", "taleo.net", "icims.com", "workable.com",
+    "amazon.jobs", "successfactors.com", "eightfold.ai", "jobvite.com",
+    "brassring.com", "ultipro.com", "phenom.com", "phenompeople.com",
+    "dayforcehcm.com", "recruitee.com", "bamboohr.com", "rippling.com",
+    "schwabjobs.com", "jobs.thermofisher.com", "careers.dhl.com", "jobs.zf.com",
+    "careers.statestreet.com", "careers.coupa.com", "jobs.jobvite.com",
+    "myworkdaysite.com", "wd1.myworkdayjobs.com",
+)
+
+
+def _job_hosts(job: dict) -> list[str]:
+    hosts = []
+    for url in (job.get("apply_url"), job.get("url"), job.get("final_url")):
+        if not url:
+            continue
+        try:
+            host = (urlparse(str(url)).hostname or "").lower()
+        except Exception:
+            host = ""
+        if host:
+            hosts.append(host)
+    return hosts
+
+
+def is_aggregator_board(job: dict) -> bool:
+    """True for Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre."""
+    ats = (job.get("ats") or "").strip().lower()
+    if ats in AGGREGATOR_ATS:
+        return True
+    for host in _job_hosts(job):
+        if any(host == suffix or host.endswith("." + suffix) for suffix in AGGREGATOR_HOST_SUFFIXES):
+            return True
+    return False
+
+
+def is_company_career_portal(job: dict) -> bool:
+    """True for Greenhouse, Lever, Workday, Phenom, and company careers.* sites."""
+    if is_aggregator_board(job):
+        return False
+    ats = (job.get("ats") or "").strip().lower()
+    if ats in CAREER_ATS:
+        return True
+    hosts = _job_hosts(job)
+    blob = " ".join(hosts)
+    if any(hint in blob for hint in CAREER_HOST_HINTS):
+        return True
+    for host in hosts:
+        first = host.split(".")[0]
+        if first in {"careers", "jobs", "job", "talent", "recruiting", "apply"}:
+            return True
+        if ".careers." in f".{host}." or host.startswith("job-boards."):
+            return True
+    return False
+
+
+def portal_rank(job: dict) -> int:
+    """100 = company career portal, 50 = other, 0 = boards covered elsewhere."""
+    if is_aggregator_board(job):
+        return 0
+    if is_company_career_portal(job):
+        return 100
+    return 50
+
+
+def queue_sort_key(job: dict) -> tuple:
+    rank = job.get("portal_rank")
+    if rank is None:
+        rank = portal_rank(job)
+    return (
+        -int(rank),
+        -int(job.get("match_score") or match_score(job)),
+        job.get("company") or "",
+        job.get("title") or "",
+    )
+
+
 def match_score(job: dict) -> int:
-    """Higher = closer to Rafi's architect / .NET / cloud / lead profile."""
+    """Higher = closer to Rafi's architect / .NET / cloud / lead profile.
+
+    Company career portals outrank Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre.
+    """
     title = (job.get("title") or "").lower()
     loc = (job.get("location") or "").lower()
-    ats = (job.get("ats") or "")
     score = 10
     if re.search(r"\.net|dotnet|c#|azure", title):
         score += 40
@@ -855,10 +960,15 @@ def match_score(job: dict) -> int:
         score += 16
     elif re.search(r"remote", loc) and re.search(r"india", loc):
         score += 10
-    if ats in {"Workday", "Greenhouse", "Lever", "Ashby", "Amazon"}:
-        score += 10
-    elif ats in {"Foundit", "Indeed", "Naukri"}:
-        score -= 6
+    rank = job.get("portal_rank")
+    if rank is None:
+        rank = portal_rank(job)
+    if int(rank) >= 100:
+        score += 80
+    elif int(rank) >= 50:
+        score += 20
+    else:
+        score -= 80
     if re.search(r"python|frontend|front end|security architect|quality|hvac|electrical|civil|oracle fusion|wms|verification", title):
         score -= 20
     if re.search(r"ai solution|gen ai|machine learning|data engineer", title):
@@ -867,9 +977,12 @@ def match_score(job: dict) -> int:
 
 
 def pick_best_per_company(jobs: list[dict], used: dict[str, set] | None = None) -> list[dict]:
-    """Keep only the best leftover slots per company (cap minus already applied)."""
+    """Keep only the best leftover slots per company (cap minus already applied).
+
+    Career-portal listings fill a company's slots before aggregator-board copies.
+    """
     used = used or {}
-    jobs = sorted(jobs, key=lambda j: (-int(j.get("match_score") or match_score(j)), j.get("title") or ""))
+    jobs = sorted(jobs, key=queue_sort_key)
     planned: dict[str, int] = {}
     seen_titles: set[str] = set()
     chosen: list[dict] = []
@@ -884,7 +997,7 @@ def pick_best_per_company(jobs: list[dict], used: dict[str, set] | None = None) 
         seen_titles.add(title_key)
         chosen.append(job)
         planned[company] = planned.get(company, 0) + 1
-    chosen.sort(key=lambda j: (-int(j.get("match_score") or 0), j.get("company") or "", j.get("title") or ""))
+    chosen.sort(key=queue_sort_key)
     return chosen
 
 

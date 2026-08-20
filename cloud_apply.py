@@ -1,8 +1,8 @@
-"""Apply to public ATS jobs from the ready queue using Chromium.
+"""Apply to company career-portal jobs from the ready queue using Chromium.
 
-Does not use the Windows Firefox / Simplify profile. Login and CAPTCHA
-walls are skipped. LinkedIn / Foundit / Naukri URLs are recorded as
-LOGIN_BLOCKED without opening them.
+Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are recorded as
+OTHER_AUTOMATION without opening them. Company career sites (Greenhouse, Lever,
+Workday, Phenom, SmartRecruiters, etc.) are tried first.
 """
 from __future__ import annotations
 
@@ -32,17 +32,20 @@ PROFILE = ROOT / "data" / "chrome_profile"
 CDP = "http://127.0.0.1:9222"
 PROFILE_EMAIL = "rafi.success@gmail.com"
 
+# These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
     "linkedin.com", "www.linkedin.com", "foundit.in", "www.foundit.in",
     "naukri.com", "www.naukri.com", "indeed.com", "www.indeed.com",
     "instahyre.com", "www.instahyre.com",
+    "cutshort.io", "www.cutshort.io", "cutshort.com", "www.cutshort.com",
 )
 PUBLIC_HOST_HINTS = (
     "jobs.lever.co", "greenhouse.io", "ashbyhq.com", "smartrecruiters.com",
     "myworkdayjobs.com", "myworkdaysite.com", "schwabjobs.com",
     "jobs.thermofisher.com", "careers.dhl.com", "jobs.zf.com",
     "oraclecloud.com", "careers.statestreet.com", "taleo.net",
-    "amazon.jobs", "workable.com", "icims.com",
+    "amazon.jobs", "workable.com", "icims.com", "phenom.com",
+    "successfactors.com", "eightfold.ai", "jobvite.com",
 )
 SIMPLIFY_RE = re.compile(r"simplify|tailor resume|resume builder", re.I)
 LOGIN_RE = re.compile(
@@ -67,8 +70,16 @@ def _host(url: str) -> str:
         return ""
 
 
-def classify_url(url: str) -> str:
-    """Never skip a company by host. Login/CAPTCHA are handled on the page."""
+def classify_url(url: str, job: dict | None = None) -> str:
+    """Career portals are tried. Aggregator boards are left to other automations."""
+    row = dict(job or {})
+    if url:
+        row["apply_url"] = url
+    if apply_now.is_aggregator_board(row):
+        return "OTHER_AUTOMATION"
+    host = _host(url)
+    if host in LOGIN_HOSTS or any(host.endswith("." + h) for h in ("linkedin.com", "naukri.com", "indeed.com", "foundit.in", "instahyre.com", "cutshort.io")):
+        return "OTHER_AUTOMATION"
     if (url or "").startswith("http"):
         return "TRY"
     return "LOGIN_BLOCKED"
@@ -301,7 +312,7 @@ def wait_for_human(page, job: dict, seconds: int) -> dict:
 
 def apply_one(page, job: dict, wait_seconds: int = 0) -> dict:
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
-    kind = classify_url(url)
+    kind = classify_url(url, job)
     row = {
         **{k: job.get(k) for k in ("company", "title", "location", "url", "ats", "job_id")},
         "apply_url": url,
@@ -409,7 +420,7 @@ def public_queue(jobs: list[dict]) -> tuple[list[dict], list[dict]]:
         url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
         job = dict(job)
         job["apply_url"] = url
-        kind = classify_url(url)
+        kind = classify_url(url, job)
         if kind == "TRY":
             try_jobs.append(job)
         else:
@@ -417,8 +428,8 @@ def public_queue(jobs: list[dict]) -> tuple[list[dict], list[dict]]:
                 **{k: job.get(k) for k in ("company", "title", "location", "url", "ats", "job_id")},
                 "apply_url": url,
                 "ok": False,
-                "status": "LOGIN_BLOCKED",
-                "note": "linkedin/foundit/naukri skipped",
+                "status": "OTHER_AUTOMATION" if kind == "OTHER_AUTOMATION" else "LOGIN_BLOCKED",
+                "note": "Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre left to other automations",
             })
     return try_jobs, blocked
 
@@ -484,7 +495,11 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     form_memory.seed_from_learned()
     queue = apply_now.queue()
     try_jobs, blocked_board = public_queue(queue)
-    print(f"Queue {len(queue)} | public ATS {len(try_jobs)} | login boards {len(blocked_board)}", flush=True)
+    print(
+        f"Queue {len(queue)} | company career portals {len(try_jobs)} | "
+        f"other-board automations {len(blocked_board)}",
+        flush=True,
+    )
     if headed:
         print(f"Headed Chrome on DISPLAY={os.environ.get('DISPLAY', ':1')} — complete CAPTCHA/login in the desktop view.", flush=True)
     results: list[dict] = []
@@ -518,7 +533,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
             context.close()
 
     submitted = sum(1 for r in results if r.get("ok") and r.get("status") == "SUBMITTED")
-    print(f"\nCloud apply done. Submitted {submitted}. Tried {len(try_jobs[:limit])} public ATS jobs.", flush=True)
+    print(f"\nCloud apply done. Submitted {submitted}. Tried {len(try_jobs[:limit])} company career-portal jobs.", flush=True)
     return results
 
 

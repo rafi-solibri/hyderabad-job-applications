@@ -73,8 +73,8 @@ def main() -> None:
     lines = [
         f"# Daily job report — {today}",
         "",
-        "Cloud run: existing queue first (public ATS apply + tailored resumes), then discovery.",
-        "Windows Firefox / Simplify is not used in cloud. Login and CAPTCHA walls are skipped.",
+        "Cloud run: existing queue first (company career portals, then tailored resumes), then discovery.",
+        "Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are last — other automations cover those boards.",
         "",
         f"**Ready to apply (best matches, 3 per company): {len(queue)}**",
         f"**Resumes tailored this run: {len(tailored)}**",
@@ -111,13 +111,17 @@ def main() -> None:
         "",
         "## Ready queue",
         "",
-        "| # | Score | Company | Title | Tailored headline | Link |",
-        "|---|------:|---------|-------|-------------------|------|",
+        "| # | Portal | Score | Company | Title | Tailored headline | Link |",
+        "|---|--------|------:|---------|-------|-------------------|------|",
     ]
     for i, j in enumerate(queue[:40], 1):
         extra = next((t for t in tailored if t.get("job_id") == j.get("job_id")), {})
+        rank = j.get("portal_rank")
+        if rank is None:
+            rank = apply_now.portal_rank(j)
+        portal = "career" if int(rank) >= 100 else ("other" if int(rank) >= 50 else "board")
         lines.append(
-            f"| {i} | {j.get('match_score') or 0} | {j.get('company')} | "
+            f"| {i} | {portal} | {j.get('match_score') or 0} | {j.get('company')} | "
             f"{(j.get('title') or '')[:60]} | {(extra.get('headline') or '')[:50]} | {j.get('url') or ''} |"
         )
     REPORT.write_text("\n".join(lines) + "\n", encoding="utf-8")

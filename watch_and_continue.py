@@ -1,6 +1,7 @@
 """Drive the already-open headed Chrome (CDP 9222). Does not launch or kill Chrome.
 
-Waits if a CAPTCHA is on screen. After submit, continues the public ATS queue.
+Waits if a CAPTCHA is on screen. After submit, continues company career-portal jobs.
+Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are left to other automations.
 Fills stored login credentials when a password field appears (never prints them).
 """
 from __future__ import annotations
@@ -182,14 +183,23 @@ def main() -> None:
     form_memory.seed_from_learned()
     queue = apply_now.queue()
     try_jobs = []
+    skipped_boards = 0
     for job in queue:
         url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
         if not url.startswith("http"):
             continue
         job = dict(job)
         job["apply_url"] = url
+        if apply_now.is_aggregator_board(job):
+            skipped_boards += 1
+            continue
         try_jobs.append(job)
-    print(f"Session driver: {len(try_jobs)} queued jobs (no company skips). Chrome stays open.", flush=True)
+    print(
+        f"Session driver: {len(try_jobs)} company career-portal jobs "
+        f"({skipped_boards} Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre left to other automations). "
+        f"Chrome stays open.",
+        flush=True,
+    )
     pw = sync_playwright().start()
     browser = pw.chromium.connect_over_cdp(CDP)
     page = browser.contexts[0].pages[0]
@@ -200,7 +210,7 @@ def main() -> None:
     ordered = []
     for job in try_jobs:
         au = job.get("apply_url") or ""
-        if au and au.rstrip("/") in current_url.rstrip("/"):
+        if au and au.rstrip("/") in current_url.rstrip("/") and not apply_now.is_applied(job):
             ordered.insert(0, job)
         else:
             ordered.append(job)
@@ -225,7 +235,7 @@ def main() -> None:
         print(f"  {row.get('status')} ok={row.get('ok')} {row.get('final_url')}", flush=True)
         if not row.get("ok"):
             print("  Waiting on this company (no skip). Solve CAPTCHA/login if needed.", flush=True)
-            extra = wait_captcha_or_submit(page, job, 300)
+            extra = wait_captcha_or_submit(page, job, 90)
             if extra.get("ok"):
                 row.update(extra)
                 row["final_url"] = page.url
