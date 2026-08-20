@@ -2409,6 +2409,36 @@ def captcha_puzzle_visible(page) -> bool:
     return False
 
 
+def click_recaptcha_checkbox(page) -> bool:
+    """Tick 'I'm not a robot'. Only a following image puzzle needs the owner."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "recaptcha" not in url and "checkpoint" not in url and "security check" not in (page_text(page)[:400].lower()):
+        # still try if the widget is on the page
+        pass
+    clicked = False
+    for sel in (
+        "iframe[title='reCAPTCHA']",
+        "iframe[title*='reCAPTCHA' i]",
+        "iframe[src*='recaptcha/api2/anchor']",
+        "iframe[src*='recaptcha']",
+    ):
+        try:
+            fr = page.frame_locator(sel).first
+            box = fr.locator("#recaptcha-anchor, .recaptcha-checkbox-border, .recaptcha-checkbox").first
+            if box.count():
+                box.click(timeout=2000)
+                print("  Clicked reCAPTCHA I'm not a robot.", flush=True)
+                page.wait_for_timeout(1500)
+                clicked = True
+                break
+        except Exception:
+            continue
+    return clicked
+
+
 def accept_terms(page) -> int:
     """Check terms/privacy boxes, including hidden Oracle/Workday checkboxes."""
     n = check_spl_checkbox(page)
@@ -2536,6 +2566,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     """Fill Copilot + memory and click Next/Submit. Returns submitted|clicked|none."""
     _dismiss_native_file_dialog()
     dismiss_overlays(page)
+    click_recaptcha_checkbox(page)
     if is_success(page) or simplify_copilot.submitted(page):
         return "submitted"
     recover_wrong_board(page, job)
@@ -2615,6 +2646,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             learned += len(changed)
         except Exception:
             pass
+        click_recaptcha_checkbox(page)
         if captcha_puzzle_visible(page):
             notify_captcha(job, page)
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
