@@ -2100,7 +2100,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         if copilot_start:
             page.wait_for_timeout(800)
         blob = page_text(page)[:2500]
-        if re.search(r"page you are looking for doesn.?t exist|job (is )?no longer available|this job has been closed|\b404\b", blob, re.I) or re.search(r"404|not found", page.title() or "", re.I):
+        if re.search(
+            r"page you are looking for doesn.?t exist|job (is )?no longer available|"
+            r"this job has been closed|sorry, this job has expired|this job has expired|"
+            r"no longer accepting applications|\b404\b",
+            blob,
+            re.I,
+        ) or re.search(r"404|not found", page.title() or "", re.I):
             row["status"] = "CLOSED"
             row["final_url"] = page.url
             row["note"] = "job posting gone"
