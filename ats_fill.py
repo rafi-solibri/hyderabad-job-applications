@@ -206,7 +206,12 @@ def fill_phenom_acknowledgment(page) -> int:
     except Exception:
         url = ""
     if "phenom" not in url and "thermofisher" not in url and "stepname=" not in url:
-        return 0
+        try:
+            blob = (page.inner_text("body") or "")[:1500]
+        except Exception:
+            blob = ""
+        if not re.search(r"acknowledg", blob, re.I):
+            return 0
     n = 0
     try:
         n = page.evaluate(

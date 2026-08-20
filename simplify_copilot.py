@@ -193,6 +193,12 @@ def watch(page) -> str:
 
 def start_application(page) -> str:
     """Click Copilot Start Application / Apply Now on the right. Never Tailor Resume."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "stepname=applicantacknowledgment" in url or "stepname=acknowledg" in url:
+        return ""
     watch(page)
     hit = ""
     try:
