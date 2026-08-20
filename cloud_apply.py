@@ -3542,6 +3542,19 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 row["final_url"] = page.url
                 return row
             step = fill_and_advance(page, job, resume)
+            try:
+                after_stable = _stable_apply_url(page.url or "")
+            except Exception:
+                after_stable = apply_hold
+            if after_stable != apply_hold:
+                apply_hold = after_stable
+                apply_hold_from = time.time()
+            elif "myworkdayjobs" in after_stable and time.time() - apply_hold_from > 30:
+                print("  Workday page did not advance. Next leftover.", flush=True)
+                row["status"] = "STUCK"
+                row["note"] = "Workday URL unchanged — next job"
+                row["final_url"] = page.url
+                return row
             if step == "submitted" or is_success(page):
                 row["ok"] = True
                 row["status"] = "SUBMITTED"
