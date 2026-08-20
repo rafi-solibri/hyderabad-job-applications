@@ -235,8 +235,16 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("no") or "No"
     if any(x in q for x in ("authoriz", "right to work", "legally permitted", "eligible to work", "work eligibility")):
         return pick("yes", "citizen", "permanently") or "Yes"
-    if "previously applied" in q or "worked for amazon" in q or "worked here" in q or "former employee" in q:
+    if "previously employed" in q or "previously applied" in q or "worked here" in q or "worked for" in q:
         return pick("no") or "No"
+    if "work permit" in q:
+        return pick("yes") or "Yes"
+    if "nationality" in q:
+        return pick("indian", "india") or "Indian"
+    if "citizenship" in q:
+        return pick("indian", "india") or "Indian"
+    if "rsu" in q:
+        return "0"
     if "non-compet" in q or "noncompet" in q:
         return pick("no") or "No"
     if "relocat" in q:
@@ -257,7 +265,7 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("yes") or "Yes"
     if "when can you start" in q or "start date" in q or "available to start" in q or "joining" in q:
         return a["start"]
-    if "current" in q and any(x in q for x in ("ctc", "salary", "compensation", "pay")):
+    if ("last" in q or "current" in q) and any(x in q for x in ("ctc", "salary", "compensation", "pay")):
         return a["currentCtc"]
     if any(x in q for x in ("expected ctc", "desired annual", "salary expectation", "expected salary", "compensation expect")):
         return a["salaryText"]
@@ -271,7 +279,20 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return a["title"]
     if "years of experience" in q or "total experience" in q or "how many years" in q:
         if options:
-            for needle in ("12+", "10+", "8-12", "8+", "5-8"):
+            plus = []
+            for opt in options:
+                m = re.search(r"(\d+)\+", opt)
+                if m:
+                    plus.append((int(m.group(1)), opt))
+            if plus:
+                years = int(re.sub(r"\D", "", a["years"]) or "15")
+                chosen = None
+                for n, opt in sorted(plus):
+                    if years >= n:
+                        chosen = opt
+                if chosen:
+                    return chosen
+            for needle in ("12+", "10+", "9+", "8-12", "8+", "5-8"):
                 hit = pick(needle)
                 if hit:
                     return hit

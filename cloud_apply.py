@@ -1030,6 +1030,53 @@ def click_spl_radio(page, label: str) -> bool:
     return False
 
 
+def click_spl_radio_group(page, needle: str, want: str) -> bool:
+    """Select Yes/No inside a named SmartRecruiters radio group."""
+    try:
+        hit = page.evaluate(
+            _with_walk("""({needle, want}) => {
+              const n = String(needle).toLowerCase();
+              const wantL = String(want).toLowerCase();
+              let group = null;
+              walk(document, el => {
+                if (group || el.tagName !== 'SPL-RADIO-GROUP') return;
+                const t = (el.innerText || '').toLowerCase();
+                if (t.includes(n)) group = el;
+              });
+              if (!group) return false;
+              const radios = [];
+              walk(group, el => {
+                if (el.tagName === 'SPL-RADIO') radios.push(el);
+              });
+              let host = null;
+              for (const el of radios) {
+                const t = ((el.getAttribute('aria-label') || '') + ' ' + (el.innerText || '')).toLowerCase();
+                const v = String(el.value || el.getAttribute('value') || '');
+                if ((wantL === 'yes' || wantL === '1') && (t.includes('yes') || v === '1')) { host = el; break; }
+                if ((wantL === 'no' || wantL === '0') && (t.includes('no') || v === '0')) { host = el; break; }
+              }
+              if (!host) return false;
+              host.scrollIntoView({block: 'center'});
+              let inner = null;
+              walk(host, el => {
+                if (inner) return;
+                if ((el.className || '').toString().includes('c-spl-radio') || (el.tagName === 'INPUT' && el.type === 'radio')) inner = el;
+              });
+              (inner || host).click();
+              host.click();
+              return true;
+            }"""),
+            {"needle": needle, "want": want},
+        )
+        if hit:
+            print(f"  SmartRecruiters radio {needle[:40]!r} -> {want}", flush=True)
+            page.wait_for_timeout(200)
+            return True
+    except Exception:
+        return False
+    return False
+
+
 def check_spl_checkbox(page) -> int:
     """Check Lit/Angular spl-checkbox (privacy consent). Native .click() is ignored."""
     n = 0
@@ -1045,9 +1092,15 @@ def check_spl_checkbox(page) -> int:
                     try { el.checked = true; } catch (e) {}
                     try { el.value = true; el.setAttribute('value', 'true'); } catch (e) {}
                     let inp = null;
+                    let wrap = null;
                     walk(el, node => {
                       if (!inp && node.tagName === 'INPUT' && node.type === 'checkbox') inp = node;
+                      if (!wrap && (node.className || '').toString().includes('c-spl-checkbox-wrapper')) wrap = node;
                     });
+                    const on = (wrap && String(wrap.className).includes('--checked')) || (inp && inp.checked);
+                    if (!on) {
+                      try { el.click(); } catch (e) {}
+                    }
                     if (inp) {
                       inp.checked = true;
                       inp.dispatchEvent(new Event('input', {bubbles: true, composed: true}));
@@ -1138,6 +1191,32 @@ def fill_smartrecruiters_form(page, job: dict | None = None) -> int:
         if fill_spl_text(page, q[:40], want):
             filled += 1
     blob = ""
+    try:
+        groups = page.evaluate(
+            _with_walk("""() => {
+              const rows = [];
+              walk(document, el => {
+                if (el.tagName !== 'SPL-RADIO-GROUP') return;
+                rows.push({
+                  q: (el.innerText || '').replace(/\\s+/g, ' ').trim().slice(0, 160),
+                  value: String(el.value || el.getAttribute('value') || ''),
+                });
+              });
+              return rows;
+            }""")
+        ) or []
+    except Exception:
+        groups = []
+    for row in groups:
+        if (row.get("value") or "").strip() not in {"", "null", "undefined"}:
+            continue
+        q = row.get("q") or ""
+        want = form_memory.infer_answer(q, ["Yes", "No"])
+        if not want:
+            continue
+        needle = q[:48]
+        if click_spl_radio_group(page, needle, want):
+            filled += 1
     try:
         blob = page.evaluate(
             _with_walk("""() => {

@@ -169,16 +169,14 @@
   {
     "company": "Freshworks",
     "title": "Senior Staff Engineer",
-    "location": "Hyderabad  in",
-    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000139205539",
-    "ats": "SmartRecruiters",
     "job_id": "744000139205539",
+    "url": "https://jobs.smartrecruiters.com/Freshworks/744000139205539",
     "apply_url": "https://jobs.smartrecruiters.com/Freshworks/744000139205539",
-    "ok": false,
-    "status": "ERROR",
-    "note": "name 'recover_wrong_board' is not defined",
-    "final_url": "https://jobs.smartrecruiters.com/Freshworks/744000139205539",
-    "ts": "2026-08-20T09:12:53.258088+00:00"
+    "final_url": "https://jobs.smartrecruiters.com/oneclick-ui/company/Freshworks/publication/8f7e9147-ffd0-4cfd-8b47-bc52c5734fc4/success?dcr_ci=Freshworks&ref=Simplify&src=Simplify&utm_source=Simplify",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
+    "ts": "2026-08-20T11:25:40.083255+00:00"
   },
   {
     "company": "Freshworks",
@@ -389,5 +387,20 @@
     "note": "form still open after fill; no submit confirmation",
     "final_url": "https://dpdhlgroup.avature.net/en_US/jobs/ApplicationMethods?jobId=367430&source=careers.dhl.com",
     "ts": "2026-08-20T08:58:49.508275+00:00"
+  },
+  {
+    "company": "Amazon",
+    "title": "Solution Architect, AGS-APJ-India-ISV-SA",
+    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
+    "url": "https://www.amazon.jobs/en/jobs/3202138",
+    "ats": "Amazon",
+    "job_id": "3202138",
+    "apply_url": "https://account.amazon.jobs/en-US/applicant/jobs/3202138/apply",
+    "ok": false,
+    "status": "WAITING_EXPIRED",
+    "note": "waited 40s; learned 0 fields",
+    "final_url": "https://passport.amazon.jobs/",
+    "ts": "2026-08-20T11:20:44.668331+00:00",
+    "fields_learned": 0
   }
 ]

@@ -1449,5 +1449,21 @@
     "url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
     "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
     "ts": "2026-08-20T11:17:52.477834+00:00"
+  },
+  "freshworks|senior staff engineer": {
+    "company": "Freshworks",
+    "title": "Senior Staff Engineer",
+    "job_id": "744000139205539",
+    "url": "https://jobs.smartrecruiters.com/Freshworks/744000139205539",
+    "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
+    "ts": "2026-08-20T11:25:40.385866+00:00"
+  },
+  "744000139205539": {
+    "company": "Freshworks",
+    "title": "Senior Staff Engineer",
+    "job_id": "744000139205539",
+    "url": "https://jobs.smartrecruiters.com/Freshworks/744000139205539",
+    "note": "SmartRecruiters OneClick submitted 20 Aug 2026",
+    "ts": "2026-08-20T11:25:40.385866+00:00"
   }
 }
