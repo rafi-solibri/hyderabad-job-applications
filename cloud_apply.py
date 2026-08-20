@@ -3160,7 +3160,11 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if auth == "failed":
         return "auth_failed"
     fill_icims_login(page)
-    if icims_auth0_blocked(page):
+    try:
+        ju = ((job or {}).get("apply_url") or (job or {}).get("url") or page.url or "").lower()
+    except Exception:
+        ju = (page.url or "").lower()
+    if "icims.com" in ju and icims_auth0_blocked(page):
         return "stuck"
     click_dhl_apply_method(page)
     fill_leftover_dropdowns(page)
