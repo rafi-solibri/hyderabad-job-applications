@@ -91,6 +91,7 @@ Leave honeypot fields empty.
 | File | Role |
 |---|---|
 | `cloud_apply.py` | Headed Chrome apply + Copilot + wait-for-CAPTCHA + submit notify |
+| `ats_fill.py` | Open-source ATS dropdown / React-input / Phenom ack helpers |
 | `simplify_copilot.py` | Autofill this page / Continue; skip Tailor Resume |
 | `google_auth.py` | Sign in rafi.success Chrome from `.env` |
 | `apply_now.py` | Queue, scoring, persist applied |
