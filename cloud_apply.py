@@ -48,6 +48,7 @@ PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
 LINKEDIN_RESTRICTED = False
 LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-08-22"
+_RECAPTCHA_CLICKS = 0
 
 # These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
@@ -2598,6 +2599,38 @@ def captcha_puzzle_visible(page) -> bool:
     if re.search(r"drag the shape|select all (the )?squares|click (the )?images", blob, re.I):
         return True
     try:
+        for frame in page.frames:
+            furl = (frame.url or "").lower()
+            if "recaptcha" not in furl and "hcaptcha" not in furl:
+                continue
+            try:
+                t = (frame.inner_text("body") or "")[:800]
+            except Exception:
+                continue
+            if re.search(r"select all|drag the shape|click skip|squares with", t, re.I):
+                return True
+    except Exception:
+        pass
+    try:
+        big = page.evaluate(
+            """() => {
+              const frs = document.querySelectorAll(
+                'iframe[src*="bframe"], iframe[title*="recaptcha challenge" i], iframe[title*="hCaptcha challenge" i]'
+              );
+              for (const fr of frs) {
+                const r = fr.getBoundingClientRect();
+                const st = getComputedStyle(fr);
+                if (st.visibility === 'hidden' || st.display === 'none' || Number(st.opacity) === 0) continue;
+                if (r.width > 280 && r.height > 200) return true;
+              }
+              return false;
+            }"""
+        )
+        if big:
+            return True
+    except Exception:
+        pass
+    try:
         loc = page.locator("iframe[title*='hCaptcha challenge' i], iframe[title*='hCaptcha' i]")
         n = loc.count()
         for i in range(min(n, 4)):
@@ -2606,21 +2639,6 @@ def captcha_puzzle_visible(page) -> bool:
                 continue
             box = el.bounding_box() or {}
             if (box.get("width") or 0) > 280 and (box.get("height") or 0) > 140:
-                return True
-    except Exception:
-        pass
-    try:
-        loc = page.locator("iframe[src*='recaptcha'][src*='bframe']")
-        n = loc.count()
-        for i in range(min(n, 4)):
-            el = loc.nth(i)
-            try:
-                if not el.is_visible():
-                    continue
-            except Exception:
-                continue
-            box = el.bounding_box() or {}
-            if (box.get("width") or 0) > 280 and (box.get("height") or 0) > 200:
                 return True
     except Exception:
         pass
@@ -2655,7 +2673,10 @@ def _xdotool_click(x: float, y: float) -> None:
 
 def click_recaptcha_checkbox(page) -> bool:
     """Tick 'I'm not a robot' with a real mouse click. Image puzzles stay for the owner."""
-    if getattr(page, "_recaptcha_clicks", 0) >= 2:
+    global _RECAPTCHA_CLICKS
+    if captcha_puzzle_visible(page):
+        return False
+    if _RECAPTCHA_CLICKS >= 2:
         return True
     clicked = False
     try:
@@ -2693,10 +2714,7 @@ def click_recaptcha_checkbox(page) -> bool:
         screen_y = (info.get("sy") or 0) + chrome_top + b["y"] + (b["h"] or 74) / 2
         _xdotool_click(screen_x, screen_y)
         print("  Clicked reCAPTCHA I'm not a robot.", flush=True)
-        try:
-            page._recaptcha_clicks = getattr(page, "_recaptcha_clicks", 0) + 1
-        except Exception:
-            pass
+        _RECAPTCHA_CLICKS += 1
         try:
             page.wait_for_timeout(1600)
         except Exception:
@@ -2850,6 +2868,8 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     """Fill Copilot + memory and click Next/Submit. Returns submitted|clicked|none."""
     _dismiss_native_file_dialog()
     dismiss_overlays(page)
+    if captcha_puzzle_visible(page):
+        return "captcha"
     click_recaptcha_checkbox(page)
     click_google_account_chooser(page)
     if is_success(page) or simplify_copilot.submitted(page):
@@ -2938,8 +2958,17 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             learned += len(changed)
         except Exception:
             pass
-        click_recaptcha_checkbox(page)
         click_google_account_chooser(page)
+        if captcha_puzzle_visible(page):
+            notify_captcha(job, page)
+            print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
+            return {
+                "ok": False,
+                "status": "CAPTCHA",
+                "note": "parked for owner to solve later",
+                "learned": learned,
+            }
+        click_recaptcha_checkbox(page)
         if linkedin_account_restricted(page):
             persist_skip_all_linkedin()
             print("  LinkedIn account is restricted. Skipping remaining LinkedIn leftovers.", flush=True)
