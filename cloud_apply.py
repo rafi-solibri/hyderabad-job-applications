@@ -171,7 +171,10 @@ def is_login_or_captcha(page) -> str | None:
 
 def is_success(page) -> bool:
     url = (page.url or "").lower()
-    if any(x in url for x in ("/thanks", "confirmation", "submitted", "application-success", "/thank")):
+    # Mid-wizard URLs are not a submit confirmation.
+    if any(x in url for x in ("/apply/section/", "/apply/email", "/apply/form", "stepname=")):
+        return False
+    if any(x in url for x in ("/thanks", "/confirmation", "application-success", "/thank-you", "/thankyou")):
         return True
     return bool(SUCCESS_RE.search(page_text(page)[:3000]))
 

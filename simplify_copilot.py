@@ -259,7 +259,17 @@ def state(page) -> dict:
         return {}
 
 
+def on_apply_wizard(page) -> bool:
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        return False
+    return any(x in url for x in ("/apply/section/", "/apply/email", "/apply/form", "stepname="))
+
+
 def submitted(page) -> bool:
+    if on_apply_wizard(page):
+        return False
     st = state(page)
     msg = st.get("done") or ""
     if msg:
@@ -272,7 +282,7 @@ def follow(page) -> str:
     """Click Copilot Continue / Create account / Submit. Skip Tailor Resume."""
     watch(page)
     st = state(page)
-    if st.get("done"):
+    if st.get("done") and not on_apply_wizard(page):
         print(f"  Simplify Copilot shows submitted: {st['done']}", flush=True)
         return "submitted"
     actions = [a for a in (st.get("actions") or []) if a]
