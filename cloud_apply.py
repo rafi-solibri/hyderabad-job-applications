@@ -3513,7 +3513,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         last_apply_url = ""
         same_apply = 0
         step = ""
+        apply_hold = _stable_apply_url(page.url or "")
+        apply_hold_from = time.time()
         for _ in range(6):
+            try:
+                page = follow_apply_tab(page)
+            except Exception:
+                pass
             dismiss_overlays(page)
             recover_wrong_board(page, job)
             if is_success(page) or simplify_copilot.submitted(page):
@@ -3521,6 +3527,19 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 row["status"] = "SUBMITTED"
                 row["final_url"] = page.url
                 row["note"] = row.get("note") or "Simplify Copilot"
+                return row
+            try:
+                now_stable = _stable_apply_url(page.url or "")
+            except Exception:
+                now_stable = apply_hold
+            if now_stable != apply_hold:
+                apply_hold = now_stable
+                apply_hold_from = time.time()
+            elif "myworkdayjobs" in now_stable and time.time() - apply_hold_from > 30:
+                print("  Workday page did not advance. Next leftover.", flush=True)
+                row["status"] = "STUCK"
+                row["note"] = "Workday URL unchanged — next job"
+                row["final_url"] = page.url
                 return row
             step = fill_and_advance(page, job, resume)
             if step == "submitted" or is_success(page):
@@ -3577,6 +3596,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
 
         stay = 15
         try:
+            page = follow_apply_tab(page)
             u = (page.url or "").lower()
         except Exception:
             u = ""
