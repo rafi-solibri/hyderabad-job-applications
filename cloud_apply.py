@@ -91,6 +91,24 @@ def _host(url: str) -> str:
         return ""
 
 
+def _stable_apply_url(url: str) -> str:
+    """Workday steps share one job; ignore query, encoding, and applyManually."""
+    u = (url or "").split("?")[0].lower().replace("%2c", ",")
+    u = re.sub(r"/applymanually.*", "/apply", u)
+    u = re.sub(r"/apply/.*", "/apply", u)
+    return u.rstrip("/")
+
+
+def seed_parked_captcha_urls() -> None:
+    path = ROOT / "data" / "applications" / "CAPTCHA.md"
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line.startswith("http"):
+            park_tab_url(line)
+
+
 def classify_url(url: str, job: dict | None = None, allow_aggregators: bool = True) -> str:
     """Career portals and aggregator boards (Naukri/LinkedIn/Indeed/…) are both tried.
 
@@ -2956,7 +2974,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     linkedin_checkpoint_hits = 0
     linkedin_signup_hits = 0
     try:
-        hold_url = (page.url or "").split("?")[0]
+        hold_url = _stable_apply_url(page.url or "")
     except Exception:
         hold_url = ""
     url_hold_from = time.time()
@@ -3113,13 +3131,13 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         else:
             stuck_required = 0
         try:
-            now_url = (page.url or "").split("?")[0]
+            now_url = _stable_apply_url(page.url or "")
         except Exception:
             now_url = hold_url
         if now_url != hold_url:
             hold_url = now_url
             url_hold_from = time.time()
-        elif "myworkdayjobs" in now_url and time.time() - url_hold_from > 45:
+        elif "myworkdayjobs" in now_url and time.time() - url_hold_from > 30:
             print("  Workday page did not advance. Next leftover.", flush=True)
             return {
                 "ok": False,
@@ -3151,6 +3169,12 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
     }
     if kind != "TRY":
         row["note"] = "login board skipped without opening"
+        return row
+    if "foundit.in" in (url or "").lower():
+        row["status"] = "CLOSED"
+        row["note"] = "board blocked this environment (access denied)"
+        apply_now.persist_skipped(row, row["note"])
+        print("  Foundit is blocked in this environment. Next leftover.", flush=True)
         return row
 
     resume = job.get("resume_path") or RESUME
