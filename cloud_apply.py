@@ -724,6 +724,7 @@ CLICK_APPLY_GATE_JS = r"""() => {
     /^autofill with resume$/i,
     /^apply for this job$/i,
     /^apply now$/i,
+    /^apply to /i,
     /^i'?m interested$/i,
     /^start applying$/i,
     /^easy apply$/i,
@@ -761,7 +762,7 @@ CLICK_APPLY_GATE_JS = r"""() => {
       const id = (el.id || '').toLowerCase();
       if (id === 'start-application-button' || id === 'proxy-submit-button' || id === 'fill-button') return;
       const r = el.getBoundingClientRect();
-      if (r.left > window.innerWidth * 0.58) return;
+      if (r.left > window.innerWidth * 0.78) return;
       const t = labelOf(el);
       if (!t || t.length > 48 || skipRe.test(t)) return;
       const auto = el.getAttribute('data-automation-id') || '';
@@ -815,7 +816,7 @@ def _looks_like_copilot(loc) -> bool:
             vw = loc.page.evaluate("() => window.innerWidth") or 1400
         except Exception:
             pass
-        return (box.get("x") or 0) > float(vw) * 0.58
+        return (box.get("x") or 0) > float(vw) * 0.78
     except Exception:
         return False
 
@@ -873,12 +874,13 @@ def click_apply_gate(page) -> str:
         "Easy Apply",
         "Apply as a guest",
         "Continue without an account",
+        "Apply to",
         "Apply",
     ):
         exact = name in ("Apply", "Apply now", "Apply Now")
         for role in ("button", "link"):
             try:
-                loc = page.get_by_role(role, name=name, exact=exact).first
+                loc = page.get_by_role(role, name=re.compile(rf"^{re.escape(name)}" if name == "Apply to" else rf"^{re.escape(name)}$", re.I)).first
                 if not loc.count() or not loc.is_visible():
                     continue
                 text = (loc.inner_text() or name)
