@@ -8,8 +8,10 @@
     "job_id": "62960104",
     "apply_url": "https://www.linkedin.com/jobs/view/4453078686/",
     "ok": false,
-    "status": "LOGIN_BLOCKED",
-    "note": "linkedin/foundit/naukri skipped"
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://www.linkedin.com/signup/cold-join?source=jobs_registration&session_redirect=https%3A%2F%2Fin.linkedin.com%2Fjobs%2Fview%2Fprincipal-engineer-it-software-net-t500-28439-at-ansr-4453078686%3Fguest-to-member-job-apply%3Denabled",
+    "ts": "2026-08-20T17:11:14.272596+00:00"
   },
   {
     "company": "Cubic Transportation Systems",
@@ -20,8 +22,10 @@
     "job_id": "58547222",
     "apply_url": "https://www.linkedin.com/jobs/view/4438627255/",
     "ok": false,
-    "status": "LOGIN_BLOCKED",
-    "note": "linkedin/foundit/naukri skipped"
+    "status": "CAPTCHA",
+    "note": "parked for owner to solve later",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgHBG22JpM0M5gAAAaAgVsdI74qZrcKxn4v0fzTHp1LMI3fgcQIiTdfd450nzT8v1yJDyGGQS1HVhdTlvdrOBNvx00qbwg?ut=1CpIDyq7pqxso1",
+    "ts": "2026-08-20T18:02:29.081942+00:00"
   },
   {
     "company": "Globallogic Ukraine",
@@ -32,8 +36,11 @@
     "job_id": "63102686",
     "apply_url": "https://www.linkedin.com/jobs/view/4440673109/",
     "ok": false,
-    "status": "LOGIN_BLOCKED",
-    "note": "linkedin/foundit/naukri skipped"
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgEW70_gi7w9FQAAAaAgL1cMi1NFsN_6iH7UVK1akltqn6wH1y3EdTWKIZcnB7f3V769-OgjBOx3Vrv79aEHuQRDoAdSeg?ut=0kPEOeuTELxso1",
+    "ts": "2026-08-20T17:19:24.419021+00:00",
+    "fields_learned": 0
   },
   {
     "company": "NationsBenefits",
@@ -44,8 +51,11 @@
     "job_id": "61167970",
     "apply_url": "https://www.linkedin.com/jobs/view/4445994854/",
     "ok": false,
-    "status": "LOGIN_BLOCKED",
-    "note": "linkedin/foundit/naukri skipped"
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgFDkfFeeTg0_gAAAaAgMI56wcnanChi4i-Dv2JSxCUjfWgDVp7EokiEJwopwecAeMXmZy9iSWT9zQMKN-qZvA9poUsI0g?ut=3s1Ib8Nh4Mxso1",
+    "ts": "2026-08-20T17:20:43.981537+00:00",
+    "fields_learned": 0
   },
   {
     "company": "Kumaran Systems",
@@ -56,8 +66,11 @@
     "job_id": "60059128",
     "apply_url": "https://www.linkedin.com/jobs/view/4440673970/",
     "ok": false,
-    "status": "LOGIN_BLOCKED",
-    "note": "linkedin/foundit/naukri skipped"
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgHbQkakp14atAAAAaAgOhxAXOWD8c-UmhTSAOoWyTnx6DyW6rmZhFrueAtWqXLUL4571diiL6YMi2AgwQT6ZIBdcEiIlg?ut=0J22elqicXxso1",
+    "ts": "2026-08-20T17:29:53.049070+00:00",
+    "fields_learned": 1
   },
   {
     "company": "Simba Technologies",
@@ -68,8 +81,11 @@
     "job_id": "37598442",
     "apply_url": "https://www.foundit.in/job/37598442",
     "ok": false,
-    "status": "LOGIN_BLOCKED",
-    "note": "linkedin/foundit/naukri skipped"
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://www.foundit.in/job/37598442",
+    "ts": "2026-08-20T17:14:00.731358+00:00",
+    "fields_learned": 4
   },
   {
     "company": "wonderbiz technologies pvt.",
@@ -80,8 +96,11 @@
     "job_id": "59099885",
     "apply_url": "https://www.linkedin.com/jobs/view/4440881199/",
     "ok": false,
-    "status": "LOGIN_BLOCKED",
-    "note": "linkedin/foundit/naukri skipped"
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgFEejgJk5DmGgAAAaAgOo7hJ5PEzY8pXnYxFWoo0WvbQfW0wuu5-I6HEg_jwJttXMNIthJHFDEXXA6S2ntdfocQY0abiw?ut=0CM8mgmS8Xxso1",
+    "ts": "2026-08-20T17:31:39.774624+00:00",
+    "fields_learned": 0
   },
   {
     "company": "Cendyn",
@@ -92,8 +111,11 @@
     "job_id": "53694858",
     "apply_url": "https://www.linkedin.com/jobs/view/4416641757/",
     "ok": false,
-    "status": "LOGIN_BLOCKED",
-    "note": "linkedin/foundit/naukri skipped"
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgFkAGMEhCV4nAAAAaAgO-HrewetLCWFfjEFOqyyzMZLZoLvoxfsWfyQy9-jqOpm0xuqf607obR5MG__8B0AyORNrPzXVw?ut=35QfSq2QQZxso1",
+    "ts": "2026-08-20T17:32:59.580812+00:00",
+    "fields_learned": 0
   },
   {
     "company": "Coupa Software",
@@ -213,10 +235,11 @@
     "job_id": "Senior-Software-Engineer--AVP_R-792706",
     "apply_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
-    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
-    "ts": "2026-08-20T08:59:17.783219+00:00"
+    "status": "STUCK",
+    "note": "Workday URL unchanged — next job",
+    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--AVP_R-792706/apply/applyManually",
+    "ts": "2026-08-20T18:37:32.335442+00:00",
+    "fields_learned": 0
   },
   {
     "company": "State Street",
@@ -227,10 +250,11 @@
     "job_id": "Senior-Software-Engineer--Officer_R-795725",
     "apply_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--Officer_R-795725",
     "ok": false,
-    "status": "ERROR",
-    "note": "Page.goto: Target page, context or browser has been closed",
-    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
-    "ts": "2026-08-20T07:32:07.725087+00:00"
+    "status": "STUCK",
+    "note": "Workday URL unchanged — next job",
+    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--Officer_R-795725/apply",
+    "ts": "2026-08-20T18:39:35.507721+00:00",
+    "fields_learned": 77
   },
   {
     "company": "Experian",
@@ -312,11 +336,10 @@
     "job_id": "61456572",
     "apply_url": "https://jobs.smartrecruiters.com/Experian/744000141445829-sr-engineering-manager",
     "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 40s; learned 0 fields",
+    "status": "CLOSED",
+    "note": "job posting gone",
     "final_url": "https://jobs.smartrecruiters.com/Experian/744000141445829-sr-engineering-manager",
-    "ts": "2026-08-20T11:38:28.547620+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-20T12:19:59.658727+00:00"
   },
   {
     "company": "JP Morgan Chase & Co.",
@@ -355,10 +378,11 @@
     "job_id": "63218456",
     "apply_url": "https://jobs.zf.com/job/Hyderabad-Sr-Technical-Lead-TG-500032/1427361033/",
     "ok": false,
-    "status": "ERROR",
-    "note": "name 'recover_wrong_board' is not defined",
+    "status": "WAITING_EXPIRED",
+    "note": "waited 20s; learned 0 fields",
     "final_url": "https://jobs.zf.com/job/Hyderabad-Sr-Technical-Lead-TG-500032/1427361033/",
-    "ts": "2026-08-20T09:16:03.963799+00:00"
+    "ts": "2026-08-20T16:08:45.922755+00:00",
+    "fields_learned": 0
   },
   {
     "company": "Currenex State Street Trust Company",
@@ -369,10 +393,10 @@
     "job_id": "61741322",
     "apply_url": "https://careers.statestreet.com/global/en/job/R-795725/Senior-Software-Engineer-Officer",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
-    "final_url": "https://careers.statestreet.com/global/en/job/R-795725/Senior-Software-Engineer-Officer",
-    "ts": "2026-08-20T08:57:58.210616+00:00"
+    "status": "STUCK",
+    "note": "parked iCIMS Auth0 was not this Workday job",
+    "final_url": "https://login.icims.com/u/login/identifier?state=hqFo2SAtMEwxWVFyV3FMWU5HakFPNlNlUlFlZXJGRWtkWGlndKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDZsbF94dFplQXQ1d1plSEM0Sk1jem5HQ1VVN1VORDNFo2NpZNkgS0pBOTVEeEhPUE5PNTZVYU5SZFJZNTdwem42Q01IY22lb3JnaWS0b3JnX2dGWldEUExkNnRaNzhra06nb3JnbmFtZalzY2h3YWItOTc",
+    "ts": "2026-08-20T19:00:54.463142+00:00"
   },
   {
     "company": "DHL Aero Expreso",
@@ -383,10 +407,11 @@
     "job_id": "60912103",
     "apply_url": "https://careers.dhl.com/global/en/job/AV-367430/Senior-Software-Engineer",
     "ok": false,
-    "status": "INCOMPLETE",
-    "note": "form still open after fill; no submit confirmation",
-    "final_url": "https://dpdhlgroup.avature.net/en_US/jobs/ApplicationMethods?jobId=367430&source=careers.dhl.com",
-    "ts": "2026-08-20T08:58:49.508275+00:00"
+    "status": "STUCK",
+    "note": "ATS URL unchanged — next job",
+    "final_url": "https://dpdhlgroup.avature.net/en_US/jobs/Register?jobId=367430&source=careers.dhl.com",
+    "ts": "2026-08-20T19:02:44.008086+00:00",
+    "fields_learned": 4
   },
   {
     "company": "Amazon",
@@ -397,11 +422,10 @@
     "job_id": "3202138",
     "apply_url": "https://account.amazon.jobs/en-US/applicant/jobs/3202138/apply",
     "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 40s; learned 0 fields",
+    "status": "OWNER_SIGNIN",
+    "note": "Amazon sign-in parked for the owner; tab stays open",
     "final_url": "https://passport.amazon.jobs/",
-    "ts": "2026-08-20T11:30:52.940430+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-20T14:55:46.246210+00:00"
   },
   {
     "company": "Freshworks",
@@ -426,11 +450,10 @@
     "job_id": "744000136138109",
     "apply_url": "https://jobs.smartrecruiters.com/Freshworks/744000136138109",
     "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 40s; learned 0 fields",
+    "status": "CLOSED",
+    "note": "job posting gone",
     "final_url": "https://jobs.smartrecruiters.com/Freshworks/744000136138109",
-    "ts": "2026-08-20T11:33:02.407293+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-20T12:08:15.319076+00:00"
   },
   {
     "company": "DTCC",
@@ -445,5 +468,148 @@
     "note": "submitted in headed Chrome (Oracle easy-apply + Gmail identity code)",
     "final_url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/my-profile",
     "ts": "2026-08-20T11:57:16.201074+00:00"
+  },
+  {
+    "company": "Amazon",
+    "title": "Sr. Software Development Engineer, Payroll Tax & Accounting Tech",
+    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
+    "url": "https://www.amazon.jobs/en/jobs/3190158",
+    "ats": "Amazon",
+    "job_id": "3190158",
+    "apply_url": "https://account.amazon.jobs/en-US/applicant/jobs/3190158/apply",
+    "ok": false,
+    "status": "WAITING_EXPIRED",
+    "note": "Amazon sign-in needs the owner; not a CAPTCHA",
+    "final_url": "https://passport.amazon.jobs/",
+    "ts": "2026-08-20T12:21:46.182393+00:00"
+  },
+  {
+    "company": "State Street Corporation",
+    "title": "Senior Software Engineer, Officer",
+    "location": "Hyderabad, India",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--Officer_R-795725",
+    "ats": "Foundit",
+    "job_id": "61715919",
+    "apply_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--Officer_R-795725",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Workday URL unchanged — next job",
+    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--Officer_R-795725/apply",
+    "ts": "2026-08-20T18:41:22.352089+00:00",
+    "fields_learned": 78
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Lead Pl",
+    "location": "Hyderabad",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792",
+    "ats": "Phenom",
+    "job_id": "99012467792",
+    "apply_url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792",
+    "ok": false,
+    "status": "WAITING_EXPIRED",
+    "note": "waited 20s; learned 0 fields",
+    "final_url": "https://career-ind-schwab.icims.com/jobs/124090/senior-manager,-software-development-&-engineering-lead-%28pl%29/login?mobile=false&width=1149&height=499&bga=true&needsRedirect=false&jan1offset=0&jun1offset=0",
+    "ts": "2026-08-20T16:13:21.443591+00:00",
+    "fields_learned": 0
+  },
+  {
+    "company": "Techno-comp Computer Services Private Limited",
+    "title": ".Net Architect",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/58929975",
+    "ats": "Foundit",
+    "job_id": "58929975",
+    "apply_url": "https://www.foundit.in/job/58929975",
+    "ok": false,
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://www.foundit.in/job/58929975",
+    "ts": "2026-08-20T17:15:20.441574+00:00",
+    "fields_learned": 0
+  },
+  {
+    "company": "Keka HR",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-405915-principal-software-engineer-at-keka-hr-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "405915",
+    "apply_url": "https://www.instahyre.com/job-405915-principal-software-engineer-at-keka-hr-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-405915-principal-software-engineer-at-keka-hr-hyderabad/",
+    "ts": "2026-08-20T17:42:41.307968+00:00"
+  },
+  {
+    "company": "Amazon",
+    "title": "Staff Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-439305-staff-software-engineer-at-amazon-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439305",
+    "apply_url": "https://www.instahyre.com/job-439305-staff-software-engineer-at-amazon-hyderabad/",
+    "ok": false,
+    "status": "CLOSED",
+    "note": "job posting gone",
+    "final_url": "https://www.instahyre.com/job-439305-staff-software-engineer-at-amazon-hyderabad/",
+    "ts": "2026-08-20T17:42:43.389736+00:00"
+  },
+  {
+    "company": "Amazon",
+    "title": "Sr. Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-439255-sr-software-engineer-at-amazon-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439255",
+    "apply_url": "https://www.instahyre.com/job-439255-sr-software-engineer-at-amazon-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-439255-sr-software-engineer-at-amazon-hyderabad/",
+    "ts": "2026-08-20T17:42:45.289707+00:00"
+  },
+  {
+    "company": "Cubic Corporation",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-439288-senior-software-engineer-at-cubic-corporation-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439288",
+    "apply_url": "https://www.instahyre.com/job-439288-senior-software-engineer-at-cubic-corporation-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-439288-senior-software-engineer-at-cubic-corporation-hyderabad/",
+    "ts": "2026-08-20T17:46:17.673547+00:00"
+  },
+  {
+    "company": "Google",
+    "title": "Senior Software Engineer",
+    "location": "Bangalore,Delhi,Hyderabad",
+    "url": "https://www.instahyre.com/job-399694-senior-software-engineer-at-google-2-bangalore-delhi-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "399694",
+    "apply_url": "https://www.instahyre.com/job-399694-senior-software-engineer-at-google-2-bangalore-delhi-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-399694-senior-software-engineer-at-google-2-bangalore-delhi-hyderabad/",
+    "ts": "2026-08-20T17:50:34.227641+00:00"
+  },
+  {
+    "company": "Ensemble Health Partners",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://ensemblehpi.com/career-technology/?jobId=Y92dQFznrJ8X",
+    "ats": "Foundit",
+    "job_id": "47560501",
+    "apply_url": "https://ensemblehpi.com/career-technology/?jobId=Y92dQFznrJ8X",
+    "ok": false,
+    "status": "CLOSED",
+    "note": "board blocked this environment (access denied)",
+    "final_url": "https://ensemblehpi.com/career-technology/?jobId=Y92dQFznrJ8X",
+    "ts": "2026-08-20T17:50:39.819119+00:00"
   }
 ]

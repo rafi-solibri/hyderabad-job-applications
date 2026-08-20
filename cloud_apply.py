@@ -3945,8 +3945,13 @@ def persist_existing_closed() -> None:
         if apply_now.is_applied(row):
             continue
         u = row.get("apply_url") or row.get("url") or row.get("final_url") or ""
-        if row.get("status") == "AUTH_FAILED" and _aggregator_host(u):
-            continue
+        if row.get("status") == "AUTH_FAILED":
+            if _aggregator_host(u):
+                continue
+            final = (row.get("final_url") or "").lower()
+            apply = (row.get("apply_url") or row.get("url") or "").lower()
+            if "login.icims.com" in final and "icims.com" not in apply:
+                continue
         apply_now.persist_skipped(row, row.get("note") or "closed posting — cannot submit")
 
 
