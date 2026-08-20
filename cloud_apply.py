@@ -149,9 +149,13 @@ def company_key(name: str) -> str:
     return apply_now.company_key(name)
 
 
-def stored_password() -> str:
-    """Password saved from a previous form fill. Never log the value."""
-    env = os.environ.get("GOOGLE_PASSWORD") or os.environ.get("ACCOUNT_PASSWORD") or ""
+def stored_password(kind: str = "any") -> str:
+    """Password from env secrets or a previous form fill. Never log the value."""
+    if kind == "google":
+        return os.environ.get("GOOGLE_PASSWORD") or os.environ.get("ACCOUNT_PASSWORD") or ""
+    env = os.environ.get("LINKEDIN_PASSWORD") or os.environ.get("GOOGLE_PASSWORD") or ""
+    if kind == "linkedin" and env:
+        return env
     if env:
         return env
     mem = form_memory.load_memory().get("by_label") or {}
@@ -202,9 +206,9 @@ def google_signed_in(page) -> bool:
 
 
 def login_google(page) -> bool:
-    password = stored_password()
+    password = stored_password("google")
     if not password:
-        print("  No stored Google password. Cannot sign in.", flush=True)
+        print("  GOOGLE_PASSWORD secret not set. Skipping Google sign-in (saved form password is not Google's).", flush=True)
         return False
     print(f"  Signing into Google as {EMAIL}...", flush=True)
     try:
@@ -280,8 +284,8 @@ def login_google(page) -> bool:
 
 
 def login_linkedin(page) -> bool:
-    password = stored_password()
-    print("  Signing into LinkedIn via Google...", flush=True)
+    password = stored_password("linkedin")
+    print("  Signing into LinkedIn...", flush=True)
     try:
         page.goto("https://www.linkedin.com/login", wait_until="domcontentloaded", timeout=45000)
     except Exception as exc:
@@ -292,28 +296,28 @@ def login_linkedin(page) -> bool:
     if "feed" in (page.url or "") or "/in/" in (page.url or ""):
         print("  LinkedIn session already active.", flush=True)
         return True
-    # Sign in with Google
+    # Only use Google SSO when we have a working Google password.
     google_btn = None
-    for sel in (
-        "button:has-text('Sign in with Google')",
-        "a:has-text('Sign in with Google')",
-        "[data-test-id='sign-in-with-google']",
-        "iframe[title*='Sign in with Google']",
-    ):
-        try:
-            loc = page.locator(sel).first
-            if loc.count() and loc.is_visible():
-                google_btn = loc
-                break
-        except Exception:
-            continue
+    if stored_password("google"):
+        for sel in (
+            "button:has-text('Continue with Google')",
+            "button:has-text('Sign in with Google')",
+            "a:has-text('Continue with Google')",
+            "a:has-text('Sign in with Google')",
+        ):
+            try:
+                loc = page.locator(sel).first
+                if loc.count() and loc.is_visible():
+                    google_btn = loc
+                    break
+            except Exception:
+                continue
     if google_btn is not None:
         try:
             with page.expect_popup(timeout=5000) as pop:
                 google_btn.click(timeout=2000)
             extra = pop.value
             extra.wait_for_timeout(1500)
-            _click_text(extra, EMAIL.split("@")[0])
             try:
                 extra.locator(f"text={EMAIL}").first.click(timeout=2000)
             except Exception:
@@ -323,26 +327,27 @@ def login_linkedin(page) -> bool:
             try:
                 google_btn.click(timeout=2000)
                 page.wait_for_timeout(2000)
-                try:
-                    page.locator(f"text={EMAIL}").first.click(timeout=2500)
-                except Exception:
-                    pass
             except Exception:
                 pass
-    # Email + password fallback (same stored credentials)
-    if password and ("login" in (page.url or "") or "checkpoint" in (page.url or "")):
+    # Email + password
+    if password and "login" in (page.url or ""):
         try:
-            user = page.locator("#username, input[name='session_key']").first
-            if user.count() and user.is_visible():
-                user.fill(EMAIL, timeout=2000)
-            pw = page.locator("#password, input[name='session_password']").first
-            if pw.count() and pw.is_visible():
-                pw.fill(password, timeout=2000)
-                _click_text(page, "Sign in", "Sign in ")
-                page.keyboard.press("Enter")
-                page.wait_for_timeout(2500)
+            page.locator("input[type='email']").last.fill(EMAIL, timeout=3000)
+        except Exception:
+            try:
+                page.locator("input[autocomplete*='username']").last.fill(EMAIL, timeout=2000)
+            except Exception:
+                pass
+        try:
+            page.locator("input[type='password']").last.fill(password, timeout=3000)
         except Exception:
             pass
+        if not _click_text(page, "Sign in"):
+            try:
+                page.locator("button[type='submit']").first.click(timeout=2000)
+            except Exception:
+                page.keyboard.press("Enter")
+        page.wait_for_timeout(3000)
     close_overlays(page)
     url = page.url or ""
     if any(x in url for x in ("/feed", "/in/", "linkedin.com/jobs")) and "login" not in url:
