@@ -39,12 +39,6 @@ PROFILE_EMAIL = "rafi.success@gmail.com"
 # One application tab only. Open the next job after a successful submit,
 # a closed/404 posting, or a career-site login that rejects every portal password.
 MAX_OPEN_APPLICATIONS = 1
-SHORT_WAIT = 12  # Owner: do not sit on one application. Move on fast.
-
-
-def cap_wait(wait_seconds: int) -> int:
-    w = wait_seconds if wait_seconds else SHORT_WAIT
-    return max(0, min(int(w), SHORT_WAIT))
 DONE_STATUSES = frozenset({"SUBMITTED", "CLOSED", "AUTH_FAILED"})
 # Park these and open the next leftover. STUCK = Copilot/form loop; do not sit on it.
 PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED", "OWNER_SIGNIN", "STUCK"})
@@ -2828,10 +2822,15 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
             return row
 
-        # Owner: do not wait long. Same short cap for Workday and Easy Apply.
-        stay = cap_wait(wait_seconds)
-        if step == "stuck" and stay > 8:
-            stay = 8
+        stay = 15
+        try:
+            u = (page.url or "").lower()
+        except Exception:
+            u = ""
+        if any(x in u for x in ("applymanually", "/apply/", "icims.com", "avature.net", "myworkdayjobs", "oraclecloud", "smartrecruiters", "linkedin.com", "naukri.com", "indeed.com", "foundit.in", "instahyre", "cutshort")):
+            stay = wait_seconds if wait_seconds else 90
+        if step == "stuck" and stay <= 15:
+            stay = 0
         if stay:
             human = wait_for_human(page, job, stay, resume)
             row["ok"] = human["ok"]
@@ -2862,7 +2861,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         except Exception:
             pass
         try:
-            human = wait_for_human(page, job, cap_wait(wait_seconds), resume)
+            human = wait_for_human(page, job, wait_seconds or 90, resume)
             if human.get("ok"):
                 row.update({k: human[k] for k in ("ok", "status", "note")})
                 row["final_url"] = page.url
@@ -3131,7 +3130,6 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
     persist_existing_closed()
-    wait_seconds = cap_wait(wait_seconds)
     queue = apply_now.queue()
     try_jobs, blocked_board = public_queue(queue, allow_aggregators=True)
     try_jobs = leftover_career_jobs(try_jobs)
@@ -3142,8 +3140,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     board_n = len(try_jobs) - career_n
     print(
         f"Queue {len(queue)} | leftover career portals {career_n} | "
-        f"leftover other-board {board_n} | skipped {len(blocked_board)} | "
-        f"max {wait_seconds}s per job",
+        f"leftover other-board {board_n} | skipped {len(blocked_board)}",
         flush=True,
     )
     if headed:
@@ -3158,8 +3155,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
             if not leftover:
                 break
             print(
-                f"\n=== Short-wait apply ({wait_seconds}s max): "
-                f"{len(leftover)} leftover job(s), other-boards mixed in ===",
+                f"\n=== Apply leftover jobs ({len(leftover)}), other-boards mixed in ===",
                 flush=True,
             )
             for i, job in enumerate(leftover, 1):
@@ -3241,6 +3237,6 @@ if __name__ == "__main__":
     )
     parser.add_argument("--limit", type=int, default=80)
     args = parser.parse_args()
-    # Owner: do not wait long on one form. Default 12s even when headed.
-    wait = SHORT_WAIT if args.wait is None else args.wait
+    # Headed: wait for human CAPTCHA. Unattended cron can pass --wait 0.
+    wait = (360 if args.headed else 0) if args.wait is None else args.wait
     main(limit=args.limit, headed=args.headed, wait_seconds=wait)
