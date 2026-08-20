@@ -258,7 +258,15 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("no") or "No"
     if "ever worked" in q and "affiliates" in q:
         return pick("no") or "No"
-    if "previously employed" in q or "previously applied" in q or "worked here" in q or "worked for" in q:
+    if (
+        "previously employed" in q
+        or "previously applied" in q
+        or "previously worked" in q
+        or "previous worker" in q
+        or "worked here" in q
+        or "worked for" in q
+        or ("our organization" in q and "worked" in q)
+    ):
         return pick("no") or "No"
     if "applied here before" in q or "applied before" in q:
         return pick("no") or "No"

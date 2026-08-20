@@ -27,6 +27,7 @@ NATIVE_SET_JS = """(el, value) => {
 }"""
 
 OPTION_SELECTORS = (
+    '[data-automation-id="promptOption"]',
     '[role="option"]',
     ".select__option",
     ".select2-results__option",
