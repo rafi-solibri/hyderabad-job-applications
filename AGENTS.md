@@ -28,6 +28,12 @@ context — they have real side effects and need an interactive display + human 
 - No configured linter, formatter, or tests. Use `python3 -m py_compile *.py` as a syntax check.
 - No build step (pure scripts).
 
+### Pull requests
+The owner asked agents to **merge PRs automatically every time** after work is complete
+(do not leave them sitting as drafts for a human merge). Mark the PR ready, then merge
+into `main` (fast-forward `git push origin HEAD:main` when that is allowed). Browser-apply
+scripts are still never run in cloud.
+
 ### Gotchas
 - Playwright needs its browser binary: `python3 -m playwright install chromium` (the update
   script does this). The `playwright` CLI installs to `~/.local/bin`; prefer `python3 -m playwright`.
