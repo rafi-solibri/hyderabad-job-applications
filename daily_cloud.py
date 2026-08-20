@@ -77,7 +77,7 @@ def main() -> None:
         "Cloud run: existing queue first (company career portals, then tailored resumes), then discovery.",
         "Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are last — other automations cover those boards.",
         "",
-        f"**Ready to apply (best matches, 3 per company): {len(queue)}**",
+        f"**Ready to apply (best matches, no per-company cap): {len(queue)}**",
         f"**Resumes tailored this run: {len(tailored)}**",
         f"**Submitted this run / recent: {len(today_applied)}**",
         f"**Blocked or incomplete (login/CAPTCHA/form): {len(blocked)}**",

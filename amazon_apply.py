@@ -19,7 +19,6 @@ BATCH = json.loads((ROOT / "data" / "discovery_batch.json").read_text(encoding="
 RESULTS = ROOT / "data" / "applications" / "amazon_results.json"
 LOG = ROOT / "data" / "applications" / "log.jsonl"
 PROFILE = ROOT / "data" / "browser_profile"
-MAX_PER_COMPANY = 3
 WAIT_SECONDS = 240
 SKIP_TITLE = re.compile(r"devops|devsecops|site reliability|\bsre\b|tech ops|rack manufacturing", re.I)
 DONE_IDS = {"10403400"}
@@ -91,7 +90,7 @@ def queue() -> list[dict]:
         row["apply_url"] = apply_url(job)
         jobs.append(row)
     jobs.sort(key=lambda j: (-int(j.get("score") or 0), j.get("title") or ""))
-    return jobs[:MAX_PER_COMPANY]
+    return jobs
 
 
 def fill_amazon(page, job=None):
