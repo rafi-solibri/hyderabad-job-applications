@@ -26,6 +26,7 @@ import tailor_resume
 ROOT = Path(__file__).resolve().parent
 RESULTS = ROOT / "data" / "applications" / "cloud_results.json"
 LESSONS = ROOT / "data" / "applications" / "headed_lessons.jsonl"
+SUBMITTED_LOG = ROOT / "data" / "applications" / "SUBMITTED.md"
 RESUME = str((ROOT / apply_now.C["resumePath"]).resolve())
 C = apply_now.C
 # Bypass /usr/local/bin/google-chrome — that wrapper forces ~/.config/google-chrome.
@@ -34,6 +35,9 @@ CHROME = os.environ.get("CHROME_BIN", "/opt/google/chrome/chrome")
 PROFILE = ROOT / "data" / "chrome_profile"
 CDP = "http://127.0.0.1:9222"
 PROFILE_EMAIL = "rafi.success@gmail.com"
+# One application tab only. Open the next job only after a successful submit
+# (or a closed/404 posting that cannot be submitted).
+MAX_OPEN_APPLICATIONS = 1
 
 # These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
@@ -177,7 +181,7 @@ def fill_identity(page) -> None:
         ("input[name='name'], input[name='full_name'], #name", C["fullName"]),
         ("input[name='first_name'], #first_name, input[autocomplete='given-name']", C["firstName"]),
         ("input[name='last_name'], #last_name, input[autocomplete='family-name']", C["lastName"]),
-        ("input[name='email'], #email, input[type=email]", C["email"]),
+        ("input[name='email'], #email, input[type=email], input[name='primary-email']", C["email"]),
         ("input[name='phone'], #phone, input[type=tel]", C["phoneNational"]),
         ("input[name='org'], input[name='company']", C["currentEmployer"]),
         ("input[name='urls[LinkedIn]'], input[name='linkedin'], input[placeholder*='LinkedIn' i]", C["linkedIn"]),
@@ -207,10 +211,10 @@ CLICK_APPLY_GATE_JS = r"""() => {
   const ranked = [
     /^apply manually$/i,
     /^autofill with resume$/i,
+    /^start application$/i,
     /^apply for this job$/i,
     /^apply now$/i,
     /^i'?m interested$/i,
-    /^start application$/i,
     /^start applying$/i,
     /^easy apply$/i,
     /^apply as (a )?guest$/i,
@@ -245,6 +249,8 @@ CLICK_APPLY_GATE_JS = r"""() => {
       if (!t || t.length > 48 || skipRe.test(t)) return;
       const auto = el.getAttribute('data-automation-id') || '';
       candidates.push({el, t, auto});
+    });
+    root.querySelectorAll('*').forEach((el) => {
       if (el.shadowRoot) collect(el.shadowRoot);
     });
   };
@@ -262,7 +268,7 @@ CLICK_APPLY_GATE_JS = r"""() => {
       return fire(c.el, c.t || 'Workday Apply');
     }
   }
-  for (const el of document.querySelectorAll('a[href*="apply" i], a[href*="Apply"]')) {
+  for (const el of document.querySelectorAll('a[href*="apply"], a[href*="Apply"]')) {
     if (!visible(el)) continue;
     const t = labelOf(el);
     const href = (el.href || '').toLowerCase();
@@ -288,7 +294,18 @@ def click_apply_gate(page) -> str:
         hit = ""
     if hit and not SKIP_APPLY_LABEL.search(hit):
         print(f"  Clicked '{hit}'.", flush=True)
-        page.wait_for_timeout(1800)
+        page.wait_for_timeout(1200)
+        if re.match(r"^apply( now)?$", hit.strip(), re.I):
+            for name in ("Apply Manually", "Start Application", "Autofill with Resume"):
+                try:
+                    loc = page.get_by_text(name, exact=True).first
+                    if loc.count() and loc.is_visible():
+                        loc.click(timeout=1500, force=True)
+                        print(f"  Clicked '{name}'.", flush=True)
+                        page.wait_for_timeout(1800)
+                        return name
+                except Exception:
+                    continue
         return hit
     for sel in (
         '[data-automation-id="applyManually"]',
@@ -389,6 +406,54 @@ def click_next_or_submit(page) -> str:
     return "none"
 
 
+def notify_captcha(job: dict, page) -> None:
+    """Tell the owner in the agent log that a CAPTCHA needs solving now."""
+    company = job.get("company") or ""
+    title = job.get("title") or ""
+    url = ""
+    try:
+        url = page.url
+    except Exception:
+        url = job.get("apply_url") or ""
+    banner = (
+        f"\n{'!' * 72}\n"
+        f"  CAPTCHA — please solve it now in Desktop / Take control\n"
+        f"  {company}: {title}\n"
+        f"  {url}\n"
+        f"  After you solve it I will continue this same application.\n"
+        f"{'!' * 72}\n"
+    )
+    print(banner, flush=True)
+    path = ROOT / "data" / "applications" / "CAPTCHA.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    line = f"- **NEED CAPTCHA** {company} — {title}\n  {url}\n"
+    prev = path.read_text(encoding="utf-8") if path.exists() else "# CAPTCHA — owner action needed\n\n"
+    if url and url in prev:
+        return
+    path.write_text(prev + line, encoding="utf-8")
+
+
+def notify_submitted(job: dict, row: dict) -> None:
+    """Print a clear submit notice and append it so this chat can report it."""
+    company = job.get("company") or row.get("company") or ""
+    title = job.get("title") or row.get("title") or ""
+    url = row.get("final_url") or job.get("apply_url") or job.get("url") or ""
+    ts = row.get("ts") or datetime.now(timezone.utc).isoformat()
+    banner = (
+        f"\n{'=' * 72}\n"
+        f"  SUBMITTED — {company}: {title}\n"
+        f"  {url}\n"
+        f"{'=' * 72}\n"
+    )
+    print(banner, flush=True)
+    SUBMITTED_LOG.parent.mkdir(parents=True, exist_ok=True)
+    line = f"- **{ts[:19]}Z** SUBMITTED **{company}** — {title}\n  {url}\n"
+    prev = SUBMITTED_LOG.read_text(encoding="utf-8") if SUBMITTED_LOG.exists() else "# Submitted applications\n\n"
+    if url and url in prev and company in prev:
+        return
+    SUBMITTED_LOG.write_text(prev + line, encoding="utf-8")
+
+
 def record_lesson(job: dict, row: dict, learned: int = 0) -> None:
     LESSONS.parent.mkdir(parents=True, exist_ok=True)
     event = {
@@ -428,6 +493,80 @@ def on_application_form(page) -> bool:
     return False
 
 
+def captcha_puzzle_visible(page) -> bool:
+    try:
+        blob = page_text(page)[:2500]
+    except Exception:
+        blob = ""
+    if re.search(r"drag the shape|select all (the )?squares|click (the )?images", blob, re.I):
+        return True
+    try:
+        loc = page.locator("iframe[title*='hCaptcha challenge' i], iframe[title*='hCaptcha' i]")
+        n = loc.count()
+        for i in range(min(n, 4)):
+            el = loc.nth(i)
+            if not el.is_visible():
+                continue
+            box = el.bounding_box() or {}
+            if (box.get("width") or 0) > 280 and (box.get("height") or 0) > 140:
+                return True
+    except Exception:
+        pass
+    return False
+
+
+def accept_terms(page) -> int:
+    """Check terms/privacy boxes, including hidden Oracle/Workday checkboxes."""
+    n = 0
+    try:
+        n = page.evaluate(
+            """() => {
+              const re = /terms|privacy|agree|consent|certify|disclaimer|i have read/i;
+              let n = 0;
+              for (const el of document.querySelectorAll('input[type=checkbox]')) {
+                const wrap = el.closest('label') || el.parentElement || el;
+                const t = ((wrap.innerText || '') + ' ' + (el.getAttribute('aria-label') || '') + ' ' + (el.id || '') + ' ' + (el.name || ''));
+                if (!re.test(t)) continue;
+                if (el.checked) continue;
+                try { el.click(); n++; } catch (e) {}
+                if (!el.checked) {
+                  el.checked = true;
+                  el.dispatchEvent(new Event('input', {bubbles: true}));
+                  el.dispatchEvent(new Event('change', {bubbles: true}));
+                  n++;
+                }
+              }
+              const honey = document.querySelector('input[name="honey-pot"], #honey-pot-1, input[aria-label="honeypot"]');
+              if (honey && honey.value) { honey.value = ''; honey.dispatchEvent(new Event('input', {bubbles: true})); }
+              return n;
+            }"""
+        ) or 0
+    except Exception:
+        n = 0
+    for name in (
+        "I agree with the terms and conditions",
+        "I agree to the terms",
+        "I have read and agree",
+    ):
+        try:
+            loc = page.get_by_text(name, exact=False).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=800, force=True)
+                n += 1
+        except Exception:
+            continue
+    try:
+        box = page.locator(".apply-flow-input-checkbox__button, [class*='checkbox__button']").first
+        if box.count() and box.is_visible():
+            box.click(timeout=800, force=True)
+            n += 1
+    except Exception:
+        pass
+    if n:
+        print(f"  Accepted {n} terms/privacy control(s).", flush=True)
+    return n
+
+
 def recover_wrong_board(page) -> bool:
     """Leave Indeed/LinkedIn apply intercepts and return to the company form."""
     url = (page.url or "").lower()
@@ -442,26 +581,30 @@ def recover_wrong_board(page) -> bool:
     return False
 
 
-def adopt_newest_page(page):
-    """Follow Apply that opened a new tab. Never jump to Gmail/Google."""
+def adopt_newest_page(page, before_ids: set[int] | None = None):
+    """Follow Apply that opened a new tab. Never jump to Gmail or leftover tabs."""
     try:
         ctx = page.context
     except Exception:
         return page
-    newest = page
+    opened = []
     for p in ctx.pages:
         try:
             if p.is_closed():
+                continue
+            if before_ids is not None and id(p) in before_ids:
                 continue
             url = p.url or ""
             if "accounts.google.com" in url or url.startswith("chrome-extension://"):
                 continue
             if "mail.google.com" in url:
                 continue
-            newest = p
+            opened.append(p)
         except Exception:
             continue
-    return newest
+    if opened:
+        return opened[-1]
+    return page
 
 
 def fill_and_advance(page, job: dict, resume: str) -> str:
@@ -470,8 +613,12 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if is_success(page) or simplify_copilot.submitted(page):
         return "submitted"
     recover_wrong_board(page)
+    copilot_start = simplify_copilot.start_application(page)
+    if copilot_start:
+        page.wait_for_timeout(600)
     fill_identity(page)
     apply_now.set_india_phone(page)
+    accept_terms(page)
     try:
         upload_resume(page, resume)
     except Exception:
@@ -480,9 +627,15 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if copilot_step == "submitted" or is_success(page):
         return "submitted"
     form_memory.fill_visible(page)
+    form_memory.fill_india_state_typeahead(page)
+    accept_terms(page)
+    if captcha_puzzle_visible(page):
+        return "captcha"
     if not on_application_form(page):
+        before = {id(p) for p in page.context.pages}
         click_apply_gate(page)
         page.wait_for_timeout(800)
+        page = adopt_newest_page(page, before)
     step = click_next_or_submit(page)
     if step == "submitted" or is_success(page) or simplify_copilot.submitted(page):
         return "submitted"
@@ -494,17 +647,29 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     resume = resume or job.get("resume_path") or RESUME
     print(
         f"  Staying on this form until Submit (up to {seconds}s). "
-        f"Solve CAPTCHA in the desktop if a puzzle appears.",
+        f"If a CAPTCHA appears, solve it in this agent's Desktop / Take control.",
         flush=True,
     )
     deadline = time.time() + seconds
     learned = 0
+    notified_captcha = False
     while time.time() < deadline:
         try:
             changed = form_memory.remember(page, job) or []
             learned += len(changed)
         except Exception:
             pass
+        if captcha_puzzle_visible(page):
+            if not notified_captcha:
+                notify_captcha(job, page)
+                notified_captcha = True
+            # Keep this tab open while the owner solves the puzzle.
+            deadline = max(deadline, time.time() + 90)
+            page.wait_for_timeout(3000)
+            continue
+        if notified_captcha:
+            print("  CAPTCHA cleared. Continuing this same application.", flush=True)
+            notified_captcha = False
         try:
             step = fill_and_advance(page, job, resume)
             if step == "submitted" or is_success(page):
@@ -515,6 +680,13 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "note": "submitted in headed Chrome (autofill + Copilot)",
                     "learned": learned,
                 }
+            if step == "captcha":
+                if not notified_captcha:
+                    notify_captcha(job, page)
+                    notified_captcha = True
+                deadline = max(deadline, time.time() + 90)
+                page.wait_for_timeout(3000)
+                continue
         except Exception:
             pass
         page.wait_for_timeout(2000)
@@ -527,7 +699,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     }
 
 
-def apply_one(page, job: dict, wait_seconds: int = 0) -> dict:
+def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True) -> dict:
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
     kind = classify_url(url, job)
     row = {
@@ -546,9 +718,15 @@ def apply_one(page, job: dict, wait_seconds: int = 0) -> dict:
     resume = job.get("resume_path") or RESUME
     learned = 0
     try:
-        page.goto(url, wait_until="domcontentloaded", timeout=35000)
-        page.wait_for_timeout(1800)
+        if navigate:
+            page.goto(url, wait_until="domcontentloaded", timeout=35000)
+            page.wait_for_timeout(1800)
+        else:
+            page.wait_for_timeout(400)
         dismiss_overlays(page)
+        copilot_start = simplify_copilot.start_application(page)
+        if copilot_start:
+            page.wait_for_timeout(800)
         blob = page_text(page)[:2500]
         if re.search(r"page you are looking for doesn.?t exist|job (is )?no longer available|this job has been closed|\b404\b", blob, re.I) or re.search(r"404|not found", page.title() or "", re.I):
             row["status"] = "CLOSED"
@@ -577,9 +755,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0) -> dict:
                 except Exception:
                     pass
                 break
+            before = {id(p) for p in page.context.pages}
             hit = click_apply_gate(page)
             page.wait_for_timeout(1000)
-            page = adopt_newest_page(page)
+            page = adopt_newest_page(page, before)
             if page.url == last_url:
                 same_url_hits += 1
             else:
@@ -622,26 +801,37 @@ def apply_one(page, job: dict, wait_seconds: int = 0) -> dict:
                 row["final_url"] = page.url
                 row["note"] = "Simplify Copilot"
                 return row
-            if step == "none":
+            if step == "none" or step == "captcha":
                 stuck_none += 1
+                if step == "captcha":
+                    break
                 if stuck_none >= 3:
                     break
             else:
                 stuck_none = 0
             page.wait_for_timeout(700)
 
-        # Never abandon a live form. Keep filling until Submit or timeout.
-        stay = wait_seconds if wait_seconds else 90
+        # Stay on the live form. User solves CAPTCHA in the cloud desktop.
+        stay = wait_seconds if wait_seconds else 360
+        if captcha_puzzle_visible(page):
+            stay = max(stay, 360)
+            notify_captcha(job, page)
         human = wait_for_human(page, job, stay, resume)
         row["ok"] = human["ok"]
         row["status"] = human["status"]
         row["note"] = human["note"]
-        row["final_url"] = page.url
         learned += int(human.get("learned") or 0)
         row["fields_learned"] = learned
+        try:
+            row["final_url"] = page.url
+        except Exception:
+            pass
         record_lesson(job, row, learned)
         return row
     except Exception as exc:
+        if row.get("status") in {"SUBMITTED", "WAITING_EXPIRED", "CAPTCHA", "CLOSED"}:
+            row["note"] = (row.get("note") or "") + f" ({exc})"
+            return row
         row["status"] = "ERROR"
         row["note"] = str(exc)[:280]
         try:
@@ -773,10 +963,10 @@ def launch_context(pw, headed: bool):
                 print(f"  Google sign-in skipped ({exc}).", flush=True)
         else:
             print("  Chrome already signed in; leaving Google tabs alone.", flush=True)
-        # New tab for apply. Never navigate the Google sign-in / Gmail / LinkedIn tabs.
-        page = context.new_page()
+        reset_chrome_tabs(context)
         print(f"  Using open Chrome profile {PROFILE_EMAIL} ({PROFILE}) + Simplify Copilot", flush=True)
-        return None, context, page
+        print(f"  One application at a time. Next job only after a successful submit.", flush=True)
+        return None, context, None
     browser = pw.chromium.launch(headless=True, args=args)
     context = browser.new_context(
         locale="en-IN",
@@ -789,20 +979,73 @@ def launch_context(pw, headed: bool):
     return browser, context, context.new_page()
 
 
-def _fresh_page(context, page):
-    """New tab per job. Never reuse a closed or stuck application tab."""
+def _keep_tab(url: str) -> bool:
+    u = (url or "").lower()
+    if u.startswith("chrome://") or u.startswith("chrome-extension://"):
+        return True
+    return any(x in u for x in ("www.google.com", "mail.google.com", "accounts.google.com"))
+
+
+def reset_chrome_tabs(context) -> None:
+    """Close every application tab. Leave a single Google tab."""
+    google = None
+    for p in list(context.pages):
+        try:
+            if p.is_closed():
+                continue
+            u = p.url or ""
+            if "www.google.com" in u:
+                google = p
+                break
+        except Exception:
+            continue
+    if google is None:
+        for p in list(context.pages):
+            try:
+                if _keep_tab(p.url) and "accounts.google.com" not in (p.url or ""):
+                    google = p
+                    break
+            except Exception:
+                continue
+    for p in list(context.pages):
+        if p is google:
+            continue
+        try:
+            if not p.is_closed():
+                p.close()
+        except Exception:
+            continue
     try:
-        if page and not page.is_closed():
-            # Keep Gmail/Google tabs; close only previous apply tabs we opened.
-            url = (page.url or "")
-            if "google.com" not in url and "mail.google.com" not in url:
-                try:
-                    page.close()
-                except Exception:
-                    pass
+        if google and not google.is_closed():
+            google.goto("https://www.google.com/", wait_until="domcontentloaded", timeout=20000)
+        elif context.pages:
+            pass
+        else:
+            page = context.new_page()
+            page.goto("https://www.google.com/", wait_until="domcontentloaded", timeout=20000)
     except Exception:
         pass
-    return context.new_page()
+    print("  Closed all application tabs. Fresh Google tab only.", flush=True)
+
+
+def close_apply_page(page) -> None:
+    try:
+        if page and not page.is_closed() and not _keep_tab(page.url):
+            page.close()
+    except Exception:
+        pass
+
+
+def apply_tab_count(context) -> int:
+    n = 0
+    for p in context.pages:
+        try:
+            if p.is_closed() or _keep_tab(p.url):
+                continue
+            n += 1
+        except Exception:
+            continue
+    return n
 
 
 def persist_existing_closed() -> None:
@@ -852,31 +1095,55 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
             leftover = leftover_career_jobs(pending)
             if not leftover:
                 break
-            print(f"\n=== Apply pass {attempt}: {len(leftover)} leftover career-portal job(s) ===", flush=True)
+            print(
+                f"\n=== Apply one at a time: {len(leftover)} leftover career-portal job(s) ===",
+                flush=True,
+            )
             for i, job in enumerate(leftover, 1):
                 print(f"\n[{i}/{len(leftover)}] {job.get('company')}: {job.get('title')}", flush=True)
+                print("  Opening this application only. Will not open another until it is submitted.", flush=True)
                 try:
                     job["resume_path"] = tailor_resume.for_job(job)
                     print(f"  Tailored: {tailor_resume.CURRENT.get('headline')}", flush=True)
                 except Exception as exc:
                     job["resume_path"] = RESUME
                     print(f"  Tailor failed ({exc}); using architect resume.", flush=True)
-                try:
-                    page = _fresh_page(context, page)
-                except Exception:
-                    page = context.new_page()
-                stay = wait_seconds if wait_seconds else (90 if headed else 0)
-                row = apply_one(page, job, wait_seconds=stay)
+                for extra in list(context.pages):
+                    close_apply_page(extra)
+                page = context.new_page()
+                stay = wait_seconds if wait_seconds else 360
+                row = apply_one(page, job, wait_seconds=stay, navigate=True)
+                while row.get("status") not in {"SUBMITTED", "CLOSED"}:
+                    print(
+                        f"  Still not submitted ({row.get('status')}). "
+                        f"Keeping this one application open. Not starting another.",
+                        flush=True,
+                    )
+                    try:
+                        if page.is_closed():
+                            page = context.new_page()
+                            row = apply_one(page, job, wait_seconds=stay, navigate=True)
+                        else:
+                            row = apply_one(page, job, wait_seconds=stay, navigate=False)
+                    except Exception as exc:
+                        print(f"  Retrying same application after error: {exc}", flush=True)
+                        try:
+                            if page.is_closed():
+                                page = context.new_page()
+                        except Exception:
+                            page = context.new_page()
+                        row = apply_one(page, job, wait_seconds=stay, navigate=True)
                 results.append(row)
                 if row.get("ok") and row.get("status") == "SUBMITTED":
                     apply_now.persist_applied(row, row.get("note") or "cloud_apply submitted")
+                    notify_submitted(job, row)
+                    print("  Submitted. Closing this tab and moving to the next application.", flush=True)
                 elif row.get("status") == "CLOSED":
-                    pass
-                else:
-                    apply_now.log({"event": "cloud_apply", **{k: v for k, v in row.items() if k != "confirmation"}})
+                    print("  Posting closed. Closing this tab and moving to the next application.", flush=True)
+                close_apply_page(page)
                 save_cloud(results)
                 print(f"  {row.get('status')} ok={row.get('ok')} {row.get('final_url')}", flush=True)
-                time.sleep(0.8)
+                time.sleep(0.6)
             pending = leftover_career_jobs(pending)
         if headed:
             print("  Leaving rafi.success@gmail.com Chrome open.", flush=True)
@@ -906,6 +1173,6 @@ if __name__ == "__main__":
     )
     parser.add_argument("--limit", type=int, default=80)
     args = parser.parse_args()
-    # Headed runs keep filling until Submit. Pass --wait 0 only to cap the stay-on-form loop.
-    wait = 90 if args.wait is None else args.wait
+    # Headed: wait for human CAPTCHA. Unattended cron can pass --wait 0.
+    wait = (360 if args.headed else 0) if args.wait is None else args.wait
     main(limit=args.limit, headed=args.headed, wait_seconds=wait)

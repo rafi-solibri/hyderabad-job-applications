@@ -1,6 +1,7 @@
 """Daily cloud pipeline: discover Hyd jobs, filter, tailor resumes, write report.
 
-Does not open Firefox or submit applications (no browser session in cloud).
+Does not submit applications. The Candidate job applications automation must
+also run cloud_apply.py --headed (see APPLY.md).
 """
 from __future__ import annotations
 

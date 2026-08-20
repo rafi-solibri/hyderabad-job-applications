@@ -12,7 +12,8 @@ LEARNED_PATH = ROOT / "data" / "learned_answers.json"
 CANDIDATE_PATH = ROOT / "data" / "candidate.json"
 
 SKIP_STORE_LABELS = re.compile(
-    r"^(search|password|captcha|yes|no|i agree|select|choose)$",
+    r"password|captcha|honeypot|"
+    r"^(search|yes|no|i agree|select|choose)$",
     re.I,
 )
 NOISE_VALUES = {
@@ -284,7 +285,11 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("passport", "indian") or a["rtw"]
     if "city of residence" in q or (q == "city") or "current city" in q:
         return a["city"]
-    if "state of residence" in q or q == "state":
+    if (
+        "state of residence" in q
+        or q in {"state", "state *", "region2", "region", "province"}
+        or (q.startswith("state") and "statement" not in q and "united states" not in q)
+    ):
         return pick("telangana") or a["state"]
     if q == "country" or "country of residence" in q or "country/region" in q:
         return pick("india") or a["country"]
@@ -361,7 +366,10 @@ def remember(page, job: dict | None = None) -> list[dict]:
         label = item.get("label") or ""
         value = (item.get("value") or "").strip()
         bare = re.sub(r"[*✱]", "", label).strip()
-        if SKIP_STORE_LABELS.match(bare) or norm(value) in NOISE_VALUES:
+        name = (item.get("name") or "").lower()
+        if SKIP_STORE_LABELS.search(bare) or SKIP_STORE_LABELS.search(name):
+            continue
+        if norm(value) in NOISE_VALUES:
             continue
         if value.lower() == "cursor" or (value.isdigit() and len(value) > 8):
             continue
@@ -447,7 +455,14 @@ def fill_visible(page) -> int:
     filled = 0
     for field in fields:
         label = field.get("label") or ""
+        name = (field.get("name") or "").lower()
         current = (field.get("value") or "").strip()
+        if (
+            name in {"region2", "region", "state", "province"}
+            or re.search(r"\bstate\b", label, re.I)
+        ) and current.upper() in {"TG", "TS", "AP"}:
+            # Oracle/India typeaheads store full names; TG/TS return no results.
+            current = ""
         if current and norm(current) not in NOISE_VALUES:
             continue
         value = infer_answer(label, field.get("options") or [])
@@ -500,6 +515,43 @@ def fill_visible(page) -> int:
     if filled:
         print(f"  Auto-filled {filled} field(s) from profile and learned answers.", flush=True)
     return filled
+
+
+def fill_india_state_typeahead(page) -> str:
+    """Oracle State comboboxes reject TG/TS. Search Telangana, then Andhra Pradesh."""
+    try:
+        loc = page.locator(
+            'input[name="region2"], input[name="region"], input[name="state"]'
+        ).first
+        if not loc.count() or not loc.is_visible():
+            return ""
+    except Exception:
+        return ""
+    try:
+        current = (loc.input_value() or "").strip()
+    except Exception:
+        current = ""
+    if current.lower() in {"telangana", "andhra pradesh"}:
+        return current
+    chosen = ""
+    for query in ("Telangana", "Andhra Pradesh"):
+        try:
+            loc.scroll_into_view_if_needed()
+            loc.click(timeout=2000)
+            loc.fill("")
+            loc.type(query, delay=50)
+            page.wait_for_timeout(900)
+            loc.press("ArrowDown")
+            page.wait_for_timeout(150)
+            loc.press("Enter")
+            page.wait_for_timeout(400)
+            chosen = (loc.input_value() or "").strip()
+        except Exception:
+            chosen = ""
+        if chosen.lower() in {"telangana", "andhra pradesh"}:
+            print(f"  State typeahead selected {chosen}.", flush=True)
+            return chosen
+    return chosen
 
 
 def auto_complete(page, job: dict | None = None, steps: int = 6) -> int:

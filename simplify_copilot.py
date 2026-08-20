@@ -35,6 +35,38 @@ OPEN_COPILOT_JS = """() => {
   return '';
 }"""
 
+CLICK_COPILOT_START_JS = """() => {
+  const skip = /tailor resume|resume builder|run autofill again|cover letter/i;
+  const fire = (el, label) => {
+    const btn = el.closest('button, a, [role="button"]') || el;
+    btn.scrollIntoView({block: 'center'});
+    try { btn.click(); } catch (e) {}
+    return label;
+  };
+  const byId = document.getElementById('start-application-button');
+  if (byId) return fire(byId, byId.getAttribute('aria-label') || 'Start Application');
+  const want = /^(start application|apply now|continue application)$/i;
+  const hits = [];
+  const walk = (root) => {
+    if (!root || !root.querySelectorAll) return;
+    root.querySelectorAll('button, a, [role="button"]').forEach((el) => {
+      const t = ((el.innerText || el.getAttribute('aria-label') || el.id || '') + '').replace(/\\s+/g, ' ').trim();
+      if (!t || t.length > 48 || skip.test(t)) return;
+      const r = el.getBoundingClientRect();
+      if (r.width < 8 || r.height < 8) return;
+      if (want.test(t) && r.left > window.innerWidth * 0.55) {
+        const rank = /^start application$/i.test(t) ? 0 : /^apply now$/i.test(t) ? 1 : 2;
+        hits.push({el, t, rank});
+      }
+    });
+    root.querySelectorAll('*').forEach((el) => { if (el.shadowRoot) walk(el.shadowRoot); });
+  };
+  walk(document);
+  hits.sort((a, b) => a.rank - b.rank);
+  if (hits.length) return fire(hits[0].el, hits[0].t);
+  return '';
+}"""
+
 CLICK_FILL_PAGE_JS = """() => {
   const fire = (el) => {
     const btn = el.closest('button, [role="button"], a') || el;
@@ -94,7 +126,7 @@ CLICK_FILL_PAGE_JS = """() => {
 
 COPILOT_STATE_JS = """() => {
   const doneRe = /application submitted|application already submitted|successfully submitted|we submitted your application|applied with simplify/i;
-  const actRe = /continue with application|accept and continue|create account|create account & autofill|create account and autofill|sign in and autofill|sign in to simplify|log in to autofill|start applying|start application|autofill with resume|autofill this page|save and continue|^continue$|^next$|submit application|^submit$/i;
+  const actRe = /continue with application|continue application|accept and continue|create account|create account & autofill|create account and autofill|sign in and autofill|sign in to simplify|log in to autofill|start applying|start application|autofill with resume|autofill this page|save and continue|^continue$|^next$|submit application|^submit$/i;
   const skipRe = /enable ai|request autofill|hide until|cover letter|upload &|unlimited resumes|^apply now$|^apply$|tailor resume|resume builder|run autofill again/i;
   const visible = (el) => {
     const r = el.getBoundingClientRect();
@@ -153,6 +185,29 @@ def watch(page) -> str:
         print(f"  Watching Simplify Copilot ({opened}).", flush=True)
         page.wait_for_timeout(600)
     return opened
+
+
+def start_application(page) -> str:
+    """Click Copilot Start Application / Apply Now on the right. Never Tailor Resume."""
+    watch(page)
+    hit = ""
+    try:
+        hit = page.evaluate(CLICK_COPILOT_START_JS) or ""
+    except Exception:
+        hit = ""
+    if not hit:
+        try:
+            loc = page.locator("#start-application-button")
+            if loc.count() and loc.first.is_visible():
+                loc.first.click(timeout=2000)
+                hit = "Start Application"
+        except Exception:
+            pass
+    if hit:
+        print(f"  Simplify Copilot: clicked '{hit}'.", flush=True)
+        page.wait_for_timeout(2500)
+        return hit
+    return ""
 
 
 def autofill(page) -> bool:
@@ -220,14 +275,29 @@ def follow(page) -> str:
     if st.get("done"):
         print(f"  Simplify Copilot shows submitted: {st['done']}", flush=True)
         return "submitted"
+    actions = [a for a in (st.get("actions") or []) if a]
     action = (st.get("action") or "").strip()
+    for preferred in (
+        "Start Application",
+        "Continue Application",
+        "Continue with application",
+        "Submit application",
+        "Submit Application",
+        "Submit",
+    ):
+        if any(preferred.lower() == a.lower() for a in actions):
+            action = next(a for a in actions if a.lower() == preferred.lower())
+            break
     if action:
         low = action.lower()
         if "tailor" in low or "resume builder" in low:
             print(f"  Skipping Copilot '{action}'.", flush=True)
             return ""
+        exact = len(action) <= 16
         try:
-            loc = page.get_by_text(action, exact=False).first
+            loc = page.get_by_role("button", name=action, exact=exact).first
+            if not loc.count():
+                loc = page.get_by_text(action, exact=exact).first
             if loc.count():
                 loc.click(timeout=2000)
                 print(f"  Simplify Copilot needs '{action}'. Clicked it.", flush=True)

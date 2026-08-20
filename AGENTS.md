@@ -9,6 +9,8 @@ real desktop — auto-fill/submit applications via a browser. State lives in `da
 ### Services / how things run
 There is no long-running service and no test suite. You run scripts directly with `python3 <script>.py`.
 Key entry points:
+- `cloud_apply.py` — headed Chrome apply for this automation. **One application
+  at a time**; next job only after a successful submit. See `APPLY.md`.
 - `tailor_resume.py` — loads discovered jobs, builds the queue, and writes tailored `.docx` +
   cover letters to `data/resume/tailored/` (and `data/resume/Rafi_Resume_Latest.docx`). Good
   no-browser smoke test of core logic.
