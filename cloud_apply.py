@@ -4540,6 +4540,10 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     print("  LinkedIn checkpoint already parked. Skipping other LinkedIn leftovers this round.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
+                if any(x in apply_url for x in ("foundit.in", "cutshort.io", "cutshort.com")):
+                    print("  Foundit/Cutshort login is blocked on Google change-password. Next leftover.", flush=True)
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    continue
                 for extra in list(context.pages):
                     close_apply_page(extra)
                 page = context.new_page()

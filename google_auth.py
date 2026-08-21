@@ -42,6 +42,8 @@ def fill_google_password_challenge(page) -> str:
         url = ""
     if "accounts.google.com" not in url:
         return "skip"
+    if "changepassword" in url or "speedbump" in url:
+        return "skip"
     password = load_google_password()
     if not password:
         return "missing"
@@ -75,7 +77,7 @@ def fill_google_password_challenge(page) -> str:
 
 
 def fill_google_change_password(page) -> str:
-    """Reuse the same Google password on Create password / Confirm. Never log it."""
+    """Do not create or change a Google password. Owner continues leftover applies."""
     try:
         url = (page.url or "").lower()
     except Exception:
@@ -84,40 +86,8 @@ def fill_google_change_password(page) -> str:
         return "skip"
     if "changepassword" not in url and "speedbump" not in url:
         return "skip"
-    password = load_google_password()
-    if not password:
-        return "missing"
-    filled = 0
-    try:
-        boxes = page.locator("input[type=password], input[name=Passwd], input[name=ConfirmPasswd]")
-        n = min(boxes.count(), 4)
-    except Exception:
-        n = 0
-    for i in range(n):
-        el = boxes.nth(i)
-        try:
-            if not el.is_visible():
-                continue
-            el.fill(password, timeout=4000)
-            filled += 1
-        except Exception:
-            continue
-    if filled < 1:
-        return "none"
-    print(f"  Filled Google create-password form ({filled} box(es)).", flush=True)
-    for name in (r"^change password$", r"^next$", r"^done$", r"^continue$"):
-        try:
-            btn = page.get_by_role("button", name=re.compile(name, re.I)).first
-            if btn.count() and btn.is_visible():
-                btn.click(timeout=3000)
-                break
-        except Exception:
-            continue
-    try:
-        page.wait_for_timeout(1200)
-    except Exception:
-        pass
-    return "ok"
+    print("  Leaving Google change-password alone. Continuing other leftovers.", flush=True)
+    return "skip"
 
 
 def fill_google_password_challenges(page) -> int:
