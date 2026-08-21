@@ -896,6 +896,8 @@ def queue() -> list[dict]:
             continue
         if not re.search(
             r"architect|principal|staff|technical lead|engineering manager|"
+            r"manager,? engineering|manager,? software|software engineer manager|"
+            r"software engineering manager|"
             r"lead (software|engineer|developer)|senior (software|backend|full.?stack|\.net|sde|solution)|"
             r"sde ?[iii23]|software development engineer|sr\.? software|"
             r"manager,? software development|senior manager software|sr\.? manager software",
