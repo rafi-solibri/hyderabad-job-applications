@@ -4307,6 +4307,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 row["status"] = "STUCK"
                 row["note"] = "Naukri company-site apply"
                 row["final_url"] = page.url
+                apply_now.persist_skipped(row, row["note"])
                 return row
 
         fill_identity(page)
