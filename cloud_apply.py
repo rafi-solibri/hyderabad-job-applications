@@ -2852,7 +2852,24 @@ def commit_greenhouse_react_selects(page) -> int:
         if qn == "country":
             # Phone country-code combobox (already +91), not country of residence.
             continue
-        want = form_memory.infer_answer(q)
+        nearby = ""
+        try:
+            nearby = wrap.evaluate(
+                """n => {
+                  const nxt = n.nextElementSibling;
+                  const par = n.parentElement;
+                  return ((nxt && nxt.innerText) || '') + ' '
+                    + ((par && par.innerText) || '').slice(0, 400);
+                }"""
+            ) or ""
+        except Exception:
+            nearby = ""
+        blob = f"{q} {nearby}"
+        want = form_memory.infer_answer(blob)
+        if qn.startswith("state") and re.search(
+            r"united states or australia|please select .n/a.|\bn/a\b", nearby, re.I
+        ):
+            want = "N/A"
         if not want:
             continue
         current = _greenhouse_single_value(wrap)
@@ -2874,7 +2891,7 @@ def commit_greenhouse_react_selects(page) -> int:
             control.click(timeout=2000)
         except Exception:
             continue
-        page.wait_for_timeout(350)
+        page.wait_for_timeout(400)
         short = want.strip().lower() in {"yes", "no", "n/a", "na"}
         if not short:
             try:
@@ -2885,16 +2902,39 @@ def commit_greenhouse_react_selects(page) -> int:
                     page.wait_for_timeout(400)
             except Exception:
                 pass
+        # React-Select listens to mousedown on .select__option, not a DOM click.
         clicked = False
         try:
-            opt = page.locator(".select__menu .select__option, .select__option, [role='option']").filter(
-                has_text=re.compile(rf"^{re.escape(str(want))}$", re.I)
-            ).first
-            if opt.count() and opt.is_visible():
-                opt.click(timeout=1500)
-                clicked = True
+            clicked = bool(
+                page.evaluate(
+                    """(want) => {
+                      const w = String(want || '').trim().toLowerCase();
+                      const menu = document.querySelector('.select__menu, [class*="MenuList"]');
+                      if (!menu) return false;
+                      const opts = [...menu.querySelectorAll('.select__option, [role=option]')];
+                      const hit = opts.find(o => (o.innerText || '').trim().toLowerCase() === w)
+                        || opts.find(o => (o.innerText || '').trim().toLowerCase().includes(w));
+                      if (!hit) return false;
+                      hit.dispatchEvent(new MouseEvent('mousedown', {bubbles: true, cancelable: true, view: window}));
+                      hit.dispatchEvent(new MouseEvent('mouseup', {bubbles: true, cancelable: true, view: window}));
+                      try { hit.click(); } catch (e) {}
+                      return true;
+                    }""",
+                    want,
+                )
+            )
         except Exception:
-            pass
+            clicked = False
+        if not clicked:
+            try:
+                opt = page.locator(".select__menu .select__option, .select__option, [role='option']").filter(
+                    has_text=re.compile(rf"^{re.escape(str(want))}$", re.I)
+                ).first
+                if opt.count() and opt.is_visible():
+                    opt.click(timeout=1500, force=True)
+                    clicked = True
+            except Exception:
+                pass
         if not clicked:
             clicked = ats_fill._click_best_option(page, want)
         if not clicked:

@@ -424,9 +424,16 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
     if (
         "state of residence" in q
         or q in {"state", "state *", "region2", "region", "province"}
-        or (q.startswith("state") and "statement" not in q and "united states" not in q)
+        or (q.startswith("state") and "statement" not in q)
     ):
         # Greenhouse US/AU state lists use N/A for India. Indian forms use Telangana.
+        if (
+            "please select 'n/a'" in q
+            or 'please select "n/a"' in q
+            or "united states or australia" in q
+            or re.search(r"\bn/a\b", q)
+        ):
+            return pick("n/a", "not applicable", "na") or "N/A"
         return pick("telangana") or pick("n/a", "not applicable", "na") or a["state"]
     if q == "country" or "country of residence" in q or "country/region" in q:
         return pick("india") or a["country"]
