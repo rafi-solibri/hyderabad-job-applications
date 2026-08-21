@@ -1703,6 +1703,69 @@ def fill_workday_skills(page) -> int:
     return 0
 
 
+def _workday_form_fields(page, pattern: str):
+    loc = page.locator("[data-automation-id^='formField-']").filter(
+        has_text=re.compile(pattern, re.I)
+    )
+    try:
+        n = loc.count()
+    except Exception:
+        n = 0
+    return [loc.nth(i) for i in range(n)]
+
+
+def _workday_fill_text_fields(page, pattern: str, value: str) -> int:
+    n = 0
+    for field in _workday_form_fields(page, pattern):
+        try:
+            box = field.locator(
+                "input:not([type=hidden]):not([type=radio]):not([type=checkbox]), textarea"
+            ).first
+            if not box.count() or not box.is_visible():
+                continue
+            cur = ""
+            try:
+                cur = (box.input_value() or "").strip()
+            except Exception:
+                pass
+            if cur and cur.lower() not in {"", "select", "n/a"} and value.lower() != "n/a":
+                continue
+            if cur.lower() == value.lower():
+                continue
+            box.click(timeout=800, force=True)
+            box.fill("")
+            box.type(value, delay=20)
+            n += 1
+        except Exception:
+            continue
+    return n
+
+
+def fill_workday_compliance(page) -> int:
+    """State Street conflict questions: No + N/A. Typed blanks keep Next disabled."""
+    filled = 0
+    for pat in (
+        r"relative of a current public official",
+        r"senior commercial person",
+        r"senior level person",
+        r"please select one of the below",
+    ):
+        for field in _workday_form_fields(page, pat):
+            if _workday_select_prompt(page, field, "No"):
+                filled += 1
+                print(f"  Workday: {pat} = No.", flush=True)
+    filled += _workday_fill_text_fields(page, r"relationship with this individual", "N/A")
+    filled += _workday_fill_text_fields(page, r"institution name and level", "N/A")
+    filled += _workday_fill_text_fields(
+        page,
+        r"name of your agency|enter your name \(required\)",
+        "Mohammed Abdul Rafi Ahmed / N/A",
+    )
+    if filled:
+        print(f"  Workday: filled {filled} compliance field(s).", flush=True)
+    return filled
+
+
 def _workday_select_prompt(page, field, typed: str) -> bool:
     """Open a Workday prompt and click a list option. Typed search text is not a value."""
     try:
@@ -1801,6 +1864,7 @@ def fill_workday_required_questions(page) -> int:
         print("  Workday: language = English.", flush=True)
     if fill_workday_skills(page):
         filled += 1
+    filled += fill_workday_compliance(page)
     return filled
 
 
@@ -2330,7 +2394,10 @@ def required_field_issues(page) -> list[str]:
         if re.search(
             r"this information is required|is required \(|no results were found|"
             r"please provide a valid email|confirm your email|"
-            r"^institution\*|^institution required",
+            r"^institution\*|^institution required|"
+            r"this field is required|please select a value|"
+            r"enter n/a if not applicable|please select one of the below|"
+            r"errors found",
             line,
             re.I,
         ):
@@ -3386,6 +3453,18 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             job_url = (job.get("apply_url") or job.get("url") or "").lower()
         except Exception:
             job_url = ""
+        if OWNER_PRESENT and notified_input:
+            try:
+                changed = form_memory.remember(page, job) or []
+                learned += len(changed)
+            except Exception:
+                pass
+            leftover = required_field_issues(page)
+            if leftover:
+                page.wait_for_timeout(2500)
+                continue
+            print("  Leftover fields look clear. Resuming fill.", flush=True)
+            notified_input = False
         if "icims.com" in job_url and icims_auth0_blocked(page):
             if OWNER_PRESENT:
                 if not notified_input:

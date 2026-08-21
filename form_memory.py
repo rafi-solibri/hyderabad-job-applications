@@ -280,6 +280,21 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("no") or "No"
     if "applied here before" in q or "applied before" in q:
         return pick("no") or "No"
+    if "enter n/a if not applicable" in q:
+        return "N/A"
+    if "institution name and level" in q:
+        return "N/A"
+    if "name of your agency" in q or ("enter your name" in q and "agency" in q):
+        return "Mohammed Abdul Rafi Ahmed / N/A"
+    if (
+        "public official" in q
+        or "senior commercial person" in q
+        or "senior level person" in q
+        or "relative of a current" in q
+    ):
+        return pick("no") or "No"
+    if "please select one of the below" in q:
+        return pick("no") or "No"
     if "senior government" in q or re.search(r"\bsgo\b", q):
         return pick("no") or "No"
     if "securities industry" in q:
