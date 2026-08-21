@@ -5137,48 +5137,51 @@ def discover_naukri_in_chrome(context) -> int:
             print(f"  Naukri warmup failed ({exc}). Still trying jobapi in-page.", flush=True)
 
         for q in queries:
-            print(f"  Naukri jobapi {q!r}...", flush=True)
-            try:
-                info = page.evaluate(
-                    """async (q) => {
-                      const qs = new URLSearchParams({
-                        noOfResults: '40',
-                        urlType: 'search_by_key_loc',
-                        searchType: 'adv',
-                        keyword: q,
-                        location: 'hyderabad',
-                        pageNo: '1',
-                        k: q,
-                        l: 'hyderabad',
-                        experience: '12',
-                      });
-                      const r = await fetch('https://www.naukri.com/jobapi/v3/search?' + qs.toString(), {
-                        headers: { appid: '109', systemid: 'Naukri', Accept: 'application/json' },
-                        credentials: 'include',
-                      });
-                      let data = null;
-                      try { data = await r.json(); } catch (e) {}
-                      const rows = (data && data.jobDetails) || [];
-                      const slim = rows.slice(0, 40).map((item) => ({
-                        title: item.title || item.jobTitle || '',
-                        companyName: item.companyName || item.company || '',
-                        jobId: String(item.jobId || item.id || ''),
-                        jdURL: item.jdURL || item.jdUrl || '',
-                        jobLocation: item.jobLocation || '',
-                        placeholders: item.placeholders || [],
-                      }));
-                      return {status: r.status, n: slim.length, items: slim};
-                    }""",
-                    q,
-                ) or {}
-            except Exception as exc:
-                info = {}
-                print(f"  Naukri jobapi {q!r} evaluate failed ({exc}).", flush=True)
-            status = info.get("status")
-            slim = info.get("items") or []
-            print(f"  Naukri jobapi {q!r}: HTTP {status} items {len(slim)}.", flush=True)
-            jobs.extend(_naukri_jobs_from_api_items(slim))
-            time.sleep(0.35)
+            for page_no in (1, 2, 3):
+                print(f"  Naukri jobapi {q!r} page {page_no}...", flush=True)
+                try:
+                    info = page.evaluate(
+                        """async ({q, pageNo}) => {
+                          const qs = new URLSearchParams({
+                            noOfResults: '40',
+                            urlType: 'search_by_key_loc',
+                            searchType: 'adv',
+                            keyword: q,
+                            location: 'hyderabad',
+                            pageNo: String(pageNo),
+                            k: q,
+                            l: 'hyderabad',
+                            experience: '12',
+                          });
+                          const r = await fetch('https://www.naukri.com/jobapi/v3/search?' + qs.toString(), {
+                            headers: { appid: '109', systemid: 'Naukri', Accept: 'application/json' },
+                            credentials: 'include',
+                          });
+                          let data = null;
+                          try { data = await r.json(); } catch (e) {}
+                          const rows = (data && data.jobDetails) || [];
+                          const slim = rows.slice(0, 40).map((item) => ({
+                            title: item.title || item.jobTitle || '',
+                            companyName: item.companyName || item.company || '',
+                            jobId: String(item.jobId || item.id || ''),
+                            jdURL: item.jdURL || item.jdUrl || '',
+                            jobLocation: item.jobLocation || '',
+                            placeholders: item.placeholders || [],
+                          }));
+                          return {status: r.status, n: slim.length, items: slim};
+                        }""",
+                        {"q": q, "pageNo": page_no},
+                    ) or {}
+                except Exception as exc:
+                    info = {}
+                    print(f"  Naukri jobapi {q!r} p{page_no} evaluate failed ({exc}).", flush=True)
+                status = info.get("status")
+                slim = info.get("items") or []
+                print(f"  Naukri jobapi {q!r} p{page_no}: HTTP {status} items {len(slim)}.", flush=True)
+                jobs.extend(_naukri_jobs_from_api_items(slim))
+                if len(slim) < 10:
+                    break
+                time.sleep(0.3)
 
         if len(jobs) < 8:
             print("  Naukri DOM fallback after jobapi...", flush=True)
