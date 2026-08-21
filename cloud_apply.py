@@ -2762,9 +2762,20 @@ def fill_greenhouse_required_selects(page) -> int:
             or 0
         )
     except Exception:
-        return 0
+        n = 0
     if n:
         print(f"  Greenhouse required selects filled ({n}).", flush=True)
+    try:
+        field = page.locator("div, li, fieldset, label").filter(
+            has_text=re.compile(r"united states or australia", re.I)
+        ).first
+        if field.count() and field.is_visible():
+            box = field.locator("select, [role=combobox], button, [class*='select']").first
+            if box.count() and ats_fill.handle_dropdown(page, box, "N/A"):
+                print("  Selected N/A for Greenhouse State.", flush=True)
+                n += 1
+    except Exception:
+        pass
     return n
 
 
