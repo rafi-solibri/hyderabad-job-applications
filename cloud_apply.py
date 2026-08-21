@@ -5094,7 +5094,7 @@ def _naukri_jobs_from_api_items(items: list) -> list[dict]:
             or item.get("applyType")
             or ""
         )
-        if re.search(r"company.?site", footer, re.I):
+        if re.search(r"company.?site|apply attempted", footer, re.I):
             continue
         jobs.append({
             "company": company,
@@ -5108,21 +5108,54 @@ def _naukri_jobs_from_api_items(items: list) -> list[dict]:
     return jobs
 
 
+def _naukri_srp_url(slug: str, page_no: int) -> str:
+    base = f"https://www.naukri.com/{slug}-jobs-in-hyderabad-secunderabad"
+    if page_no <= 1:
+        return base
+    return f"{base}-{page_no}"
+
+
+def _refresh_boards_no_browser() -> None:
+    """When leftover Naukri/career is empty, pull more boards without a second Chrome."""
+    print("  Leftover Naukri/career empty. No-browser discover_everywhere + hyd_gcc...", flush=True)
+    try:
+        import discover_everywhere
+        discover_everywhere.main()
+    except Exception as exc:
+        print(f"  discover_everywhere failed ({exc}).", flush=True)
+    try:
+        import discover_hyd_gcc
+        discover_hyd_gcc.main()
+    except Exception as exc:
+        print(f"  discover_hyd_gcc failed ({exc}).", flush=True)
+    apply_now.BATCH = apply_now.load_all_discovered()
+
+
 def discover_naukri_in_chrome(context) -> int:
-    """Naukri's public API 406s here. Use the already-open Chrome session's jobapi."""
+    """Naukri in-page fetch 406s. Navigate logged-in SRPs and capture jobapi XHR."""
     import discover_more_sites as more
 
-    queries = (
-        "senior software engineer",
-        "technical architect",
-        ".net architect",
-        "staff engineer",
-        "principal engineer",
-        "engineering manager",
-        "technical lead",
-        "lead software engineer",
-        "solution architect",
-        "senior backend engineer",
+    slugs = (
+        "senior-software-engineer",
+        "lead-software-engineer",
+        "principal-software-engineer",
+        "staff-software-engineer",
+        "technical-architect",
+        "solution-architect",
+        "software-architect",
+        "dot-net",
+        "dotnet",
+        "dot-net-developer",
+        "c-sharp",
+        "full-stack",
+        "backend-developer",
+        "microservices",
+        "technical-lead",
+        "engineering-manager",
+        "senior-backend-engineer",
+        "net-architect",
+        "azure",
+        "kafka",
     )
     captured: list[dict] = []
 
@@ -5138,169 +5171,61 @@ def discover_naukri_in_chrome(context) -> int:
             rows = (data or {}).get("jobDetails") if isinstance(data, dict) else None
             if rows:
                 captured.extend(rows)
-                print(f"  Naukri jobapi captured {len(rows)} rows.", flush=True)
+                print(f"  Naukri jobapi captured {len(rows)} rows (total {len(captured)}).", flush=True)
         except Exception:
             pass
 
-    jobs: list[dict] = []
     page = context.new_page()
     page.on("response", _on_resp)
     try:
-        warmup = "https://www.naukri.com/senior-software-engineer-jobs-in-hyderabad-secunderabad"
-        print("  Naukri warmup SRP (hyderabad-secunderabad)...", flush=True)
-        try:
-            page.goto(warmup, wait_until="domcontentloaded", timeout=45000)
-            dismiss_overlays(page)
-            try:
-                page.wait_for_function(
-                    """() => {
-                      const t = (document.body && document.body.innerText) || '';
-                      if (/quick apply/i.test(t) && t.length > 400) return true;
-                      return document.querySelectorAll('[class*="tuple"], [data-job-id], a[href*="job-listings"]').length > 3;
-                    }""",
-                    timeout=22000,
-                )
-            except Exception:
-                page.wait_for_timeout(6000)
-            try:
-                page.mouse.wheel(0, 2200)
-                page.wait_for_timeout(1500)
-            except Exception:
-                pass
-        except Exception as exc:
-            print(f"  Naukri warmup failed ({exc}). Still trying jobapi in-page.", flush=True)
-
-        for q in queries:
-            for page_no in (1, 2, 3):
-                print(f"  Naukri jobapi {q!r} page {page_no}...", flush=True)
+        for slug in slugs:
+            empty_pages = 0
+            for page_no in (1, 2, 3, 4):
+                url = _naukri_srp_url(slug, page_no)
+                before = len(captured)
+                print(f"  Naukri SRP {slug} p{page_no}...", flush=True)
                 try:
-                    info = page.evaluate(
-                        """async ({q, pageNo}) => {
-                          const qs = new URLSearchParams({
-                            noOfResults: '40',
-                            urlType: 'search_by_key_loc',
-                            searchType: 'adv',
-                            keyword: q,
-                            location: 'hyderabad',
-                            pageNo: String(pageNo),
-                            k: q,
-                            l: 'hyderabad',
-                            experience: '12',
-                          });
-                          const r = await fetch('https://www.naukri.com/jobapi/v3/search?' + qs.toString(), {
-                            headers: { appid: '109', systemid: 'Naukri', Accept: 'application/json' },
-                            credentials: 'include',
-                          });
-                          let data = null;
-                          try { data = await r.json(); } catch (e) {}
-                          const rows = (data && data.jobDetails) || [];
-                          const slim = rows.slice(0, 40).map((item) => ({
-                            title: item.title || item.jobTitle || '',
-                            companyName: item.companyName || item.company || '',
-                            jobId: String(item.jobId || item.id || ''),
-                            jdURL: item.jdURL || item.jdUrl || '',
-                            jobLocation: item.jobLocation || '',
-                            placeholders: item.placeholders || [],
-                            footerPlaceholderLabel: item.footerPlaceholderLabel || item.applyType || '',
-                          }));
-                          return {status: r.status, n: slim.length, items: slim};
-                        }""",
-                        {"q": q, "pageNo": page_no},
-                    ) or {}
+                    page.goto(url, wait_until="domcontentloaded", timeout=45000)
+                    dismiss_overlays(page)
+                    try:
+                        page.wait_for_function(
+                            """() => {
+                              const t = (document.body && document.body.innerText) || '';
+                              if (/quick apply|job-listings/i.test(t) && t.length > 400) return true;
+                              return document.querySelectorAll('[class*="tuple"], [data-job-id], a[href*="job-listings"]').length > 3;
+                            }""",
+                            timeout=14000,
+                        )
+                    except Exception:
+                        page.wait_for_timeout(2500)
+                    try:
+                        page.mouse.wheel(0, 1600)
+                        page.wait_for_timeout(700)
+                    except Exception:
+                        pass
                 except Exception as exc:
-                    info = {}
-                    print(f"  Naukri jobapi {q!r} p{page_no} evaluate failed ({exc}).", flush=True)
-                status = info.get("status")
-                slim = info.get("items") or []
-                print(f"  Naukri jobapi {q!r} p{page_no}: HTTP {status} items {len(slim)}.", flush=True)
-                jobs.extend(_naukri_jobs_from_api_items(slim))
-                if len(slim) < 10:
-                    break
-                time.sleep(0.3)
-
-        if len(jobs) < 8:
-            print("  Naukri DOM fallback after jobapi...", flush=True)
-            try:
-                info = page.evaluate(
-                    """() => {
-                      const norm = (s) => ((s || '') + '').replace(/\\s+/g, ' ').trim();
-                      const out = [];
-                      const seen = new Set();
-                      const jobHref = (h) => /naukri\\.com/i.test(h) &&
-                        /job-listings|jobdescription|\\/job\\/|jdId=|jobId=|\\d{8,}/i.test(h);
-                      const push = (title, company, loc, href) => {
-                        const key = (href || '').split('?')[0];
-                        title = norm(title);
-                        if (!key || seen.has(key) || title.length < 8 || title.length > 140) return;
-                        if (/login|register|create job alert|download app/i.test(title)) return;
-                        seen.add(key);
-                        const m = href.match(/(\\d{6,})/);
-                        out.push({
-                          title,
-                          company: norm(company).slice(0, 80),
-                          loc: norm(loc).slice(0, 80) || 'Hyderabad, India',
-                          href,
-                          jid: m ? m[1] : key.slice(-16),
-                        });
-                      };
-                      for (const card of document.querySelectorAll('[data-job-id], [class*="tuple"], article, li')) {
-                        const a = card.querySelector('a[href*="job-listings"], a[href*="jobdescription"], a.title, a[class*="title"]') || card.querySelector('a[href]');
-                        const href = (a && a.href) || '';
-                        if (!href || !/naukri\\.com/i.test(href)) continue;
-                        const lines = norm(card.innerText).split('\\n').map(norm).filter(Boolean);
-                        const title = (a && (a.getAttribute('title') || a.innerText)) || lines.find((x) => /engineer|architect|manager|lead|staff|principal/i.test(x) && x.length < 90) || '';
-                        const company = lines.find((x) => x.length > 2 && x.length < 50 && x !== title && !/yrs|hyderabad|quick apply|posted|\\d+l|ago/i.test(x)) || '';
-                        push(title, company, lines.find((x) => /hyderabad|remote|hybrid/i.test(x)) || 'Hyderabad, India', href);
-                        if (out.length >= 40) break;
-                      }
-                      if (out.length < 5) {
-                        for (const a of document.querySelectorAll('a[href]')) {
-                          const href = a.href || '';
-                          if (!jobHref(href)) continue;
-                          push(a.innerText || a.getAttribute('title') || a.getAttribute('aria-label'), '', 'Hyderabad, India', href);
-                          if (out.length >= 40) break;
-                        }
-                      }
-                      const hrefSample = Array.from(document.querySelectorAll('a[href]'))
-                        .map((a) => a.href)
-                        .filter((h) => h && /naukri\\.com/i.test(h) && !/static\\.naukimg/i.test(h))
-                        .slice(0, 8);
-                      return {out, hrefSample, heading: norm(document.body.innerText).slice(0, 180), url: location.href};
-                    }"""
-                ) or {}
-                rows = info.get("out") or []
-                if not rows:
-                    print(
-                        f"  Naukri DOM 0 cards. heading={str(info.get('heading') or '')[:140]!r} "
-                        f"url={str(info.get('url') or '')[:80]!r} hrefs={(info.get('hrefSample') or [])[:4]}",
-                        flush=True,
-                    )
+                    print(f"  Naukri SRP {slug} p{page_no} failed ({exc}).", flush=True)
+                    empty_pages += 1
+                    if empty_pages >= 2:
+                        break
+                    continue
+                got = len(captured) - before
+                print(f"  Naukri SRP {slug} p{page_no}: +{got} jobapi rows.", flush=True)
+                if got < 4:
+                    empty_pages += 1
+                    if empty_pages >= 2 or got == 0:
+                        break
                 else:
-                    print(f"  Naukri DOM {len(rows)} cards.", flush=True)
-                    for r in rows:
-                        href = r.get("href") or ""
-                        if not href:
-                            continue
-                        jobs.append({
-                            "company": r.get("company") or "naukri",
-                            "title": r.get("title") or "",
-                            "location": r.get("loc") or "Hyderabad, India",
-                            "url": href,
-                            "apply_url": href,
-                            "ats": "Naukri",
-                            "job_id": str(r.get("jid") or ""),
-                        })
-            except Exception as exc:
-                print(f"  Naukri DOM scrape error ({exc}).", flush=True)
-
-        jobs.extend(_naukri_jobs_from_api_items(captured))
+                    empty_pages = 0
+                time.sleep(0.25)
     finally:
         try:
             page.remove_listener("response", _on_resp)
         except Exception:
             pass
         close_apply_page(page)
-    # Dedupe by URL
+
+    jobs = _naukri_jobs_from_api_items(captured)
     uniq: list[dict] = []
     seen_u: set[str] = set()
     for j in jobs:
@@ -5311,12 +5236,16 @@ def discover_naukri_in_chrome(context) -> int:
         uniq.append(j)
     jobs = uniq
     if not jobs:
-        print("  Naukri browser search found 0 cards.", flush=True)
+        print("  Naukri browser search found 0 Quick-apply cards.", flush=True)
         return 0
     more.merge_and_write(jobs)
     apply_now.BATCH = apply_now.load_all_discovered()
     n = _naukri_leftover_n(apply_now.queue())
-    print(f"  Naukri browser discover: {len(jobs)} raw, {n} leftover Naukri in queue.", flush=True)
+    print(
+        f"  Naukri browser discover: {len(captured)} jobapi rows, "
+        f"{len(jobs)} Quick-apply unique, {n} leftover Naukri in queue.",
+        flush=True,
+    )
     return n
 
 
@@ -5363,6 +5292,22 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 f"({career_n} career, {_naukri_leftover_n(try_jobs)} Naukri).",
                 flush=True,
             )
+            if _naukri_leftover_n(try_jobs) == 0 and career_n == 0:
+                _refresh_boards_no_browser()
+                apply_now.BATCH = apply_now.load_all_discovered()
+                queue = apply_now.queue()
+                try_jobs, _blocked = public_queue(queue, allow_aggregators=True)
+                try_jobs = leftover_career_jobs(try_jobs)
+                pending = interleave_boards_and_career(try_jobs, limit)
+                career_n = sum(
+                    1 for j in try_jobs
+                    if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
+                )
+                print(
+                    f"  After no-browser discover: leftover {len(try_jobs)} "
+                    f"({career_n} career, {_naukri_leftover_n(try_jobs)} Naukri).",
+                    flush=True,
+                )
         for attempt in range(1, 4):
             leftover = leftover_career_jobs(pending)
             if not leftover:
@@ -5555,6 +5500,7 @@ if __name__ == "__main__":
             else:
                 idle = 0
             print(f"  Submitted so far: {after - start} new / {after} total.", flush=True)
-            time.sleep(2)
+            # Empty leftover rounds: do not hammer Naukri jobapi.
+            time.sleep(12 if after <= before else 2)
     else:
         main(limit=args.limit, headed=args.headed, wait_seconds=wait)

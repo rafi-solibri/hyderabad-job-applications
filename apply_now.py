@@ -175,6 +175,21 @@ def out_of_scope(job: dict) -> bool:
     if re.search(r"\b(ai|gen ai|machine learning)\b", title, re.I) and not re.search(
         r"\.net|dotnet|c#", title, re.I
     ):
+        # Keep SWE/architect titles that only mention AI as a product/tool suffix.
+        # Drop true AI/ML-engineer roles.
+        if re.search(
+            r"\b(ai engineer|ml engineer|machine learning engineer|generative ai)\b",
+            title,
+            re.I,
+        ):
+            return True
+        if re.search(
+            r"senior software engineer|staff software|principal software|"
+            r"lead software engineer|technical (lead|architect)|software architect",
+            title,
+            re.I,
+        ):
+            return False
         return True
     return False
 
