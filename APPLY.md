@@ -3,21 +3,35 @@
 These rules apply on **every** run of this automation (cron or follow-up), even if
 chat history is empty. Do not wait for the owner to repeat them.
 
-The canonical apply runner is **`cloud_apply.py`**. Older scripts
-(`browser_apply*.py`, `headed_apply.py`, `apply_now.py` as a full Firefox run,
-`amazon_apply.py`, `apply_parallel.py`, `firefox_real.py`) are **not** the daily
-path.
+The canonical apply runner is **`cloud_apply.py`** in the cloud (company
+career portals only). Aggregator boards (Naukri, LinkedIn, Indeed, Cutshort,
+Foundit, Instahyre) are covered by other daily jobs.
+
+Remaining career-portal leftovers should be applied on the **Windows desktop**
+in **Mozilla Firefox**:
+
+```
+python apply_now.py --career
+```
+
+That uses the real Firefox profile (`rafi.success@gmail.com` + Simplify Copilot),
+opens one leftover company portal at a time, and **waits on leftover fields**
+so you can fill them. Do not run `apply_now.py --career` in cloud.
+
+Older scripts (`browser_apply*.py`, `headed_apply.py`, `apply_now.py` as a full
+Firefox run without `--career`, `amazon_apply.py`, `apply_parallel.py`,
+`firefox_real.py`) are **not** the daily cloud path.
 
 ## Every run must
 
 1. Apply to leftover matching Hyderabad / Remote-India jobs. Do not only discover
    or tailor. Queue first (`apply_now.queue()`), then discover more if the
    career-portal queue is empty.
-2. Run headed Chrome on `DISPLAY=:1`:
-   `python3 cloud_apply.py --headed --wait 360 --limit 80`
-   Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre run in the same
-   loop (3 other-board jobs per 1 career portal). One Chrome profile —
-   do not attach a second Playwright to CDP 9222.
+2. Cloud headed Chrome on `DISPLAY=:1` applies **company career portals only**:
+   `python3 cloud_apply.py --headed --wait 360 --limit 20`
+   Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are **not**
+   applied here. On the Windows desktop, leftover career portals are:
+   `python apply_now.py --career` (Mozilla Firefox; wait on leftover fields).
 3. After each **SUBMITTED** application, tell the owner in **this agent chat**
    (company, title, URL). Also append `data/applications/SUBMITTED.md`.
 4. If a CAPTCHA / 2FA puzzle appears, **notify the owner in this agent chat**

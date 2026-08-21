@@ -5,8 +5,11 @@ Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre last — other autom
 """
 from __future__ import annotations
 
+import argparse
 import json
+import os
 import re
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -1078,17 +1081,79 @@ def pick_best_per_company(jobs: list[dict], used: dict[str, set] | None = None) 
     return chosen
 
 
+def leftover_career_queue() -> list[dict]:
+    """Unique leftover company career portals. Aggregators, JPMC, and AMD stay skipped."""
+    jobs = []
+    seen: set[str] = set()
+    for job in queue():
+        if is_jpmc_job(job) or is_aggregator_board(job):
+            continue
+        if not is_company_career_portal(job):
+            continue
+        u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
+        m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
+        key = next((g for g in (m.groups() if m else ()) if g), None) or u
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        jobs.append(job)
+    return jobs
+
+
+def _running_in_cloud() -> bool:
+    return Path("/opt/google/chrome/chrome").exists() and sys.platform.startswith("linux")
+
+
 def main():
-    global BATCH
+    global BATCH, WAIT_SECONDS
+    parser = argparse.ArgumentParser(description="Apply leftover jobs in Mozilla Firefox.")
+    parser.add_argument(
+        "--career",
+        action="store_true",
+        help="Company career portals only (skip Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre).",
+    )
+    parser.add_argument("--limit", type=int, default=20)
+    parser.add_argument(
+        "--wait",
+        type=int,
+        default=None,
+        help="Seconds to wait on leftover fields for you to fill them.",
+    )
+    args = parser.parse_args()
     BATCH = load_all_discovered()
     form_memory.seed_from_learned()
-    jobs = queue()[:1]
+    jobs = leftover_career_queue() if args.career else queue()[:1]
+    if args.career:
+        jobs = jobs[: args.limit]
+        WAIT_SECONDS = 1800 if args.wait is None else args.wait
+    elif args.wait is not None:
+        WAIT_SECONDS = args.wait
     if not jobs:
         print("No leftover target jobs to open.", flush=True)
         return
+    print(
+        f"Applying {len(jobs)} jobs in Firefox profile rafi.success@gmail.com + Simplify Copilot.",
+        flush=True,
+    )
+    if args.career:
+        print(
+            "Career portals only. Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre "
+            "are left to other daily jobs. Fill leftover fields in Firefox; I will wait.",
+            flush=True,
+        )
+    for i, job in enumerate(jobs, 1):
+        print(f"  {i}. {job.get('company')}: {job.get('title')}", flush=True)
+        print(f"     {job.get('apply_url') or job.get('url')}", flush=True)
+    if args.career and _running_in_cloud():
+        print(
+            "\nRefusing to launch Firefox in the cloud agent.\n"
+            "On your Windows desktop, from this repo:\n"
+            "  python apply_now.py --career\n"
+            "Uses Mozilla Firefox + Simplify Copilot. Stay on the tab if a field is leftover.",
+            flush=True,
+        )
+        return
     used = submitted_by_company()
-    print(f"Applying {len(jobs)} jobs in Firefox profile rafi.success@gmail.com + Simplify Copilot.", flush=True)
-    print("This profile is used for every application.", flush=True)
     for company, ids in sorted(used.items()):
         print(f"  already {company}: {len(ids)}", flush=True)
     results = []
