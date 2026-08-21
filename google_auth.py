@@ -91,16 +91,23 @@ def fill_google_change_password(page) -> str:
 
 
 def fill_google_password_challenges(page) -> int:
-    """Fill every open Google password challenge (Foundit/Cutshort SSO popups)."""
+    """Fill sign-in password only. Never create or change a Google password."""
     ctx = getattr(page, "context", None)
     pages = list(ctx.pages) if ctx is not None else [page]
-    n = 0
     for p in pages:
         try:
             if p.is_closed():
                 continue
-            if fill_google_change_password(p) == "ok":
-                n += 1
+            u = (p.url or "").lower()
+        except Exception:
+            continue
+        if "accounts.google.com" in u and ("changepassword" in u or "speedbump" in u):
+            print("  Leaving Google change-password alone. Never creating a password.", flush=True)
+            return 0
+    n = 0
+    for p in pages:
+        try:
+            if p.is_closed():
                 continue
             if fill_google_password_challenge(p) == "ok":
                 n += 1

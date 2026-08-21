@@ -624,6 +624,22 @@ def _aggregator_host(url: str) -> bool:
     )
 
 
+def google_password_create_parked(page=None, context=None) -> bool:
+    """True when Google is asking to create/change a password. Never fill that form."""
+    ctx = context or getattr(page, "context", None)
+    pages = list(ctx.pages) if ctx is not None else ([page] if page is not None else [])
+    for p in pages:
+        try:
+            if p is None or p.is_closed():
+                continue
+            u = (p.url or "").lower()
+        except Exception:
+            continue
+        if "accounts.google.com" in u and ("changepassword" in u or "speedbump" in u):
+            return True
+    return False
+
+
 def _google_chooser_pages(page) -> list:
     pages = []
     ctx = getattr(page, "context", None)
@@ -636,7 +652,10 @@ def _google_chooser_pages(page) -> list:
             continue
         if "accounts.google.com" not in url:
             continue
-        if any(x in url for x in ("rotatecookies", "passive", "checkcookie", "mail.google.com")):
+        if any(x in url for x in (
+            "rotatecookies", "passive", "checkcookie", "mail.google.com",
+            "changepassword", "speedbump",
+        )):
             continue
         pages.append(p)
     return pages
@@ -644,6 +663,8 @@ def _google_chooser_pages(page) -> list:
 
 def click_google_account_chooser(page) -> bool:
     """Pick rafi.success@gmail.com on the Google GSI/OAuth popup. Do not navigate the apply tab."""
+    if google_password_create_parked(page):
+        return False
     email = google_auth.EMAIL
     hit = False
     for p in _google_chooser_pages(page):
@@ -693,6 +714,9 @@ def click_google_account_chooser(page) -> bool:
 
 def try_board_google_signin(page) -> str:
     """LinkedIn/Naukri guest walls: use the already-open Google session, not portal passwords."""
+    if google_password_create_parked(page):
+        print("  Google change-password parked. Not starting another Google sign-in.", flush=True)
+        return "skip"
     try:
         url = (page.url or "").lower()
     except Exception:
@@ -3734,6 +3758,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
     if kind != "TRY":
         row["note"] = "login board skipped without opening"
         return row
+    if google_password_create_parked(page) and any(
+        x in (url or "").lower() for x in ("linkedin.com", "foundit.in", "cutshort.io", "cutshort.com")
+    ):
+        row["status"] = "STUCK"
+        row["note"] = "Google change-password parked — not creating a password"
+        print("  Google change-password parked. Not creating a password. Next leftover.", flush=True)
+        return row
     if "icims.com" not in (url or "").lower():
         ICIMS_LOGIN_CLICKED = False
         ICIMS_CONTINUE_CLICKS = 0
@@ -4239,6 +4270,8 @@ def _keep_tab(url: str) -> bool:
         return True
     if any(x in u for x in ("www.google.com", "mail.google.com", "accounts.google.com")):
         return True
+    if "linkedin.com/checkpoint" in u:
+        return True
     if "login.icims.com" in u:
         return True
     if "passport.amazon.jobs" in u or u.rstrip("/").endswith("passport.amazon.jobs"):
@@ -4538,6 +4571,14 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 )
                 if linkedin_parked and "linkedin.com" in apply_url:
                     print("  LinkedIn checkpoint already parked. Skipping other LinkedIn leftovers this round.", flush=True)
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    continue
+                google_pw_create = google_password_create_parked(context=context)
+                if google_pw_create and any(
+                    x in apply_url
+                    for x in ("linkedin.com", "foundit.in", "cutshort.io", "cutshort.com")
+                ):
+                    print("  Google change-password is parked. Not creating a password. Next leftover.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 if any(x in apply_url for x in ("foundit.in", "cutshort.io", "cutshort.com")):
