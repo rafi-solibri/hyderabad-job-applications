@@ -247,6 +247,8 @@ SUCCESS_URL = (
     "stepname=confirmation",
     "jobtasks/completed/application",
     "/jobs/success",
+    "showacp",
+    "multiapplyresp",
 )
 
 
@@ -254,6 +256,12 @@ def is_success(page) -> bool:
     url = (page.url or "").lower()
     if any(x in url for x in SUCCESS_URL):
         return True
+    try:
+        loc = page.locator("#already-applied, span.already-applied").first
+        if loc.count() and loc.is_visible():
+            return True
+    except Exception:
+        pass
     # Mid-wizard URLs are not a submit confirmation.
     if any(x in url for x in MID_WIZARD_URL) or "stepname=" in url:
         return False
@@ -262,10 +270,16 @@ def is_success(page) -> bool:
 
 def already_applied_visible(page) -> bool:
     try:
+        loc = page.locator("#already-applied, span.already-applied").first
+        if loc.count() and loc.is_visible():
+            return True
+    except Exception:
+        pass
+    try:
         blob = page_text(page)[:3000]
     except Exception:
         blob = ""
-    return bool(re.search(r"application sent|already applied|you previously applied", blob, re.I))
+    return bool(re.search(r"application sent|already applied|you previously applied|#already-applied", blob, re.I))
 
 
 def linkedin_account_restricted(page) -> bool:
@@ -1076,67 +1090,67 @@ def click_instahyre_apply(page) -> str:
 
 
 def click_naukri_quick_apply(page) -> str:
-    """Naukri JD CTA is class apply-button (label Apply). The 'Quick apply' badge is too small to submit."""
+    """Naukri JD apply is `#apply-button` (chatbot drawer). The TopTier Quick apply badge does not submit."""
     try:
         url = (page.url or "").lower()
     except Exception:
         return ""
     if "naukri.com" not in url:
         return ""
-    if already_applied_visible(page):
+    if already_applied_visible(page) or is_success(page):
         return ""
     collapse_copilot_panel(page)
     try:
-        hit = page.evaluate(
-            """() => {
-              const labelOf = (el) => ((el.innerText || el.value || el.getAttribute('aria-label') || '') + '').replace(/\\s+/g, ' ').trim();
-              const skip = /company site|login to apply|register to apply|save job|share/i;
-              const cands = [];
-              for (const el of document.querySelectorAll('button, a, [role="button"], [class*="apply-button"]')) {
-                const cls = ((el.className || '') + ' ' + (el.id || '')).toLowerCase();
-                const t = labelOf(el);
-                if (skip.test(t)) continue;
-                const r = el.getBoundingClientRect();
-                if (r.width < 36 || r.height < 14) continue;
-                if (r.top < 48 || r.bottom > window.innerHeight + 20) continue;
-                if (r.left > window.innerWidth * 0.96) continue;
-                const isApplyClass = /apply-button/.test(cls) && !/login-apply|reg-apply/.test(cls);
-                const isApplyText = /^(apply|quick apply|apply now)$/i.test(t);
-                if (!isApplyClass && !isApplyText) continue;
-                cands.push({t: t || 'Apply', score: (isApplyClass ? 5000 : 0) + r.width * r.height, x: r.x, y: r.y, w: r.width, h: r.height});
-              }
-              cands.sort((a, b) => b.score - a.score);
-              const top = cands[0];
-              if (!top) return '';
-              for (const el of document.querySelectorAll('button, a, [role="button"], [class*="apply-button"]')) {
-                const r = el.getBoundingClientRect();
-                if (Math.abs(r.x - top.x) > 2 || Math.abs(r.y - top.y) > 2) continue;
-                el.scrollIntoView({block: 'center'});
-                el.click();
-                return top.t;
-              }
-              return '';
-            }"""
-        ) or ""
+        page.locator(
+            "#apply-button, button.apply-button, [class*='jhc__apply-button-container']"
+        ).first.wait_for(state="attached", timeout=8000)
     except Exception:
-        hit = ""
-    if hit:
-        print(f"  Clicked Naukri '{hit}'.", flush=True)
+        pass
+    for sel in (
+        "#apply-button",
+        "button.apply-button",
+        "[class*='styles_apply-button']",
+        "[class*='jhc__apply-button-container'] button",
+        "[class*='jhc__apply-button-container'] a",
+    ):
         try:
-            page.wait_for_timeout(1800)
-        except Exception:
-            pass
-        # Apply drawer / lightbox: Send application
-        for name in ("Send application", "Submit application", "Apply now", "Apply"):
-            try:
-                loc = page.get_by_role("button", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
-                if loc.count() and loc.is_visible() and not _looks_like_copilot(loc):
-                    loc.click(timeout=1500, force=True)
-                    print(f"  Clicked Naukri '{name}'.", flush=True)
-                    page.wait_for_timeout(1500)
-                    return name
-            except Exception:
+            loc = page.locator(sel).first
+            if not loc.count():
                 continue
+            try:
+                loc.scroll_into_view_if_needed(timeout=1500)
+            except Exception:
+                pass
+            loc.click(timeout=2500, force=True)
+            print(f"  Clicked Naukri Apply ({sel}).", flush=True)
+            page.wait_for_timeout(2500)
+            hit = "Apply"
+            break
+        except Exception:
+            continue
+    else:
+        hit = ""
+        try:
+            loc = page.get_by_text(re.compile(r"^quick apply$", re.I)).first
+            if loc.count():
+                loc.click(timeout=2000, force=True)
+                print("  Clicked Naukri 'Quick apply' badge.", flush=True)
+                page.wait_for_timeout(2000)
+                hit = "Quick apply"
+        except Exception:
+            hit = ""
+    if not hit:
+        return ""
+    for name in ("Send application", "Submit application", "Apply now", "Apply"):
+        try:
+            loc = page.get_by_role("button", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
+            if loc.count() and loc.is_visible() and not _looks_like_copilot(loc):
+                loc.click(timeout=1500, force=True)
+                print(f"  Clicked Naukri '{name}'.", flush=True)
+                page.wait_for_timeout(1500)
+                return name
+        except Exception:
+            continue
     return hit
 
 
