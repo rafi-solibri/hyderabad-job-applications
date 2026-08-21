@@ -15,7 +15,7 @@ import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 from playwright.sync_api import sync_playwright
 
@@ -1650,11 +1650,25 @@ def _gmail_tab(page):
     return None
 
 
-def latest_gmail_identity_code(page, job: dict | None = None) -> str:
-    """Read a 6-digit identity code from the already-open Gmail tab. Never print it."""
-    gmail = _gmail_tab(page)
-    if not gmail:
-        return ""
+_GH_SECURITY_CODE_RE = re.compile(
+    r"Security code for your application to\s+([^\n\r]+?)\s+"
+    r".{0,400}?code into the security code field on your application:\s*([A-Za-z0-9]{8})",
+    re.I | re.S,
+)
+_GH_SECURITY_CODE_ONLY_RE = re.compile(
+    r"code into the security code field on your application:\s*([A-Za-z0-9]{8})",
+    re.I,
+)
+_ORACLE_CODE_PATTERNS = (
+    r"using this code:\s*(\d{6})",
+    r"one-time pass code:\s*(\d{6})",
+    r"code to confirm your identity[^0-9]{0,40}(\d{6})",
+    r"verification code[^0-9]{0,40}(\d{6})",
+    r"confirm your identity using this code:\s*(\d{6})",
+)
+
+
+def _identity_code_skip(page, job: dict | None) -> set[str]:
     skip = {str((job or {}).get("job_id") or "")}
     try:
         url = (job or {}).get("apply_url") or (job or {}).get("url") or page.url or ""
@@ -1662,39 +1676,162 @@ def latest_gmail_identity_code(page, job: dict | None = None) -> str:
     except Exception:
         pass
     skip.discard("")
+    return skip
+
+
+def _gmail_blob(page) -> str:
     try:
-        blob = gmail.inner_text("body") or ""
+        return page.inner_text("body") or ""
     except Exception:
-        blob = ""
-    patterns = (
-        r"using this code:\s*(\d{6})",
-        r"one-time pass code:\s*(\d{6})",
-        r"code to confirm your identity[^0-9]{0,40}(\d{6})",
-        r"verification code[^0-9]{0,40}(\d{6})",
-        r"confirm your identity using this code:\s*(\d{6})",
-    )
-    for pat in patterns:
+        return ""
+
+
+def _pick_greenhouse_security_code(blob: str, job: dict | None, skip: set[str]) -> str:
+    """Newest Greenhouse 8-character code, preferring a company match. Never log it."""
+    company = str((job or {}).get("company") or "")
+    want = apply_now.company_key(company) if company else ""
+    named: list[tuple[str, str]] = []
+    for match in _GH_SECURITY_CODE_RE.finditer(blob):
+        dest = (match.group(1) or "").strip()
+        code = (match.group(2) or "").strip()
+        if len(code) == 8 and code not in skip:
+            named.append((dest, code))
+    if want:
+        for dest, code in reversed(named):
+            if want in apply_now.company_key(dest) or apply_now.company_key(dest) in want:
+                return code
+            if company.lower() in dest.lower() or dest.lower() in company.lower():
+                return code
+        # Open tab is a different company's Greenhouse code (e.g. Crunchyroll).
+        return ""
+    if named:
+        return named[-1][1]
+    found = [m.group(1) for m in _GH_SECURITY_CODE_ONLY_RE.finditer(blob) if m.group(1) not in skip]
+    return found[-1] if found else ""
+
+
+def _gmail_search_blob(page, query: str) -> str:
+    """Read Gmail search results in a throwaway tab. Does not navigate the inbox tab."""
+    try:
+        ctx = page.context
+    except Exception:
+        return ""
+    extra = None
+    try:
+        extra = ctx.new_page()
+        extra.goto(
+            "https://mail.google.com/mail/u/0/#search/" + quote(query),
+            wait_until="domcontentloaded",
+            timeout=25000,
+        )
+        extra.wait_for_timeout(4500)
+        return _gmail_blob(extra)
+    except Exception:
+        return ""
+    finally:
+        if extra is not None:
+            try:
+                extra.close()
+            except Exception:
+                pass
+
+
+def latest_gmail_identity_code(page, job: dict | None = None) -> str:
+    """Read Oracle 6-digit or Greenhouse 8-char codes from Gmail. Never print them."""
+    skip = _identity_code_skip(page, job)
+    gmail = _gmail_tab(page)
+    blob = _gmail_blob(gmail) if gmail else ""
+    gh = _pick_greenhouse_security_code(blob, job, skip)
+    if gh:
+        return gh
+    for pat in _ORACLE_CODE_PATTERNS:
         for match in re.finditer(pat, blob, re.I):
             code = match.group(1)
             if code in skip or code.startswith("202"):
                 continue
             return code
+    company = str((job or {}).get("company") or "").strip()
+    query = 'from:greenhouse "Security code"'
+    if company:
+        query += f' "{company}"'
+    query += " newer_than:1d"
+    searched = _gmail_search_blob(page, query)
+    gh = _pick_greenhouse_security_code(searched, job, skip)
+    if gh:
+        return gh
+    if company:
+        broader = _gmail_search_blob(page, 'from:greenhouse "Security code" newer_than:1d')
+        return _pick_greenhouse_security_code(broader, job, skip)
     return ""
 
 
-def fill_email_identity_code(page, job: dict | None = None) -> bool:
-    """Oracle PIN / VERIFY screens: paste the Gmail identity code and continue."""
+def _fill_greenhouse_security_inputs(page, code: str) -> bool:
+    """Type an 8-character Greenhouse email code into security-input-0..7."""
+    chars = re.sub(r"[^A-Za-z0-9]", "", str(code or ""))[:8]
+    if len(chars) != 8:
+        return False
     try:
-        blob = page_text(page)[:1800]
+        first = page.locator("#security-input-0").first
+        if not first.count():
+            return False
+        first.scroll_into_view_if_needed(timeout=2000)
+        first.click(timeout=2000)
+        first.type(chars, delay=40)
+        page.wait_for_timeout(200)
+    except Exception:
+        pass
+    filled = 0
+    try:
+        filled = int(
+            page.evaluate(
+                """(code) => {
+                  const chars = String(code || '').replace(/[^A-Za-z0-9]/g, '').slice(0, 8).split('');
+                  if (chars.length !== 8) return 0;
+                  const setter = Object.getOwnPropertyDescriptor(
+                    window.HTMLInputElement.prototype, 'value'
+                  ).set;
+                  let n = 0;
+                  for (let i = 0; i < 8; i++) {
+                    const el = document.getElementById('security-input-' + i);
+                    if (!el) continue;
+                    el.focus();
+                    setter.call(el, chars[i]);
+                    el.dispatchEvent(new InputEvent('input', {
+                      bubbles: true, cancelable: true, data: chars[i], inputType: 'insertText',
+                    }));
+                    el.dispatchEvent(new Event('change', {bubbles: true}));
+                    n++;
+                  }
+                  return n;
+                }""",
+                chars,
+            )
+            or 0
+        )
+    except Exception:
+        filled = 0
+    return filled >= 8
+
+
+def fill_email_identity_code(page, job: dict | None = None) -> bool:
+    """Oracle PIN / Greenhouse security-code: paste the Gmail identity code."""
+    try:
+        blob = page_text(page)[:4000]
     except Exception:
         blob = ""
     has_pin = False
+    has_gh = False
     try:
         has_pin = bool(page.locator('[id="pin-code-1"]').count())
     except Exception:
         has_pin = False
-    if not has_pin and not re.search(
-        r"verify it'?s you|we've sent a verification code|enter verification code",
+    try:
+        has_gh = bool(page.locator("#security-input-0").count())
+    except Exception:
+        has_gh = False
+    if not has_pin and not has_gh and not re.search(
+        r"verify it'?s you|we've sent a verification code|enter verification code|"
+        r"8-character code|security code",
         blob,
         re.I,
     ):
@@ -1704,6 +1841,11 @@ def fill_email_identity_code(page, job: dict | None = None) -> bool:
         print("  Identity code screen: no code in the open Gmail tab yet.", flush=True)
         return False
     filled = False
+    if has_gh or (len(code) == 8 and not code.isdigit()):
+        filled = _fill_greenhouse_security_inputs(page, code)
+        if filled:
+            print("  Filled Greenhouse security code from Gmail.", flush=True)
+            return True
     try:
         filled = bool(
             page.evaluate(
@@ -4704,6 +4846,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
             pass
         prepare_greenhouse_submit(page)
         accept_terms(page)
+        fill_email_identity_code(page, job)
         click_recaptcha_checkbox(page)
         if captcha_puzzle_visible(page):
             return "captcha"
