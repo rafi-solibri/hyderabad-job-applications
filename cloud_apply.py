@@ -5220,6 +5220,17 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
             continue
         if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in u:
             continue
+        # AMD iCIMS needs the owner to type the portal password. Do not sit on it
+        # while they are away; retry when --owner-present is back.
+        if (
+            not OWNER_PRESENT
+            and (
+                "careers.amd.com" in u
+                or "global-external-amd.icims.com" in u
+                or apply_now.company_key(job.get("company")) in {"xilinx", "amd"}
+            )
+        ):
+            continue
         out.append(job)
     return out
 
@@ -5446,26 +5457,26 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     results: list[dict] = []
 
     pending = interleave_boards_and_career(try_jobs, limit)
-    if OWNER_PRESENT:
-        seen_career: set[str] = set()
-        career_only: list[dict] = []
-        for job in leftover_career_jobs(try_jobs):
-            if not (
-                apply_now.is_company_career_portal(job)
-                and not apply_now.is_aggregator_board(job)
-            ):
-                continue
-            u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
-            m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
-            key = next((g for g in (m.groups() if m else ()) if g), None) or u
-            if key in seen_career:
-                continue
-            seen_career.add(key)
-            career_only.append(job)
+    seen_career: set[str] = set()
+    career_only: list[dict] = []
+    for job in leftover_career_jobs(try_jobs):
+        if not (
+            apply_now.is_company_career_portal(job)
+            and not apply_now.is_aggregator_board(job)
+        ):
+            continue
+        u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
+        m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
+        key = next((g for g in (m.groups() if m else ()) if g), None) or u
+        if key in seen_career:
+            continue
+        seen_career.add(key)
+        career_only.append(job)
+    if career_only:
         pending = career_only[: limit or 80]
         print(
-            f"Owner present: {len(pending)} unique career portals first "
-            f"(Foundit/Naukri/LinkedIn held).",
+            f"Career portals first: {len(pending)} unique "
+            f"(Foundit/Naukri/LinkedIn held until these are done).",
             flush=True,
         )
     with sync_playwright() as pw:
@@ -5484,7 +5495,16 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 return 1
 
             pending.sort(key=_open_rank)
-        if not OWNER_PRESENT and _naukri_leftover_n(leftover_career_jobs(pending)) == 0:
+        pending_career_n = sum(
+            1
+            for j in leftover_career_jobs(pending)
+            if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
+        )
+        if (
+            not OWNER_PRESENT
+            and pending_career_n == 0
+            and _naukri_leftover_n(leftover_career_jobs(pending)) == 0
+        ):
             print("  Searching Naukri in Chrome for Quick apply leftovers...", flush=True)
             discover_naukri_in_chrome(context)
             apply_now.BATCH = apply_now.load_all_discovered()
