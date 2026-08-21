@@ -1,6 +1,8 @@
 """Drive the real Mozilla Firefox profile (Simplify + rafi.success@gmail.com)."""
 from __future__ import annotations
 
+import os
+import shutil
 import ssl
 import subprocess
 import time
@@ -30,6 +32,7 @@ def geckodriver_path() -> str:
 
 
 def find_firefox() -> str | None:
+    candidates = []
     try:
         out = subprocess.check_output(
             [
@@ -42,9 +45,25 @@ def find_firefox() -> str | None:
         if out:
             for p in Path(out).rglob("firefox.exe"):
                 if p.is_file() and p.stat().st_size > 50_000:
-                    return str(p)
+                    candidates.append(p)
     except Exception:
         pass
+    for p in (
+        Path(os.environ.get("PROGRAMFILES", r"C:\Program Files")) / "Mozilla Firefox" / "firefox.exe",
+        Path(os.environ.get("PROGRAMFILES(X86)", r"C:\Program Files (x86)")) / "Mozilla Firefox" / "firefox.exe",
+        Path.home() / "AppData" / "Local" / "Mozilla Firefox" / "firefox.exe",
+        Path.home() / "AppData" / "Local" / "Microsoft" / "WindowsApps" / "firefox.exe",
+    ):
+        candidates.append(p)
+    which = shutil.which("firefox.exe") or shutil.which("firefox")
+    if which:
+        candidates.append(Path(which))
+    for p in candidates:
+        try:
+            if p.is_file() and p.stat().st_size > 50_000:
+                return str(p)
+        except Exception:
+            continue
     return None
 
 
@@ -119,19 +138,41 @@ def open_new_tab(page, url: str) -> None:
     print(f"  Opened next application in a new tab: {url[:90]}", flush=True)
 
 
-def launch_driver():
+def launch_new_driver():
+    """Start Mozilla Firefox with the rafi.success profile. Never headless."""
     from selenium import webdriver
     from selenium.webdriver.firefox.options import Options
     from selenium.webdriver.firefox.service import Service
 
     if not USER_PROFILE.exists():
         raise RuntimeError(f"Firefox profile not found: {USER_PROFILE}")
+    options = Options()
+    binary = find_firefox()
+    if binary:
+        options.binary_location = binary
+        print(f"  Starting Mozilla Firefox: {binary}", flush=True)
+    else:
+        print("  Starting Mozilla Firefox from PATH.", flush=True)
+    options.add_argument("-profile")
+    options.add_argument(str(USER_PROFILE))
+    driver = webdriver.Firefox(options=options, service=Service(geckodriver_path()))
+    try:
+        driver.maximize_window()
+    except Exception:
+        pass
+    print("  Mozilla Firefox is open.", flush=True)
+    return driver
+
+
+def launch_driver():
+    if not USER_PROFILE.exists():
+        raise RuntimeError(f"Firefox profile not found: {USER_PROFILE}")
 
     try:
         return attach_existing_driver()
     except Exception as e:
-        print(f"  Could not attach ({e}). I will not close your Firefox to force a new session.", flush=True)
-        raise
+        print(f"  Could not attach to an already-open Firefox ({e}). Starting Mozilla now.", flush=True)
+        return launch_new_driver()
 
 
 CLICK_LABEL_JS = """(want) => {

@@ -1125,7 +1125,7 @@ def main():
     jobs = leftover_career_queue() if args.career else queue()[:1]
     if args.career:
         jobs = jobs[: args.limit]
-        WAIT_SECONDS = 1800 if args.wait is None else args.wait
+        WAIT_SECONDS = 300 if args.wait is None else args.wait
     elif args.wait is not None:
         WAIT_SECONDS = args.wait
     if not jobs:
@@ -1146,10 +1146,11 @@ def main():
         print(f"     {job.get('apply_url') or job.get('url')}", flush=True)
     if args.career and _running_in_cloud():
         print(
-            "\nRefusing to launch Firefox in the cloud agent.\n"
-            "On your Windows desktop, from this repo:\n"
+            "\nThis is the cloud agent. It cannot open Mozilla on your Windows PC.\n"
+            "Open a terminal ON THE DESKTOP (not this cloud chat) in the repo folder:\n"
+            "  git pull\n"
             "  python apply_now.py --career\n"
-            "Uses Mozilla Firefox + Simplify Copilot. Stay on the tab if a field is leftover.",
+            "That command starts Firefox. Leftover fields wait 5 minutes, then it continues.",
             flush=True,
         )
         return
