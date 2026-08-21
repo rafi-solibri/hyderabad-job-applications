@@ -2658,10 +2658,12 @@ def fill_leftover_dropdowns(page) -> int:
         (r"salutation", "Mr"),
         (r"preferred language", "English"),
         (r"^degree$|degree \*|highest (degree|education)", "Bachelor"),
-        (r"ever been employed|currently working at|current employee of", "No"),
+        (r"ever been employed", "No"),
+        (r"currently working at", "No"),
         (r"authorized to work", "Yes"),
         (r"require sponsorship", "No"),
         (r"agree to the processing of my personal data|consent to .{0,40}personal data", "Yes"),
+        (r"please select .n/a.|united states or australia", "N/A"),
     ]
     # Workday how-heard is a nested prompt (Career → Asia Job Boards → Naukri).
     # Typing "Career" here undoes fill_workday_required_questions().
