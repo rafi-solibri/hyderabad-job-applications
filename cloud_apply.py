@@ -3958,11 +3958,30 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         except Exception:
             title0 = ""
         blob0 = page_text(page)[:2000]
-        if re.search(
+        blocked = bool(re.search(
             r"access denied|don't have permission to access|errors\.edgesuite\.net",
             title0 + " " + blob0,
             re.I,
-        ):
+        ))
+        if blocked and "foundit.in" in (url or page.url or "").lower():
+            print("  Foundit Akamai challenge. Warming session from homepage...", flush=True)
+            try:
+                page.goto("https://www.foundit.in/", wait_until="domcontentloaded", timeout=25000)
+                page.wait_for_timeout(10000)
+                page.goto(url, wait_until="domcontentloaded", timeout=35000)
+                page.wait_for_timeout(2500)
+                title0 = page.title() or ""
+                blob0 = page_text(page)[:2000]
+                blocked = bool(re.search(
+                    r"access denied|don't have permission to access|errors\.edgesuite\.net",
+                    title0 + " " + blob0,
+                    re.I,
+                ))
+            except Exception:
+                blocked = True
+            if not blocked:
+                print("  Foundit challenge cleared.", flush=True)
+        if blocked:
             row["status"] = "STUCK"
             row["final_url"] = page.url
             row["note"] = "board blocked this environment (access denied)"
