@@ -2325,35 +2325,39 @@ def fill_workday_form(page) -> int:
 
 
 def icims_auth0_blocked(page) -> bool:
-    """Auth0 /u/login/password rate-limit or Oops page. Do not keep POSTing."""
-    ctx = getattr(page, "context", None)
-    pages = list(ctx.pages) if ctx is not None else [page]
-    for p in pages:
-        try:
-            if p.is_closed():
-                continue
-            u = (p.url or "").lower()
-        except Exception:
-            continue
-        if "login.icims.com" not in u:
-            continue
-        blob = ""
-        try:
-            blob += " " + (p.title() or "")
-        except Exception:
-            pass
-        try:
-            blob += " " + (p.inner_text("body") or "")[:2000]
-        except Exception:
-            pass
-        try:
-            blob += " " + (p.evaluate("() => (document.body && document.body.innerText) || ''") or "")[:2000]
-        except Exception:
-            pass
-        t = blob.lower()
-        if "rate limit" in t or "oops, something went wrong" in t or "invalid_request" in t:
-            return True
-    return False
+    """True only when THIS Auth0 page has no password box and shows a rate-limit/Oops wall.
+
+    A leftover Oops tab must not block password entry on a different iCIMS login.
+    """
+    try:
+        if page.is_closed():
+            return False
+        u = (page.url or "").lower()
+    except Exception:
+        return False
+    if "login.icims.com" not in u:
+        return False
+    try:
+        pw = page.locator("input[type=password]").first
+        if pw.count() and pw.is_visible():
+            return False
+    except Exception:
+        pass
+    blob = ""
+    try:
+        blob += " " + (page.title() or "")
+    except Exception:
+        pass
+    try:
+        blob += " " + (page.inner_text("body") or "")[:2000]
+    except Exception:
+        pass
+    try:
+        blob += " " + (page.evaluate("() => (document.body && document.body.innerText) || ''") or "")[:2000]
+    except Exception:
+        pass
+    t = blob.lower()
+    return "rate limit" in t or "oops, something went wrong" in t or "invalid_request" in t
 
 
 def fill_icims_login(page) -> int:
@@ -2418,8 +2422,27 @@ def fill_icims_login(page) -> int:
     return filled
 
 
+def _icims_tab_rank(page, p) -> int:
+    """Prefer the current apply tab, then AMD/Xilinx, then any password box."""
+    try:
+        if p == page:
+            return 0
+        title = (p.title() or "").lower()
+    except Exception:
+        title = ""
+    if "amd" in title or "xilinx" in title:
+        return 1
+    try:
+        pw = p.locator("input[type=password]").first
+        if pw.count() and pw.is_visible():
+            return 2
+    except Exception:
+        pass
+    return 3
+
+
 def _prune_icims_login_tabs(page) -> None:
-    """Keep one Auth0 identifier tab. Extra Returning-candidate clicks used to open many."""
+    """Drop duplicate Auth0 identifier tabs. Never close an AMD/Xilinx login."""
     ctx = getattr(page, "context", None)
     if ctx is None:
         return
@@ -2432,7 +2455,21 @@ def _prune_icims_login_tabs(page) -> None:
                 tabs.append(p)
         except Exception:
             continue
-    for extra in tabs[:-1]:
+    keep = []
+    extras = []
+    for p in tabs:
+        try:
+            title = (p.title() or "").lower()
+        except Exception:
+            title = ""
+        if p == page or "amd" in title or "xilinx" in title:
+            keep.append(p)
+        else:
+            extras.append(p)
+    if not keep and tabs:
+        keep = [sorted(tabs, key=lambda p: _icims_tab_rank(page, p))[0]]
+        extras = [p for p in tabs if p not in keep]
+    for extra in extras:
         try:
             extra.close()
         except Exception:
@@ -2447,6 +2484,7 @@ def _fill_icims_universal_login(page) -> int:
     _prune_icims_login_tabs(page)
     ctx = getattr(page, "context", None)
     pages = list(ctx.pages) if ctx is not None else [page]
+    candidates = []
     for p in pages:
         try:
             if p.is_closed():
@@ -2455,6 +2493,15 @@ def _fill_icims_universal_login(page) -> int:
         except Exception:
             continue
         if "login.icims.com" not in u:
+            continue
+        if icims_auth0_blocked(p):
+            continue
+        candidates.append(p)
+    candidates.sort(key=lambda p: _icims_tab_rank(page, p))
+    for p in candidates:
+        try:
+            u = (p.url or "").lower()
+        except Exception:
             continue
         ICIMS_LOGIN_CLICKED = True
         if not (OWNER_PRESENT or WATCH_OPEN):
@@ -5135,6 +5182,8 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
     applied_ids = {str(k) for k in apply_now.load_applied_ids()}
     for job in try_jobs:
         if apply_now.is_applied(job):
+            continue
+        if apply_now.is_jpmc_job(job):
             continue
         keys = apply_now.job_match_keys(job)
         if keys & SESSION_SKIP_KEYS:

@@ -4289,5 +4289,23 @@
     "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210763922/?location=India&locationId=300000000289360&locationLevel=country",
     "note": "backfill from skip list",
     "ts": "2026-08-21T04:26:37.361944+00:00"
+  },
+  "62547848": {
+    "company": "Jpmorgan & Co",
+    "title": "Lead Software Engineer",
+    "job_id": "62547848",
+    "url": "https://www.linkedin.com/jobs/view/4453376069/",
+    "note": "owner: skip remaining JPMC jobs and never retry",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T04:36:02.883931+00:00"
+  },
+  "jpmorganco|lead software engineer": {
+    "company": "Jpmorgan & Co",
+    "title": "Lead Software Engineer",
+    "job_id": "62547848",
+    "url": "https://www.linkedin.com/jobs/view/4453376069/",
+    "note": "owner: skip remaining JPMC jobs and never retry",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T04:36:02.883931+00:00"
   }
 }

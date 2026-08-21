@@ -50,7 +50,16 @@ SKIP_COMPANIES = {
     "michaelpage", "theedgepartnership",
     "careerpathsolutionsprivatelimited", "careerpathsolutions",
     "augustainfotech", "intraedge",
+    # Owner: skip remaining JPMC / Chase leftovers and never retry.
+    "jpmc", "jpmorgan", "jpmorganco", "jpmorganchase", "jpmorganchaseco",
+    "chasebank", "jpmorganchasebank", "jpmorganandco",
 }
+JPMC_HOST_MARKERS = (
+    "jpmc.fa.oraclecloud.com",
+    "jpmorgan.wd5.myworkdayjobs.com",
+    "jpmorganchase.com",
+    "careers.jpmorgan",
+)
 BLOCKED_PATH = ROOT / "data" / "blocked_companies.json"
 SKIP_IDS = {
     "8074590", "7985640", "7517648003", "7490280003", "7807746003", "5177393007",
@@ -158,11 +167,24 @@ def load_blocked() -> set[str]:
     return blocked
 
 
+def is_jpmc_job(job: dict) -> bool:
+    """JPMC / Chase career and board leftovers — owner asked to never retry these."""
+    ck = company_key(job.get("company"))
+    if ck.startswith("jpmorgan") or ck.startswith("jpmc") or ck in {
+        "chasebank", "jpmorganchasebank",
+    }:
+        return True
+    blob = f"{job.get('apply_url') or ''} {job.get('url') or ''}".lower()
+    return any(marker in blob for marker in JPMC_HOST_MARKERS)
+
+
 def company_out_of_scope(name: str) -> bool:
     key = company_key(name)
     if not key:
         return True
     if key.startswith("ttec") or key in load_blocked():
+        return True
+    if key.startswith("jpmorgan") or key.startswith("jpmc") or key == "chasebank":
         return True
     return bool(STAFFING_COMPANY.search(name or ""))
 
@@ -843,6 +865,8 @@ def queue() -> list[dict]:
         if is_applied(job) or jid in skipped_ids:
             continue
         if company_out_of_scope(job.get("company")):
+            continue
+        if is_jpmc_job(job):
             continue
         if out_of_scope(job):
             continue
