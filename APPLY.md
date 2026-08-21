@@ -36,18 +36,18 @@ are **not** the daily cloud path.
    `python apply_now.py --career` (Mozilla Firefox; wait on leftover fields).
 3. After each **SUBMITTED** application, tell the owner in **this agent chat**
    (company, title, URL). Also append `data/applications/SUBMITTED.md`.
-4. If a CAPTCHA / 2FA puzzle appears, **notify the owner in this agent chat**
-   immediately (company, title, URL, what to solve). **Keep that CAPTCHA tab
-   open and wait** so the owner can solve it. Do not close the application.
-   After it clears, continue submit. Leftover form fields: pause on that same
-   tab, learn answers the owner types, and wait (`--owner-present` / `--wait`).
-5. After filling everything the runner can, if leftover fields still need a
-   human: try to fill them. If the owner is away, **do not wait** — move to the
-   next leftover. If the owner is present (`--owner-present`), notify in this
-   agent chat, list the fields, **learn answers they type**, and **wait on that
-   tab** (`NEED_INPUT`). Do not start another leftover until they finish or
-   ask. `--watch-open` continues the already-open tab only (no new leftovers,
-   do not reset Chrome tabs). Same for identity codes if Gmail is already open.
+4. If a **CAPTCHA puzzle** appears (image challenge, not the Greenhouse checkbox
+   iframe), **notify the owner in this agent chat** immediately (company, title,
+   URL). Keep that tab open and wait. After it clears, submit. After
+   **SUBMITTED**, immediately close that tab and open the next leftover. Do not
+   sit idle on a confirmation page. A reCAPTCHA checkbox on Greenhouse is not a
+   reason to stop.
+5. Fill leftover fields yourself from `form_memory` / learned answers. For
+   identity / verification codes, read the already-open Gmail tab
+   (`fill_email_identity_code`). Stop the queue **only** while a live CAPTCHA
+   puzzle needs the owner. Do not treat leftover fields as a full-queue stop.
+   If the owner is away, do not wait on leftover fields — move to the next
+   leftover. `--watch-open` continues the already-open tab only.
 6. **One live application at a time**, except parked CAPTCHA tabs stay open.
    Close the current apply tab and open the next leftover after **SUBMITTED**,
    **404/closed**, or **Sign In / Create Account rejects every portal password**.

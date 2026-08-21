@@ -28,3 +28,5 @@
   https://www.schwabjobs.com/job/hyderabad/manager-software-development-and-engineering/33995/98379875216
 - **2026-08-21T06:38:06Z** SUBMITTED **Charles Schwab** — Senior Manager Software Development And Engineering Lead Pl
   https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792
+- **2026-08-21T10:31:07Z** SUBMITTED **Crunchyroll** — Manager, Engineering, VideoIQ
+  https://boards.greenhouse.io/crunchyroll/jobs/8042666

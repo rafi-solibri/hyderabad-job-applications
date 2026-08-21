@@ -92,7 +92,8 @@ SUCCESS_RE = re.compile(
     r"you have successfully applied|successfully applied|"
     r"we.?ve received your application|application received|"
     r"already applied|you previously applied|successfully submitted|application submitted|"
-    r"application sent",
+    r"application sent|your application has been submitted|"
+    r"application was sent|thanks for applying",
     re.I,
 )
 
@@ -238,10 +239,12 @@ MID_WIZARD_URL = (
 SUCCESS_URL = (
     "/thanks",
     "/confirmation",
+    "confirmation?",
     "application-success",
     "/thank-you",
     "/thankyou",
     "applythankyou",
+    "thank-you-for-applying",
     "stepname=applicationcomplete",
     "stepname=thank",
     "stepname=confirmation",
@@ -274,6 +277,26 @@ def is_success(page) -> bool:
     except Exception:
         pass
     return bool(SUCCESS_RE.search(page_text(page)[:3000]))
+
+
+def application_finished(page) -> bool:
+    """True after a confirmation page, already-applied banner, or Copilot success."""
+    try:
+        if is_success(page):
+            return True
+    except Exception:
+        pass
+    try:
+        if already_applied_visible(page):
+            return True
+    except Exception:
+        pass
+    try:
+        if simplify_copilot.submitted(page):
+            return True
+    except Exception:
+        pass
+    return False
 
 
 def already_applied_visible(page) -> bool:
@@ -3990,29 +4013,20 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         except Exception:
             pass
         try:
+            if application_finished(page):
+                print("  Submitted. Learning this form for later runs.", flush=True)
+                return {
+                    "ok": True,
+                    "status": "SUBMITTED",
+                    "note": "submitted after owner filled leftover fields",
+                    "learned": learned,
+                }
+        except Exception:
+            pass
+        try:
             job_url = (job.get("apply_url") or job.get("url") or "").lower()
         except Exception:
             job_url = ""
-        if hold and notified_input:
-            # Hands off: learn only. Do not click or type while the owner fills.
-            try:
-                if is_success(page):
-                    print("  Submitted. Learning this form for later runs.", flush=True)
-                    return {
-                        "ok": True,
-                        "status": "SUBMITTED",
-                        "note": "submitted after owner filled leftover fields",
-                        "learned": learned,
-                    }
-            except Exception:
-                pass
-            try:
-                changed = form_memory.remember(page, job) or []
-                learned += len(changed)
-            except Exception:
-                pass
-            page.wait_for_timeout(4000)
-            continue
         try:
             page_u = (page.url or "").lower()
         except Exception:
@@ -4043,14 +4057,27 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             learned += len(changed)
         except Exception:
             pass
+        try:
+            fill_email_identity_code(page, job)
+        except Exception:
+            pass
         click_google_account_chooser(page)
-        if captcha_puzzle_visible(page) or recaptcha_widget_visible(page):
+        puzzle = False
+        try:
+            puzzle = captcha_puzzle_visible(page)
+        except Exception:
+            puzzle = False
+        if puzzle:
             notify_captcha(job, page)
             if hold:
+                # Keep waiting while a live puzzle needs the owner. Do not expire.
+                if time.time() + 60 > deadline:
+                    deadline = time.time() + 180
                 if not notified_captcha:
                     print(
-                        "  CAPTCHA visible. Solve it in Desktop / Take control. "
-                        "I will wait on this form — this tab stays open.",
+                        "  CAPTCHA puzzle visible. Solve it in Desktop / Take control. "
+                        "I will wait on this form — this tab stays open. "
+                        "After you submit I will open the next leftover.",
                         flush=True,
                     )
                     notified_captcha = True
@@ -4064,9 +4091,9 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                 "learned": learned,
             }
         if notified_captcha:
-            # Owner is on the puzzle. Do not click the checkbox again.
-            page.wait_for_timeout(2500)
-            continue
+            # Puzzle cleared — resume fill/submit. Greenhouse checkbox iframes stay on the page.
+            print("  CAPTCHA cleared. Filling leftover fields and submitting.", flush=True)
+            notified_captcha = False
         click_recaptcha_checkbox(page)
         if linkedin_account_restricted(page):
             persist_skip_all_linkedin()
@@ -4077,25 +4104,30 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                 "note": LINKEDIN_RESTRICTED_NOTE,
                 "learned": learned,
             }
-        if captcha_puzzle_visible(page) or recaptcha_widget_visible(page):
-            notify_captcha(job, page)
-            if hold:
-                if not notified_captcha:
-                    print(
-                        "  CAPTCHA visible. Solve it in Desktop / Take control. "
-                        "I will wait on this form — this tab stays open.",
-                        flush=True,
-                    )
-                    notified_captcha = True
-                page.wait_for_timeout(2500)
-                continue
-            print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
-            return {
-                "ok": False,
-                "status": "CAPTCHA",
-                "note": "parked for owner to solve later",
-                "learned": learned,
-            }
+        try:
+            if captcha_puzzle_visible(page):
+                notify_captcha(job, page)
+                if hold:
+                    if time.time() + 60 > deadline:
+                        deadline = time.time() + 180
+                    if not notified_captcha:
+                        print(
+                            "  CAPTCHA puzzle visible. Solve it in Desktop / Take control. "
+                            "I will wait on this form — this tab stays open.",
+                            flush=True,
+                        )
+                        notified_captcha = True
+                    page.wait_for_timeout(2500)
+                    continue
+                print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "CAPTCHA",
+                    "note": "parked for owner to solve later",
+                    "learned": learned,
+                }
+        except Exception:
+            pass
         try:
             wall_url = (page.url or "").lower()
         except Exception:
@@ -4148,11 +4180,16 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "learned": learned,
                 }
             if step == "captcha":
+                if not captcha_puzzle_visible(page):
+                    click_recaptcha_checkbox(page)
+                    continue
                 notify_captcha(job, page)
                 if hold:
+                    if time.time() + 60 > deadline:
+                        deadline = time.time() + 180
                     if not notified_captcha:
                         print(
-                            "  CAPTCHA visible. Solve it in Desktop / Take control. "
+                            "  CAPTCHA puzzle visible. Solve it in Desktop / Take control. "
                             "I will wait on this form — this tab stays open.",
                             flush=True,
                         )
@@ -4225,11 +4262,11 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     req = required_field_issues(page) or [
                         "form is not advancing — fill remaining fields"
                     ]
-                    if recaptcha_widget_visible(page):
+                    if captcha_puzzle_visible(page):
                         notify_captcha(job, page)
                         if not notified_captcha:
                             print(
-                                "  CAPTCHA on this form. Solve it in Desktop / Take control. "
+                                "  CAPTCHA puzzle on this form. Solve it in Desktop / Take control. "
                                 "This tab stays open.",
                                 flush=True,
                             )
@@ -4291,11 +4328,27 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                 "learned": learned,
             }
         page.wait_for_timeout(1200)
+    try:
+        if application_finished(page):
+            print("  Submitted. Learning this form for later runs.", flush=True)
+            return {
+                "ok": True,
+                "status": "SUBMITTED",
+                "note": "submitted after owner filled leftover fields",
+                "learned": learned,
+            }
+    except Exception:
+        pass
     print(f"  Still no confirmation after {seconds}s. Learned {learned} field(s).", flush=True)
     if hold:
         leftover = required_field_issues(page)
-        if leftover or notified_input or notified_captcha or recaptcha_widget_visible(page):
-            if notified_captcha or recaptcha_widget_visible(page):
+        puzzle_now = False
+        try:
+            puzzle_now = captcha_puzzle_visible(page)
+        except Exception:
+            puzzle_now = False
+        if leftover or notified_input or notified_captcha or puzzle_now:
+            if notified_captcha or puzzle_now:
                 notify_captcha(job, page)
                 return {
                     "ok": False,
@@ -4613,17 +4666,21 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                     print("  Job-board login wall. Not marking skipped; next leftover.", flush=True)
                 return row
             if step == "captcha":
+                if not captcha_puzzle_visible(page):
+                    click_recaptcha_checkbox(page)
+                    continue
                 notify_captcha(job, page)
                 if OWNER_PRESENT or wait_seconds:
                     print(
-                        "  CAPTCHA visible. Solve it in Desktop / Take control — "
-                        "this tab stays open. I will wait and submit after it clears.",
+                        "  CAPTCHA puzzle visible. Solve it in Desktop / Take control — "
+                        "this tab stays open. I will wait and submit after it clears, "
+                        "then open the next leftover.",
                         flush=True,
                     )
                     human = wait_for_human(page, job, wait_seconds or 1800, resume)
                     row["final_url"] = page.url
                     row["learned"] = learned + int(human.get("learned") or 0)
-                    if human.get("ok"):
+                    if human.get("ok") or application_finished(page):
                         row["ok"] = True
                         row["status"] = "SUBMITTED"
                         row["note"] = human.get("note") or "submitted after owner solved CAPTCHA"
@@ -4668,18 +4725,19 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 stuck_none = 0
             page.wait_for_timeout(400)
 
-        if captcha_puzzle_visible(page) or recaptcha_widget_visible(page):
+        if captcha_puzzle_visible(page):
             notify_captcha(job, page)
             if OWNER_PRESENT or wait_seconds:
                 print(
-                    "  CAPTCHA visible. Solve it in Desktop / Take control — "
-                    "this tab stays open. I will wait on this form and submit after it clears.",
+                    "  CAPTCHA puzzle visible. Solve it in Desktop / Take control — "
+                    "this tab stays open. I will wait on this form and submit after it clears, "
+                    "then open the next leftover.",
                     flush=True,
                 )
                 human = wait_for_human(page, job, wait_seconds or 1800, resume)
                 row["final_url"] = page.url
                 row["learned"] = learned + int(human.get("learned") or 0)
-                if human.get("ok"):
+                if human.get("ok") or application_finished(page):
                     row["ok"] = True
                     row["status"] = "SUBMITTED"
                     row["note"] = human.get("note") or "submitted after owner solved CAPTCHA"
@@ -4721,12 +4779,12 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             stay = 0
         if (OWNER_PRESENT or wait_seconds) and not stay:
             stay = wait_seconds if wait_seconds else 1800
-        if recaptcha_widget_visible(page) and (OWNER_PRESENT or wait_seconds):
+        if captcha_puzzle_visible(page) and (OWNER_PRESENT or wait_seconds):
             stay = max(stay, wait_seconds or 1800)
             notify_captcha(job, page)
             print(
-                "  CAPTCHA/widget still on this form. Tab stays open — solve it; "
-                "fill leftover fields. I will wait and then submit.",
+                "  CAPTCHA puzzle still on this form. Tab stays open — solve it. "
+                "I will wait, submit, then open the next leftover.",
                 flush=True,
             )
         if stay:
@@ -5695,14 +5753,46 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     close_apply_page(page)
                 elif row.get("status") in KEEP_TAB_STATUSES:
                     print("  Left this tab open for you.", flush=True)
-                    if OWNER_PRESENT or wait_seconds:
+                    submitted_now = False
+                    try:
+                        submitted_now = application_finished(page)
+                    except Exception:
+                        submitted_now = False
+                    if submitted_now:
+                        row["ok"] = True
+                        row["status"] = "SUBMITTED"
+                        row["note"] = row.get("note") or "submitted after owner finished this tab"
+                        apply_now.persist_applied(row, row.get("note") or "cloud_apply submitted")
+                        notify_submitted(job, row)
+                        print("  Submitted. Closing this tab and moving to the next application.", flush=True)
+                        close_apply_page(page)
+                    elif captcha_puzzle_visible(page) and (OWNER_PRESENT or wait_seconds):
                         print(
-                            "  Owner is filling this application or solving CAPTCHA. "
-                            "Not closing this tab. Not starting another leftover until this one finishes.",
+                            "  CAPTCHA still needs you on this tab. Waiting here, then "
+                            "opening the next leftover after submit.",
                             flush=True,
                         )
-                        break
-                    print("  Starting the next leftover.", flush=True)
+                        extra = wait_for_human(page, job, wait_seconds or 1800)
+                        extra_ok = bool(extra.get("ok"))
+                        try:
+                            extra_ok = extra_ok or application_finished(page)
+                        except Exception:
+                            pass
+                        if extra_ok:
+                            row["ok"] = True
+                            row["status"] = "SUBMITTED"
+                            row["note"] = extra.get("note") or "submitted after owner solved CAPTCHA"
+                            apply_now.persist_applied(row, row["note"])
+                            notify_submitted(job, row)
+                            print("  Submitted. Closing this tab and moving to the next application.", flush=True)
+                            close_apply_page(page)
+                        else:
+                            print(
+                                "  CAPTCHA tab stays open. Opening the next leftover now.",
+                                flush=True,
+                            )
+                    else:
+                        print("  Starting the next leftover.", flush=True)
                 else:
                     print("  Could not finish this form. Moving to the next leftover.", flush=True)
                     close_apply_page(page)
