@@ -1403,7 +1403,17 @@ def collapse_copilot_panel(page) -> str:
               }
               const overlay = document.querySelector('.simplify-jobs-shadow-root');
               if (overlay) overlay.style.pointerEvents = 'none';
-              return overlay ? 'pointer-events-none' : '';
+              document.querySelectorAll('[class*="simplify" i], [id*="simplify" i]').forEach((el) => {
+                try {
+                  el.style.pointerEvents = 'none';
+                  if ((el.getBoundingClientRect().width || 0) > 240) {
+                    el.style.width = '0px';
+                    el.style.minWidth = '0px';
+                    el.style.overflow = 'hidden';
+                  }
+                } catch (e) {}
+              });
+              return overlay ? 'pointer-events-none' : 'simplify-hidden';
             }"""
         ) or ""
     except Exception:
@@ -3164,6 +3174,57 @@ def commit_greenhouse_checkbox_groups(page) -> int:
     return filled
 
 
+def prepare_greenhouse_submit(page) -> None:
+    """HTML5 + recaptcha extras Greenhouse needs after React values are set.
+
+    Checkbox groups mark every option required, so the browser blocks submit
+    with 'Please check this box if you want to proceed' even when one is on.
+    Job-boards recaptcha is enterprise execute(), not a visible checkbox.
+    """
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" not in url:
+        return
+    try:
+        page.evaluate(
+            """() => {
+              document.querySelectorAll('fieldset.checkbox').forEach((fs) => {
+                const boxes = [...fs.querySelectorAll('input[type=checkbox]')];
+                if (boxes.some((b) => b.checked)) boxes.forEach((b) => { b.required = false; });
+              });
+            }"""
+        )
+    except Exception:
+        pass
+    try:
+        page.evaluate(
+            """async () => {
+              const g = window.grecaptcha && (window.grecaptcha.enterprise || window.grecaptcha);
+              const iframe = document.querySelector('iframe[src*="recaptcha"]');
+              const sitekey = iframe && ((iframe.src || '').match(/[?&]k=([^&]+)/) || [])[1];
+              if (!g || !g.execute || !sitekey) return false;
+              if (g.ready) await new Promise((r) => g.ready(r));
+              const tok = await g.execute(sitekey, {action: 'submit'});
+              const form = document.querySelector('#application-form, form');
+              if (!form || !tok) return false;
+              let ta = document.querySelector('textarea[name="g-recaptcha-response"]');
+              if (!ta) {
+                ta = document.createElement('textarea');
+                ta.name = 'g-recaptcha-response';
+                ta.style.display = 'none';
+                form.appendChild(ta);
+              }
+              ta.value = tok;
+              return true;
+            }"""
+        )
+        page.wait_for_timeout(400)
+    except Exception:
+        pass
+
+
 def fill_greenhouse_required_selects(page) -> int:
     """Greenhouse custom questions: N/A state, Yes/No dropdowns that stay 'required'."""
     try:
@@ -4637,6 +4698,11 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
                 print(f"  Synced {n_hidden} Greenhouse answers into the form payload.", flush=True)
         except Exception:
             pass
+        try:
+            upload_resume(page, resume)
+        except Exception:
+            pass
+        prepare_greenhouse_submit(page)
         accept_terms(page)
         click_recaptcha_checkbox(page)
         if captcha_puzzle_visible(page):
