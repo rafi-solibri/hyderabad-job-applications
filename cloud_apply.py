@@ -48,6 +48,8 @@ PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
 LINKEDIN_RESTRICTED = False
 LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-08-22"
+# 22 Aug 2026 8:30 PM PDT. Session-skip until then; do not persist-skip guest walls.
+LINKEDIN_RESTRICTED_UNTIL = datetime(2026, 8, 23, 3, 30, tzinfo=timezone.utc)
 _RECAPTCHA_CLICKS = 0
 ICIMS_LOGIN_CLICKED = False
 ICIMS_CONTINUE_CLICKS = 0
@@ -189,6 +191,8 @@ def is_login_or_captcha(page) -> str | None:
     if "/login" in url and "/apply" not in url and "icims.com" in url:
         return "LOGIN_BLOCKED"
     if "/login" in url and "/apply" not in url and "job" not in url:
+        if "foundit.in" in url:
+            return None
         return "LOGIN_BLOCKED"
     try:
         n = page.locator("iframe[title*='hCaptcha' i], iframe[src*='hcaptcha'][title*='challenge' i]").count()
@@ -272,6 +276,13 @@ def linkedin_account_restricted(page) -> bool:
     if "linkedin.com" not in url:
         return False
     return bool(re.search(r"temporarily restricted|restriction will be lifted", blob))
+
+
+def linkedin_blocked_now() -> bool:
+    """True while the LinkedIn account restriction is in force. Session-skip only."""
+    if LINKEDIN_RESTRICTED:
+        return True
+    return datetime.now(timezone.utc) < LINKEDIN_RESTRICTED_UNTIL
 
 
 def persist_skip_all_linkedin(note: str | None = None) -> int:
@@ -766,6 +777,72 @@ def try_board_google_signin(page) -> str:
     return "skip"
 
 
+def fill_foundit_native_login(page) -> str:
+    """Foundit email+password. Never click Google (change-password wall). Never log secrets."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "foundit.in" not in url:
+        return "skip"
+    if google_password_create_parked(page):
+        print("  Foundit: using native password login, not Google.", flush=True)
+    for name in (
+        "Login via Password",
+        "login via password",
+        "Use password",
+        "Sign in with Email",
+        "Login with Email",
+        "Use Email",
+        "Login using Password",
+    ):
+        try:
+            loc = page.get_by_text(re.compile(rf"^{re.escape(name)}$", re.I)).first
+            if not loc.count():
+                loc = page.get_by_text(re.compile(name, re.I)).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=2000)
+                page.wait_for_timeout(600)
+                break
+        except Exception:
+            continue
+    passwords = []
+    gp = google_auth.load_google_password()
+    if gp:
+        passwords.append(gp)
+    for p in google_auth.load_portal_passwords():
+        if p not in passwords:
+            passwords.append(p)
+    if not passwords:
+        return "missing"
+    email = google_auth.EMAIL
+    try:
+        em = page.locator(
+            "input[type=email], input[name*='email' i], input[placeholder*='Email' i]"
+        ).first
+        if em.count() and em.is_visible():
+            em.fill(email, timeout=2000)
+    except Exception:
+        pass
+    for password in passwords:
+        try:
+            box = page.locator("input[type=password]").first
+            if not box.count() or not box.is_visible():
+                continue
+            box.fill(password, timeout=2000)
+            btn = page.get_by_role(
+                "button", name=re.compile(r"login|sign in|continue", re.I)
+            ).first
+            if btn.count() and btn.is_visible():
+                btn.click(timeout=2000)
+            page.wait_for_timeout(1500)
+            print("  Filled Foundit native login.", flush=True)
+            return "ok"
+        except Exception:
+            continue
+    return "skip"
+
+
 def try_portal_auth(page) -> str:
     """Sign In with each portal password. Create Account only if no account exists. Never log secrets."""
     try:
@@ -773,6 +850,8 @@ def try_portal_auth(page) -> str:
     except Exception:
         url = ""
     if _aggregator_host(url):
+        if "foundit.in" in url:
+            return fill_foundit_native_login(page)
         try_board_google_signin(page)
         return "skip"
     if "login.icims.com" in url:
@@ -1608,12 +1687,33 @@ WORKDAY_SKILL_SEARCHES = (
 
 
 def _workday_skill_field(page):
-    skills = page.locator(
-        "[data-automation-id*='skill' i], [data-automation-id='formField-skills']"
-    ).first
-    if skills.count():
-        return skills
-    return _workday_form_field(page, r"add skills|type to add skills|type to add")
+    """Workday skills widget: formField id, or the block that contains Type to Add Skills."""
+    for sel in (
+        "[data-automation-id='formField-skills']",
+        "[data-automation-id*='Skills']",
+        "[data-automation-id*='skill']",
+    ):
+        loc = page.locator(sel).first
+        try:
+            if loc.count():
+                return loc
+        except Exception:
+            continue
+    loc = _workday_form_field(page, r"type to add skills|add skills")
+    try:
+        if loc.count():
+            return loc
+    except Exception:
+        pass
+    try:
+        t = page.get_by_text(re.compile(r"type to add skills", re.I)).first
+        if t.count():
+            wrap = t.locator("xpath=ancestor::*[.//input[@placeholder]][1]")
+            if wrap.count():
+                return wrap
+    except Exception:
+        pass
+    return page.locator("[data-automation-id='__missing__']")
 
 
 def _workday_clear_prompt_input(page, box) -> None:
@@ -1634,17 +1734,26 @@ def _workday_clear_prompt_input(page, box) -> None:
 
 
 def _workday_skill_search_empty(page, field) -> bool:
-    blob = ""
+    """True only when the open list has no catalog rows. Ignore the standing 'No Items' hint."""
     try:
-        if field.count():
-            blob += " " + (field.inner_text() or "")[:500]
+        opts = page.locator(
+            "[data-automation-id='promptOption'], [role='option'], "
+            "[data-automation-id='menuItem']"
+        )
+        n = opts.count()
     except Exception:
-        pass
-    try:
-        blob += " " + (page.inner_text("body") or "")[:2500]
-    except Exception:
-        pass
-    return bool(re.search(r"no items|no results were found|please select a value", blob, re.I))
+        n = 0
+    if n == 0:
+        return True
+    real = 0
+    for i in range(min(n, 12)):
+        try:
+            text = (opts.nth(i).inner_text() or "").strip().lower()
+        except Exception:
+            continue
+        if text and text not in {"no items", "no results", "no results were found", "search"}:
+            real += 1
+    return real == 0
 
 
 def _workday_add_skill(page, field, skill: str) -> bool:
@@ -1657,6 +1766,9 @@ def _workday_add_skill(page, field, skill: str) -> bool:
     except Exception:
         pass
     box = field.locator(
+        "[data-automation-id='searchBox'] input, "
+        "input[placeholder*='Search' i], "
+        "input[placeholder*='Type to Add' i], "
         "input:not([type=hidden]):not([type=radio]):not([type=checkbox])"
     ).first
     if not box.count():
@@ -1680,18 +1792,17 @@ def _workday_add_skill(page, field, skill: str) -> bool:
         page.keyboard.press("Enter")
     except Exception:
         return False
-    page.wait_for_timeout(900)
+    page.wait_for_timeout(1400)
     try:
         page.wait_for_selector(
-            "[data-automation-id='promptOption'], [role='option']",
-            timeout=3500,
+            "[data-automation-id='promptOption'], [role='option'], "
+            "[data-automation-id='menuItem']",
+            timeout=4000,
             state="attached",
         )
     except Exception:
         pass
-    if _workday_skill_search_empty(page, field) and not page.locator(
-        "[data-automation-id='promptOption']"
-    ).count():
+    if _workday_skill_search_empty(page, field):
         _workday_clear_prompt_input(page, box)
         return False
     if not _pick_workday_list_option(page, skill):
@@ -1707,12 +1818,12 @@ def _workday_add_skill(page, field, skill: str) -> bool:
 def fill_workday_skills(page) -> int:
     """Commit at least one Workday skill chip. Typed text alone is not enough."""
     field = _workday_skill_field(page)
+    has_field = False
     try:
-        if not field.count():
-            return 0
+        has_field = bool(field.count())
     except Exception:
-        return 0
-    if _workday_prompt_committed(field):
+        has_field = False
+    if has_field and _workday_prompt_committed(field):
         return 0
     try:
         btn = page.get_by_role("button", name=re.compile(r"autofill \d+ skills?", re.I)).first
@@ -1720,13 +1831,53 @@ def fill_workday_skills(page) -> int:
             btn.click(timeout=1500)
             print("  Clicked Copilot Autofill skill(s).", flush=True)
             page.wait_for_timeout(800)
-            if _workday_prompt_committed(field):
+            if has_field and _workday_prompt_committed(field):
                 return 1
     except Exception:
         pass
-    for name in WORKDAY_SKILL_SEARCHES:
-        if _workday_add_skill(page, field, name):
-            return 1
+    if has_field:
+        for name in WORKDAY_SKILL_SEARCHES:
+            if _workday_add_skill(page, field, name):
+                return 1
+    try:
+        label = page.get_by_text(re.compile(r"type to add skills", re.I)).first
+        if label.count() and label.is_visible():
+            label.click(timeout=1200)
+            page.wait_for_timeout(400)
+    except Exception:
+        pass
+    # Widget often has no formField id — use the in-form Search box (not header Search for Jobs).
+    try:
+        boxes = page.locator(
+            "input[placeholder='Search'], input[placeholder*='Type to Add' i], "
+            "input[placeholder*='Add Skills' i]"
+        )
+        nbox = boxes.count()
+    except Exception:
+        nbox = 0
+    for i in range(min(nbox, 8)):
+        box = boxes.nth(i)
+        try:
+            if not box.is_visible():
+                continue
+            bb = box.bounding_box() or {}
+            if (bb.get("width") or 0) < 180 or (bb.get("y") or 0) < 120:
+                continue
+        except Exception:
+            continue
+        for name in WORKDAY_SKILL_SEARCHES:
+            try:
+                box.click(timeout=1200, force=True)
+                box.fill("")
+                box.type(name, delay=30)
+                page.keyboard.press("Enter")
+                page.wait_for_timeout(1800)
+            except Exception:
+                continue
+            if _pick_workday_list_option(page, name):
+                print(f"  Workday: added skill {name} (search box).", flush=True)
+                return 1
+            _workday_clear_prompt_input(page, box)
     print(
         "  Workday: no catalog skill matched. Leftover: Type to Add Skills — pick one in Desktop.",
         flush=True,
@@ -3388,6 +3539,18 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if captcha_puzzle_visible(page):
         return "captcha"
     click_recaptcha_checkbox(page)
+    try:
+        foundit_blob = (
+            (page.url or "")
+            + " "
+            + str((job or {}).get("apply_url") or "")
+            + " "
+            + str((job or {}).get("url") or "")
+        ).lower()
+        if "foundit.in" in foundit_blob:
+            fill_foundit_native_login(page)
+    except Exception:
+        pass
     click_google_account_chooser(page)
     if is_success(page) or simplify_copilot.submitted(page):
         return "submitted"
@@ -3768,7 +3931,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         row["note"] = "login board skipped without opening"
         return row
     if google_password_create_parked(page) and any(
-        x in (url or "").lower() for x in ("linkedin.com", "foundit.in", "cutshort.io", "cutshort.com")
+        x in (url or "").lower() for x in ("linkedin.com", "cutshort.io", "cutshort.com")
     ):
         row["status"] = "STUCK"
         row["note"] = "Google change-password parked — not creating a password"
@@ -3800,13 +3963,19 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             title0 + " " + blob0,
             re.I,
         ):
-            row["status"] = "CLOSED"
+            row["status"] = "STUCK"
             row["final_url"] = page.url
             row["note"] = "board blocked this environment (access denied)"
-            apply_now.persist_skipped(row, row["note"])
+            if not _aggregator_host(url or page.url or ""):
+                apply_now.persist_skipped(row, row["note"])
             print("  Board blocked this environment. Next leftover.", flush=True)
             return row
         dismiss_overlays(page)
+        try:
+            if "foundit.in" in (url or "").lower() or "foundit.in" in (page.url or "").lower():
+                fill_foundit_native_login(page)
+        except Exception:
+            pass
         copilot_start = simplify_copilot.start_application(page)
         if copilot_start:
             page.wait_for_timeout(800)
@@ -4050,8 +4219,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             stay = wait_seconds if wait_seconds else 90
         if "instahyre.com/job-" in u:
             stay = min(stay, 25)
-        if linkedin_account_restricted(page) or LINKEDIN_RESTRICTED:
+        if linkedin_account_restricted(page) or linkedin_blocked_now():
             stay = 0
+        if "foundit.in" in u and not OWNER_PRESENT and ("/login" in u or "rio/login" in u):
+            stay = min(stay, 12)
         if (
             icims_auth0_blocked(page)
             and ("icims.com" in u or "icims.com" in (url or "").lower())
@@ -4134,19 +4305,24 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
 
     def board_rank(job: dict) -> int:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
-        if "linkedin.com" in u:
-            return 8
-        if "instahyre.com" in u or "cutshort" in u:
-            return 0
-        if "indeed.com" in u:
-            return 3
         if "naukri.com" in u:
-            return 1
+            return 0
         if "foundit.in" in u:
+            return 1
+        if "indeed.com" in u:
+            return 2
+        if "instahyre.com" in u or "cutshort" in u:
+            return 8
+        if "linkedin.com" in u:
             return 9
         return 5
 
     boards.sort(key=board_rank)
+    if linkedin_blocked_now():
+        boards = [
+            j for j in boards
+            if "linkedin.com" not in ((j.get("apply_url") or j.get("url") or "")).lower()
+        ]
     out: list[dict] = []
     b = c = 0
     while len(out) < (limit or 10**9) and (b < len(boards) or c < len(career)):
@@ -4641,11 +4817,9 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     print("  Amazon sign-in already parked. Leaving that tab; skipping this duplicate.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
-                if LINKEDIN_RESTRICTED and "linkedin.com" in apply_url:
-                    if not apply_now.is_applied(job):
-                        apply_now.persist_skipped(job, LINKEDIN_RESTRICTED_NOTE)
+                if linkedin_blocked_now() and "linkedin.com" in apply_url:
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
-                    print("  LinkedIn restricted until 22 Aug. Skipping this leftover.", flush=True)
+                    print("  LinkedIn restricted until 22 Aug 8:30 PM PDT. Next leftover.", flush=True)
                     continue
                 linkedin_parked = any(
                     "linkedin.com/checkpoint" in ((p.url or "").lower())
@@ -4657,15 +4831,12 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 google_pw_create = google_password_create_parked(context=context)
-                if google_pw_create and any(
-                    x in apply_url
-                    for x in ("linkedin.com", "foundit.in", "cutshort.io", "cutshort.com")
-                ):
+                if google_pw_create and "linkedin.com" in apply_url:
                     print("  Google change-password is parked. Not creating a password. Next leftover.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
-                if any(x in apply_url for x in ("foundit.in", "cutshort.io", "cutshort.com")):
-                    print("  Foundit/Cutshort login is blocked on Google change-password. Next leftover.", flush=True)
+                if any(x in apply_url for x in ("cutshort.io", "cutshort.com")):
+                    print("  Cutshort login is blocked. Next leftover.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 navigate = True
