@@ -47,6 +47,7 @@ TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES | frozenset({"ERROR"})
 PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
 FOUNDIT_AKAMAI_BLOCKED = False
+GOOGLE_SIGNIN_BLOCKED = False
 LINKEDIN_RESTRICTED = False
 LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-08-22"
 # 22 Aug 2026 8:30 PM PDT. Session-skip until then; do not persist-skip guest walls.
@@ -1864,18 +1865,38 @@ def _workday_prompt_committed(field) -> bool:
 
 WORKDAY_SKILL_SEARCHES = (
     "Azure",
+    "Microsoft Azure",
+    "Amazon Web Services (AWS)",
     "AWS",
     "SQL",
+    "SQL Server",
+    "Microsoft SQL Server",
     "Agile",
+    "Agile Methodologies",
     "C#",
+    "C Sharp",
+    "C# (Programming Language)",
     ".NET",
+    ".NET Framework",
+    ".NET Core",
+    "ASP.NET",
+    "ASP.NET Core",
     "Kubernetes",
     "Docker",
     "Angular",
+    "AngularJS",
+    "React.js",
     "React",
     "Microservices",
+    "Apache Kafka",
     "Kafka",
+    "REST",
+    "RESTful WebServices",
+    "API",
     "Software Development",
+    "Software Engineering",
+    "Solution Architecture",
+    "Architecture",
 )
 
 
@@ -4648,6 +4669,18 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
         else:
             boards.append(job)
 
+    def career_rank(job: dict) -> int:
+        u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
+        if "greenhouse" in u or "lever.co" in u or "ashbyhq.com" in u:
+            return 0
+        if "smartrecruiters.com" in u:
+            return 1
+        if "myworkdayjobs" in u:
+            return 2
+        return 5
+
+    career.sort(key=career_rank)
+
     def board_rank(job: dict) -> int:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
         if "naukri.com" in u:
@@ -4789,6 +4822,14 @@ def launch_context(pw, headed: bool):
                 print(f"  Google sign-in skipped ({exc}).", flush=True)
         else:
             print("  Chrome already signed in; leaving Google tabs alone.", flush=True)
+        global GOOGLE_SIGNIN_BLOCKED
+        if google_password_create_parked(context=context):
+            GOOGLE_SIGNIN_BLOCKED = True
+            print(
+                "  Google change-password parked. Never creating a password. "
+                "Skipping Naukri/LinkedIn/Indeed/Instahyre this round.",
+                flush=True,
+            )
         if OWNER_PRESENT or WATCH_OPEN:
             print("  Owner is present. Leaving open application tabs as they are.", flush=True)
         else:
@@ -5142,7 +5183,17 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
         if any(jid.isdigit() and len(jid) >= 6 and jid.lower() in u for jid in applied_ids):
             continue
+        # Owner 21 Aug 2026: skip remaining JPMC / Chase leftovers forever.
+        if "jpmc.fa" in u or "jpmorgan" in u or "chasebank" in u:
+            continue
+        # Owner 21 Aug 2026: AMD iCIMS Auth0 rejected every stored portal password.
+        if "careers.amd.com" in u or "login.icims.com" in u and "amd" in u:
+            continue
         if linkedin_blocked_now() and "linkedin.com" in u:
+            continue
+        if GOOGLE_SIGNIN_BLOCKED and any(
+            h in u for h in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
+        ):
             continue
         if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in u:
             continue
@@ -5410,7 +5461,11 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 return 1
 
             pending.sort(key=_open_rank)
-        if not OWNER_PRESENT and _naukri_leftover_n(leftover_career_jobs(pending)) == 0:
+        if (
+            not OWNER_PRESENT
+            and not GOOGLE_SIGNIN_BLOCKED
+            and _naukri_leftover_n(leftover_career_jobs(pending)) == 0
+        ):
             print("  Searching Naukri in Chrome for Quick apply leftovers...", flush=True)
             discover_naukri_in_chrome(context)
             apply_now.BATCH = apply_now.load_all_discovered()
@@ -5443,8 +5498,26 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     f"({career_n} career, {_naukri_leftover_n(try_jobs)} Naukri).",
                     flush=True,
                 )
+        # Rebuild after Google/LinkedIn/Foundit session flags are known so
+        # Naukri-heavy first-80 slices do not hide Foundit/career leftovers.
+        apply_now.BATCH = apply_now.load_all_discovered()
+        queue = apply_now.queue()
+        try_jobs, _blocked = public_queue(queue, allow_aggregators=True)
+        try_jobs = leftover_career_jobs(try_jobs)
+        pending = interleave_boards_and_career(try_jobs, limit)
+        career_n = sum(
+            1 for j in try_jobs
+            if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
+        )
+        print(
+            f"  Session queue: leftover {len(try_jobs)} "
+            f"({career_n} career, {_naukri_leftover_n(try_jobs)} Naukri).",
+            flush=True,
+        )
         for attempt in range(1, 4):
-            leftover = leftover_career_jobs(pending)
+            leftover = interleave_boards_and_career(
+                leftover_career_jobs(try_jobs), limit
+            )
             if not leftover:
                 break
             print(
@@ -5484,7 +5557,9 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 google_pw_create = google_password_create_parked(context=context)
-                if google_pw_create and "linkedin.com" in apply_url:
+                if google_pw_create and any(
+                    x in apply_url for x in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
+                ):
                     print("  Google change-password is parked. Not creating a password. Next leftover.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue

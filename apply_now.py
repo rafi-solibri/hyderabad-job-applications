@@ -50,6 +50,10 @@ SKIP_COMPANIES = {
     "michaelpage", "theedgepartnership",
     "careerpathsolutionsprivatelimited", "careerpathsolutions",
     "augustainfotech", "intraedge",
+    # Owner 21 Aug 2026: never retry remaining JPMC / Chase leftovers.
+    "jpmorganchaseco", "jpmorganchase", "jpmorgan", "chasebank",
+    # Owner 21 Aug 2026: AMD iCIMS Auth0 rejected every stored portal password.
+    "amd", "xilinx", "amdmaquinaria", "amdventures",
 }
 BLOCKED_PATH = ROOT / "data" / "blocked_companies.json"
 SKIP_IDS = {
@@ -869,6 +873,8 @@ def queue() -> list[dict]:
             continue
         if not re.search(
             r"architect|principal|staff|technical lead|engineering manager|"
+            r"engineering lead|manager,? engineering|manager,? software|"
+            r"software engineer(ing)? manager|"
             r"lead (software|engineer|developer)|senior (software|backend|full.?stack|\.net|sde|solution)|"
             r"sde ?[iii23]|software development engineer|sr\.? software|"
             r"manager,? software development|senior manager software|sr\.? manager software",

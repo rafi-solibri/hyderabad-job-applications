@@ -1,14 +1,192 @@
 [
   {
-    "company": "ANSR",
-    "title": "Principal Engineer - IT Software (.Net)",
+    "company": "Blue Yonder",
+    "title": "Staff Software Engineer I - NodeJS, Microservices, Cloud & Typescript/JavaScript",
     "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4453078686/",
+    "url": "https://jda.wd5.myworkdayjobs.com/en-US/JDA_Careers/job/Hyderabad/Staff-Software-Engineer-I---NodeJS--Microservices--Cloud---Typescript-JavaScript_262632",
     "ats": "Foundit",
-    "job_id": "62960104",
+    "job_id": "63267894",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 90
+    "match_score": 136
+  },
+  {
+    "company": "Microchip Technology",
+    "title": "Principal Engineer - Characterization",
+    "location": "Hyderabad, India",
+    "url": "https://wd5.myworkdaysite.com/en-US/recruiting/microchiphr/External/job/India---Hyderabad/Principal-Engineer---Validation_R28-25",
+    "ats": "Foundit",
+    "job_id": "61440436",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 136
+  },
+  {
+    "company": "TTEC India Customer Solutions Private Limited",
+    "title": "Systems Software Principal Engineer",
+    "location": "Delhi, Hyderabad, Bengaluru",
+    "url": "https://ttec.taleo.net/careersection/10008/jobsearch.ftl",
+    "ats": "Foundit",
+    "job_id": "33862060",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 136
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Principal Engineer - Generative AI Data & Analytics",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer---Generative-AI-Data---Analytics_R-560217",
+    "ats": "Foundit",
+    "job_id": "60437943",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 136
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Lead Software Engineer (KAFKA, MULESOFT, IDMC, APIGEE, API Development & Integration)",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Lead-Software-Engineer--KAFKA--MULESOFT--IDMC--APIGEE--API-Development---Integration-_R-563674-1",
+    "ats": "Foundit",
+    "job_id": "62357688",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 134
+  },
+  {
+    "company": "Experian",
+    "title": "Senior Staff Engineer ( AI )",
+    "location": "Hyderabad, India",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000143110130-senior-staff-engineer-ai-",
+    "ats": "Foundit",
+    "job_id": "62451974",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 128
+  },
+  {
+    "company": "Experian",
+    "title": "Lead Software Engineer - Mainframe",
+    "location": "Hyderabad, India",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000142144341-lead-software-engineer-mainframe",
+    "ats": "Foundit",
+    "job_id": "61843334",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 126
+  },
+  {
+    "company": "Xilinx",
+    "title": "EDA Lead Software Development Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://careers.amd.com/careers-home/jobs/90803?lang=en-us",
+    "ats": "Foundit",
+    "job_id": "63371749",
+    "already_applied": false,
+    "match_score": 126,
+    "over_cap": false
+  },
+  {
+    "company": "Zf Friedrich",
+    "title": "Sr. Technical Lead- Functional Safety",
+    "location": "Hyderabad, India",
+    "url": "https://jobs.zf.com/job/Hyderabad-Sr_-Technical-Lead-Functional-Safety-TG-500032/1427361033/",
+    "ats": "Foundit",
+    "job_id": "63372053",
+    "already_applied": false,
+    "match_score": 126,
+    "over_cap": false
+  },
+  {
+    "company": "State Street",
+    "title": "Senior Software Engineer, AVP",
+    "location": "Hyderabad, India",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
+    "ats": "Workday",
+    "job_id": "Senior-Software-Engineer--AVP_R-792706",
+    "already_applied": false,
+    "match_score": 114,
+    "over_cap": false
+  },
+  {
+    "company": "Freshworks",
+    "title": "Lead Software Engineer - Machine Learning",
+    "location": "Hyderabad  in",
+    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000141503314",
+    "ats": "SmartRecruiters",
+    "job_id": "744000141503314",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 110
+  },
+  {
+    "company": "Thermo Fisher Scientific",
+    "title": "Staff Engineer, Electrical",
+    "location": "Hyderabad",
+    "url": "https://jobs.thermofisher.com/global/en/job/R-01352375/Staff-Engineer,-Electrical",
+    "ats": "Foundit",
+    "job_id": "61432770",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 108
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Manager Software Development And Engineering",
+    "location": "Hyderabad",
+    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-and-engineering/33995/98379875216",
+    "ats": "Phenom",
+    "job_id": "98379875216",
+    "already_applied": false,
+    "match_score": 106,
+    "over_cap": false
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Lead Pl",
+    "location": "Hyderabad",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792",
+    "ats": "Phenom",
+    "job_id": "99012467792",
+    "already_applied": false,
+    "match_score": 106,
+    "over_cap": false
+  },
+  {
+    "company": "The Depository Trust & clearing Corporation",
+    "title": "Oracle Fusion HCM Technical Lead",
+    "location": "Hyderabad, India",
+    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214156/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
+    "ats": "Foundit",
+    "job_id": "60589332",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 106
+  },
+  {
+    "company": "Clean Harbors",
+    "title": ".Net TEchnical Architect",
+    "location": "12-18 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-net-technical-architect-clean-harbors-hyderabad-12-to-18-years-110526034747",
+    "apply_url": "https://www.naukri.com/job-listings-net-technical-architect-clean-harbors-hyderabad-12-to-18-years-110526034747",
+    "ats": "Naukri",
+    "job_id": "110526034747",
+    "already_applied": false,
+    "match_score": 30,
+    "over_cap": false
+  },
+  {
+    "company": "Kairos Technologies",
+    "title": ".Net Full Stack Architect/Application Technical Architect",
+    "location": "10-20 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-net-full-stack-architect-application-technical-architect-kairos-technologies-hyderabad-10-to-20-years-200826013808",
+    "apply_url": "https://www.naukri.com/job-listings-net-full-stack-architect-application-technical-architect-kairos-technologies-hyderabad-10-to-20-years-200826013808",
+    "ats": "Naukri",
+    "job_id": "200826013808",
+    "already_applied": false,
+    "match_score": 30,
+    "over_cap": false
   },
   {
     "company": "Cubic Transportation Systems",
@@ -19,7 +197,7 @@
     "job_id": "58547222",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 90
+    "match_score": 16
   },
   {
     "company": "Globallogic Ukraine",
@@ -30,7 +208,31 @@
     "job_id": "63102686",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 90
+    "match_score": 16
+  },
+  {
+    "company": "Experian",
+    "title": "Lead Software Engineer(.Net + AWS)",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-net-aws-experian-services-india-private-limited-hyderabad-10-to-15-years-170826929579",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-net-aws-experian-services-india-private-limited-hyderabad-10-to-15-years-170826929579",
+    "ats": "Naukri",
+    "job_id": "170826929579",
+    "already_applied": false,
+    "match_score": 14,
+    "over_cap": false
+  },
+  {
+    "company": "UPS Supply Chain Solutions (UPS SCS)",
+    "title": "Lead Software Engineer- Full Stack- C#, .Netcore , MVC, Azure Cloud",
+    "location": "6-10 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-full-stack-c-netcore-mvc-azure-cloud-ups-pvt-ltd-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-6-to-10-years-260425501498",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-full-stack-c-netcore-mvc-azure-cloud-ups-pvt-ltd-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-6-to-10-years-260425501498",
+    "ats": "Naukri",
+    "job_id": "260425501498",
+    "already_applied": false,
+    "match_score": 14,
+    "over_cap": false
   },
   {
     "company": "NationsBenefits",
@@ -41,18 +243,19 @@
     "job_id": "61167970",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 82
+    "match_score": 8
   },
   {
-    "company": "Coupa Software",
-    "title": "Sr Lead Software Engineer - Full Stack (.NET with React)(12+ years) - 11787",
-    "location": "Hyderabad, Indi, India",
-    "url": "https://jobs.lever.co/coupa/4e9abe6c-252b-46e1-9c85-9197fa197981",
-    "ats": "Foundit",
-    "job_id": "61724847",
+    "company": "Epam Systems",
+    "title": "Lead Software Engineer - .Net with AI",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-net-with-ai-epam-systems-india-private-limited-hyderabad-10-to-15-years-070826911384",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-net-with-ai-epam-systems-india-private-limited-hyderabad-10-to-15-years-070826911384",
+    "ats": "Naukri",
+    "job_id": "070826911384",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 80
+    "match_score": 6,
+    "over_cap": false
   },
   {
     "company": "Kumaran Systems",
@@ -63,7 +266,7 @@
     "job_id": "60059128",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 80
+    "match_score": 6
   },
   {
     "company": "Simba Technologies",
@@ -74,7 +277,7 @@
     "job_id": "37598442",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 80
+    "match_score": 6
   },
   {
     "company": "wonderbiz technologies pvt.",
@@ -85,28 +288,114 @@
     "job_id": "59099885",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 80
+    "match_score": 6
   },
   {
-    "company": "Vbeyond Corporation",
-    "title": "Staff/Senior Software Engineer (.Net/Azure/Angular/React)",
-    "location": "Hyderabad, Chennai, Bengaluru",
-    "url": "https://www.foundit.in/job/35474923",
-    "ats": "Foundit",
-    "job_id": "35474923",
+    "company": "Intelex Systems",
+    "title": "Senior .NET Developer (Azure PaaS, Angular, C#)",
+    "location": "3-8 Yrs Not disclosed Hyderabad(Gachibowli)",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-azure-paas-angular-c-intelex-systems-hyderabad-3-to-8-years-070826039913",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-azure-paas-angular-c-intelex-systems-hyderabad-3-to-8-years-070826039913",
+    "ats": "Naukri",
+    "job_id": "070826039913",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 76
+    "match_score": 2,
+    "over_cap": false
   },
   {
-    "company": "Charles Schwab",
-    "title": "Solutions Architect Brokerage Services",
-    "location": "Hyderabad",
-    "url": "https://www.schwabjobs.com/job/hyderabad/solutions-architect-brokerage-services/33995/91969140928",
-    "ats": "Phenom",
-    "job_id": "91969140928",
+    "company": "Optum",
+    "title": "Senior Software Engineer I (.Net React and Azure)",
+    "location": "6-11 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-i-net-react-and-azure-optum-global-solutions-india-private-limited-hyderabad-6-to-11-years-200826933013",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-i-net-react-and-azure-optum-global-solutions-india-private-limited-hyderabad-6-to-11-years-200826933013",
+    "ats": "Naukri",
+    "job_id": "200826933013",
     "already_applied": false,
-    "match_score": 70,
+    "match_score": 2,
+    "over_cap": false
+  },
+  {
+    "company": "Akaasa Infotech Noida",
+    "title": "Senior .Net Developer",
+    "location": "7-12 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-akaasa-infotech-noida-hyderabad-7-to-12-years-050826037591",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-akaasa-infotech-noida-hyderabad-7-to-12-years-050826037591",
+    "ats": "Naukri",
+    "job_id": "050826037591",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Arcadis",
+    "title": "Senior .NET Developer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-arcadis-hyderabad-10-to-15-years-300726501206",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-arcadis-hyderabad-10-to-15-years-300726501206",
+    "ats": "Naukri",
+    "job_id": "300726501206",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Arcelormittal",
+    "title": "Senior .Net Developer",
+    "location": "6-11 Yrs 30-45 Lacs PA Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-11-years-290726010655",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-11-years-290726010655",
+    "ats": "Naukri",
+    "job_id": "290726010655",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Beghou Consulting",
+    "title": "Senior .Net Developer",
+    "location": "4-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-beghou-consulting-india-private-limited-hyderabad-4-to-9-years-250626503306",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-beghou-consulting-india-private-limited-hyderabad-4-to-9-years-250626503306",
+    "ats": "Naukri",
+    "job_id": "250626503306",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Blackbaud",
+    "title": "Laureate - .Net Architect",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-laureate-net-architect-blackbaud-hyderabad-10-to-15-years-190826503175",
+    "apply_url": "https://www.naukri.com/job-listings-laureate-net-architect-blackbaud-hyderabad-10-to-15-years-190826503175",
+    "ats": "Naukri",
+    "job_id": "190826503175",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Bluvin Solutions",
+    "title": "Senior .Net Developer",
+    "location": "7-12 Yrs 20-27.5 Lacs PA Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-bluvin-solutions-hyderabad-7-to-12-years-140826009924",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-bluvin-solutions-hyderabad-7-to-12-years-140826009924",
+    "ats": "Naukri",
+    "job_id": "140826009924",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "CGI",
+    "title": "Senior .Net Developer",
+    "location": "5-8 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-cgi-hyderabad-5-to-8-years-270726028689",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-cgi-hyderabad-5-to-8-years-270726028689",
+    "ats": "Naukri",
+    "job_id": "270726028689",
+    "already_applied": false,
+    "match_score": -6,
     "over_cap": false
   },
   {
@@ -118,7 +407,79 @@
     "job_id": "53694858",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 68
+    "match_score": -6
+  },
+  {
+    "company": "Cloud Counselage",
+    "title": "Senior .NET Developer",
+    "location": "5-8 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-cloud-counselage-pvt-ltd-hyderabad-5-to-8-years-301225508303",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-cloud-counselage-pvt-ltd-hyderabad-5-to-8-years-301225508303",
+    "ats": "Naukri",
+    "job_id": "301225508303",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Codvo",
+    "title": "Senior Software Engineer - C#/Dot Net, Angular, Security & Compliance",
+    "location": "6-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-c-dot-net-angular-security-compliance-codvo-ai-hyderabad-6-to-10-years-111225500144",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-c-dot-net-angular-security-compliance-codvo-ai-hyderabad-6-to-10-years-111225500144",
+    "ats": "Naukri",
+    "job_id": "111225500144",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Epiroc Mining India",
+    "title": ".NET Architect",
+    "location": "7-12 Yrs 12-28 Lacs PA Hyderabad",
+    "url": "https://www.naukri.com/job-listings-net-architect-epiroc-mining-india-hyderabad-7-to-12-years-190826024651",
+    "apply_url": "https://www.naukri.com/job-listings-net-architect-epiroc-mining-india-hyderabad-7-to-12-years-190826024651",
+    "ats": "Naukri",
+    "job_id": "190826024651",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Incedo",
+    "title": "Walk-in || Immediate Hiring | Senior .NET Developer | Hyd | 7-15 Yrs |Walkin",
+    "location": "22 Aug 19-34 Lacs PA Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-immediate-hiring-senior-net-developer-hyd-7-15-yrs-walkin-incedo-hyderabad-7-to-12-years-200826016501",
+    "apply_url": "https://www.naukri.com/job-listings-immediate-hiring-senior-net-developer-hyd-7-15-yrs-walkin-incedo-hyderabad-7-to-12-years-200826016501",
+    "ats": "Naukri",
+    "job_id": "200826016501",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Innova Solutions",
+    "title": "Senior .Net Developer",
+    "location": "8-13 Yrs Not disclosed Hyderabad, Noida, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-innova-solutions-noida-hyderabad-bengaluru-8-to-13-years-090426012824",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-innova-solutions-noida-hyderabad-bengaluru-8-to-13-years-090426012824",
+    "ats": "Naukri",
+    "job_id": "090426012824",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "TechBlocks",
+    "title": "Senior .NET Developer",
+    "location": "7-10 Yrs Not disclosed Hyderabad, Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-techblocks-consulting-pvt-ltd-hyderabad-hyderabad-7-to-10-years-280726924278",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-techblocks-consulting-pvt-ltd-hyderabad-hyderabad-7-to-10-years-280726924278",
+    "ats": "Naukri",
+    "job_id": "280726924278",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
   },
   {
     "company": "Techno-comp Computer Services Private Limited",
@@ -129,7 +490,7 @@
     "job_id": "58929975",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 68
+    "match_score": -6
   },
   {
     "company": "ValueMomentum",
@@ -140,7 +501,42 @@
     "job_id": "34514449",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 68
+    "match_score": -6
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Senior Software Engineer - .Net",
+    "location": "4-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-net-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-190826927772",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-net-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-190826927772",
+    "ats": "Naukri",
+    "job_id": "190826927772",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "Y&L Consulting",
+    "title": "Senior .Net Developer",
+    "location": "10-20 Yrs 10-20 Lacs PA Hybrid - Hyderabad(Mind Space), Bengaluru",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-y-l-consulting-hyderabad-bengaluru-10-to-20-years-100826000589",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-y-l-consulting-hyderabad-bengaluru-10-to-20-years-100826000589",
+    "ats": "Naukri",
+    "job_id": "100826000589",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
+    "company": "blackbaud india",
+    "title": "Laureate - .Net Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4454903356/",
+    "ats": "Foundit",
+    "job_id": "63471909",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
   },
   {
     "company": "nationsbenefits india",
@@ -151,7 +547,19 @@
     "job_id": "44267139",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 68
+    "match_score": -6
+  },
+  {
+    "company": "300plus Innovative Solutions",
+    "title": "Solution Architect",
+    "location": "11-20 Yrs 30-40 Lacs PA Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-300plus-innovative-solutions-hyderabad-11-to-20-years-170826018010",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-300plus-innovative-solutions-hyderabad-11-to-20-years-170826018010",
+    "ats": "Naukri",
+    "job_id": "170826018010",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Accenture",
@@ -162,7 +570,7 @@
     "job_id": "61934442",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Accenture",
@@ -173,7 +581,7 @@
     "job_id": "61688113",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Accenture",
@@ -184,7 +592,19 @@
     "job_id": "63144656",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Agilisium",
+    "title": "Solution Architect",
+    "location": "12-18 Yrs Not disclosed Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-agilisium-hyderabad-chennai-bengaluru-12-to-18-years-180826047334",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-agilisium-hyderabad-chennai-bengaluru-12-to-18-years-180826047334",
+    "ats": "Naukri",
+    "job_id": "180826047334",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Allianz Partners",
@@ -195,7 +615,19 @@
     "job_id": "34906922",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Apex 2000 INC",
+    "title": "Solution Architect",
+    "location": "8-13 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-apex-2000-inc-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-8-to-13-years-240326508297",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-apex-2000-inc-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-8-to-13-years-240326508297",
+    "ats": "Naukri",
+    "job_id": "240326508297",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Arcesium",
@@ -206,29 +638,79 @@
     "job_id": "59949628",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
-    "company": "Augusta Infotech",
-    "title": "Senior Technical Architect",
-    "location": "Hyderabad",
-    "url": "https://www.foundit.in/job/34871059",
-    "ats": "Foundit",
-    "job_id": "34871059",
+    "company": "Axtria",
+    "title": "Vault Solution Architect",
+    "location": "9-13 Yrs Not disclosed Hybrid - Hyderabad, Bengaluru, Delhi / NCR",
+    "url": "https://www.naukri.com/job-listings-vault-solution-architect-axtria-hyderabad-bengaluru-delhi-ncr-9-to-13-years-280726003183",
+    "apply_url": "https://www.naukri.com/job-listings-vault-solution-architect-axtria-hyderabad-bengaluru-delhi-ncr-9-to-13-years-280726003183",
+    "ats": "Naukri",
+    "job_id": "280726003183",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 64
+    "match_score": -10,
+    "over_cap": false
   },
   {
-    "company": "Augusta Infotech",
-    "title": "Technical Architect",
-    "location": "Hyderabad",
-    "url": "https://www.foundit.in/job/34871368",
-    "ats": "Foundit",
-    "job_id": "34871368",
+    "company": "Azilen",
+    "title": "Technical Architect Dot Net",
+    "location": "3-5 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-architect-dot-net-azilen-technologies-pvt-ltd-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-3-to-5-years-190924502274",
+    "apply_url": "https://www.naukri.com/job-listings-technical-architect-dot-net-azilen-technologies-pvt-ltd-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-3-to-5-years-190924502274",
+    "ats": "Naukri",
+    "job_id": "190924502274",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 64
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Backbase",
+    "title": "Solution Architect",
+    "location": "12-21 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-backbase-hyderabad-12-to-21-years-170826501478",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-backbase-hyderabad-12-to-21-years-170826501478",
+    "ats": "Naukri",
+    "job_id": "170826501478",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Benovymed Healthcare",
+    "title": "Technical Architect / Manager/Lead - DBMS",
+    "location": "7-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-architect-manager-lead-dbms-benovymed-healthcare-hyderabad-7-to-10-years-190826922786",
+    "apply_url": "https://www.naukri.com/job-listings-technical-architect-manager-lead-dbms-benovymed-healthcare-hyderabad-7-to-10-years-190826922786",
+    "ats": "Naukri",
+    "job_id": "190826922786",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Blue Yonder",
+    "title": "Solution Architect",
+    "location": "12-16 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-jda-software-hyderabad-12-to-16-years-140826502402",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-jda-software-hyderabad-12-to-16-years-140826502402",
+    "ats": "Naukri",
+    "job_id": "140826502402",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Blue Yonder",
+    "title": "Solution Architect Mfg Planning",
+    "location": "10-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-mfg-planning-jda-software-hyderabad-10-to-14-years-130826500865",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-mfg-planning-jda-software-hyderabad-10-to-14-years-130826500865",
+    "ats": "Naukri",
+    "job_id": "130826500865",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Blue Yonder",
@@ -239,7 +721,7 @@
     "job_id": "59322208",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Blue5Green",
@@ -250,18 +732,19 @@
     "job_id": "48063005",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
-    "company": "Career Path Solutions Private Limited",
-    "title": "Solution Architect",
-    "location": "Bengaluru, Chennai, Hyderabad",
-    "url": "https://www.foundit.in/job/63160108",
-    "ats": "Foundit",
-    "job_id": "63160108",
+    "company": "Capgemini",
+    "title": "IFS EAM Solution Architect",
+    "location": "8-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-ifs-eam-solution-architect-capgemini-technology-services-india-limited-hyderabad-8-to-13-years-070826930540",
+    "apply_url": "https://www.naukri.com/job-listings-ifs-eam-solution-architect-capgemini-technology-services-india-limited-hyderabad-8-to-13-years-070826930540",
+    "ats": "Naukri",
+    "job_id": "070826930540",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 64
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Celigo",
@@ -272,7 +755,7 @@
     "job_id": "38021076",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Chubb",
@@ -283,7 +766,7 @@
     "job_id": "59778056",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Clean Harbors",
@@ -294,7 +777,19 @@
     "job_id": "63072101",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Covalense Global",
+    "title": "Solution Architect",
+    "location": "20-25 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-covalense-global-hyderabad-20-to-25-years-130826502780",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-covalense-global-hyderabad-20-to-25-years-130826502780",
+    "ats": "Naukri",
+    "job_id": "130826502780",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "CyberArk",
@@ -305,7 +800,19 @@
     "job_id": "37510582",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "DSG Inc",
+    "title": "Solutions Architect",
+    "location": "5-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solutions-architect-dsg-inc-hyderabad-5-to-14-years-070826503902",
+    "apply_url": "https://www.naukri.com/job-listings-solutions-architect-dsg-inc-hyderabad-5-to-14-years-070826503902",
+    "ats": "Naukri",
+    "job_id": "070826503902",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Droisys",
@@ -316,7 +823,7 @@
     "job_id": "59955637",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Ensoft Consulting Pte Ltd",
@@ -327,7 +834,43 @@
     "job_id": "62348756",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Epam Systems",
+    "title": "Solution Architect",
+    "location": "10-20 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-epam-systems-hyderabad-10-to-20-years-190826021515",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-epam-systems-hyderabad-10-to-20-years-190826021515",
+    "ats": "Naukri",
+    "job_id": "190826021515",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "FedEx",
+    "title": "Solutions Architect-3",
+    "location": "13-17 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solutions-architect-3-fedex-express-hyderabad-13-to-17-years-200826500580",
+    "apply_url": "https://www.naukri.com/job-listings-solutions-architect-3-fedex-express-hyderabad-13-to-17-years-200826500580",
+    "ats": "Naukri",
+    "job_id": "200826500580",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Genpact",
+    "title": "Genpact Hiring For AWS Solution Architect",
+    "location": "9-14 Yrs Not disclosed Hybrid - Hyderabad, Kolkata, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-genpact-hiring-for-aws-solution-architect-genpact-kolkata-hyderabad-bengaluru-9-to-14-years-010925009067",
+    "apply_url": "https://www.naukri.com/job-listings-genpact-hiring-for-aws-solution-architect-genpact-kolkata-hyderabad-bengaluru-9-to-14-years-010925009067",
+    "ats": "Naukri",
+    "job_id": "010925009067",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Genzeon",
@@ -338,7 +881,7 @@
     "job_id": "60189502",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Grid Dynamics",
@@ -349,7 +892,30 @@
     "job_id": "60457295",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Hexaware Technologies",
+    "title": "SM Solutions Architect",
+    "location": "7-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-sm-solutions-architect-hexaware-technologies-hyderabad-7-to-12-years-290526503478",
+    "apply_url": "https://www.naukri.com/job-listings-sm-solutions-architect-hexaware-technologies-hyderabad-7-to-12-years-290526503478",
+    "ats": "Naukri",
+    "job_id": "290526503478",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "HighRadius",
+    "title": "Technical Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4449564163/",
+    "ats": "Foundit",
+    "job_id": "62528454",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -10
   },
   {
     "company": "Impetus Technologies",
@@ -360,7 +926,7 @@
     "job_id": "34870708",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Infor",
@@ -371,18 +937,42 @@
     "job_id": "58766784",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
-    "company": "IntraEdge",
+    "company": "Innovapptive",
     "title": "Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4444885703/",
-    "ats": "Foundit",
-    "job_id": "60657142",
+    "location": "8-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-innovapptive-global-solutions-pvt-ltd-hyderabad-8-to-15-years-170826502499",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-innovapptive-global-solutions-pvt-ltd-hyderabad-8-to-15-years-170826502499",
+    "ats": "Naukri",
+    "job_id": "170826502499",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 64
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "KPI Partners",
+    "title": "Solution Architect",
+    "location": "12-18 Yrs Not disclosed Hyderabad, Pune, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-kpi-partners-hyderabad-pune-bengaluru-12-to-18-years-120826024608",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-kpi-partners-hyderabad-pune-bengaluru-12-to-18-years-120826024608",
+    "ats": "Naukri",
+    "job_id": "120826024608",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Kanerika Software",
+    "title": "Presales Solution Architect",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/38026438",
+    "ats": "Foundit",
+    "job_id": "38026438",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Kudzuinfotech Private Limited",
@@ -393,7 +983,7 @@
     "job_id": "33466501",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "LTM",
@@ -404,7 +994,7 @@
     "job_id": "63138456",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Larsen & Toubro Limited",
@@ -415,7 +1005,30 @@
     "job_id": "33626774",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Launch IT Consulting",
+    "title": "Solution Architect",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/34927277",
+    "ats": "Foundit",
+    "job_id": "34927277",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Lloyds Technology Centre",
+    "title": "Solution Architect",
+    "location": "16-20 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-lloyds-technology-centre-hyderabad-16-to-20-years-130826017239",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-lloyds-technology-centre-hyderabad-16-to-20-years-130826017239",
+    "ats": "Naukri",
+    "job_id": "130826017239",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Mahindra Satyam",
@@ -426,7 +1039,30 @@
     "job_id": "63242871",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Medtronic",
+    "title": "Principal IT Technologist - SAP WM Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4258002033/",
+    "ats": "Foundit",
+    "job_id": "58899110",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -10
+  },
+  {
+    "company": "Mind Waveai Solutions",
+    "title": "Solution Architect - Node.js",
+    "location": "10-12 Yrs Not disclosed Hybrid - Hyderabad(Madhapur)",
+    "url": "https://www.naukri.com/job-listings-solution-architect-node-js-mind-waveai-solutions-hyderabad-10-to-12-years-230726036438",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-node-js-mind-waveai-solutions-hyderabad-10-to-12-years-230726036438",
+    "ats": "Naukri",
+    "job_id": "230726036438",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Mindstech",
@@ -437,7 +1073,7 @@
     "job_id": "34503276",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Mindstech",
@@ -448,7 +1084,30 @@
     "job_id": "34503246",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Movate Technologies",
+    "title": "Solution Architect",
+    "location": "10-20 Yrs 30-45 Lacs PA Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-movate-technologies-hyderabad-chennai-bengaluru-10-to-20-years-140826030557",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-movate-technologies-hyderabad-chennai-bengaluru-10-to-20-years-140826030557",
+    "ats": "Naukri",
+    "job_id": "140826030557",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "NVIDIA",
+    "title": "System Software Architect, Programmable Vision Accelerator",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/34502086",
+    "ats": "Foundit",
+    "job_id": "34502086",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "NomiSo",
@@ -459,7 +1118,7 @@
     "job_id": "48107079",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "NomiSo",
@@ -470,7 +1129,43 @@
     "job_id": "48152453",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Nomiso",
+    "title": "Application Solution Architect",
+    "location": "15-18 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-application-solution-architect-nomiso-india-hyderabad-15-to-18-years-120826920844",
+    "apply_url": "https://www.naukri.com/job-listings-application-solution-architect-nomiso-india-hyderabad-15-to-18-years-120826920844",
+    "ats": "Naukri",
+    "job_id": "120826920844",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Optimum Solutions",
+    "title": "Workday Solution Architect",
+    "location": "10-20 Yrs Not disclosed Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-workday-solution-architect-optimum-solutions-hyderabad-chennai-bengaluru-10-to-20-years-060826017156",
+    "apply_url": "https://www.naukri.com/job-listings-workday-solution-architect-optimum-solutions-hyderabad-chennai-bengaluru-10-to-20-years-060826017156",
+    "ats": "Naukri",
+    "job_id": "060826017156",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Palni",
+    "title": "Jira Solution Architect-C2H role",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-jira-solution-architect-c2h-role-palni-hyderabad-10-to-15-years-070826038842",
+    "apply_url": "https://www.naukri.com/job-listings-jira-solution-architect-c2h-role-palni-hyderabad-10-to-15-years-070826038842",
+    "ats": "Naukri",
+    "job_id": "070826038842",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Palo Alto Networks",
@@ -481,7 +1176,7 @@
     "job_id": "60673392",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Palo Alto Networks",
@@ -492,7 +1187,31 @@
     "job_id": "60811614",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "People Impact",
+    "title": "Solution Architect",
+    "location": "12-20 Yrs Not disclosed Hyderabad, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-people-impact-hyderabad-bengaluru-12-to-20-years-130826030267",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-people-impact-hyderabad-bengaluru-12-to-20-years-130826030267",
+    "ats": "Naukri",
+    "job_id": "130826030267",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Profitics",
+    "title": "Dot Net Application Architect",
+    "location": "4-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-dot-net-application-architect-profitics-hyderabad-4-to-9-years-100223501823",
+    "apply_url": "https://www.naukri.com/job-listings-dot-net-application-architect-profitics-hyderabad-4-to-9-years-100223501823",
+    "ats": "Naukri",
+    "job_id": "100223501823",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Prolifics Corporation",
@@ -503,7 +1222,79 @@
     "job_id": "34849497",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Purview Services",
+    "title": "GCP Solution Architect",
+    "location": "6-10 Yrs 15-20 Lacs PA Hyderabad",
+    "url": "https://www.naukri.com/job-listings-gcp-solution-architect-purview-services-hyderabad-6-to-10-years-070826934604",
+    "apply_url": "https://www.naukri.com/job-listings-gcp-solution-architect-purview-services-hyderabad-6-to-10-years-070826934604",
+    "ats": "Naukri",
+    "job_id": "070826934604",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Purview Services",
+    "title": "Solution Architect",
+    "location": "10-20 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-purview-india-consulting-and-services-llp-hyderabad-10-to-20-years-180826917110",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-purview-india-consulting-and-services-llp-hyderabad-10-to-20-years-180826917110",
+    "ats": "Naukri",
+    "job_id": "180826917110",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Purview Services",
+    "title": "Solution Architect (PowerApps)",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-powerapps-purview-india-consulting-and-services-llp-hyderabad-10-to-15-years-180826918652",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-powerapps-purview-india-consulting-and-services-llp-hyderabad-10-to-15-years-180826918652",
+    "ats": "Naukri",
+    "job_id": "180826918652",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Purview Services",
+    "title": "Solution Architect OBRM",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-obrm-purview-india-consulting-and-services-llp-hyderabad-10-to-15-years-180826920554",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-obrm-purview-india-consulting-and-services-llp-hyderabad-10-to-15-years-180826920554",
+    "ats": "Naukri",
+    "job_id": "180826920554",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Qualminds",
+    "title": "Dot NET Technical Architect",
+    "location": "12-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-dot-net-technical-architect-qualminds-technologies-pvt-ltd-hyderabad-12-to-15-years-120325500209",
+    "apply_url": "https://www.naukri.com/job-listings-dot-net-technical-architect-qualminds-technologies-pvt-ltd-hyderabad-12-to-15-years-120325500209",
+    "ats": "Naukri",
+    "job_id": "120325500209",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Reckitt",
+    "title": "Solution Architect (Factory)",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-factory-reckitt-hyderabad-10-to-15-years-050822500436",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-factory-reckitt-hyderabad-10-to-15-years-050822500436",
+    "ats": "Naukri",
+    "job_id": "050822500436",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Rimini Street",
@@ -514,7 +1305,19 @@
     "job_id": "57803216",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "S P A Enterprise Info Services",
+    "title": "Solution Architect",
+    "location": "12-20 Yrs Not disclosed Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-s-p-a-enterprise-info-services-hyderabad-chennai-bengaluru-12-to-20-years-040826019471",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-s-p-a-enterprise-info-services-hyderabad-chennai-bengaluru-12-to-20-years-040826019471",
+    "ats": "Naukri",
+    "job_id": "040826019471",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "S2 Integrators",
@@ -525,7 +1328,7 @@
     "job_id": "52949980",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Sandhata Technologies private Limited",
@@ -536,7 +1339,18 @@
     "job_id": "35480073",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Seven N Half Private Limited",
+    "title": "VLSI Backend Architect",
+    "location": "Bengaluru, Hyderabad",
+    "url": "https://www.foundit.in/job/58097113",
+    "ats": "Foundit",
+    "job_id": "58097113",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Simba Technologies",
@@ -547,7 +1361,7 @@
     "job_id": "37599141",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Solugenix",
@@ -558,7 +1372,7 @@
     "job_id": "60657729",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Stolt-Nielsen",
@@ -569,7 +1383,7 @@
     "job_id": "61663152",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Storable",
@@ -580,7 +1394,7 @@
     "job_id": "44266194",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Straive",
@@ -591,7 +1405,7 @@
     "job_id": "61670371",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Synchrony",
@@ -602,7 +1416,19 @@
     "job_id": "62296688",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Synchrony",
+    "title": "AVP, Solution Architect (L11)",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-10-to-15-years-200826503502",
+    "apply_url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-10-to-15-years-200826503502",
+    "ats": "Naukri",
+    "job_id": "200826503502",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Syniti",
@@ -613,7 +1439,7 @@
     "job_id": "56982725",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Syntax",
@@ -624,40 +1450,7 @@
     "job_id": "56596330",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
-  },
-  {
-    "company": "Tableau",
-    "title": "Technical Architect - Analytics",
-    "location": "Hyderabad, Bengaluru, India",
-    "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/India---Bangalore/Technical-Architect---Analytics_JR356375",
-    "ats": "Foundit",
-    "job_id": "63127072",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 64
-  },
-  {
-    "company": "Tableau",
-    "title": "Technical Architect - Data Cloud exp mandatory",
-    "location": "Hyderabad, Bengaluru, India",
-    "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/India---Hyderabad/Technical-Architect---Data-Cloud_JR352405",
-    "ats": "Foundit",
-    "job_id": "61325382",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 64
-  },
-  {
-    "company": "Tableau",
-    "title": "Technical Architect/ Senior Technical Architect - Data Cloud exp mandatory",
-    "location": "Hyderabad, Bengaluru, India",
-    "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/India---Hyderabad/Technical-Architect---Data-Cloud_JR352405",
-    "ats": "Foundit",
-    "job_id": "62351342",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Tachyon Technologies",
@@ -668,7 +1461,7 @@
     "job_id": "63069140",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Tachyon Technologies",
@@ -679,7 +1472,90 @@
     "job_id": "62524391",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Tech Mahindra",
+    "title": "SAP BTP Solution Architect",
+    "location": "15-24 Yrs Not disclosed Hybrid - Hyderabad, Pune, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-sap-btp-solution-architect-tech-mahindra-hyderabad-pune-bengaluru-15-to-24-years-170326010185",
+    "apply_url": "https://www.naukri.com/job-listings-sap-btp-solution-architect-tech-mahindra-hyderabad-pune-bengaluru-15-to-24-years-170326010185",
+    "ats": "Naukri",
+    "job_id": "170326010185",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Tekskills",
+    "title": "Kinaxis Solution Architect",
+    "location": "12-22 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-kinaxis-solution-architect-tekskills-hyderabad-12-to-22-years-180826926969",
+    "apply_url": "https://www.naukri.com/job-listings-kinaxis-solution-architect-tekskills-hyderabad-12-to-22-years-180826926969",
+    "ats": "Naukri",
+    "job_id": "180826926969",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Tekskills",
+    "title": "Solution Architect",
+    "location": "10-20 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-tekskills-hyderabad-10-to-20-years-180826933430",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-tekskills-hyderabad-10-to-20-years-180826933430",
+    "ats": "Naukri",
+    "job_id": "180826933430",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Tekskills",
+    "title": "Solutions Architect",
+    "location": "10-18 Yrs Not disclosed Hyderabad, Chennai",
+    "url": "https://www.naukri.com/job-listings-solutions-architect-tekskills-hyderabad-chennai-10-to-18-years-200826014591",
+    "apply_url": "https://www.naukri.com/job-listings-solutions-architect-tekskills-hyderabad-chennai-10-to-18-years-200826014591",
+    "ats": "Naukri",
+    "job_id": "200826014591",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Texas Instruments",
+    "title": "Solutions Architect",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solutions-architect-texas-instruments-india-ltd-hyderabad-5-to-10-years-130326504667",
+    "apply_url": "https://www.naukri.com/job-listings-solutions-architect-texas-instruments-india-ltd-hyderabad-5-to-10-years-130326504667",
+    "ats": "Naukri",
+    "job_id": "130326504667",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Trigyn Technologies Limited",
+    "title": "Technical Architect",
+    "location": "Hyderabad, Chennai, Pune",
+    "url": "https://www.foundit.in/job/34013872",
+    "ats": "Foundit",
+    "job_id": "34013872",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "UST",
+    "title": "Solution Architect IAM",
+    "location": "12-19 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-iam-ust-hyderabad-12-to-19-years-070826501682",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-iam-ust-hyderabad-12-to-19-years-070826501682",
+    "ats": "Naukri",
+    "job_id": "070826501682",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Unison Group New Zealand",
@@ -690,7 +1566,7 @@
     "job_id": "52588641",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "ValGenesis",
@@ -701,7 +1577,7 @@
     "job_id": "48789868",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Venito It Solutions Private Limited",
@@ -712,7 +1588,7 @@
     "job_id": "62478273",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "WonderBotz",
@@ -723,7 +1599,65 @@
     "job_id": "57789819",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Xanika Infotech",
+    "title": "PROS CPQ Solution Architect",
+    "location": "10-15 Yrs Not disclosed Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-pros-cpq-solution-architect-xanika-infotech-hyderabad-chennai-bengaluru-10-to-15-years-140826031517",
+    "apply_url": "https://www.naukri.com/job-listings-pros-cpq-solution-architect-xanika-infotech-hyderabad-chennai-bengaluru-10-to-15-years-140826031517",
+    "ats": "Naukri",
+    "job_id": "140826031517",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Yash Technologies",
+    "title": "Solution Architect",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-yash-technologies-hyderabad-10-to-15-years-030726505367",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-yash-technologies-hyderabad-10-to-15-years-030726505367",
+    "ats": "Naukri",
+    "job_id": "030726505367",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Yash Technologies",
+    "title": "Solution Architect Celonis",
+    "location": "12-16 Yrs 40-45 Lacs PA Hybrid - Hyderabad, Pune, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-celonis-yash-technologies-hyderabad-pune-bengaluru-12-to-16-years-110826029225",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-celonis-yash-technologies-hyderabad-pune-bengaluru-12-to-16-years-110826029225",
+    "ats": "Naukri",
+    "job_id": "110826029225",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Yash Technologies Private Limited",
+    "title": "SAP PP QM / Solution Architect - SS",
+    "location": "Hyderabad, Bengaluru, Pune",
+    "url": "https://www.foundit.in/job/34113986",
+    "ats": "Foundit",
+    "job_id": "34113986",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Yash Technologies Private Limited",
+    "title": "SAP SD HANA Solution Architect",
+    "location": "Hyderabad, Pune",
+    "url": "https://www.foundit.in/job/33993427",
+    "ats": "Foundit",
+    "job_id": "33993427",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "ZF Group",
@@ -734,7 +1668,18 @@
     "job_id": "59857347",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Zensar Technologies",
+    "title": "RTR Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4451103264/",
+    "ats": "Foundit",
+    "job_id": "63475077",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
   },
   {
     "company": "Zensar Technologies",
@@ -745,7 +1690,7 @@
     "job_id": "62954727",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "Zensar Technologies",
@@ -756,7 +1701,7 @@
     "job_id": "62527191",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "dazn india",
@@ -767,7 +1712,7 @@
     "job_id": "36317276",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "healthfirst technologies",
@@ -778,7 +1723,7 @@
     "job_id": "44306017",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "innovapptive inc",
@@ -789,7 +1734,7 @@
     "job_id": "63241639",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "massmutual india",
@@ -800,7 +1745,7 @@
     "job_id": "61049843",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "mindsuite informatics private limited",
@@ -811,7 +1756,7 @@
     "job_id": "36802588",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "modmed india",
@@ -822,7 +1767,7 @@
     "job_id": "51338483",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "modmed india",
@@ -833,7 +1778,7 @@
     "job_id": "58158367",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "seosaph-infotech",
@@ -844,7 +1789,7 @@
     "job_id": "51214454",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "spydra",
@@ -855,7 +1800,7 @@
     "job_id": "41798114",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "storable india",
@@ -866,7 +1811,7 @@
     "job_id": "44587989",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "thryve digital health llp",
@@ -877,7 +1822,7 @@
     "job_id": "61151005",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
   },
   {
     "company": "wsa - wonderful sound for all",
@@ -888,7 +1833,31 @@
     "job_id": "59019023",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 64
+    "match_score": -10
+  },
+  {
+    "company": "Intrics Solutions",
+    "title": "Senior / Lead .Net FullStack Developer",
+    "location": "10-20 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-lead-net-fullstack-developer-intrics-solutions-hyderabad-10-to-20-years-180826040348",
+    "apply_url": "https://www.naukri.com/job-listings-senior-lead-net-fullstack-developer-intrics-solutions-hyderabad-10-to-20-years-180826040348",
+    "ats": "Naukri",
+    "job_id": "180826040348",
+    "already_applied": false,
+    "match_score": -14,
+    "over_cap": false
+  },
+  {
+    "company": "NTT DATA, Inc.",
+    "title": "Lead .NET Full Stack Developer",
+    "location": "10-20 Yrs Not disclosed Hybrid - Hyderabad, Noida, Gurugram",
+    "url": "https://www.naukri.com/job-listings-lead-net-full-stack-developer-ntt-data-inc-noida-hyderabad-gurugram-10-to-20-years-140826019624",
+    "apply_url": "https://www.naukri.com/job-listings-lead-net-full-stack-developer-ntt-data-inc-noida-hyderabad-gurugram-10-to-20-years-140826019624",
+    "ats": "Naukri",
+    "job_id": "140826019624",
+    "already_applied": false,
+    "match_score": -14,
+    "over_cap": false
   },
   {
     "company": "NextPower Capital",
@@ -899,7 +1868,43 @@
     "job_id": "53113547",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 60
+    "match_score": -14
+  },
+  {
+    "company": "Pyramid It Consulting",
+    "title": "Lead .Net Developer (US Mortgage)",
+    "location": "8-13 Yrs Not disclosed Hybrid - Hyderabad, Noida",
+    "url": "https://www.naukri.com/job-listings-lead-net-developer-us-mortgage-pyramid-it-consulting-noida-hyderabad-8-to-13-years-210726031249",
+    "apply_url": "https://www.naukri.com/job-listings-lead-net-developer-us-mortgage-pyramid-it-consulting-noida-hyderabad-8-to-13-years-210726031249",
+    "ats": "Naukri",
+    "job_id": "210726031249",
+    "already_applied": false,
+    "match_score": -14,
+    "over_cap": false
+  },
+  {
+    "company": "Pyramid It Consulting",
+    "title": "Sr/Lead .Net Developer - US Mortgage",
+    "location": "8-12 Yrs 20-35 Lacs PA Hybrid - Hyderabad, Noida, Thiruvananthapuram",
+    "url": "https://www.naukri.com/job-listings-sr-lead-net-developer-us-mortgage-pyramid-it-consulting-noida-hyderabad-thiruvananthapuram-8-to-12-years-060726020702",
+    "apply_url": "https://www.naukri.com/job-listings-sr-lead-net-developer-us-mortgage-pyramid-it-consulting-noida-hyderabad-thiruvananthapuram-8-to-12-years-060726020702",
+    "ats": "Naukri",
+    "job_id": "060726020702",
+    "already_applied": false,
+    "match_score": -14,
+    "over_cap": false
+  },
+  {
+    "company": "Simcorp",
+    "title": "Lead .Net Developer For Artificial Intelligence Team",
+    "location": "0-5 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-net-developer-for-artificial-intelligence-team-simcorp-hyderabad-0-to-5-years-090726500499",
+    "apply_url": "https://www.naukri.com/job-listings-lead-net-developer-for-artificial-intelligence-team-simcorp-hyderabad-0-to-5-years-090726500499",
+    "ats": "Naukri",
+    "job_id": "090726500499",
+    "already_applied": false,
+    "match_score": -14,
+    "over_cap": false
   },
   {
     "company": "Microsoft Corp",
@@ -910,7 +1915,7 @@
     "job_id": "63065616",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 58
+    "match_score": -16
   },
   {
     "company": "Nasuni",
@@ -921,7 +1926,7 @@
     "job_id": "51320253",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 58
+    "match_score": -16
   },
   {
     "company": "Syneos Health",
@@ -932,18 +1937,7 @@
     "job_id": "58756207",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 58
-  },
-  {
-    "company": "Keka HR",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://www.instahyre.com/job-405915-principal-software-engineer-at-keka-hr-hyderabad/",
-    "ats": "Instahyre",
-    "job_id": "405915",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 56
+    "match_score": -16
   },
   {
     "company": "AMD Maquinaria",
@@ -954,7 +1948,7 @@
     "job_id": "59042168",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "AMD Ventures",
@@ -965,7 +1959,19 @@
     "job_id": "55510940",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "Aifa Labs",
+    "title": "Staff Software Engineer Platform & Distributed Systems The Problem",
+    "location": "8-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-platform-distributed-systems-the-problem-aifa-labs-hyderabad-8-to-13-years-070726502428",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-platform-distributed-systems-the-problem-aifa-labs-hyderabad-8-to-13-years-070726502428",
+    "ats": "Naukri",
+    "job_id": "070726502428",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Amazon Robotics",
@@ -976,7 +1982,7 @@
     "job_id": "63144367",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Amazon Robotics",
@@ -987,7 +1993,19 @@
     "job_id": "63086963",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "Amgen Inc",
+    "title": "Principal Software Engineer - Clinical Data Foundation",
+    "location": "12-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-clinical-data-foundation-amgen-inc-hyderabad-12-to-15-years-200726932678",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-clinical-data-foundation-amgen-inc-hyderabad-12-to-15-years-200726932678",
+    "ats": "Naukri",
+    "job_id": "200726932678",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Arcadis",
@@ -998,7 +2016,7 @@
     "job_id": "59682716",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Arcesium",
@@ -1009,18 +2027,42 @@
     "job_id": "55659222",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Blue Yonder",
-    "title": "Staff Software Engineer I - NodeJS, Microservices, Cloud & Typescript/JavaScript",
-    "location": "Hyderabad, India",
-    "url": "https://jda.wd5.myworkdayjobs.com/en-US/JDA_Careers/job/Hyderabad/Staff-Software-Engineer-I---NodeJS--Microservices--Cloud---Typescript-JavaScript_262632",
-    "ats": "Foundit",
-    "job_id": "63267894",
+    "title": "Staff Software Engineer I - NodeJS, Microservices",
+    "location": "10-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-i-nodejs-microservices-jda-software-hyderabad-10-to-13-years-180826502385",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-i-nodejs-microservices-jda-software-hyderabad-10-to-13-years-180826502385",
+    "ats": "Naukri",
+    "job_id": "180826502385",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 50
+    "match_score": -24,
+    "over_cap": false
+  },
+  {
+    "company": "Blue Yonder",
+    "title": "Staff Software Engineer II - ReactJS, Java8, Microservices, Springboot & Cloud",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4455969489/",
+    "ats": "Foundit",
+    "job_id": "63484237",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
+  },
+  {
+    "company": "Capgemini",
+    "title": "Principal Software Engineer",
+    "location": "0-5 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-capgemini-technology-services-india-limited-hyderabad-0-to-5-years-110826930653",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-capgemini-technology-services-india-limited-hyderabad-0-to-5-years-110826930653",
+    "ats": "Naukri",
+    "job_id": "110826930653",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Cbre",
@@ -1031,7 +2073,7 @@
     "job_id": "63244536",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Coinbase India Services",
@@ -1042,7 +2084,30 @@
     "job_id": "37103546",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "D. E. Shaw",
+    "title": "Principal Engineering Manager",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-439369-principal-engineering-manager-at-d-e-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439369",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
+  },
+  {
+    "company": "Google",
+    "title": "Staff Software Engineer, Google Cloud",
+    "location": "1-4 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-google-cloud-google-india-private-limited-hyderabad-1-to-4-years-310725500587",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-google-cloud-google-india-private-limited-hyderabad-1-to-4-years-310725500587",
+    "ats": "Naukri",
+    "job_id": "310725500587",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Google India",
@@ -1053,7 +2118,7 @@
     "job_id": "60050290",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Google India",
@@ -1064,7 +2129,18 @@
     "job_id": "55760655",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "Helfie.AI",
+    "title": "Principal Engineer (Backend)",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-438142-principal-engineer-backend-at-helfie-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "438142",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Innovapptive",
@@ -1075,7 +2151,7 @@
     "job_id": "34950952",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Invesco",
@@ -1086,18 +2162,7 @@
     "job_id": "55292880",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
-  },
-  {
-    "company": "JP Morgan Chase & Co.",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210722037/?location=India&locationId=300000000289360&locationLevel=country",
-    "ats": "Foundit",
-    "job_id": "48986309",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Kanerika Software Private Limited",
@@ -1108,7 +2173,7 @@
     "job_id": "35484127",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Matillion",
@@ -1119,18 +2184,29 @@
     "job_id": "40350615",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
-    "company": "Microchip Technology",
-    "title": "Principal Engineer - Characterization",
+    "company": "Medtronic",
+    "title": "Senior Principal Software Engineer",
     "location": "Hyderabad, India",
-    "url": "https://wd5.myworkdaysite.com/en-US/recruiting/microchiphr/External/job/India---Hyderabad/Principal-Engineer---Validation_R28-25",
+    "url": "https://www.linkedin.com/jobs/view/4363422615/",
     "ats": "Foundit",
-    "job_id": "61440436",
+    "job_id": "60459612",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "Micron Technology",
+    "title": "Hardware Engineer DMTS/SMTS/MTS/Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4439855237/",
+    "ats": "Foundit",
+    "job_id": "59101132",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Micron Technology",
@@ -1141,7 +2217,7 @@
     "job_id": "53113791",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Microsoft Corp",
@@ -1152,18 +2228,40 @@
     "job_id": "58153857",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Microsoft Corp",
-    "title": "Principal Software Engineer",
+    "title": "Principal Software Engineering Manager",
     "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4448865535/",
+    "url": "https://www.linkedin.com/jobs/view/4449493814/",
     "ats": "Foundit",
-    "job_id": "63125953",
+    "job_id": "61663187",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineering Manager - Databases",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4416671516/",
+    "ats": "Foundit",
+    "job_id": "57411559",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -24
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineering Manager- GitHub India",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4415356816/",
+    "ats": "Foundit",
+    "job_id": "53799399",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -24
   },
   {
     "company": "Nasuni",
@@ -1174,7 +2272,19 @@
     "job_id": "56594539",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "Optum",
+    "title": "Principal Software Engineer",
+    "location": "11-16 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-optum-global-solutions-india-private-limited-hyderabad-11-to-16-years-190826927566",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-optum-global-solutions-india-private-limited-hyderabad-11-to-16-years-190826927566",
+    "ats": "Naukri",
+    "job_id": "190826927566",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Palo Alto Networks",
@@ -1185,7 +2295,7 @@
     "job_id": "60452865",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Phenom",
@@ -1196,7 +2306,7 @@
     "job_id": "47391527",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Phenom",
@@ -1207,7 +2317,42 @@
     "job_id": "55758361",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "Phenom",
+    "title": "Product Principal Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/34786718",
+    "ats": "Foundit",
+    "job_id": "34786718",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
+  },
+  {
+    "company": "Providence College Of Engineering",
+    "title": "Principal Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-10-to-15-years-240726506589",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-10-to-15-years-240726506589",
+    "ats": "Naukri",
+    "job_id": "240726506589",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
+  },
+  {
+    "company": "Redwood Software India",
+    "title": "Principal Software Engineer",
+    "location": "11-15 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-redwood-software-india-hyderabad-11-to-15-years-220726024526",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-redwood-software-india-hyderabad-11-to-15-years-220726024526",
+    "ats": "Naukri",
+    "job_id": "220726024526",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Renesas Electronics",
@@ -1218,7 +2363,7 @@
     "job_id": "44200483",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Renesas Electronics",
@@ -1229,7 +2374,7 @@
     "job_id": "47691159",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "SS&C Technologies",
@@ -1240,7 +2385,7 @@
     "job_id": "61288763",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Silicon Labs",
@@ -1251,7 +2396,7 @@
     "job_id": "62178656",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "SimCorp",
@@ -1262,18 +2407,7 @@
     "job_id": "52953327",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
-  },
-  {
-    "company": "Solera",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Principal-Software-Engineer_JR-019229",
-    "ats": "Foundit",
-    "job_id": "62350523",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Sugary",
@@ -1284,7 +2418,7 @@
     "job_id": "42230150",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Synchrony",
@@ -1295,18 +2429,18 @@
     "job_id": "63131903",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
-    "company": "TTEC India Customer Solutions Private Limited",
-    "title": "Systems Software Principal Engineer",
-    "location": "Delhi, Hyderabad, Bengaluru",
-    "url": "https://ttec.taleo.net/careersection/10008/jobsearch.ftl",
+    "company": "Teradata",
+    "title": "Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/63478764",
     "ats": "Foundit",
-    "job_id": "33862060",
+    "job_id": "63478764",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 50
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Teradata",
@@ -1317,29 +2451,7 @@
     "job_id": "60189725",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
-  },
-  {
-    "company": "The Wells Fargo Foundation",
-    "title": "Principal Engineer - Generative AI Data & Analytics",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer---Generative-AI-Data---Analytics_R-560217",
-    "ats": "Foundit",
-    "job_id": "60437943",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 50
-  },
-  {
-    "company": "The Wells Fargo Foundation",
-    "title": "Principal Engineer - Martech",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer---Martech_R-564444",
-    "ats": "Foundit",
-    "job_id": "60967636",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "TriNet",
@@ -1350,7 +2462,19 @@
     "job_id": "52513057",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "Trinet Group",
+    "title": "Principal Software Engineer",
+    "location": "12-17 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-trinet-group-inc-hyderabad-12-to-17-years-190626500323",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-trinet-group-inc-hyderabad-12-to-17-years-190626500323",
+    "ats": "Naukri",
+    "job_id": "190626500323",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Veeva Systems",
@@ -1361,18 +2485,7 @@
     "job_id": "58762431",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
-  },
-  {
-    "company": "aifa labs",
-    "title": "Staff Software Engineer Platform & Distributed Systems The Problem",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4436099051/",
-    "ats": "Foundit",
-    "job_id": "58431414",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "coherent corp.",
@@ -1383,7 +2496,19 @@
     "job_id": "52584542",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "iCresset Talent Solutions",
+    "title": "Principal Software Engineer",
+    "location": "12-18 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-icresset-talent-solutions-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-12-to-18-years-110423500983",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-icresset-talent-solutions-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-12-to-18-years-110423500983",
+    "ats": "Naukri",
+    "job_id": "110423500983",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "isolved",
@@ -1394,7 +2519,29 @@
     "job_id": "59663527",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
+  },
+  {
+    "company": "marriott tech accelerator",
+    "title": "Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4455277693/",
+    "ats": "Foundit",
+    "job_id": "63478660",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
+  },
+  {
+    "company": "mcdonald's global office in india",
+    "title": "Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4335861330/",
+    "ats": "Foundit",
+    "job_id": "55392734",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "microchip technology inc.",
@@ -1405,7 +2552,7 @@
     "job_id": "53599047",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "providence india",
@@ -1416,7 +2563,7 @@
     "job_id": "60054748",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "randstad enterprise",
@@ -1427,7 +2574,7 @@
     "job_id": "60673743",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "solera holdings, llc.",
@@ -1438,7 +2585,7 @@
     "job_id": "63108282",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "talentiser",
@@ -1449,7 +2596,7 @@
     "job_id": "39280754",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "wsa - wonderful sound for all",
@@ -1460,7 +2607,7 @@
     "job_id": "59018676",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 50
+    "match_score": -24
   },
   {
     "company": "Aspire Systems India",
@@ -1471,7 +2618,7 @@
     "job_id": "61321438",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
+    "match_score": -26
   },
   {
     "company": "Cendyn",
@@ -1482,7 +2629,19 @@
     "job_id": "46888283",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
+    "match_score": -26
+  },
+  {
+    "company": "EDGE Executive Search",
+    "title": "Solution Architect - Gen AI - Life Sciences",
+    "location": "10-15 Yrs Not disclosed Hybrid - Hyderabad, Pune, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-gen-ai-life-sciences-edge-executive-search-hyderabad-pune-bengaluru-10-to-15-years-170626015531",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-gen-ai-life-sciences-edge-executive-search-hyderabad-pune-bengaluru-10-to-15-years-170626015531",
+    "ats": "Naukri",
+    "job_id": "170626015531",
+    "already_applied": false,
+    "match_score": -26,
+    "over_cap": false
   },
   {
     "company": "Exl",
@@ -1493,7 +2652,7 @@
     "job_id": "61049115",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
+    "match_score": -26
   },
   {
     "company": "FactSet",
@@ -1504,29 +2663,19 @@
     "job_id": "61049444",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
+    "match_score": -26
   },
   {
-    "company": "Freshworks",
-    "title": "Senior Staff Engineer",
-    "location": "Hyderabad  in",
-    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000139205539",
-    "ats": "SmartRecruiters",
-    "job_id": "744000139205539",
+    "company": "Genpact",
+    "title": "Inviting applications For GenAI Solution Architect",
+    "location": "10-16 Yrs Not disclosed Hybrid - Hyderabad, Bengaluru, Delhi / NCR",
+    "url": "https://www.naukri.com/job-listings-inviting-applications-for-genai-solution-architect-genpact-hyderabad-bengaluru-delhi-ncr-10-to-16-years-250226029446",
+    "apply_url": "https://www.naukri.com/job-listings-inviting-applications-for-genai-solution-architect-genpact-hyderabad-bengaluru-delhi-ncr-10-to-16-years-250226029446",
+    "ats": "Naukri",
+    "job_id": "250226029446",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 48
-  },
-  {
-    "company": "Freshworks",
-    "title": "Senior Staff Software Engineer - Full Stack",
-    "location": "Hyderabad  in",
-    "url": "https://api.smartrecruiters.com/v1/companies/Freshworks/postings/744000134600339",
-    "ats": "SmartRecruiters",
-    "job_id": "744000134600339",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 48
+    "match_score": -26,
+    "over_cap": false
   },
   {
     "company": "Google India",
@@ -1537,7 +2686,42 @@
     "job_id": "62527276",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
+    "match_score": -26
+  },
+  {
+    "company": "Google India",
+    "title": "Software Engineering Manager, Looker, Google Cloud",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4450347713/",
+    "ats": "Foundit",
+    "job_id": "63065805",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -26
+  },
+  {
+    "company": "Krazy Mantra It",
+    "title": "Gen AI , AI/ML Solution Architect",
+    "location": "2-6 Yrs Not disclosed Hyderabad, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-gen-ai-ai-ml-solution-architect-krazy-mantra-group-of-companies-hyderabad-pune-chennai-bengaluru-2-to-6-years-220425503077",
+    "apply_url": "https://www.naukri.com/job-listings-gen-ai-ai-ml-solution-architect-krazy-mantra-group-of-companies-hyderabad-pune-chennai-bengaluru-2-to-6-years-220425503077",
+    "ats": "Naukri",
+    "job_id": "220425503077",
+    "already_applied": false,
+    "match_score": -26,
+    "over_cap": false
+  },
+  {
+    "company": "Krazy Mantra It",
+    "title": "Technical Leads / Architects",
+    "location": "2-5 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-leads-architects-krazy-mantra-group-of-companies-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-2-to-5-years-220425503015",
+    "apply_url": "https://www.naukri.com/job-listings-technical-leads-architects-krazy-mantra-group-of-companies-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-2-to-5-years-220425503015",
+    "ats": "Naukri",
+    "job_id": "220425503015",
+    "already_applied": false,
+    "match_score": -26,
+    "over_cap": false
   },
   {
     "company": "NetCom Learning",
@@ -1548,7 +2732,7 @@
     "job_id": "60463136",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
+    "match_score": -26
   },
   {
     "company": "QualiZeal",
@@ -1559,18 +2743,43 @@
     "job_id": "60554353",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
+    "match_score": -26
   },
   {
-    "company": "The Wells Fargo Foundation",
-    "title": "Lead Software Engineer (KAFKA, MULESOFT, IDMC, APIGEE, API Development & Integration)",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Lead-Software-Engineer--KAFKA--MULESOFT--IDMC--APIGEE--API-Development---Integration-_R-563674-1",
-    "ats": "Foundit",
-    "job_id": "62357688",
+    "company": "Synchrony",
+    "title": "AVP Sys Admin & AI Solution Architect (L10)",
+    "location": "7-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-avp-sys-admin-ai-solution-architect-l10-synchrony-international-services-hyderabad-7-to-12-years-150726503982",
+    "apply_url": "https://www.naukri.com/job-listings-avp-sys-admin-ai-solution-architect-l10-synchrony-international-services-hyderabad-7-to-12-years-150726503982",
+    "ats": "Naukri",
+    "job_id": "150726503982",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 48
+    "match_score": -26,
+    "over_cap": false
+  },
+  {
+    "company": "The Hartford",
+    "title": "Lead Software Engineer - AWS",
+    "location": "4-5 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-aws-the-hartford-hyderabad-4-to-5-years-120826504946",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-aws-the-hartford-hyderabad-4-to-5-years-120826504946",
+    "ats": "Naukri",
+    "job_id": "120826504946",
+    "already_applied": false,
+    "match_score": -26,
+    "over_cap": false
+  },
+  {
+    "company": "Wsne Consulting",
+    "title": "GenAI Architect / GenAI Technical Lead",
+    "location": "6-10 Yrs 14-24 Lacs PA Hyderabad, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-genai-architect-genai-technical-lead-wsne-consulting-hyderabad-bengaluru-6-to-10-years-190826016624",
+    "apply_url": "https://www.naukri.com/job-listings-genai-architect-genai-technical-lead-wsne-consulting-hyderabad-bengaluru-6-to-10-years-190826016624",
+    "ats": "Naukri",
+    "job_id": "190826016624",
+    "already_applied": false,
+    "match_score": -26,
+    "over_cap": false
   },
   {
     "company": "aifa labs",
@@ -1581,7 +2790,7 @@
     "job_id": "58182747",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
+    "match_score": -26
   },
   {
     "company": "iteria.us",
@@ -1592,18 +2801,7 @@
     "job_id": "59770423",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 48
-  },
-  {
-    "company": "Charles Schwab",
-    "title": "Senior Engineering Manager Software Development And Engineering Pl",
-    "location": "Hyderabad",
-    "url": "https://www.schwabjobs.com/job/hyderabad/senior-engineering-manager-software-development-and-engineering-pl/33727/99161515632",
-    "ats": "Phenom",
-    "job_id": "99161515632",
-    "already_applied": false,
-    "match_score": 46,
-    "over_cap": false
+    "match_score": -26
   },
   {
     "company": "Blue Yonder",
@@ -1614,7 +2812,7 @@
     "job_id": "63244682",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 44
+    "match_score": -30
   },
   {
     "company": "Diverse Lynx India Private Limited",
@@ -1625,29 +2823,7 @@
     "job_id": "59994294",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 44
-  },
-  {
-    "company": "State Street",
-    "title": "Senior Software Engineer, AVP",
-    "location": "Hyderabad, India",
-    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
-    "ats": "Workday",
-    "job_id": "Senior-Software-Engineer--AVP_R-792706",
-    "already_applied": false,
-    "match_score": 44,
-    "over_cap": false
-  },
-  {
-    "company": "State Street",
-    "title": "Senior Software Engineer, Officer",
-    "location": "Hyderabad, India",
-    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--Officer_R-795725",
-    "ats": "Workday",
-    "job_id": "Senior-Software-Engineer--Officer_R-795725",
-    "already_applied": false,
-    "match_score": 44,
-    "over_cap": false
+    "match_score": -30
   },
   {
     "company": "arrise solutions (india) pvt. ltd.",
@@ -1658,7 +2834,7 @@
     "job_id": "55362950",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 44
+    "match_score": -30
   },
   {
     "company": "bTranz Solutions",
@@ -1669,7 +2845,7 @@
     "job_id": "63153162",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 44
+    "match_score": -30
   },
   {
     "company": "Agoda",
@@ -1680,7 +2856,31 @@
     "job_id": "58898562",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "CIEL HR",
+    "title": "Staff Software Engineer",
+    "location": "8-10 Yrs Not disclosed Hybrid - Hyderabad, Pune, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-ciel-hr-hyderabad-pune-bengaluru-8-to-10-years-290726010269",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-ciel-hr-hyderabad-pune-bengaluru-8-to-10-years-290726010269",
+    "ats": "Naukri",
+    "job_id": "290726010269",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
+  },
+  {
+    "company": "Candescent",
+    "title": "Software Staff Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-software-staff-engineer-candescent-hyderabad-10-to-15-years-270426503202",
+    "apply_url": "https://www.naukri.com/job-listings-software-staff-engineer-candescent-hyderabad-10-to-15-years-270426503202",
+    "ats": "Naukri",
+    "job_id": "270426503202",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Celigo",
@@ -1691,7 +2891,7 @@
     "job_id": "52515970",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Celigo",
@@ -1702,7 +2902,7 @@
     "job_id": "38021075",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Cohere Health",
@@ -1713,7 +2913,7 @@
     "job_id": "60899157",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Cohere Health",
@@ -1724,7 +2924,30 @@
     "job_id": "59027189",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Coupang",
+    "title": "Senior Staff Software Engineer - IAM",
+    "location": "Bangalore,Hyderabad",
+    "url": "https://www.instahyre.com/job-439017-senior-staff-software-engineer-iam-at-coupang-bangalore-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439017",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
+  },
+  {
+    "company": "Currencies Direct",
+    "title": "Staff Software Engineer - React",
+    "location": "6-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-react-currencies-direct-hyderabad-6-to-10-years-130126507574",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-react-currencies-direct-hyderabad-6-to-10-years-130126507574",
+    "ats": "Naukri",
+    "job_id": "130126507574",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "CyberArk",
@@ -1735,7 +2958,7 @@
     "job_id": "37507902",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Cyient",
@@ -1746,7 +2969,7 @@
     "job_id": "41252239",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Emburse",
@@ -1757,29 +2980,52 @@
     "job_id": "61043495",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
-    "company": "Experian",
-    "title": "Senior Staff Engineer ( AI )",
+    "company": "Google India",
+    "title": "Staff Software Engineer",
     "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4453352627/",
+    "url": "https://www.linkedin.com/jobs/view/4437574417/",
     "ats": "Foundit",
-    "job_id": "62541451",
+    "job_id": "58547258",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
-    "company": "Experian",
-    "title": "Senior Staff Software Engineer",
+    "company": "Google India",
+    "title": "Staff Software Engineer, AI Garage",
     "location": "Hyderabad, India",
-    "url": "https://jobs.smartrecruiters.com/Experian/744000140435649-senior-staff-software-engineer",
+    "url": "https://www.linkedin.com/jobs/view/4445199136/",
     "ats": "Foundit",
-    "job_id": "60726562",
+    "job_id": "62202986",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Google India",
+    "title": "Staff Software Engineer, Storage AI/ML",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4443868231/",
+    "ats": "Foundit",
+    "job_id": "60557793",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -32
+  },
+  {
+    "company": "ILM 360",
+    "title": "Lead Staff Software Engineer",
+    "location": "6-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-staff-software-engineer-ilm-360-hyderabad-6-to-10-years-060624500360",
+    "apply_url": "https://www.naukri.com/job-listings-lead-staff-software-engineer-ilm-360-hyderabad-6-to-10-years-060624500360",
+    "ats": "Naukri",
+    "job_id": "060624500360",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Micron Technology",
@@ -1790,7 +3036,7 @@
     "job_id": "52965407",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Micron Technology",
@@ -1801,7 +3047,41 @@
     "job_id": "52654143",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Micron Technology",
+    "title": "Staff Engineer Design",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4410855040/",
+    "ats": "Foundit",
+    "job_id": "52654546",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -32
+  },
+  {
+    "company": "Micron Technology",
+    "title": "Staff Engineer, CAD",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4414107235/",
+    "ats": "Foundit",
+    "job_id": "55300420",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -32
+  },
+  {
+    "company": "Mihira Ai",
+    "title": "Staff Software Engineer, AI Stack",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-ai-stack-mihira-ai-hyderabad-5-to-10-years-170626501550",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-ai-stack-mihira-ai-hyderabad-5-to-10-years-170626501550",
+    "ats": "Naukri",
+    "job_id": "170626501550",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Nagarro",
@@ -1812,7 +3092,19 @@
     "job_id": "46466221",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Nomiso",
+    "title": "Staff Software Engineer",
+    "location": "12-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-nomiso-india-hyderabad-12-to-15-years-200726922935",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-nomiso-india-hyderabad-12-to-15-years-200726922935",
+    "ats": "Naukri",
+    "job_id": "200726922935",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Outreach",
@@ -1823,7 +3115,7 @@
     "job_id": "48124280",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Redpin Therapeutics",
@@ -1834,7 +3126,7 @@
     "job_id": "59420302",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Renesas Electronics",
@@ -1845,7 +3137,40 @@
     "job_id": "36642051",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Renesas Electronics",
+    "title": "Staff Engineer - Characterization",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4425453368/",
+    "ats": "Foundit",
+    "job_id": "55504656",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -32
+  },
+  {
+    "company": "Renesas Electronics",
+    "title": "Staff Engineer / Sr Engineer / Engineer, Validation",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4413427609/",
+    "ats": "Foundit",
+    "job_id": "52968500",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -32
+  },
+  {
+    "company": "Renesas Electronics",
+    "title": "Staff Engineer, Design Enablement",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4430918828/",
+    "ats": "Foundit",
+    "job_id": "56471189",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -32
   },
   {
     "company": "SiFive",
@@ -1856,7 +3181,19 @@
     "job_id": "62205065",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Sidram Technologies",
+    "title": "Staff Software Engineer",
+    "location": "1-4 Yrs Not disclosed Hyderabad, Warangal, Nizamabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-sidram-technologies-warangal-hyderabad-nizamabad-1-to-4-years-270726505798",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-sidram-technologies-warangal-hyderabad-nizamabad-1-to-4-years-270726505798",
+    "ats": "Naukri",
+    "job_id": "270726505798",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Silicon Labs",
@@ -1867,7 +3204,7 @@
     "job_id": "53824759",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Silicon Labs",
@@ -1878,7 +3215,18 @@
     "job_id": "62831788",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Silicon Labs",
+    "title": "Staff Engineer - IC Design",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4449578551/",
+    "ats": "Foundit",
+    "job_id": "62546753",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -32
   },
   {
     "company": "SkySpecs",
@@ -1889,7 +3237,31 @@
     "job_id": "61317380",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Snow Planet",
+    "title": "Sr Staff Software Engineer",
+    "location": "12-17 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-sr-staff-software-engineer-service-now-planet-hyderabad-12-to-17-years-190826501693",
+    "apply_url": "https://www.naukri.com/job-listings-sr-staff-software-engineer-service-now-planet-hyderabad-12-to-17-years-190826501693",
+    "ats": "Naukri",
+    "job_id": "190826501693",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
+  },
+  {
+    "company": "Snow Planet",
+    "title": "Staff Software Engineer",
+    "location": "8-12 Yrs Not disclosed Hyderabad, Ahmedabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-service-now-planet-hyderabad-ahmedabad-8-to-12-years-200826501390",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-service-now-planet-hyderabad-ahmedabad-8-to-12-years-200826501390",
+    "ats": "Naukri",
+    "job_id": "200826501390",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Sonatype",
@@ -1900,7 +3272,7 @@
     "job_id": "58767905",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Sureify",
@@ -1911,7 +3283,7 @@
     "job_id": "60498655",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Teradata",
@@ -1922,7 +3294,7 @@
     "job_id": "63241511",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Teradata",
@@ -1933,7 +3305,31 @@
     "job_id": "61938478",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "The Hartford",
+    "title": "Staff Software Engineer/AI-ML",
+    "location": "3-8 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-ai-ml-the-hartford-hyderabad-3-to-8-years-080626501746",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-ai-ml-the-hartford-hyderabad-3-to-8-years-080626501746",
+    "ats": "Naukri",
+    "job_id": "080626501746",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
+  },
+  {
+    "company": "The Hartford",
+    "title": "Staff Software Engineer/Data Scientist",
+    "location": "6-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-data-scientist-the-hartford-hyderabad-6-to-9-years-090626502963",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-data-scientist-the-hartford-hyderabad-6-to-9-years-090626502963",
+    "ats": "Naukri",
+    "job_id": "090626502963",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Thermo Fisher Scientific",
@@ -1944,18 +3340,31 @@
     "job_id": "59697822",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
-    "company": "Thermo Fisher Scientific",
-    "title": "Staff Engineer, Software",
-    "location": "Hyderabad",
-    "url": "https://jobs.thermofisher.com/global/en/job/R-01351780/Staff-Engineer,-Software",
-    "ats": "Foundit",
-    "job_id": "60574327",
+    "company": "Thomson Reuters",
+    "title": "Staff Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-220726502060",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-220726502060",
+    "ats": "Naukri",
+    "job_id": "220726502060",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 42
+    "match_score": -32,
+    "over_cap": false
+  },
+  {
+    "company": "Tide Software",
+    "title": "Senior Staff Software Engineer, Agentic Platform",
+    "location": "0-5 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-staff-software-engineer-agentic-platform-tide-software-hyderabad-0-to-5-years-170426503399",
+    "apply_url": "https://www.naukri.com/job-listings-senior-staff-software-engineer-agentic-platform-tide-software-hyderabad-0-to-5-years-170426503399",
+    "ats": "Naukri",
+    "job_id": "170426503399",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "TriNet",
@@ -1966,7 +3375,30 @@
     "job_id": "60658486",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Trinet Group",
+    "title": "Staff Software Engineer",
+    "location": "8-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-trinet-group-inc-hyderabad-8-to-13-years-290726500700",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-trinet-group-inc-hyderabad-8-to-13-years-290726500700",
+    "ats": "Naukri",
+    "job_id": "290726500700",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
+  },
+  {
+    "company": "Uber",
+    "title": "Senior Staff Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-438391-senior-staff-software-engineer-at-uber-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "438391",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Uber",
@@ -1977,7 +3409,7 @@
     "job_id": "59857443",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Uber",
@@ -1988,7 +3420,7 @@
     "job_id": "35478901",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "Warner Bros",
@@ -1999,7 +3431,19 @@
     "job_id": "34436184",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "Warner Bros. Discovery",
+    "title": "Staff Software Engineer - Data & Audience Platform Team",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-data-audience-platform-team-warner-bros-discovery-hyderabad-10-to-15-years-250626504276",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-data-audience-platform-team-warner-bros-discovery-hyderabad-10-to-15-years-250626504276",
+    "ats": "Naukri",
+    "job_id": "250626504276",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Warner Bros. Discovery",
@@ -2010,7 +3454,7 @@
     "job_id": "34728934",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "ge vernova",
@@ -2021,7 +3465,7 @@
     "job_id": "58154695",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "microchip technology inc.",
@@ -2032,7 +3476,7 @@
     "job_id": "59180558",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "nationsbenefits india",
@@ -2043,7 +3487,7 @@
     "job_id": "60660576",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
   },
   {
     "company": "phigital care",
@@ -2054,7 +3498,19 @@
     "job_id": "52978621",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 42
+    "match_score": -32
+  },
+  {
+    "company": "AST Science",
+    "title": "Partner Technical Lead",
+    "location": "3-7 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-partner-technical-lead-ast-science-hyderabad-3-to-7-years-120826504498",
+    "apply_url": "https://www.naukri.com/job-listings-partner-technical-lead-ast-science-hyderabad-3-to-7-years-120826504498",
+    "ats": "Naukri",
+    "job_id": "120826504498",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "AST SpaceMobile",
@@ -2065,7 +3521,19 @@
     "job_id": "62523244",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "American Express Global Business Travel",
+    "title": "Technical Lead",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-american-express-global-business-travel-hyderabad-5-to-10-years-100626500030",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-american-express-global-business-travel-hyderabad-5-to-10-years-100626500030",
+    "ats": "Naukri",
+    "job_id": "100626500030",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Ameriprise Financial Services, LLC",
@@ -2076,7 +3544,7 @@
     "job_id": "55506728",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Anblicks",
@@ -2087,7 +3555,7 @@
     "job_id": "63065610",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Apple",
@@ -2098,7 +3566,19 @@
     "job_id": "60660553",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Aspire Systems",
+    "title": "Technical Leader",
+    "location": "5-7 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-leader-aspire-systems-hyderabad-5-to-7-years-050826500369",
+    "apply_url": "https://www.naukri.com/job-listings-technical-leader-aspire-systems-hyderabad-5-to-7-years-050826500369",
+    "ats": "Naukri",
+    "job_id": "050826500369",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Auditoria.AI",
@@ -2109,7 +3589,7 @@
     "job_id": "44027337",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Backbase",
@@ -2120,7 +3600,19 @@
     "job_id": "63124050",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Bayatree Infocom",
+    "title": "Technical Lead",
+    "location": "No fixed duration Unpaid Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-bayatree-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-0-to-5-years-240223501760",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-bayatree-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-0-to-5-years-240223501760",
+    "ats": "Naukri",
+    "job_id": "240223501760",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Billtrust",
@@ -2131,18 +3623,66 @@
     "job_id": "62203920",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
-    "company": "Chase Bank",
-    "title": "Lead Software Engineer - AI",
+    "company": "Billtrust",
+    "title": "Lead Software Engineer(C++)",
+    "location": "6-11 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-c-billtrust-hyderabad-6-to-11-years-110826012534",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-c-billtrust-hyderabad-6-to-11-years-110826012534",
+    "ats": "Naukri",
+    "job_id": "110826012534",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "CSS India Center",
+    "title": "Technical Lead",
+    "location": "5-8 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-css-india-center-hyderabad-5-to-8-years-290726009744",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-css-india-center-hyderabad-5-to-8-years-290726009744",
+    "ats": "Naukri",
+    "job_id": "290726009744",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Camp Systems",
+    "title": "Technical Lead",
+    "location": "8-12 Yrs 30-60 Lacs PA Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-camp-systems-hyderabad-8-to-12-years-040826014169",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-camp-systems-hyderabad-8-to-12-years-040826014169",
+    "ats": "Naukri",
+    "job_id": "040826014169",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Capgemini",
+    "title": "Manager | Lead Software Engineer",
+    "location": "3-8 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-manager-lead-software-engineer-capgemini-technology-services-india-limited-hyderabad-3-to-8-years-100826920935",
+    "apply_url": "https://www.naukri.com/job-listings-manager-lead-software-engineer-capgemini-technology-services-india-limited-hyderabad-3-to-8-years-100826920935",
+    "ats": "Naukri",
+    "job_id": "100826920935",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Senior Engineering Manager - Software Development (PL)",
     "location": "Hyderabad, India",
-    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210763922/?location=Singapore&locationId=300000000289639&locationLevel=country&mode=location",
+    "url": "https://www.linkedin.com/jobs/view/4452259787/",
     "ats": "Foundit",
-    "job_id": "61456848",
+    "job_id": "63242724",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Chubb",
@@ -2153,7 +3693,7 @@
     "job_id": "60058728",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Chubb",
@@ -2164,18 +3704,30 @@
     "job_id": "61167840",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
-    "company": "Cloudperitus",
-    "title": "Technical Lead",
+    "company": "CitiusTech",
+    "title": "Engineering Manager",
     "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4444880420/",
+    "url": "https://www.linkedin.com/jobs/view/4456185132/",
     "ats": "Foundit",
-    "job_id": "60681134",
+    "job_id": "63478965",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Cloud Peritus",
+    "title": "Technical Lead",
+    "location": "8-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-cloud-peritus-hyderabad-8-to-15-years-230626504926",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-cloud-peritus-hyderabad-8-to-15-years-230626504926",
+    "ats": "Naukri",
+    "job_id": "230626504926",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Coinbase India Services",
@@ -2186,18 +3738,7 @@
     "job_id": "37109577",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
-  },
-  {
-    "company": "Concentrix",
-    "title": "Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://cnx.wd1.myworkdayjobs.com/en-US/external_global/job/IND-Hyderabad/Engineering-Manager_R1743305",
-    "ats": "Foundit",
-    "job_id": "62508091",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Creditsafe Technology",
@@ -2208,7 +3749,30 @@
     "job_id": "59777994",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Crisil",
+    "title": "Technical Lead",
+    "location": "4-8 Yrs 14-24 Lacs PA Hybrid - Hyderabad, Mumbai Suburban, Pune",
+    "url": "https://www.naukri.com/job-listings-technical-lead-crisil-mumbai-suburban-hyderabad-pune-4-to-8-years-180826045644",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-crisil-mumbai-suburban-hyderabad-pune-4-to-8-years-180826045644",
+    "ats": "Naukri",
+    "job_id": "180826045644",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Cubic Transportation Systems",
+    "title": "Software Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4435196877/",
+    "ats": "Foundit",
+    "job_id": "58949053",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Cyara",
@@ -2219,18 +3783,7 @@
     "job_id": "61667297",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
-  },
-  {
-    "company": "Cyara",
-    "title": "Technical Lead -Full Stack",
-    "location": "Hyderabad, India",
-    "url": "https://jobs.lever.co/cyara/f94be043-971a-4e13-929a-e88be922cd25",
-    "ats": "Foundit",
-    "job_id": "34731615",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Cyient",
@@ -2241,18 +3794,19 @@
     "job_id": "56692374",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
-    "company": "DTCC",
-    "title": "Lead Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://www.foundit.in/job/34730043",
-    "ats": "Foundit",
-    "job_id": "34730043",
+    "company": "Datalake Solutions",
+    "title": "Technical Lead",
+    "location": "6-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-datalake-solutions-hyderabad-6-to-10-years-190826504140",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-datalake-solutions-hyderabad-6-to-10-years-190826504140",
+    "ats": "Naukri",
+    "job_id": "190826504140",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "DealerSocket",
@@ -2263,7 +3817,7 @@
     "job_id": "35480584",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "DealerSocket",
@@ -2274,7 +3828,31 @@
     "job_id": "35480493",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Deservely",
+    "title": "Fullstack Technical Lead",
+    "location": "8-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-fullstack-technical-lead-deservely-hyderabad-8-to-13-years-140826503533",
+    "apply_url": "https://www.naukri.com/job-listings-fullstack-technical-lead-deservely-hyderabad-8-to-13-years-140826503533",
+    "ats": "Naukri",
+    "job_id": "140826503533",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "EdgeVerve Systems",
+    "title": "Technical Lead",
+    "location": "7-15 Yrs Not disclosed Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-edgeverve-systems-hyderabad-chennai-bengaluru-7-to-15-years-270726006673",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-edgeverve-systems-hyderabad-chennai-bengaluru-7-to-15-years-270726006673",
+    "ats": "Naukri",
+    "job_id": "270726006673",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Einfochips",
@@ -2285,7 +3863,7 @@
     "job_id": "34804113",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Einfochips Limited",
@@ -2296,18 +3874,7 @@
     "job_id": "34190816",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
-  },
-  {
-    "company": "Ensemble Health Partners",
-    "title": "Lead Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://ensemblehpi.com/career-technology/?jobId=Y92dQFznrJ8X",
-    "ats": "Foundit",
-    "job_id": "47560501",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Envoy Global",
@@ -2318,7 +3885,7 @@
     "job_id": "63239965",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Eruvaka Technologies",
@@ -2329,7 +3896,7 @@
     "job_id": "62696959",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Experian",
@@ -2340,7 +3907,7 @@
     "job_id": "61319148",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "FactSet",
@@ -2351,7 +3918,7 @@
     "job_id": "61538070",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "FactSet",
@@ -2362,7 +3929,7 @@
     "job_id": "57688637",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Fanatics",
@@ -2373,7 +3940,63 @@
     "job_id": "61791002",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Google India",
+    "title": "Engineering Manager, Software Engineering",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4443158956/",
+    "ats": "Foundit",
+    "job_id": "60456206",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -34
+  },
+  {
+    "company": "Google India",
+    "title": "Software Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4442227202/",
+    "ats": "Foundit",
+    "job_id": "60557791",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -34
+  },
+  {
+    "company": "Google India",
+    "title": "Software Engineering Manager, Enterprise Data Platform",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4437559847/",
+    "ats": "Foundit",
+    "job_id": "58546048",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -34
+  },
+  {
+    "company": "Google India",
+    "title": "Software Engineering Manager, Payments Platform",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4452383098/",
+    "ats": "Foundit",
+    "job_id": "62691178",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -34
+  },
+  {
+    "company": "Graphene Ai",
+    "title": "Technical Lead - GrapheneAI",
+    "location": "7-12 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-grapheneai-graphene-ai-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-7-to-12-years-180624502002",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-grapheneai-graphene-ai-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-7-to-12-years-180624502002",
+    "ats": "Naukri",
+    "job_id": "180624502002",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "HCL TechBee",
@@ -2384,7 +4007,31 @@
     "job_id": "48632664",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "HCLTech",
+    "title": "Quorum Technical Lead",
+    "location": "5-10 Yrs 10-16 Lacs PA Hyderabad, Bengaluru, Delhi / NCR",
+    "url": "https://www.naukri.com/job-listings-quorum-technical-lead-hcltech-hyderabad-bengaluru-delhi-ncr-5-to-10-years-200826011450",
+    "apply_url": "https://www.naukri.com/job-listings-quorum-technical-lead-hcltech-hyderabad-bengaluru-delhi-ncr-5-to-10-years-200826011450",
+    "ats": "Naukri",
+    "job_id": "200826011450",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Hackajob",
+    "title": "Technical Lead",
+    "location": "2-7 Yrs Not disclosed Hyderabad, Pune, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-hackajob-hyderabad-pune-bengaluru-2-to-7-years-030826016875",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-hackajob-hyderabad-pune-bengaluru-2-to-7-years-030826016875",
+    "ats": "Naukri",
+    "job_id": "030826016875",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Happiest Minds Technologies",
@@ -2395,7 +4042,19 @@
     "job_id": "48097711",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Harris Ambulatory Care Enterprise",
+    "title": "Technical Lead",
+    "location": "4-8 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-harris-ambulatory-care-enterprise-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-4-to-8-years-100826500129",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-harris-ambulatory-care-enterprise-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-4-to-8-years-100826500129",
+    "ats": "Naukri",
+    "job_id": "100826500129",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Hartree Partners",
@@ -2406,7 +4065,7 @@
     "job_id": "62830581",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Hexagon Capability Center India Private Limited",
@@ -2417,7 +4076,18 @@
     "job_id": "34297804",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "HighRadius",
+    "title": "Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4450454778/",
+    "ats": "Foundit",
+    "job_id": "62691693",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -34
   },
   {
     "company": "Hive Financial Systems",
@@ -2428,7 +4098,43 @@
     "job_id": "44269421",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "IDFC FIRST Bank",
+    "title": "Technical Lead",
+    "location": "8-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-idfc-first-bank-hyderabad-8-to-13-years-290726026047",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-idfc-first-bank-hyderabad-8-to-13-years-290726026047",
+    "ats": "Naukri",
+    "job_id": "290726026047",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Ideyalabs Tech",
+    "title": "Technical Lead",
+    "location": "8-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-ideyalabs-hyderabad-8-to-12-years-170826503772",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-ideyalabs-hyderabad-8-to-12-years-170826503772",
+    "ats": "Naukri",
+    "job_id": "170826503772",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Iflow",
+    "title": "Technical Lead",
+    "location": "2-5 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-iflow-hyderabad-2-to-5-years-310726500007",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-iflow-hyderabad-2-to-5-years-310726500007",
+    "ats": "Naukri",
+    "job_id": "310726500007",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Inductive Quotient Analytics",
@@ -2439,7 +4145,19 @@
     "job_id": "61049714",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Infinite",
+    "title": "Technical Lead",
+    "location": "5-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-infinite-computer-solutions-india-pvt-ltd-hyderabad-5-to-14-years-180826503484",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-infinite-computer-solutions-india-pvt-ltd-hyderabad-5-to-14-years-180826503484",
+    "ats": "Naukri",
+    "job_id": "180826503484",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Infinite Computer Solutions",
@@ -2450,7 +4168,19 @@
     "job_id": "61168700",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Infinity learn",
+    "title": "Technical Lead",
+    "location": "4-8 Yrs 12-22 Lacs PA Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-infinity-learn-hyderabad-4-to-8-years-290726030679",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-infinity-learn-hyderabad-4-to-8-years-290726030679",
+    "ats": "Naukri",
+    "job_id": "290726030679",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Innovapptive",
@@ -2461,29 +4191,19 @@
     "job_id": "34951076",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
-    "company": "JP Morgan Chase & Co.",
+    "company": "JPMorgan Chase Bank",
     "title": "Lead Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210759444/?location=India&locationId=300000000289360&locationLevel=country",
-    "ats": "Foundit",
-    "job_id": "62452021",
+    "location": "12-17 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-jp-morgan-and-chase-hyderabad-12-to-17-years-120826504774",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-jp-morgan-and-chase-hyderabad-12-to-17-years-120826504774",
+    "ats": "Naukri",
+    "job_id": "120826504774",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
-  },
-  {
-    "company": "JP Morgan Chase & Co.",
-    "title": "Lead Software Engineer - AI",
-    "location": "Hyderabad",
-    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210763922/?location=India&locationId=300000000289360&locationLevel=country",
-    "ats": "Foundit",
-    "job_id": "61456693",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Jpmorgan & Co",
@@ -2494,7 +4214,7 @@
     "job_id": "62547848",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Kanerika Inc",
@@ -2505,7 +4225,7 @@
     "job_id": "61318152",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Keka HR",
@@ -2516,7 +4236,7 @@
     "job_id": "52963301",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "L&T Technology Services",
@@ -2527,7 +4247,7 @@
     "job_id": "60902196",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Larsen & Toubro",
@@ -2538,7 +4258,55 @@
     "job_id": "62289612",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Lecan Solutions",
+    "title": "Technical Lead",
+    "location": "5-12 Yrs 15-35 Lacs PA Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-lecan-solutions-hyderabad-chennai-bengaluru-5-to-12-years-190826011460",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-lecan-solutions-hyderabad-chennai-bengaluru-5-to-12-years-190826011460",
+    "ats": "Naukri",
+    "job_id": "190826011460",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Lester Infoservices",
+    "title": "Technical Lead (Agentic AI POD)_",
+    "location": "11-21 Yrs Not disclosed Hybrid - Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-agentic-ai-pod-lester-infoservices-hyderabad-chennai-bengaluru-11-to-21-years-050826037104",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-agentic-ai-pod-lester-infoservices-hyderabad-chennai-bengaluru-11-to-21-years-050826037104",
+    "ats": "Naukri",
+    "job_id": "050826037104",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Lloyds Technology Centre",
+    "title": "Lead Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-lloyds-technology-centre-india-hyderabad-10-to-15-years-060826503097",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-lloyds-technology-centre-india-hyderabad-10-to-15-years-060826503097",
+    "ats": "Naukri",
+    "job_id": "060826503097",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Logic Planet",
+    "title": "FileNet Technical Lead",
+    "location": "4-7 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-filenet-technical-lead-logicplanet-it-services-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-4-to-7-years-200226504902",
+    "apply_url": "https://www.naukri.com/job-listings-filenet-technical-lead-logicplanet-it-services-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-4-to-7-years-200226504902",
+    "ats": "Naukri",
+    "job_id": "200226504902",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "MSD",
@@ -2549,18 +4317,54 @@
     "job_id": "61942644",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
-    "company": "Michael Page",
-    "title": "L3 Identity Defense Technical Lead",
+    "company": "Mediamint",
+    "title": "Technical Lead - AI Implementation",
+    "location": "10-20 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-ai-implementation-mediamint-hyderabad-10-to-20-years-290426029377",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-ai-implementation-mediamint-hyderabad-10-to-20-years-290426029377",
+    "ats": "Naukri",
+    "job_id": "290426029377",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Group Engineering Manager",
     "location": "Hyderabad, India",
-    "url": "https://www.michaelpage.co.in/job-detail/l3-identity-defense-technical-lead/ref/jn-082026-7084391",
+    "url": "https://www.linkedin.com/jobs/view/4449493814/",
     "ats": "Foundit",
-    "job_id": "63082140",
+    "job_id": "63097279",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Mphasis",
+    "title": "Technical Lead - Kore.ai (XO10 / XO11)",
+    "location": "8-10 Yrs Not disclosed Hybrid - Hyderabad, Pune, Mumbai (All Areas)",
+    "url": "https://www.naukri.com/job-listings-technical-lead-kore-ai-xo10-xo11-mphasis-hyderabad-pune-mumbai-all-areas-8-to-10-years-140826032129",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-kore-ai-xo10-xo11-mphasis-hyderabad-pune-mumbai-all-areas-8-to-10-years-140826032129",
+    "ats": "Naukri",
+    "job_id": "140826032129",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "NTT DATA, Inc.",
+    "title": "Technical Lead",
+    "location": "10-20 Yrs 30-36 Lacs PA Hyderabad, Noida, Gurugram",
+    "url": "https://www.naukri.com/job-listings-technical-lead-ntt-data-inc-noida-hyderabad-gurugram-10-to-20-years-130826030855",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-ntt-data-inc-noida-hyderabad-gurugram-10-to-20-years-130826030855",
+    "ats": "Naukri",
+    "job_id": "130826030855",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "NTT Data",
@@ -2571,7 +4375,7 @@
     "job_id": "62460333",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "NTT Data",
@@ -2582,7 +4386,7 @@
     "job_id": "63268085",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "NTT Data",
@@ -2593,7 +4397,7 @@
     "job_id": "63267837",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Narwal",
@@ -2604,7 +4408,7 @@
     "job_id": "40497693",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Ncr Atleos",
@@ -2615,7 +4419,7 @@
     "job_id": "37112935",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Niit Technologies",
@@ -2626,7 +4430,30 @@
     "job_id": "48653468",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Nisum",
+    "title": "Technical Lead",
+    "location": "10-17 Yrs Not disclosed Hyderabad, Bhubaneswar",
+    "url": "https://www.naukri.com/job-listings-technical-lead-nisum-bhubaneswar-hyderabad-10-to-17-years-290726022703",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-nisum-bhubaneswar-hyderabad-10-to-17-years-290726022703",
+    "ats": "Naukri",
+    "job_id": "290726022703",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "NomiSo",
+    "title": "Technical Lead",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4451181442/",
+    "ats": "Foundit",
+    "job_id": "63362031",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "OSI Digital",
@@ -2637,7 +4464,7 @@
     "job_id": "59950610",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Olympus Corporation",
@@ -2648,7 +4475,7 @@
     "job_id": "61044316",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Olympus Corporation",
@@ -2659,7 +4486,31 @@
     "job_id": "61044924",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Openings Advisory Firm",
+    "title": "Technical Lead",
+    "location": "8-13 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-openings-advisory-firm-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-8-to-13-years-081124501951",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-openings-advisory-firm-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-8-to-13-years-081124501951",
+    "ats": "Naukri",
+    "job_id": "081124501951",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Openpixel Web Solutions",
+    "title": "Technical Lead (Tech Lead)",
+    "location": "5-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-tech-lead-openpixel-web-solutions-hyderabad-5-to-9-years-301025506239",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-tech-lead-openpixel-web-solutions-hyderabad-5-to-9-years-301025506239",
+    "ats": "Naukri",
+    "job_id": "301025506239",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Opentext",
@@ -2670,7 +4521,7 @@
     "job_id": "34478671",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Orbital",
@@ -2681,7 +4532,19 @@
     "job_id": "58325216",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Palni",
+    "title": "Databricks Technical Lead",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-databricks-technical-lead-palni-hyderabad-10-to-15-years-070826038635",
+    "apply_url": "https://www.naukri.com/job-listings-databricks-technical-lead-palni-hyderabad-10-to-15-years-070826038635",
+    "ats": "Naukri",
+    "job_id": "070826038635",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Pegasystems",
@@ -2692,7 +4555,19 @@
     "job_id": "59703766",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Photon",
+    "title": "Lead Software Engineer WMOS - /HYD",
+    "location": "8-13 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wmos-hyd-photon-infotech-p-ltd-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-8-to-13-years-040325501741",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wmos-hyd-photon-infotech-p-ltd-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-8-to-13-years-040325501741",
+    "ats": "Naukri",
+    "job_id": "040325501741",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Principal Financial Group",
@@ -2703,7 +4578,19 @@
     "job_id": "62955297",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Prolifics Corporation",
+    "title": "Technical Lead (ABAP)",
+    "location": "8-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-abap-prolifics-hyderabad-8-to-10-years-110826502526",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-abap-prolifics-hyderabad-8-to-10-years-110826502526",
+    "ats": "Naukri",
+    "job_id": "110826502526",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Prolifics Corporation",
@@ -2714,7 +4601,19 @@
     "job_id": "34848937",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Providence College Of Engineering",
+    "title": "Lead Software Engineer",
+    "location": "6-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-providence-global-center-hyderabad-6-to-9-years-110826502355",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-providence-global-center-hyderabad-6-to-9-years-110826502355",
+    "ats": "Naukri",
+    "job_id": "110826502355",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Qapita",
@@ -2725,7 +4624,7 @@
     "job_id": "49576373",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "SS&C Technologies",
@@ -2736,7 +4635,19 @@
     "job_id": "61168692",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "SS&C Technologies",
+    "title": "Lead Software Engineer - PA26ITOFFQ3019",
+    "location": "7-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-pa26itoffq3019-ss-c-technologies-hyderabad-7-to-14-years-120826503841",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-pa26itoffq3019-ss-c-technologies-hyderabad-7-to-14-years-120826503841",
+    "ats": "Naukri",
+    "job_id": "120826503841",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "SWISS RE",
@@ -2747,7 +4658,19 @@
     "job_id": "34489846",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Savantys Solutions",
+    "title": "Technical Lead",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-savantys-solutions-hyderabad-5-to-10-years-110826502158",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-savantys-solutions-hyderabad-5-to-10-years-110826502158",
+    "ats": "Naukri",
+    "job_id": "110826502158",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "SimCorp",
@@ -2758,7 +4681,43 @@
     "job_id": "57688556",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Siro Clinpharm",
+    "title": "Reltio Technical Lead",
+    "location": "8-12 Yrs Not disclosed Hyderabad, Noida, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-reltio-technical-lead-siro-clinpharm-noida-hyderabad-bengaluru-8-to-12-years-300726011620",
+    "apply_url": "https://www.naukri.com/job-listings-reltio-technical-lead-siro-clinpharm-noida-hyderabad-bengaluru-8-to-12-years-300726011620",
+    "ats": "Naukri",
+    "job_id": "300726011620",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Sopra Steria",
+    "title": "Technical Lead",
+    "location": "5-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-sopra-steria-hyderabad-5-to-13-years-130826500809",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-sopra-steria-hyderabad-5-to-13-years-130826500809",
+    "ats": "Naukri",
+    "job_id": "130826500809",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Starrez",
+    "title": "Technical Lead",
+    "location": "6-11 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-starrez-inc-hyderabad-6-to-11-years-130826502141",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-starrez-inc-hyderabad-6-to-11-years-130826502141",
+    "ats": "Naukri",
+    "job_id": "130826502141",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Synchrony",
@@ -2769,7 +4728,79 @@
     "job_id": "62204575",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "TalentPro",
+    "title": "Lead Software Engineer",
+    "location": "8-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-talentpro-hyderabad-8-to-13-years-060826024991",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-talentpro-hyderabad-8-to-13-years-060826024991",
+    "ats": "Naukri",
+    "job_id": "060826024991",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Tech Mahindra",
+    "title": "Technical Lead",
+    "location": "7-12 Yrs Not disclosed Hybrid - Hyderabad, Noida, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-tech-mahindra-noida-hyderabad-bengaluru-7-to-12-years-200826016264",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-tech-mahindra-noida-hyderabad-bengaluru-7-to-12-years-200826016264",
+    "ats": "Naukri",
+    "job_id": "200826016264",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Technoflair Solutions India",
+    "title": "Technical Leads",
+    "location": "5-8 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-leads-technoflair-solutions-india-pvt-ltd-hyderabad-5-to-8-years-131124504339",
+    "apply_url": "https://www.naukri.com/job-listings-technical-leads-technoflair-solutions-india-pvt-ltd-hyderabad-5-to-8-years-131124504339",
+    "ats": "Naukri",
+    "job_id": "131124504339",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Technogen",
+    "title": "Technical Lead",
+    "location": "6-10 Yrs 18-25 Lacs PA Hybrid - Hyderabad, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-technogen-hyderabad-bengaluru-6-to-10-years-190826011540",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-technogen-hyderabad-bengaluru-6-to-10-years-190826011540",
+    "ats": "Naukri",
+    "job_id": "190826011540",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Technogen India",
+    "title": "Technical Lead",
+    "location": "8-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-technogen-india-pvt-ltd-hyderabad-8-to-10-years-190826501148",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-technogen-india-pvt-ltd-hyderabad-8-to-10-years-190826501148",
+    "ats": "Naukri",
+    "job_id": "190826501148",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Tekskills",
+    "title": "Technical Lead",
+    "location": "6-11 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-tekskills-hyderabad-6-to-11-years-180826933653",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-tekskills-hyderabad-6-to-11-years-180826933653",
+    "ats": "Naukri",
+    "job_id": "180826933653",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "The Depository Trust & Clearing Corporation (DTCC)",
@@ -2780,18 +4811,7 @@
     "job_id": "54703723",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
-  },
-  {
-    "company": "The Depository Trust & clearing Corporation",
-    "title": "Lead Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214139/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
-    "ats": "Foundit",
-    "job_id": "60956587",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "The Depository Trust Clearing Corp",
@@ -2802,7 +4822,7 @@
     "job_id": "34480287",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "The Depository Trust Clearing Corp",
@@ -2813,7 +4833,18 @@
     "job_id": "34480219",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Tide",
+    "title": "Lead Software Engineer",
+    "location": "Bangalore,Delhi,Hyderabad",
+    "url": "https://www.instahyre.com/job-396490-lead-software-engineer-at-tide-bangalore-delhi-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "396490",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Uber",
@@ -2824,7 +4855,7 @@
     "job_id": "35478846",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "ValGenesis",
@@ -2835,7 +4866,7 @@
     "job_id": "56719343",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "ValGenesis",
@@ -2846,7 +4877,7 @@
     "job_id": "59011076",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Valuelabs",
@@ -2857,7 +4888,7 @@
     "job_id": "62525099",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Vanguard",
@@ -2868,7 +4899,7 @@
     "job_id": "63121281",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Vanguard",
@@ -2879,7 +4910,7 @@
     "job_id": "54498557",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "Veeva Systems",
@@ -2890,7 +4921,7 @@
     "job_id": "60462314",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "VidaXL",
@@ -2901,7 +4932,31 @@
     "job_id": "36361954",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "Walkingtree Resources",
+    "title": "ERP Technical Lead",
+    "location": "5-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-erp-technical-lead-walkingtree-resources-pvt-ltd-hyderabad-5-to-9-years-110826501323",
+    "apply_url": "https://www.naukri.com/job-listings-erp-technical-lead-walkingtree-resources-pvt-ltd-hyderabad-5-to-9-years-110826501323",
+    "ats": "Naukri",
+    "job_id": "110826501323",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Walkingtree Resources",
+    "title": "Technical Lead ERP",
+    "location": "7-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-erp-walkingtree-resources-pvt-ltd-hyderabad-7-to-12-years-270726503549",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-erp-walkingtree-resources-pvt-ltd-hyderabad-7-to-12-years-270726503549",
+    "ats": "Naukri",
+    "job_id": "270726503549",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "WinWire Technologies",
@@ -2912,7 +4967,31 @@
     "job_id": "62841645",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "ZF",
+    "title": "Technical Lead, IMDS (Deputy)",
+    "location": "6-11 Yrs Not disclosed Hyderabad, Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-imds-deputy-zf-india-private-limited-hyderabad-hyderabad-6-to-11-years-280726924017",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-imds-deputy-zf-india-private-limited-hyderabad-hyderabad-6-to-11-years-280726924017",
+    "ats": "Naukri",
+    "job_id": "280726924017",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "ZF",
+    "title": "Technical Lead-AI/ML, Generative AI & Agentic AI",
+    "location": "6-11 Yrs Not disclosed Hyderabad, Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-ai-ml-generative-ai-agentic-ai-zf-india-private-limited-hyderabad-hyderabad-6-to-11-years-280726924266",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-ai-ml-generative-ai-agentic-ai-zf-india-private-limited-hyderabad-hyderabad-6-to-11-years-280726924266",
+    "ats": "Naukri",
+    "job_id": "280726924266",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Zaggle",
@@ -2923,18 +5002,18 @@
     "job_id": "62547537",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
-    "company": "Zf Friedrich",
-    "title": "Sr Technical Lead",
+    "company": "d. e. shaw india private limited",
+    "title": "Engineering Manager (Windows Engineer)",
     "location": "Hyderabad, India",
-    "url": "https://jobs.zf.com/job/Hyderabad-Sr-Technical-Lead-TG-500032/1427361033/",
+    "url": "https://www.linkedin.com/jobs/view/4335635192/",
     "ats": "Foundit",
-    "job_id": "63218456",
+    "job_id": "38346594",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 40
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "ensemble global",
@@ -2945,7 +5024,7 @@
     "job_id": "60899650",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "eternal robotics",
@@ -2956,7 +5035,7 @@
     "job_id": "61663240",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "evernorth health services",
@@ -2967,7 +5046,7 @@
     "job_id": "62837330",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "evernorth health services",
@@ -2978,7 +5057,7 @@
     "job_id": "62684852",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "evernorth health services",
@@ -2989,7 +5068,7 @@
     "job_id": "62837312",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "innovapptive inc",
@@ -3000,7 +5079,7 @@
     "job_id": "61040164",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "innovapptive inc",
@@ -3011,7 +5090,7 @@
     "job_id": "61040161",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "marriott tech accelerator",
@@ -3022,7 +5101,7 @@
     "job_id": "62831362",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "momentum financial services group",
@@ -3033,7 +5112,7 @@
     "job_id": "60423228",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "ntt data north america",
@@ -3044,7 +5123,18 @@
     "job_id": "58546168",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "ntt data north america",
+    "title": "Sr. Technical Lead NetSuite",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4455734699/",
+    "ats": "Foundit",
+    "job_id": "63485322",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "providence india",
@@ -3055,7 +5145,7 @@
     "job_id": "59322516",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
   },
   {
     "company": "solera holdings, llc.",
@@ -3066,7 +5156,29 @@
     "job_id": "52450394",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 40
+    "match_score": -34
+  },
+  {
+    "company": "the hartford india",
+    "title": "Technical Lead",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4380479504/",
+    "ats": "Foundit",
+    "job_id": "47127558",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "wsa - wonderful sound for all",
+    "title": "Engineering Manager - Customer Identity & Access Management (CIAM)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4452926557/",
+    "ats": "Foundit",
+    "job_id": "63479375",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Boomi Software",
@@ -3077,29 +5189,7 @@
     "job_id": "34935603",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 38
-  },
-  {
-    "company": "Cubic Corporation",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://www.instahyre.com/job-439288-senior-software-engineer-at-cubic-corporation-hyderabad/",
-    "ats": "Instahyre",
-    "job_id": "439288",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 34
-  },
-  {
-    "company": "Google",
-    "title": "Senior Software Engineer",
-    "location": "Bangalore,Delhi,Hyderabad",
-    "url": "https://www.instahyre.com/job-399694-senior-software-engineer-at-google-2-bangalore-delhi-hyderabad/",
-    "ats": "Instahyre",
-    "job_id": "399694",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 34
+    "match_score": -36
   },
   {
     "company": "Aegan Technologies Private Limited",
@@ -3110,7 +5200,7 @@
     "job_id": "59039744",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 30
+    "match_score": -44
   },
   {
     "company": "Arcadis",
@@ -3121,7 +5211,7 @@
     "job_id": "59698421",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 30
+    "match_score": -44
   },
   {
     "company": "Arcadis",
@@ -3132,7 +5222,29 @@
     "job_id": "58918246",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 30
+    "match_score": -44
+  },
+  {
+    "company": "Blue Yonder",
+    "title": "Staff Software Engineer - Python, React & Cloud",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4374384177/",
+    "ats": "Foundit",
+    "job_id": "48746337",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -44
+  },
+  {
+    "company": "Experian",
+    "title": "Staff Engineer (Python/AWS)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4416601915/",
+    "ats": "Foundit",
+    "job_id": "58152418",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -44
   },
   {
     "company": "Globallogic Ukraine",
@@ -3143,7 +5255,62 @@
     "job_id": "60454641",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 30
+    "match_score": -44
+  },
+  {
+    "company": "Infineon Technologies",
+    "title": "Principal Engineer Verification",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4438647270/",
+    "ats": "Foundit",
+    "job_id": "58673672",
+    "already_applied": false,
+    "match_score": -44,
+    "over_cap": false
+  },
+  {
+    "company": "Micron Technology",
+    "title": "Lead Principal Engineer, Design Verification",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4410848230/",
+    "ats": "Foundit",
+    "job_id": "54503481",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -44
+  },
+  {
+    "company": "Micron Technology",
+    "title": "Principal Engineer - Memory Circuit Design Verification",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4424554676/",
+    "ats": "Foundit",
+    "job_id": "55504984",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -44
+  },
+  {
+    "company": "Micron Technology",
+    "title": "Principal Engineer, Project Design Verification Lead",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4410844212/",
+    "ats": "Foundit",
+    "job_id": "52965144",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -44
+  },
+  {
+    "company": "Renesas Electronics",
+    "title": "Principal Engineer - Design Verification",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4443357818/",
+    "ats": "Foundit",
+    "job_id": "60049130",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -44
   },
   {
     "company": "microchip technology inc.",
@@ -3154,7 +5321,7 @@
     "job_id": "53694927",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 30
+    "match_score": -44
   },
   {
     "company": "Apple",
@@ -3165,7 +5332,7 @@
     "job_id": "59949178",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Billtrust",
@@ -3176,7 +5343,30 @@
     "job_id": "61788470",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
+  },
+  {
+    "company": "Blue Yonder",
+    "title": "Sr. Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-423256-sr-software-engineer-at-blue-yonder-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "423256",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
+  },
+  {
+    "company": "Careallianz",
+    "title": "Senior Software Engineer",
+    "location": "3-5 Yrs Not disclosed Hyderabad, Kolkata, Mumbai, New Delhi, Pune, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-allianz-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-3-to-5-years-060226507560",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-allianz-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-3-to-5-years-060226507560",
+    "ats": "Naukri",
+    "job_id": "060226507560",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "Cendyn",
@@ -3187,18 +5377,29 @@
     "job_id": "60466637",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
-    "company": "Currenex State Street Trust Company",
-    "title": "Senior Software Engineer, Officer",
+    "company": "Cendyn",
+    "title": "Senior Software Engineer - Knowland",
     "location": "Hyderabad, India",
-    "url": "https://careers.statestreet.com/global/en/job/R-795725/Senior-Software-Engineer-Officer",
+    "url": "https://www.linkedin.com/jobs/view/4437772992/",
     "ats": "Foundit",
-    "job_id": "61741322",
+    "job_id": "58666402",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
+  },
+  {
+    "company": "Chubb",
+    "title": "Senior Software Engineer Full Stack (Angular)",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/60460590",
+    "ats": "Foundit",
+    "job_id": "60460590",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -46
   },
   {
     "company": "CyberArk",
@@ -3209,18 +5410,7 @@
     "job_id": "37509810",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
-  },
-  {
-    "company": "DHL Aero Expreso",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://careers.dhl.com/global/en/job/AV-367430/Senior-Software-Engineer",
-    "ats": "Foundit",
-    "job_id": "60912103",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Diligente Technologies",
@@ -3231,7 +5421,7 @@
     "job_id": "61318908",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Ensono",
@@ -3242,7 +5432,18 @@
     "job_id": "62832395",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
+  },
+  {
+    "company": "FactSet",
+    "title": "Senior Software Engineer-Golang-API Gateway",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4449560628/",
+    "ats": "Foundit",
+    "job_id": "62289594",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -46
   },
   {
     "company": "GHX Europe",
@@ -3253,7 +5454,7 @@
     "job_id": "57412445",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Gramener",
@@ -3264,7 +5465,7 @@
     "job_id": "62679905",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Home.LLC",
@@ -3275,7 +5476,7 @@
     "job_id": "35551817",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Mahindra Satyam",
@@ -3286,7 +5487,40 @@
     "job_id": "62831574",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4454036028/",
+    "ats": "Foundit",
+    "job_id": "62681468",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -46
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer - Product",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4346629509/",
+    "ats": "Foundit",
+    "job_id": "48633141",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -46
+  },
+  {
+    "company": "Milwaukee Tool",
+    "title": "Senior Software Engineer - AI",
+    "location": "Bangalore,Hyderabad,Work From Home",
+    "url": "https://www.instahyre.com/job-435073-senior-software-engineer-ai-at-milwaukee-tool-bangalore-hyderabad-work-from-home/",
+    "ats": "Instahyre",
+    "job_id": "435073",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "Mphasis",
@@ -3297,7 +5531,7 @@
     "job_id": "60663824",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Nasuni",
@@ -3308,7 +5542,18 @@
     "job_id": "61551868",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
+  },
+  {
+    "company": "Nasuni",
+    "title": "Senior Software Engineer File System",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4454002192/",
+    "ats": "Foundit",
+    "job_id": "63241593",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -46
   },
   {
     "company": "Plume",
@@ -3319,7 +5564,18 @@
     "job_id": "62179223",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
+  },
+  {
+    "company": "Postman",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-438500-senior-software-engineer-at-postman-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "438500",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "Seismic",
@@ -3330,7 +5586,7 @@
     "job_id": "61317652",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Seismic",
@@ -3341,7 +5597,7 @@
     "job_id": "60455092",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Seismic",
@@ -3352,18 +5608,18 @@
     "job_id": "59638587",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
-    "company": "State Street Corporation",
-    "title": "Senior Software Engineer, Officer",
-    "location": "Hyderabad, India",
-    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--Officer_R-795725",
+    "company": "Sentinelone",
+    "title": "Senior Software Engineer in Test",
+    "location": "Hyderabad, Chennai, Pune",
+    "url": "https://www.foundit.in/job/35466958",
     "ats": "Foundit",
-    "job_id": "61715919",
+    "job_id": "35466958",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 28
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "Storable",
@@ -3374,7 +5630,7 @@
     "job_id": "39755456",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Synechron",
@@ -3385,18 +5641,18 @@
     "job_id": "62054304",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
-    "company": "The Edge Partnership",
-    "title": "Associate Director: AI Solution Architect (Cybersecurity Architecture)",
-    "location": "Hyderabad, India",
-    "url": "https://theedgepartnership.com/job/associate-director-ai-solution-architect-cybersecurity-architecture/",
+    "company": "TechnoGen",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/34849860",
     "ats": "Foundit",
-    "job_id": "62738067",
+    "job_id": "34849860",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 28
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "The Glove",
@@ -3407,7 +5663,7 @@
     "job_id": "36883716",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Truveta",
@@ -3418,7 +5674,18 @@
     "job_id": "52613957",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
+  },
+  {
+    "company": "ValGenesis",
+    "title": "Senior Software Engineer, Full-stack",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4356141066/",
+    "ats": "Foundit",
+    "job_id": "55492595",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -46
   },
   {
     "company": "Vanguard",
@@ -3429,7 +5696,7 @@
     "job_id": "55385733",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "Xtglobal Infotech Limited",
@@ -3440,7 +5707,7 @@
     "job_id": "62356491",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "costco it",
@@ -3451,7 +5718,7 @@
     "job_id": "55400656",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "ensemble global",
@@ -3462,7 +5729,7 @@
     "job_id": "59849085",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "epergne solutions",
@@ -3473,7 +5740,7 @@
     "job_id": "59707993",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
   },
   {
     "company": "the edge partnership - the edge in asia",
@@ -3484,7 +5751,19 @@
     "job_id": "62846669",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 28
+    "match_score": -46
+  },
+  {
+    "company": "GAP ",
+    "title": "Data Engineer-Staff Software Engineer",
+    "location": "9-11 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-data-engineer-staff-software-engineer-gap-hyderabad-9-to-11-years-110225505777",
+    "apply_url": "https://www.naukri.com/job-listings-data-engineer-staff-software-engineer-gap-hyderabad-9-to-11-years-110225505777",
+    "ats": "Naukri",
+    "job_id": "110225505777",
+    "already_applied": false,
+    "match_score": -48,
+    "over_cap": false
   },
   {
     "company": "Gap Inc.",
@@ -3495,7 +5774,30 @@
     "job_id": "63123018",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 26
+    "match_score": -48
+  },
+  {
+    "company": "Vanguard",
+    "title": "Technical Lead Data Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4445350065/",
+    "ats": "Foundit",
+    "job_id": "60473936",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -50
+  },
+  {
+    "company": "Vikruthi Technologies",
+    "title": "Gen AI - Technical Lead",
+    "location": "4-9 Yrs 18-22.5 Lacs PA Hybrid - Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-gen-ai-technical-lead-vikruthi-technologies-hyderabad-chennai-bengaluru-4-to-9-years-160826003865",
+    "apply_url": "https://www.naukri.com/job-listings-gen-ai-technical-lead-vikruthi-technologies-hyderabad-chennai-bengaluru-4-to-9-years-160826003865",
+    "ats": "Naukri",
+    "job_id": "160826003865",
+    "already_applied": false,
+    "match_score": -50,
+    "over_cap": false
   },
   {
     "company": "Globallogic India",
@@ -3506,7 +5808,7 @@
     "job_id": "60464522",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 22
+    "match_score": -52
   },
   {
     "company": "Marvell Technology - Multimedia Solutions Business",
@@ -3517,7 +5819,7 @@
     "job_id": "57424806",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 22
+    "match_score": -52
   },
   {
     "company": "Qualcomm",
@@ -3528,7 +5830,7 @@
     "job_id": "59660675",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 22
+    "match_score": -52
   },
   {
     "company": "SiFive",
@@ -3539,7 +5841,7 @@
     "job_id": "61048194",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 22
+    "match_score": -52
   },
   {
     "company": "SiFive",
@@ -3550,7 +5852,29 @@
     "job_id": "57683830",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 22
+    "match_score": -52
+  },
+  {
+    "company": "Silicon Labs",
+    "title": "Staff Engineer - AMS Verification",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4379183759/",
+    "ats": "Foundit",
+    "job_id": "47167688",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -52
+  },
+  {
+    "company": "Silicon Labs",
+    "title": "Staff/Senior Staff Engineer - AMS Verification",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4206725116/",
+    "ats": "Foundit",
+    "job_id": "44175929",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -52
   },
   {
     "company": "Thermo Fisher Scientific",
@@ -3561,7 +5885,19 @@
     "job_id": "62824318",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 22
+    "match_score": -52
+  },
+  {
+    "company": "Vitestork Consulting",
+    "title": "Staff Software Engineer - C++,Python,OpenCL",
+    "location": "8-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-c-python-opencl-vitestork-consulting-private-limited-hyderabad-8-to-12-years-240426502769",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-c-python-opencl-vitestork-consulting-private-limited-hyderabad-8-to-12-years-240426502769",
+    "ats": "Naukri",
+    "job_id": "240426502769",
+    "already_applied": false,
+    "match_score": -52,
+    "over_cap": false
   },
   {
     "company": "Apple",
@@ -3572,7 +5908,29 @@
     "job_id": "60480787",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 20
+    "match_score": -54
+  },
+  {
+    "company": "Franklin Templeton",
+    "title": "Lead Software Engineer (Python, Django, React)",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/34927543",
+    "ats": "Foundit",
+    "job_id": "34927543",
+    "already_applied": false,
+    "match_score": -54,
+    "over_cap": false
+  },
+  {
+    "company": "Franklin Templeton",
+    "title": "Lead Software Engineer (Python, Django, React, AI Based Applications)",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/34927881",
+    "ats": "Foundit",
+    "job_id": "34927881",
+    "already_applied": false,
+    "match_score": -54,
+    "over_cap": false
   },
   {
     "company": "IBaseIT",
@@ -3583,7 +5941,7 @@
     "job_id": "57691896",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 20
+    "match_score": -54
   },
   {
     "company": "IBaseIT",
@@ -3594,7 +5952,7 @@
     "job_id": "60892877",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 20
+    "match_score": -54
   },
   {
     "company": "S&P Global",
@@ -3605,7 +5963,7 @@
     "job_id": "40353894",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 20
+    "match_score": -54
   },
   {
     "company": "The Depository Trust & Clearing Corporation (DTCC)",
@@ -3616,18 +5974,18 @@
     "job_id": "60678027",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 20
+    "match_score": -54
   },
   {
-    "company": "The Depository Trust & clearing Corporation",
-    "title": "Oracle Fusion HCM Technical Lead",
+    "company": "arrise solutions (india) pvt. ltd.",
+    "title": "Engineering Manager - Frontend",
     "location": "Hyderabad, India",
-    "url": "https://ebxr.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/214156/?location=United+Arab+Emirates&locationId=300000000300092&locationLevel=country&mode=location",
+    "url": "https://www.linkedin.com/jobs/view/4387825673/",
     "ats": "Foundit",
-    "job_id": "60589332",
+    "job_id": "55443043",
     "already_applied": false,
-    "over_cap": false,
-    "match_score": 20
+    "match_score": -54,
+    "over_cap": false
   },
   {
     "company": "sunstripe",
@@ -3638,6 +5996,17 @@
     "job_id": "62837291",
     "already_applied": false,
     "over_cap": false,
-    "match_score": 20
+    "match_score": -54
+  },
+  {
+    "company": "Sentinelone",
+    "title": "Senior Software Engineer - Python & Golang , cloud, design, DS/Algo",
+    "location": "Hyderabad, Chennai, Pune",
+    "url": "https://www.foundit.in/job/35466829",
+    "ats": "Foundit",
+    "job_id": "35466829",
+    "already_applied": false,
+    "match_score": -58,
+    "over_cap": false
   }
 ]
