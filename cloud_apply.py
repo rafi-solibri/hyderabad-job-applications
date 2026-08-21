@@ -1132,41 +1132,57 @@ def click_naukri_quick_apply(page) -> str:
         hit = ""
         try:
             dbg = page.evaluate(
-                """() => {
-                  const rows = [];
-                  for (const el of document.querySelectorAll('button, a, [id*="apply" i], [class*="apply" i]')) {
-                    const r = el.getBoundingClientRect();
-                    rows.push({
-                      tag: el.tagName,
-                      id: el.id || '',
-                      cls: ((el.className || '') + '').slice(0, 70),
-                      t: ((el.innerText || '') + '').replace(/\\s+/g, ' ').trim().slice(0, 36),
-                      w: Math.round(r.width),
-                      h: Math.round(r.height),
-                      y: Math.round(r.y),
-                    });
-                    if (rows.length >= 12) break;
-                  }
-                  return {hasApply: !!document.getElementById('apply-button'), nBtn: document.querySelectorAll('button').length, rows};
-                }"""
-            ) or {}
-            print(f"  Naukri apply DOM: {dbg}", flush=True)
+                """() => Array.from(document.querySelectorAll('button')).map((el) => {
+                  const r = el.getBoundingClientRect();
+                  return {
+                    id: el.id || '',
+                    cls: ((el.className || '') + '').slice(0, 80),
+                    t: ((el.innerText || '') + '').replace(/\\s+/g, ' ').trim().slice(0, 40),
+                    w: Math.round(r.width),
+                    h: Math.round(r.height),
+                    x: Math.round(r.x),
+                    y: Math.round(r.y),
+                  };
+                })"""
+            ) or []
+            print(f"  Naukri buttons ({len(dbg)}): {dbg}", flush=True)
+            apply_btns = [
+                b for b in dbg
+                if re.search(r"apply|interested", (b.get("t") or "") + " " + (b.get("id") or ""), re.I)
+            ]
         except Exception as exc:
-            print(f"  Naukri apply DOM debug failed ({exc}).", flush=True)
-        for loc in (
-            page.locator("xpath=//*[normalize-space()='Quick apply']/ancestor::*[self::button or self::a or self::div][1]").first,
-            page.get_by_text(re.compile(r"^quick apply$", re.I)).first,
-        ):
+            print(f"  Naukri button dump failed ({exc}).", flush=True)
+            apply_btns = []
+        for b in apply_btns:
+            bid = (b.get("id") or "").strip()
             try:
+                loc = page.locator(f"#{bid}").first if bid else page.get_by_role(
+                    "button", name=re.compile(rf"^{re.escape(b.get('t') or 'Apply')}$", re.I)
+                ).first
                 if not loc.count():
                     continue
                 loc.click(timeout=2000, force=True)
-                print("  Clicked Naukri 'Quick apply' control.", flush=True)
-                page.wait_for_timeout(2000)
-                hit = "Quick apply"
+                print(f"  Clicked Naukri button {bid or b.get('t')!r}.", flush=True)
+                page.wait_for_timeout(2200)
+                hit = b.get("t") or "Apply"
                 break
             except Exception:
                 continue
+        if not hit:
+            for loc in (
+                page.locator("xpath=//*[normalize-space()='Quick apply']/ancestor::*[self::button or self::a or self::div][1]").first,
+                page.get_by_text(re.compile(r"^quick apply$", re.I)).first,
+            ):
+                try:
+                    if not loc.count():
+                        continue
+                    loc.click(timeout=2000, force=True)
+                    print("  Clicked Naukri 'Quick apply' control.", flush=True)
+                    page.wait_for_timeout(2000)
+                    hit = "Quick apply"
+                    break
+                except Exception:
+                    continue
     if not hit:
         return ""
     for name in ("Send application", "Submit application", "Apply now", "Apply"):
