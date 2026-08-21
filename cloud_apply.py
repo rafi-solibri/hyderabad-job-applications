@@ -5481,6 +5481,14 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
         print(f"Headed Chrome on DISPLAY={os.environ.get('DISPLAY', ':1')} — complete CAPTCHA/login in the desktop view.", flush=True)
     results: list[dict] = []
     if not pending:
+        queued = apply_now.leftover_career_queue()
+        if queued:
+            print(
+                f"  {len(queued)} leftover career/other ATS already session-skipped "
+                f"(CAPTCHA, STUCK, or blocked login). Not rediscovering aggregator boards.",
+                flush=True,
+            )
+            return results
         print("  No leftover career portals. No-browser discover for more company sites...", flush=True)
         _refresh_boards_no_browser()
         apply_now.BATCH = apply_now.load_all_discovered()
@@ -5704,10 +5712,12 @@ if __name__ == "__main__":
             if after <= before:
                 idle += 1
                 apply_now.BATCH = apply_now.load_all_discovered()
-                if not apply_now.leftover_career_queue():
+                remaining = leftover_career_jobs(apply_now.leftover_career_queue())
+                if not remaining:
                     counts = apply_now.leftover_aggregator_counts()
                     print(
-                        "  No leftover company career portals or other ATS. "
+                        "  No applyable leftover company career portals or other ATS "
+                        "(empty or already session-skipped). "
                         f"Aggregator leftovers (other daily jobs): {counts or 'none'}. "
                         "Stopping instead of Naukri/Indeed/Instahyre/Foundit/Cutshort.",
                         flush=True,
