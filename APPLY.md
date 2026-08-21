@@ -27,9 +27,11 @@ path.
    **Desktop / Take control**; then continue those same applications.
 5. After filling everything the runner can, if leftover fields still need a
    human: try to fill them. If the owner is away, **do not wait** — move to the
-   next leftover. If the owner is present, notify in this agent chat, list the
-   fields, and wait on that tab. Same for identity codes if Gmail is already
-   open.
+   next leftover. If the owner is present (`--owner-present`), notify in this
+   agent chat, list the fields, **learn answers they type**, and **wait on that
+   tab** (`NEED_INPUT`). Do not start another leftover until they finish or
+   ask. `--watch-open` continues the already-open tab only (no new leftovers,
+   do not reset Chrome tabs). Same for identity codes if Gmail is already open.
 6. **One live application at a time**, except parked CAPTCHA tabs stay open.
    Close the current apply tab and open the next leftover after **SUBMITTED**,
    **404/closed**, or **Sign In / Create Account rejects every portal password**.

@@ -41,8 +41,8 @@ PROFILE_EMAIL = "rafi.success@gmail.com"
 MAX_OPEN_APPLICATIONS = 1
 DONE_STATUSES = frozenset({"SUBMITTED", "CLOSED", "AUTH_FAILED"})
 # Park these and open the next leftover. STUCK = Copilot/form loop; do not sit on it.
-PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED", "OWNER_SIGNIN", "STUCK"})
-KEEP_TAB_STATUSES = frozenset({"CAPTCHA", "OWNER_SIGNIN"})
+PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED", "OWNER_SIGNIN", "STUCK", "NEED_INPUT"})
+KEEP_TAB_STATUSES = frozenset({"CAPTCHA", "OWNER_SIGNIN", "NEED_INPUT"})
 TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES | frozenset({"ERROR"})
 PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
@@ -52,6 +52,9 @@ _RECAPTCHA_CLICKS = 0
 ICIMS_LOGIN_CLICKED = False
 ICIMS_CONTINUE_CLICKS = 0
 ICIMS_PASSWORD_SUBMITS = 0
+# Owner is at the desktop filling leftover fields. Pause instead of skipping.
+OWNER_PRESENT = False
+WATCH_OPEN = False
 
 # These boards are covered by other automations — this runner skips them.
 LOGIN_HOSTS = (
@@ -2708,11 +2711,11 @@ def notify_needs_input(job: dict, page, fields: list[str] | None = None) -> None
     bullets = "\n".join(f"  - {f}" for f in fields) or "  - leftover required fields on this page"
     banner = (
         f"\n{'!' * 72}\n"
-        f"  NEED YOUR INPUT — enter the leftover fields in Desktop / Take control\n"
+        f"  PAUSED — I filled what I can. Enter leftover fields in Desktop / Take control\n"
         f"  {company}: {title}\n"
         f"  {url}\n"
         f"{bullets}\n"
-        f"  After you fill them I will continue this same application.\n"
+        f"  I will learn what you type and continue this same application.\n"
         f"{'!' * 72}\n"
     )
     print(banner, flush=True)
@@ -3244,6 +3247,17 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         except Exception:
             job_url = ""
         if "icims.com" in job_url and icims_auth0_blocked(page):
+            if OWNER_PRESENT:
+                if not notified_input:
+                    notify_needs_input(
+                        job,
+                        page,
+                        ["iCIMS Auth0 login — complete password / wait out the rate limit"],
+                    )
+                    notified_input = True
+                print("  Paused on iCIMS Auth0. Complete login; I will learn and continue.", flush=True)
+                page.wait_for_timeout(2000)
+                continue
             print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
             return {
                 "ok": False,
@@ -3345,14 +3359,26 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "note": "parked for owner to solve later",
                     "learned": learned,
                 }
-            if step == "stuck" and icims_auth0_blocked(page):
-                print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
-                return {
-                    "ok": False,
-                    "status": "STUCK",
-                    "note": "iCIMS Auth0 rate-limited — retry later",
-                    "learned": learned,
-                }
+            if step == "stuck" and icims_auth0_blocked(page) and (
+                "icims.com" in job_url or "icims.com" in (page.url or "").lower()
+            ):
+                if OWNER_PRESENT:
+                    if not notified_input:
+                        notify_needs_input(
+                            job,
+                            page,
+                            ["iCIMS Auth0 login — complete password / wait out the rate limit"],
+                        )
+                        notified_input = True
+                    print("  Paused on iCIMS Auth0. Complete login; I will learn and continue.", flush=True)
+                else:
+                    print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
+                    return {
+                        "ok": False,
+                        "status": "STUCK",
+                        "note": "iCIMS Auth0 rate-limited — retry later",
+                        "learned": learned,
+                    }
         except Exception:
             pass
         fp = form_fingerprint(page)
@@ -3388,6 +3414,20 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                         "note": "parked LinkedIn checkpoint for owner",
                         "learned": learned,
                     }
+                if OWNER_PRESENT:
+                    req = required_field_issues(page) or [
+                        "form is not advancing — fill remaining fields"
+                    ]
+                    if not notified_input:
+                        notify_needs_input(job, page, req)
+                        notified_input = True
+                    print(
+                        "  Paused clicks. Fill remaining fields; I will learn them and continue.",
+                        flush=True,
+                    )
+                    unsticks = 0
+                    page.wait_for_timeout(2500)
+                    continue
                 print("  Form is looping. Moving to the next leftover now.", flush=True)
                 return {
                     "ok": False,
@@ -3401,15 +3441,22 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             if stuck_required >= 2 and not notified_input:
                 notify_needs_input(job, page, req)
                 notified_input = True
-                print("  Owner is away. Leftover fields remain — next job.", flush=True)
-                return {
-                    "ok": False,
-                    "status": "STUCK",
-                    "note": "leftover fields; owner sleeping — next job",
-                    "learned": learned,
-                }
+                if not OWNER_PRESENT:
+                    print("  Owner is away. Leftover fields remain — next job.", flush=True)
+                    return {
+                        "ok": False,
+                        "status": "STUCK",
+                        "note": "leftover fields; owner sleeping — next job",
+                        "learned": learned,
+                    }
+                print(
+                    "  Paused. Fill the leftover fields; I will learn them and continue.",
+                    flush=True,
+                )
         else:
             stuck_required = 0
+            if notified_input and OWNER_PRESENT:
+                notified_input = False
         try:
             now_url = _stable_apply_url(page.url or "")
         except Exception:
@@ -3417,7 +3464,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         if now_url != hold_url:
             hold_url = now_url
             url_hold_from = time.time()
-        elif _ats_loop_host(now_url) and time.time() - url_hold_from > 30:
+        elif _ats_loop_host(now_url) and time.time() - url_hold_from > 30 and not OWNER_PRESENT:
             print("  ATS page did not advance. Next leftover.", flush=True)
             return {
                 "ok": False,
@@ -3427,6 +3474,17 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             }
         page.wait_for_timeout(1200)
     print(f"  Still no confirmation after {seconds}s. Learned {learned} field(s).", flush=True)
+    if OWNER_PRESENT:
+        leftover = required_field_issues(page)
+        if leftover or notified_input:
+            if not notified_input:
+                notify_needs_input(job, page, leftover)
+            return {
+                "ok": False,
+                "status": "NEED_INPUT",
+                "note": f"paused for owner after {seconds}s; learned {learned} fields",
+                "learned": learned,
+            }
     return {
         "ok": False,
         "status": "WAITING_EXPIRED",
@@ -3582,7 +3640,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             else:
                 print("  Job-board login wall. Not marking skipped; next leftover.", flush=True)
             return row
-        if "icims.com" in (url or "").lower() and icims_auth0_blocked(page):
+        if "icims.com" in (url or "").lower() and icims_auth0_blocked(page) and not OWNER_PRESENT:
             print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
             row["status"] = "STUCK"
             row["note"] = "iCIMS Auth0 rate-limited — retry later"
@@ -3633,7 +3691,11 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             if now_stable != apply_hold:
                 apply_hold = now_stable
                 apply_hold_from = time.time()
-            elif _ats_loop_host(now_stable) and time.time() - apply_hold_from > 30:
+            elif (
+                _ats_loop_host(now_stable)
+                and time.time() - apply_hold_from > 30
+                and not OWNER_PRESENT
+            ):
                 print("  ATS page did not advance. Next leftover.", flush=True)
                 row["status"] = "STUCK"
                 row["note"] = "ATS URL unchanged — next job"
@@ -3647,7 +3709,11 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             if after_stable != apply_hold:
                 apply_hold = after_stable
                 apply_hold_from = time.time()
-            elif _ats_loop_host(after_stable) and time.time() - apply_hold_from > 30:
+            elif (
+                _ats_loop_host(after_stable)
+                and time.time() - apply_hold_from > 30
+                and not OWNER_PRESENT
+            ):
                 print("  ATS page did not advance. Next leftover.", flush=True)
                 row["status"] = "STUCK"
                 row["note"] = "ATS URL unchanged — next job"
@@ -3677,7 +3743,11 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
                 return row
             if step == "stuck":
-                if icims_auth0_blocked(page):
+                if (
+                    "icims.com" in (url or "").lower()
+                    and icims_auth0_blocked(page)
+                    and not OWNER_PRESENT
+                ):
                     print("  iCIMS Auth0 rate-limited. Next leftover.", flush=True)
                     row["status"] = "STUCK"
                     row["note"] = "iCIMS Auth0 rate-limited — retry later"
@@ -3723,12 +3793,16 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             stay = min(stay, 25)
         if linkedin_account_restricted(page) or LINKEDIN_RESTRICTED:
             stay = 0
-        if icims_auth0_blocked(page) and (
-            "icims.com" in u or "icims.com" in (url or "").lower()
+        if (
+            icims_auth0_blocked(page)
+            and ("icims.com" in u or "icims.com" in (url or "").lower())
+            and not OWNER_PRESENT
         ):
             stay = 0
-        if step == "stuck" and stay <= 15:
+        if step == "stuck" and stay <= 15 and not OWNER_PRESENT:
             stay = 0
+        if OWNER_PRESENT and not stay:
+            stay = wait_seconds if wait_seconds else 90
         if stay:
             human = wait_for_human(page, job, stay, resume)
             row["ok"] = human["ok"]
@@ -3921,7 +3995,10 @@ def launch_context(pw, headed: bool):
                 print(f"  Google sign-in skipped ({exc}).", flush=True)
         else:
             print("  Chrome already signed in; leaving Google tabs alone.", flush=True)
-        reset_chrome_tabs(context)
+        if OWNER_PRESENT or WATCH_OPEN:
+            print("  Owner is present. Leaving open application tabs as they are.", flush=True)
+        else:
+            reset_chrome_tabs(context)
         print(f"  Using open Chrome profile {PROFILE_EMAIL} ({PROFILE}) + Simplify Copilot", flush=True)
         print(f"  One application at a time. Next job after submit, closed posting, or locked/rejected portal login.", flush=True)
         return None, context, None
@@ -4042,6 +4119,121 @@ def persist_existing_closed() -> None:
         apply_now.persist_skipped(row, row.get("note") or "closed posting — cannot submit")
 
 
+def pick_open_apply_page(context):
+    """Prefer the live ATS / Auth0 tab. Never pick Gmail or parked LinkedIn CAPTCHA."""
+    skip = (
+        "linkedin.com/checkpoint", "recaptcha", "protechts.net",
+        "mail.google.com", "accounts.google.com", "chrome://", "chrome-extension://",
+        "omnibox-popup",
+    )
+    scored = []
+    for p in list(context.pages):
+        try:
+            if p.is_closed():
+                continue
+            u = (p.url or "").lower()
+        except Exception:
+            continue
+        if any(s in u for s in skip):
+            continue
+        score = 0
+        if "login.icims.com" in u:
+            score += 50
+        elif "icims.com" in u:
+            score += 40
+        elif "myworkdayjobs.com" in u and "/apply" in u:
+            score += 30
+        elif "avature.net" in u:
+            score += 25
+        elif any(h in u for h in ("oraclecloud.com", "smartrecruiters.com", "greenhouse.io", "lever.co")):
+            score += 20
+        elif "/apply" in u:
+            score += 10
+        if score:
+            scored.append((score, p))
+    scored.sort(key=lambda item: -item[0])
+    return scored[0][1] if scored else None
+
+
+def match_job_for_page(page, jobs: list[dict]) -> dict | None:
+    """Map an already-open tab back to a leftover queue job."""
+    try:
+        url = (page.url or "").lower()
+        title = (page.title() or "").lower()
+    except Exception:
+        url, title = "", ""
+    blob = f"{url} {title}"
+
+    def _job_blob(job: dict) -> str:
+        return " ".join(
+            str(job.get(k) or "")
+            for k in ("company", "title", "apply_url", "url", "job_id")
+        ).lower()
+
+    if "icims.com" in url or "schwab" in blob:
+        for job in jobs:
+            jb = _job_blob(job)
+            if "schwab" in jb and ("senior manager" in jb or "124090" in jb or "icims" in jb):
+                return job
+        for job in jobs:
+            if "schwab" in _job_blob(job):
+                return job
+    for token in re.findall(r"r-\d+", blob):
+        for job in jobs:
+            if token in _job_blob(job):
+                return job
+    for job in jobs:
+        ju = ((job.get("apply_url") or job.get("url") or "") + "").lower()
+        if ju and ju.split("?")[0] in url:
+            return job
+    return None
+
+
+def watch_open_application(wait_seconds: int) -> list[dict]:
+    """Stay on the already-open apply tab: fill, learn, pause for leftover fields."""
+    apply_now.BATCH = apply_now.load_all_discovered()
+    form_memory.seed_from_learned()
+    seed_parked_captcha_urls()
+    queue = apply_now.queue()
+    try_jobs, _ = public_queue(queue, allow_aggregators=True)
+    leftovers = leftover_career_jobs(try_jobs)
+    results: list[dict] = []
+    with sync_playwright() as pw:
+        browser, context, _page = launch_context(pw, headed=True)
+        page = pick_open_apply_page(context)
+        if page is None:
+            print("  No open application tab to continue. Leaving Chrome as-is.", flush=True)
+            return results
+        job = match_job_for_page(page, leftovers) or {
+            "company": (page.title() or "Open tab").split("|")[0].strip()[:80],
+            "title": "ongoing application",
+            "apply_url": page.url,
+            "url": page.url,
+        }
+        print(
+            f"\n=== Watching open application ===\n"
+            f"  {job.get('company')}: {job.get('title')}\n"
+            f"  {page.url}\n"
+            f"  I will fill what I can, learn what you type, and pause on leftover fields.",
+            flush=True,
+        )
+        try:
+            job["resume_path"] = tailor_resume.for_job(job)
+        except Exception:
+            job["resume_path"] = RESUME
+        row = apply_one(page, job, wait_seconds=wait_seconds, navigate=False)
+        results.append(row)
+        if row.get("ok") and row.get("status") == "SUBMITTED":
+            note = (row.get("note") or "").lower()
+            if "already applied" not in note:
+                apply_now.persist_applied(row, row.get("note") or "cloud_apply submitted")
+                notify_submitted(job, row)
+        save_cloud(results)
+        print(f"  {row.get('status')} ok={row.get('ok')} learned={row.get('fields_learned') or row.get('learned')} {row.get('final_url')}", flush=True)
+        print("  Leaving rafi.success@gmail.com Chrome open.", flush=True)
+    return results
+
+
 def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
     out = []
     for job in try_jobs:
@@ -4146,7 +4338,11 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     print("  Portal login failed. Closing this tab and opening the next leftover.", flush=True)
                     close_apply_page(page)
                 elif row.get("status") in KEEP_TAB_STATUSES:
-                    print("  Left this tab open for you. Starting the next leftover.", flush=True)
+                    print("  Left this tab open for you.", flush=True)
+                    if OWNER_PRESENT:
+                        print("  Owner is filling this application. Not starting another leftover.", flush=True)
+                        break
+                    print("  Starting the next leftover.", flush=True)
                 else:
                     print("  Could not finish this form. Moving to the next leftover.", flush=True)
                     close_apply_page(page)
@@ -4191,10 +4387,24 @@ if __name__ == "__main__":
         default=0,
         help="Keep applying until this many NEW submits are logged (overnight).",
     )
+    parser.add_argument(
+        "--owner-present",
+        action="store_true",
+        help="Owner is filling leftover fields. Pause on NEED_INPUT; learn answers.",
+    )
+    parser.add_argument(
+        "--watch-open",
+        action="store_true",
+        help="Continue the already-open apply tab only. Implies --owner-present.",
+    )
     args = parser.parse_args()
+    OWNER_PRESENT = bool(args.owner_present or args.watch_open)
+    WATCH_OPEN = bool(args.watch_open)
     # Headed: wait for human CAPTCHA. Unattended cron can pass --wait 0.
     wait = (360 if args.headed else 0) if args.wait is None else args.wait
-    if args.until_submitted:
+    if args.watch_open:
+        watch_open_application(wait_seconds=wait or 1800)
+    elif args.until_submitted:
         def _submitted_n() -> int:
             if not SUBMITTED_LOG.exists():
                 return 0
