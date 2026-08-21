@@ -4585,10 +4585,20 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     print("  Foundit/Cutshort login is blocked on Google change-password. Next leftover.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
-                for extra in list(context.pages):
-                    close_apply_page(extra)
-                page = context.new_page()
-                row = apply_one(page, job, wait_seconds=wait_seconds, navigate=True)
+                navigate = True
+                if OWNER_PRESENT:
+                    open_page = pick_open_apply_page(context)
+                    if open_page is not None and match_job_for_page(open_page, [job]):
+                        print("  Continuing the open tab so you can enter leftover fields.", flush=True)
+                        page = open_page
+                        navigate = False
+                    else:
+                        page = context.new_page()
+                else:
+                    for extra in list(context.pages):
+                        close_apply_page(extra)
+                    page = context.new_page()
+                row = apply_one(page, job, wait_seconds=wait_seconds, navigate=navigate)
                 results.append(row)
                 SESSION_SKIP_KEYS.update(apply_now.job_match_keys(row) | apply_now.job_match_keys(job))
                 if row.get("ok") and row.get("status") == "SUBMITTED":
