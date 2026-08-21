@@ -16,3 +16,5 @@
   https://jobs.thermofisher.com/global/en/applythankyou?status=success&jobSeqNo=TFSCGLOBALR01351780EXTERNALENGLOBAL&jobTitle=Staff%20Engineer%2C%20Software&jobId=R-01351780&candidateHomeUrl=https://thermofisher.wd5.myworkdayjobs.com/en-US/ThermoFisherCareers/login?Job_Application_ID=5ec0c848409290019bfc24811c5c0002&jobApplicationId=5ec0c848409290019bfc24811c5c0002&candidateId=C4865290&thankYouUri=aeJvX6IcxCAp0nqFOywKtR8XtBmXvoG8o9UhR3ysYzDCMLr2YxOx0sZo%2FAXthnK8qsZVWvgUchqYgPiioIzDg5y9V3JZSfwe
 - **2026-08-21T00:33:50Z** SUBMITTED **State Street** — Senior Software Engineer, Officer
   https://statestreet.wd1.myworkdayjobs.com/en-US/Global/jobTasks/completed/application?pjid=5a20307a-d34a-4cc5-84a6-7f50c4492837
+- **2026-08-21T00:55:30Z** SUBMITTED **DHL Aero Expreso** — Senior Software Engineer
+  https://dpdhlgroup.avature.net/en_US/jobs/Success?jobId=367430&source=careers.dhl.com

@@ -238,7 +238,7 @@
     "status": "STUCK",
     "note": "ATS URL unchanged — next job",
     "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--AVP_R-792706/apply/applyManually",
-    "ts": "2026-08-21T00:14:19.718660+00:00"
+    "ts": "2026-08-21T00:35:35.073615+00:00"
   },
   {
     "company": "State Street",
@@ -404,12 +404,12 @@
     "ats": "Foundit",
     "job_id": "60912103",
     "apply_url": "https://careers.dhl.com/global/en/job/AV-367430/Senior-Software-Engineer",
-    "ok": false,
-    "status": "STUCK",
-    "note": "ATS URL unchanged — next job",
-    "final_url": "https://dpdhlgroup.avature.net/en_US/jobs/Register?jobId=367430&source=careers.dhl.com",
-    "ts": "2026-08-21T00:12:42.539118+00:00",
-    "fields_learned": 7
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted in headed Chrome (owner completed leftover fields)",
+    "final_url": "https://dpdhlgroup.avature.net/en_US/jobs/Success?jobId=367430&source=careers.dhl.com",
+    "ts": "2026-08-21T00:49:14.298471+00:00",
+    "fields_learned": 3
   },
   {
     "company": "Amazon",
@@ -507,7 +507,7 @@
     "status": "STUCK",
     "note": "no page progress — next job",
     "final_url": "https://login.icims.com/u/login/password?state=hqFo2SAtMEwxWVFyV3FMWU5HakFPNlNlUlFlZXJGRWtkWGlndKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDZsbF94dFplQXQ1d1plSEM0Sk1jem5HQ1VVN1VORDNFo2NpZNkgS0pBOTVEeEhPUE5PNTZVYU5SZFJZNTdwem42Q01IY22lb3JnaWS0b3JnX2dGWldEUExkNnRaNzhra06nb3JnbmFtZalzY2h3YWItOTc",
-    "ts": "2026-08-21T00:17:39.087679+00:00",
+    "ts": "2026-08-21T00:36:38.957207+00:00",
     "fields_learned": 0
   },
   {
@@ -608,5 +608,15 @@
     "note": "board blocked this environment (access denied)",
     "final_url": "https://ensemblehpi.com/career-technology/?jobId=Y92dQFznrJ8X",
     "ts": "2026-08-20T17:50:39.819119+00:00"
+  },
+  {
+    "company": "DHL Aero Expreso",
+    "title": "Senior Software Engineer",
+    "apply_url": "https://dpdhlgroup.avature.net/en_US/jobs/Register?jobId=367430&source=careers.dhl.com",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted in headed Chrome (owner completed leftover fields)",
+    "final_url": "https://dpdhlgroup.avature.net/en_US/jobs/Success?jobId=367430&source=careers.dhl.com",
+    "learned": 0
   }
 ]

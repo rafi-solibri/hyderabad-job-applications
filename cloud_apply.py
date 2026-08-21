@@ -241,6 +241,7 @@ SUCCESS_URL = (
     "stepname=thank",
     "stepname=confirmation",
     "jobtasks/completed/application",
+    "/jobs/success",
 )
 
 

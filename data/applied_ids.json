@@ -1830,5 +1830,37 @@
     "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--Officer_R-795725",
     "note": "submitted in headed Chrome (owner completed leftover fields)",
     "ts": "2026-08-21T00:33:50.383978+00:00"
+  },
+  "register|ongoing application": {
+    "company": "Register",
+    "title": "ongoing application",
+    "job_id": "",
+    "url": "https://dpdhlgroup.avature.net/en_US/jobs/Register?jobId=367430&source=careers.dhl.com",
+    "note": "submitted after owner filled leftover fields",
+    "ts": "2026-08-21T00:55:30.771842+00:00"
+  },
+  "dhlaeroexpreso|senior software engineer": {
+    "company": "DHL Aero Expreso",
+    "title": "Senior Software Engineer",
+    "job_id": "367430",
+    "url": "https://dpdhlgroup.avature.net/en_US/jobs/Register?jobId=367430&source=careers.dhl.com",
+    "note": "submitted in headed Chrome (owner completed leftover fields)",
+    "ts": "2026-08-21T00:56:59.454335+00:00"
+  },
+  "AV-367430": {
+    "company": "DHL Aero Expreso",
+    "title": "Senior Software Engineer",
+    "job_id": "AV-367430",
+    "url": "https://careers.dhl.com/global/en/job/AV-367430/Senior-Software-Engineer",
+    "note": "submitted in headed Chrome (owner completed leftover fields)",
+    "ts": "2026-08-21T00:56:59.451122+00:00"
+  },
+  "367430": {
+    "company": "DHL Aero Expreso",
+    "title": "Senior Software Engineer",
+    "job_id": "367430",
+    "url": "https://dpdhlgroup.avature.net/en_US/jobs/Register?jobId=367430&source=careers.dhl.com",
+    "note": "submitted in headed Chrome (owner completed leftover fields)",
+    "ts": "2026-08-21T00:56:59.454335+00:00"
   }
 }
