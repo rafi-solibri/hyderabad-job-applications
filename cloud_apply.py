@@ -1076,7 +1076,7 @@ def click_instahyre_apply(page) -> str:
 
 
 def click_naukri_quick_apply(page) -> str:
-    """Naukri TopTier CTA is Quick apply — often a right-rail control Copilot would skip."""
+    """Naukri JD CTA is class apply-button (label Apply). The 'Quick apply' badge is too small to submit."""
     try:
         url = (page.url or "").lower()
     except Exception:
@@ -1087,84 +1087,56 @@ def click_naukri_quick_apply(page) -> str:
         return ""
     collapse_copilot_panel(page)
     try:
-        loc = page.get_by_text(re.compile(r"^quick apply$", re.I)).first
-        if loc.count() and loc.is_visible():
-            loc.click(timeout=2500, force=True)
-            print("  Clicked Naukri 'Quick apply'.", flush=True)
-            page.wait_for_timeout(2200)
-            return "Quick apply"
-    except Exception:
-        pass
-    try:
-        box = page.evaluate(
+        hit = page.evaluate(
             """() => {
               const labelOf = (el) => ((el.innerText || el.value || el.getAttribute('aria-label') || '') + '').replace(/\\s+/g, ' ').trim();
-              const ranked = [/^quick apply$/i, /^apply on naukri$/i, /^apply now$/i, /^i am interested$/i, /^apply$/i];
-              const hits = [];
-              const nodes = document.querySelectorAll('button, a, [role="button"], span, div');
-              for (const el of nodes) {
+              const skip = /company site|login to apply|register to apply|save job|share/i;
+              const cands = [];
+              for (const el of document.querySelectorAll('button, a, [role="button"], [class*="apply-button"]')) {
+                const cls = ((el.className || '') + ' ' + (el.id || '')).toLowerCase();
                 const t = labelOf(el);
-                if (!t || t.length > 28) continue;
-                let rank = -1;
-                for (let i = 0; i < ranked.length; i++) {
-                  if (ranked[i].test(t)) { rank = i; break; }
-                }
-                if (rank < 0) continue;
+                if (skip.test(t)) continue;
                 const r = el.getBoundingClientRect();
-                if (r.width < 10 || r.height < 10) continue;
-                if (r.left > window.innerWidth * 0.93) continue;
-                if (r.bottom < 80 || r.top > window.innerHeight - 8) continue;
-                hits.push({x: r.x, y: r.y, w: r.width, h: r.height, t, rank, area: r.width * r.height});
+                if (r.width < 36 || r.height < 14) continue;
+                if (r.top < 48 || r.bottom > window.innerHeight + 20) continue;
+                if (r.left > window.innerWidth * 0.96) continue;
+                const isApplyClass = /apply-button/.test(cls) && !/login-apply|reg-apply/.test(cls);
+                const isApplyText = /^(apply|quick apply|apply now)$/i.test(t);
+                if (!isApplyClass && !isApplyText) continue;
+                cands.push({t: t || 'Apply', score: (isApplyClass ? 5000 : 0) + r.width * r.height, x: r.x, y: r.y, w: r.width, h: r.height});
               }
-              hits.sort((a, b) => a.rank - b.rank || b.area - a.area);
-              return hits[0] || null;
-            }"""
-        )
-    except Exception:
-        box = None
-    if not box:
-        return ""
-    try:
-        hit = page.evaluate(
-            """(t) => {
-              const labelOf = (el) => ((el.innerText || el.value || el.getAttribute('aria-label') || '') + '').replace(/\\s+/g, ' ').trim();
-              for (const el of document.querySelectorAll('button, a, [role="button"], span, div')) {
-                if (labelOf(el) !== t) continue;
-                const btn = el.closest('button, a, [role="button"]') || el;
-                btn.scrollIntoView({block: 'center'});
-                btn.click();
-                return t;
+              cands.sort((a, b) => b.score - a.score);
+              const top = cands[0];
+              if (!top) return '';
+              for (const el of document.querySelectorAll('button, a, [role="button"], [class*="apply-button"]')) {
+                const r = el.getBoundingClientRect();
+                if (Math.abs(r.x - top.x) > 2 || Math.abs(r.y - top.y) > 2) continue;
+                el.scrollIntoView({block: 'center'});
+                el.click();
+                return top.t;
               }
               return '';
-            }""",
-            box.get("t") or "Quick apply",
+            }"""
         ) or ""
     except Exception:
         hit = ""
-    if not hit:
-        try:
-            info = page.evaluate(
-                """() => ({
-                  sx: window.screenX || 0,
-                  sy: window.screenY || 0,
-                  oh: window.outerHeight || 0,
-                  ih: window.innerHeight || 0,
-                })"""
-            )
-        except Exception:
-            info = {}
-        chrome_top = max(0, int((info.get("oh") or 0) - (info.get("ih") or 0)))
-        _xdotool_click(
-            (info.get("sx") or 0) + box["x"] + box["w"] / 2,
-            (info.get("sy") or 0) + chrome_top + box["y"] + box["h"] / 2,
-        )
-        hit = (box.get("t") or "Quick apply").strip()[:40]
     if hit:
         print(f"  Clicked Naukri '{hit}'.", flush=True)
         try:
-            page.wait_for_timeout(2200)
+            page.wait_for_timeout(1800)
         except Exception:
             pass
+        # Apply drawer / lightbox: Send application
+        for name in ("Send application", "Submit application", "Apply now", "Apply"):
+            try:
+                loc = page.get_by_role("button", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
+                if loc.count() and loc.is_visible() and not _looks_like_copilot(loc):
+                    loc.click(timeout=1500, force=True)
+                    print(f"  Clicked Naukri '{name}'.", flush=True)
+                    page.wait_for_timeout(1500)
+                    return name
+            except Exception:
+                continue
     return hit
 
 
