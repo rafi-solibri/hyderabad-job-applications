@@ -149,6 +149,46 @@ def native_fill(locator, value: str) -> bool:
         return False
 
 
+def _dropdown_committed(el, value: str) -> bool:
+    """True when a React-Select (or similar) actually selected the option.
+
+    The combobox filter input often contains the typed text while the control
+    still shows Select... / This field is required. That is not a commit.
+    """
+    want = (value or "").strip().lower()
+    if not want:
+        return False
+    try:
+        state = el.evaluate(
+            """(n, want) => {
+              const wrap = n.closest('div.select, [class*="select"]') || n.parentElement;
+              const single = wrap && wrap.querySelector('.select__single-value, [class*="singleValue"]');
+              const text = ((single && single.innerText) || '').replace(/\\s+/g, ' ').trim();
+              const ph = wrap && wrap.querySelector('.select__placeholder, [class*="placeholder"]');
+              const placeholderOn = !!(ph && ph.offsetWidth && (ph.innerText || '').trim());
+              const err = !!(wrap && wrap.querySelector('.select__control--error'));
+              return {text, placeholderOn, err};
+            }""",
+            want,
+        ) or {}
+    except Exception:
+        state = {}
+    text = (state.get("text") or "").strip()
+    if text and not state.get("placeholderOn") and not state.get("err"):
+        if text.lower() == want or want in text.lower() or text.lower() in want:
+            return True
+        if fuzzy_score(value, text) >= 0.7:
+            return True
+    try:
+        tag = (el.evaluate("n => (n.tagName || '').toLowerCase()") or "")
+        if tag == "select":
+            cur = (el.evaluate("n => ((n.options[n.selectedIndex]||{}).text || n.value || '')") or "").strip()
+            return bool(cur) and (want in cur.lower() or cur.lower() in want)
+    except Exception:
+        pass
+    return False
+
+
 def handle_dropdown(page, locator, value: str) -> bool:
     """Native select, type-to-filter, click-scan, then keyboard. From auto-apply."""
     if not value:
@@ -187,8 +227,7 @@ def handle_dropdown(page, locator, value: str) -> bool:
         try:
             page.keyboard.press("Enter")
             page.wait_for_timeout(250)
-            cur = (el.input_value() or "").strip()
-            if cur and value.lower() in cur.lower():
+            if _dropdown_committed(el, value):
                 return True
         except Exception:
             pass
@@ -216,7 +255,7 @@ def handle_dropdown(page, locator, value: str) -> bool:
             except Exception:
                 pass
         page.keyboard.press("Enter")
-        return bool((el.input_value() or "").strip())
+        return _dropdown_committed(el, value)
     except Exception:
         return False
 

@@ -341,8 +341,10 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return "0"
     if "non-compet" in q or "noncompet" in q:
         return pick("no") or "No"
+    if "relocate to hyderabad" in q or "based in hyderabad" in q:
+        return pick("i'm based in hyderabad", "based in hyderabad") or "I'm based in Hyderabad"
     if "relocat" in q:
-        return pick("no") or "No"
+        return pick("i'm based in", "already", "no") or "No"
     if "disability" in q:
         return pick("do not have a disability", "no") or a["disability"]
     if "veteran" in q:
@@ -373,6 +375,10 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return a["company"]
     if "current title" in q or "current role" in q or "job title" in q:
         return a["title"]
+    if "direct reportee" in q or "people management" in q or "managing a team" in q:
+        return pick("yes") or "Yes"
+    if "within 30 days" in q or "join the team within" in q:
+        return pick("yes") or "Yes"
     if "years of experience" in q or "total experience" in q or "how many years" in q:
         if options:
             plus = []
@@ -450,8 +456,6 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("no") or "No"
     if "onsite" in q or "hybrid" in q or "office" in q:
         return pick("yes") or "Yes"
-    if "relocate to hyderabad" in q or "based in hyderabad" in q:
-        return pick("i'm based in hyderabad", "based in hyderabad", "yes") or "I'm based in Hyderabad"
     if "ai tool" in q or "claude" in q or "chatgpt" in q:
         return a["ai"]
     if "technical initiative" in q or "concept to delivery" in q:

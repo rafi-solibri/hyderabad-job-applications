@@ -385,6 +385,10 @@ def fill_identity(page) -> None:
                     cur = (loc.input_value() or "").strip()
                 except Exception:
                     pass
+                if sel.startswith("input[name='urls[LinkedIn]"):
+                    if not re.search(r"^https?://", cur, re.I):
+                        loc.fill(str(value), timeout=1500)
+                    continue
                 if not cur:
                     loc.fill(str(value), timeout=1500)
         except Exception:
@@ -2676,6 +2680,10 @@ def fill_leftover_dropdowns(page) -> int:
         (r"please select .n/a.|united states or australia", "N/A"),
         (r"relocate to hyderabad", "I'm based in Hyderabad"),
         (r"hybrid model of working", "Yes"),
+        (r"country of residence", "India"),
+        (r"managing a team|people management", "Yes"),
+        (r"join the team within 30 days|within 30 days", "Yes"),
+        (r"managing direct reportee", "Yes"),
     ]
     # Workday how-heard is a nested prompt (Career → Asia Job Boards → Naukri).
     # Typing "Career" here undoes fill_workday_required_questions().
@@ -2719,6 +2727,294 @@ def fill_leftover_dropdowns(page) -> int:
             print(f"  Filled '{value}' for {pat}.", flush=True)
         except Exception:
             continue
+    return filled
+
+
+def greenhouse_required_errors(page) -> list[str]:
+    """Labels still showing Greenhouse 'This field is required.'"""
+    try:
+        rows = page.evaluate(
+            """() => {
+              const out = [];
+              const seen = new Set();
+              document.querySelectorAll('div.select, fieldset.checkbox').forEach((wrap) => {
+                const err = wrap.querySelector('.select__control--error, .checkbox--error, [class*="error"]');
+                const req = /this field is required/i.test(wrap.innerText || '');
+                if (!err && !req) return;
+                const lab = wrap.querySelector('label, legend, .label');
+                const q = ((lab && lab.innerText) || wrap.innerText || '')
+                  .replace(/\\s+/g, ' ').trim().slice(0, 120);
+                if (!q || seen.has(q)) return;
+                seen.add(q);
+                out.push(q);
+              });
+              return out;
+            }"""
+        ) or []
+    except Exception:
+        rows = []
+    return [r for r in rows if r]
+
+
+def _greenhouse_select_label(wrap) -> str:
+    try:
+        lab = wrap.locator("label, legend, .label").first
+        if lab.count():
+            return (lab.inner_text() or "").replace("\n", " ").strip()[:220]
+    except Exception:
+        pass
+    try:
+        return (wrap.inner_text() or "").replace("\n", " ").strip()[:220]
+    except Exception:
+        return ""
+
+
+def _greenhouse_single_value(wrap) -> str:
+    try:
+        sv = wrap.locator(".select__single-value").first
+        if sv.count() and sv.is_visible():
+            return (sv.inner_text() or "").strip()
+    except Exception:
+        pass
+    return ""
+
+
+def fix_greenhouse_url_fields(page) -> int:
+    """Copilot pastes Country into LinkedIn. Overwrite any non-URL website field."""
+    url = (C.get("linkedIn") or "").strip()
+    if not url:
+        return 0
+    try:
+        n = int(
+            page.evaluate(
+                """(url) => {
+                  let n = 0;
+                  document.querySelectorAll('input').forEach((el) => {
+                    const t = (el.type || '').toLowerCase();
+                    if (['hidden', 'file', 'submit', 'button', 'password'].includes(t)) return;
+                    const wrap = el.closest('div.select, .field, li, fieldset, label, div') || el.parentElement;
+                    const q = ((wrap && wrap.innerText) || '') + ' ' + (el.id || '') + ' ' + (el.name || '');
+                    if (!/linkedin|personal website|website url/i.test(q)) return;
+                    const v = (el.value || '').trim();
+                    if (/^https?:\\/\\//i.test(v) && /linkedin\\.com/i.test(v)) return;
+                    const proto = window.HTMLInputElement.prototype;
+                    const desc = Object.getOwnPropertyDescriptor(proto, 'value');
+                    if (desc && desc.set) desc.set.call(el, url);
+                    else el.value = url;
+                    el.dispatchEvent(new Event('input', {bubbles: true, composed: true}));
+                    el.dispatchEvent(new Event('change', {bubbles: true, composed: true}));
+                    n++;
+                  });
+                  return n;
+                }""",
+                url,
+            )
+            or 0
+        )
+    except Exception:
+        n = 0
+    if n:
+        print(f"  Restored LinkedIn URL on {n} Greenhouse field(s).", flush=True)
+    return n
+
+
+def commit_greenhouse_react_selects(page) -> int:
+    """Click a real React-Select option on every Greenhouse div.select.
+
+    Typing Yes/No into the filter input leaves 'This field is required' because
+    Greenhouse validates the selected option, not the combobox filter text.
+    Duplicate question blocks must all be committed, not only .first.
+    """
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" not in url:
+        return 0
+    collapse_copilot_panel(page)
+    try:
+        wraps = page.locator("div.select")
+        count = min(wraps.count(), 40)
+    except Exception:
+        return 0
+    filled = 0
+    for i in range(count):
+        wrap = wraps.nth(i)
+        try:
+            if not wrap.is_visible():
+                continue
+        except Exception:
+            continue
+        q = _greenhouse_select_label(wrap)
+        if not q or len(q) < 3:
+            continue
+        qn = re.sub(r"[*✱]+", "", q).strip().lower()
+        if qn == "country":
+            # Phone country-code combobox (already +91), not country of residence.
+            continue
+        want = form_memory.infer_answer(q)
+        if not want:
+            continue
+        current = _greenhouse_single_value(wrap)
+        err = False
+        try:
+            cls = wrap.locator(".select__control").first.get_attribute("class") or ""
+            err = "select__control--error" in cls
+        except Exception:
+            pass
+        if current and not err and ats_fill.fuzzy_score(want, current) >= 0.7:
+            continue
+        control = wrap.locator(".select__control").first
+        try:
+            control.scroll_into_view_if_needed(timeout=1500)
+            try:
+                page.keyboard.press("Escape")
+            except Exception:
+                pass
+            control.click(timeout=2000)
+        except Exception:
+            continue
+        page.wait_for_timeout(350)
+        short = want.strip().lower() in {"yes", "no", "n/a", "na"}
+        if not short:
+            try:
+                inp = wrap.locator("input.select__input, input[role=combobox]").first
+                if inp.count():
+                    inp.fill("")
+                    inp.type(str(want)[:18], delay=25)
+                    page.wait_for_timeout(400)
+            except Exception:
+                pass
+        clicked = False
+        try:
+            opt = page.locator(".select__menu .select__option, .select__option, [role='option']").filter(
+                has_text=re.compile(rf"^{re.escape(str(want))}$", re.I)
+            ).first
+            if opt.count() and opt.is_visible():
+                opt.click(timeout=1500)
+                clicked = True
+        except Exception:
+            pass
+        if not clicked:
+            clicked = ats_fill._click_best_option(page, want)
+        if not clicked:
+            try:
+                page.keyboard.press("Enter")
+            except Exception:
+                pass
+        page.wait_for_timeout(220)
+        try:
+            page.keyboard.press("Escape")
+        except Exception:
+            pass
+        now = _greenhouse_single_value(wrap)
+        if now and ats_fill.fuzzy_score(want, now) >= 0.55:
+            filled += 1
+            print(f"  Committed Greenhouse '{now}' for {q[:70]!r}.", flush=True)
+        else:
+            print(
+                f"  Greenhouse select uncommitted for {q[:70]!r} (want {want!r}, have {now!r}).",
+                flush=True,
+            )
+    return filled
+
+
+def commit_greenhouse_checkbox_groups(page) -> int:
+    """Greenhouse custom questions use fieldset.checkbox, not radios.
+
+    Pick exactly one option. Relocate previously ended with both
+    'I'm based in Hyderabad' and 'No' checked.
+    """
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" not in url:
+        return 0
+    try:
+        groups = page.locator("fieldset.checkbox")
+        count = min(groups.count(), 20)
+    except Exception:
+        return 0
+    filled = 0
+    for i in range(count):
+        fs = groups.nth(i)
+        try:
+            if not fs.is_visible():
+                continue
+        except Exception:
+            continue
+        try:
+            legend = fs.locator("legend").first
+            q = (legend.inner_text() if legend.count() else fs.inner_text() or "")[:220]
+        except Exception:
+            q = ""
+        labels = fs.locator(":scope > .checkbox__wrapper > label, label")
+        try:
+            nlab = min(labels.count(), 12)
+        except Exception:
+            nlab = 0
+        opts = []
+        for j in range(nlab):
+            try:
+                opts.append((labels.nth(j).inner_text() or "").strip())
+            except Exception:
+                opts.append("")
+        want = form_memory.infer_answer(q, [o for o in opts if o])
+        if not want:
+            continue
+        chosen = ats_fill.best_option(want, [o for o in opts if o]) or want
+        for j in range(nlab):
+            lab = labels.nth(j)
+            text = opts[j] if j < len(opts) else ""
+            if not text:
+                continue
+            should = (
+                text.lower() == chosen.lower()
+                or ats_fill.fuzzy_score(chosen, text) >= 0.72
+            )
+            for_id = ""
+            try:
+                for_id = lab.get_attribute("for") or ""
+            except Exception:
+                for_id = ""
+            box = None
+            if for_id:
+                try:
+                    box = page.locator(f'[id="{for_id}"]').first
+                except Exception:
+                    box = None
+            checked = False
+            try:
+                if box is not None and box.count():
+                    checked = bool(box.is_checked())
+            except Exception:
+                checked = False
+            if should and not checked:
+                try:
+                    lab.scroll_into_view_if_needed(timeout=1500)
+                    lab.click(timeout=1500)
+                    filled += 1
+                    print(f"  Checked Greenhouse '{text}' for {q[:60]!r}.", flush=True)
+                except Exception:
+                    try:
+                        if box is not None:
+                            box.check(force=True, timeout=1500)
+                            filled += 1
+                    except Exception:
+                        pass
+            elif checked and not should:
+                try:
+                    lab.click(timeout=1500)
+                    print(f"  Unchecked Greenhouse '{text}' for {q[:60]!r}.", flush=True)
+                    filled += 1
+                except Exception:
+                    try:
+                        if box is not None:
+                            box.uncheck(force=True, timeout=1500)
+                            filled += 1
+                    except Exception:
+                        pass
     return filled
 
 
@@ -4151,8 +4447,21 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
     if "icims.com" in ju and icims_auth0_blocked(page):
         return "stuck"
     if "greenhouse.io" in ju and on_application_form(page):
-        fill_leftover_dropdowns(page)
+        collapse_copilot_panel(page)
+        fix_greenhouse_url_fields(page)
+        commit_greenhouse_react_selects(page)
+        commit_greenhouse_checkbox_groups(page)
         fill_greenhouse_required_selects(page)
+        remaining = greenhouse_required_errors(page)
+        if remaining:
+            print(f"  Greenhouse still required after first pass: {remaining}", flush=True)
+            commit_greenhouse_react_selects(page)
+            commit_greenhouse_checkbox_groups(page)
+            remaining = greenhouse_required_errors(page)
+        if remaining:
+            print(f"  Greenhouse still required: {remaining}", flush=True)
+        else:
+            print("  Greenhouse required fields committed.", flush=True)
         accept_terms(page)
         click_recaptcha_checkbox(page)
         if captcha_puzzle_visible(page):
