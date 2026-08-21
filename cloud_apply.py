@@ -4865,53 +4865,86 @@ def discover_naukri_in_chrome(context) -> int:
             print(f"  Naukri search {slug}...", flush=True)
             try:
                 page.goto(url, wait_until="domcontentloaded", timeout=35000)
-                page.wait_for_timeout(4500)
+                page.wait_for_timeout(3500)
+                try:
+                    page.mouse.wheel(0, 1800)
+                    page.wait_for_timeout(1200)
+                except Exception:
+                    pass
             except Exception as exc:
                 print(f"  Naukri search failed ({exc}).", flush=True)
                 continue
             try:
-                rows = page.evaluate(
+                info = page.evaluate(
                     """() => {
+                      const norm = (s) => ((s || '') + '').replace(/\\s+/g, ' ').trim();
                       const out = [];
                       const seen = new Set();
-                      const links = document.querySelectorAll(
-                        'a[href*="job-listings"], a.title, a[href*="/job-listing"]'
-                      );
-                      for (const a of links) {
-                        const href = a.href || '';
-                        const key = href.split('?')[0];
-                        if (!href || seen.has(key)) continue;
-                        const title = ((a.innerText || a.getAttribute('title') || '') + '')
-                          .replace(/\\s+/g, ' ').trim();
-                        if (title.length < 8 || title.length > 140) continue;
+                      const jobHref = (h) => /naukri\\.com/i.test(h) &&
+                        /job-listings|jobdescription|\\/job\\/|jdId=|jobId=/i.test(h);
+                      const push = (title, company, loc, href) => {
+                        const key = (href || '').split('?')[0];
+                        title = norm(title);
+                        if (!key || seen.has(key) || title.length < 8 || title.length > 140) return;
                         seen.add(key);
-                        let company = '';
-                        let loc = 'Hyderabad, India';
-                        const card = a.closest(
-                          'article, .srp-jobtuple-wrapper, .cust-job-tuple, li, div.row'
-                        ) || a.parentElement;
-                        if (card) {
-                          const c = card.querySelector(
-                            '.comp-name, a.comp-name, .companyInfo, [class*="comp-name"]'
-                          );
-                          if (c) company = (c.innerText || '').replace(/\\s+/g, ' ').trim();
-                          const l = card.querySelector('.locWdth, .location, [class*="loc"]');
-                          if (l && l.innerText)
-                            loc = l.innerText.replace(/\\s+/g, ' ').trim().slice(0, 80) || loc;
-                        }
-                        const m = href.match(/job-listings-(\\d+)/) || href.match(/(\\d{6,})/);
+                        const m = href.match(/(\\d{6,})/);
                         out.push({
-                          title, company, loc, href,
+                          title,
+                          company: norm(company).slice(0, 80),
+                          loc: norm(loc).slice(0, 80) || 'Hyderabad, India',
+                          href,
                           jid: m ? m[1] : key.slice(-16),
                         });
+                      };
+                      for (const a of document.querySelectorAll('a[href]')) {
+                        const href = a.href || '';
+                        if (!jobHref(href)) continue;
+                        const card = a.closest('article, li, [class*="tuple"], [class*="job-card"], [class*="JobCard"], div') || a.parentElement;
+                        let company = '';
+                        let loc = 'Hyderabad, India';
+                        if (card) {
+                          const blob = norm(card.innerText).split('\\n');
+                          company = blob.find((x) => x && !/yrs|lakh|\\/year|hyderabad|quick apply|posted/i.test(x) && x.length < 60 && x !== a.innerText) || '';
+                          loc = blob.find((x) => /hyderabad|remote|hybrid/i.test(x)) || loc;
+                        }
+                        push(a.innerText || a.getAttribute('title') || a.getAttribute('aria-label'), company, loc, href);
                         if (out.length >= 40) break;
                       }
-                      return out;
+                      if (out.length < 5) {
+                        const nodes = Array.from(document.querySelectorAll('button, a, span, div'));
+                        for (const el of nodes) {
+                          const t = norm(el.innerText);
+                          if (!/^quick apply$/i.test(t) || t.length > 16) continue;
+                          const card = el.closest('article, li, [class*="tuple"], [class*="card"], div');
+                          if (!card) continue;
+                          const lines = norm(card.innerText).split('\\n').map(norm).filter(Boolean);
+                          const title = lines.find((x) => /engineer|architect|manager|lead|staff|principal/i.test(x) && x.length < 90) || lines[0] || '';
+                          const company = lines.find((x) => x.length > 2 && x.length < 50 && x !== title && !/yrs|hyderabad|quick apply|posted|\\d+l/i.test(x)) || '';
+                          const a = card.querySelector('a[href]');
+                          const href = (a && a.href) || (location.href + '#' + title.slice(0, 40));
+                          push(title, company, 'Hyderabad, India', href);
+                          if (out.length >= 40) break;
+                        }
+                      }
+                      const hrefSample = Array.from(document.querySelectorAll('a[href]'))
+                        .slice(0, 12)
+                        .map((a) => a.href)
+                        .filter(Boolean);
+                      return {out, hrefSample, heading: norm(document.body.innerText).slice(0, 180)};
                     }"""
-                ) or []
-            except Exception:
+                ) or {}
+                rows = info.get("out") or []
+                if not rows:
+                    sample = info.get("hrefSample") or []
+                    print(
+                        f"  Naukri {slug}: 0 cards. heading={str(info.get('heading') or '')[:120]!r} hrefs={sample[:4]}",
+                        flush=True,
+                    )
+                else:
+                    print(f"  Naukri {slug}: {len(rows)} cards.", flush=True)
+            except Exception as exc:
                 rows = []
-            print(f"  Naukri {slug}: {len(rows)} cards.", flush=True)
+                print(f"  Naukri {slug}: scrape error ({exc}).", flush=True)
             for r in rows:
                 href = r.get("href") or ""
                 if not href:
