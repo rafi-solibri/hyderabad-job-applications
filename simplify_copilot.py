@@ -230,6 +230,22 @@ def start_application(page) -> str:
 
 def autofill(page) -> bool:
     """Click Autofill this page once. Never Tailor Resume / Resume Builder."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" in url and "/jobs/" in url:
+        try:
+            fn = page.locator("input[name='first_name'], #first_name").first
+            if fn.count() and (fn.input_value() or "").strip():
+                print(
+                    "  Skipping Copilot Autofill — Greenhouse form already has values "
+                    "(Autofill overwrites State/LinkedIn).",
+                    flush=True,
+                )
+                return False
+        except Exception:
+            pass
     page.wait_for_timeout(1800)
     watch(page)
     page.wait_for_timeout(1200)

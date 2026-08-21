@@ -450,6 +450,8 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("no") or "No"
     if "onsite" in q or "hybrid" in q or "office" in q:
         return pick("yes") or "Yes"
+    if "relocate to hyderabad" in q or "based in hyderabad" in q:
+        return pick("i'm based in hyderabad", "based in hyderabad", "yes") or "I'm based in Hyderabad"
     if "ai tool" in q or "claude" in q or "chatgpt" in q:
         return a["ai"]
     if "technical initiative" in q or "concept to delivery" in q:

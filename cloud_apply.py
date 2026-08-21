@@ -2674,6 +2674,8 @@ def fill_leftover_dropdowns(page) -> int:
         (r"require sponsorship", "No"),
         (r"agree to the processing of my personal data|consent to .{0,40}personal data", "Yes"),
         (r"please select .n/a.|united states or australia", "N/A"),
+        (r"relocate to hyderabad", "I'm based in Hyderabad"),
+        (r"hybrid model of working", "Yes"),
     ]
     # Workday how-heard is a nested prompt (Career → Asia Job Boards → Naukri).
     # Typing "Career" here undoes fill_workday_required_questions().
@@ -2809,6 +2811,25 @@ def fill_greenhouse_required_selects(page) -> int:
                 continue
             if ats_fill.handle_dropdown(page, el, "N/A"):
                 print("  Selected N/A for Greenhouse State.", flush=True)
+                n += 1
+    except Exception:
+        pass
+    try:
+        based = page.get_by_text(re.compile(r"i'?m based in hyderabad", re.I)).first
+        if based.count() and based.is_visible():
+            based.click(timeout=1500)
+            print("  Clicked Greenhouse 'I'm based in Hyderabad'.", flush=True)
+            n += 1
+    except Exception:
+        pass
+    try:
+        hybrid_q = page.get_by_text(re.compile(r"hybrid model of working", re.I)).first
+        if hybrid_q.count() and hybrid_q.is_visible():
+            scope = hybrid_q.locator("xpath=ancestor::*[self::fieldset or self::div or self::li][1]")
+            yes = scope.get_by_text(re.compile(r"^yes$", re.I)).first
+            if yes.count():
+                yes.click(timeout=1500)
+                print("  Clicked Greenhouse hybrid Yes.", flush=True)
                 n += 1
     except Exception:
         pass
