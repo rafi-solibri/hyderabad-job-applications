@@ -2708,6 +2708,64 @@ def fill_leftover_dropdowns(page) -> int:
     return filled
 
 
+def fill_greenhouse_required_selects(page) -> int:
+    """Greenhouse custom questions: N/A state, Yes/No dropdowns that stay 'required'."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" not in url:
+        return 0
+    try:
+        n = int(
+            page.evaluate(
+                """() => {
+                  const wantFor = (text) => {
+                    const t = String(text || '').toLowerCase();
+                    if (t.includes("please select 'n/a'") || t.includes('please select \"n/a\"')
+                        || (t.includes('united states or australia') && t.includes('state')))
+                      return 'n/a';
+                    if (t.includes('ever been employed') || t.includes('currently working at')
+                        || t.includes('current employee'))
+                      return 'no';
+                    if (t.includes('authorized to work')) return 'yes';
+                    if (t.includes('require sponsorship') || t.includes('immigration')) return 'no';
+                    if (t.includes('agree to the processing') || (t.includes('personal data') && t.includes('agree')))
+                      return 'yes';
+                    return '';
+                  };
+                  const pick = (sel, want) => {
+                    if (!sel || !want) return false;
+                    const opts = [...sel.options];
+                    const hit = opts.find(o => (o.text || '').trim().toLowerCase() === want)
+                      || opts.find(o => (o.text || '').toLowerCase().includes(want));
+                    if (!hit) return false;
+                    sel.value = hit.value;
+                    sel.dispatchEvent(new Event('input', {bubbles: true}));
+                    sel.dispatchEvent(new Event('change', {bubbles: true}));
+                    try { sel.dispatchEvent(new Event('blur', {bubbles: true})); } catch (e) {}
+                    return true;
+                  };
+                  let n = 0;
+                  document.querySelectorAll('select, [class*="field"] select').forEach((sel) => {
+                    const wrap = sel.closest('fieldset, .field, li, [class*="question"], label, div') || sel.parentElement;
+                    const t = ((wrap && wrap.innerText) || '') + ' ' + (sel.getAttribute('aria-label') || '')
+                      + ' ' + (sel.name || '') + ' ' + (sel.id || '');
+                    const want = wantFor(t);
+                    if (want && pick(sel, want)) n++;
+                  });
+                  return n;
+                }"""
+            )
+            or 0
+        )
+    except Exception:
+        return 0
+    if n:
+        print(f"  Greenhouse required selects filled ({n}).", flush=True)
+    return n
+
+
 def click_next_or_submit(page) -> str:
     """Click one navigation control. Returns clicked|submitted|none."""
     collapse_copilot_panel(page)
@@ -4013,6 +4071,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         return "stuck"
     click_dhl_apply_method(page)
     fill_leftover_dropdowns(page)
+    fill_greenhouse_required_selects(page)
     apply_now.set_india_phone(page)
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
@@ -4036,6 +4095,8 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         return step or "clicked"
     form_memory.fill_visible(page)
     form_memory.fill_india_state_typeahead(page)
+    fill_leftover_dropdowns(page)
+    fill_greenhouse_required_selects(page)
     fill_smartrecruiters_form(page, job)
     fill_oracle_form(page, job)
     fill_workday_form(page)

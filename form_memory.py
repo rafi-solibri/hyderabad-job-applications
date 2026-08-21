@@ -700,6 +700,12 @@ def fill_visible(page) -> int:
 def fill_india_state_typeahead(page) -> str:
     """Oracle State comboboxes reject TG/TS. Search Telangana, then Andhra Pradesh."""
     try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" in url:
+        return ""
+    try:
         loc = page.locator(
             'input[name="region2"], input[name="region"], input[name="state"]'
         ).first
