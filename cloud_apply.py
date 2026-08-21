@@ -1105,6 +1105,21 @@ def click_instahyre_apply(page) -> str:
     return label
 
 
+def naukri_external_apply_label(label: str) -> bool:
+    """True when Naukri's sticky footer is company-site / iimjobs / Apply attempted, not Quick apply."""
+    t = (label or "").lower()
+    if not t:
+        return False
+    if re.search(r"quick apply", t) and "applied" not in t and "company site" not in t:
+        return False
+    return bool(
+        re.search(
+            r"company.?site|apply attempted|iimjobs|apply on (?!naukri)",
+            t,
+        )
+    )
+
+
 def click_naukri_quick_apply(page) -> str:
     """Naukri JD apply is `#apply-button` (chatbot drawer). The TopTier Quick apply badge does not submit."""
     try:
@@ -1124,11 +1139,11 @@ def click_naukri_quick_apply(page) -> str:
             except Exception:
                 pass
             label = ((foot.inner_text() or "") + " " + (foot.get_attribute("aria-label") or "")).strip()
-            if re.search(r"applied", label, re.I):
+            if re.search(r"applied", label, re.I) and not re.search(r"quick apply", label, re.I):
                 print("  Naukri footer shows already applied.", flush=True)
                 return ""
-            if re.search(r"company site", label, re.I):
-                print("  Naukri company-site apply. Next leftover.", flush=True)
+            if naukri_external_apply_label(label):
+                print("  Naukri company-site / external apply. Next leftover.", flush=True)
                 return ""
             foot.click(timeout=2500, force=True)
             print(f"  Clicked Naukri footer {label[:40]!r}.", flush=True)
@@ -4297,13 +4312,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         if "naukri.com" in (url or "").lower():
             try:
                 foot = page.get_by_role(
-                    "button", name=re.compile(r"quick apply|company site", re.I)
+                    "button", name=re.compile(r"quick apply|company site|apply on|iimjobs", re.I)
                 ).first
                 nlabel = ((foot.inner_text() or "") if foot.count() else "").lower()
             except Exception:
                 nlabel = ""
-            if "company site" in nlabel:
-                print("  Naukri company-site apply. Next leftover.", flush=True)
+            if naukri_external_apply_label(nlabel):
+                print("  Naukri company-site / external apply. Next leftover.", flush=True)
                 row["status"] = "STUCK"
                 row["note"] = "Naukri company-site apply"
                 row["final_url"] = page.url
@@ -5094,7 +5109,7 @@ def _naukri_jobs_from_api_items(items: list) -> list[dict]:
             or item.get("applyType")
             or ""
         )
-        if re.search(r"company.?site|apply attempted", footer, re.I):
+        if re.search(r"company.?site|apply attempted|iimjobs|apply on (?!naukri)", footer, re.I):
             continue
         jobs.append({
             "company": company,
