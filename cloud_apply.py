@@ -46,6 +46,7 @@ KEEP_TAB_STATUSES = frozenset({"CAPTCHA", "OWNER_SIGNIN", "NEED_INPUT"})
 TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES | frozenset({"ERROR"})
 PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
+FOUNDIT_AKAMAI_BLOCKED = False
 LINKEDIN_RESTRICTED = False
 LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-08-22"
 # 22 Aug 2026 8:30 PM PDT. Session-skip until then; do not persist-skip guest walls.
@@ -3915,7 +3916,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
 
 
 def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = True) -> dict:
-    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS
+    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS, FOUNDIT_AKAMAI_BLOCKED
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
     kind = classify_url(url, job, allow_aggregators=allow_aggregators)
     row = {
@@ -3985,6 +3986,9 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             row["status"] = "STUCK"
             row["final_url"] = page.url
             row["note"] = "board blocked this environment (access denied)"
+            if "foundit.in" in (url or page.url or "").lower():
+                FOUNDIT_AKAMAI_BLOCKED = True
+                print("  Foundit still blocked after warmup. Skipping other Foundit leftovers this round.", flush=True)
             if not _aggregator_host(url or page.url or ""):
                 apply_now.persist_skipped(row, row["note"])
             print("  Board blocked this environment. Next leftover.", flush=True)
@@ -4785,6 +4789,8 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
 
 
 def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[dict]:
+    global FOUNDIT_AKAMAI_BLOCKED
+    FOUNDIT_AKAMAI_BLOCKED = False
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
     seed_parked_captcha_urls()
@@ -4856,6 +4862,10 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     continue
                 if any(x in apply_url for x in ("cutshort.io", "cutshort.com")):
                     print("  Cutshort login is blocked. Next leftover.", flush=True)
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    continue
+                if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in apply_url:
+                    print("  Foundit Akamai still blocking this Chrome session. Next leftover.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 navigate = True
