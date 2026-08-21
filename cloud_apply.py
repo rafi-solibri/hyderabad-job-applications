@@ -4834,8 +4834,111 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
         keys = apply_now.job_match_keys(job)
         if keys & SESSION_SKIP_KEYS:
             continue
+        u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
+        if linkedin_blocked_now() and "linkedin.com" in u:
+            continue
+        if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in u:
+            continue
         out.append(job)
     return out
+
+
+def discover_naukri_in_chrome(context) -> int:
+    """Naukri's public API 406s here. Use the already-open Chrome session."""
+    import discover_more_sites as more
+
+    slugs = (
+        "senior-software-engineer",
+        "technical-architect",
+        "dotnet-architect",
+        "staff-engineer",
+        "principal-engineer",
+        "engineering-manager",
+        "technical-lead",
+        "lead-software-engineer",
+    )
+    jobs: list[dict] = []
+    page = context.new_page()
+    try:
+        for slug in slugs:
+            url = f"https://www.naukri.com/{slug}-jobs-in-hyderabad"
+            print(f"  Naukri search {slug}...", flush=True)
+            try:
+                page.goto(url, wait_until="domcontentloaded", timeout=35000)
+                page.wait_for_timeout(4500)
+            except Exception as exc:
+                print(f"  Naukri search failed ({exc}).", flush=True)
+                continue
+            try:
+                rows = page.evaluate(
+                    """() => {
+                      const out = [];
+                      const seen = new Set();
+                      const links = document.querySelectorAll(
+                        'a[href*="job-listings"], a.title, a[href*="/job-listing"]'
+                      );
+                      for (const a of links) {
+                        const href = a.href || '';
+                        const key = href.split('?')[0];
+                        if (!href || seen.has(key)) continue;
+                        const title = ((a.innerText || a.getAttribute('title') || '') + '')
+                          .replace(/\\s+/g, ' ').trim();
+                        if (title.length < 8 || title.length > 140) continue;
+                        seen.add(key);
+                        let company = '';
+                        let loc = 'Hyderabad, India';
+                        const card = a.closest(
+                          'article, .srp-jobtuple-wrapper, .cust-job-tuple, li, div.row'
+                        ) || a.parentElement;
+                        if (card) {
+                          const c = card.querySelector(
+                            '.comp-name, a.comp-name, .companyInfo, [class*="comp-name"]'
+                          );
+                          if (c) company = (c.innerText || '').replace(/\\s+/g, ' ').trim();
+                          const l = card.querySelector('.locWdth, .location, [class*="loc"]');
+                          if (l && l.innerText)
+                            loc = l.innerText.replace(/\\s+/g, ' ').trim().slice(0, 80) || loc;
+                        }
+                        const m = href.match(/job-listings-(\\d+)/) || href.match(/(\\d{6,})/);
+                        out.push({
+                          title, company, loc, href,
+                          jid: m ? m[1] : key.slice(-16),
+                        });
+                        if (out.length >= 40) break;
+                      }
+                      return out;
+                    }"""
+                ) or []
+            except Exception:
+                rows = []
+            print(f"  Naukri {slug}: {len(rows)} cards.", flush=True)
+            for r in rows:
+                href = r.get("href") or ""
+                if not href:
+                    continue
+                jobs.append({
+                    "company": r.get("company") or "naukri",
+                    "title": r.get("title") or "",
+                    "location": r.get("loc") or "Hyderabad, India",
+                    "url": href,
+                    "apply_url": href,
+                    "ats": "Naukri",
+                    "job_id": str(r.get("jid") or ""),
+                })
+    finally:
+        close_apply_page(page)
+    if not jobs:
+        print("  Naukri browser search found 0 cards.", flush=True)
+        return 0
+    more.merge_and_write(jobs)
+    apply_now.BATCH = apply_now.load_all_discovered()
+    n = sum(
+        1
+        for j in apply_now.queue()
+        if "naukri.com" in ((j.get("apply_url") or j.get("url") or "")).lower()
+    )
+    print(f"  Naukri browser discover: {len(jobs)} raw, {n} leftover Naukri in queue.", flush=True)
+    return n
 
 
 def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[dict]:
@@ -4864,6 +4967,22 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     pending = interleave_boards_and_career(try_jobs, limit)
     with sync_playwright() as pw:
         browser, context, page = launch_context(pw, headed)
+        if not leftover_career_jobs(pending) and not OWNER_PRESENT:
+            print("  No apply-able leftovers after LinkedIn/Foundit skip. Searching Naukri in Chrome...", flush=True)
+            discover_naukri_in_chrome(context)
+            apply_now.BATCH = apply_now.load_all_discovered()
+            queue = apply_now.queue()
+            try_jobs, _blocked = public_queue(queue, allow_aggregators=True)
+            try_jobs = leftover_career_jobs(try_jobs)
+            pending = interleave_boards_and_career(try_jobs, limit)
+            career_n = sum(
+                1 for j in try_jobs
+                if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
+            )
+            print(
+                f"  After Naukri search: leftover {len(try_jobs)} ({career_n} career).",
+                flush=True,
+            )
         for attempt in range(1, 4):
             leftover = leftover_career_jobs(pending)
             if not leftover:
