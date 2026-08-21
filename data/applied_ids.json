@@ -2325,5 +2325,111 @@
     "url": "https://www.naukri.com/job-listings-senior-software-engineer-vensure-hyderabad-delhi-ncr-thiruvananthapuram-10-to-18-years-200826035777",
     "note": "already applied",
     "ts": "2026-08-21T02:43:21.358299+00:00"
+  },
+  "140826914911": {
+    "company": "Viasat",
+    "title": "Senior Software Engineer - Instrumentation",
+    "job_id": "140826914911",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-instrumentation-viasat-india-private-limited-hyderabad-chennai-7-to-12-years-140826914911",
+    "note": "already applied",
+    "ts": "2026-08-21T02:44:06.507686+00:00"
+  },
+  "viasat|senior software engineer - instrumentation": {
+    "company": "Viasat",
+    "title": "Senior Software Engineer - Instrumentation",
+    "job_id": "140826914911",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-instrumentation-viasat-india-private-limited-hyderabad-chennai-7-to-12-years-140826914911",
+    "note": "already applied",
+    "ts": "2026-08-21T02:44:06.507686+00:00"
+  },
+  "100826501030": {
+    "company": "Hatica",
+    "title": "Senior Software Engineer ( React )",
+    "job_id": "100826501030",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-react-hatica-hyderabad-1-to-8-years-100826501030",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:33.988839+00:00"
+  },
+  "hatica|senior software engineer ( react )": {
+    "company": "Hatica",
+    "title": "Senior Software Engineer ( React )",
+    "job_id": "100826501030",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-react-hatica-hyderabad-1-to-8-years-100826501030",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:33.988839+00:00"
+  },
+  "140826500905": {
+    "company": "ModMed Technologies India Private Limited",
+    "title": "Senior Software Engineer",
+    "job_id": "140826500905",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-modmed-hyderabad-6-to-11-years-140826500905",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:33.991951+00:00"
+  },
+  "modmedtechnologiesindiaprivatelimited|senior software engineer": {
+    "company": "ModMed Technologies India Private Limited",
+    "title": "Senior Software Engineer",
+    "job_id": "140826500905",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-modmed-hyderabad-6-to-11-years-140826500905",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:33.991951+00:00"
+  },
+  "200826501389": {
+    "company": "Snow Planet",
+    "title": "Sr Software Engineer",
+    "job_id": "200826501389",
+    "url": "https://www.naukri.com/job-listings-sr-software-engineer-service-now-planet-hyderabad-ahmedabad-5-to-8-years-200826501389",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:33.995016+00:00"
+  },
+  "snowplanet|sr software engineer": {
+    "company": "Snow Planet",
+    "title": "Sr Software Engineer",
+    "job_id": "200826501389",
+    "url": "https://www.naukri.com/job-listings-sr-software-engineer-service-now-planet-hyderabad-ahmedabad-5-to-8-years-200826501389",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:33.995016+00:00"
+  },
+  "120826502060": {
+    "company": "Turvo",
+    "title": "Senior Software Engineer",
+    "job_id": "120826502060",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-turvo-inc-hyderabad-5-to-10-years-120826502060",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:33.997611+00:00"
+  },
+  "turvo|senior software engineer": {
+    "company": "Turvo",
+    "title": "Senior Software Engineer",
+    "job_id": "120826502060",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-turvo-inc-hyderabad-5-to-10-years-120826502060",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:33.997611+00:00"
+  },
+  "wellsfargo|senior software engineer": {
+    "company": "Wells Fargo",
+    "title": "Senior Software Engineer",
+    "job_id": "170826927823",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-170826927823",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:34.000243+00:00"
+  },
+  "170826927823": {
+    "company": "Wells Fargo",
+    "title": "Senior Software Engineer",
+    "job_id": "170826927823",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-170826927823",
+    "note": "Naukri company-site apply",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T02:45:34.000243+00:00"
   }
 }
