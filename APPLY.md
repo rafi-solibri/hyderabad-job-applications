@@ -18,9 +18,11 @@ That uses the real Firefox profile (`rafi.success@gmail.com` + Simplify Copilot)
 opens one leftover company portal at a time, and **waits on leftover fields**
 so you can fill them. Do not run `apply_now.py --career` in cloud.
 
-Older scripts (`browser_apply*.py`, `headed_apply.py`, `apply_now.py` as a full
-Firefox run without `--career`, `amazon_apply.py`, `apply_parallel.py`,
-`firefox_real.py`) are **not** the daily cloud path.
+`python apply_now.py` (and `--career`) skip Naukri / Indeed / Instahyre /
+Foundit / Cutshort / LinkedIn. `--include-aggregators` is the only way to
+open those boards, and it is not this job. Older scripts (`browser_apply*.py`,
+`headed_apply.py`, `amazon_apply.py`, `apply_parallel.py`, `firefox_real.py`)
+are **not** the daily cloud path.
 
 ## Every run must
 

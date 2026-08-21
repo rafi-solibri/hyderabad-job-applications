@@ -4264,7 +4264,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     }
 
 
-def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = True) -> dict:
+def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = False) -> dict:
     global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS, FOUNDIT_AKAMAI_BLOCKED
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
     kind = classify_url(url, job, allow_aggregators=allow_aggregators)
@@ -5433,6 +5433,25 @@ def discover_naukri_in_chrome(context) -> int:
     return n
 
 
+def unique_target_jobs(jobs: list[dict], limit: int | None = None) -> list[dict]:
+    """Unique leftover company career portals and other ATS. Aggregator boards stay out."""
+    seen: set[str] = set()
+    out: list[dict] = []
+    for job in leftover_career_jobs(jobs):
+        if apply_now.is_aggregator_board(job):
+            continue
+        u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
+        m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
+        key = next((g for g in (m.groups() if m else ()) if g), None) or u
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        out.append(job)
+        if limit and len(out) >= limit:
+            break
+    return out
+
+
 def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[dict]:
     global FOUNDIT_AKAMAI_BLOCKED
     apply_now.BATCH = apply_now.load_all_discovered()
@@ -5442,43 +5461,46 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     queue = apply_now.queue()
     try_jobs, blocked_board = public_queue(queue, allow_aggregators=False)
     try_jobs = leftover_career_jobs(try_jobs)
+    pending = unique_target_jobs(try_jobs, limit or 80)
     career_n = sum(
-        1 for j in try_jobs
-        if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
+        1 for j in pending
+        if apply_now.is_company_career_portal(j)
     )
-    board_n = len(try_jobs) - career_n
+    other_n = len(pending) - career_n
     print(
         f"Queue {len(queue)} | leftover career portals {career_n} | "
-        f"leftover other-board {board_n} | skipped {len(blocked_board)}",
+        f"leftover other ATS {other_n} | skipped aggregators {len(blocked_board)}",
+        flush=True,
+    )
+    print(
+        f"Company career portals and other ATS: {len(pending)} unique "
+        f"(Naukri/Indeed/Instahyre/Foundit/Cutshort/LinkedIn left to other daily jobs).",
         flush=True,
     )
     if headed:
         print(f"Headed Chrome on DISPLAY={os.environ.get('DISPLAY', ':1')} — complete CAPTCHA/login in the desktop view.", flush=True)
     results: list[dict] = []
-
-    pending = interleave_boards_and_career(try_jobs, limit)
-    seen_career: set[str] = set()
-    career_only: list[dict] = []
-    for job in leftover_career_jobs(try_jobs):
-        if not (
-            apply_now.is_company_career_portal(job)
-            and not apply_now.is_aggregator_board(job)
-        ):
-            continue
-        u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
-        m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
-        key = next((g for g in (m.groups() if m else ()) if g), None) or u
-        if key in seen_career:
-            continue
-        seen_career.add(key)
-        career_only.append(job)
-    if career_only:
-        pending = career_only[: limit or 80]
+    if not pending:
+        print("  No leftover career portals. No-browser discover for more company sites...", flush=True)
+        _refresh_boards_no_browser()
+        apply_now.BATCH = apply_now.load_all_discovered()
+        queue = apply_now.queue()
+        try_jobs, blocked_board = public_queue(queue, allow_aggregators=False)
+        try_jobs = leftover_career_jobs(try_jobs)
+        pending = unique_target_jobs(try_jobs, limit or 80)
         print(
-            f"Career portals only: {len(pending)} unique "
-            f"(Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre left to other daily jobs).",
+            f"  After no-browser discover: {len(pending)} unique career/other ATS.",
             flush=True,
         )
+    if not pending:
+        counts = apply_now.leftover_aggregator_counts()
+        print(
+            "  No leftover company career portals or other ATS. "
+            f"Aggregator leftovers (other daily jobs): {counts or 'none'}. "
+            "Not opening Chrome.",
+            flush=True,
+        )
+        return results
     with sync_playwright() as pw:
         browser, context, page = launch_context(pw, headed)
         if OWNER_PRESENT:
@@ -5495,33 +5517,6 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 return 1
 
             pending.sort(key=_open_rank)
-        if not leftover_career_jobs(pending):
-            print("  No leftover career portals. No-browser discover for more company sites...", flush=True)
-            _refresh_boards_no_browser()
-            apply_now.BATCH = apply_now.load_all_discovered()
-            queue = apply_now.queue()
-            try_jobs, _blocked = public_queue(queue, allow_aggregators=False)
-            try_jobs = leftover_career_jobs(try_jobs)
-            seen_career = set()
-            career_only = []
-            for job in try_jobs:
-                if not (
-                    apply_now.is_company_career_portal(job)
-                    and not apply_now.is_aggregator_board(job)
-                ):
-                    continue
-                u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
-                m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
-                key = next((g for g in (m.groups() if m else ()) if g), None) or u
-                if key in seen_career:
-                    continue
-                seen_career.add(key)
-                career_only.append(job)
-            pending = career_only[: limit or 80]
-            print(
-                f"  After no-browser discover: {len(pending)} unique career portals.",
-                flush=True,
-            )
         for attempt in range(1, 4):
             leftover = leftover_career_jobs(pending)
             if not leftover:
@@ -5633,14 +5628,12 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
             context.close()
 
     submitted = sum(1 for r in results if r.get("ok") and r.get("status") == "SUBMITTED")
-    still = leftover_career_jobs(try_jobs)
-    still_career = sum(
-        1 for j in still
-        if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
-    )
+    still = unique_target_jobs(try_jobs)
+    still_career = sum(1 for j in still if apply_now.is_company_career_portal(j))
     print(
         f"\nCloud apply done. Submitted {submitted}. "
-        f"Still leftover: {len(still)} ({still_career} career portals).",
+        f"Still leftover: {len(still)} ({still_career} career portals, "
+        f"{len(still) - still_career} other ATS).",
         flush=True,
     )
     return results
@@ -5710,6 +5703,16 @@ if __name__ == "__main__":
             after = _submitted_n()
             if after <= before:
                 idle += 1
+                apply_now.BATCH = apply_now.load_all_discovered()
+                if not apply_now.leftover_career_queue():
+                    counts = apply_now.leftover_aggregator_counts()
+                    print(
+                        "  No leftover company career portals or other ATS. "
+                        f"Aggregator leftovers (other daily jobs): {counts or 'none'}. "
+                        "Stopping instead of Naukri/Indeed/Instahyre/Foundit/Cutshort.",
+                        flush=True,
+                    )
+                    break
                 print(f"  No new submit this round ({idle}). Continuing.", flush=True)
                 if idle >= 8:
                     print("  Several empty rounds. Still looping leftover jobs.", flush=True)

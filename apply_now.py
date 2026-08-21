@@ -1082,13 +1082,15 @@ def pick_best_per_company(jobs: list[dict], used: dict[str, set] | None = None) 
 
 
 def leftover_career_queue() -> list[dict]:
-    """Unique leftover company career portals. Aggregators, JPMC, and AMD stay skipped."""
+    """Unique leftover company career portals and other ATS.
+
+    Naukri, LinkedIn, Indeed, Cutshort, Foundit, and Instahyre stay skipped
+    (other daily jobs). JPMC/Chase leftovers stay skipped.
+    """
     jobs = []
     seen: set[str] = set()
     for job in queue():
         if is_jpmc_job(job) or is_aggregator_board(job):
-            continue
-        if not is_company_career_portal(job):
             continue
         u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
         m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
@@ -1098,6 +1100,30 @@ def leftover_career_queue() -> list[dict]:
         seen.add(key)
         jobs.append(job)
     return jobs
+
+
+def leftover_aggregator_counts() -> dict[str, int]:
+    """How many leftover matching jobs sit on aggregator boards."""
+    labels = (
+        ("Naukri", "naukri.com"),
+        ("LinkedIn", "linkedin.com"),
+        ("Indeed", "indeed.com"),
+        ("Instahyre", "instahyre.com"),
+        ("Foundit", "foundit.in"),
+        ("Cutshort", "cutshort"),
+    )
+    counts: dict[str, int] = {}
+    for job in queue():
+        if not is_aggregator_board(job):
+            continue
+        blob = " ".join(_job_hosts(job))
+        label = "other-board"
+        for name, needle in labels:
+            if needle in blob:
+                label = name
+                break
+        counts[label] = counts.get(label, 0) + 1
+    return counts
 
 
 def _running_in_cloud() -> bool:
@@ -1110,7 +1136,12 @@ def main():
     parser.add_argument(
         "--career",
         action="store_true",
-        help="Company career portals only (skip Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre).",
+        help="Company career portals and other ATS (default). Skips Naukri/Indeed/Instahyre/Foundit/Cutshort/LinkedIn.",
+    )
+    parser.add_argument(
+        "--include-aggregators",
+        action="store_true",
+        help="Also open Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre leftovers (other daily jobs).",
     )
     parser.add_argument("--limit", type=int, default=20)
     parser.add_argument(
@@ -1122,29 +1153,33 @@ def main():
     args = parser.parse_args()
     BATCH = load_all_discovered()
     form_memory.seed_from_learned()
-    jobs = leftover_career_queue() if args.career else queue()[:1]
-    if args.career:
-        jobs = jobs[: args.limit]
-        WAIT_SECONDS = 300 if args.wait is None else args.wait
-    elif args.wait is not None:
-        WAIT_SECONDS = args.wait
+    career_only = not args.include_aggregators
+    jobs = leftover_career_queue() if career_only else queue()
+    jobs = jobs[: args.limit]
+    WAIT_SECONDS = 300 if args.wait is None else args.wait
     if not jobs:
-        print("No leftover target jobs to open.", flush=True)
+        counts = leftover_aggregator_counts() if career_only else {}
+        extra = f" Aggregator leftovers for other daily jobs: {counts}." if counts else ""
+        print(
+            "No leftover company career portals or other ATS." + extra,
+            flush=True,
+        )
         return
     print(
         f"Applying {len(jobs)} jobs in Firefox profile rafi.success@gmail.com + Simplify Copilot.",
         flush=True,
     )
-    if args.career:
+    if career_only:
         print(
-            "Career portals only. Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre "
-            "are left to other daily jobs. Fill leftover fields in Firefox; I will wait.",
+            "Company career portals and other ATS only. "
+            "Naukri/Indeed/Instahyre/Foundit/Cutshort/LinkedIn are left to other daily jobs. "
+            "Fill leftover fields in Firefox; I will wait.",
             flush=True,
         )
     for i, job in enumerate(jobs, 1):
         print(f"  {i}. {job.get('company')}: {job.get('title')}", flush=True)
         print(f"     {job.get('apply_url') or job.get('url')}", flush=True)
-    if args.career and _running_in_cloud():
+    if career_only and _running_in_cloud():
         print(
             "\nThis is the cloud agent. It cannot open Mozilla on your Windows PC.\n"
             "Open a terminal ON THE DESKTOP (not this cloud chat) in the repo folder:\n"

@@ -20,3 +20,11 @@
   https://dpdhlgroup.avature.net/en_US/jobs/Success?jobId=367430&source=careers.dhl.com
 - **2026-08-21T04:04:58Z** SUBMITTED **JP Morgan Chase & Co.** — Principal Software Engineer - Forward Deployment Engineer
   https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/my-profile
+- **2026-08-21T06:38:06Z** SUBMITTED **Zf Friedrich** — Sr. Technical Lead- Functional Safety
+  https://jobs.zf.com/job/Hyderabad-Sr_-Technical-Lead-Functional-Safety-TG-500032/1427361033/
+- **2026-08-21T06:38:06Z** SUBMITTED **State Street** — Senior Software Engineer, AVP
+  https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706
+- **2026-08-21T06:38:06Z** SUBMITTED **Charles Schwab** — Manager Software Development And Engineering
+  https://www.schwabjobs.com/job/hyderabad/manager-software-development-and-engineering/33995/98379875216
+- **2026-08-21T06:38:06Z** SUBMITTED **Charles Schwab** — Senior Manager Software Development And Engineering Lead Pl
+  https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792
