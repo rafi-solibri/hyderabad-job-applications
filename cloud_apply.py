@@ -4150,6 +4150,17 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         ju = (page.url or "").lower()
     if "icims.com" in ju and icims_auth0_blocked(page):
         return "stuck"
+    if "greenhouse.io" in ju and on_application_form(page):
+        fill_leftover_dropdowns(page)
+        fill_greenhouse_required_selects(page)
+        accept_terms(page)
+        click_recaptcha_checkbox(page)
+        if captcha_puzzle_visible(page):
+            return "captcha"
+        step = click_next_or_submit(page)
+        if step == "submitted" or is_success(page) or simplify_copilot.submitted(page):
+            return "submitted"
+        return step or "clicked"
     click_dhl_apply_method(page)
     fill_leftover_dropdowns(page)
     fill_greenhouse_required_selects(page)
@@ -4831,7 +4842,12 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         except Exception:
             pass
         simplify_copilot.autofill(page)
-        form_memory.fill_visible(page)
+        try:
+            on_gh = "greenhouse.io" in (page.url or "").lower() and on_application_form(page)
+        except Exception:
+            on_gh = False
+        if not on_gh:
+            form_memory.fill_visible(page)
         learned += len(form_memory.remember(page, job) or [])
 
         stuck_none = 0
