@@ -55,6 +55,7 @@ _RECAPTCHA_CLICKS = 0
 ICIMS_LOGIN_CLICKED = False
 ICIMS_CONTINUE_CLICKS = 0
 ICIMS_PASSWORD_SUBMITS = 0
+ICIMS_AUTH_REJECTED = False
 # Owner is at the desktop filling leftover fields. Pause instead of skipping.
 OWNER_PRESENT = False
 WATCH_OPEN = False
@@ -2338,7 +2339,7 @@ def icims_auth0_blocked(page) -> bool:
     if "login.icims.com" not in u:
         return False
     try:
-        pw = page.locator("input[type=password]").first
+        pw = page.locator("input[type=password], input[name='password'], #password").first
         if pw.count() and pw.is_visible():
             return False
     except Exception:
@@ -2433,7 +2434,7 @@ def _icims_tab_rank(page, p) -> int:
     if "amd" in title or "xilinx" in title:
         return 1
     try:
-        pw = p.locator("input[type=password]").first
+        pw = p.locator("input[type=password], input[name='password'], #password").first
         if pw.count() and pw.is_visible():
             return 2
     except Exception:
@@ -2476,9 +2477,21 @@ def _prune_icims_login_tabs(page) -> None:
             continue
 
 
+def _icims_password_box(p):
+    return p.locator("input[type=password], input[name='password'], #password").first
+
+
+def _icims_wrong_password(p) -> bool:
+    try:
+        blob = ((p.inner_text("body") or "") + " " + (p.title() or "")).lower()
+    except Exception:
+        return False
+    return bool(re.search(r"wrong (username or )?password|invalid (user|password)|incorrect password", blob))
+
+
 def _fill_icims_universal_login(page) -> int:
     """Fill username/email + Continue on login.icims.com Auth0. Never log secrets."""
-    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS
+    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS, ICIMS_AUTH_REJECTED
     email = google_auth.EMAIL
     filled = 0
     _prune_icims_login_tabs(page)
@@ -2528,7 +2541,7 @@ def _fill_icims_universal_login(page) -> int:
                     continue
             pw_visible = False
             try:
-                pw = p.locator("input[type=password]").first
+                pw = _icims_password_box(p)
                 pw_visible = bool(pw.count() and pw.is_visible())
             except Exception:
                 pw_visible = False
@@ -2543,10 +2556,16 @@ def _fill_icims_universal_login(page) -> int:
                         filled += 1
                 except Exception:
                     pass
+        if _icims_wrong_password(p):
+            ICIMS_AUTH_REJECTED = True
         passwords = google_auth.load_portal_passwords()
-        if passwords and ICIMS_PASSWORD_SUBMITS < len(passwords):
+        if (
+            passwords
+            and not ICIMS_AUTH_REJECTED
+            and ICIMS_PASSWORD_SUBMITS < len(passwords)
+        ):
             try:
-                pw = p.locator("input[type=password]").first
+                pw = _icims_password_box(p)
                 if pw.count():
                     pw.fill(passwords[ICIMS_PASSWORD_SUBMITS], timeout=2500)
                     nxt = p.get_by_role("button", name=re.compile(r"^(continue|log in|sign in)$", re.I)).first
@@ -2556,6 +2575,12 @@ def _fill_icims_universal_login(page) -> int:
                     print("  Submitted iCIMS password.", flush=True)
                     p.wait_for_timeout(2500)
                     filled += 1
+                    if _icims_wrong_password(p):
+                        ICIMS_AUTH_REJECTED = True
+                        print(
+                            "  iCIMS rejected stored portal passwords. Type the AMD password in this tab.",
+                            flush=True,
+                        )
             except Exception:
                 pass
         return filled
