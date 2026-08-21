@@ -30,3 +30,5 @@
   https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792
 - **2026-08-21T10:31:07Z** SUBMITTED **Crunchyroll** — Manager, Engineering, VideoIQ
   https://boards.greenhouse.io/crunchyroll/jobs/8042666
+- **2026-08-21T11:24:33Z** SUBMITTED **New Relic** — Software Engineer Manager (Database Observability)
+  https://job-boards.greenhouse.io/newrelic/jobs/5368437008/confirmation

@@ -4549,5 +4549,21 @@
     "url": "https://job-boards.greenhouse.io/newrelic/jobs/5256109008",
     "note": "closed posting — cannot submit",
     "ts": "2026-08-21T10:34:24.452773+00:00"
+  },
+  "newrelic|software engineer manager (database observability)": {
+    "company": "New Relic",
+    "title": "Software Engineer Manager (Database Observability)",
+    "job_id": "5368437008",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5368437008",
+    "note": "greenhouse confirmation after security code",
+    "ts": "2026-08-21T11:24:33.207185+00:00"
+  },
+  "5368437008": {
+    "company": "New Relic",
+    "title": "Software Engineer Manager (Database Observability)",
+    "job_id": "5368437008",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5368437008",
+    "note": "greenhouse confirmation after security code",
+    "ts": "2026-08-21T11:24:33.207185+00:00"
   }
 }
