@@ -1132,14 +1132,14 @@ def click_naukri_quick_apply(page) -> str:
         return ""
     collapse_copilot_panel(page)
     try:
-        foot = page.get_by_role("button", name=re.compile(r"quick apply", re.I)).first
+        foot = page.get_by_role("button", name=re.compile(r"^quick apply$", re.I)).first
         if foot.count():
             try:
                 foot.scroll_into_view_if_needed(timeout=1500)
             except Exception:
                 pass
             label = ((foot.inner_text() or "") + " " + (foot.get_attribute("aria-label") or "")).strip()
-            if re.search(r"applied", label, re.I) and not re.search(r"quick apply", label, re.I):
+            if re.search(r"applied", label, re.I):
                 print("  Naukri footer shows already applied.", flush=True)
                 return ""
             if naukri_external_apply_label(label):
@@ -4317,6 +4317,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 nlabel = ((foot.inner_text() or "") if foot.count() else "").lower()
             except Exception:
                 nlabel = ""
+            if re.search(r"applied", nlabel):
+                print("  Naukri footer shows already applied.", flush=True)
+                row["ok"] = True
+                row["status"] = "SUBMITTED"
+                row["note"] = "already applied"
+                row["final_url"] = page.url
+                return row
             if naukri_external_apply_label(nlabel):
                 print("  Naukri company-site / external apply. Next leftover.", flush=True)
                 row["status"] = "STUCK"
