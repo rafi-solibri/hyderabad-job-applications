@@ -38,9 +38,9 @@ are **not** the daily cloud path.
    (company, title, URL). Also append `data/applications/SUBMITTED.md`.
 4. If a CAPTCHA / 2FA puzzle appears, **notify the owner in this agent chat**
    immediately (company, title, URL, what to solve). **Keep that CAPTCHA tab
-   open.** Do not wait idle for hours. Open a **new tab** and start the next
-   leftover. When the owner is back they solve parked CAPTCHAs in
-   **Desktop / Take control**; then continue those same applications.
+   open and wait** so the owner can solve it. Do not close the application.
+   After it clears, continue submit. Leftover form fields: pause on that same
+   tab, learn answers the owner types, and wait (`--owner-present` / `--wait`).
 5. After filling everything the runner can, if leftover fields still need a
    human: try to fill them. If the owner is away, **do not wait** — move to the
    next leftover. If the owner is present (`--owner-present`), notify in this
