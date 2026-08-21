@@ -47,6 +47,7 @@ PARK_STATUSES = frozenset({"CAPTCHA", "WAITING_EXPIRED", "OWNER_SIGNIN", "STUCK"
 KEEP_TAB_STATUSES = frozenset({"CAPTCHA", "OWNER_SIGNIN", "NEED_INPUT", "WAITING_EXPIRED"})
 TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES | frozenset({"ERROR"})
 PARKED_CAPTCHA_URLS: set[str] = set()
+_LAST_CAPTCHA_NOTIFY = ""
 SESSION_SKIP_KEYS: set[str] = set()
 FOUNDIT_AKAMAI_BLOCKED = False
 LINKEDIN_RESTRICTED = False
@@ -2770,6 +2771,7 @@ def click_next_or_submit(page) -> str:
 
 def notify_captcha(job: dict, page) -> None:
     """Tell the owner in the agent log that a CAPTCHA needs solving now."""
+    global _LAST_CAPTCHA_NOTIFY
     company = job.get("company") or ""
     title = job.get("title") or ""
     url = ""
@@ -2777,6 +2779,13 @@ def notify_captcha(job: dict, page) -> None:
         url = page.url
     except Exception:
         url = job.get("apply_url") or ""
+    key = f"{company}|{url.split('?')[0] if url else ''}"
+    if url:
+        PARKED_CAPTCHA_URLS.add(url)
+        PARKED_CAPTCHA_URLS.add(url.split("?")[0])
+    if key == _LAST_CAPTCHA_NOTIFY:
+        return
+    _LAST_CAPTCHA_NOTIFY = key
     if OWNER_PRESENT or WATCH_OPEN:
         action = "I stopped on this tab. Solve the CAPTCHA — I will wait and then submit."
     else:
@@ -2790,9 +2799,6 @@ def notify_captcha(job: dict, page) -> None:
         f"{'!' * 72}\n"
     )
     print(banner, flush=True)
-    if url:
-        PARKED_CAPTCHA_URLS.add(url)
-        PARKED_CAPTCHA_URLS.add(url.split("?")[0])
     path = ROOT / "data" / "applications" / "CAPTCHA.md"
     path.parent.mkdir(parents=True, exist_ok=True)
     line = f"- **NEED CAPTCHA** {company} — {title}\n  {url}\n"
