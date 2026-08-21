@@ -2818,6 +2818,39 @@ def fix_greenhouse_url_fields(page) -> int:
     return n
 
 
+COMMIT_GREENHOUSE_REACT_JS = """(node, want) => {
+  const w = String(want || '').trim().toLowerCase();
+  const inp = node.querySelector('input.select__input, input[role=combobox]');
+  if (!inp || !w) return {ok: false, why: 'no input'};
+  const key = Object.keys(inp).find((k) => k.startsWith('__reactFiber') || k.startsWith('__reactInternalInstance'));
+  if (!key) return {ok: false, why: 'no fiber'};
+  let fiber = inp[key];
+  let option = null;
+  let selectOption = null;
+  let onSelect = null;
+  let fieldOnChange = null;
+  for (let i = 0; i < 70 && fiber; i++) {
+    const p = fiber.memoizedProps || {};
+    if (Array.isArray(p.options) && p.options.length && !option) {
+      option = p.options.find((o) => String(o.label || '').trim().toLowerCase() === w)
+        || p.options.find((o) => String(o.label || '').trim().toLowerCase().includes(w));
+    }
+    if (typeof p.selectOption === 'function' && !selectOption) selectOption = p.selectOption;
+    if (typeof p.onSelect === 'function' && !onSelect) onSelect = p.onSelect;
+    if (typeof p.onChange === 'function' && (p.name || p.label) && Array.isArray(p.options)) {
+      fieldOnChange = p.onChange;
+    }
+    fiber = fiber.return;
+  }
+  if (!option) return {ok: false, why: 'no option', w};
+  try { if (selectOption) selectOption(option); } catch (e) {}
+  try { if (onSelect) onSelect(option); } catch (e) {}
+  try { if (fieldOnChange) fieldOnChange(String(option.value)); } catch (e) {}
+  inp.dispatchEvent(new Event('blur', {bubbles: true}));
+  return {ok: true, value: option.value, label: option.label};
+}"""
+
+
 def commit_greenhouse_react_selects(page) -> int:
     """Click a real React-Select option on every Greenhouse div.select.
 
@@ -2881,6 +2914,27 @@ def commit_greenhouse_react_selects(page) -> int:
             pass
         if current and not err and ats_fill.fuzzy_score(want, current) >= 0.7:
             continue
+        # Greenhouse Remix stores the option id on a wrapper that option clicks
+        # often miss. Drive selectOption / onSelect / field onChange via the fiber.
+        try:
+            via = wrap.evaluate(COMMIT_GREENHOUSE_REACT_JS, want) or {}
+        except Exception:
+            via = {}
+        if via.get("ok"):
+            page.wait_for_timeout(150)
+            now = _greenhouse_single_value(wrap)
+            still_err = False
+            try:
+                cls = wrap.locator(".select__control").first.get_attribute("class") or ""
+                still_err = "select__control--error" in cls
+            except Exception:
+                pass
+            if now and ats_fill.fuzzy_score(want, now) >= 0.55 and not still_err:
+                filled += 1
+                print(f"  Committed Greenhouse '{now}' for {q[:70]!r} (React field).", flush=True)
+                continue
+            if now and ats_fill.fuzzy_score(want, now) >= 0.55:
+                print(f"  Greenhouse React set {want!r} for {q[:70]!r} but error class remains.", flush=True)
         control = wrap.locator(".select__control").first
         try:
             control.scroll_into_view_if_needed(timeout=1500)
