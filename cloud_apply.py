@@ -711,10 +711,14 @@ def click_google_account_chooser(page) -> bool:
     email = google_auth.EMAIL
     hit = False
     for p in _google_chooser_pages(page):
-        try:
-            p.bring_to_front()
-        except Exception:
+        if OWNER_PRESENT or WATCH_OPEN:
+            # Do not steal the CAPTCHA / apply tab the owner is looking at.
             pass
+        else:
+            try:
+                p.bring_to_front()
+            except Exception:
+                pass
         for sel in (
             f"div[data-identifier='{email}']",
             f"li[data-identifier='{email}']",
@@ -2453,10 +2457,11 @@ def _fill_icims_universal_login(page) -> int:
         if "login.icims.com" not in u:
             continue
         ICIMS_LOGIN_CLICKED = True
-        try:
-            p.bring_to_front()
-        except Exception:
-            pass
+        if not (OWNER_PRESENT or WATCH_OPEN):
+            try:
+                p.bring_to_front()
+            except Exception:
+                pass
         if "/login/password" not in u:
             for sel in (
                 "input[name='username']",
@@ -2702,13 +2707,16 @@ def notify_captcha(job: dict, page) -> None:
         url = page.url
     except Exception:
         url = job.get("apply_url") or ""
+    if OWNER_PRESENT or WATCH_OPEN:
+        action = "I stopped on this tab. Solve the CAPTCHA — I will wait and then submit."
+    else:
+        action = "Parked this tab. Starting the next leftover now."
     banner = (
         f"\n{'!' * 72}\n"
         f"  CAPTCHA — please solve it now in Desktop / Take control\n"
         f"  {company}: {title}\n"
         f"  {url}\n"
-        f"  Parked this tab. Starting the next leftover now.\n"
-        f"  When you return, solve parked CAPTCHAs in Desktop / Take control.\n"
+        f"  {action}\n"
         f"{'!' * 72}\n"
     )
     print(banner, flush=True)
@@ -3936,6 +3944,16 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         click_google_account_chooser(page)
         if captcha_puzzle_visible(page):
             notify_captcha(job, page)
+            if OWNER_PRESENT:
+                if not notified_captcha:
+                    print(
+                        "  CAPTCHA visible. Solve it in Desktop / Take control. "
+                        "I will wait on this form.",
+                        flush=True,
+                    )
+                    notified_captcha = True
+                page.wait_for_timeout(2500)
+                continue
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
             return {
                 "ok": False,
@@ -3955,6 +3973,16 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             }
         if captcha_puzzle_visible(page):
             notify_captcha(job, page)
+            if OWNER_PRESENT:
+                if not notified_captcha:
+                    print(
+                        "  CAPTCHA visible. Solve it in Desktop / Take control. "
+                        "I will wait on this form.",
+                        flush=True,
+                    )
+                    notified_captcha = True
+                page.wait_for_timeout(2500)
+                continue
             print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
             return {
                 "ok": False,
@@ -4015,6 +4043,16 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                 }
             if step == "captcha":
                 notify_captcha(job, page)
+                if OWNER_PRESENT:
+                    if not notified_captcha:
+                        print(
+                            "  CAPTCHA visible. Solve it in Desktop / Take control. "
+                            "I will wait on this form.",
+                            flush=True,
+                        )
+                        notified_captcha = True
+                    page.wait_for_timeout(2500)
+                    continue
                 print("  CAPTCHA parked. Opening the next leftover now.", flush=True)
                 return {
                     "ok": False,
@@ -4489,6 +4527,24 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
 
         if captcha_puzzle_visible(page):
             notify_captcha(job, page)
+            if OWNER_PRESENT:
+                print(
+                    "  CAPTCHA visible. Solve it in Desktop / Take control — "
+                    "I will wait on this form and submit after it clears.",
+                    flush=True,
+                )
+                human = wait_for_human(page, job, wait_seconds or 1800, resume)
+                row["final_url"] = page.url
+                row["learned"] = learned + int(human.get("learned") or 0)
+                if human.get("ok"):
+                    row["ok"] = True
+                    row["status"] = "SUBMITTED"
+                    row["note"] = human.get("note") or "submitted after owner solved CAPTCHA"
+                    return row
+                row["ok"] = False
+                row["status"] = human.get("status") or "CAPTCHA"
+                row["note"] = human.get("note") or "CAPTCHA still visible after wait"
+                return row
             row["status"] = "CAPTCHA"
             row["note"] = "parked for owner to solve later"
             row["final_url"] = page.url
@@ -5005,43 +5061,61 @@ def learn_open_application(seconds: int = 1800) -> list[dict]:
             "apply_url": page.url,
             "url": page.url,
         }
-        leftover = required_field_issues(page)
-        notify_needs_input(job, page, leftover or ["leftover required fields — owner is filling"])
         print(
-            f"  Hands off. I will only learn what you type (up to {seconds}s).\n"
-            f"  {job.get('company')}: {job.get('title')}\n"
+            "  Hands off. I will NOT open tabs, click, or navigate.\n"
+            "  Stay on your CAPTCHA tab and solve it. I only record filled fields.\n"
+            f"  Watching: {job.get('company')}: {job.get('title')}\n"
             f"  {page.url}",
             flush=True,
+        )
+        skip = (
+            "mail.google.com", "accounts.google.com", "chrome://",
+            "chrome-extension://", "www.google.com",
         )
         learned = 0
         deadline = time.time() + max(seconds, 60)
         while time.time() < deadline:
-            try:
-                if is_success(page):
-                    row = {
-                        "company": job.get("company"),
-                        "title": job.get("title"),
-                        "apply_url": job.get("apply_url") or page.url,
-                        "ok": True,
-                        "status": "SUBMITTED",
-                        "note": "submitted after owner filled leftover fields",
-                        "final_url": page.url,
-                        "learned": learned,
-                    }
-                    apply_now.persist_applied(row, row["note"])
-                    notify_submitted(job, row)
-                    results.append(row)
-                    save_cloud(results)
-                    print("  Submitted. Learned this form for later runs.", flush=True)
-                    return results
-            except Exception:
-                pass
-            try:
-                changed = form_memory.remember(page, job) or []
-                learned += len(changed)
-            except Exception:
-                pass
-            page.wait_for_timeout(5000)
+            for p in list(context.pages):
+                try:
+                    if p.is_closed():
+                        continue
+                    u = (p.url or "").lower()
+                except Exception:
+                    continue
+                if any(s in u for s in skip):
+                    continue
+                job_p = match_job_for_page(p, leftovers) or job
+                try:
+                    if is_success(p):
+                        row = {
+                            "company": job_p.get("company"),
+                            "title": job_p.get("title"),
+                            "apply_url": job_p.get("apply_url") or p.url,
+                            "ok": True,
+                            "status": "SUBMITTED",
+                            "note": "submitted after owner filled leftover fields",
+                            "final_url": p.url,
+                            "learned": learned,
+                        }
+                        apply_now.persist_applied(row, row["note"])
+                        notify_submitted(job_p, row)
+                        results.append(row)
+                        save_cloud(results)
+                        print("  Submitted. Learned this form for later runs.", flush=True)
+                except Exception:
+                    pass
+                try:
+                    changed = form_memory.remember(p, job_p) or []
+                    if changed:
+                        learned += len(changed)
+                        labels = [c.get("label") or "" for c in changed][:6]
+                        print(
+                            f"  Learned {len(changed)} field(s) on {job_p.get('company')}: {labels}",
+                            flush=True,
+                        )
+                except Exception:
+                    pass
+            time.sleep(3)
         print(f"  Still learning-only after {seconds}s. Learned {learned} field(s).", flush=True)
         results.append({
             "company": job.get("company"),
@@ -5295,8 +5369,44 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     results: list[dict] = []
 
     pending = interleave_boards_and_career(try_jobs, limit)
+    if OWNER_PRESENT:
+        seen_career: set[str] = set()
+        career_only: list[dict] = []
+        for job in leftover_career_jobs(try_jobs):
+            if not (
+                apply_now.is_company_career_portal(job)
+                and not apply_now.is_aggregator_board(job)
+            ):
+                continue
+            u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
+            m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
+            key = next((g for g in (m.groups() if m else ()) if g), None) or u
+            if key in seen_career:
+                continue
+            seen_career.add(key)
+            career_only.append(job)
+        pending = career_only[: limit or 80]
+        print(
+            f"Owner present: {len(pending)} unique career portals first "
+            f"(Foundit/Naukri/LinkedIn held).",
+            flush=True,
+        )
     with sync_playwright() as pw:
         browser, context, page = launch_context(pw, headed)
+        if OWNER_PRESENT:
+            open_blob = " ".join(
+                ((p.url or "") if not p.is_closed() else "")
+                for p in list(context.pages)
+            ).lower()
+
+            def _open_rank(job: dict) -> int:
+                u = ((job.get("apply_url") or job.get("url") or "")).lower()
+                for token in re.findall(r"\d{7,}", u):
+                    if token in open_blob:
+                        return 0
+                return 1
+
+            pending.sort(key=_open_rank)
         if not OWNER_PRESENT and _naukri_leftover_n(leftover_career_jobs(pending)) == 0:
             print("  Searching Naukri in Chrome for Quick apply leftovers...", flush=True)
             discover_naukri_in_chrome(context)
@@ -5420,7 +5530,10 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 elif row.get("status") in KEEP_TAB_STATUSES:
                     print("  Left this tab open for you.", flush=True)
                     if OWNER_PRESENT:
-                        print("  Owner is filling this application. Not starting another leftover.", flush=True)
+                        print(
+                            "  Owner is filling this application. Not starting another leftover.",
+                            flush=True,
+                        )
                         break
                     print("  Starting the next leftover.", flush=True)
                 else:

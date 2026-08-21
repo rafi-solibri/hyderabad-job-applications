@@ -4249,5 +4249,45 @@
     "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210780917/apply/email",
     "note": "owner confirmed submitted",
     "ts": "2026-08-21T04:23:44.134141+00:00"
+  },
+  "210763922": {
+    "company": "JP Morgan Chase & Co.",
+    "title": "Lead Software Engineer - AI",
+    "job_id": "210763922",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210763922/apply/email",
+    "note": "already submitted — do not reopen",
+    "ts": "2026-08-21T04:26:37.330305+00:00"
+  },
+  "chasebank|lead software engineer - ai": {
+    "company": "Chase Bank",
+    "title": "Lead Software Engineer - AI",
+    "job_id": "210763922",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210763922/apply/email",
+    "note": "already submitted — do not reopen",
+    "ts": "2026-08-21T04:26:37.320917+00:00"
+  },
+  "jpmorganchaseco|lead software engineer - ai": {
+    "company": "JP Morgan Chase & Co.",
+    "title": "Lead Software Engineer - AI",
+    "job_id": "210763922",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210763922/apply/email",
+    "note": "already submitted — do not reopen",
+    "ts": "2026-08-21T04:26:37.330305+00:00"
+  },
+  "61456848": {
+    "company": "Chase Bank",
+    "title": "Lead Software Engineer - AI",
+    "job_id": "61456848",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210763922/?location=Singapore&locationId=300000000289639&locationLevel=country&mode=location",
+    "note": "backfill from skip list",
+    "ts": "2026-08-21T04:26:37.361877+00:00"
+  },
+  "61456693": {
+    "company": "JP Morgan Chase & Co.",
+    "title": "Lead Software Engineer - AI",
+    "job_id": "61456693",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210763922/?location=India&locationId=300000000289360&locationLevel=country",
+    "note": "backfill from skip list",
+    "ts": "2026-08-21T04:26:37.361944+00:00"
   }
 }
