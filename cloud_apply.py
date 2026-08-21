@@ -279,8 +279,15 @@ def is_success(page) -> bool:
     return bool(SUCCESS_RE.search(page_text(page)[:3000]))
 
 
-def application_finished(page) -> bool:
+def application_finished(page, job: dict | None = None) -> bool:
     """True after a confirmation page, already-applied banner, or Copilot success."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    jid = greenhouse_job_id(job) if job else ""
+    if jid and "greenhouse.io" in url and f"/jobs/{jid}" not in url:
+        return False
     try:
         if is_success(page):
             return True
@@ -3787,6 +3794,8 @@ def recover_wrong_board(page, job: dict | None = None) -> bool:
     url = (page.url or "").lower()
     if job and _aggregator_host(job.get("apply_url") or job.get("url") or ""):
         return False
+    if reopen_greenhouse_job(page, job):
+        return True
     if "indeed.com" in url or "linkedin.com/jobs" in url:
         print(f"  Left aggregator intercept {url[:80]}", flush=True)
         try:
@@ -3796,6 +3805,46 @@ def recover_wrong_board(page, job: dict | None = None) -> bool:
         except Exception:
             return False
     return False
+
+
+def greenhouse_job_id(job: dict | None) -> str:
+    if not job:
+        return ""
+    jid = str(job.get("job_id") or "").strip()
+    if jid.isdigit():
+        return jid
+    blob = f"{job.get('apply_url') or ''} {job.get('url') or ''}"
+    m = re.search(r"/jobs/(\d{6,})", blob)
+    return m.group(1) if m else ""
+
+
+def reopen_greenhouse_job(page, job: dict | None) -> bool:
+    """Leave Greenhouse ?error=true / board home and reopen the actual job apply URL."""
+    if not job:
+        return False
+    target = job.get("apply_url") or job.get("url") or ""
+    if "greenhouse.io" not in target.lower():
+        return False
+    jid = greenhouse_job_id(job)
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" not in url:
+        return False
+    if jid and f"/jobs/{jid}" in url and "error=true" not in url:
+        return False
+    if "/confirmation" in url:
+        return False
+    if "error=true" not in url and "/jobs/" in url:
+        return False
+    print(f"  Greenhouse listing/error page. Reopening job {jid or target}.", flush=True)
+    try:
+        page.goto(target, wait_until="domcontentloaded", timeout=35000)
+        page.wait_for_timeout(900)
+        return True
+    except Exception:
+        return False
 
 
 def adopt_newest_page(page, before_ids: set[int] | None = None, job: dict | None = None):
@@ -4013,7 +4062,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         except Exception:
             pass
         try:
-            if application_finished(page):
+            if application_finished(page, job):
                 print("  Submitted. Learning this form for later runs.", flush=True)
                 return {
                     "ok": True,
@@ -4021,6 +4070,10 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "note": "submitted after owner filled leftover fields",
                     "learned": learned,
                 }
+        except Exception:
+            pass
+        try:
+            reopen_greenhouse_job(page, job)
         except Exception:
             pass
         try:
@@ -4329,7 +4382,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             }
         page.wait_for_timeout(1200)
     try:
-        if application_finished(page):
+        if application_finished(page, job):
             print("  Submitted. Learning this form for later runs.", flush=True)
             return {
                 "ok": True,
@@ -4680,7 +4733,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                     human = wait_for_human(page, job, wait_seconds or 1800, resume)
                     row["final_url"] = page.url
                     row["learned"] = learned + int(human.get("learned") or 0)
-                    if human.get("ok") or application_finished(page):
+                    if human.get("ok") or application_finished(page, job):
                         row["ok"] = True
                         row["status"] = "SUBMITTED"
                         row["note"] = human.get("note") or "submitted after owner solved CAPTCHA"
@@ -4737,7 +4790,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 human = wait_for_human(page, job, wait_seconds or 1800, resume)
                 row["final_url"] = page.url
                 row["learned"] = learned + int(human.get("learned") or 0)
-                if human.get("ok") or application_finished(page):
+                if human.get("ok") or application_finished(page, job):
                     row["ok"] = True
                     row["status"] = "SUBMITTED"
                     row["note"] = human.get("note") or "submitted after owner solved CAPTCHA"
@@ -5140,6 +5193,10 @@ def pick_open_apply_page(context):
         except Exception:
             continue
         if any(s in u for s in skip):
+            continue
+        if "error=true" in u:
+            continue
+        if "greenhouse.io" in u and "/jobs/" not in u:
             continue
         score = 0
         on_form = False
@@ -5755,7 +5812,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                     print("  Left this tab open for you.", flush=True)
                     submitted_now = False
                     try:
-                        submitted_now = application_finished(page)
+                        submitted_now = application_finished(page, job)
                     except Exception:
                         submitted_now = False
                     if submitted_now:
@@ -5775,7 +5832,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                         extra = wait_for_human(page, job, wait_seconds or 1800)
                         extra_ok = bool(extra.get("ok"))
                         try:
-                            extra_ok = extra_ok or application_finished(page)
+                            extra_ok = extra_ok or application_finished(page, job)
                         except Exception:
                             pass
                         if extra_ok:
