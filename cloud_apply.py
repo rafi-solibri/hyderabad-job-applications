@@ -1290,6 +1290,16 @@ def click_naukri_quick_apply(page) -> str:
 
 def click_apply_gate(page) -> str:
     """Click Apply / Start application / Apply Manually. Never Tailor Resume or Indeed."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" in url and "/jobs/" in url:
+        try:
+            if page.get_by_role("button", name=re.compile(r"submit application", re.I)).count():
+                return ""
+        except Exception:
+            pass
     insta = click_instahyre_apply(page)
     if insta:
         return insta
@@ -2771,10 +2781,33 @@ def fill_greenhouse_required_selects(page) -> int:
     if n:
         print(f"  Greenhouse required selects filled ({n}).", flush=True)
     try:
+        opt = page.get_by_role("option", name=re.compile(r"^n/?a$", re.I)).first
+        if opt.count() and opt.is_visible():
+            opt.click(timeout=1500)
+            print("  Clicked open N/A list option.", flush=True)
+            n += 1
+            try:
+                page.keyboard.press("Escape")
+            except Exception:
+                pass
+    except Exception:
+        pass
+    try:
         labels = page.get_by_label(re.compile(r"^state", re.I))
         count = min(labels.count(), 4)
         for i in range(count):
-            if ats_fill.handle_dropdown(page, labels.nth(i), "N/A"):
+            el = labels.nth(i)
+            try:
+                cur = (el.input_value() or "").strip()
+            except Exception:
+                cur = ""
+            if cur.lower() in {"n/a", "na"}:
+                try:
+                    page.keyboard.press("Enter")
+                except Exception:
+                    pass
+                continue
+            if ats_fill.handle_dropdown(page, el, "N/A"):
                 print("  Selected N/A for Greenhouse State.", flush=True)
                 n += 1
     except Exception:
@@ -3541,6 +3574,17 @@ def on_application_form(page) -> bool:
     # SmartRecruiters listings are not the form until OneClick / publication apply.
     if "smartrecruiters.com" in url and "oneclick-ui" not in url and "/publication/" not in url:
         return False
+    if "greenhouse.io" in url and "/jobs/" in url:
+        try:
+            if page.get_by_role("button", name=re.compile(r"submit application", re.I)).count():
+                return True
+        except Exception:
+            pass
+        try:
+            if page.locator("input[name='first_name'], #first_name, input[id*='first_name' i]").count():
+                return True
+        except Exception:
+            pass
     if any(x in url for x in ("/apply/email", "/easy-apply", "/apply/section/", "oneclick-ui", "/application", "stepname=")):
         if "indeed.com" not in url:
             return True
@@ -4126,6 +4170,8 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         click_apply_gate(page)
         page.wait_for_timeout(800)
         page = adopt_newest_page(page, before, job)
+    elif "greenhouse.io" in ((page.url or "") + "").lower():
+        fill_greenhouse_required_selects(page)
     step = click_next_or_submit(page)
     if step == "submitted" or is_success(page) or simplify_copilot.submitted(page):
         return "submitted"

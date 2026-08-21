@@ -26,9 +26,11 @@ NATIVE_SET_JS = """(el, value) => {
   return true;
 }"""
 
-OPTION_SELECTORS = (
+    OPTION_SELECTORS = (
     '[data-automation-id="promptOption"]',
     '[role="option"]',
+    "[role='listbox'] [role='option']",
+    "[role='listbox'] li",
     ".select__option",
     ".select2-results__option",
     "li[class*='option']",
@@ -169,11 +171,27 @@ def handle_dropdown(page, locator, value: str) -> bool:
         try:
             el.fill("")
             el.type(str(value)[:18], delay=35)
-            page.wait_for_timeout(600)
+            page.wait_for_timeout(500)
+        except Exception:
+            pass
+        try:
+            opt = page.get_by_role("option", name=re.compile(rf"^{re.escape(str(value))}$", re.I)).first
+            if opt.count() and opt.is_visible():
+                opt.click(timeout=1500)
+                page.wait_for_timeout(200)
+                return True
         except Exception:
             pass
         if _click_best_option(page, value):
             return True
+        try:
+            page.keyboard.press("Enter")
+            page.wait_for_timeout(250)
+            cur = (el.input_value() or "").strip()
+            if cur and value.lower() in cur.lower():
+                return True
+        except Exception:
+            pass
         try:
             page.keyboard.press("Escape")
             el.click(timeout=1500, force=True)
