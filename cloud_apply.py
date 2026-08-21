@@ -960,7 +960,8 @@ CLICK_APPLY_GATE_JS = r"""() => {
       const id = (el.id || '').toLowerCase();
       if (id === 'start-application-button' || id === 'proxy-submit-button' || id === 'fill-button') return;
       const r = el.getBoundingClientRect();
-      if (r.left > window.innerWidth * 0.78) return;
+      if (!onNaukri && r.left > window.innerWidth * 0.78) return;
+      if (onNaukri && r.left > window.innerWidth * 0.93) return;
       const t = labelOf(el);
       if (!t || t.length > 48 || skipRe.test(t)) return;
       const auto = el.getAttribute('data-automation-id') || '';
@@ -1075,7 +1076,7 @@ def click_instahyre_apply(page) -> str:
 
 
 def click_naukri_quick_apply(page) -> str:
-    """Naukri TopTier CTA is Quick apply — not Easy Apply / company Apply."""
+    """Naukri TopTier CTA is Quick apply — often a right-rail control Copilot would skip."""
     try:
         url = (page.url or "").lower()
     except Exception:
@@ -1084,34 +1085,84 @@ def click_naukri_quick_apply(page) -> str:
         return ""
     if already_applied_visible(page):
         return ""
+    collapse_copilot_panel(page)
     try:
-        hit = page.evaluate(
+        loc = page.get_by_text(re.compile(r"^quick apply$", re.I)).first
+        if loc.count() and loc.is_visible():
+            loc.click(timeout=2500, force=True)
+            print("  Clicked Naukri 'Quick apply'.", flush=True)
+            page.wait_for_timeout(2200)
+            return "Quick apply"
+    except Exception:
+        pass
+    try:
+        box = page.evaluate(
             """() => {
               const labelOf = (el) => ((el.innerText || el.value || el.getAttribute('aria-label') || '') + '').replace(/\\s+/g, ' ').trim();
               const ranked = [/^quick apply$/i, /^apply on naukri$/i, /^apply now$/i, /^i am interested$/i, /^apply$/i];
-              const nodes = document.querySelectorAll('button, a, [role="button"]');
-              for (const re of ranked) {
-                for (const el of nodes) {
-                  const t = labelOf(el);
-                  if (!re.test(t) || t.length > 28) continue;
-                  const r = el.getBoundingClientRect();
-                  if (r.width < 24 || r.height < 12) continue;
-                  if (r.left > window.innerWidth * 0.78) continue;
-                  const btn = el.closest('button, a, [role="button"]') || el;
-                  btn.scrollIntoView({block: 'center'});
-                  btn.click();
-                  return t;
+              const hits = [];
+              const nodes = document.querySelectorAll('button, a, [role="button"], span, div');
+              for (const el of nodes) {
+                const t = labelOf(el);
+                if (!t || t.length > 28) continue;
+                let rank = -1;
+                for (let i = 0; i < ranked.length; i++) {
+                  if (ranked[i].test(t)) { rank = i; break; }
                 }
+                if (rank < 0) continue;
+                const r = el.getBoundingClientRect();
+                if (r.width < 10 || r.height < 10) continue;
+                if (r.left > window.innerWidth * 0.93) continue;
+                if (r.bottom < 80 || r.top > window.innerHeight - 8) continue;
+                hits.push({x: r.x, y: r.y, w: r.width, h: r.height, t, rank, area: r.width * r.height});
+              }
+              hits.sort((a, b) => a.rank - b.rank || b.area - a.area);
+              return hits[0] || null;
+            }"""
+        )
+    except Exception:
+        box = None
+    if not box:
+        return ""
+    try:
+        hit = page.evaluate(
+            """(t) => {
+              const labelOf = (el) => ((el.innerText || el.value || el.getAttribute('aria-label') || '') + '').replace(/\\s+/g, ' ').trim();
+              for (const el of document.querySelectorAll('button, a, [role="button"], span, div')) {
+                if (labelOf(el) !== t) continue;
+                const btn = el.closest('button, a, [role="button"]') || el;
+                btn.scrollIntoView({block: 'center'});
+                btn.click();
+                return t;
               }
               return '';
-            }"""
+            }""",
+            box.get("t") or "Quick apply",
         ) or ""
     except Exception:
         hit = ""
+    if not hit:
+        try:
+            info = page.evaluate(
+                """() => ({
+                  sx: window.screenX || 0,
+                  sy: window.screenY || 0,
+                  oh: window.outerHeight || 0,
+                  ih: window.innerHeight || 0,
+                })"""
+            )
+        except Exception:
+            info = {}
+        chrome_top = max(0, int((info.get("oh") or 0) - (info.get("ih") or 0)))
+        _xdotool_click(
+            (info.get("sx") or 0) + box["x"] + box["w"] / 2,
+            (info.get("sy") or 0) + chrome_top + box["y"] + box["h"] / 2,
+        )
+        hit = (box.get("t") or "Quick apply").strip()[:40]
     if hit:
         print(f"  Clicked Naukri '{hit}'.", flush=True)
         try:
-            page.wait_for_timeout(2000)
+            page.wait_for_timeout(2200)
         except Exception:
             pass
     return hit
@@ -3595,6 +3646,8 @@ def follow_apply_tab(page, job: dict | None = None):
             "smartrecruiters.com",
             "/apply",
             "applymanually",
+            "naukri.com/job-listings",
+            "naukri.com/jobdescription",
         )
     ) and not _foreign_or_parked_tab(cur, job, cur):
         return page
@@ -4340,8 +4393,11 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             u = (page.url or "").lower()
         except Exception:
             u = ""
-        if any(x in u for x in ("applymanually", "/apply/", "icims.com", "avature.net", "myworkdayjobs", "oraclecloud", "smartrecruiters", "linkedin.com", "naukri.com", "indeed.com", "foundit.in", "instahyre", "cutshort")):
+        job_u = (url or "").lower()
+        if any(x in u or x in job_u for x in ("applymanually", "/apply/", "icims.com", "avature.net", "myworkdayjobs", "oraclecloud", "smartrecruiters", "linkedin.com", "naukri.com", "indeed.com", "foundit.in", "instahyre", "cutshort")):
             stay = wait_seconds if wait_seconds else 90
+        if "naukri.com" in u or "naukri.com" in job_u:
+            stay = min(stay, 40) if not OWNER_PRESENT else stay
         if "instahyre.com/job-" in u:
             stay = min(stay, 25)
         if linkedin_account_restricted(page) or linkedin_blocked_now():
@@ -4354,7 +4410,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             and not OWNER_PRESENT
         ):
             stay = 0
-        if step == "stuck" and stay <= 15 and not OWNER_PRESENT:
+        if step == "stuck" and stay <= 15 and not OWNER_PRESENT and "naukri.com" not in job_u:
             stay = 0
         if OWNER_PRESENT and not stay:
             stay = wait_seconds if wait_seconds else 90
