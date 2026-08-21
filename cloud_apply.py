@@ -1127,6 +1127,9 @@ def click_naukri_quick_apply(page) -> str:
             if re.search(r"applied", label, re.I):
                 print("  Naukri footer shows already applied.", flush=True)
                 return ""
+            if re.search(r"company site", label, re.I):
+                print("  Naukri company-site apply. Next leftover.", flush=True)
+                return ""
             foot.click(timeout=2500, force=True)
             print(f"  Clicked Naukri footer {label[:40]!r}.", flush=True)
             page.wait_for_timeout(2200)
@@ -4291,6 +4294,20 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             row["note"] = "already applied"
             row["final_url"] = page.url
             return row
+        if "naukri.com" in (url or "").lower():
+            try:
+                foot = page.get_by_role(
+                    "button", name=re.compile(r"quick apply|company site", re.I)
+                ).first
+                nlabel = ((foot.inner_text() or "") if foot.count() else "").lower()
+            except Exception:
+                nlabel = ""
+            if "company site" in nlabel:
+                print("  Naukri company-site apply. Next leftover.", flush=True)
+                row["status"] = "STUCK"
+                row["note"] = "Naukri company-site apply"
+                row["final_url"] = page.url
+                return row
 
         fill_identity(page)
         auth = try_portal_auth(page)
@@ -5062,6 +5079,13 @@ def _naukri_jobs_from_api_items(items: list) -> list[dict]:
         place = " ".join(x for x in place_parts if x) or "Hyderabad, India"
         if not re.search(r"hyderabad|telangana|remote|india", place, re.I):
             place = "Hyderabad, India"
+        footer = str(
+            item.get("footerPlaceholderLabel")
+            or item.get("applyType")
+            or ""
+        )
+        if re.search(r"company.?site", footer, re.I):
+            continue
         jobs.append({
             "company": company,
             "title": title,
@@ -5167,6 +5191,7 @@ def discover_naukri_in_chrome(context) -> int:
                             jdURL: item.jdURL || item.jdUrl || '',
                             jobLocation: item.jobLocation || '',
                             placeholders: item.placeholders || [],
+                            footerPlaceholderLabel: item.footerPlaceholderLabel || item.applyType || '',
                           }));
                           return {status: r.status, n: slim.length, items: slim};
                         }""",
