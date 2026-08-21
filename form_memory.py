@@ -193,16 +193,30 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
     if "last working day" in q or ("serving" in q and "notice" in q):
         return None
     mem = load_memory()["by_label"]
+    mem_val = None
     if q in mem:
         val = (mem[q].get("value") or "").strip()
         if val and norm(val) not in NOISE_VALUES and val.lower() != "cursor":
-            return val
+            mem_val = val
+            # Copilot sometimes pastes Country into LinkedIn / website.
+            if ("linkedin" in q or "website" in q or q.endswith(" url") or " url " in q) and not re.search(
+                r"https?://", val, re.I
+            ):
+                mem_val = None
+            elif q.startswith("state") and val.lower() in {"india", "telangana"}:
+                mem_val = None
+    if mem_val:
+        return mem_val
     tokens = set(re.findall(r"[a-z0-9]{3,}", q))
     best_val = None
     best_score = 0.58
     for stored, row in mem.items():
         val = (row.get("value") or "").strip()
         if not val or norm(val) in NOISE_VALUES or val.lower() == "cursor":
+            continue
+        if ("linkedin" in q or "website" in q or " url" in q) and not re.search(r"https?://", val, re.I):
+            continue
+        if q.startswith("state") and val.lower() in {"india", "telangana"}:
             continue
         if len(stored) > 12 and (stored in q or q in stored):
             return val
@@ -262,6 +276,12 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         return pick("no") or "No"
     if any(x in q for x in ("authoriz", "right to work", "legally permitted", "eligible to work", "work eligibility")):
         return pick("yes", "citizen", "permanently") or "Yes"
+    if "linkedin" in q or ("website" in q and "url" in q):
+        return a.get("linkedin") or "https://linkedin.com/in/rafi-ahmed-mohammed-abdul-151644ba"
+    if "employed by" in q or "currently working at" in q or "current employee" in q:
+        return pick("no") or "No"
+    if "agree to the processing" in q or ("personal data" in q and "agree" in q):
+        return pick("yes", "i agree", "agree") or "Yes"
     if "currently a" in q and "employee" in q:
         return pick("no") or "No"
     if "agency worker" in q or ("contractor" in q and "employee" not in q):
@@ -394,7 +414,8 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         or q in {"state", "state *", "region2", "region", "province"}
         or (q.startswith("state") and "statement" not in q and "united states" not in q)
     ):
-        return pick("telangana") or a["state"]
+        # Greenhouse US/AU state lists use N/A for India. Indian forms use Telangana.
+        return pick("telangana") or pick("n/a", "not applicable", "na") or a["state"]
     if q == "country" or "country of residence" in q or "country/region" in q:
         return pick("india") or a["country"]
     if "primary residence" in q or "home address" in q or "current location" in q or "city and state" in q:
@@ -480,6 +501,8 @@ def remember(page, job: dict | None = None) -> list[dict]:
         if norm(value) in NOISE_VALUES:
             continue
         if value.lower() == "cursor" or (value.isdigit() and len(value) > 8):
+            continue
+        if re.search(r"linkedin|website|url", label, re.I) and not re.search(r"https?://", value, re.I):
             continue
         if len(label) > 160 and "select ..." in norm(label):
             continue
