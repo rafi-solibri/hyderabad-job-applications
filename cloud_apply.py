@@ -3842,9 +3842,29 @@ def reopen_greenhouse_job(page, job: dict | None) -> bool:
     try:
         page.goto(target, wait_until="domcontentloaded", timeout=35000)
         page.wait_for_timeout(900)
-        return True
     except Exception:
         return False
+    try:
+        after = (page.url or "").lower()
+    except Exception:
+        after = ""
+    if "error=true" in after and (not jid or f"/jobs/{jid}" not in after):
+        return False
+    return "error=true" not in after
+
+
+def greenhouse_listing_error(page, job: dict | None) -> bool:
+    """True when Greenhouse redirected this job to the board ?error=true listing."""
+    if not job:
+        return False
+    jid = greenhouse_job_id(job)
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" not in url or "error=true" not in url:
+        return False
+    return (not jid) or f"/jobs/{jid}" not in url
 
 
 def adopt_newest_page(page, before_ids: set[int] | None = None, job: dict | None = None):
@@ -4074,6 +4094,17 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
             pass
         try:
             reopen_greenhouse_job(page, job)
+        except Exception:
+            pass
+        try:
+            if greenhouse_listing_error(page, job):
+                print("  Greenhouse posting is gone (error=true). Next leftover.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "CLOSED",
+                    "note": "greenhouse posting gone (error=true)",
+                    "learned": learned,
+                }
         except Exception:
             pass
         try:
@@ -4520,6 +4551,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         except Exception:
             closed = False
         blob = page_text(page)[:8000]
+        if greenhouse_listing_error(page, job):
+            print("  Greenhouse posting is gone (error=true). Next leftover.", flush=True)
+            row["status"] = "CLOSED"
+            row["final_url"] = page.url
+            row["note"] = "greenhouse posting gone (error=true)"
+            apply_now.persist_applied(row, "closed posting — cannot submit")
+            return row
         if closed or re.search(
             r"page you are looking for doesn.?t exist|job (is )?no longer available|"
             r"this job has been closed|sorry, this job has expired|this job has expired|"

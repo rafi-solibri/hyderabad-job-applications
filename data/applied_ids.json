@@ -4533,5 +4533,21 @@
     "url": "https://boards.greenhouse.io/crunchyroll/jobs/8042666",
     "note": "owner submitted on headed Chrome after CAPTCHA",
     "ts": "2026-08-21T10:31:06.959010+00:00"
+  },
+  "newrelic|manager, software engineering": {
+    "company": "newrelic",
+    "title": "Manager, Software Engineering",
+    "job_id": "5256109008",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5256109008",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-21T10:34:24.452773+00:00"
+  },
+  "5256109008": {
+    "company": "newrelic",
+    "title": "Manager, Software Engineering",
+    "job_id": "5256109008",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5256109008",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-21T10:34:24.452773+00:00"
   }
 }
