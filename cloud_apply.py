@@ -3484,17 +3484,25 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
         except Exception:
             job_url = ""
         if OWNER_PRESENT and notified_input:
+            # Hands off: learn only. Do not click or type while the owner fills.
+            try:
+                if is_success(page):
+                    print("  Submitted. Learning this form for later runs.", flush=True)
+                    return {
+                        "ok": True,
+                        "status": "SUBMITTED",
+                        "note": "submitted after owner filled leftover fields",
+                        "learned": learned,
+                    }
+            except Exception:
+                pass
             try:
                 changed = form_memory.remember(page, job) or []
                 learned += len(changed)
             except Exception:
                 pass
-            leftover = required_field_issues(page)
-            if leftover:
-                page.wait_for_timeout(2500)
-                continue
-            print("  Leftover fields look clear. Resuming fill.", flush=True)
-            notified_input = False
+            page.wait_for_timeout(4000)
+            continue
         if "icims.com" in job_url and icims_auth0_blocked(page):
             if OWNER_PRESENT:
                 if not notified_input:
@@ -4397,7 +4405,9 @@ def pick_open_apply_page(context):
         # Owner-present: a real apply form beats a login wall (Auth0 / iCIMS).
         if on_form and "login." not in u:
             score += 80
-        if "myworkdayjobs.com" in u and "/apply" in u:
+        if "avature.net" in u and ("register" in u or "apply" in u or "jobid=" in u):
+            score += 90
+        elif "myworkdayjobs.com" in u and "/apply" in u:
             score += 40
         elif "avature.net" in u:
             score += 25
@@ -4491,6 +4501,78 @@ def watch_open_application(wait_seconds: int) -> list[dict]:
         save_cloud(results)
         print(f"  {row.get('status')} ok={row.get('ok')} learned={row.get('fields_learned') or row.get('learned')} {row.get('final_url')}", flush=True)
         print("  Leaving rafi.success@gmail.com Chrome open.", flush=True)
+    return results
+
+
+def learn_open_application(seconds: int = 1800) -> list[dict]:
+    """Hands-off: never click or type. Learn answers the owner enters on the open form."""
+    apply_now.BATCH = apply_now.load_all_discovered()
+    form_memory.seed_from_learned()
+    seed_parked_captcha_urls()
+    queue = apply_now.queue()
+    try_jobs, _ = public_queue(queue, allow_aggregators=True)
+    leftovers = leftover_career_jobs(try_jobs)
+    results: list[dict] = []
+    with sync_playwright() as pw:
+        _browser, context, _page = launch_context(pw, headed=True)
+        page = pick_open_apply_page(context)
+        if page is None:
+            print("  No open application tab to learn from.", flush=True)
+            return results
+        job = match_job_for_page(page, leftovers) or {
+            "company": (page.title() or "Open tab").split("|")[0].strip()[:80],
+            "title": "ongoing application",
+            "apply_url": page.url,
+            "url": page.url,
+        }
+        leftover = required_field_issues(page)
+        notify_needs_input(job, page, leftover or ["leftover required fields — owner is filling"])
+        print(
+            f"  Hands off. I will only learn what you type (up to {seconds}s).\n"
+            f"  {job.get('company')}: {job.get('title')}\n"
+            f"  {page.url}",
+            flush=True,
+        )
+        learned = 0
+        deadline = time.time() + max(seconds, 60)
+        while time.time() < deadline:
+            try:
+                if is_success(page):
+                    row = {
+                        "company": job.get("company"),
+                        "title": job.get("title"),
+                        "apply_url": job.get("apply_url") or page.url,
+                        "ok": True,
+                        "status": "SUBMITTED",
+                        "note": "submitted after owner filled leftover fields",
+                        "final_url": page.url,
+                        "learned": learned,
+                    }
+                    apply_now.persist_applied(row, row["note"])
+                    notify_submitted(job, row)
+                    results.append(row)
+                    save_cloud(results)
+                    print("  Submitted. Learned this form for later runs.", flush=True)
+                    return results
+            except Exception:
+                pass
+            try:
+                changed = form_memory.remember(page, job) or []
+                learned += len(changed)
+            except Exception:
+                pass
+            page.wait_for_timeout(5000)
+        print(f"  Still learning-only after {seconds}s. Learned {learned} field(s).", flush=True)
+        results.append({
+            "company": job.get("company"),
+            "title": job.get("title"),
+            "ok": False,
+            "status": "NEED_INPUT",
+            "note": f"learn-only; learned {learned} fields",
+            "final_url": page.url,
+            "learned": learned,
+        })
+        save_cloud(results)
     return results
 
 
@@ -4679,12 +4761,19 @@ if __name__ == "__main__":
         action="store_true",
         help="Continue the already-open apply tab only. Implies --owner-present.",
     )
+    parser.add_argument(
+        "--learn-only",
+        action="store_true",
+        help="Do not click or type. Learn answers the owner enters on the open tab.",
+    )
     args = parser.parse_args()
-    OWNER_PRESENT = bool(args.owner_present or args.watch_open)
-    WATCH_OPEN = bool(args.watch_open)
+    OWNER_PRESENT = bool(args.owner_present or args.watch_open or args.learn_only)
+    WATCH_OPEN = bool(args.watch_open or args.learn_only)
     # Headed: wait for human CAPTCHA. Unattended cron can pass --wait 0.
     wait = (360 if args.headed else 0) if args.wait is None else args.wait
-    if args.watch_open:
+    if args.learn_only:
+        learn_open_application(seconds=wait or 1800)
+    elif args.watch_open:
         watch_open_application(wait_seconds=wait or 1800)
     elif args.until_submitted:
         def _submitted_n() -> int:
