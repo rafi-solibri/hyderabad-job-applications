@@ -1131,14 +1131,42 @@ def click_naukri_quick_apply(page) -> str:
     else:
         hit = ""
         try:
-            loc = page.get_by_text(re.compile(r"^quick apply$", re.I)).first
-            if loc.count():
+            dbg = page.evaluate(
+                """() => {
+                  const rows = [];
+                  for (const el of document.querySelectorAll('button, a, [id*="apply" i], [class*="apply" i]')) {
+                    const r = el.getBoundingClientRect();
+                    rows.push({
+                      tag: el.tagName,
+                      id: el.id || '',
+                      cls: ((el.className || '') + '').slice(0, 70),
+                      t: ((el.innerText || '') + '').replace(/\\s+/g, ' ').trim().slice(0, 36),
+                      w: Math.round(r.width),
+                      h: Math.round(r.height),
+                      y: Math.round(r.y),
+                    });
+                    if (rows.length >= 12) break;
+                  }
+                  return {hasApply: !!document.getElementById('apply-button'), nBtn: document.querySelectorAll('button').length, rows};
+                }"""
+            ) or {}
+            print(f"  Naukri apply DOM: {dbg}", flush=True)
+        except Exception as exc:
+            print(f"  Naukri apply DOM debug failed ({exc}).", flush=True)
+        for loc in (
+            page.locator("xpath=//*[normalize-space()='Quick apply']/ancestor::*[self::button or self::a or self::div][1]").first,
+            page.get_by_text(re.compile(r"^quick apply$", re.I)).first,
+        ):
+            try:
+                if not loc.count():
+                    continue
                 loc.click(timeout=2000, force=True)
-                print("  Clicked Naukri 'Quick apply' badge.", flush=True)
+                print("  Clicked Naukri 'Quick apply' control.", flush=True)
                 page.wait_for_timeout(2000)
                 hit = "Quick apply"
-        except Exception:
-            hit = ""
+                break
+            except Exception:
+                continue
     if not hit:
         return ""
     for name in ("Send application", "Submit application", "Apply now", "Apply"):
