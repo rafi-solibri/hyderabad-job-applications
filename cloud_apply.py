@@ -265,6 +265,14 @@ def is_success(page) -> bool:
     # Mid-wizard URLs are not a submit confirmation.
     if any(x in url for x in MID_WIZARD_URL) or "stepname=" in url:
         return False
+    try:
+        loc = page.get_by_role("button", name=re.compile(r"applied", re.I)).first
+        if loc.count():
+            t = ((loc.inner_text() or "") + " " + (loc.get_attribute("aria-label") or "")).lower()
+            if "applied" in t:
+                return True
+    except Exception:
+        pass
     return bool(SUCCESS_RE.search(page_text(page)[:3000]))
 
 
@@ -273,6 +281,14 @@ def already_applied_visible(page) -> bool:
         loc = page.locator("#already-applied, span.already-applied").first
         if loc.count() and loc.is_visible():
             return True
+    except Exception:
+        pass
+    try:
+        loc = page.get_by_role("button", name=re.compile(r"applied", re.I)).first
+        if loc.count():
+            t = ((loc.inner_text() or "") + " " + (loc.get_attribute("aria-label") or "")).lower()
+            if "applied" in t:
+                return True
     except Exception:
         pass
     try:
@@ -1101,9 +1117,31 @@ def click_naukri_quick_apply(page) -> str:
         return ""
     collapse_copilot_panel(page)
     try:
-        page.locator(
-            "#apply-button, button.apply-button, [class*='jhc__apply-button-container']"
-        ).first.wait_for(state="attached", timeout=8000)
+        foot = page.get_by_role("button", name=re.compile(r"quick apply", re.I)).first
+        if foot.count():
+            try:
+                foot.scroll_into_view_if_needed(timeout=1500)
+            except Exception:
+                pass
+            label = ((foot.inner_text() or "") + " " + (foot.get_attribute("aria-label") or "")).strip()
+            if re.search(r"applied", label, re.I):
+                print("  Naukri footer shows already applied.", flush=True)
+                return ""
+            foot.click(timeout=2500, force=True)
+            print(f"  Clicked Naukri footer {label[:40]!r}.", flush=True)
+            page.wait_for_timeout(2200)
+            hit = label[:40] or "Quick apply"
+            for name in ("Send application", "Submit application", "Apply now", "Apply"):
+                try:
+                    loc = page.get_by_role("button", name=re.compile(rf"^{re.escape(name)}$", re.I)).first
+                    if loc.count() and loc.is_visible() and not _looks_like_copilot(loc):
+                        loc.click(timeout=1500, force=True)
+                        print(f"  Clicked Naukri '{name}'.", flush=True)
+                        page.wait_for_timeout(1500)
+                        return name
+                except Exception:
+                    continue
+            return hit
     except Exception:
         pass
     for sel in (
