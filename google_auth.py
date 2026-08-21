@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -31,6 +32,62 @@ def load_env_value(key: str) -> str:
 
 def load_google_password() -> str:
     return load_env_value("GOOGLE_PASSWORD")
+
+
+def fill_google_password_challenge(page) -> str:
+    """Type the Google password on accounts.google.com challenge/pwd. Never log it."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "accounts.google.com" not in url:
+        return "skip"
+    password = load_google_password()
+    if not password:
+        return "missing"
+    filled = False
+    for sel in ("input[name=Passwd]", "input[type=password]", "input[name=password]", "#password"):
+        try:
+            loc = page.locator(sel).first
+            if loc.count() and loc.is_visible():
+                loc.fill(password, timeout=4000)
+                filled = True
+                break
+        except Exception:
+            continue
+    if not filled:
+        return "none"
+    print("  Filled Google password on the sign-in challenge.", flush=True)
+    try:
+        nxt = page.get_by_role("button", name=re.compile(r"^next$", re.I)).first
+        if nxt.count() and nxt.is_visible():
+            nxt.click(timeout=3000)
+    except Exception:
+        try:
+            page.keyboard.press("Enter")
+        except Exception:
+            pass
+    try:
+        page.wait_for_timeout(1200)
+    except Exception:
+        pass
+    return "ok"
+
+
+def fill_google_password_challenges(page) -> int:
+    """Fill every open Google password challenge (Foundit/Cutshort SSO popups)."""
+    ctx = getattr(page, "context", None)
+    pages = list(ctx.pages) if ctx is not None else [page]
+    n = 0
+    for p in pages:
+        try:
+            if p.is_closed():
+                continue
+            if fill_google_password_challenge(p) == "ok":
+                n += 1
+        except Exception:
+            continue
+    return n
 
 
 def load_portal_password() -> str:

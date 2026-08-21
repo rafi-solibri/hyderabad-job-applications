@@ -663,6 +663,7 @@ def click_google_account_chooser(page) -> bool:
                     loc.click(timeout=2500)
                     print(f"  Chose Google account {email}.", flush=True)
                     p.wait_for_timeout(2200)
+                    google_auth.fill_google_password_challenges(page)
                     return True
             except Exception:
                 continue
@@ -672,6 +673,7 @@ def click_google_account_chooser(page) -> bool:
                 loc.click(timeout=2500)
                 print(f"  Chose Google account {email}.", flush=True)
                 p.wait_for_timeout(2200)
+                google_auth.fill_google_password_challenges(page)
                 return True
         except Exception:
             pass
@@ -681,10 +683,12 @@ def click_google_account_chooser(page) -> bool:
                 loc.click(timeout=2500)
                 print(f"  Chose Google account {email}.", flush=True)
                 p.wait_for_timeout(2200)
+                google_auth.fill_google_password_challenges(page)
                 return True
         except Exception:
             pass
-    return hit
+    n = google_auth.fill_google_password_challenges(page)
+    return hit or bool(n)
 
 
 def try_board_google_signin(page) -> str:
@@ -696,6 +700,7 @@ def try_board_google_signin(page) -> str:
     if not _aggregator_host(url) and "accounts.google.com" not in url:
         return "skip"
     if click_google_account_chooser(page):
+        google_auth.fill_google_password_challenges(page)
         return "ok"
     if _google_chooser_pages(page):
         return "ok"
@@ -3728,12 +3733,6 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
     }
     if kind != "TRY":
         row["note"] = "login board skipped without opening"
-        return row
-    if "foundit.in" in (url or "").lower():
-        row["status"] = "CLOSED"
-        row["note"] = "board blocked this environment (access denied)"
-        apply_now.persist_skipped(row, row["note"])
-        print("  Foundit is blocked in this environment. Next leftover.", flush=True)
         return row
     if "icims.com" not in (url or "").lower():
         ICIMS_LOGIN_CLICKED = False
