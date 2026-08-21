@@ -5132,6 +5132,7 @@ def learn_open_application(seconds: int = 1800) -> list[dict]:
 
 def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
     out = []
+    applied_ids = {str(k) for k in apply_now.load_applied_ids()}
     for job in try_jobs:
         if apply_now.is_applied(job):
             continue
@@ -5139,6 +5140,8 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
         if keys & SESSION_SKIP_KEYS:
             continue
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
+        if any(jid.isdigit() and len(jid) >= 6 and jid.lower() in u for jid in applied_ids):
+            continue
         if linkedin_blocked_now() and "linkedin.com" in u:
             continue
         if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in u:
