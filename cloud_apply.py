@@ -3422,6 +3422,44 @@ def accept_terms(page) -> int:
     return n
 
 
+def _foreign_or_parked_tab(url: str, job: dict | None = None, current: str = "") -> bool:
+    """True if this tab is Gmail, a parked CAPTCHA, or another job's ATS."""
+    u = (url or "").lower()
+    cur = (current or "").lower()
+    if any(x in u for x in ("mail.google.com", "accounts.google.com", "chrome://", "chrome-extension://")):
+        return True
+    if "linkedin.com/checkpoint" in u:
+        return True
+    if "login.icims.com" in u and "icims.com" not in cur:
+        return True
+    for parked in PARKED_CAPTCHA_URLS:
+        p = (parked or "").lower()
+        if not p:
+            continue
+        if p.split("?")[0] == u.split("?")[0] or (p in u) or (u and u in p):
+            return True
+    blob = ""
+    if job:
+        blob = (
+            str(job.get("apply_url") or "")
+            + " "
+            + str(job.get("url") or "")
+        ).lower()
+    for host in (
+        "oraclecloud.com",
+        "myworkdayjobs",
+        "avature.net",
+        "smartrecruiters.com",
+        "jobs.zf.com",
+        "careers.amd.com",
+        "schwabjobs.com",
+        "jpmc.fa",
+    ):
+        if host in u and blob and host not in blob:
+            return True
+    return False
+
+
 def recover_wrong_board(page, job: dict | None = None) -> bool:
     """Leave Indeed/LinkedIn intercepts on company-portal applies. Stay on aggregator Easy Apply."""
     if job and apply_now.is_aggregator_board(job):
@@ -3440,7 +3478,7 @@ def recover_wrong_board(page, job: dict | None = None) -> bool:
     return False
 
 
-def adopt_newest_page(page, before_ids: set[int] | None = None):
+def adopt_newest_page(page, before_ids: set[int] | None = None, job: dict | None = None):
     """Follow Apply that opened a new tab. Never jump to Gmail or leftover tabs."""
     try:
         ctx = page.context
@@ -3460,6 +3498,8 @@ def adopt_newest_page(page, before_ids: set[int] | None = None):
                 continue
             # Parked Schwab Auth0 is not the new Apply tab for Workday/DHL.
             if "login.icims.com" in url.lower() and "icims.com" not in (page.url or "").lower():
+                continue
+            if _foreign_or_parked_tab(url, job, page.url or ""):
                 continue
             opened.append(p)
         except Exception:
@@ -3485,8 +3525,11 @@ def adopt_newest_page(page, before_ids: set[int] | None = None):
     return page
 
 
-def follow_apply_tab(page):
-    """Fill the ATS apply tab, not the careers listing that opened it."""
+def follow_apply_tab(page, job: dict | None = None):
+    """Fill the ATS apply tab, not the careers listing that opened it.
+
+    Never jump onto a parked CAPTCHA or another leftover's Oracle/Workday tab.
+    """
     try:
         cur = (page.url or "").lower()
     except Exception:
@@ -3502,7 +3545,7 @@ def follow_apply_tab(page):
             "/apply",
             "applymanually",
         )
-    ):
+    ) and not _foreign_or_parked_tab(cur, job, cur):
         return page
     ctx = getattr(page, "context", None)
     if ctx is None:
@@ -3514,10 +3557,12 @@ def follow_apply_tab(page):
             u = (p.url or "").lower()
         except Exception:
             continue
-        if "mail.google.com" in u or "linkedin.com/checkpoint" in u:
+        if _foreign_or_parked_tab(u, job, cur):
             continue
         if "login.icims.com" in u:
-            if "icims.com" in cur:
+            if "icims.com" in cur or (job and "icims.com" in (
+                (job.get("apply_url") or "") + (job.get("url") or "")
+            ).lower()):
                 return p
             continue
         if any(
@@ -3608,7 +3653,7 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         before = {id(p) for p in page.context.pages}
         click_apply_gate(page)
         page.wait_for_timeout(800)
-        page = adopt_newest_page(page, before)
+        page = adopt_newest_page(page, before, job)
     step = click_next_or_submit(page)
     if step == "submitted" or is_success(page) or simplify_copilot.submitted(page):
         return "submitted"
@@ -3641,7 +3686,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
     url_hold_from = time.time()
     while time.time() < deadline:
         try:
-            page = follow_apply_tab(page)
+            page = follow_apply_tab(page, job)
         except Exception:
             pass
         try:
@@ -4053,7 +4098,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             before = {id(p) for p in page.context.pages}
             hit = click_apply_gate(page)
             page.wait_for_timeout(1000)
-            page = adopt_newest_page(page, before)
+            page = adopt_newest_page(page, before, job)
             if page.url == last_url:
                 same_url_hits += 1
             else:
@@ -4124,7 +4169,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         apply_hold_from = time.time()
         for _ in range(6):
             try:
-                page = follow_apply_tab(page)
+                page = follow_apply_tab(page, job)
             except Exception:
                 pass
             dismiss_overlays(page)
@@ -4234,7 +4279,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
 
         stay = 15
         try:
-            page = follow_apply_tab(page)
+            page = follow_apply_tab(page, job)
             u = (page.url or "").lower()
         except Exception:
             u = ""
@@ -4345,6 +4390,11 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
         boards = [
             j for j in boards
             if "linkedin.com" not in ((j.get("apply_url") or j.get("url") or "")).lower()
+        ]
+    if FOUNDIT_AKAMAI_BLOCKED:
+        boards = [
+            j for j in boards
+            if "foundit.in" not in ((j.get("apply_url") or j.get("url") or "")).lower()
         ]
     out: list[dict] = []
     b = c = 0
@@ -4790,7 +4840,6 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
 
 def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[dict]:
     global FOUNDIT_AKAMAI_BLOCKED
-    FOUNDIT_AKAMAI_BLOCKED = False
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
     seed_parked_captcha_urls()
@@ -4996,7 +5045,6 @@ if __name__ == "__main__":
         idle = 0
         while _submitted_n() < goal:
             before = _submitted_n()
-            SESSION_SKIP_KEYS.clear()
             main(limit=args.limit, headed=args.headed, wait_seconds=wait)
             after = _submitted_n()
             if after <= before:
