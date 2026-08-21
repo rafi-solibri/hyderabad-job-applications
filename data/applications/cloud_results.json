@@ -236,10 +236,9 @@
     "apply_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
     "ok": false,
     "status": "STUCK",
-    "note": "Workday URL unchanged — next job",
+    "note": "ATS URL unchanged — next job",
     "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--AVP_R-792706/apply/applyManually",
-    "ts": "2026-08-20T18:37:32.335442+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-21T00:14:19.718660+00:00"
   },
   {
     "company": "State Street",
@@ -249,12 +248,11 @@
     "ats": "Workday",
     "job_id": "Senior-Software-Engineer--Officer_R-795725",
     "apply_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--Officer_R-795725",
-    "ok": false,
-    "status": "STUCK",
-    "note": "Workday URL unchanged — next job",
-    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--Officer_R-795725/apply",
-    "ts": "2026-08-20T18:39:35.507721+00:00",
-    "fields_learned": 77
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted in headed Chrome (owner completed leftover fields)",
+    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/jobTasks/completed/application?pjid=5a20307a-d34a-4cc5-84a6-7f50c4492837",
+    "ts": "2026-08-21T00:15:23.057573+00:00"
   },
   {
     "company": "Experian",
@@ -392,11 +390,11 @@
     "ats": "Foundit",
     "job_id": "61741322",
     "apply_url": "https://careers.statestreet.com/global/en/job/R-795725/Senior-Software-Engineer-Officer",
-    "ok": false,
-    "status": "STUCK",
-    "note": "parked iCIMS Auth0 was not this Workday job",
-    "final_url": "https://login.icims.com/u/login/identifier?state=hqFo2SAtMEwxWVFyV3FMWU5HakFPNlNlUlFlZXJGRWtkWGlndKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDZsbF94dFplQXQ1d1plSEM0Sk1jem5HQ1VVN1VORDNFo2NpZNkgS0pBOTVEeEhPUE5PNTZVYU5SZFJZNTdwem42Q01IY22lb3JnaWS0b3JnX2dGWldEUExkNnRaNzhra06nb3JnbmFtZalzY2h3YWItOTc",
-    "ts": "2026-08-20T19:00:54.463142+00:00"
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted in headed Chrome (owner completed leftover fields)",
+    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/jobTasks/completed/application?pjid=5a20307a-d34a-4cc5-84a6-7f50c4492837",
+    "ts": "2026-08-21T00:18:17.628296+00:00"
   },
   {
     "company": "DHL Aero Expreso",
@@ -410,8 +408,8 @@
     "status": "STUCK",
     "note": "ATS URL unchanged — next job",
     "final_url": "https://dpdhlgroup.avature.net/en_US/jobs/Register?jobId=367430&source=careers.dhl.com",
-    "ts": "2026-08-20T19:02:44.008086+00:00",
-    "fields_learned": 4
+    "ts": "2026-08-21T00:12:42.539118+00:00",
+    "fields_learned": 7
   },
   {
     "company": "Amazon",
@@ -491,12 +489,11 @@
     "ats": "Foundit",
     "job_id": "61715919",
     "apply_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--Officer_R-795725",
-    "ok": false,
-    "status": "STUCK",
-    "note": "Workday URL unchanged — next job",
-    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--Officer_R-795725/apply",
-    "ts": "2026-08-20T18:41:22.352089+00:00",
-    "fields_learned": 78
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted in headed Chrome (owner completed leftover fields)",
+    "final_url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/jobTasks/completed/application?pjid=5a20307a-d34a-4cc5-84a6-7f50c4492837",
+    "ts": "2026-08-21T00:16:15.263026+00:00"
   },
   {
     "company": "Charles Schwab",
@@ -507,10 +504,10 @@
     "job_id": "99012467792",
     "apply_url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792",
     "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 20s; learned 0 fields",
-    "final_url": "https://career-ind-schwab.icims.com/jobs/124090/senior-manager,-software-development-&-engineering-lead-%28pl%29/login?mobile=false&width=1149&height=499&bga=true&needsRedirect=false&jan1offset=0&jun1offset=0",
-    "ts": "2026-08-20T16:13:21.443591+00:00",
+    "status": "STUCK",
+    "note": "no page progress — next job",
+    "final_url": "https://login.icims.com/u/login/password?state=hqFo2SAtMEwxWVFyV3FMWU5HakFPNlNlUlFlZXJGRWtkWGlndKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDZsbF94dFplQXQ1d1plSEM0Sk1jem5HQ1VVN1VORDNFo2NpZNkgS0pBOTVEeEhPUE5PNTZVYU5SZFJZNTdwem42Q01IY22lb3JnaWS0b3JnX2dGWldEUExkNnRaNzhra06nb3JnbmFtZalzY2h3YWItOTc",
+    "ts": "2026-08-21T00:17:39.087679+00:00",
     "fields_learned": 0
   },
   {
