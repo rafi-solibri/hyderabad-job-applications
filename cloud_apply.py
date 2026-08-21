@@ -1457,6 +1457,12 @@ def _pick_workday_list_option(page, typed: str = "Career Site") -> bool:
             r"career site",
             r"company website",
             re.escape(typed) if typed else r"career",
+            r"azure",
+            r"aws",
+            r"c#",
+            r"\.net",
+            r"sql",
+            r"agile",
             r"english",
             r"mobile",
             r"cell",
@@ -1474,7 +1480,10 @@ def _pick_workday_list_option(page, typed: str = "Career Site") -> bool:
             except Exception:
                 continue
         if not clicked:
-            skip = {"", "select", "select one", "select an option", "search", "no options"}
+            skip = {
+                "", "select", "select one", "select an option", "search",
+                "no options", "no items", "no results", "please select a value",
+            }
             try:
                 n = min(opts.count(), 20)
             except Exception:
@@ -1497,13 +1506,15 @@ def _pick_workday_list_option(page, typed: str = "Career Site") -> bool:
     if picked:
         return True
     try:
-        page.keyboard.press("ArrowDown")
-        page.wait_for_timeout(120)
-        page.keyboard.press("Enter")
-        page.wait_for_timeout(300)
-        return True
+        if page.locator("[data-automation-id='promptOption'], [role='option']").count():
+            page.keyboard.press("ArrowDown")
+            page.wait_for_timeout(120)
+            page.keyboard.press("Enter")
+            page.wait_for_timeout(300)
+            return True
     except Exception:
-        return False
+        pass
+    return False
 
 
 WORKDAY_CLICK_NO_JS = """(root) => {
@@ -1546,6 +1557,150 @@ def _workday_prompt_committed(field) -> bool:
         )
     except Exception:
         return False
+
+
+WORKDAY_SKILL_SEARCHES = (
+    "Azure",
+    "AWS",
+    "SQL",
+    "Agile",
+    "C#",
+    ".NET",
+    "Kubernetes",
+    "Docker",
+    "Angular",
+    "React",
+    "Microservices",
+    "Kafka",
+    "Software Development",
+)
+
+
+def _workday_skill_field(page):
+    skills = page.locator(
+        "[data-automation-id*='skill' i], [data-automation-id='formField-skills']"
+    ).first
+    if skills.count():
+        return skills
+    return _workday_form_field(page, r"add skills|type to add skills|type to add")
+
+
+def _workday_clear_prompt_input(page, box) -> None:
+    try:
+        box.click(timeout=800, force=True)
+        box.fill("")
+    except Exception:
+        try:
+            page.keyboard.press("Control+a")
+            page.keyboard.press("Backspace")
+        except Exception:
+            pass
+    try:
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(150)
+    except Exception:
+        pass
+
+
+def _workday_skill_search_empty(page, field) -> bool:
+    blob = ""
+    try:
+        if field.count():
+            blob += " " + (field.inner_text() or "")[:500]
+    except Exception:
+        pass
+    try:
+        blob += " " + (page.inner_text("body") or "")[:2500]
+    except Exception:
+        pass
+    return bool(re.search(r"no items|no results were found|please select a value", blob, re.I))
+
+
+def _workday_add_skill(page, field, skill: str) -> bool:
+    """Type a catalog skill, press Enter (required), then click a list option."""
+    if _workday_prompt_committed(field):
+        return True
+    collapse_copilot_panel(page)
+    try:
+        field.scroll_into_view_if_needed(timeout=1500)
+    except Exception:
+        pass
+    box = field.locator(
+        "input:not([type=hidden]):not([type=radio]):not([type=checkbox])"
+    ).first
+    if not box.count():
+        box = field.locator("[role=combobox], [contenteditable='true']").first
+    if not box.count():
+        return False
+    try:
+        box.click(timeout=1500, force=True)
+    except Exception:
+        return False
+    _workday_clear_prompt_input(page, box)
+    try:
+        box.type(skill, delay=35)
+    except Exception:
+        try:
+            page.keyboard.type(skill, delay=35)
+        except Exception:
+            return False
+    # State Street: "Options load only after you press Enter."
+    try:
+        page.keyboard.press("Enter")
+    except Exception:
+        return False
+    page.wait_for_timeout(900)
+    try:
+        page.wait_for_selector(
+            "[data-automation-id='promptOption'], [role='option']",
+            timeout=3500,
+            state="attached",
+        )
+    except Exception:
+        pass
+    if _workday_skill_search_empty(page, field) and not page.locator(
+        "[data-automation-id='promptOption']"
+    ).count():
+        _workday_clear_prompt_input(page, box)
+        return False
+    if not _pick_workday_list_option(page, skill):
+        _workday_clear_prompt_input(page, box)
+        return False
+    if _workday_prompt_committed(field):
+        print(f"  Workday: added skill {skill}.", flush=True)
+        return True
+    _workday_clear_prompt_input(page, box)
+    return False
+
+
+def fill_workday_skills(page) -> int:
+    """Commit at least one Workday skill chip. Typed text alone is not enough."""
+    field = _workday_skill_field(page)
+    try:
+        if not field.count():
+            return 0
+    except Exception:
+        return 0
+    if _workday_prompt_committed(field):
+        return 0
+    try:
+        btn = page.get_by_role("button", name=re.compile(r"autofill \d+ skills?", re.I)).first
+        if btn.count() and btn.is_visible():
+            btn.click(timeout=1500)
+            print("  Clicked Copilot Autofill skill(s).", flush=True)
+            page.wait_for_timeout(800)
+            if _workday_prompt_committed(field):
+                return 1
+    except Exception:
+        pass
+    for name in WORKDAY_SKILL_SEARCHES:
+        if _workday_add_skill(page, field, name):
+            return 1
+    print(
+        "  Workday: no catalog skill matched. Leftover: Type to Add Skills — pick one in Desktop.",
+        flush=True,
+    )
+    return 0
 
 
 def _workday_select_prompt(page, field, typed: str) -> bool:
@@ -1604,15 +1759,6 @@ def fill_workday_required_questions(page) -> int:
     except Exception:
         pass
     filled = 0
-    try:
-        btn = page.get_by_role("button", name=re.compile(r"autofill \d+ skills?", re.I)).first
-        if btn.count() and btn.is_visible():
-            btn.click(timeout=1500)
-            print("  Clicked Copilot Autofill skill(s).", flush=True)
-            page.wait_for_timeout(800)
-            filled += 1
-    except Exception:
-        pass
     collapse_copilot_panel(page)
     # How-heard overlay covers the Yes/No radios — pick a source leaf first, then No.
     hear = _workday_form_field(page, r"how did you hear")
@@ -1653,14 +1799,8 @@ def fill_workday_required_questions(page) -> int:
     if _workday_select_prompt(page, lang, "English"):
         filled += 1
         print("  Workday: language = English.", flush=True)
-    skills = page.locator(
-        "[data-automation-id*='skill' i], [data-automation-id='formField-skills']"
-    ).first
-    if not skills.count():
-        skills = _workday_form_field(page, r"add skills|type to add")
-    if _workday_select_prompt(page, skills, "Azure"):
+    if fill_workday_skills(page):
         filled += 1
-        print("  Workday: added a skill.", flush=True)
     return filled
 
 
@@ -4120,7 +4260,7 @@ def persist_existing_closed() -> None:
 
 
 def pick_open_apply_page(context):
-    """Prefer the live ATS / Auth0 tab. Never pick Gmail or parked LinkedIn CAPTCHA."""
+    """Prefer the live ATS form the owner can see. Never pick Gmail or parked LinkedIn CAPTCHA."""
     skip = (
         "linkedin.com/checkpoint", "recaptcha", "protechts.net",
         "mail.google.com", "accounts.google.com", "chrome://", "chrome-extension://",
@@ -4137,18 +4277,26 @@ def pick_open_apply_page(context):
         if any(s in u for s in skip):
             continue
         score = 0
-        if "login.icims.com" in u:
-            score += 50
-        elif "icims.com" in u:
+        on_form = False
+        try:
+            on_form = on_application_form(p)
+        except Exception:
+            on_form = False
+        # Owner-present: a real apply form beats a login wall (Auth0 / iCIMS).
+        if on_form and "login." not in u:
+            score += 80
+        if "myworkdayjobs.com" in u and "/apply" in u:
             score += 40
-        elif "myworkdayjobs.com" in u and "/apply" in u:
-            score += 30
         elif "avature.net" in u:
             score += 25
         elif any(h in u for h in ("oraclecloud.com", "smartrecruiters.com", "greenhouse.io", "lever.co")):
             score += 20
         elif "/apply" in u:
             score += 10
+        if "login.icims.com" in u:
+            score += 15
+        elif "icims.com" in u:
+            score += 12
         if score:
             scored.append((score, p))
     scored.sort(key=lambda item: -item[0])

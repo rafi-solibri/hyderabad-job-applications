@@ -250,7 +250,9 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
     if q.strip() in {"language", "languages", "language *"} or "native language" in q:
         return pick("english") or "English"
     if "add skills" in q or "type to add" in q:
-        return pick("azure", ".net", "c#") or "Azure"
+        # Workday catalogs load only after Enter + a list click. Typing
+        # a free-text skill (kafka/Azure) leaves "Please select a value."
+        return None
     if "united states" in q or "u.s." in q or "us citizen" in q:
         if "authoriz" in q or "eligible" in q or "right to work" in q:
             return pick("no") or "No"
