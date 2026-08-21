@@ -18,3 +18,5 @@
   https://statestreet.wd1.myworkdayjobs.com/en-US/Global/jobTasks/completed/application?pjid=5a20307a-d34a-4cc5-84a6-7f50c4492837
 - **2026-08-21T00:55:30Z** SUBMITTED **DHL Aero Expreso** — Senior Software Engineer
   https://dpdhlgroup.avature.net/en_US/jobs/Success?jobId=367430&source=careers.dhl.com
+- **2026-08-21T04:04:58Z** SUBMITTED **JP Morgan Chase & Co.** — Principal Software Engineer - Forward Deployment Engineer
+  https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/my-profile
