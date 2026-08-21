@@ -4685,14 +4685,23 @@ def launch_context(pw, headed: bool):
         if not _cdp_up():
             print(f"  Starting real Chrome for {PROFILE_EMAIL} at {PROFILE}", flush=True)
             start_real_chrome()
-        browser = pw.chromium.connect_over_cdp(CDP)
+        print("  Connecting to open Chrome on CDP 9222...", flush=True)
+        browser = pw.chromium.connect_over_cdp(CDP, timeout=25000)
+        print("  CDP connected.", flush=True)
         context = browser.contexts[0]
-        signed_in = any(
-            ("google.com" in (p.url or "") or "mail.google.com" in (p.url or ""))
-            and "challenge" not in (p.url or "")
-            and "signin" not in (p.url or "")
-            for p in context.pages
-        )
+        signed_in = False
+        for p in list(context.pages):
+            try:
+                u = (p.url or "")
+            except Exception:
+                continue
+            if (
+                ("google.com" in u or "mail.google.com" in u)
+                and "challenge" not in u
+                and "signin" not in u
+            ):
+                signed_in = True
+                break
         if not signed_in:
             login_page = next((p for p in context.pages if "accounts.google.com" in (p.url or "")), None)
             try:
