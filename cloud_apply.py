@@ -2851,6 +2851,58 @@ COMMIT_GREENHOUSE_REACT_JS = """(node, want) => {
 }"""
 
 
+def sync_greenhouse_hidden_values(page) -> int:
+    """Write React-Select answers into named hidden inputs so submit FormData has them."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse.io" not in url:
+        return 0
+    try:
+        n = int(
+            page.evaluate(
+                """() => {
+                  const form = document.querySelector('form');
+                  if (!form) return 0;
+                  let n = 0;
+                  document.querySelectorAll('input.select__input').forEach((inp) => {
+                    const key = Object.keys(inp).find((k) => k.startsWith('__reactFiber') || k.startsWith('__reactInternalInstance'));
+                    if (!key) return;
+                    let fiber = inp[key];
+                    for (let i = 0; i < 70 && fiber; i++) {
+                      const p = fiber.memoizedProps || {};
+                      if (p.name && p.options && p.value != null && p.value !== '') {
+                        let val = p.value;
+                        if (Array.isArray(val)) val = val[0];
+                        if (val && typeof val === 'object') val = val.value;
+                        val = String(val);
+                        for (const name of [p.name, p.name.endsWith('[]') ? p.name : p.name + '[]']) {
+                          let h = form.querySelector('input[type=hidden][name="'+CSS.escape(name)+'"]');
+                          if (!h) {
+                            h = document.createElement('input');
+                            h.type = 'hidden';
+                            h.name = name;
+                            form.appendChild(h);
+                          }
+                          h.value = val;
+                        }
+                        n++;
+                        break;
+                      }
+                      fiber = fiber.return;
+                    }
+                  });
+                  return n;
+                }"""
+            )
+            or 0
+        )
+    except Exception:
+        n = 0
+    return n
+
+
 def commit_greenhouse_react_selects(page) -> int:
     """Click a real React-Select option on every Greenhouse div.select.
 
@@ -4133,14 +4185,58 @@ def _xdotool_click(x: float, y: float) -> None:
         pass
 
 
+def recaptcha_checkbox_checked(page) -> bool:
+    """True when the reCAPTCHA anchor is actually ticked (not just clicked)."""
+    for frame in getattr(page, "frames", []) or []:
+        try:
+            furl = (frame.url or "").lower()
+            if "recaptcha" not in furl or "anchor" not in furl:
+                continue
+            box = frame.locator("#recaptcha-anchor").first
+            if not box.count():
+                continue
+            ac = (box.get_attribute("aria-checked") or "").lower()
+            cls = box.get_attribute("class") or ""
+            if ac == "true" or "recaptcha-checkbox-checked" in cls:
+                return True
+        except Exception:
+            continue
+    return False
+
+
 def click_recaptcha_checkbox(page) -> bool:
     """Tick 'I'm not a robot' with a real mouse click. Image puzzles stay for the owner."""
     global _RECAPTCHA_CLICKS
     if captcha_puzzle_visible(page):
         return False
-    if _RECAPTCHA_CLICKS >= 2:
+    if recaptcha_checkbox_checked(page):
         return True
-    clicked = False
+    if _RECAPTCHA_CLICKS >= 4:
+        return recaptcha_checkbox_checked(page)
+    collapse_copilot_panel(page)
+    try:
+        page.locator('iframe[src*="recaptcha"][src*="anchor"], iframe[title*="reCAPTCHA" i]').first.scroll_into_view_if_needed(timeout=2000)
+    except Exception:
+        pass
+    # Playwright frame click first — xdotool often misses this widget in headed Chrome.
+    for frame in page.frames:
+        try:
+            furl = (frame.url or "").lower()
+            if "recaptcha" not in furl or "anchor" not in furl:
+                continue
+            box = frame.locator("#recaptcha-anchor").first
+            if not box.count():
+                continue
+            if (box.get_attribute("aria-checked") or "") == "true":
+                return True
+            box.click(timeout=2500)
+            print("  Clicked reCAPTCHA I'm not a robot.", flush=True)
+            _RECAPTCHA_CLICKS += 1
+            page.wait_for_timeout(1800)
+            if recaptcha_checkbox_checked(page) or captcha_puzzle_visible(page):
+                return True
+        except Exception:
+            continue
     try:
         info = page.evaluate(
             """() => {
@@ -4168,39 +4264,18 @@ def click_recaptcha_checkbox(page) -> bool:
         info = None
     boxes = (info or {}).get("boxes") or []
     if boxes:
-        collapse_copilot_panel(page)
         b = boxes[0]
         chrome_top = max(0, int((info.get("oh") or 0) - (info.get("ih") or 0)))
-        # Checkbox sits on the left of the 304x78 widget, not on the label text.
         screen_x = (info.get("sx") or 0) + b["x"] + min(28, max(18, (b["w"] or 80) * 0.12))
         screen_y = (info.get("sy") or 0) + chrome_top + b["y"] + (b["h"] or 74) / 2
         _xdotool_click(screen_x, screen_y)
         print("  Clicked reCAPTCHA I'm not a robot.", flush=True)
         _RECAPTCHA_CLICKS += 1
         try:
-            page.wait_for_timeout(1600)
+            page.wait_for_timeout(1800)
         except Exception:
             pass
-        clicked = True
-    if clicked:
-        return True
-    for frame in page.frames:
-        try:
-            furl = (frame.url or "").lower()
-            if "recaptcha" not in furl or "anchor" not in furl:
-                continue
-            box = frame.locator("#recaptcha-anchor").first
-            if not box.count():
-                continue
-            if (box.get_attribute("aria-checked") or "") == "true":
-                continue
-            box.click(timeout=2000, force=True)
-            print("  Clicked reCAPTCHA I'm not a robot.", flush=True)
-            page.wait_for_timeout(1500)
-            return True
-        except Exception:
-            continue
-    return False
+    return recaptcha_checkbox_checked(page) or captcha_puzzle_visible(page)
 
 
 def accept_terms(page) -> int:
@@ -4556,6 +4631,12 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
             print(f"  Greenhouse still required: {remaining}", flush=True)
         else:
             print("  Greenhouse required fields committed.", flush=True)
+        try:
+            n_hidden = sync_greenhouse_hidden_values(page)
+            if n_hidden:
+                print(f"  Synced {n_hidden} Greenhouse answers into the form payload.", flush=True)
+        except Exception:
+            pass
         accept_terms(page)
         click_recaptcha_checkbox(page)
         if captcha_puzzle_visible(page):
