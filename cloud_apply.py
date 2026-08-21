@@ -1,8 +1,10 @@
 """Apply to leftover Hyderabad / Remote-India jobs in headed Chrome.
 
 Every run: discover, then apply leftover company career portals (Greenhouse,
-Lever, Workday, Phenom, SmartRecruiters, Oracle, etc.). Only after that queue
-is empty, apply Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre.
+Lever, Workday, Phenom, SmartRecruiters, Oracle, iCIMS, etc.).
+
+Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are covered by
+other daily automations — this runner does not apply or search those boards.
 """
 from __future__ import annotations
 
@@ -125,12 +127,8 @@ def seed_parked_captcha_urls() -> None:
             park_tab_url(line)
 
 
-def classify_url(url: str, job: dict | None = None, allow_aggregators: bool = True) -> str:
-    """Career portals and aggregator boards (Naukri/LinkedIn/Indeed/…) are both tried.
-
-    Aggregators used to wait until career leftovers were empty; that blocked
-    hundreds of Easy Apply jobs behind slow Workday forms.
-    """
+def classify_url(url: str, job: dict | None = None, allow_aggregators: bool = False) -> str:
+    """Try company career portals. Aggregator boards stay with other daily jobs."""
     row = dict(job or {})
     if url:
         row["apply_url"] = url
@@ -4690,7 +4688,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         return row
 
 
-def public_queue(jobs: list[dict], allow_aggregators: bool = True) -> tuple[list[dict], list[dict]]:
+def public_queue(jobs: list[dict], allow_aggregators: bool = False) -> tuple[list[dict], list[dict]]:
     try_jobs = []
     blocked = []
     for job in jobs:
@@ -4706,7 +4704,7 @@ def public_queue(jobs: list[dict], allow_aggregators: bool = True) -> tuple[list
                 "apply_url": url,
                 "ok": False,
                 "status": "OTHER_AUTOMATION" if kind == "OTHER_AUTOMATION" else "LOGIN_BLOCKED",
-                "note": "held until leftover career-portal jobs are empty",
+                "note": "aggregator board — other daily automation",
             })
     return try_jobs, blocked
 
@@ -5073,7 +5071,7 @@ def watch_open_application(wait_seconds: int) -> list[dict]:
     form_memory.seed_from_learned()
     seed_parked_captcha_urls()
     queue = apply_now.queue()
-    try_jobs, _ = public_queue(queue, allow_aggregators=True)
+    try_jobs, _ = public_queue(queue, allow_aggregators=False)
     leftovers = leftover_career_jobs(try_jobs)
     results: list[dict] = []
     with sync_playwright() as pw:
@@ -5118,7 +5116,7 @@ def learn_open_application(seconds: int = 1800) -> list[dict]:
     form_memory.seed_from_learned()
     seed_parked_captcha_urls()
     queue = apply_now.queue()
-    try_jobs, _ = public_queue(queue, allow_aggregators=True)
+    try_jobs, _ = public_queue(queue, allow_aggregators=False)
     leftovers = leftover_career_jobs(try_jobs)
     results: list[dict] = []
     with sync_playwright() as pw:
@@ -5210,6 +5208,8 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
             continue
         if apply_now.is_jpmc_job(job):
             continue
+        if apply_now.is_aggregator_board(job):
+            continue
         keys = apply_now.job_match_keys(job)
         if keys & SESSION_SKIP_KEYS:
             continue
@@ -5300,8 +5300,8 @@ def _naukri_srp_url(slug: str, page_no: int) -> str:
 
 
 def _refresh_boards_no_browser() -> None:
-    """When leftover Naukri/career is empty, pull more boards without a second Chrome."""
-    print("  Leftover Naukri/career empty. No-browser discover_everywhere + hyd_gcc...", flush=True)
+    """When leftover career portals are empty, pull more company sites without a second Chrome."""
+    print("  Leftover career empty. No-browser discover_everywhere + hyd_gcc...", flush=True)
     try:
         import discover_everywhere
         discover_everywhere.main()
@@ -5440,7 +5440,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     seed_parked_captcha_urls()
     persist_existing_closed()
     queue = apply_now.queue()
-    try_jobs, blocked_board = public_queue(queue, allow_aggregators=True)
+    try_jobs, blocked_board = public_queue(queue, allow_aggregators=False)
     try_jobs = leftover_career_jobs(try_jobs)
     career_n = sum(
         1 for j in try_jobs
@@ -5475,8 +5475,8 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     if career_only:
         pending = career_only[: limit or 80]
         print(
-            f"Career portals first: {len(pending)} unique "
-            f"(Foundit/Naukri/LinkedIn held until these are done).",
+            f"Career portals only: {len(pending)} unique "
+            f"(Naukri/LinkedIn/Indeed/Cutshort/Foundit/Instahyre left to other daily jobs).",
             flush=True,
         )
     with sync_playwright() as pw:
@@ -5495,54 +5495,39 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 return 1
 
             pending.sort(key=_open_rank)
-        pending_career_n = sum(
-            1
-            for j in leftover_career_jobs(pending)
-            if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
-        )
-        if (
-            not OWNER_PRESENT
-            and pending_career_n == 0
-            and _naukri_leftover_n(leftover_career_jobs(pending)) == 0
-        ):
-            print("  Searching Naukri in Chrome for Quick apply leftovers...", flush=True)
-            discover_naukri_in_chrome(context)
+        if not leftover_career_jobs(pending):
+            print("  No leftover career portals. No-browser discover for more company sites...", flush=True)
+            _refresh_boards_no_browser()
             apply_now.BATCH = apply_now.load_all_discovered()
             queue = apply_now.queue()
-            try_jobs, _blocked = public_queue(queue, allow_aggregators=True)
+            try_jobs, _blocked = public_queue(queue, allow_aggregators=False)
             try_jobs = leftover_career_jobs(try_jobs)
-            pending = interleave_boards_and_career(try_jobs, limit)
-            career_n = sum(
-                1 for j in try_jobs
-                if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
-            )
+            seen_career = set()
+            career_only = []
+            for job in try_jobs:
+                if not (
+                    apply_now.is_company_career_portal(job)
+                    and not apply_now.is_aggregator_board(job)
+                ):
+                    continue
+                u = ((job.get("apply_url") or job.get("url") or "").split("?")[0]).lower()
+                m = re.search(r"/job/(\d+)|/jobs/(\d+)|jobid=(\d+)", u, re.I)
+                key = next((g for g in (m.groups() if m else ()) if g), None) or u
+                if key in seen_career:
+                    continue
+                seen_career.add(key)
+                career_only.append(job)
+            pending = career_only[: limit or 80]
             print(
-                f"  After Naukri search: leftover {len(try_jobs)} "
-                f"({career_n} career, {_naukri_leftover_n(try_jobs)} Naukri).",
+                f"  After no-browser discover: {len(pending)} unique career portals.",
                 flush=True,
             )
-            if _naukri_leftover_n(try_jobs) == 0 and career_n == 0:
-                _refresh_boards_no_browser()
-                apply_now.BATCH = apply_now.load_all_discovered()
-                queue = apply_now.queue()
-                try_jobs, _blocked = public_queue(queue, allow_aggregators=True)
-                try_jobs = leftover_career_jobs(try_jobs)
-                pending = interleave_boards_and_career(try_jobs, limit)
-                career_n = sum(
-                    1 for j in try_jobs
-                    if apply_now.is_company_career_portal(j) and not apply_now.is_aggregator_board(j)
-                )
-                print(
-                    f"  After no-browser discover: leftover {len(try_jobs)} "
-                    f"({career_n} career, {_naukri_leftover_n(try_jobs)} Naukri).",
-                    flush=True,
-                )
         for attempt in range(1, 4):
             leftover = leftover_career_jobs(pending)
             if not leftover:
                 break
             print(
-                f"\n=== Apply leftover jobs ({len(leftover)}), other-boards mixed in ===",
+                f"\n=== Apply leftover company career portals ({len(leftover)}) ===",
                 flush=True,
             )
             for i, job in enumerate(leftover, 1):

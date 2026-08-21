@@ -4307,5 +4307,143 @@
     "note": "owner: skip remaining JPMC jobs and never retry",
     "status": "SKIPPED",
     "ts": "2026-08-21T04:36:02.883931+00:00"
+  },
+  "250626500553": {
+    "company": "Blue Yonder",
+    "title": "Sr Enterprise Technical Architect (SCPO)",
+    "job_id": "250626500553",
+    "url": "https://www.naukri.com/job-listings-sr-enterprise-technical-architect-scpo-jda-software-hyderabad-15-to-20-years-250626500553",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-21T05:33:51.255336+00:00"
+  },
+  "blueyonder|sr enterprise technical architect (scpo)": {
+    "company": "Blue Yonder",
+    "title": "Sr Enterprise Technical Architect (SCPO)",
+    "job_id": "250626500553",
+    "url": "https://www.naukri.com/job-listings-sr-enterprise-technical-architect-scpo-jda-software-hyderabad-15-to-20-years-250626500553",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-21T05:33:51.255336+00:00"
+  },
+  "280726014081": {
+    "company": "Cognizant",
+    "title": "Principal Technical Architect",
+    "job_id": "280726014081",
+    "url": "https://www.naukri.com/job-listings-principal-technical-architect-cognizant-hyderabad-13-to-16-years-280726014081",
+    "note": "already applied",
+    "ts": "2026-08-21T05:33:54.371496+00:00"
+  },
+  "cognizant|principal technical architect": {
+    "company": "Cognizant",
+    "title": "Principal Technical Architect",
+    "job_id": "280726014081",
+    "url": "https://www.naukri.com/job-listings-principal-technical-architect-cognizant-hyderabad-13-to-16-years-280726014081",
+    "note": "already applied",
+    "ts": "2026-08-21T05:33:54.371496+00:00"
+  },
+  "220726035529": {
+    "company": "RIG Enterprise Applications",
+    "title": "Technical Lead/ Solution Architect",
+    "job_id": "220726035529",
+    "url": "https://www.naukri.com/job-listings-technical-lead-solution-architect-rig-enterprise-applications-hyderabad-8-to-10-years-220726035529",
+    "note": "already applied",
+    "ts": "2026-08-21T05:33:57.413141+00:00"
+  },
+  "rigenterpriseapplications|technical lead/ solution architect": {
+    "company": "RIG Enterprise Applications",
+    "title": "Technical Lead/ Solution Architect",
+    "job_id": "220726035529",
+    "url": "https://www.naukri.com/job-listings-technical-lead-solution-architect-rig-enterprise-applications-hyderabad-8-to-10-years-220726035529",
+    "note": "already applied",
+    "ts": "2026-08-21T05:33:57.413141+00:00"
+  },
+  "270226501854": {
+    "company": "BILVANTIS TECHNOLOGIES",
+    "title": "Feedzai Migration Technical Lead Principal Architect",
+    "job_id": "270226501854",
+    "url": "https://www.naukri.com/job-listings-feedzai-migration-technical-lead-principal-architect-bilvantis-technologies-hyderabad-12-to-18-years-270226501854",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-21T05:34:01.586593+00:00"
+  },
+  "bilvantistechnologies|feedzai migration technical lead principal architect": {
+    "company": "BILVANTIS TECHNOLOGIES",
+    "title": "Feedzai Migration Technical Lead Principal Architect",
+    "job_id": "270226501854",
+    "url": "https://www.naukri.com/job-listings-feedzai-migration-technical-lead-principal-architect-bilvantis-technologies-hyderabad-12-to-18-years-270226501854",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-21T05:34:01.586593+00:00"
+  },
+  "290526506509": {
+    "company": "Walkingtree Resources",
+    "title": "Technical Lead/Architect (Gen AI)",
+    "job_id": "290526506509",
+    "url": "https://www.naukri.com/job-listings-technical-lead-architect-gen-ai-walkingtree-resources-pvt-ltd-hyderabad-6-to-7-years-290526506509",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-21T05:34:05.834815+00:00"
+  },
+  "walkingtreeresources|technical lead/architect (gen ai)": {
+    "company": "Walkingtree Resources",
+    "title": "Technical Lead/Architect (Gen AI)",
+    "job_id": "290526506509",
+    "url": "https://www.naukri.com/job-listings-technical-lead-architect-gen-ai-walkingtree-resources-pvt-ltd-hyderabad-6-to-7-years-290526506509",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-21T05:34:05.834815+00:00"
+  },
+  "210826006798": {
+    "company": "Advance Career Solutions",
+    "title": "Technical Architect",
+    "job_id": "210826006798",
+    "url": "https://www.naukri.com/job-listings-technical-architect-advance-career-solutions-hyderabad-pune-bengaluru-15-to-22-years-210826006798",
+    "note": "already applied",
+    "ts": "2026-08-21T05:46:17.520185+00:00"
+  },
+  "advancecareersolutions|technical architect": {
+    "company": "Advance Career Solutions",
+    "title": "Technical Architect",
+    "job_id": "210826006798",
+    "url": "https://www.naukri.com/job-listings-technical-architect-advance-career-solutions-hyderabad-pune-bengaluru-15-to-22-years-210826006798",
+    "note": "already applied",
+    "ts": "2026-08-21T05:46:17.520185+00:00"
+  },
+  "mihiraai|senior staff engineer, software validation": {
+    "company": "Mihira Ai",
+    "title": "Senior Staff Engineer, Software validation",
+    "job_id": "170626501394",
+    "url": "https://www.naukri.com/job-listings-senior-staff-engineer-software-validation-mihira-ai-hyderabad-10-to-15-years-170626501394",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-21T05:50:45.664792+00:00"
+  },
+  "170626501394": {
+    "company": "Mihira Ai",
+    "title": "Senior Staff Engineer, Software validation",
+    "job_id": "170626501394",
+    "url": "https://www.naukri.com/job-listings-senior-staff-engineer-software-validation-mihira-ai-hyderabad-10-to-15-years-170626501394",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-21T05:50:45.664792+00:00"
+  },
+  "63371749": {
+    "company": "Xilinx",
+    "title": "EDA Lead Software Development Engineer",
+    "job_id": "63371749",
+    "url": "https://careers.amd.com/careers-home/jobs/90803?lang=en-us",
+    "note": "owner: skip AMD — cannot remember iCIMS password",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T06:00:52.332384+00:00"
+  },
+  "xilinx|eda lead software development engineer": {
+    "company": "Xilinx",
+    "title": "EDA Lead Software Development Engineer",
+    "job_id": "63371749",
+    "url": "https://careers.amd.com/careers-home/jobs/90803?lang=en-us",
+    "note": "owner: skip AMD — cannot remember iCIMS password",
+    "status": "SKIPPED",
+    "ts": "2026-08-21T06:00:52.332384+00:00"
   }
 }
