@@ -267,6 +267,12 @@ def infer_answer(label: str, options: list[str] | None = None) -> str | None:
         # Workday catalogs load only after Enter + a list click. Typing
         # a free-text skill (kafka/Azure) leaves "Please select a value."
         return None
+    if (
+        "please select 'n/a'" in q
+        or 'please select "n/a"' in q
+        or ("united states or australia" in q and "state" in q)
+    ):
+        return pick("n/a") or "N/A"
     if "united states" in q or "u.s." in q or "us citizen" in q:
         if "authoriz" in q or "eligible" in q or "right to work" in q:
             return pick("no") or "No"
@@ -633,14 +639,25 @@ def fill_visible(page) -> int:
         if (
             name in {"region2", "region", "state", "province"}
             or re.search(r"\bstate\b", label, re.I)
-        ) and current.upper() in {"TG", "TS", "AP"}:
+        ) and current.upper() in {"TG", "TS", "AP", "INDIA", "TELANGANA"}:
             # Oracle/India typeaheads store full names; TG/TS return no results.
+            # Greenhouse US/AU State lists need N/A, not India.
             current = ""
         if current and norm(current) not in NOISE_VALUES:
             continue
         value = infer_answer(label, field.get("options") or [])
         if not value:
             continue
+        if (
+            name in {"region2", "region", "state", "province"}
+            or re.search(r"\bstate\b", label, re.I)
+        ) and value.lower() in {"india", "telangana"}:
+            try:
+                purl = (page.url or "").lower()
+            except Exception:
+                purl = ""
+            if "greenhouse.io" in purl:
+                value = "N/A"
         if _fill_one(page, field, value):
             filled += 1
             continue
