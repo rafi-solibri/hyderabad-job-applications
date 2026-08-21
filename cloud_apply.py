@@ -2749,7 +2749,12 @@ def fill_greenhouse_required_selects(page) -> int:
                     return true;
                   };
                   let n = 0;
-                  document.querySelectorAll('select, [class*="field"] select').forEach((sel) => {
+                  document.querySelectorAll('select').forEach((sel) => {
+                    const texts = [...sel.options].map(o => (o.text || '').trim());
+                    if (texts.some(t => /^n\\/a$/i.test(t))) {
+                      if (pick(sel, 'n/a')) n++;
+                      return;
+                    }
                     const wrap = sel.closest('fieldset, .field, li, [class*="question"], label, div') || sel.parentElement;
                     const t = ((wrap && wrap.innerText) || '') + ' ' + (sel.getAttribute('aria-label') || '')
                       + ' ' + (sel.name || '') + ' ' + (sel.id || '');
@@ -2766,12 +2771,10 @@ def fill_greenhouse_required_selects(page) -> int:
     if n:
         print(f"  Greenhouse required selects filled ({n}).", flush=True)
     try:
-        field = page.locator("div, li, fieldset, label").filter(
-            has_text=re.compile(r"united states or australia", re.I)
-        ).first
-        if field.count() and field.is_visible():
-            box = field.locator("select, [role=combobox], button, [class*='select']").first
-            if box.count() and ats_fill.handle_dropdown(page, box, "N/A"):
+        labels = page.get_by_label(re.compile(r"^state", re.I))
+        count = min(labels.count(), 4)
+        for i in range(count):
+            if ats_fill.handle_dropdown(page, labels.nth(i), "N/A"):
                 print("  Selected N/A for Greenhouse State.", flush=True)
                 n += 1
     except Exception:
