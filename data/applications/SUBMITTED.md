@@ -20,3 +20,5 @@
   https://dpdhlgroup.avature.net/en_US/jobs/Success?jobId=367430&source=careers.dhl.com
 - **2026-08-21T04:04:58Z** SUBMITTED **JP Morgan Chase & Co.** — Principal Software Engineer - Forward Deployment Engineer
   https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/my-profile
+- **2026-08-22T05:35:58Z** SUBMITTED **State Street** — Senior Software Engineer, AVP
+  https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--AVP_R-792706/apply/applyManually

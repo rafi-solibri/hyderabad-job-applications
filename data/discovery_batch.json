@@ -77,17 +77,6 @@
     "match_score": 126
   },
   {
-    "company": "Xilinx",
-    "title": "EDA Lead Software Development Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://careers.amd.com/careers-home/jobs/90803?lang=en-us",
-    "ats": "Foundit",
-    "job_id": "63371749",
-    "already_applied": false,
-    "match_score": 126,
-    "over_cap": false
-  },
-  {
     "company": "Zf Friedrich",
     "title": "Sr. Technical Lead- Functional Safety",
     "location": "Hyderabad, India",
@@ -96,17 +85,6 @@
     "job_id": "63372053",
     "already_applied": false,
     "match_score": 126,
-    "over_cap": false
-  },
-  {
-    "company": "State Street",
-    "title": "Senior Software Engineer, AVP",
-    "location": "Hyderabad, India",
-    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
-    "ats": "Workday",
-    "job_id": "Senior-Software-Engineer--AVP_R-792706",
-    "already_applied": false,
-    "match_score": 114,
     "over_cap": false
   },
   {
@@ -130,17 +108,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 108
-  },
-  {
-    "company": "Charles Schwab",
-    "title": "Manager Software Development And Engineering",
-    "location": "Hyderabad",
-    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-and-engineering/33995/98379875216",
-    "ats": "Phenom",
-    "job_id": "98379875216",
-    "already_applied": false,
-    "match_score": 106,
-    "over_cap": false
   },
   {
     "company": "Charles Schwab",
@@ -1938,28 +1905,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -16
-  },
-  {
-    "company": "AMD Maquinaria",
-    "title": "Staff/Principal Engineer - AI/ML & System-Level Validation",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4421954694/",
-    "ats": "Foundit",
-    "job_id": "59042168",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "AMD Ventures",
-    "title": "Staff/Principal Engineer - AI/ML & System-Level Validation",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4421954694/",
-    "ats": "Foundit",
-    "job_id": "55510940",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
   },
   {
     "company": "Aifa Labs",

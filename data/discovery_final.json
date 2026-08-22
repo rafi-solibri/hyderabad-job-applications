@@ -77,17 +77,6 @@
     "match_score": 126
   },
   {
-    "company": "Xilinx",
-    "title": "EDA Lead Software Development Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://careers.amd.com/careers-home/jobs/90803?lang=en-us",
-    "ats": "Foundit",
-    "job_id": "63371749",
-    "already_applied": false,
-    "match_score": 126,
-    "over_cap": false
-  },
-  {
     "company": "Zf Friedrich",
     "title": "Sr. Technical Lead- Functional Safety",
     "location": "Hyderabad, India",
@@ -96,17 +85,6 @@
     "job_id": "63372053",
     "already_applied": false,
     "match_score": 126,
-    "over_cap": false
-  },
-  {
-    "company": "State Street",
-    "title": "Senior Software Engineer, AVP",
-    "location": "Hyderabad, India",
-    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
-    "ats": "Workday",
-    "job_id": "Senior-Software-Engineer--AVP_R-792706",
-    "already_applied": false,
-    "match_score": 114,
     "over_cap": false
   },
   {
@@ -138,17 +116,6 @@
     "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792",
     "ats": "Phenom",
     "job_id": "99012467792",
-    "already_applied": false,
-    "match_score": 106,
-    "over_cap": false
-  },
-  {
-    "company": "Charles Schwab",
-    "title": "Manager Software Development And Engineering",
-    "location": "Hyderabad",
-    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-and-engineering/33995/98379875216",
-    "ats": "Phenom",
-    "job_id": "98379875216",
     "already_applied": false,
     "match_score": 106,
     "over_cap": false
@@ -2179,28 +2146,6 @@
     "url": "https://www.linkedin.com/jobs/view/4443033916/",
     "ats": "Foundit",
     "job_id": "63086963",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "AMD Maquinaria",
-    "title": "Staff/Principal Engineer - AI/ML & System-Level Validation",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4421954694/",
-    "ats": "Foundit",
-    "job_id": "59042168",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "AMD Ventures",
-    "title": "Staff/Principal Engineer - AI/ML & System-Level Validation",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4421954694/",
-    "ats": "Foundit",
-    "job_id": "55510940",
     "already_applied": false,
     "over_cap": false,
     "match_score": -24
@@ -6918,6 +6863,19 @@
     "match_score": 136
   },
   {
+    "company": "NXP",
+    "title": "Principal Software Engineer - Compilers",
+    "location": "Hyderabad",
+    "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Hyderabad/Principal-Software-Engineer---Compilers_R-10063466",
+    "ats": "Workday",
+    "job_id": "Principal-Software-Engineer---Compilers_R-10063466",
+    "title_score": 80,
+    "location_score": 15,
+    "score": 95,
+    "already_applied": true,
+    "match_score": 136
+  },
+  {
     "company": "Solera",
     "title": "Principal Software Engineer",
     "location": "Hyderabad, India",
@@ -7159,6 +7117,19 @@
     "match_score": 126
   },
   {
+    "company": "NXP",
+    "title": "Lead Software Engineer \u2013 AI Operators",
+    "location": "Hyderabad",
+    "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Hyderabad/Lead-Software-Engineer---AI-Operators_R-10063500",
+    "ats": "Workday",
+    "job_id": "Lead-Software-Engineer---AI-Operators_R-10063500",
+    "title_score": 80,
+    "location_score": 15,
+    "score": 95,
+    "already_applied": true,
+    "match_score": 126
+  },
+  {
     "company": "The Depository Trust & clearing Corporation",
     "title": "Lead Software Engineer",
     "location": "Hyderabad, India",
@@ -7324,6 +7295,43 @@
     "match_score": 114
   },
   {
+    "company": "NXP",
+    "title": "Senior Software Engineer Modelzoo",
+    "location": "Hyderabad",
+    "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Hyderabad/Senior-Software-Engineer-Modelzoo_R-10063478",
+    "ats": "Workday",
+    "job_id": "Senior-Software-Engineer-Modelzoo_R-10063478",
+    "title_score": 80,
+    "location_score": 15,
+    "score": 95,
+    "already_applied": true,
+    "match_score": 114
+  },
+  {
+    "company": "NXP",
+    "title": "Senior Software Engineer, AI Compilers",
+    "location": "Hyderabad",
+    "url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers/job/Hyderabad/Senior-Software-Engineer--AI-Compilers_R-10063384",
+    "ats": "Workday",
+    "job_id": "Senior-Software-Engineer--AI-Compilers_R-10063384",
+    "title_score": 80,
+    "location_score": 15,
+    "score": 95,
+    "already_applied": true,
+    "match_score": 114
+  },
+  {
+    "company": "State Street",
+    "title": "Senior Software Engineer, AVP",
+    "location": "Hyderabad, India",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
+    "ats": "Workday",
+    "job_id": "Senior-Software-Engineer--AVP_R-792706",
+    "already_applied": true,
+    "match_score": 114,
+    "over_cap": false
+  },
+  {
     "company": "State Street",
     "title": "Senior Software Engineer, Officer",
     "location": "Hyderabad, India",
@@ -7344,6 +7352,17 @@
     "already_applied": true,
     "over_cap": false,
     "match_score": 114
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Manager Software Development And Engineering",
+    "location": "Hyderabad",
+    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-and-engineering/33995/98379875216",
+    "ats": "Phenom",
+    "job_id": "98379875216",
+    "already_applied": true,
+    "match_score": 106,
+    "over_cap": false
   },
   {
     "company": "Simcorp",

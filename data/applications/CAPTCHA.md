@@ -11,3 +11,5 @@
   https://www.linkedin.com/checkpoint/challenge/AgEvSJh-DrFOHAAAAaAgTiJICzxoZODKfL636sggAyaDmtItZy9wZjdEN6ywwXLyEZu3m_ZzZ7uDquYrcL81UrLwqbzHag?ut=18OklVWgdhxso1
 - **NEED CAPTCHA** Cubic Transportation Systems — Principal Software Engineer (.Net)
   https://www.linkedin.com/checkpoint/challenge/AgHBG22JpM0M5gAAAaAgVsdI74qZrcKxn4v0fzTHp1LMI3fgcQIiTdfd450nzT8v1yJDyGGQS1HVhdTlvdrOBNvx00qbwg?ut=1CpIDyq7pqxso1
+- **NEED CAPTCHA** Kairos Technologies — .Net Full Stack Architect/Application Technical Architect
+  https://www.naukri.com/job-listings-net-full-stack-architect-application-technical-architect-kairos-technologies-hyderabad-10-to-20-years-200826013808

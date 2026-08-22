@@ -4289,5 +4289,131 @@
     "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions/preview/210763922/?location=India&locationId=300000000289360&locationLevel=country",
     "note": "backfill from skip list",
     "ts": "2026-08-21T04:26:37.361944+00:00"
+  },
+  "8042666": {
+    "company": "crunchyroll",
+    "title": "Manager, Engineering, VideoIQ",
+    "job_id": "8042666",
+    "url": "https://boards.greenhouse.io/crunchyroll/jobs/8042666?gh_jid=8042666",
+    "note": "already submitted 21 Aug 2026 (confirmation tab)",
+    "ts": "2026-08-22T05:33:16.081543+00:00"
+  },
+  "crunchyroll|manager, engineering, videoiq": {
+    "company": "crunchyroll",
+    "title": "Manager, Engineering, VideoIQ",
+    "job_id": "8042666",
+    "url": "https://boards.greenhouse.io/crunchyroll/jobs/8042666?gh_jid=8042666",
+    "note": "already submitted 21 Aug 2026 (confirmation tab)",
+    "ts": "2026-08-22T05:33:16.081543+00:00"
+  },
+  "5256109008": {
+    "company": "newrelic",
+    "title": "Manager, Software Engineering",
+    "job_id": "5256109008",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5256109008",
+    "note": "posting gone (?error=true) 21 Aug 2026",
+    "status": "CLOSED",
+    "ts": "2026-08-22T05:33:16.088383+00:00"
+  },
+  "newrelic|manager, software engineering": {
+    "company": "newrelic",
+    "title": "Manager, Software Engineering",
+    "job_id": "5256109008",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5256109008",
+    "note": "posting gone (?error=true) 21 Aug 2026",
+    "status": "CLOSED",
+    "ts": "2026-08-22T05:33:16.088383+00:00"
+  },
+  "newrelic|software engineer manager (database observability)": {
+    "company": "newrelic",
+    "title": "Software Engineer Manager (Database Observability)",
+    "job_id": "5368437008",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5368437008",
+    "note": "already submitted 21 Aug 2026 11:24Z after Gmail security code",
+    "ts": "2026-08-22T05:33:16.092116+00:00"
+  },
+  "5368437008": {
+    "company": "newrelic",
+    "title": "Software Engineer Manager (Database Observability)",
+    "job_id": "5368437008",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5368437008",
+    "note": "already submitted 21 Aug 2026 11:24Z after Gmail security code",
+    "ts": "2026-08-22T05:33:16.092116+00:00"
+  },
+  "statestreet|senior software engineer, avp": {
+    "company": "State Street",
+    "title": "Senior Software Engineer, AVP",
+    "job_id": "Senior-Software-Engineer--AVP_R-792706",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-22T05:36:36.823874+00:00"
+  },
+  "R-792706": {
+    "company": "State Street",
+    "title": "Senior Software Engineer, AVP",
+    "job_id": "Senior-Software-Engineer--AVP_R-792706",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-22T05:36:36.823874+00:00"
+  },
+  "Senior-Software-Engineer--AVP_R-792706": {
+    "company": "State Street",
+    "title": "Senior Software Engineer, AVP",
+    "job_id": "Senior-Software-Engineer--AVP_R-792706",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer--AVP_R-792706",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-22T05:36:36.823874+00:00"
+  },
+  "98379875216": {
+    "company": "Charles Schwab",
+    "title": "Manager Software Development And Engineering",
+    "job_id": "98379875216",
+    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-and-engineering/33995/98379875216",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-22T05:40:43.861933+00:00"
+  },
+  "charlesschwab|manager software development and engineering": {
+    "company": "Charles Schwab",
+    "title": "Manager Software Development And Engineering",
+    "job_id": "98379875216",
+    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-and-engineering/33995/98379875216",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-08-22T05:40:43.861933+00:00"
+  },
+  "1427361033": {
+    "company": "Zf Friedrich",
+    "title": "Sr. Technical Lead- Functional Safety",
+    "job_id": "1427361033",
+    "url": "https://jobs.zf.com/job/Hyderabad-Sr_-Technical-Lead-Functional-Safety-TG-500032/1427361033/",
+    "note": "out of scope: automotive functional safety, not software/.NET; Apply now looped",
+    "status": "SKIPPED",
+    "ts": "2026-08-22T05:51:13.554756+00:00"
+  },
+  "zffriedrich|sr. technical lead- functional safety": {
+    "company": "Zf Friedrich",
+    "title": "Sr. Technical Lead- Functional Safety",
+    "job_id": "1427361033",
+    "url": "https://jobs.zf.com/job/Hyderabad-Sr_-Technical-Lead-Functional-Safety-TG-500032/1427361033/",
+    "note": "out of scope: automotive functional safety, not software/.NET; Apply now looped",
+    "status": "SKIPPED",
+    "ts": "2026-08-22T05:51:13.554756+00:00"
+  },
+  "charlesschwab|senior manager software development and engineering lead pl": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Lead Pl",
+    "job_id": "99012467792",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792",
+    "note": "Schwab iCIMS login identifier loop; all portal passwords did not advance",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-22T05:51:13.561627+00:00"
+  },
+  "99012467792": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Lead Pl",
+    "job_id": "99012467792",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792",
+    "note": "Schwab iCIMS login identifier loop; all portal passwords did not advance",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-22T05:51:13.561627+00:00"
   }
 }
