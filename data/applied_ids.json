@@ -4565,5 +4565,23 @@
     "url": "https://job-boards.greenhouse.io/newrelic/jobs/5368437008",
     "note": "greenhouse confirmation after security code",
     "ts": "2026-08-21T11:24:33.207185+00:00"
+  },
+  "charlesschwab|senior manager software development and engineering lead ic": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Lead Ic",
+    "job_id": "98215904384",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-ic/33995/98215904384",
+    "note": "Schwab iCIMS identifier loop — persist-skip, do not hammer",
+    "status": "SKIPPED",
+    "ts": "2026-08-22T18:52:58.773558+00:00"
+  },
+  "98215904384": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Lead Ic",
+    "job_id": "98215904384",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-ic/33995/98215904384",
+    "note": "Schwab iCIMS identifier loop — persist-skip, do not hammer",
+    "status": "SKIPPED",
+    "ts": "2026-08-22T18:52:58.773558+00:00"
   }
 }
