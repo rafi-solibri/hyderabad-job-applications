@@ -405,6 +405,22 @@ def _set_para_text(para: str, text: str) -> str:
     return para
 
 
+def _set_matching_run(para: str, match: re.Pattern, text: str) -> str | None:
+    """Replace one w:t whose current text matches, leave other runs (e.g. name) alone."""
+    found = False
+
+    def repl(m: re.Match) -> str:
+        nonlocal found
+        current = htmlmod.unescape(m.group(2))
+        if not found and match.search(current):
+            found = True
+            return f"{m.group(1)}{escape(text)}{m.group(3)}"
+        return m.group(0)
+
+    updated = re.sub(r"(<w:t[^>]*>)([^<]*)(</w:t>)", repl, para)
+    return updated if found else None
+
+
 def overlay_base_docx(path: Path, doc: dict) -> None:
     """Copy the uploaded resume and overlay JD-specific headline, summary, competencies."""
     if not BASE_RESUME.exists():
@@ -419,17 +435,34 @@ def overlay_base_docx(path: Path, doc: dict) -> None:
     paras = re.findall(r"<w:p\b[^>]*>.*?</w:p>", xml, flags=re.S)
     texts = [_para_text(p).strip() for p in paras]
 
-    # Empty paragraph after the LinkedIn line becomes the JD headline.
+    # Replace the existing headline under the name (or fill the empty line
+    # after LinkedIn on older base files).
     headline = (doc.get("headline") or "").strip()
     if headline:
+        replaced = False
+        headline_run = re.compile(
+            r"technical architect\s*\|.*distributed systems|technical architect\s*\|\s*technical lead",
+            re.I,
+        )
         for i, text in enumerate(texts):
-            if text.lower().startswith("linkedin"):
-                for j in range(i + 1, min(i + 3, len(paras))):
-                    if not texts[j]:
-                        paras[j] = _set_para_text(paras[j], headline)
-                        texts[j] = headline
-                        break
+            if headline_run.search(text) or (
+                "distributed systems" in text.lower() and "architect" in text.lower()
+                and "mohammed" not in text.lower()
+            ):
+                patched = _set_matching_run(paras[i], headline_run, headline)
+                paras[i] = patched if patched is not None else _set_para_text(paras[i], headline)
+                texts[i] = _para_text(paras[i]).strip()
+                replaced = True
                 break
+        if not replaced:
+            for i, text in enumerate(texts):
+                if text.lower().startswith("linkedin"):
+                    for j in range(i + 1, min(i + 3, len(paras))):
+                        if not texts[j]:
+                            paras[j] = _set_para_text(paras[j], headline)
+                            texts[j] = headline
+                            break
+                    break
 
     # Replace the Professional Summary body (first non-empty para after the heading).
     summary = (doc.get("summary") or "").strip()

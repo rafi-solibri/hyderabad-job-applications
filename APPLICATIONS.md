@@ -46,5 +46,5 @@ Microsoft, Google, Infosys, Deloitte, Wells Fargo, JPMC, and most Workday sites 
 - Company: Nemetschek | Title: Principal Analyst (Technical Architect)  
 - Education: B.Tech IT, V.R. Siddhartha Engineering College, Vijayawada, January 2010  
 - DOB: 16 Jan 1989 | Gender: Male  
-- LinkedIn: https://linkedin.com/in/rafi-ahmed-mohammed-abdul-151644ba  
+- LinkedIn: https://www.linkedin.com/in/rafi-ahmed-mohammed-abdul-151644ba/  
 - Phone country: India (+91) | Phone: 8790251698  
