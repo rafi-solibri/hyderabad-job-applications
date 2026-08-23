@@ -792,5 +792,18 @@
     "status": "AUTH_FAILED",
     "note": "Schwab iCIMS login identifier loop; all portal passwords did not advance",
     "final_url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-pl/33995/99012467792"
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Lead Ic",
+    "location": "Hyderabad",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-ic/33995/98215904384",
+    "ats": "Phenom",
+    "job_id": "98215904384",
+    "apply_url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-ic/33995/98215904384",
+    "ok": false,
+    "status": "SKIPPED",
+    "note": "Schwab iCIMS identifier loop — persist-skip, do not hammer",
+    "final_url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-lead-ic/33995/98215904384"
   }
 ]

@@ -84,7 +84,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/37598442",
-    "ts": "2026-08-21T05:54:52.336635+00:00"
+    "ts": "2026-08-23T05:42:15.427234+00:00"
   },
   {
     "company": "wonderbiz technologies pvt.",
@@ -627,10 +627,10 @@
     "job_id": "110526034747",
     "apply_url": "https://www.naukri.com/job-listings-net-technical-architect-clean-harbors-hyderabad-12-to-18-years-110526034747",
     "ok": false,
-    "status": "STUCK",
-    "note": "no page progress — next job",
+    "status": "WAITING_EXPIRED",
+    "note": "waited 40s; learned 0 fields",
     "final_url": "https://www.naukri.com/job-listings-net-technical-architect-clean-harbors-hyderabad-12-to-18-years-110526034747",
-    "ts": "2026-08-22T05:33:33.260257+00:00",
+    "ts": "2026-08-23T05:38:38.396310+00:00",
     "fields_learned": 0
   },
   {

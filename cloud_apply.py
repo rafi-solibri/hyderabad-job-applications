@@ -48,6 +48,7 @@ PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
 FOUNDIT_AKAMAI_BLOCKED = False
 GOOGLE_SIGNIN_BLOCKED = False
+GOOGLE_2FA_PARKED = False
 LINKEDIN_RESTRICTED = False
 LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-08-22"
 # 22 Aug 2026 8:30 PM PDT. Session-skip until then; do not persist-skip guest walls.
@@ -686,8 +687,7 @@ def google_password_create_parked(page=None, context=None) -> bool:
 
 def _google_chooser_pages(page) -> list:
     pages = []
-    ctx = getattr(page, "context", None)
-    for p in (ctx.pages if ctx is not None else [page]):
+    for p in google_auth._all_browser_pages(page):
         try:
             if p.is_closed():
                 continue
@@ -775,6 +775,7 @@ def try_board_google_signin(page) -> str:
         google_auth.fill_google_password_challenges(page)
         return "ok"
     if _google_chooser_pages(page):
+        google_auth.fill_google_password_challenges(page)
         return "ok"
     if not any(x in url for x in ("/signup", "/login", "/uas/login", "cold-join", "auth", "checkpoint", "/register")):
         try:
@@ -5171,6 +5172,37 @@ def learn_open_application(seconds: int = 1800) -> list[dict]:
     return results
 
 
+def mark_google_2fa_parked(context=None, page=None) -> bool:
+    """Park Naukri/LinkedIn/Indeed/Instahyre while a Google 2FA prompt is open."""
+    global GOOGLE_2FA_PARKED
+    pages = []
+    if page is not None:
+        pages = google_auth._all_browser_pages(page)
+    elif context is not None:
+        try:
+            pages = list(context.pages)
+        except Exception:
+            pages = []
+    for p in pages:
+        try:
+            if p.is_closed():
+                continue
+            u = (p.url or "").lower()
+        except Exception:
+            continue
+        if "accounts.google.com" in u and "/challenge/" in u:
+            if not GOOGLE_2FA_PARKED:
+                print(
+                    "  Google 2FA is parked (Nothing Phone / OnePlus). "
+                    "Skipping Naukri/LinkedIn/Indeed/Instahyre this session; "
+                    "career portals and Foundit continue.",
+                    flush=True,
+                )
+            GOOGLE_2FA_PARKED = True
+            return True
+    return GOOGLE_2FA_PARKED
+
+
 def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
     out = []
     applied_ids = {str(k) for k in apply_now.load_applied_ids()}
@@ -5192,6 +5224,10 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
         if linkedin_blocked_now() and "linkedin.com" in u:
             continue
         if GOOGLE_SIGNIN_BLOCKED and any(
+            h in u for h in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
+        ):
+            continue
+        if GOOGLE_2FA_PARKED and any(
             h in u for h in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
         ):
             continue
@@ -5447,6 +5483,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
         )
     with sync_playwright() as pw:
         browser, context, page = launch_context(pw, headed)
+        mark_google_2fa_parked(context=context, page=page)
         if OWNER_PRESENT:
             open_blob = " ".join(
                 ((p.url or "") if not p.is_closed() else "")
