@@ -34,6 +34,63 @@ def load_google_password() -> str:
     return load_env_value("GOOGLE_PASSWORD")
 
 
+def fill_google_identifier_challenge(page) -> str:
+    """Type rafi.success email on accounts.google.com identifier. Never log it."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "accounts.google.com" not in url and "naukri.com" not in url:
+        return "skip"
+    if "changepassword" in url or "speedbump" in url:
+        return "skip"
+    if "/challenge/" in url and "pwd" not in url and "password" not in url:
+        return "skip"
+    email = os.environ.get("GOOGLE_EMAIL") or EMAIL
+    filled = False
+    targets = [page]
+    try:
+        targets.extend(list(page.frames))
+    except Exception:
+        pass
+    for target in targets:
+        for sel in (
+            "#identifierId",
+            "input[type=email]",
+            "input[name=identifier]",
+            "input[autocomplete='username']",
+            "input[id='identifierId']",
+        ):
+            try:
+                loc = target.locator(sel).first
+                if not loc.count():
+                    continue
+                loc.fill(email, timeout=4000)
+                filled = True
+                break
+            except Exception:
+                continue
+        if filled:
+            break
+    if not filled:
+        return "none"
+    print("  Filled Google email on the sign-in identifier.", flush=True)
+    try:
+        nxt = page.get_by_role("button", name=re.compile(r"^next$", re.I)).first
+        if nxt.count() and nxt.is_visible():
+            nxt.click(timeout=3000)
+    except Exception:
+        try:
+            page.keyboard.press("Enter")
+        except Exception:
+            pass
+    try:
+        page.wait_for_timeout(1200)
+    except Exception:
+        pass
+    return "ok"
+
+
 def fill_google_password_challenge(page) -> str:
     """Type the Google password on accounts.google.com challenge/pwd. Never log it."""
     try:
@@ -43,6 +100,8 @@ def fill_google_password_challenge(page) -> str:
     if "accounts.google.com" not in url:
         return "skip"
     if "changepassword" in url or "speedbump" in url:
+        return "skip"
+    if "/challenge/" in url and "pwd" not in url and "password" not in url:
         return "skip"
     password = load_google_password()
     if not password:
@@ -90,10 +149,40 @@ def fill_google_change_password(page) -> str:
     return "skip"
 
 
-def fill_google_password_challenges(page) -> int:
-    """Fill sign-in password only. Never create or change a Google password."""
+def _all_browser_pages(page) -> list:
+    """Popup Google windows can live in another CDP context. Walk every page."""
+    seen: list = []
+    ids: set[int] = set()
     ctx = getattr(page, "context", None)
-    pages = list(ctx.pages) if ctx is not None else [page]
+    browser = getattr(ctx, "browser", None) if ctx is not None else None
+    contexts = []
+    if browser is not None:
+        try:
+            contexts = list(browser.contexts)
+        except Exception:
+            contexts = []
+    if ctx is not None and ctx not in contexts:
+        contexts.append(ctx)
+    if not contexts and page is not None:
+        return [page]
+    for c in contexts:
+        try:
+            for p in c.pages:
+                pid = id(p)
+                if pid in ids:
+                    continue
+                ids.add(pid)
+                seen.append(p)
+        except Exception:
+            continue
+    if page is not None and id(page) not in ids:
+        seen.append(page)
+    return seen
+
+
+def fill_google_password_challenges(page) -> int:
+    """Fill identifier then password on every Google window. Never create a password."""
+    pages = _all_browser_pages(page)
     for p in pages:
         try:
             if p.is_closed():
@@ -105,6 +194,14 @@ def fill_google_password_challenges(page) -> int:
             print("  Leaving Google change-password alone. Never creating a password.", flush=True)
             return 0
     n = 0
+    for p in pages:
+        try:
+            if p.is_closed():
+                continue
+            if fill_google_identifier_challenge(p) == "ok":
+                n += 1
+        except Exception:
+            continue
     for p in pages:
         try:
             if p.is_closed():
