@@ -86,8 +86,13 @@ Leave honeypot fields empty.
 - No per-company application cap. Duplicate company+title listings are still
   collapsed. Skip Salesforce/SAP/PEGA, Java-mandatory, DevOps-primary, and
   out-of-scope titles already in `apply_now.py`.
-- Do **not** invent skills on the resume. Persist submitted, closed-404, and
-  locked/rejected-login jobs in `data/applied_ids.json` so they are never reopened.
+- Resume base for every apply is
+  `data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx` (owner upload).
+  `tailor_resume.for_job()` copies that file and overlays headline / summary /
+  competency order from the JD only. Do **not** invent skills. Do **not**
+  rebuild or upload `Rafi_Resume_Technical_Architect.docx` (old XML stub).
+  Persist submitted, closed-404, and locked/rejected-login jobs in
+  `data/applied_ids.json` so they are never reopened.
 - After each apply-runner code fix, commit, push the feature branch, and
   **merge into `main`** (`git push origin HEAD:main`). Do not leave PRs sitting.
 

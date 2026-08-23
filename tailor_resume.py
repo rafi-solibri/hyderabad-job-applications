@@ -384,6 +384,101 @@ def _rewrite_base_docx(dest: Path, headline: str, summary: str, competencies: st
             zout.writestr(name, data)
 
 
+def _para_text(para: str) -> str:
+    return htmlmod.unescape("".join(re.findall(r"<w:t[^>]*>([^<]*)</w:t>", para)))
+
+
+def _set_para_text(para: str, text: str) -> str:
+    """Put text in the first w:t of a paragraph; empty the rest so Word stays valid."""
+    first = True
+
+    def repl(m: re.Match) -> str:
+        nonlocal first
+        if first:
+            first = False
+            return f"{m.group(1)}{escape(text)}{m.group(3)}"
+        return f"{m.group(1)}{m.group(3)}"
+
+    updated, n = re.subn(r"(<w:t[^>]*>)([^<]*)(</w:t>)", repl, para)
+    if n:
+        return updated
+    return para
+
+
+def overlay_base_docx(path: Path, doc: dict) -> None:
+    """Copy the uploaded resume and overlay JD-specific headline, summary, competencies."""
+    if not BASE_RESUME.exists():
+        raise FileNotFoundError(f"Base resume missing: {BASE_RESUME}")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(BASE_RESUME.read_bytes())
+    with zipfile.ZipFile(path, "r") as zin:
+        xml = zin.read("word/document.xml").decode("utf-8")
+        extras = {name: zin.read(name) for name in zin.namelist() if name != "word/document.xml"}
+        compress = {info.filename: info.compress_type for info in zin.infolist()}
+
+    paras = re.findall(r"<w:p\b[^>]*>.*?</w:p>", xml, flags=re.S)
+    texts = [_para_text(p).strip() for p in paras]
+
+    # Empty paragraph after the LinkedIn line becomes the JD headline.
+    headline = (doc.get("headline") or "").strip()
+    if headline:
+        for i, text in enumerate(texts):
+            if text.lower().startswith("linkedin"):
+                for j in range(i + 1, min(i + 3, len(paras))):
+                    if not texts[j]:
+                        paras[j] = _set_para_text(paras[j], headline)
+                        texts[j] = headline
+                        break
+                break
+
+    # Replace the Professional Summary body (first non-empty para after the heading).
+    summary = (doc.get("summary") or "").strip()
+    if summary:
+        for i, text in enumerate(texts):
+            if text.upper() == "PROFESSIONAL SUMMARY":
+                for j in range(i + 1, len(paras)):
+                    if texts[j] and texts[j].upper() not in {"ACCOMPLISHMENTS", "SKILLS"}:
+                        paras[j] = _set_para_text(paras[j], summary)
+                        break
+                break
+
+    # Reorder Core Technical Competencies by JD match. Do not add or invent items.
+    wanted: list[str] = []
+    for items in (doc.get("skills") or {}).values():
+        wanted.extend(items)
+    wanted_l = [w.lower() for w in wanted]
+    start = None
+    for i, text in enumerate(texts):
+        if text.upper() == "CORE TECHNICAL COMPETENCIES":
+            start = i + 1
+            break
+    if start is not None and wanted_l:
+        tail = paras[start:]
+
+        def score(para: str) -> int:
+            t = _para_text(para).lower()
+            for n, w in enumerate(wanted_l):
+                if w in t or t in w:
+                    return n
+            return 900
+
+        tail.sort(key=score)
+        paras[start:] = tail
+
+    it = iter(paras)
+    new_xml = re.sub(r"<w:p\b[^>]*>.*?</w:p>", lambda _m: next(it), xml, flags=re.S)
+    tmp = path.with_suffix(".tmp.docx")
+    with zipfile.ZipFile(tmp, "w") as zout:
+        for name, data in extras.items():
+            zout.writestr(name, data, compress_type=compress.get(name, zipfile.ZIP_DEFLATED))
+        zout.writestr(
+            "word/document.xml",
+            new_xml.encode("utf-8"),
+            compress_type=compress.get("word/document.xml", zipfile.ZIP_DEFLATED),
+        )
+    tmp.replace(path)
+
+
 def write_docx(path: Path, doc: dict) -> None:
     body = []
     body.append(_p(MASTER["fullName"], bold=True, size=32, center=True, color="1F3864", after=40))
@@ -476,10 +571,10 @@ def for_job(job: dict) -> str:
     jid = _slug(str(job.get("job_id") or title), 28)
     fname = f"Rafi_Ahmed_{_slug(title, 28)}_{company}_{jid}.docx"
     path = OUT_DIR / fname
-    if BASE_RESUME.exists() and BASE_RESUME.stat().st_size > 100_000:
-        _rewrite_base_docx(path, doc["headline"], doc["summary"], competency_line(jd))
-    else:
-        write_docx(path, doc)
+    if not BASE_RESUME.exists():
+        print(f"  Base resume missing ({BASE_RESUME.name}); refusing to build the XML stub.", flush=True)
+        raise FileNotFoundError(f"Base resume missing: {BASE_RESUME}")
+    overlay_base_docx(path, doc)
     latest = ROOT / "data" / "resume" / "Rafi_Resume_Latest.docx"
     latest.write_bytes(path.read_bytes())
     cover = cover_for(title, job, skills)
