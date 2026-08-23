@@ -136,7 +136,7 @@ def _answers() -> dict:
         "dobUs": "01/16/1989",
         "dobIso": "1989-01-16",
         "gender": "Male",
-        "school": "Acharya Nagarjuna University",
+        "school": "V.R. Siddhartha Engineering College",
         "degree": "B.Tech",
         "field": "Information Technology",
         "gradYear": "2010",

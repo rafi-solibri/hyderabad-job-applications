@@ -1540,7 +1540,7 @@ def fill_oracle_comboboxes(page) -> int:
             elif "please specify" in q.lower():
                 want = "DTCC.com"
             elif name in {"educationalestablishment"}:
-                want = "Acharya Nagarjuna University"
+                want = "V.R. Siddhartha Engineering College"
         if not want:
             continue
         sel = f'[id="{box["id"]}"]'
@@ -2602,7 +2602,7 @@ def fill_leftover_dropdowns(page) -> int:
         except Exception:
             continue
     texts = (
-        (r"name of university|university/college|school or university", "Acharya Nagarjuna University"),
+        (r"name of university|university/college|school or university", "V.R. Siddhartha Engineering College"),
         (r"^grade$|grade \*|overall result|gpa", "First Class"),
     )
     for pat, value in texts:

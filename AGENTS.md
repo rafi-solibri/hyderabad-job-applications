@@ -11,9 +11,12 @@ There is no long-running service and no test suite. You run scripts directly wit
 Key entry points:
 - `cloud_apply.py` — headed Chrome apply for this automation. **One application
   at a time**; next job only after a successful submit. See `APPLY.md`.
-- `tailor_resume.py` — loads discovered jobs, builds the queue, and writes tailored `.docx` +
-  cover letters to `data/resume/tailored/` (and `data/resume/Rafi_Resume_Latest.docx`). Good
-  no-browser smoke test of core logic.
+- `tailor_resume.py` — copies `data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx`
+  (the uploaded formatted base) and overlays a JD-specific headline/summary/
+  competency order. Writes tailored `.docx` + cover letters to
+  `data/resume/tailored/` (and `data/resume/Rafi_Resume_Latest.docx`). Good
+  no-browser smoke test of core logic. Never rebuild the visual resume from the
+  XML stub.
 - `daily_cloud.py` — cloud pipeline: discovery + resume tailoring only, writes `DAILY_REPORT.md`.
   Explicitly avoids opening a browser. Note: `discover_hyd_gcc.main()` fetches many external job
   boards, so it needs network egress and can be slow/partial when egress is restricted.

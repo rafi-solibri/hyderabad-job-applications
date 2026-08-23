@@ -1,7 +1,7 @@
 # Hyderabad career-portal applications
 
 Candidate: Mohammed Abdul Rafi Ahmed  
-Resume: `data/resume/Rafi_Resume_Technical_Architect.docx`  
+Resume: `data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx` (uploaded base; tailored per JD on top)  
 Current CTC: 52 LPA | Expected CTC: 65 LPA | Notice: Immediate  
 Phone: +91 8790251698 | Email: rafi.success@gmail.com
 
@@ -44,7 +44,7 @@ Microsoft, Google, Infosys, Deloitte, Wells Fargo, JPMC, and most Workday sites 
 - Notice: Immediate | Start: Immediate / ASAP  
 - Current CTC: 5200000 | Expected: 6500000 (65 LPA)  
 - Company: Nemetschek | Title: Principal Analyst (Technical Architect)  
-- Education: B.Tech IT, Acharya Nagarjuna University, 2006–2010  
+- Education: B.Tech IT, V.R. Siddhartha Engineering College, Vijayawada, January 2010  
 - DOB: 16 Jan 1989 | Gender: Male  
 - LinkedIn: https://linkedin.com/in/rafi-ahmed-mohammed-abdul-151644ba  
 - Phone country: India (+91) | Phone: 8790251698  

@@ -101,4 +101,4 @@ Leave honeypot fields empty.
 | `google_auth.py` | Sign in rafi.success Chrome from `.env` |
 | `apply_now.py` | Queue, scoring, persist applied |
 | `form_memory.py` | Learned answers on later forms |
-| `tailor_resume.py` | Per-job `.docx` (truthful keywords only) |
+| `tailor_resume.py` | Copy uploaded base resume + overlay truthful JD keywords |

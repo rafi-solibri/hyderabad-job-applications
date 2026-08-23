@@ -29,6 +29,8 @@
     "Development": [
       ".NET Core / ASP.NET Core",
       "C#",
+      "Entity Framework",
+      "LINQ",
       "REST / Web API Design",
       "React",
       "Angular",
@@ -52,7 +54,8 @@
     "api", "rest", "web api", "integration", "event-driven", "kafka", "rabbitmq",
     "ddd", "domain-driven", "design patterns", "scalability", "reliability",
     "performance", "aws", "azure", "docker", "kubernetes", "k8s", "jenkins",
-    "git", "ci/cd", "react", "angular", "sql server", "postgresql", "postgres",
+    "git", "ci/cd",     "react", "angular", "sql server", "postgresql", "postgres",
+    "entity framework", "linq",
     "scala", "agile", "scrum", "mentoring", "code review", "technical lead",
     "engineering manager", "stakeholder", "high availability", "disaster recovery"
   ],
@@ -146,8 +149,8 @@
   ],
   "education": {
     "degree": "B.Tech, Information Technology",
-    "school": "V.R. Siddhartha Engineering College, Acharya Nagarjuna University",
+    "school": "V.R. Siddhartha Engineering College, Vijayawada",
     "year": "2010",
-    "dates": "July 2006 – May 2010"
+    "dates": "January 2010"
   }
 }

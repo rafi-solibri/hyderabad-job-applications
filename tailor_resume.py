@@ -1,8 +1,9 @@
 """Tailor Rafi's resume to each job description without inventing skills.
 
-ATS/AI screeners reject generic resumes. This rewrites headline, summary,
-skill order, and bullet order using only facts in data/resume/master.json
-and keywords that actually appear in the JD.
+The visual/content base is data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx
+(the uploaded formatted resume). Per-JD tailoring copies that file and overlays
+headline, summary, and competency order using only facts in master.json and
+keywords that already appear on the base resume / JD. Never invent skills.
 """
 from __future__ import annotations
 
@@ -20,6 +21,45 @@ ROOT = Path(__file__).resolve().parent
 MASTER = json.loads((ROOT / "data" / "resume" / "master.json").read_text(encoding="utf-8"))
 OUT_DIR = ROOT / "data" / "resume" / "tailored"
 JD_DIR = ROOT / "data" / "resume" / "jds"
+BASE_RESUME = ROOT / "data" / "resume" / "Mohammed_Abdul_Rafi_Ahmed_Resume.docx"
+
+# Stock strings from the uploaded base docx (word/document.xml). Used only as
+# anchors so overlay does not rebuild the formatted package from scratch.
+_BASE_SUMMARY = (
+    "Technical architect with expertise in technology architecture, software "
+    "development, and system design. Demonstrated leadership in managing complex "
+    "technical projects and delivering innovative solutions. Strong problem-solving, "
+    "strategic planning, and communication skills contribute to successful project "
+    "outcomes and enhanced operational efficiency."
+)
+_BASE_CONTACT = "+91 8790251698 | rafi.success@gmail.com | Hyderabad, India"
+_BASE_COMPETENCY_ITEMS = [
+    "System & Distributed Systems Design",
+    "Microservices Architecture",
+    "API & Integration Design",
+    "Event-Driven Architecture (Kafka, RabbitMQ)",
+    "Domain-Driven Design",
+    "Design Patterns",
+    "Non-Functional Requirements (Scalability, Reliability, Performance)",
+    "Cloud Architecture (AWS, Azure)",
+    "Containerization & Orchestration (Docker, Kubernetes)",
+    "CI/CD (Jenkins, Git)",
+    "High Availability & Disaster Recovery",
+    ".NET Core / ASP.NET Core",
+    "C#",
+    "Entity Framework",
+    "LINQ",
+    "React",
+    "Angular",
+    "SQL Server",
+    "PostgreSQL",
+    "REST API Design",
+    "Technical Standards & Governance",
+    "Code Reviews & Mentoring",
+    "Cross-Team Architecture Alignment",
+    "Stakeholder Management",
+    "Agile/Scrum Delivery",
+]
 CTX = ssl.create_default_context()
 UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -162,6 +202,8 @@ def headline_for(title: str, skills: list[str]) -> str:
             break
     if not show:
         show = [".NET", "Cloud", "Distributed Systems"]
+    elif ".NET" not in show:
+        show = [".NET"] + show[:2]
     return f"{title} — {' · '.join(show)}"
 
 
@@ -277,6 +319,71 @@ def _skill_line(label: str, items: list[str]) -> str:
     )
 
 
+def competency_line(jd: str) -> str:
+    """Reorder the base competency list so JD-matching items come first."""
+    ordered_groups = order_skills(jd)
+    picked: list[str] = []
+    seen: set[str] = set()
+    for items in ordered_groups.values():
+        for item in items:
+            match = next((b for b in _BASE_COMPETENCY_ITEMS if b.lower() == item.lower()), None)
+            if match and match not in seen:
+                picked.append(match)
+                seen.add(match)
+    # Also promote items whose tokens appear in the JD even if not in skillGroups
+    t = jd.lower()
+    scored = []
+    for item in _BASE_COMPETENCY_ITEMS:
+        if item in seen:
+            continue
+        score = sum(1 for w in re.findall(r"[a-z0-9.#+]+", item.lower()) if len(w) > 2 and w in t)
+        scored.append((score, item))
+    scored.sort(key=lambda x: (-x[0], _BASE_COMPETENCY_ITEMS.index(x[1])))
+    for _, item in scored:
+        if item not in seen:
+            picked.append(item)
+            seen.add(item)
+    for item in _BASE_COMPETENCY_ITEMS:
+        if item not in seen:
+            picked.append(item)
+    return ", ".join(picked)
+
+
+def _rewrite_base_docx(dest: Path, headline: str, summary: str, competencies: str) -> None:
+    """Copy the uploaded resume and overlay JD headline / summary / competencies."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_bytes(BASE_RESUME.read_bytes())
+    with zipfile.ZipFile(dest, "r") as zin:
+        parts = {name: zin.read(name) for name in zin.namelist()}
+    xml = parts["word/document.xml"].decode("utf-8")
+    if _BASE_SUMMARY not in xml:
+        raise RuntimeError("base resume summary anchor missing; refusing to overwrite")
+    xml = xml.replace(_BASE_SUMMARY, escape(summary), 1)
+
+    contact_close = f"{_BASE_CONTACT}</w:t></w:r></w:p>"
+    if contact_close in xml and headline:
+        headline_p = (
+            '<w:p w14:paraId="A1B2C3D4" w14:textId="11111111" '
+            'w:rsidR="002E7CA7" w:rsidRDefault="00000000">'
+            '<w:pPr><w:spacing w:after="80" w:line="240" w:lineRule="auto"/>'
+            '<w:jc w:val="center"/></w:pPr>'
+            '<w:r><w:rPr><w:b/><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr>'
+            f'<w:t xml:space="preserve">{escape(headline)}</w:t></w:r></w:p>'
+        )
+        xml = xml.replace(contact_close, contact_close + headline_p, 1)
+
+    start = xml.find("System &amp; Distributed Systems Design")
+    end = xml.find("Agile/Scrum Delivery")
+    if start != -1 and end != -1:
+        end += len("Agile/Scrum Delivery")
+        xml = xml[:start] + escape(competencies) + xml[end:]
+
+    parts["word/document.xml"] = xml.encode("utf-8")
+    with zipfile.ZipFile(dest, "w", zipfile.ZIP_DEFLATED) as zout:
+        for name, data in parts.items():
+            zout.writestr(name, data)
+
+
 def write_docx(path: Path, doc: dict) -> None:
     body = []
     body.append(_p(MASTER["fullName"], bold=True, size=32, center=True, color="1F3864", after=40))
@@ -354,7 +461,7 @@ def write_docx(path: Path, doc: dict) -> None:
 
 
 def for_job(job: dict) -> str:
-    """Build a tailored .docx for this job and point CURRENT at it."""
+    """Copy the uploaded base resume and overlay JD-specific text."""
     jd = fetch_jd(job)
     title = mapped_title(job, jd)
     skills = matched_skills(jd)
@@ -369,7 +476,10 @@ def for_job(job: dict) -> str:
     jid = _slug(str(job.get("job_id") or title), 28)
     fname = f"Rafi_Ahmed_{_slug(title, 28)}_{company}_{jid}.docx"
     path = OUT_DIR / fname
-    write_docx(path, doc)
+    if BASE_RESUME.exists() and BASE_RESUME.stat().st_size > 100_000:
+        _rewrite_base_docx(path, doc["headline"], doc["summary"], competency_line(jd))
+    else:
+        write_docx(path, doc)
     latest = ROOT / "data" / "resume" / "Rafi_Resume_Latest.docx"
     latest.write_bytes(path.read_bytes())
     cover = cover_for(title, job, skills)
@@ -381,6 +491,7 @@ def for_job(job: dict) -> str:
         "title": title,
         "skills": skills,
         "job_id": str(job.get("job_id") or ""),
+        "base": str(BASE_RESUME.resolve()) if BASE_RESUME.exists() else "",
     })
     return CURRENT["path"]
 
@@ -419,7 +530,13 @@ def upload(page, path: str | None = None) -> bool:
         except Exception:
             continue
     # LinkedIn / Easy Apply: click the tailored or master resume label if radios are hidden
-    for label in ("Rafi_Ahmed", "Rafi_Resume_Architect", "Rafi_Resume_Technical", "Rafi_Resume_Latest"):
+    for label in (
+        "Mohammed_Abdul_Rafi",
+        "Rafi_Ahmed",
+        "Rafi_Resume_Architect",
+        "Rafi_Resume_Technical",
+        "Rafi_Resume_Latest",
+    ):
         try:
             page.get_by_text(label, exact=False).first.click(timeout=800)
             ok = True
