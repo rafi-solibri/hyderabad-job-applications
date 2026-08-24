@@ -42,7 +42,7 @@
     },
     "desired annual salary": {
       "label": "desired annual salary",
-      "value": "6500000 INR (65 LPA)",
+      "value": "6000000 INR (60 LPA)",
       "count": 1,
       "name": "",
       "updated": "2026-08-17T15:19:58.388368+00:00",
@@ -50,7 +50,7 @@
     },
     "salary expectation": {
       "label": "salary expectation",
-      "value": "6500000 INR (65 LPA)",
+      "value": "6000000 INR (60 LPA)",
       "count": 1,
       "name": "",
       "updated": "2026-08-17T15:19:58.388368+00:00",
@@ -58,7 +58,7 @@
     },
     "expected ctc": {
       "label": "expected ctc",
-      "value": "6500000 INR (65 LPA)",
+      "value": "6000000 INR (60 LPA)",
       "count": 1,
       "name": "",
       "updated": "2026-08-17T15:19:58.388368+00:00",
@@ -122,7 +122,7 @@
     },
     "additional information": {
       "label": "additional information",
-      "value": "Technical Architect, 15+ years, .NET / cloud / distributed systems. Hyderabad-based. Immediate joiner. Current 52 LPA, expected 65 LPA.",
+      "value": "Technical Architect, 15+ years, .NET / cloud / distributed systems. Hyderabad-based. Immediate joiner. Current 52 LPA, expected 60 LPA.",
       "count": 1,
       "name": "",
       "updated": "2026-08-17T15:19:58.388368+00:00",
@@ -290,7 +290,7 @@
     },
     "expected salary ✱": {
       "label": "Expected salary ✱",
-      "value": "65 lpa",
+      "value": "60 lpa",
       "count": 1,
       "name": "cards[6697d376-8ae8-4d5e-b8fa-7df4b009d0a6][field7]",
       "updated": "2026-08-17T15:36:58.957551+00:00",
@@ -346,7 +346,7 @@
     },
     "what is your expected ctc? ✱": {
       "label": "What is your expected CTC? ✱",
-      "value": "6500000 INR (65 LPA)",
+      "value": "6000000 INR (60 LPA)",
       "count": 1,
       "name": "cards[95d7baa2-3551-4cf7-bcd5-8a30562be1ce][field9]",
       "updated": "2026-08-17T15:38:16.692263+00:00",

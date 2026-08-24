@@ -277,7 +277,7 @@ def cover_for(title: str, job: dict, skills: list[str]) -> str:
         f"currently Principal Analyst (Technical Architect) at Nemetschek in Hyderabad. "
         f"I have led teams (including 10 engineers at UnitedHealth Group), owned microservices and API architecture "
         f"on .NET Core, and shipped on AWS and Azure with Kafka/RabbitMQ and Kubernetes. "
-        f"Notice period is immediate. Expected CTC is 65 LPA."
+        f"Notice period is immediate. Expected CTC is 60 LPA."
     )
 
 

@@ -472,7 +472,7 @@ def merge_and_write(jobs):
         f"Run date: {date.today().isoformat()}",
         "",
         "Added Microsoft, Google, SmartRecruiters, Workable, extra Greenhouse/Lever/Ashby boards, and more Workday career sites.",
-        "Same filters: yesterday’s titles, Hyderabad or Remote/Hybrid India, 65 LPA (unknown CTC kept).",
+        "Same filters: yesterday’s titles, Hyderabad or Remote/Hybrid India, 60 LPA (unknown CTC kept).",
         "",
         f"- Unique in-scope: **{len(unique)}**",
         f"- Already applied: **{sum(1 for j in unique if j.get('already_applied'))}**",

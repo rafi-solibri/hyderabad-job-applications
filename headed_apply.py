@@ -214,7 +214,7 @@ def fill_lever(page):
     for q, val in (
         (r"document type|right to work document", "Indian Passport"),
         (r"AI Tools|Claude", "Yes. Claude and ChatGPT for architecture documentation and design exploration."),
-        (r"expected.*salary|annual gross", "6500000 INR (65 LPA)"),
+        (r"expected.*salary|annual gross", "6000000 INR (60 LPA)"),
         (r"notice period", "Immediate"),
     ):
         try:

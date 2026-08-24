@@ -2,7 +2,7 @@
 
 Candidate: Mohammed Abdul Rafi Ahmed  
 Resume: `data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx` (uploaded base; tailored per JD on top)  
-Current CTC: 52 LPA | Expected CTC: 65 LPA | Notice: Immediate  
+Current CTC: 52 LPA | Expected CTC: 60 LPA | Notice: Immediate  
 Phone: +91 8790251698 | Email: rafi.success@gmail.com
 
 **Areas:** Madhapur, Gachibowli, Financial District, HITEC City, Nanakramguda, Kondapur, Raidurg, Hyderabad, or Remote India.  
@@ -24,7 +24,7 @@ Smart fill is on for tomorrow: profile + learned answers, India + `8790251698`, 
 
 ## Today (18 Aug 2026)
 
-Final list rebuilt in `DISCOVERY.md` from yesterday’s full title list, Hyderabad / Remote India, portals + job boards, 65 LPA (unknown CTC kept).
+Final list rebuilt in `DISCOVERY.md` from yesterday’s full title list, Hyderabad / Remote India, portals + job boards, 60 LPA (unknown CTC kept).
 
 **Ready (under company cap):** Coinbase Engineering Manager (Remote India), Fivetran Staff SWE dbt core (Remote India).  
 **Open but at 4/company:** Amazon DEX (tab open), Amazon Sr SDE Payroll, Twilio Staff L4.  
@@ -42,7 +42,7 @@ Microsoft, Google, Infosys, Deloitte, Wells Fargo, JPMC, and most Workday sites 
 
 - Sponsorship: No | Authorized in India: Yes | Right-to-work: Indian Passport  
 - Notice: Immediate | Start: Immediate / ASAP  
-- Current CTC: 5200000 | Expected: 6500000 (65 LPA)  
+- Current CTC: 5200000 | Expected: 6000000 (60 LPA)  
 - Company: Nemetschek | Title: Principal Analyst (Technical Architect)  
 - Education: B.Tech IT, V.R. Siddhartha Engineering College, Vijayawada, January 2010  
 - DOB: 16 Jan 1989 | Gender: Male  

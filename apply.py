@@ -134,7 +134,7 @@ def answer_text(question: str) -> str | None:
         return (
             f"I am a Technical Architect with {c['yearsExperience']}+ years designing .NET, cloud, "
             "and distributed systems. I am based in Hyderabad and targeting roles in Madhapur, "
-            "Gachibowli, and Financial District. Current CTC 52 LPA, expected 65 LPA, immediate joiner."
+            "Gachibowli, and Financial District. Current CTC 52 LPA, expected 60 LPA, immediate joiner."
         )
     return None
 

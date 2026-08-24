@@ -332,7 +332,7 @@ def fill_lever(page):
         (r"current location", "Hyderabad, Telangana, India"),
         (r"right to work document|document type", "Indian Passport"),
         (r"AI Tools|Claude|ChatGPT", "Yes. I use Claude and ChatGPT for architecture documentation, design exploration, and code-review assistance."),
-        (r"expected.*salary|salary expectation|annual gross", "6500000 INR (65 LPA)"),
+        (r"expected.*salary|salary expectation|annual gross", "6000000 INR (60 LPA)"),
         (r"notice period", "Immediate"),
         (r"additional information|comments", REWARDS + " Targeting Madhapur / Gachibowli / Financial District."),
     ]

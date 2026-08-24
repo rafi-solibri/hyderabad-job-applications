@@ -110,6 +110,11 @@ def norm(text: str) -> str:
 def _answers() -> dict:
     c = load_candidate()
     L = load_learned()
+    exp_lpa = int(c.get("expectedCtcLpa") or 60)
+    exp_inr = int(c.get("expectedCtcInr") or exp_lpa * 100000)
+    cur_lpa = int(c.get("currentCtcLpa") or 52)
+    cur_inr = int(c.get("currentCtcInr") or cur_lpa * 100000)
+    salary_text = L.get("desiredAnnualSalary") or f"{exp_inr} INR ({exp_lpa} LPA)"
     return {
         "fullName": c.get("fullName") or "Mohammed Abdul Rafi Ahmed",
         "firstName": L.get("legalFirstName") or c.get("firstName") or "Mohammed Abdul Rafi",
@@ -129,9 +134,9 @@ def _answers() -> dict:
         "notice": "Immediate",
         "noticeDays": "0",
         "start": "Immediate / ASAP",
-        "currentCtc": "5200000",
-        "expectedCtc": "6500000",
-        "salaryText": L.get("desiredAnnualSalary") or "6500000 INR (65 LPA)",
+        "currentCtc": str(cur_inr),
+        "expectedCtc": str(exp_inr),
+        "salaryText": salary_text,
         "dob": "16/01/1989",
         "dobUs": "01/16/1989",
         "dobIso": "1989-01-16",
@@ -148,7 +153,7 @@ def _answers() -> dict:
         "disability": "No, I do not have a disability and have not had one in the past",
         "pitch": L.get("additionalInfo") or (
             "Technical Architect, 15+ years, .NET / cloud / distributed systems. "
-            "Hyderabad-based. Immediate joiner. Current 52 LPA, expected 65 LPA."
+            f"Hyderabad-based. Immediate joiner. Current {cur_lpa} LPA, expected {exp_lpa} LPA."
         ),
         "ai": (
             "Yes. I use Claude and ChatGPT for architecture documentation, design "

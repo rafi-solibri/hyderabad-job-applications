@@ -225,7 +225,7 @@ def fill_lever(page):
     text_rules = [
         (r"right to work document|document type", "Indian Passport"),
         (r"AI Tools|Claude", "Yes. Claude and ChatGPT for architecture documentation, design exploration, and code review assistance."),
-        (r"expected.*salary|annual gross|salary expectation", "6500000 INR (65 LPA)"),
+        (r"expected.*salary|annual gross|salary expectation", "6000000 INR (60 LPA)"),
         (r"notice period", "Immediate"),
     ]
     for q, val in text_rules:

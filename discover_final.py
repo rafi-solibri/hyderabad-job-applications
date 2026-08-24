@@ -280,7 +280,7 @@ def main():
         "",
         "Sources: company career portals (Workday, Amazon.jobs) and job boards (Greenhouse, Lever, Ashby).",
         "Titles: yesterday's list (Architect / Principal / Staff / Tech Lead / EM / Senior Software-Backend-Full Stack-.NET).",
-        "Location: Hyderabad hubs or Remote/Hybrid India. CTC 65 LPA preferred; unknown CTC kept. Known 15–45 LPA dropped.",
+        "Location: Hyderabad hubs or Remote/Hybrid India. CTC 60 LPA preferred; unknown CTC kept. Known 15–45 LPA dropped.",
         "",
         "## Counts",
         "",

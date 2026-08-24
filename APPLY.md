@@ -8,6 +8,9 @@ The canonical apply runner is **`cloud_apply.py`**. Older scripts
 `amazon_apply.py`, `apply_parallel.py`, `firefox_real.py`) are **not** the daily
 path.
 
+Profile on every form: current CTC **52 LPA**, expected CTC **60 LPA**
+(INR 6000000), notice immediate, Hyderabad. Do not fill 65 LPA.
+
 ## Every run must
 
 1. Apply to leftover matching Hyderabad / Remote-India jobs. Do not only discover
