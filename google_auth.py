@@ -34,6 +34,47 @@ def load_google_password() -> str:
     return load_env_value("GOOGLE_PASSWORD")
 
 
+def extract_2fa_prompt_number(text: str) -> str:
+    """Return the Google prompt number the owner must tap on the phone."""
+    blob = text or ""
+    m = re.search(r"tap\s+(\d{1,3})\s+on your phone", blob, re.I)
+    if m:
+        return m.group(1)
+    m = re.search(r"then tap\s+(\d{1,3})", blob, re.I)
+    if m:
+        return m.group(1)
+    for line in blob.splitlines():
+        s = line.strip()
+        if re.fullmatch(r"\d{1,3}", s):
+            return s
+    return ""
+
+
+def announce_2fa_number(page) -> str:
+    """Print the on-screen Google 2FA number so the owner can tap it on mobile."""
+    blob = ""
+    try:
+        blob = page.inner_text("body") or ""
+    except Exception:
+        blob = ""
+    number = extract_2fa_prompt_number(blob)
+    if number:
+        print(
+            f"\n  ========================================\n"
+            f"  Google 2FA number to tap on your phone: {number}\n"
+            f"  Tap Yes on Nothing Phone / OnePlus, then tap {number}.\n"
+            f"  ========================================\n",
+            flush=True,
+        )
+    else:
+        print(
+            "  Google 2FA is on screen but the prompt number was not readable. "
+            "Open Desktop / Take control and read the number.",
+            flush=True,
+        )
+    return number
+
+
 def fill_google_identifier_challenge(page) -> str:
     """Type rafi.success email on accounts.google.com identifier. Never log it."""
     try:
@@ -254,7 +295,7 @@ def sign_in_chrome(page) -> str:
     except Exception:
         pass
     if "rafi.success@gmail.com" in blob and "2-step" in blob.lower():
-        print("  Google 2FA already waiting on the phone.", flush=True)
+        announce_2fa_number(page)
         return "2fa"
     if "inbox" in (page.title() or "").lower() or "mail.google.com/mail" in (page.url or ""):
         print("  Chrome already signed in as rafi.success@gmail.com.", flush=True)
@@ -298,7 +339,7 @@ def sign_in_chrome(page) -> str:
         print("  Google sign-in blocked.", flush=True)
         return "blocked"
     if "2-step" in blob.lower() or "check your" in blob.lower() or "/challenge/" in url:
-        print("  Google 2FA: approve on the phone, then applies continue.", flush=True)
+        announce_2fa_number(page)
         return "2fa"
     print("  Google sign-in submitted for rafi.success@gmail.com.", flush=True)
     return "ok"

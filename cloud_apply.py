@@ -5198,6 +5198,10 @@ def mark_google_2fa_parked(context=None, page=None) -> bool:
                     "career portals and Foundit continue.",
                     flush=True,
                 )
+                try:
+                    google_auth.announce_2fa_number(p)
+                except Exception:
+                    pass
             GOOGLE_2FA_PARKED = True
             return True
     return GOOGLE_2FA_PARKED
