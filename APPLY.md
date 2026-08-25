@@ -47,6 +47,11 @@ Profile on every form: current CTC **52 LPA**, expected CTC **60 LPA**
    Close the current apply tab and open the next leftover after **SUBMITTED**,
    **404/closed**, or **Sign In / Create Account rejects every portal password**.
    Do not sit on a locked login.
+7. When the daily apply finishes, email **rafi.success@gmail.com** the same way
+   the other daily automations do: submitted / blocked / leftover. Runner:
+   `python3 notify_daily_email.py` (also called at the end of `cloud_apply.py`).
+   Prefer `RESEND_API_KEY` (Resend, same as Notification Job); else Gmail SMTP
+   from gitignored `.env`. Never commit the key.
 
 ## Chrome (always)
 
@@ -121,3 +126,4 @@ Leave honeypot fields empty.
 | `apply_now.py` | Queue, scoring, persist applied |
 | `form_memory.py` | Learned answers on later forms |
 | `tailor_resume.py` | Copy uploaded base resume + overlay truthful JD keywords |
+| `notify_daily_email.py` | Email rafi.success@gmail.com when the daily apply finishes |

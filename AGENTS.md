@@ -11,6 +11,8 @@ There is no long-running service and no test suite. You run scripts directly wit
 Key entry points:
 - `cloud_apply.py` — headed Chrome apply for this automation. **One application
   at a time**; next job only after a successful submit. See `APPLY.md`.
+  When the daily run finishes it emails `rafi.success@gmail.com` via
+  `notify_daily_email.py` (Resend or Gmail SMTP).
 - `tailor_resume.py` — copies `data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx`
   (the uploaded formatted base) and overlays a JD-specific headline/summary/
   competency order. Writes tailored `.docx` + cover letters to
