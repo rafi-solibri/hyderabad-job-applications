@@ -4637,5 +4637,32 @@
     "note": "Schwab iCIMS identifier loop — persist-skip, do not hammer",
     "status": "SKIPPED",
     "ts": "2026-08-24T13:43:31.268844+00:00"
+  },
+  "124290": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Pl",
+    "job_id": "99493964016",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-pl/33995/99493964016",
+    "note": "Schwab iCIMS identifier loop — persist-skip, do not hammer",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T10:44:50.281923+00:00"
+  },
+  "99493964016": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Pl",
+    "job_id": "99493964016",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-pl/33995/99493964016",
+    "note": "Schwab iCIMS identifier loop — persist-skip, do not hammer",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T10:44:50.281923+00:00"
+  },
+  "charlesschwab|senior manager software development and engineering pl": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Pl",
+    "job_id": "99493964016",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-pl/33995/99493964016",
+    "note": "Schwab iCIMS identifier loop — persist-skip, do not hammer",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T10:44:50.281923+00:00"
   }
 }
