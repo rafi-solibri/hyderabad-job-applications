@@ -21,6 +21,7 @@ import apply_now
 import ats_fill
 import form_memory
 import google_auth
+import notify_daily_email
 import simplify_copilot
 import tailor_resume
 
@@ -5680,6 +5681,10 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
         f"Still leftover: {len(still)} ({still_career} career portals).",
         flush=True,
     )
+    try:
+        notify_daily_email.send()
+    except Exception as exc:
+        print(f"  Daily completion email failed ({exc}).", flush=True)
     return results
 
 
