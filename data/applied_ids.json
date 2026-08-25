@@ -4691,5 +4691,32 @@
     "note": "Schwab iCIMS apply iframe not advancing — persist-skip, do not hammer",
     "status": "SKIPPED",
     "ts": "2026-08-25T10:49:01.612771+00:00"
+  },
+  "124081": {
+    "company": "Charles Schwab",
+    "title": "Manager Software Development Engineer Sdet Automation Testing",
+    "job_id": "98564187264",
+    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-engineer-sdet-automation-testing/33995/98564187264",
+    "note": "iCIMS Returning-candidate identifier loop: stayed on career-ind-schwab.icims.com/jobs/124081/.../login after email/password (WAITING_EXPIRED). Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T13:41:45.277947+00:00"
+  },
+  "98564187264": {
+    "company": "Charles Schwab",
+    "title": "Manager Software Development Engineer Sdet Automation Testing",
+    "job_id": "98564187264",
+    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-engineer-sdet-automation-testing/33995/98564187264",
+    "note": "iCIMS Returning-candidate identifier loop: stayed on career-ind-schwab.icims.com/jobs/124081/.../login after email/password (WAITING_EXPIRED). Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T13:41:45.277947+00:00"
+  },
+  "charlesschwab|manager software development engineer sdet automation testing": {
+    "company": "Charles Schwab",
+    "title": "Manager Software Development Engineer Sdet Automation Testing",
+    "job_id": "98564187264",
+    "url": "https://www.schwabjobs.com/job/hyderabad/manager-software-development-engineer-sdet-automation-testing/33995/98564187264",
+    "note": "iCIMS Returning-candidate identifier loop: stayed on career-ind-schwab.icims.com/jobs/124081/.../login after email/password (WAITING_EXPIRED). Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T13:41:45.277947+00:00"
   }
 }
