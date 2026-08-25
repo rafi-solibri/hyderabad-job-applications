@@ -4718,5 +4718,32 @@
     "note": "iCIMS Returning-candidate identifier loop: stayed on career-ind-schwab.icims.com/jobs/124081/.../login after email/password (WAITING_EXPIRED). Do not hammer.",
     "status": "SKIPPED",
     "ts": "2026-08-25T13:41:45.277947+00:00"
+  },
+  "R-796658-1": {
+    "company": "StateStreet",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "job_id": "Senior-Software-Engineer---Data-Integration--Officer_R-796658-1",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer---Data-Integration--Officer_R-796658-1",
+    "note": "Workday Apply Manually did not advance after Save and Continue (STUCK twice on .../apply/applyManually). Signed in with portal password #2. Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T15:46:57.262194+00:00"
+  },
+  "Senior-Software-Engineer---Data-Integration--Officer_R-796658-1": {
+    "company": "StateStreet",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "job_id": "Senior-Software-Engineer---Data-Integration--Officer_R-796658-1",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer---Data-Integration--Officer_R-796658-1",
+    "note": "Workday Apply Manually did not advance after Save and Continue (STUCK twice on .../apply/applyManually). Signed in with portal password #2. Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T15:46:57.262194+00:00"
+  },
+  "statestreet|senior software engineer - data integration, officer": {
+    "company": "StateStreet",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "job_id": "Senior-Software-Engineer---Data-Integration--Officer_R-796658-1",
+    "url": "https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad-India/Senior-Software-Engineer---Data-Integration--Officer_R-796658-1",
+    "note": "Workday Apply Manually did not advance after Save and Continue (STUCK twice on .../apply/applyManually). Signed in with portal password #2. Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-25T15:46:57.262194+00:00"
   }
 }
