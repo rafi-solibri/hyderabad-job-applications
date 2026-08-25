@@ -23,19 +23,27 @@ Profile on every form: current CTC **52 LPA**, expected CTC **60 LPA**
    do not attach a second Playwright to CDP 9222.
 3. After each **SUBMITTED** application, tell the owner in **this agent chat**
    (company, title, URL). Also append `data/applications/SUBMITTED.md`.
-4. If a CAPTCHA / 2FA puzzle appears, **notify the owner in this agent chat**
+4. **Google 2FA number in this chat — do not wait to be asked.** As soon as
+   Chrome shows 2-Step Verification, post the tap number here immediately,
+   as its own line: `Google 2FA number: NN`. Tell the owner to tap **Yes**
+   on Nothing Phone (3) / OnePlus 7 Pro, then tap **NN**. The runner writes
+   `data/applications/GOOGLE_2FA.md` and prints `GOOGLE_2FA_NUMBER=NN`.
+   Read that file (or the apply log) and post the number before other status.
+   Re-post if the number changes. Keep the 2FA tab open. Session-skip
+   Naukri / LinkedIn / Indeed / Instahyre while 2FA is up.
+5. If a CAPTCHA / 2FA puzzle appears, **notify the owner in this agent chat**
    immediately (company, title, URL, what to solve). **Keep that CAPTCHA tab
    open.** Do not wait idle for hours. Open a **new tab** and start the next
    leftover. When the owner is back they solve parked CAPTCHAs in
    **Desktop / Take control**; then continue those same applications.
-5. After filling everything the runner can, if leftover fields still need a
+6. After filling everything the runner can, if leftover fields still need a
    human: try to fill them. If the owner is away, **do not wait** — move to the
    next leftover. If the owner is present (`--owner-present`), notify in this
    agent chat, list the fields, **learn answers they type**, and **wait on that
    tab** (`NEED_INPUT`). Do not start another leftover until they finish or
    ask. `--watch-open` continues the already-open tab only (no new leftovers,
    do not reset Chrome tabs). Same for identity codes if Gmail is already open.
-6. **One live application at a time**, except parked CAPTCHA tabs stay open.
+7. **One live application at a time**, except parked CAPTCHA tabs stay open.
    Close the current apply tab and open the next leftover after **SUBMITTED**,
    **404/closed**, or **Sign In / Create Account rejects every portal password**.
    Do not sit on a locked login.
@@ -52,7 +60,10 @@ Profile on every form: current CTC **52 LPA**, expected CTC **60 LPA**
   tab and open the next leftover.
 - Google password lives in gitignored `.env` (`GOOGLE_PASSWORD`) and automation
   memory `secrets.md`. Load via `google_auth.py`. Never commit it. Never put it
-  in `field_memory.json` or `DAILY_REPORT.md`. 2FA: Nothing Phone (3).
+  in `field_memory.json` or `DAILY_REPORT.md`. 2FA: Nothing Phone (3) and
+  OnePlus 7 Pro. Every headed run must print and chat-post the tap number
+  (`google_auth.announce_2fa_number` → `GOOGLE_2FA.md`). Never create a
+  Google password.
 - Career-site **Create Account / Sign In** (Workday, Oracle, Greenhouse, etc.)
   uses gitignored `.env` `APPLY_ACCOUNT_PASSWORD`, then
   `APPLY_ACCOUNT_PASSWORD_FALLBACKS`. Fill them on every create-account / sign-in

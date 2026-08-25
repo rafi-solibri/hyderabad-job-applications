@@ -4823,6 +4823,10 @@ def launch_context(pw, headed: bool):
                 print(f"  Google sign-in skipped ({exc}).", flush=True)
         else:
             print("  Chrome already signed in; leaving Google tabs alone.", flush=True)
+        try:
+            google_auth.announce_2fa_on_pages(list(context.pages), force=True)
+        except Exception:
+            pass
         global GOOGLE_SIGNIN_BLOCKED
         if google_password_create_parked(context=context):
             GOOGLE_SIGNIN_BLOCKED = True
@@ -5172,8 +5176,12 @@ def learn_open_application(seconds: int = 1800) -> list[dict]:
     return results
 
 
-def mark_google_2fa_parked(context=None, page=None) -> bool:
-    """Park Naukri/LinkedIn/Indeed/Instahyre while a Google 2FA prompt is open."""
+def mark_google_2fa_parked(context=None, page=None, force: bool = False) -> bool:
+    """Park Naukri/LinkedIn/Indeed/Instahyre while a Google 2FA prompt is open.
+
+    Always persist/print the tap number (and again if Google changes it) so
+    the owner can select it on mobile. force=True at the start of every run.
+    """
     global GOOGLE_2FA_PARKED
     pages = []
     if page is not None:
@@ -5183,27 +5191,17 @@ def mark_google_2fa_parked(context=None, page=None) -> bool:
             pages = list(context.pages)
         except Exception:
             pages = []
-    for p in pages:
-        try:
-            if p.is_closed():
-                continue
-            u = (p.url or "").lower()
-        except Exception:
-            continue
-        if "accounts.google.com" in u and "/challenge/" in u:
-            if not GOOGLE_2FA_PARKED:
-                print(
-                    "  Google 2FA is parked (Nothing Phone / OnePlus). "
-                    "Skipping Naukri/LinkedIn/Indeed/Instahyre this session; "
-                    "career portals and Foundit continue.",
-                    flush=True,
-                )
-                try:
-                    google_auth.announce_2fa_number(p)
-                except Exception:
-                    pass
-            GOOGLE_2FA_PARKED = True
-            return True
+    number = google_auth.announce_2fa_on_pages(pages, force=force)
+    if number:
+        if not GOOGLE_2FA_PARKED:
+            print(
+                "  Google 2FA is parked (Nothing Phone / OnePlus). "
+                "Skipping Naukri/LinkedIn/Indeed/Instahyre this session; "
+                "career portals and Foundit continue.",
+                flush=True,
+            )
+        GOOGLE_2FA_PARKED = True
+        return True
     return GOOGLE_2FA_PARKED
 
 
@@ -5487,7 +5485,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
         )
     with sync_playwright() as pw:
         browser, context, page = launch_context(pw, headed)
-        mark_google_2fa_parked(context=context, page=page)
+        mark_google_2fa_parked(context=context, page=page, force=True)
         if OWNER_PRESENT:
             open_blob = " ".join(
                 ((p.url or "") if not p.is_closed() else "")
@@ -5566,6 +5564,7 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
                 flush=True,
             )
             for i, job in enumerate(leftover, 1):
+                mark_google_2fa_parked(context=context, page=page)
                 print(f"\n[{i}/{len(leftover)}] {job.get('company')}: {job.get('title')}", flush=True)
                 print("  Opening this application only. Will close it on submit, closed posting, or locked login.", flush=True)
                 try:

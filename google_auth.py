@@ -8,6 +8,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 EMAIL = "rafi.success@gmail.com"
 ENV_PATHS = (ROOT / ".env", ROOT / "data" / ".secrets.env")
+# Live prompt only. Gitignored — never commit this file.
+TWO_FA_PATH = ROOT / "data" / "applications" / "GOOGLE_2FA.md"
+_LAST_ANNOUNCED_2FA = ""
 
 
 def load_env_value(key: str) -> str:
@@ -43,6 +46,9 @@ def extract_2fa_prompt_number(text: str) -> str:
     m = re.search(r"then tap\s+(\d{1,3})", blob, re.I)
     if m:
         return m.group(1)
+    m = re.search(r"then tap\s+(\d{1,3})\s+on your phone", blob, re.I)
+    if m:
+        return m.group(1)
     for line in blob.splitlines():
         s = line.strip()
         if re.fullmatch(r"\d{1,3}", s):
@@ -50,29 +56,85 @@ def extract_2fa_prompt_number(text: str) -> str:
     return ""
 
 
-def announce_2fa_number(page) -> str:
-    """Print the on-screen Google 2FA number so the owner can tap it on mobile."""
+def is_google_2fa_url(url: str) -> bool:
+    u = (url or "").lower()
+    if "accounts.google.com" not in u:
+        return False
+    if "changepassword" in u or "speedbump" in u:
+        return False
+    return "/challenge/" in u or "signin/challenge" in u
+
+
+def write_2fa_notice(number: str) -> None:
+    """Write the tap number so every run can post it in agent chat immediately."""
+    TWO_FA_PATH.parent.mkdir(parents=True, exist_ok=True)
+    TWO_FA_PATH.write_text(
+        f"# Google 2FA\n\n"
+        f"**Google 2FA number: {number}**\n\n"
+        f"1. Open the Google prompt on Nothing Phone (3) or OnePlus 7 Pro.\n"
+        f"2. Tap **Yes**.\n"
+        f"3. Tap **{number}**.\n",
+        encoding="utf-8",
+    )
+
+
+def print_2fa_banner(number: str) -> None:
+    print(
+        f"\n  ========================================\n"
+        f"  GOOGLE_2FA_NUMBER={number}\n"
+        f"  Google 2FA number to tap on your phone: {number}\n"
+        f"  Tap Yes on Nothing Phone / OnePlus, then tap {number}.\n"
+        f"  POST IN AGENT CHAT NOW: Google 2FA number: {number}\n"
+        f"  ========================================\n",
+        flush=True,
+    )
+
+
+def announce_2fa_number(page, force: bool = False) -> str:
+    """Print and persist the on-screen Google 2FA number for the owner.
+
+    Re-prints when the number is new or Google changes it. Set force=True
+    at the start of every headed run so the chat always gets the number.
+    """
+    global _LAST_ANNOUNCED_2FA
     blob = ""
     try:
         blob = page.inner_text("body") or ""
     except Exception:
         blob = ""
     number = extract_2fa_prompt_number(blob)
-    if number:
-        print(
-            f"\n  ========================================\n"
-            f"  Google 2FA number to tap on your phone: {number}\n"
-            f"  Tap Yes on Nothing Phone / OnePlus, then tap {number}.\n"
-            f"  ========================================\n",
-            flush=True,
-        )
-    else:
+    if not number:
         print(
             "  Google 2FA is on screen but the prompt number was not readable. "
             "Open Desktop / Take control and read the number.",
             flush=True,
         )
+        return ""
+    if number == _LAST_ANNOUNCED_2FA and not force:
+        return number
+    _LAST_ANNOUNCED_2FA = number
+    write_2fa_notice(number)
+    print_2fa_banner(number)
     return number
+
+
+def announce_2fa_on_pages(pages, force: bool = False) -> str:
+    """Scan Chrome pages for a Google 2FA prompt and announce the tap number."""
+    for page in pages or []:
+        try:
+            if page is None or page.is_closed():
+                continue
+            if not is_google_2fa_url(page.url or ""):
+                continue
+        except Exception:
+            continue
+        try:
+            number = announce_2fa_number(page, force=force)
+        except Exception:
+            number = ""
+        if number:
+            return number
+    return ""
 
 
 def fill_google_identifier_challenge(page) -> str:

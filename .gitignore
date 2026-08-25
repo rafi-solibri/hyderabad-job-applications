@@ -13,6 +13,7 @@ data/tools/simplify-xpi/
 data/tools/simplify-ext/
 data/tools/geckodriver*
 data/applications/screenshots/
+data/applications/GOOGLE_2FA.md
 *.exe
 *.zip
 
