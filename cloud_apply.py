@@ -1127,6 +1127,32 @@ def naukri_external_apply_label(label: str) -> bool:
     )
 
 
+def naukri_browse_only(page) -> bool:
+    """True when the JD has no Quick apply — only 'Browse other jobs' (expired or login wall)."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        return False
+    if "naukri.com" not in url:
+        return False
+    try:
+        browse = page.get_by_role("button", name=re.compile(r"browse other jobs", re.I))
+        if not browse.count() or not browse.first.is_visible():
+            return False
+    except Exception:
+        return False
+    try:
+        apply = page.get_by_role(
+            "button",
+            name=re.compile(r"quick apply|^apply on naukri$|^apply now$|^apply$", re.I),
+        )
+        if apply.count() and apply.first.is_visible():
+            return False
+    except Exception:
+        pass
+    return True
+
+
 def click_naukri_quick_apply(page) -> str:
     """Naukri JD apply is `#apply-button` (chatbot drawer). The TopTier Quick apply badge does not submit."""
     try:
@@ -4391,6 +4417,12 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 row["note"] = "Naukri company-site apply"
                 row["final_url"] = page.url
                 apply_now.persist_skipped(row, row["note"])
+                return row
+            if naukri_browse_only(page):
+                print("  Naukri listing has no Quick apply (Browse other jobs). Next leftover.", flush=True)
+                row["status"] = "STUCK"
+                row["note"] = "Naukri browse-other-jobs / no Quick apply"
+                row["final_url"] = page.url
                 return row
 
         fill_identity(page)

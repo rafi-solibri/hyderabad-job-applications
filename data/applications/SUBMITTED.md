@@ -22,3 +22,5 @@
   https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/my-profile
 - **2026-08-22T05:35:58Z** SUBMITTED **State Street** — Senior Software Engineer, AVP
   https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--AVP_R-792706/apply/applyManually
+- **2026-08-26T05:53:31Z** SUBMITTED **D. E. Shaw** — Senior Technical Architect - ManCo
+  https://www.instahyre.com/job-433983-senior-technical-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/
