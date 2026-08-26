@@ -49,9 +49,13 @@ Profile on every form: current CTC **52 LPA**, expected CTC **60 LPA**
    Do not sit on a locked login.
 7. When the daily apply finishes, email **rafi.success@gmail.com** the same way
    the other daily automations do: submitted / blocked / leftover. Runner:
-   `python3 notify_daily_email.py` (also called at the end of `cloud_apply.py`).
-   Prefer `RESEND_API_KEY` (Resend, same as Notification Job); else Gmail SMTP
-   from gitignored `.env`. Never commit the key.
+   `python3 notify_daily_email.py` (also called at the end of every
+   `cloud_apply.py` run, and on process exit if that call was skipped). Prefer
+   `RESEND_API_KEY` (Resend, same as Notification Job; set it on this
+   environment's Secrets tab). Else Gmail app password SMTP
+   (`GMAIL_APP_PASSWORD`). Else Gmail compose in the already-open
+   rafi.success Chrome. Never commit keys. The Gmail *account* password
+   cannot SMTP (2FA).
 
 ## Chrome (always)
 

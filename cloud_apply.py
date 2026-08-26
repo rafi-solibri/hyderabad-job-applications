@@ -7,6 +7,7 @@ is empty, apply Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre.
 from __future__ import annotations
 
 import argparse
+import atexit
 import json
 import os
 import re
@@ -5470,7 +5471,12 @@ def discover_naukri_in_chrome(context) -> int:
     return n
 
 
-def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[dict]:
+def main(
+    limit: int = 12,
+    headed: bool = False,
+    wait_seconds: int = 0,
+    send_email: bool = True,
+) -> list[dict]:
     global FOUNDIT_AKAMAI_BLOCKED
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
@@ -5492,6 +5498,18 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
     if headed:
         print(f"Headed Chrome on DISPLAY={os.environ.get('DISPLAY', ':1')} — complete CAPTCHA/login in the desktop view.", flush=True)
     results: list[dict] = []
+    emailed = False
+    context = None
+    if send_email:
+        def _email_on_exit() -> None:
+            if emailed:
+                return
+            try:
+                notify_daily_email.send()
+            except Exception as exc:
+                print(f"  Daily completion email failed ({exc}).", flush=True)
+
+        atexit.register(_email_on_exit)
 
     pending = interleave_boards_and_career(try_jobs, limit)
     if OWNER_PRESENT:
@@ -5701,6 +5719,13 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
         else:
             context.close()
 
+        if send_email:
+            try:
+                notify_daily_email.send(context=context if headed else None)
+                emailed = True
+            except Exception as exc:
+                print(f"  Daily completion email failed ({exc}).", flush=True)
+
     submitted = sum(1 for r in results if r.get("ok") and r.get("status") == "SUBMITTED")
     still = leftover_career_jobs(try_jobs)
     still_career = sum(
@@ -5712,10 +5737,11 @@ def main(limit: int = 12, headed: bool = False, wait_seconds: int = 0) -> list[d
         f"Still leftover: {len(still)} ({still_career} career portals).",
         flush=True,
     )
-    try:
-        notify_daily_email.send()
-    except Exception as exc:
-        print(f"  Daily completion email failed ({exc}).", flush=True)
+    if send_email and not emailed:
+        try:
+            notify_daily_email.send()
+        except Exception as exc:
+            print(f"  Daily completion email failed ({exc}).", flush=True)
     return results
 
 
@@ -5779,7 +5805,7 @@ if __name__ == "__main__":
         idle = 0
         while _submitted_n() < goal:
             before = _submitted_n()
-            main(limit=args.limit, headed=args.headed, wait_seconds=wait)
+            main(limit=args.limit, headed=args.headed, wait_seconds=wait, send_email=False)
             after = _submitted_n()
             if after <= before:
                 idle += 1
@@ -5792,5 +5818,9 @@ if __name__ == "__main__":
             print(f"  Submitted so far: {after - start} new / {after} total.", flush=True)
             # Empty leftover rounds: do not hammer Naukri jobapi.
             time.sleep(12 if after <= before else 2)
+        try:
+            notify_daily_email.send()
+        except Exception as exc:
+            print(f"  Daily completion email failed ({exc}).", flush=True)
     else:
         main(limit=args.limit, headed=args.headed, wait_seconds=wait)

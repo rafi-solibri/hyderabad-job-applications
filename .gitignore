@@ -2,6 +2,7 @@
 data/.secrets.env
 .env
 .env.*
+.cursor/job-apply-secrets.env
 *.pem
 *.key
 credentials.json

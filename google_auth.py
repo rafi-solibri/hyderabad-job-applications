@@ -7,30 +7,60 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 EMAIL = "rafi.success@gmail.com"
-ENV_PATHS = (ROOT / ".env", ROOT / "data" / ".secrets.env")
+ENV_PATHS = (
+    ROOT / ".env",
+    ROOT / "data" / ".secrets.env",
+    ROOT / ".cursor" / "job-apply-secrets.env",
+    Path.home() / ".cursor" / "job-apply-secrets.env",
+)
 # Live prompt only. Gitignored — never commit this file.
 TWO_FA_PATH = ROOT / "data" / "applications" / "GOOGLE_2FA.md"
 _LAST_ANNOUNCED_2FA = ""
+_ENV_FILES_LOADED = False
+
+
+def _parse_env_line(raw: str) -> tuple[str, str] | None:
+    line = (raw or "").strip()
+    if not line or line.startswith("#"):
+        return None
+    if line.startswith("export "):
+        line = line[7:].strip()
+    if "=" not in line:
+        return None
+    name, val = line.split("=", 1)
+    name = name.strip()
+    val = val.strip().strip("'").strip('"')
+    if not name or not val:
+        return None
+    return name, val
+
+
+def load_all_env() -> None:
+    """Load gitignored secret files into os.environ (does not overwrite)."""
+    global _ENV_FILES_LOADED
+    if _ENV_FILES_LOADED:
+        return
+    _ENV_FILES_LOADED = True
+    for path in ENV_PATHS:
+        if not path.exists():
+            continue
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except OSError:
+            continue
+        for raw in lines:
+            parsed = _parse_env_line(raw)
+            if not parsed:
+                continue
+            name, val = parsed
+            os.environ.setdefault(name, val)
 
 
 def load_env_value(key: str) -> str:
     if os.environ.get(key):
         return os.environ[key]
-    for path in ENV_PATHS:
-        if not path.exists():
-            continue
-        for raw in path.read_text(encoding="utf-8").splitlines():
-            line = raw.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            name, val = line.split("=", 1)
-            val = val.strip().strip("'").strip('"')
-            if name.strip() == key and val:
-                os.environ[key] = val
-                return val
-            if name.strip() == "GOOGLE_EMAIL" and val:
-                os.environ.setdefault("GOOGLE_EMAIL", val)
-    return ""
+    load_all_env()
+    return os.environ.get(key) or ""
 
 
 def load_google_password() -> str:
