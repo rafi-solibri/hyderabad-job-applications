@@ -4745,5 +4745,23 @@
     "note": "Workday Apply Manually did not advance after Save and Continue (STUCK twice on .../apply/applyManually). Signed in with portal password #2. Do not hammer.",
     "status": "SKIPPED",
     "ts": "2026-08-25T15:46:57.262194+00:00"
+  },
+  "charlesschwab|r manager software development and engineering senior pl": {
+    "company": "Charles Schwab",
+    "title": "R Manager Software Development And Engineering Senior Pl",
+    "job_id": "99705569696",
+    "url": "https://www.schwabjobs.com/job/hyderabad/r-manager-software-development-and-engineering-senior-pl/33995/99705569696",
+    "note": "iCIMS identifier loop WAITING_EXPIRED on /login jobs/124303 (Phenom 99705569696)",
+    "status": "SKIPPED",
+    "ts": "2026-08-27T13:41:02.897136+00:00"
+  },
+  "99705569696": {
+    "company": "Charles Schwab",
+    "title": "R Manager Software Development And Engineering Senior Pl",
+    "job_id": "99705569696",
+    "url": "https://www.schwabjobs.com/job/hyderabad/r-manager-software-development-and-engineering-senior-pl/33995/99705569696",
+    "note": "iCIMS identifier loop WAITING_EXPIRED on /login jobs/124303 (Phenom 99705569696)",
+    "status": "SKIPPED",
+    "ts": "2026-08-27T13:41:02.897136+00:00"
   }
 }
