@@ -24,3 +24,5 @@
   https://statestreet.wd1.myworkdayjobs.com/en-US/Global/job/Hyderabad%2C-India/Senior-Software-Engineer--AVP_R-792706/apply/applyManually
 - **2026-08-26T05:53:31Z** SUBMITTED **D. E. Shaw** — Senior Technical Architect - ManCo
   https://www.instahyre.com/job-433983-senior-technical-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/
+- **2026-08-27T05:41:44Z** SUBMITTED **D. E. Shaw** — Principal Engineering Manager
+  https://www.instahyre.com/job-439369-principal-engineering-manager-at-d-e-hyderabad/

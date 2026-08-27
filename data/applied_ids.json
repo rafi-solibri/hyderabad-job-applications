@@ -7059,5 +7059,55 @@
     "url": "https://www.instahyre.com/job-433003-quality-engineering-lead-at-infosys-4-bangalore-hyderabad-pune/",
     "note": "already applied",
     "ts": "2026-08-26T06:15:19.158431+00:00"
+  },
+  "deshaw|principal engineering manager": {
+    "company": "D. E. Shaw",
+    "title": "Principal Engineering Manager",
+    "job_id": "439369",
+    "url": "https://www.instahyre.com/job-439369-principal-engineering-manager-at-d-e-hyderabad/",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-27T05:42:19.197856+00:00"
+  },
+  "439369": {
+    "company": "D. E. Shaw",
+    "title": "Principal Engineering Manager",
+    "job_id": "439369",
+    "url": "https://www.instahyre.com/job-439369-principal-engineering-manager-at-d-e-hyderabad/",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-27T05:42:19.197856+00:00"
+  },
+  "blueyonder|sr. software engineer": {
+    "company": "Blue Yonder",
+    "title": "Sr. Software Engineer",
+    "job_id": "423256",
+    "url": "https://www.instahyre.com/job-423256-sr-software-engineer-at-blue-yonder-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-27T05:47:38.779756+00:00"
+  },
+  "423256": {
+    "company": "Blue Yonder",
+    "title": "Sr. Software Engineer",
+    "job_id": "423256",
+    "url": "https://www.instahyre.com/job-423256-sr-software-engineer-at-blue-yonder-hyderabad/",
+    "note": "already applied",
+    "ts": "2026-08-27T05:47:38.779756+00:00"
+  },
+  "charlesschwab|senior manager software development and engineering pl": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Pl",
+    "job_id": "99493964016",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-pl/33995/99493964016",
+    "note": "iCIMS identifier loop — persist-skip, do not hammer",
+    "status": "SKIPPED",
+    "ts": "2026-08-27T06:03:46.424753+00:00"
+  },
+  "99493964016": {
+    "company": "Charles Schwab",
+    "title": "Senior Manager Software Development And Engineering Pl",
+    "job_id": "99493964016",
+    "url": "https://www.schwabjobs.com/job/hyderabad/senior-manager-software-development-and-engineering-pl/33995/99493964016",
+    "note": "iCIMS identifier loop — persist-skip, do not hammer",
+    "status": "SKIPPED",
+    "ts": "2026-08-27T06:03:46.424753+00:00"
   }
 }

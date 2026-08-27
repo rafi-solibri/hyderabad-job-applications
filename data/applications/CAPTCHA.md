@@ -13,3 +13,6 @@
   https://www.linkedin.com/checkpoint/challenge/AgHBG22JpM0M5gAAAaAgVsdI74qZrcKxn4v0fzTHp1LMI3fgcQIiTdfd450nzT8v1yJDyGGQS1HVhdTlvdrOBNvx00qbwg?ut=1CpIDyq7pqxso1
 - **NEED CAPTCHA** Kairos Technologies — .Net Full Stack Architect/Application Technical Architect
   https://www.naukri.com/job-listings-net-full-stack-architect-application-technical-architect-kairos-technologies-hyderabad-10-to-20-years-200826013808
+- **NEED CAPTCHA** Cubic Transportation Systems — Principal Software Engineer (.Net)
+  https://www.linkedin.com/checkpoint/challenge/AgGVVHl6CdfnlAAAAaBBxcNyxn52Qa6cs4klfowY-Yaroqg7vF5xCPcWVmchgiHXEyOrF-HY72FKVEufwQVsxlOrxWm18g
+  LinkedIn security verification on the 27 Aug 05:30 UTC daily VM. Solve in Desktop / Take control. Session-skip remaining LinkedIn until then.

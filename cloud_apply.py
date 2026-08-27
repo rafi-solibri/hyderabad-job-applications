@@ -49,6 +49,7 @@ TERMINAL_STATUSES = DONE_STATUSES | PARK_STATUSES | frozenset({"ERROR"})
 PARKED_CAPTCHA_URLS: set[str] = set()
 SESSION_SKIP_KEYS: set[str] = set()
 FOUNDIT_AKAMAI_BLOCKED = False
+NAUKRI_BOT_BLOCKED = False
 GOOGLE_SIGNIN_BLOCKED = False
 GOOGLE_2FA_PARKED = False
 LINKEDIN_RESTRICTED = False
@@ -1126,6 +1127,39 @@ def naukri_external_apply_label(label: str) -> bool:
             t,
         )
     )
+
+
+def naukri_bot_or_srp(page) -> bool:
+    """True when Naukri shows a bot interstitial or bounced off the JD onto an SRP."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "naukri.com" not in url:
+        return False
+    if "job-listings" in url or "/jobdescription" in url:
+        blob = ""
+        try:
+            blob = page_text(page)[:1800]
+        except Exception:
+            blob = ""
+        return bool(re.search(
+            r"let us know you.?re human|to continue your request please check",
+            blob,
+            re.I,
+        ))
+    if re.search(r"-jobs-in-|/jobs-in-|jobapi", url):
+        return True
+    blob = ""
+    try:
+        blob = page_text(page)[:1800]
+    except Exception:
+        blob = ""
+    return bool(re.search(
+        r"let us know you.?re human|to continue your request please check",
+        blob,
+        re.I,
+    ))
 
 
 def naukri_browse_only(page) -> bool:
@@ -4245,7 +4279,7 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
 
 
 def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, allow_aggregators: bool = True) -> dict:
-    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS, FOUNDIT_AKAMAI_BLOCKED
+    global ICIMS_LOGIN_CLICKED, ICIMS_CONTINUE_CLICKS, ICIMS_PASSWORD_SUBMITS, FOUNDIT_AKAMAI_BLOCKED, NAUKRI_BOT_BLOCKED
     url = job.get("apply_url") or apply_now.apply_url(job) or job.get("url") or ""
     kind = classify_url(url, job, allow_aggregators=allow_aggregators)
     row = {
@@ -4321,6 +4355,13 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             if not _aggregator_host(url or page.url or ""):
                 apply_now.persist_skipped(row, row["note"])
             print("  Board blocked this environment. Next leftover.", flush=True)
+            return row
+        if "naukri.com" in (url or page.url or "").lower() and naukri_bot_or_srp(page):
+            NAUKRI_BOT_BLOCKED = True
+            row["status"] = "STUCK"
+            row["final_url"] = page.url
+            row["note"] = "Naukri bot wall / SRP redirect this session"
+            print("  Naukri bot wall or search-results bounce. Skipping other Naukri leftovers this round.", flush=True)
             return row
         dismiss_overlays(page)
         try:
@@ -4741,6 +4782,11 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
             j for j in boards
             if "foundit.in" not in ((j.get("apply_url") or j.get("url") or "")).lower()
         ]
+    if NAUKRI_BOT_BLOCKED:
+        boards = [
+            j for j in boards
+            if "naukri.com" not in ((j.get("apply_url") or j.get("url") or "")).lower()
+        ]
     out: list[dict] = []
     b = c = 0
     while len(out) < (limit or 10**9) and (b < len(boards) or c < len(career)):
@@ -4852,7 +4898,20 @@ def launch_context(pw, headed: bool):
         if not signed_in:
             login_page = next((p for p in context.pages if "accounts.google.com" in (p.url or "")), None)
             try:
-                google_auth.sign_in_chrome(login_page or context.new_page())
+                twofa_open = bool(
+                    login_page
+                    and not login_page.is_closed()
+                    and google_auth.is_google_2fa_url(login_page.url or "")
+                )
+                if twofa_open:
+                    print(
+                        "  Google 2FA already on screen. Leaving that tab. "
+                        "Not restarting sign-in.",
+                        flush=True,
+                    )
+                    google_auth.announce_2fa_number(login_page, force=True)
+                else:
+                    google_auth.sign_in_chrome(login_page or context.new_page())
             except Exception as exc:
                 print(f"  Google sign-in skipped ({exc}).", flush=True)
         else:
@@ -5215,6 +5274,7 @@ def mark_google_2fa_parked(context=None, page=None, force: bool = False) -> bool
 
     Always persist/print the tap number (and again if Google changes it) so
     the owner can select it on mobile. force=True at the start of every run.
+    Yes-only prompts (no NN) still park the Google-login boards.
     """
     global GOOGLE_2FA_PARKED
     pages = []
@@ -5226,7 +5286,18 @@ def mark_google_2fa_parked(context=None, page=None, force: bool = False) -> bool
         except Exception:
             pages = []
     number = google_auth.announce_2fa_on_pages(pages, force=force)
-    if number:
+    has_2fa = bool(number)
+    if not has_2fa:
+        for p in pages or []:
+            try:
+                if p is None or p.is_closed():
+                    continue
+                if google_auth.is_google_2fa_url(p.url or ""):
+                    has_2fa = True
+                    break
+            except Exception:
+                continue
+    if has_2fa:
         if not GOOGLE_2FA_PARKED:
             print(
                 "  Google 2FA is parked (Nothing Phone / OnePlus). "
@@ -5234,6 +5305,13 @@ def mark_google_2fa_parked(context=None, page=None, force: bool = False) -> bool
                 "career portals and Foundit continue.",
                 flush=True,
             )
+            if not number:
+                print(
+                    "  Tap Yes on Nothing Phone (3) / OnePlus 7 Pro. "
+                    "Prompt number was not shown (Yes-only notification).",
+                    flush=True,
+                )
+                google_auth.write_2fa_notice("YES")
         GOOGLE_2FA_PARKED = True
         return True
     return GOOGLE_2FA_PARKED
@@ -5268,6 +5346,8 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
         ):
             continue
         if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in u:
+            continue
+        if NAUKRI_BOT_BLOCKED and "naukri.com" in u:
             continue
         out.append(job)
     return out
@@ -5477,7 +5557,7 @@ def main(
     wait_seconds: int = 0,
     send_email: bool = True,
 ) -> list[dict]:
-    global FOUNDIT_AKAMAI_BLOCKED
+    global FOUNDIT_AKAMAI_BLOCKED, NAUKRI_BOT_BLOCKED
     apply_now.BATCH = apply_now.load_all_discovered()
     form_memory.seed_from_learned()
     seed_parked_captcha_urls()
@@ -5554,6 +5634,8 @@ def main(
         if (
             not OWNER_PRESENT
             and not GOOGLE_SIGNIN_BLOCKED
+            and not GOOGLE_2FA_PARKED
+            and not NAUKRI_BOT_BLOCKED
             and _naukri_leftover_n(leftover_career_jobs(pending)) == 0
         ):
             print("  Searching Naukri in Chrome for Quick apply leftovers...", flush=True)
@@ -5647,6 +5729,12 @@ def main(
                     print("  LinkedIn checkpoint already parked. Skipping other LinkedIn leftovers this round.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
+                if GOOGLE_2FA_PARKED and any(
+                    x in apply_url for x in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
+                ):
+                    print("  Google 2FA parked. Skipping this board leftover.", flush=True)
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    continue
                 google_pw_create = google_password_create_parked(context=context)
                 if google_pw_create and any(
                     x in apply_url for x in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
@@ -5660,6 +5748,10 @@ def main(
                     continue
                 if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in apply_url:
                     print("  Foundit Akamai still blocking this Chrome session. Next leftover.", flush=True)
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                    continue
+                if NAUKRI_BOT_BLOCKED and "naukri.com" in apply_url:
+                    print("  Naukri bot wall this session. Next leftover.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 navigate = True
