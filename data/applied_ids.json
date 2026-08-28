@@ -4763,5 +4763,32 @@
     "note": "iCIMS identifier loop WAITING_EXPIRED on /login jobs/124303 (Phenom 99705569696)",
     "status": "SKIPPED",
     "ts": "2026-08-27T13:41:02.897136+00:00"
+  },
+  "92677198304": {
+    "company": "Charles Schwab",
+    "title": "Sr Manager Software Engineering Portfolio Management Technology",
+    "job_id": "92677198304",
+    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-engineering-portfolio-management-technology/33995/92677198304",
+    "note": "iCIMS identifier loop WAITING_EXPIRED on career-ind-schwab.icims.com/jobs/119171/.../login after returning-candidate password",
+    "status": "SKIPPED",
+    "ts": "2026-08-28T06:39:00.819965+00:00"
+  },
+  "charlesschwab|sr manager software engineering portfolio management technology": {
+    "company": "Charles Schwab",
+    "title": "Sr Manager Software Engineering Portfolio Management Technology",
+    "job_id": "92677198304",
+    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-engineering-portfolio-management-technology/33995/92677198304",
+    "note": "iCIMS identifier loop WAITING_EXPIRED on career-ind-schwab.icims.com/jobs/119171/.../login after returning-candidate password",
+    "status": "SKIPPED",
+    "ts": "2026-08-28T06:39:00.819965+00:00"
+  },
+  "119171": {
+    "company": "Charles Schwab",
+    "title": "Sr Manager Software Engineering Portfolio Management Technology",
+    "job_id": "92677198304",
+    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-engineering-portfolio-management-technology/33995/92677198304",
+    "note": "iCIMS identifier loop WAITING_EXPIRED on career-ind-schwab.icims.com/jobs/119171/.../login after returning-candidate password",
+    "status": "SKIPPED",
+    "ts": "2026-08-28T06:39:00.819965+00:00"
   }
 }
