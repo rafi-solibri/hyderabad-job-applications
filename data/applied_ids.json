@@ -7109,5 +7109,37 @@
     "note": "iCIMS identifier loop — persist-skip, do not hammer",
     "status": "SKIPPED",
     "ts": "2026-08-27T06:03:46.424753+00:00"
+  },
+  "438142": {
+    "company": "Helfie.AI",
+    "title": "Principal Engineer (Backend)",
+    "job_id": "438142",
+    "url": "https://www.instahyre.com/job-438142-principal-engineer-backend-at-helfie-hyderabad/",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-28T05:48:56.776772+00:00"
+  },
+  "helfieai|principal engineer (backend)": {
+    "company": "Helfie.AI",
+    "title": "Principal Engineer (Backend)",
+    "job_id": "438142",
+    "url": "https://www.instahyre.com/job-438142-principal-engineer-backend-at-helfie-hyderabad/",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-28T05:48:56.776772+00:00"
+  },
+  "milwaukeetool|senior software engineer - ai": {
+    "company": "Milwaukee Tool",
+    "title": "Senior Software Engineer - AI",
+    "job_id": "435073",
+    "url": "https://www.instahyre.com/job-435073-senior-software-engineer-ai-at-milwaukee-tool-bangalore-hyderabad-work-from-home/",
+    "note": "already applied",
+    "ts": "2026-08-28T05:52:31.585225+00:00"
+  },
+  "435073": {
+    "company": "Milwaukee Tool",
+    "title": "Senior Software Engineer - AI",
+    "job_id": "435073",
+    "url": "https://www.instahyre.com/job-435073-senior-software-engineer-ai-at-milwaukee-tool-bangalore-hyderabad-work-from-home/",
+    "note": "already applied",
+    "ts": "2026-08-28T05:52:31.585225+00:00"
   }
 }

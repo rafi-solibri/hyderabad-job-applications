@@ -22,10 +22,11 @@
     "job_id": "58547222",
     "apply_url": "https://www.linkedin.com/jobs/view/4438627255/",
     "ok": false,
-    "status": "CAPTCHA",
-    "note": "parked for owner to solve later",
-    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgHBG22JpM0M5gAAAaAgVsdI74qZrcKxn4v0fzTHp1LMI3fgcQIiTdfd450nzT8v1yJDyGGQS1HVhdTlvdrOBNvx00qbwg?ut=1CpIDyq7pqxso1",
-    "ts": "2026-08-20T18:02:29.081942+00:00"
+    "status": "STUCK",
+    "note": "no page progress — next job",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgG9Viib0b19KQAAAaBG7v6hOIQy6nm3GshDOfoR-Ga7-VLYV9-PlVPcoA5l2LEHUDU8u-RIA6fujOmNSnZbXLabK_fgPA?ut=3X6beY8DC2HYo1",
+    "ts": "2026-08-28T05:54:17.639511+00:00",
+    "fields_learned": 0
   },
   {
     "company": "Globallogic Ukraine",
@@ -84,7 +85,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/37598442",
-    "ts": "2026-08-26T05:49:58.314971+00:00"
+    "ts": "2026-08-28T05:47:46.813639+00:00"
   },
   {
     "company": "wonderbiz technologies pvt.",
@@ -684,12 +685,11 @@
     "ats": "Instahyre",
     "job_id": "438142",
     "apply_url": "https://www.instahyre.com/job-438142-principal-engineer-backend-at-helfie-hyderabad/",
-    "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 25s; learned 0 fields",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "Simplify Copilot",
     "final_url": "https://www.instahyre.com/job-438142-principal-engineer-backend-at-helfie-hyderabad/",
-    "ts": "2026-08-26T05:57:34.701552+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-28T05:48:22.223666+00:00"
   },
   {
     "company": "Coupang",
@@ -703,7 +703,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 25s; learned 0 fields",
     "final_url": "https://www.instahyre.com/job-439017-senior-staff-software-engineer-iam-at-coupang-bangalore-hyderabad/",
-    "ts": "2026-08-26T06:01:09.803079+00:00",
+    "ts": "2026-08-28T05:48:57.714290+00:00",
     "fields_learned": 0
   },
   {
@@ -985,9 +985,9 @@
     "apply_url": "https://www.naukri.com/job-listings-immediate-hiring-senior-net-developer-hyd-7-15-yrs-walkin-incedo-hyderabad-7-to-12-years-200826016501",
     "ok": false,
     "status": "STUCK",
-    "note": "Naukri browse-other-jobs / no Quick apply",
-    "final_url": "https://www.naukri.com/job-listings-immediate-hiring-senior-net-developer-hyd-7-15-yrs-walkin-incedo-hyderabad-7-to-12-years-200826016501",
-    "ts": "2026-08-26T05:44:30.853921+00:00"
+    "note": "Naukri bot wall / SRP redirect this session",
+    "final_url": "https://www.naukri.com/senior-dot-net-developer-jobs-in-hyderabad-secunderabad?expJD=true",
+    "ts": "2026-08-28T05:47:26.571110+00:00"
   },
   {
     "company": "Innova Solutions",
@@ -2925,7 +2925,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 25s; learned 0 fields",
     "final_url": "https://www.instahyre.com/job-438391-senior-staff-software-engineer-at-uber-hyderabad/",
-    "ts": "2026-08-26T06:02:54.607086+00:00",
+    "ts": "2026-08-28T05:50:42.167931+00:00",
     "fields_learned": 0
   },
   {
@@ -3008,12 +3008,11 @@
     "ats": "Instahyre",
     "job_id": "435073",
     "apply_url": "https://www.instahyre.com/job-435073-senior-software-engineer-ai-at-milwaukee-tool-bangalore-hyderabad-work-from-home/",
-    "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 25s; learned 0 fields",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
     "final_url": "https://www.instahyre.com/job-435073-senior-software-engineer-ai-at-milwaukee-tool-bangalore-hyderabad-work-from-home/",
-    "ts": "2026-08-26T06:08:17.146575+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-28T05:52:26.898170+00:00"
   },
   {
     "company": "Postman",
@@ -3027,7 +3026,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 25s; learned 0 fields",
     "final_url": "https://www.instahyre.com/job-438500-senior-software-engineer-at-postman-hyderabad/",
-    "ts": "2026-08-26T06:09:59.069867+00:00",
+    "ts": "2026-08-28T05:52:32.523372+00:00",
     "fields_learned": 0
   },
   {

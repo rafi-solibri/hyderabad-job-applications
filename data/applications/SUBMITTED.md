@@ -26,3 +26,5 @@
   https://www.instahyre.com/job-433983-senior-technical-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/
 - **2026-08-27T05:41:44Z** SUBMITTED **D. E. Shaw** — Principal Engineering Manager
   https://www.instahyre.com/job-439369-principal-engineering-manager-at-d-e-hyderabad/
+- **2026-08-28T05:48:22Z** SUBMITTED **Helfie.AI** — Principal Engineer (Backend)
+  https://www.instahyre.com/job-438142-principal-engineer-backend-at-helfie-hyderabad/
