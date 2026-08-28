@@ -300,7 +300,13 @@ def already_applied_visible(page) -> bool:
         blob = page_text(page)[:3000]
     except Exception:
         blob = ""
-    return bool(re.search(r"application sent|already applied|you previously applied|#already-applied", blob, re.I))
+    return bool(re.search(
+        r"application sent|already applied|you previously applied|#already-applied|"
+        r"you have already applied|application has been sent|"
+        r"successfully applied to this",
+        blob,
+        re.I,
+    ))
 
 
 def linkedin_account_restricted(page) -> bool:
@@ -780,10 +786,23 @@ def try_board_google_signin(page) -> str:
     if _google_chooser_pages(page):
         google_auth.fill_google_password_challenges(page)
         return "ok"
-    if not any(x in url for x in ("/signup", "/login", "/uas/login", "cold-join", "auth", "checkpoint", "/register")):
+    loginish = any(
+        x in url
+        for x in (
+            "/signup", "/login", "/uas/login", "cold-join", "auth",
+            "checkpoint", "/register", "nlogin", "accounts.google.com",
+        )
+    )
+    if not loginish:
         try:
-            n = page.get_by_role("button", name=re.compile(r"google", re.I)).count()
-            n += page.get_by_role("link", name=re.compile(r"google", re.I)).count()
+            n = page.get_by_role(
+                "button",
+                name=re.compile(r"(continue|sign\s*in|sign\s*up|log\s*in).{0,20}google", re.I),
+            ).count()
+            n += page.get_by_role(
+                "link",
+                name=re.compile(r"(continue|sign\s*in|sign\s*up|log\s*in).{0,20}google", re.I),
+            ).count()
             if not n:
                 return "skip"
         except Exception:
@@ -791,17 +810,23 @@ def try_board_google_signin(page) -> str:
     if getattr(page, "_google_signin_clicked", False):
         click_google_account_chooser(page)
         return "ok"
-    for name in (
+    names = [
         "Continue with Google",
         "Sign in with Google",
         "Sign in using Google",
-        "Google",
-    ):
+        "Login with Google",
+        "Log in with Google",
+        "Sign up with Google",
+    ]
+    # Bare "Google" matches similar-jobs company cards on Instahyre JDs.
+    if loginish and "instahyre.com" not in url:
+        names.append("Google")
+    for name in names:
         for role in ("button", "link"):
             try:
-                loc = page.get_by_role(role, name=re.compile(rf"{re.escape(name)}", re.I)).first
+                loc = page.get_by_role(role, name=re.compile(rf"^{re.escape(name)}$", re.I)).first
                 if not loc.count():
-                    loc = page.get_by_text(re.compile(name, re.I)).first
+                    loc = page.get_by_role(role, name=re.compile(rf"{re.escape(name)}", re.I)).first
                 if loc.count() and loc.is_visible():
                     loc.click(timeout=2500)
                     print(f"  Clicked '{name}' on the job board.", flush=True)
@@ -1059,36 +1084,37 @@ def _looks_like_copilot(loc) -> bool:
         return False
 
 
-def click_instahyre_apply(page) -> str:
-    """Instahyre's header Apply ignores synthetic clicks — use a real mouse click."""
-    try:
-        url = (page.url or "").lower()
-    except Exception:
-        return ""
-    if "instahyre.com" not in url or "/job-" not in url:
-        return ""
-    if already_applied_visible(page):
-        return ""
-    try:
-        box = page.evaluate(
-            """() => {
-              const hits = [];
-              for (const el of document.querySelectorAll('a, button')) {
-                const t = ((el.innerText || '') + '').replace(/\\s+/g, ' ').trim();
-                if (!/^apply( to .+)?$/i.test(t)) continue;
-                const r = el.getBoundingClientRect();
-                if (r.width < 50 || r.height < 22) continue;
-                if (r.y < 60 || r.y > 340) continue;
-                hits.push({x: r.x, y: r.y, w: r.width, h: r.height, t});
-              }
-              hits.sort((a, b) => a.y - b.y || b.w - a.w);
-              return hits[0] || null;
-            }"""
-        )
-    except Exception:
-        box = None
-    if not box:
-        return ""
+INSTAHYRE_APPLY_HITS_JS = r"""() => {
+  const hits = [];
+  const labelOf = (el) => ((el.innerText || el.value || el.getAttribute('aria-label') || el.title || '') + '')
+    .replace(/\s+/g, ' ').trim();
+  const nodes = document.querySelectorAll(
+    'a, button, [role="button"], input[type=button], input[type=submit]'
+  );
+  for (const el of nodes) {
+    const t = labelOf(el);
+    if (!t || t.length > 48) continue;
+    if (/^applied$/i.test(t) || /already applied/i.test(t)) continue;
+    if (!/^(apply( to .+)?|apply now|confirm|yes,? apply!?|submit application|send application)$/i.test(t)) {
+      continue;
+    }
+    const r = el.getBoundingClientRect();
+    const st = window.getComputedStyle(el);
+    if (st.visibility === 'hidden' || st.display === 'none' || Number(st.opacity) === 0) continue;
+    if (r.width < 40 || r.height < 18) continue;
+    if (r.bottom < 0 || r.top > window.innerHeight + 40) continue;
+    const inDialog = !!(el.closest('[role="dialog"], .modal, .dialog, [class*="modal"], [class*="popup"], [class*="overlay"], [class*="application"]'));
+    hits.push({
+      x: r.x, y: r.y, w: r.width, h: r.height, t,
+      inDialog,
+      header: !inDialog && r.y >= 40 && r.y <= 420,
+    });
+  }
+  return hits;
+}"""
+
+
+def _instahyre_screen_click(page, box: dict) -> None:
     try:
         info = page.evaluate(
             """() => ({
@@ -1105,13 +1131,68 @@ def click_instahyre_apply(page) -> str:
         (info.get("sx") or 0) + box["x"] + box["w"] / 2,
         (info.get("sy") or 0) + chrome_top + box["y"] + box["h"] / 2,
     )
-    label = (box.get("t") or "Apply").strip()[:40]
-    print(f"  Clicked Instahyre '{label}'.", flush=True)
+
+
+def _instahyre_pick_hit(hits: list[dict], prefer_modal: bool) -> dict | None:
+    if not hits:
+        return None
+    dialogs = [h for h in hits if h.get("inDialog")]
+    headers = [h for h in hits if h.get("header")]
+    rest = [h for h in hits if not h.get("inDialog") and not h.get("header")]
+    if prefer_modal:
+        # Overlay Apply is often a plain button below the header, not role=dialog.
+        pool = dialogs or rest or headers
+    else:
+        pool = headers or dialogs or rest
+
+    def key(h):
+        t = h.get("t") or ""
+        confirm = 0 if re.search(r"confirm|yes", t, re.I) else 1
+        y = h.get("y") or 0
+        return (confirm, -y if prefer_modal else y)
+
+    pool = sorted(pool, key=key)
+    return pool[0] if pool else None
+
+
+def click_instahyre_apply(page) -> str:
+    """Instahyre header Apply plus the confirm modal. Synthetic clicks are ignored."""
     try:
-        page.wait_for_timeout(2200)
+        url = (page.url or "").lower()
     except Exception:
-        pass
-    return label
+        return ""
+    if "instahyre.com" not in url or "/job-" not in url:
+        return ""
+    if already_applied_visible(page):
+        return ""
+    last = ""
+    for prefer_modal in (False, True, True):
+        if already_applied_visible(page) or is_success(page):
+            return last or "Applied"
+        try:
+            hits = page.evaluate(INSTAHYRE_APPLY_HITS_JS) or []
+        except Exception:
+            hits = []
+        box = _instahyre_pick_hit(hits, prefer_modal=prefer_modal)
+        if not box:
+            if last:
+                break
+            if hits:
+                print(f"  Instahyre apply hits unused: {[(h.get('t'), h.get('y'), h.get('inDialog')) for h in hits][:8]}", flush=True)
+            continue
+        _instahyre_screen_click(page, box)
+        last = (box.get("t") or "Apply").strip()[:40]
+        print(f"  Clicked Instahyre '{last}'.", flush=True)
+        try:
+            page.wait_for_timeout(1800)
+        except Exception:
+            pass
+        try:
+            try_board_google_signin(page)
+            click_google_account_chooser(page)
+        except Exception:
+            pass
+    return last
 
 
 def naukri_external_apply_label(label: str) -> bool:
@@ -1129,27 +1210,14 @@ def naukri_external_apply_label(label: str) -> bool:
     )
 
 
-def naukri_bot_or_srp(page) -> bool:
-    """True when Naukri shows a bot interstitial or bounced off the JD onto an SRP."""
+def naukri_human_challenge(page) -> bool:
+    """True only for the bot interstitial — not an SRP bounce of one expired JD."""
     try:
         url = (page.url or "").lower()
     except Exception:
         url = ""
     if "naukri.com" not in url:
         return False
-    if "job-listings" in url or "/jobdescription" in url:
-        blob = ""
-        try:
-            blob = page_text(page)[:1800]
-        except Exception:
-            blob = ""
-        return bool(re.search(
-            r"let us know you.?re human|to continue your request please check",
-            blob,
-            re.I,
-        ))
-    if re.search(r"-jobs-in-|/jobs-in-|jobapi", url):
-        return True
     blob = ""
     try:
         blob = page_text(page)[:1800]
@@ -1160,6 +1228,256 @@ def naukri_bot_or_srp(page) -> bool:
         blob,
         re.I,
     ))
+
+
+def naukri_srp_bounce(page) -> bool:
+    """True when the JD redirected onto a search-results URL."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        return False
+    if "naukri.com" not in url:
+        return False
+    if "job-listings" in url or "/jobdescription" in url:
+        return False
+    return bool(re.search(r"-jobs-in-|/jobs-in-|/jobapi", url))
+
+
+def naukri_bot_or_srp(page) -> bool:
+    """True when Naukri shows a bot interstitial or bounced off the JD onto an SRP."""
+    return naukri_human_challenge(page) or naukri_srp_bounce(page)
+
+
+def naukri_logged_in(page) -> bool:
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        return False
+    if "naukri.com" not in url:
+        return False
+    if naukri_human_challenge(page):
+        return False
+    if "/mnjuser/" in url or "mnjuser/homepage" in url:
+        return True
+    blob = ""
+    try:
+        blob = page_text(page)[:2500]
+    except Exception:
+        blob = ""
+    if re.search(r"\blog\s*out\b|my naukri|update profile|view profile|mnjuser", blob, re.I):
+        return True
+    try:
+        if page.locator("a[href*='mnjuser'], a[href*='logout']").count():
+            return True
+    except Exception:
+        pass
+    try:
+        login = page.get_by_role("link", name=re.compile(r"^login$", re.I)).first
+        if login.count() and login.is_visible():
+            return False
+    except Exception:
+        pass
+    return False
+
+
+def instahyre_logged_in(page) -> bool:
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        return False
+    if "instahyre.com" not in url:
+        return False
+    if "/candidate/" in url or "opportunities" in url:
+        return True
+    blob = ""
+    try:
+        blob = page_text(page)[:2500]
+    except Exception:
+        blob = ""
+    if re.search(r"\blog\s*out\b|my profile|candidate dashboard|edit profile", blob, re.I):
+        return True
+    try:
+        login = page.get_by_role("link", name=re.compile(r"^login$", re.I)).first
+        if login.count() and login.is_visible():
+            return False
+    except Exception:
+        pass
+    return False
+
+
+def ensure_naukri_google_session(page) -> str:
+    """Log into Naukri with the open Gmail session so JD Quick apply is not a bot wall."""
+    global NAUKRI_BOT_BLOCKED
+    if GOOGLE_2FA_PARKED or GOOGLE_SIGNIN_BLOCKED:
+        return "parked"
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    jd_url = ""
+    if "naukri.com" in url and ("job-listings" in url or "jobdescription" in url):
+        jd_url = page.url or ""
+    if naukri_logged_in(page):
+        print("  Naukri session already logged in.", flush=True)
+        NAUKRI_BOT_BLOCKED = False
+        return "ok"
+    try:
+        loc = page.get_by_role(
+            "button",
+            name=re.compile(r"(continue|sign\s*in|log\s*in).{0,20}google", re.I),
+        ).first
+        if loc.count() and loc.is_visible():
+            loc.click(timeout=2500)
+            print("  Clicked Naukri Google login on this page.", flush=True)
+            page.wait_for_timeout(2800)
+            click_google_account_chooser(page)
+            page.wait_for_timeout(2500)
+            if mark_google_2fa_parked(page=page):
+                return "2fa"
+            if naukri_logged_in(page):
+                NAUKRI_BOT_BLOCKED = False
+                return "ok"
+    except Exception:
+        pass
+    print("  Opening Naukri Google login...", flush=True)
+    try:
+        page.goto("https://www.naukri.com/nlogin/login", wait_until="domcontentloaded", timeout=35000)
+        page.wait_for_timeout(1600)
+    except Exception as exc:
+        print(f"  Naukri login page failed ({exc}).", flush=True)
+        return "skip"
+    dismiss_overlays(page)
+    if naukri_logged_in(page):
+        NAUKRI_BOT_BLOCKED = False
+        if jd_url:
+            try:
+                page.goto(jd_url, wait_until="domcontentloaded", timeout=35000)
+                page.wait_for_timeout(800)
+            except Exception:
+                pass
+        return "ok"
+    clicked = False
+    for sel in (
+        "a.socialbtn.google",
+        ".socialbtn.google",
+        "a:has-text('Sign in with Google')",
+    ):
+        try:
+            loc = page.locator(sel).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=2500, force=True)
+                print("  Clicked Naukri 'Sign in with Google'.", flush=True)
+                clicked = True
+                page.wait_for_timeout(2800)
+                break
+        except Exception:
+            continue
+    if not clicked:
+        try_board_google_signin(page)
+    click_google_account_chooser(page)
+    page.wait_for_timeout(2500)
+    if mark_google_2fa_parked(page=page):
+        return "2fa"
+    try:
+        page.wait_for_url(re.compile(r"mnjuser|naukri.com/(?!nlogin)"), timeout=8000)
+    except Exception:
+        pass
+    logged = naukri_logged_in(page)
+    if not logged:
+        try:
+            u = (page.url or "").lower()
+        except Exception:
+            u = ""
+        logged = "naukri.com" in u and "nlogin" not in u and not naukri_human_challenge(page)
+    if logged:
+        print("  Naukri Google login succeeded.", flush=True)
+        NAUKRI_BOT_BLOCKED = False
+        if jd_url:
+            try:
+                page.goto(jd_url, wait_until="domcontentloaded", timeout=35000)
+                page.wait_for_timeout(800)
+            except Exception:
+                pass
+        return "ok"
+    print("  Naukri Google login did not finish.", flush=True)
+    if jd_url:
+        try:
+            page.goto(jd_url, wait_until="domcontentloaded", timeout=35000)
+            page.wait_for_timeout(800)
+        except Exception:
+            pass
+    return "skip"
+
+
+def ensure_instahyre_google_session(page) -> str:
+    """Log into Instahyre with the open Gmail session so Apply/Confirm can submit."""
+    if GOOGLE_2FA_PARKED or GOOGLE_SIGNIN_BLOCKED:
+        return "parked"
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    job_url = page.url if "instahyre.com" in url and "/job-" in url else ""
+    if instahyre_logged_in(page):
+        print("  Instahyre session already logged in.", flush=True)
+        return "ok"
+    print("  Opening Instahyre Google login...", flush=True)
+    try:
+        page.goto("https://www.instahyre.com/", wait_until="domcontentloaded", timeout=35000)
+        page.wait_for_timeout(1500)
+    except Exception as exc:
+        print(f"  Instahyre homepage failed ({exc}).", flush=True)
+        return "skip"
+    dismiss_overlays(page)
+    if instahyre_logged_in(page):
+        print("  Instahyre session already logged in.", flush=True)
+        if job_url:
+            try:
+                page.goto(job_url, wait_until="domcontentloaded", timeout=35000)
+            except Exception:
+                pass
+        return "ok"
+    for name in ("Login", "Log in", "Sign in"):
+        try:
+            loc = page.get_by_role("link", name=re.compile(rf"^{name}$", re.I)).first
+            if not loc.count():
+                loc = page.get_by_role("button", name=re.compile(rf"^{name}$", re.I)).first
+            if loc.count() and loc.is_visible():
+                loc.click(timeout=2000)
+                page.wait_for_timeout(900)
+                break
+        except Exception:
+            continue
+    try_board_google_signin(page)
+    click_google_account_chooser(page)
+    page.wait_for_timeout(2800)
+    if mark_google_2fa_parked(page=page):
+        return "2fa"
+    if instahyre_logged_in(page):
+        print("  Instahyre Google login succeeded.", flush=True)
+        if job_url:
+            try:
+                page.goto(job_url, wait_until="domcontentloaded", timeout=35000)
+            except Exception:
+                pass
+        return "ok"
+    print("  Instahyre Google login did not finish.", flush=True)
+    return "skip"
+
+
+def warmup_google_login_boards(context) -> None:
+    """One Naukri + Instahyre Google login before the apply loop."""
+    page = None
+    try:
+        page = context.new_page()
+        ensure_naukri_google_session(page)
+        if GOOGLE_2FA_PARKED:
+            return
+        ensure_instahyre_google_session(page)
+    except Exception as exc:
+        print(f"  Board Google warmup failed ({exc}).", flush=True)
+    finally:
+        close_apply_page(page)
 
 
 def naukri_browse_only(page) -> bool:
@@ -1274,6 +1592,12 @@ def click_naukri_quick_apply(page) -> str:
                 b for b in dbg
                 if re.search(r"apply|interested", (b.get("t") or "") + " " + (b.get("id") or ""), re.I)
             ]
+            if not apply_btns:
+                apply_btns = [
+                    b for b in dbg
+                    if (b.get("w") or 0) >= 180 and (b.get("y") or 0) >= 600
+                    and not re.search(r"browse|login|register|search", b.get("t") or "", re.I)
+                ]
         except Exception as exc:
             print(f"  Naukri button dump failed ({exc}).", flush=True)
             apply_btns = []
@@ -4356,13 +4680,43 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 apply_now.persist_skipped(row, row["note"])
             print("  Board blocked this environment. Next leftover.", flush=True)
             return row
-        if "naukri.com" in (url or page.url or "").lower() and naukri_bot_or_srp(page):
-            NAUKRI_BOT_BLOCKED = True
-            row["status"] = "STUCK"
-            row["final_url"] = page.url
-            row["note"] = "Naukri bot wall / SRP redirect this session"
-            print("  Naukri bot wall or search-results bounce. Skipping other Naukri leftovers this round.", flush=True)
-            return row
+        if "naukri.com" in (url or page.url or "").lower():
+            if naukri_human_challenge(page) or not naukri_logged_in(page):
+                login = ensure_naukri_google_session(page)
+                if login == "ok":
+                    try:
+                        page.goto(url, wait_until="domcontentloaded", timeout=35000)
+                        page.wait_for_timeout(900)
+                    except Exception:
+                        pass
+                elif login == "2fa":
+                    row["status"] = "STUCK"
+                    row["final_url"] = page.url
+                    row["note"] = "Google 2FA parked during Naukri login"
+                    print("  Google 2FA during Naukri login. Next leftover.", flush=True)
+                    return row
+            if naukri_human_challenge(page):
+                NAUKRI_BOT_BLOCKED = True
+                row["status"] = "STUCK"
+                row["final_url"] = page.url
+                row["note"] = "Naukri bot wall this session"
+                print("  Naukri bot wall. Skipping other Naukri leftovers this round.", flush=True)
+                return row
+            if naukri_srp_bounce(page):
+                row["status"] = "STUCK"
+                row["final_url"] = page.url
+                row["note"] = "Naukri bounced to search results"
+                print("  Naukri JD bounced to search. Next leftover (other Naukri continue).", flush=True)
+                apply_now.persist_skipped(row, row["note"])
+                return row
+        if "instahyre.com" in (url or page.url or "").lower() and "/job-" in (url or page.url or "").lower():
+            if not instahyre_logged_in(page):
+                login = ensure_instahyre_google_session(page)
+                if login == "2fa":
+                    row["status"] = "STUCK"
+                    row["final_url"] = page.url
+                    row["note"] = "Google 2FA parked during Instahyre login"
+                    return row
         dismiss_overlays(page)
         try:
             if "foundit.in" in (url or "").lower() or "foundit.in" in (page.url or "").lower():
@@ -4401,13 +4755,14 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             return row
         last_url = page.url
         same_url_hits = 0
+        applied_before_clicks = already_applied_visible(page) or is_success(page)
         for _ in range(6):
             recover_wrong_board(page, job)
             dismiss_overlays(page)
             if is_success(page):
                 row["ok"] = True
                 row["status"] = "SUBMITTED"
-                row["note"] = "already applied"
+                row["note"] = "already applied" if applied_before_clicks else "submitted after Apply"
                 row["final_url"] = page.url
                 return row
             if on_application_form(page):
@@ -4465,6 +4820,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 row["status"] = "STUCK"
                 row["note"] = "Naukri browse-other-jobs / no Quick apply"
                 row["final_url"] = page.url
+                apply_now.persist_skipped(row, row["note"])
                 return row
 
         fill_identity(page)
@@ -4660,7 +5016,7 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         if "naukri.com" in u or "naukri.com" in job_u:
             stay = min(stay, 40) if not OWNER_PRESENT else stay
         if "instahyre.com/job-" in u:
-            stay = min(stay, 25)
+            stay = min(stay, 50)
         if linkedin_account_restricted(page) or linkedin_blocked_now():
             stay = 0
         if "foundit.in" in u and not OWNER_PRESENT and ("/login" in u or "rio/login" in u):
@@ -4761,11 +5117,13 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
         if "naukri.com" in u:
             return 0
-        if "foundit.in" in u:
+        if "instahyre.com" in u:
             return 1
-        if "indeed.com" in u:
+        if "foundit.in" in u:
             return 2
-        if "instahyre.com" in u or "cutshort" in u:
+        if "indeed.com" in u:
+            return 3
+        if "cutshort" in u:
             return 8
         if "linkedin.com" in u:
             return 9
@@ -5314,7 +5672,13 @@ def mark_google_2fa_parked(context=None, page=None, force: bool = False) -> bool
                 google_auth.write_2fa_notice("YES")
         GOOGLE_2FA_PARKED = True
         return True
-    return GOOGLE_2FA_PARKED
+    if GOOGLE_2FA_PARKED:
+        print(
+            "  Google 2FA prompt is gone. Unparking Naukri/LinkedIn/Indeed/Instahyre.",
+            flush=True,
+        )
+        GOOGLE_2FA_PARKED = False
+    return False
 
 
 def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
@@ -5617,6 +5981,10 @@ def main(
     with sync_playwright() as pw:
         browser, context, page = launch_context(pw, headed)
         mark_google_2fa_parked(context=context, page=page, force=True)
+        if headed and not GOOGLE_2FA_PARKED and not GOOGLE_SIGNIN_BLOCKED:
+            print("  Warming Naukri/Instahyre Google sessions from the signed-in Gmail profile...", flush=True)
+            warmup_google_login_boards(context)
+            mark_google_2fa_parked(context=context, page=page)
         if OWNER_PRESENT:
             open_blob = " ".join(
                 ((p.url or "") if not p.is_closed() else "")
@@ -5700,12 +6068,6 @@ def main(
                 mark_google_2fa_parked(context=context, page=page)
                 print(f"\n[{i}/{len(leftover)}] {job.get('company')}: {job.get('title')}", flush=True)
                 print("  Opening this application only. Will close it on submit, closed posting, or locked login.", flush=True)
-                try:
-                    job["resume_path"] = tailor_resume.for_job(job)
-                    print(f"  Tailored: {tailor_resume.CURRENT.get('headline')}", flush=True)
-                except Exception as exc:
-                    job["resume_path"] = RESUME
-                    print(f"  Tailor failed ({exc}); using architect resume.", flush=True)
                 apply_url = (job.get("apply_url") or job.get("url") or "").lower()
                 amazon_parked = any(
                     "passport.amazon.jobs" in ((p.url or "").lower())
@@ -5733,14 +6095,12 @@ def main(
                     x in apply_url for x in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
                 ):
                     print("  Google 2FA parked. Skipping this board leftover.", flush=True)
-                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 google_pw_create = google_password_create_parked(context=context)
                 if google_pw_create and any(
                     x in apply_url for x in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
                 ):
                     print("  Google change-password is parked. Not creating a password. Next leftover.", flush=True)
-                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 if any(x in apply_url for x in ("cutshort.io", "cutshort.com")):
                     print("  Cutshort login is blocked. Next leftover.", flush=True)
@@ -5748,12 +6108,16 @@ def main(
                     continue
                 if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in apply_url:
                     print("  Foundit Akamai still blocking this Chrome session. Next leftover.", flush=True)
-                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
                 if NAUKRI_BOT_BLOCKED and "naukri.com" in apply_url:
                     print("  Naukri bot wall this session. Next leftover.", flush=True)
-                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
+                try:
+                    job["resume_path"] = tailor_resume.for_job(job)
+                    print(f"  Tailored: {tailor_resume.CURRENT.get('headline')}", flush=True)
+                except Exception as exc:
+                    job["resume_path"] = RESUME
+                    print(f"  Tailor failed ({exc}); using architect resume.", flush=True)
                 navigate = True
                 if OWNER_PRESENT:
                     open_page = pick_open_apply_page(context)
@@ -5769,7 +6133,12 @@ def main(
                     page = context.new_page()
                 row = apply_one(page, job, wait_seconds=wait_seconds, navigate=navigate)
                 results.append(row)
-                SESSION_SKIP_KEYS.update(apply_now.job_match_keys(row) | apply_now.job_match_keys(job))
+                # Retry WAITING_EXPIRED / STUCK on the next leftover pass after a fix.
+                if row.get("ok") or row.get("status") in {
+                    "SUBMITTED", "CLOSED", "AUTH_FAILED", "CAPTCHA",
+                    "OWNER_SIGNIN", "NEED_INPUT",
+                }:
+                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(row) | apply_now.job_match_keys(job))
                 if row.get("ok") and row.get("status") == "SUBMITTED":
                     apply_now.persist_applied(row, row.get("note") or "cloud_apply submitted")
                     note = (row.get("note") or "").lower()

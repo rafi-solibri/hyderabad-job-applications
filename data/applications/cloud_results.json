@@ -24,8 +24,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "no page progress — next job",
-    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgG9Viib0b19KQAAAaBG7v6hOIQy6nm3GshDOfoR-Ga7-VLYV9-PlVPcoA5l2LEHUDU8u-RIA6fujOmNSnZbXLabK_fgPA?ut=3X6beY8DC2HYo1",
-    "ts": "2026-08-28T05:54:17.639511+00:00",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgHq1pol1yYijAAAAaBHCXesB6KYD3WNam6FtKk6F87PnVpadJl3MsMkknzyaxv49Day9Opql8R1Gcy4m9dpCZxULM6BNA?ut=3v6awkTJ6vHYo1",
+    "ts": "2026-08-28T06:23:12.581265+00:00",
     "fields_learned": 0
   },
   {
@@ -85,7 +85,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/37598442",
-    "ts": "2026-08-28T05:47:46.813639+00:00"
+    "ts": "2026-08-28T06:22:56.697829+00:00"
   },
   {
     "company": "wonderbiz technologies pvt.",
@@ -699,12 +699,11 @@
     "ats": "Instahyre",
     "job_id": "439017",
     "apply_url": "https://www.instahyre.com/job-439017-senior-staff-software-engineer-iam-at-coupang-bangalore-hyderabad/",
-    "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 25s; learned 0 fields",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
     "final_url": "https://www.instahyre.com/job-439017-senior-staff-software-engineer-iam-at-coupang-bangalore-hyderabad/",
-    "ts": "2026-08-28T05:48:57.714290+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-28T06:19:57.425535+00:00"
   },
   {
     "company": "crunchyroll",
@@ -985,9 +984,9 @@
     "apply_url": "https://www.naukri.com/job-listings-immediate-hiring-senior-net-developer-hyd-7-15-yrs-walkin-incedo-hyderabad-7-to-12-years-200826016501",
     "ok": false,
     "status": "STUCK",
-    "note": "Naukri bot wall / SRP redirect this session",
+    "note": "Naukri bounced to search results",
     "final_url": "https://www.naukri.com/senior-dot-net-developer-jobs-in-hyderabad-secunderabad?expJD=true",
-    "ts": "2026-08-28T05:47:26.571110+00:00"
+    "ts": "2026-08-28T06:17:50.011012+00:00"
   },
   {
     "company": "Innova Solutions",
@@ -1029,7 +1028,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-senior-software-engineer-net-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-190826927772",
-    "ts": "2026-08-26T05:44:35.296738+00:00"
+    "ts": "2026-08-28T06:17:53.075073+00:00"
   },
   {
     "company": "Y&L Consulting",
@@ -1085,7 +1084,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-solution-architect-apex-2000-inc-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-8-to-13-years-240326508297",
-    "ts": "2026-08-26T05:44:39.308006+00:00"
+    "ts": "2026-08-28T06:17:57.017915+00:00"
   },
   {
     "company": "Axtria",
@@ -1113,7 +1112,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-technical-architect-dot-net-azilen-technologies-pvt-ltd-kolkata-mumbai-new-delhi-hyderabad-pune-chennai-bengaluru-3-to-5-years-190924502274",
-    "ts": "2026-08-26T05:46:03.850559+00:00"
+    "ts": "2026-08-28T06:18:01.067351+00:00"
   },
   {
     "company": "Backbase",
@@ -1239,7 +1238,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-solutions-architect-3-fedex-express-hyderabad-13-to-17-years-200826500580",
-    "ts": "2026-08-26T05:46:08.304342+00:00"
+    "ts": "2026-08-28T06:18:05.327998+00:00"
   },
   {
     "company": "Genpact",
@@ -1253,7 +1252,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-genpact-hiring-for-aws-solution-architect-genpact-kolkata-hyderabad-bengaluru-9-to-14-years-010925009067",
-    "ts": "2026-08-26T05:46:12.645101+00:00"
+    "ts": "2026-08-28T06:18:09.731824+00:00"
   },
   {
     "company": "Hexaware Technologies",
@@ -1505,7 +1504,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-10-to-15-years-200826503502",
-    "ts": "2026-08-26T05:47:20.700146+00:00"
+    "ts": "2026-08-28T06:18:14.050929+00:00"
   },
   {
     "company": "Tekskills",
@@ -1575,7 +1574,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-solution-architect-iam-ust-hyderabad-12-to-19-years-070826501682",
-    "ts": "2026-08-26T05:47:25.087362+00:00"
+    "ts": "2026-08-28T06:18:18.318216+00:00"
   },
   {
     "company": "Xanika Infotech",
@@ -1645,7 +1644,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-principal-software-engineer-clinical-data-foundation-amgen-inc-hyderabad-12-to-15-years-200726932678",
-    "ts": "2026-08-26T05:47:29.331821+00:00"
+    "ts": "2026-08-28T06:18:22.797338+00:00"
   },
   {
     "company": "Capgemini",
@@ -1687,7 +1686,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-principal-software-engineer-optum-global-solutions-india-private-limited-hyderabad-11-to-16-years-190826927566",
-    "ts": "2026-08-26T05:48:09.078830+00:00"
+    "ts": "2026-08-28T06:18:27.091256+00:00"
   },
   {
     "company": "Providence College Of Engineering",
@@ -1757,7 +1756,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-inviting-applications-for-genai-solution-architect-genpact-hyderabad-bengaluru-delhi-ncr-10-to-16-years-250226029446",
-    "ts": "2026-08-26T05:48:13.359630+00:00"
+    "ts": "2026-08-28T06:18:31.461873+00:00"
   },
   {
     "company": "Krazy Mantra It",
@@ -1883,7 +1882,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-staff-software-engineer-nomiso-india-hyderabad-12-to-15-years-200726922935",
-    "ts": "2026-08-26T05:48:17.647632+00:00"
+    "ts": "2026-08-28T06:18:36.066505+00:00"
   },
   {
     "company": "Sidram Technologies",
@@ -1981,7 +1980,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-senior-staff-software-engineer-agentic-platform-tide-software-hyderabad-0-to-5-years-170426503399",
-    "ts": "2026-08-26T05:48:21.881784+00:00"
+    "ts": "2026-08-28T06:18:40.341561+00:00"
   },
   {
     "company": "Trinet Group",
@@ -2416,7 +2415,7 @@
     "status": "STUCK",
     "note": "Naukri browse-other-jobs / no Quick apply",
     "final_url": "https://www.naukri.com/job-listings-lead-software-engineer-lloyds-technology-centre-india-hyderabad-10-to-15-years-060826503097",
-    "ts": "2026-08-26T05:48:26.294285+00:00"
+    "ts": "2026-08-28T06:18:44.641158+00:00"
   },
   {
     "company": "Logic Planet",
@@ -2582,9 +2581,9 @@
     "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-pa26itoffq3019-ss-c-technologies-hyderabad-7-to-14-years-120826503841",
     "ok": false,
     "status": "STUCK",
-    "note": "Naukri browse-other-jobs / no Quick apply",
+    "note": "Naukri company-site apply",
     "final_url": "https://www.naukri.com/job-listings-lead-software-engineer-pa26itoffq3019-ss-c-technologies-hyderabad-7-to-14-years-120826503841",
-    "ts": "2026-08-26T05:49:07.006348+00:00"
+    "ts": "2026-08-28T06:14:02.573696+00:00"
   },
   {
     "company": "Savantys Solutions",
@@ -2877,12 +2876,11 @@
     "ats": "Instahyre",
     "job_id": "440057",
     "apply_url": "https://www.instahyre.com/job-440057-principal-software-engineer-at-cibc-india-hyderabad/",
-    "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 25s; learned 0 fields",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
     "final_url": "https://www.instahyre.com/job-440057-principal-software-engineer-at-cibc-india-hyderabad/",
-    "ts": "2026-08-26T05:54:05.614711+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-28T06:19:08.900234+00:00"
   },
   {
     "company": "Helfie.AI",
@@ -2892,12 +2890,11 @@
     "ats": "Instahyre",
     "job_id": "440461",
     "apply_url": "https://www.instahyre.com/job-440461-principal-software-engineer-at-helfie-hyderabad/",
-    "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 25s; learned 0 fields",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
     "final_url": "https://www.instahyre.com/job-440461-principal-software-engineer-at-helfie-hyderabad/",
-    "ts": "2026-08-26T05:59:19.290133+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-28T06:19:29.793005+00:00"
   },
   {
     "company": "Coforge",
@@ -2921,12 +2918,11 @@
     "ats": "Instahyre",
     "job_id": "438391",
     "apply_url": "https://www.instahyre.com/job-438391-senior-staff-software-engineer-at-uber-hyderabad/",
-    "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 25s; learned 0 fields",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
     "final_url": "https://www.instahyre.com/job-438391-senior-staff-software-engineer-at-uber-hyderabad/",
-    "ts": "2026-08-28T05:50:42.167931+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-28T06:20:38.748879+00:00"
   },
   {
     "company": "Tide",
@@ -3022,12 +3018,11 @@
     "ats": "Instahyre",
     "job_id": "438500",
     "apply_url": "https://www.instahyre.com/job-438500-senior-software-engineer-at-postman-hyderabad/",
-    "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 25s; learned 0 fields",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
     "final_url": "https://www.instahyre.com/job-438500-senior-software-engineer-at-postman-hyderabad/",
-    "ts": "2026-08-28T05:52:32.523372+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-28T06:21:34.163960+00:00"
   },
   {
     "company": "Socure",
@@ -3037,12 +3032,11 @@
     "ats": "Instahyre",
     "job_id": "388394",
     "apply_url": "https://www.instahyre.com/job-388394-senior-software-engineer-at-socure-bangalore-hyderabad-work-from-home/",
-    "ok": false,
-    "status": "WAITING_EXPIRED",
-    "note": "waited 25s; learned 0 fields",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
     "final_url": "https://www.instahyre.com/job-388394-senior-software-engineer-at-socure-bangalore-hyderabad-work-from-home/",
-    "ts": "2026-08-26T06:11:43.982725+00:00",
-    "fields_learned": 0
+    "ts": "2026-08-28T06:21:54.772163+00:00"
   },
   {
     "company": "Swimlane",
@@ -3115,5 +3109,117 @@
     "final_url": "https://www.linkedin.com/checkpoint/challenge/AgGqapNIx2sMdgAAAaA8tYYf0-53pKhvHufiOxbAPXbeftLmfdPkBhFEt8Kt2z7gg0UIfyrOJ_q_x0aAkyky5vG7HTJGCA?ut=1xnERrLHRnFco1",
     "ts": "2026-08-26T06:15:20.716470+00:00",
     "fields_learned": 0
+  },
+  {
+    "company": "Deloitte",
+    "title": "Application Architect - Data Security and Cloud",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-440365-application-architect-data-security-and-cloud-at-deloitte-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "440365",
+    "apply_url": "https://www.instahyre.com/job-440365-application-architect-data-security-and-cloud-at-deloitte-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-440365-application-architect-data-security-and-cloud-at-deloitte-hyderabad/",
+    "ts": "2026-08-28T06:18:47.969270+00:00"
+  },
+  {
+    "company": "ArcelorMittal",
+    "title": "Staff Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-429639-staff-software-engineer-at-arcelormittal-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "429639",
+    "apply_url": "https://www.instahyre.com/job-429639-staff-software-engineer-at-arcelormittal-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-429639-staff-software-engineer-at-arcelormittal-hyderabad/",
+    "ts": "2026-08-28T06:19:50.424764+00:00"
+  },
+  {
+    "company": "Petco",
+    "title": "Staff Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-439205-staff-software-engineer-at-petco-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439205",
+    "apply_url": "https://www.instahyre.com/job-439205-staff-software-engineer-at-petco-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-439205-staff-software-engineer-at-petco-hyderabad/",
+    "ts": "2026-08-28T06:20:18.050368+00:00"
+  },
+  {
+    "company": "Cubic Corporation",
+    "title": "Software Engineering Manager",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-440535-software-engineering-manager-at-cubic-corporation-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "440535",
+    "apply_url": "https://www.instahyre.com/job-440535-software-engineering-manager-at-cubic-corporation-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-440535-software-engineering-manager-at-cubic-corporation-hyderabad/",
+    "ts": "2026-08-28T06:20:59.413043+00:00"
+  },
+  {
+    "company": "Qapita",
+    "title": "Lead Software Development Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-437269-lead-software-development-engineer-at-qapita-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "437269",
+    "apply_url": "https://www.instahyre.com/job-437269-lead-software-development-engineer-at-qapita-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-437269-lead-software-development-engineer-at-qapita-hyderabad/",
+    "ts": "2026-08-28T06:21:06.448144+00:00"
+  },
+  {
+    "company": "Mobile Programming",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-440681-senior-software-engineer-at-mobile-programming-2-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "440681",
+    "apply_url": "https://www.instahyre.com/job-440681-senior-software-engineer-at-mobile-programming-2-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-440681-senior-software-engineer-at-mobile-programming-2-hyderabad/",
+    "ts": "2026-08-28T06:21:13.513142+00:00"
+  },
+  {
+    "company": "ansrsource",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-440796-senior-software-engineer-at-ansrsource-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "440796",
+    "apply_url": "https://www.instahyre.com/job-440796-senior-software-engineer-at-ansrsource-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-440796-senior-software-engineer-at-ansrsource-hyderabad/",
+    "ts": "2026-08-28T06:22:15.404141+00:00"
+  },
+  {
+    "company": "ansrsource",
+    "title": "Senior Software Engineer II",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-440698-senior-software-engineer-ii-at-ansrsource-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "440698",
+    "apply_url": "https://www.instahyre.com/job-440698-senior-software-engineer-ii-at-ansrsource-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.instahyre.com/job-440698-senior-software-engineer-ii-at-ansrsource-hyderabad/",
+    "ts": "2026-08-28T06:22:36.039854+00:00"
   }
 ]
