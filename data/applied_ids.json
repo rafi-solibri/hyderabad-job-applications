@@ -7635,5 +7635,590 @@
     "url": "https://www.instahyre.com/job-440698-senior-software-engineer-ii-at-ansrsource-hyderabad/",
     "note": "already applied",
     "ts": "2026-08-28T06:22:55.768245+00:00"
+  },
+  "53231369": {
+    "company": "Thermo Fisher Scientific",
+    "title": "Staff Engineer Mechanical",
+    "job_id": "53231369",
+    "url": "https://jobs.thermofisher.com/global/en/job/R-01352456/Staff-Engineer-Mechanical",
+    "note": "mechanical / not software",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.318911+00:00"
+  },
+  "thermofisherscientific|staff engineer mechanical": {
+    "company": "Thermo Fisher Scientific",
+    "title": "Staff Engineer Mechanical",
+    "job_id": "53231369",
+    "url": "https://jobs.thermofisher.com/global/en/job/R-01352456/Staff-Engineer-Mechanical",
+    "note": "mechanical / not software",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.318911+00:00"
+  },
+  "R-01352456": {
+    "company": "Thermo Fisher Scientific",
+    "title": "Staff Engineer Mechanical",
+    "job_id": "53231369",
+    "url": "https://jobs.thermofisher.com/global/en/job/R-01352456/Staff-Engineer-Mechanical",
+    "note": "mechanical / not software",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.318911+00:00"
+  },
+  "63631709": {
+    "company": "Infosys Limited",
+    "title": "Lead Technical Architect Modern C Plus and Enterprise Systems",
+    "job_id": "63631709",
+    "url": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-249569",
+    "note": "C++ enterprise / not .NET",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.330392+00:00"
+  },
+  "infosyslimited|lead technical architect modern c plus and enterprise systems": {
+    "company": "Infosys Limited",
+    "title": "Lead Technical Architect Modern C Plus and Enterprise Systems",
+    "job_id": "63631709",
+    "url": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-249569",
+    "note": "C++ enterprise / not .NET",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.330392+00:00"
+  },
+  "55488657": {
+    "company": "marriott tech accelerator",
+    "title": "Senior Network Engineering Manager - Property Network",
+    "job_id": "55488657",
+    "url": "https://www.linkedin.com/jobs/view/4342719381/",
+    "note": "network lead / not software",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.341153+00:00"
+  },
+  "marriotttechaccelerator|senior network engineering manager - property network": {
+    "company": "marriott tech accelerator",
+    "title": "Senior Network Engineering Manager - Property Network",
+    "job_id": "55488657",
+    "url": "https://www.linkedin.com/jobs/view/4342719381/",
+    "note": "network lead / not software",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.341153+00:00"
+  },
+  "440653": {
+    "company": "IDFC FIRST Bank",
+    "title": "Network Engineering Lead",
+    "job_id": "440653",
+    "url": "https://www.instahyre.com/job-440653-network-engineering-lead-at-idfc-first-bank-hyderabad/",
+    "note": "network lead / not software",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.349792+00:00"
+  },
+  "idfcfirstbank|network engineering lead": {
+    "company": "IDFC FIRST Bank",
+    "title": "Network Engineering Lead",
+    "job_id": "440653",
+    "url": "https://www.instahyre.com/job-440653-network-engineering-lead-at-idfc-first-bank-hyderabad/",
+    "note": "network lead / not software",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T05:51:05.349792+00:00"
+  },
+  "newvisionsoftwareasoftservecompany|lead / senior fullstack developer (.net core, react.js & azure)": {
+    "company": "NewVision Software (A SoftServe Company)",
+    "title": "Lead / Senior FullStack Developer (.Net Core, React.JS & Azure)",
+    "job_id": "240826032904",
+    "url": "https://www.naukri.com/job-listings-lead-senior-fullstack-developer-net-core-react-js-azure-newvision-software-a-softserve-company-bhopal-hyderabad-pune-5-to-8-years-240826032904",
+    "note": "already applied",
+    "ts": "2026-08-29T05:54:54.682290+00:00"
+  },
+  "240826032904": {
+    "company": "NewVision Software (A SoftServe Company)",
+    "title": "Lead / Senior FullStack Developer (.Net Core, React.JS & Azure)",
+    "job_id": "240826032904",
+    "url": "https://www.naukri.com/job-listings-lead-senior-fullstack-developer-net-core-react-js-azure-newvision-software-a-softserve-company-bhopal-hyderabad-pune-5-to-8-years-240826032904",
+    "note": "already applied",
+    "ts": "2026-08-29T05:54:54.682290+00:00"
+  },
+  "290726032028": {
+    "company": "Solugenix",
+    "title": "Senior Software Engineer (Azure, .NET, AI)",
+    "job_id": "290726032028",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-azure-net-ai-solugenix-indore-hyderabad-bengaluru-10-to-15-years-290726032028",
+    "note": "already applied",
+    "ts": "2026-08-29T05:54:57.591398+00:00"
+  },
+  "solugenix|senior software engineer (azure, .net, ai)": {
+    "company": "Solugenix",
+    "title": "Senior Software Engineer (Azure, .NET, AI)",
+    "job_id": "290726032028",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-azure-net-ai-solugenix-indore-hyderabad-bengaluru-10-to-15-years-290726032028",
+    "note": "already applied",
+    "ts": "2026-08-29T05:54:57.591398+00:00"
+  },
+  "210826006798": {
+    "company": "Advance Career Solutions",
+    "title": "Technical Architect",
+    "job_id": "210826006798",
+    "url": "https://www.naukri.com/job-listings-technical-architect-advance-career-solutions-hyderabad-pune-bengaluru-15-to-22-years-210826006798",
+    "note": "already applied",
+    "ts": "2026-08-29T05:55:00.140852+00:00"
+  },
+  "advancecareersolutions|technical architect": {
+    "company": "Advance Career Solutions",
+    "title": "Technical Architect",
+    "job_id": "210826006798",
+    "url": "https://www.naukri.com/job-listings-technical-architect-advance-career-solutions-hyderabad-pune-bengaluru-15-to-22-years-210826006798",
+    "note": "already applied",
+    "ts": "2026-08-29T05:55:00.140852+00:00"
+  },
+  "cubictransportation|solution architect": {
+    "company": "Cubic Transportation",
+    "title": "Solution Architect",
+    "job_id": "260826500510",
+    "url": "https://www.naukri.com/job-listings-solution-architect-cubic-transportation-systems-hyderabad-5-to-10-years-260826500510",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:56:19.574941+00:00"
+  },
+  "260826500510": {
+    "company": "Cubic Transportation",
+    "title": "Solution Architect",
+    "job_id": "260826500510",
+    "url": "https://www.naukri.com/job-listings-solution-architect-cubic-transportation-systems-hyderabad-5-to-10-years-260826500510",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:56:19.574941+00:00"
+  },
+  "240826921336": {
+    "company": "Experian",
+    "title": "Solutions Architect",
+    "job_id": "240826921336",
+    "url": "https://www.naukri.com/job-listings-solutions-architect-experian-services-india-private-limited-hyderabad-15-to-20-years-240826921336",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:22.186070+00:00"
+  },
+  "experian|solutions architect": {
+    "company": "Experian",
+    "title": "Solutions Architect",
+    "job_id": "240826921336",
+    "url": "https://www.naukri.com/job-listings-solutions-architect-experian-services-india-private-limited-hyderabad-15-to-20-years-240826921336",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:22.186070+00:00"
+  },
+  "250326507416": {
+    "company": "Jiva Infotech",
+    "title": "Technical Architect",
+    "job_id": "250326507416",
+    "url": "https://www.naukri.com/job-listings-technical-architect-jiva-infotech-inc-hyderabad-10-to-12-years-250326507416",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:56:25.817894+00:00"
+  },
+  "jivainfotech|technical architect": {
+    "company": "Jiva Infotech",
+    "title": "Technical Architect",
+    "job_id": "250326507416",
+    "url": "https://www.naukri.com/job-listings-technical-architect-jiva-infotech-inc-hyderabad-10-to-12-years-250326507416",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:56:25.817894+00:00"
+  },
+  "250826015733": {
+    "company": "Mouri Tech",
+    "title": "Solution Architect",
+    "job_id": "250826015733",
+    "url": "https://www.naukri.com/job-listings-solution-architect-mouri-tech-hyderabad-15-to-22-years-250826015733",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:28.363747+00:00"
+  },
+  "mouritech|solution architect": {
+    "company": "Mouri Tech",
+    "title": "Solution Architect",
+    "job_id": "250826015733",
+    "url": "https://www.naukri.com/job-listings-solution-architect-mouri-tech-hyderabad-15-to-22-years-250826015733",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:28.363747+00:00"
+  },
+  "310726019311": {
+    "company": "Success Stories Org",
+    "title": "Solution Architect",
+    "job_id": "310726019311",
+    "url": "https://www.naukri.com/job-listings-solution-architect-success-stories-org-hyderabad-5-to-10-years-310726019311",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:30.891916+00:00"
+  },
+  "successstoriesorg|solution architect": {
+    "company": "Success Stories Org",
+    "title": "Solution Architect",
+    "job_id": "310726019311",
+    "url": "https://www.naukri.com/job-listings-solution-architect-success-stories-org-hyderabad-5-to-10-years-310726019311",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:30.891916+00:00"
+  },
+  "virtusa|cloud native genai engineer - technical architect": {
+    "company": "Virtusa",
+    "title": "Cloud Native GenAI Engineer - Technical Architect",
+    "job_id": "280826011944",
+    "url": "https://www.naukri.com/job-listings-cloud-native-genai-engineer-technical-architect-virtusa-hyderabad-chennai-bengaluru-10-to-16-years-280826011944",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:33.411753+00:00"
+  },
+  "280826011944": {
+    "company": "Virtusa",
+    "title": "Cloud Native GenAI Engineer - Technical Architect",
+    "job_id": "280826011944",
+    "url": "https://www.naukri.com/job-listings-cloud-native-genai-engineer-technical-architect-virtusa-hyderabad-chennai-bengaluru-10-to-16-years-280826011944",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:33.411753+00:00"
+  },
+  "cbre|senior principal software engineer": {
+    "company": "CBRE",
+    "title": "Senior Principal Software Engineer",
+    "job_id": "260826030196",
+    "url": "https://www.naukri.com/job-listings-senior-principal-software-engineer-cbre-hyderabad-8-to-13-years-260826030196",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:35.921163+00:00"
+  },
+  "260826030196": {
+    "company": "CBRE",
+    "title": "Senior Principal Software Engineer",
+    "job_id": "260826030196",
+    "url": "https://www.naukri.com/job-listings-senior-principal-software-engineer-cbre-hyderabad-8-to-13-years-260826030196",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:35.921163+00:00"
+  },
+  "280826010772": {
+    "company": "RF Managed Services",
+    "title": "Staff software Engineer",
+    "job_id": "280826010772",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-rf-managed-services-hyderabad-15-to-22-years-280826010772",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:38.511652+00:00"
+  },
+  "rfmanagedservices|staff software engineer": {
+    "company": "RF Managed Services",
+    "title": "Staff software Engineer",
+    "job_id": "280826010772",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-rf-managed-services-hyderabad-15-to-22-years-280826010772",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:38.511652+00:00"
+  },
+  "thehartford|ind sr staff software engineer": {
+    "company": "The Hartford",
+    "title": "IND Sr Staff Software Engineer",
+    "job_id": "260826502439",
+    "url": "https://www.naukri.com/job-listings-ind-sr-staff-software-engineer-the-hartford-hyderabad-6-to-10-years-260826502439",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:56:42.262463+00:00"
+  },
+  "260826502439": {
+    "company": "The Hartford",
+    "title": "IND Sr Staff Software Engineer",
+    "job_id": "260826502439",
+    "url": "https://www.naukri.com/job-listings-ind-sr-staff-software-engineer-the-hartford-hyderabad-6-to-10-years-260826502439",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:56:42.262463+00:00"
+  },
+  "250826018926": {
+    "company": "Adaequare",
+    "title": "Technical Lead",
+    "job_id": "250826018926",
+    "url": "https://www.naukri.com/job-listings-technical-lead-adaequare-hyderabad-6-to-11-years-250826018926",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:45.045003+00:00"
+  },
+  "adaequare|technical lead": {
+    "company": "Adaequare",
+    "title": "Technical Lead",
+    "job_id": "250826018926",
+    "url": "https://www.naukri.com/job-listings-technical-lead-adaequare-hyderabad-6-to-11-years-250826018926",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:45.045003+00:00"
+  },
+  "agriitexsystemsandservices|j2ee technical lead": {
+    "company": "Agriitex Systems And Services",
+    "title": "J2EE Technical Lead",
+    "job_id": "200726503430",
+    "url": "https://www.naukri.com/job-listings-j2ee-technical-lead-bilvantis-technologies-hyderabad-8-to-12-years-200726503430",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:56:48.821364+00:00"
+  },
+  "200726503430": {
+    "company": "Agriitex Systems And Services",
+    "title": "J2EE Technical Lead",
+    "job_id": "200726503430",
+    "url": "https://www.naukri.com/job-listings-j2ee-technical-lead-bilvantis-technologies-hyderabad-8-to-12-years-200726503430",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:56:48.821364+00:00"
+  },
+  "hackajob|sr lead software engineer": {
+    "company": "Hackajob",
+    "title": "Sr Lead Software Engineer",
+    "job_id": "170826012321",
+    "url": "https://www.naukri.com/job-listings-sr-lead-software-engineer-hackajob-hyderabad-bengaluru-mumbai-all-areas-15-to-23-years-170826012321",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:51.501333+00:00"
+  },
+  "170826012321": {
+    "company": "Hackajob",
+    "title": "Sr Lead Software Engineer",
+    "job_id": "170826012321",
+    "url": "https://www.naukri.com/job-listings-sr-lead-software-engineer-hackajob-hyderabad-bengaluru-mumbai-all-areas-15-to-23-years-170826012321",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:51.501333+00:00"
+  },
+  "optum|lead software engineer": {
+    "company": "Optum",
+    "title": "Lead Software Engineer",
+    "job_id": "250826026663",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-optum-hyderabad-7-to-10-years-250826026663",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:54.050977+00:00"
+  },
+  "250826026663": {
+    "company": "Optum",
+    "title": "Lead Software Engineer",
+    "job_id": "250826026663",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-optum-hyderabad-7-to-10-years-250826026663",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:54.050977+00:00"
+  },
+  "spglobalmarketintelligence|lead software engineer": {
+    "company": "S&P Global Market Intelligence",
+    "title": "Lead Software Engineer",
+    "job_id": "250826030638",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-s-p-global-market-intelligence-hyderabad-9-to-11-years-250826030638",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:56.653270+00:00"
+  },
+  "250826030638": {
+    "company": "S&P Global Market Intelligence",
+    "title": "Lead Software Engineer",
+    "job_id": "250826030638",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-s-p-global-market-intelligence-hyderabad-9-to-11-years-250826030638",
+    "note": "already applied",
+    "ts": "2026-08-29T05:56:56.653270+00:00"
+  },
+  "smarxion|technical lead": {
+    "company": "Smarxion",
+    "title": "Technical Lead",
+    "job_id": "190526502177",
+    "url": "https://www.naukri.com/job-listings-technical-lead-smarxion-hyderabad-10-to-15-years-190526502177",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:57:00.385234+00:00"
+  },
+  "190526502177": {
+    "company": "Smarxion",
+    "title": "Technical Lead",
+    "job_id": "190526502177",
+    "url": "https://www.naukri.com/job-listings-technical-lead-smarxion-hyderabad-10-to-15-years-190526502177",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:57:00.385234+00:00"
+  },
+  "270826920041": {
+    "company": "Amgen Inc",
+    "title": "Senior Software Engineer",
+    "job_id": "270826920041",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-amgen-inc-hyderabad-8-to-12-years-270826920041",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:57:04.148894+00:00"
+  },
+  "amgeninc|senior software engineer": {
+    "company": "Amgen Inc",
+    "title": "Senior Software Engineer",
+    "job_id": "270826920041",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-amgen-inc-hyderabad-8-to-12-years-270826920041",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:57:04.148894+00:00"
+  },
+  "capgemini|senior software engineer": {
+    "company": "Capgemini",
+    "title": "Senior Software Engineer",
+    "job_id": "040826030968",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-capgemini-hyderabad-pune-bengaluru-6-to-9-years-040826030968",
+    "note": "already applied",
+    "ts": "2026-08-29T05:57:06.769107+00:00"
+  },
+  "040826030968": {
+    "company": "Capgemini",
+    "title": "Senior Software Engineer",
+    "job_id": "040826030968",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-capgemini-hyderabad-pune-bengaluru-6-to-9-years-040826030968",
+    "note": "already applied",
+    "ts": "2026-08-29T05:57:06.769107+00:00"
+  },
+  "270826501836": {
+    "company": "Experian",
+    "title": "Sr Software Engineer",
+    "job_id": "270826501836",
+    "url": "https://www.naukri.com/job-listings-sr-software-engineer-experian-plc-hyderabad-4-to-7-years-270826501836",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:57:11.148895+00:00"
+  },
+  "experian|sr software engineer": {
+    "company": "Experian",
+    "title": "Sr Software Engineer",
+    "job_id": "270826501836",
+    "url": "https://www.naukri.com/job-listings-sr-software-engineer-experian-plc-hyderabad-4-to-7-years-270826501836",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:57:11.148895+00:00"
+  },
+  "menucoster|senior backend engineer (typescript / nestjs)": {
+    "company": "Menucoster",
+    "title": "Senior Backend Engineer (TypeScript / NestJS)",
+    "job_id": "240826005986",
+    "url": "https://www.naukri.com/job-listings-senior-backend-engineer-typescript-nestjs-menucoster-hyderabad-5-to-10-years-240826005986",
+    "note": "already applied",
+    "ts": "2026-08-29T05:57:13.647237+00:00"
+  },
+  "240826005986": {
+    "company": "Menucoster",
+    "title": "Senior Backend Engineer (TypeScript / NestJS)",
+    "job_id": "240826005986",
+    "url": "https://www.naukri.com/job-listings-senior-backend-engineer-typescript-nestjs-menucoster-hyderabad-5-to-10-years-240826005986",
+    "note": "already applied",
+    "ts": "2026-08-29T05:57:13.647237+00:00"
+  },
+  "240826031276": {
+    "company": "ModMed Technologies India Private Limited",
+    "title": "Senior Software Engineer 2",
+    "job_id": "240826031276",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-2-modmed-technologies-india-private-limited-hyderabad-9-to-15-years-240826031276",
+    "note": "already applied",
+    "ts": "2026-08-29T05:57:16.346699+00:00"
+  },
+  "modmedtechnologiesindiaprivatelimited|senior software engineer 2": {
+    "company": "ModMed Technologies India Private Limited",
+    "title": "Senior Software Engineer 2",
+    "job_id": "240826031276",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-2-modmed-technologies-india-private-limited-hyderabad-9-to-15-years-240826031276",
+    "note": "already applied",
+    "ts": "2026-08-29T05:57:16.346699+00:00"
+  },
+  "050826935291": {
+    "company": "S&P Global Market Intelligence",
+    "title": "Senior Software Engineer",
+    "job_id": "050826935291",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-s-p-capital-iq-india-pvt-ltd-hyderabad-4-to-9-years-050826935291",
+    "note": "already applied",
+    "ts": "2026-08-29T05:57:19.555643+00:00"
+  },
+  "spglobalmarketintelligence|senior software engineer": {
+    "company": "S&P Global Market Intelligence",
+    "title": "Senior Software Engineer",
+    "job_id": "050826935291",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-s-p-capital-iq-india-pvt-ltd-hyderabad-4-to-9-years-050826935291",
+    "note": "already applied",
+    "ts": "2026-08-29T05:57:19.555643+00:00"
+  },
+  "191125504727": {
+    "company": "Turvo Inc.",
+    "title": "Senior Software Engineer",
+    "job_id": "191125504727",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-turvo-inc-hyderabad-5-to-10-years-191125504727",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:57:23.277722+00:00"
+  },
+  "turvoinc|senior software engineer": {
+    "company": "Turvo Inc.",
+    "title": "Senior Software Engineer",
+    "job_id": "191125504727",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-turvo-inc-hyderabad-5-to-10-years-191125504727",
+    "note": "Naukri company-site apply",
+    "status": "STUCK",
+    "ts": "2026-08-29T05:57:23.277722+00:00"
+  },
+  "arcesium|solutions architect": {
+    "company": "Arcesium",
+    "title": "Solutions Architect",
+    "job_id": "440980",
+    "url": "https://www.instahyre.com/job-440980-solutions-architect-at-arcesium-2-bangalore-hyderabad/",
+    "note": "submitted after Apply",
+    "ts": "2026-08-29T05:57:31.469908+00:00"
+  },
+  "440980": {
+    "company": "Arcesium",
+    "title": "Solutions Architect",
+    "job_id": "440980",
+    "url": "https://www.instahyre.com/job-440980-solutions-architect-at-arcesium-2-bangalore-hyderabad/",
+    "note": "submitted after Apply",
+    "ts": "2026-08-29T05:57:31.469908+00:00"
+  },
+  "solera|lead software engineer": {
+    "company": "Solera",
+    "title": "Lead Software Engineer",
+    "job_id": "40799045",
+    "url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Lead-Software-Engineer_JR-018859",
+    "note": "Workday applyManually STUCK three times 29 Aug daily",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T06:06:00.756789+00:00"
+  },
+  "R-018859": {
+    "company": "Solera",
+    "title": "Lead Software Engineer",
+    "job_id": "40799045",
+    "url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Lead-Software-Engineer_JR-018859",
+    "note": "Workday applyManually STUCK three times 29 Aug daily",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T06:06:00.756789+00:00"
+  },
+  "40799045": {
+    "company": "Solera",
+    "title": "Lead Software Engineer",
+    "job_id": "40799045",
+    "url": "https://solera.wd5.myworkdayjobs.com/en-US/Global_Career_Site/job/Hyderabad/Lead-Software-Engineer_JR-018859",
+    "note": "Workday applyManually STUCK three times 29 Aug daily",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T06:06:00.756789+00:00"
+  },
+  "63982013": {
+    "company": "Infosys Limited",
+    "title": "UI Technical Architect React and Angular",
+    "job_id": "63982013",
+    "url": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-249556&sourceId=4006",
+    "note": "Infosys careers apply.html no form WAITING_EXPIRED twice",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T06:06:00.766223+00:00"
+  },
+  "infosyslimited|ui technical architect react and angular": {
+    "company": "Infosys Limited",
+    "title": "UI Technical Architect React and Angular",
+    "job_id": "63982013",
+    "url": "https://career.infosys.com/jobdesc?jobReferenceCode=INFSYS-EXTERNAL-249556&sourceId=4006",
+    "note": "Infosys careers apply.html no form WAITING_EXPIRED twice",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T06:06:00.766223+00:00"
+  },
+  "numerator|senior software engineer": {
+    "company": "Numerator",
+    "title": "Senior Software Engineer",
+    "job_id": "63554913",
+    "url": "https://recruit.hirebridge.com/v3/careercenter/v2/details.aspx?jid=610381&cid=7844&locvalue=1112&bid=10",
+    "note": "hirebridge login WAITING_EXPIRED twice",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T06:06:00.777256+00:00"
+  },
+  "63554913": {
+    "company": "Numerator",
+    "title": "Senior Software Engineer",
+    "job_id": "63554913",
+    "url": "https://recruit.hirebridge.com/v3/careercenter/v2/details.aspx?jid=610381&cid=7844&locvalue=1112&bid=10",
+    "note": "hirebridge login WAITING_EXPIRED twice",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T06:06:00.777256+00:00"
+  },
+  "610381": {
+    "company": "Numerator",
+    "title": "Senior Software Engineer",
+    "job_id": "63554913",
+    "url": "https://recruit.hirebridge.com/v3/careercenter/v2/details.aspx?jid=610381&cid=7844&locvalue=1112&bid=10",
+    "note": "hirebridge login WAITING_EXPIRED twice",
+    "status": "SKIPPED",
+    "ts": "2026-08-29T06:06:00.777256+00:00"
   }
 }

@@ -56,3 +56,5 @@
   https://www.instahyre.com/job-440796-senior-software-engineer-at-ansrsource-hyderabad/
 - **2026-08-28T06:23:15Z** SUBMITTED **ansrsource** — Senior Software Engineer II
   https://www.instahyre.com/job-440698-senior-software-engineer-ii-at-ansrsource-hyderabad/
+- **2026-08-29T05:57:24Z** SUBMITTED **Arcesium** — Solutions Architect
+  https://www.instahyre.com/job-440980-solutions-architect-at-arcesium-2-bangalore-hyderabad/
