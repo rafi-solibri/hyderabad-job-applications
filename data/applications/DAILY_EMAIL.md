@@ -1,18 +1,17 @@
-Daily Hyderabad career-portal apply — 2026-08-29
+Daily Hyderabad career-portal apply — 2026-08-30
 
-Submitted today: 1
-Today's apply statuses: STUCK 11, SUBMITTED 18, WAITING_EXPIRED 2
-Still leftover: 0 career / 367 other-board (LinkedIn checkpoint + Foundit Akamai)
+Submitted today: 0
+Today's apply statuses: AUTH_FAILED 2, STUCK 2, WAITING_EXPIRED 1
+Still leftover: 1 career / 370 other-board
 Expected CTC: 60 LPA | Current: 52 LPA | Notice: Immediate
 Agent: https://cursor.com/automations/979f38ce-9c62-11f1-ba66-0e7d0216e441
 
 Submitted
-- **2026-08-29T05:57:24Z** SUBMITTED **Arcesium** — Solutions Architect
-  https://www.instahyre.com/job-440980-solutions-architect-at-arcesium-2-bangalore-hyderabad/
+- none today
 
 Blocked / stuck career portals today
-- Infosys Limited — UI Technical Architect React and Angular (WAITING_EXPIRED)
-- Numerator — Senior Software Engineer (WAITING_EXPIRED)
-- Solera — Lead Software Engineer (STUCK)
+- Cubic Corporation — Solution Architect (AUTH_FAILED)
+- Analog Devices, Inc. (ADI) — Staff Engineer, Digital Design Engineering (AUTH_FAILED)
+- Currenex State Street Trust Company — Senior Software Engineer - Data Integration, Officer (WAITING_EXPIRED)
 
 This is the 11:00 IST career-portal automation (hyderabad-job-applications / cloud_apply.py).

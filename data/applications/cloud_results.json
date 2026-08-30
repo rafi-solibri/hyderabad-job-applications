@@ -85,7 +85,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/37598442",
-    "ts": "2026-08-29T05:57:32.388844+00:00"
+    "ts": "2026-08-30T05:59:04.135740+00:00"
   },
   {
     "company": "wonderbiz technologies pvt.",
@@ -3106,8 +3106,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "no page progress — next job",
-    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgETnMKhBV9AiQAAAaBMGl-6Vz6WJp5lALi6t12wVMSKX3-q-_z07RVrtwfp5EZu3141lNWdw78VQegOs3Pg6uyDfqDmjw?ut=18MNnRZ1ADJso1",
-    "ts": "2026-08-29T05:59:48.169745+00:00",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgEXAN_goJv6AwAAAaBRQj2m0A_DwK7Ao5Y4nifKEPSEpaKAJgl2YnNqvwk1ZsEGdRgqzsu0XC4A3NjoTNxyMAdozHHLpQ?ut=15zdjQ0db9KIo1",
+    "ts": "2026-08-30T06:01:27.125798+00:00",
     "fields_learned": 0
   },
   {
@@ -3599,5 +3599,48 @@
     "note": "submitted after Apply",
     "final_url": "https://www.instahyre.com/job-440980-solutions-architect-at-arcesium-2-bangalore-hyderabad/",
     "ts": "2026-08-29T05:57:24.220444+00:00"
+  },
+  {
+    "company": "Cubic Corporation",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad-Telangana/Solution-Architect_REQ_49677",
+    "ats": "Foundit",
+    "job_id": "64658078",
+    "apply_url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad-Telangana/Solution-Architect_REQ_49677",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad%2C-Telangana/Solution-Architect_REQ_49677/apply/applyManually",
+    "ts": "2026-08-30T05:59:19.229519+00:00"
+  },
+  {
+    "company": "Analog Devices, Inc. (ADI)",
+    "title": "Staff Engineer, Digital Design Engineering",
+    "location": "Hyderabad, India",
+    "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "ats": "Foundit",
+    "job_id": "64689072",
+    "apply_url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India%2C-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542/apply/applyManually?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "ts": "2026-08-30T05:59:59.330220+00:00"
+  },
+  {
+    "company": "Currenex State Street Trust Company",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "location": "Hyderabad, India",
+    "url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "ats": "Foundit",
+    "job_id": "64606204",
+    "apply_url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "ok": false,
+    "status": "WAITING_EXPIRED",
+    "note": "waited 15s; learned 0 fields",
+    "final_url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "ts": "2026-08-30T06:03:15.900181+00:00",
+    "fields_learned": 0
   }
 ]

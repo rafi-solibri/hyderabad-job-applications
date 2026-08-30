@@ -8220,5 +8220,77 @@
     "note": "hirebridge login WAITING_EXPIRED twice",
     "status": "SKIPPED",
     "ts": "2026-08-29T06:06:00.777256+00:00"
+  },
+  "64658078": {
+    "company": "Cubic Corporation",
+    "title": "Solution Architect",
+    "job_id": "64658078",
+    "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad-Telangana/Solution-Architect_REQ_49677",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-30T05:59:58.103281+00:00"
+  },
+  "cubiccorporation|solution architect": {
+    "company": "Cubic Corporation",
+    "title": "Solution Architect",
+    "job_id": "64658078",
+    "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad-Telangana/Solution-Architect_REQ_49677",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-30T05:59:58.103281+00:00"
+  },
+  "R261542": {
+    "company": "Analog Devices, Inc. (ADI)",
+    "title": "Staff Engineer, Digital Design Engineering",
+    "job_id": "64689072",
+    "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-30T06:00:15.701428+00:00"
+  },
+  "64689072": {
+    "company": "Analog Devices, Inc. (ADI)",
+    "title": "Staff Engineer, Digital Design Engineering",
+    "job_id": "64689072",
+    "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-30T06:00:15.701428+00:00"
+  },
+  "analogdevicesincadi|staff engineer, digital design engineering": {
+    "company": "Analog Devices, Inc. (ADI)",
+    "title": "Staff Engineer, Digital Design Engineering",
+    "job_id": "64689072",
+    "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-30T06:00:15.701428+00:00"
+  },
+  "currenexstatestreettrustcompany|senior software engineer - data integration, officer": {
+    "company": "Currenex State Street Trust Company",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "job_id": "R-796658",
+    "url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "note": "State Street R-796658 persist-skip (Phenom leftover; Workday applyManually STUCK / WAITING_EXPIRED). Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-30T06:04:32.261586+00:00"
+  },
+  "64606204": {
+    "company": "Currenex State Street Trust Company",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "job_id": "64606204",
+    "url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "note": "State Street R-796658 persist-skip (Phenom leftover; Workday applyManually STUCK / WAITING_EXPIRED). Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-30T06:04:32.252216+00:00"
+  },
+  "R-796658": {
+    "company": "Currenex State Street Trust Company",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "job_id": "R-796658",
+    "url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "note": "State Street R-796658 persist-skip (Phenom leftover; Workday applyManually STUCK / WAITING_EXPIRED). Do not hammer.",
+    "status": "SKIPPED",
+    "ts": "2026-08-30T06:04:32.261586+00:00"
   }
 }

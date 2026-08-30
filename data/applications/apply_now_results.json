@@ -3223,5 +3223,57 @@
     "status": "SKIPPED",
     "note": "hirebridge login WAITING_EXPIRED twice",
     "final_url": "https://recruit.hirebridge.com/v3/careercenter/v2/details.aspx?jid=610381&cid=7844&locvalue=1112&bid=10"
+  },
+  {
+    "company": "Cubic Corporation",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad-Telangana/Solution-Architect_REQ_49677",
+    "ats": "Foundit",
+    "job_id": "64658078",
+    "apply_url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad-Telangana/Solution-Architect_REQ_49677",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad%2C-Telangana/Solution-Architect_REQ_49677/apply/applyManually"
+  },
+  {
+    "company": "Analog Devices, Inc. (ADI)",
+    "title": "Staff Engineer, Digital Design Engineering",
+    "location": "Hyderabad, India",
+    "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "ats": "Foundit",
+    "job_id": "64689072",
+    "apply_url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India%2C-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542/apply/applyManually?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e"
+  },
+  {
+    "company": "Currenex State Street Trust Company",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "location": "Hyderabad, India",
+    "url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "ats": "Foundit",
+    "job_id": "64606204",
+    "apply_url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "ok": false,
+    "status": "SKIPPED",
+    "note": "State Street R-796658 persist-skip (Phenom leftover; Workday applyManually STUCK / WAITING_EXPIRED). Do not hammer.",
+    "final_url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer"
+  },
+  {
+    "company": "Currenex State Street Trust Company",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "location": null,
+    "url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "ats": null,
+    "job_id": "R-796658",
+    "apply_url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "ok": false,
+    "status": "SKIPPED",
+    "note": "State Street R-796658 persist-skip (Phenom leftover; Workday applyManually STUCK / WAITING_EXPIRED). Do not hammer.",
+    "final_url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer"
   }
 ]

@@ -566,7 +566,12 @@ def job_match_keys(job: dict) -> set[str]:
         for m in re.finditer(r"(?:jobs/|token=|gh_jid=|jid=|/job/)(\d{6,}|[a-f0-9-]{20,})", text, re.I):
             keys.add(m.group(1))
         for m in re.finditer(r"(R-?\d{4,}(?:-\d+)?)", text):
-            keys.add(m.group(1))
+            full = m.group(1)
+            keys.add(full)
+            # Workday often uses R-796658 on Phenom and R-796658-1 on applyManually.
+            base = re.sub(r"-\d+$", "", full)
+            if base != full:
+                keys.add(base)
     ck = company_key(job.get("company"))
     title = re.sub(r"\s+", " ", (job.get("title") or "").strip().lower())
     if ck and title:
