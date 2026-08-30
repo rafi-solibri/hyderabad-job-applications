@@ -1,6 +1,6 @@
 # Hyderabad company career portals
 
-Official career sites for GCCs and product companies in **Madhapur / HITEC City, Gachibowli, and Financial District** (plus Nanakramguda, Raidurg, Kondapur).
+Official career sites for GCCs and product companies in **Madhapur / HITEC City / Knowledge City / Raheja Mindspace / RMZ**, plus Gachibowli, Financial District, Nanakramguda, Raidurg, Kondapur. Preferred near-home campuses are in `data/preferred_campuses.json`.
 These are now in the discovery catalog. `existing` = already searched via Workday/GH/Lever; others were added this run.
 
 **162 portals**

@@ -59,7 +59,7 @@ PORTALS = [
     {"company": "Morgan Stanley", "url": "https://morganstanley.wd1.myworkdayjobs.com/en-US/external", "hub": "Financial District", "kind": "existing"},
     {"company": "Citi", "url": "https://citi.wd5.myworkdayjobs.com/en-US/2", "hub": "Financial District", "kind": "existing"},
     {"company": "Barclays", "url": "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays", "hub": "Financial District", "kind": "existing"},
-    {"company": "HSBC", "url": "https://hsbc.wd3.myworkdayjobs.com/en-US/External", "hub": "Gachibowli / FD", "kind": "existing"},
+    {"company": "HSBC", "url": "https://hsbc.wd3.myworkdayjobs.com/en-US/External", "hub": "RMZ Nexity / Knowledge City / FD", "kind": "existing"},
     {"company": "Deutsche Bank", "url": "https://db.wd3.myworkdayjobs.com/en-US/ExternalCareerSite", "hub": "Financial District", "kind": "existing"},
     {"company": "Standard Chartered", "url": "https://standardchartered.wd3.myworkdayjobs.com/en-US/Careers", "hub": "Financial District", "kind": "existing"},
     {"company": "Capital One", "url": "https://capitalone.wd1.myworkdayjobs.com/en-US/Capital_One", "hub": "Gachibowli", "kind": "existing"},
@@ -90,7 +90,7 @@ PORTALS = [
     {"company": "Microsoft", "url": "https://jobs.careers.microsoft.com/", "hub": "Gachibowli / Hitec", "kind": "existing"},
     {"company": "Google", "url": "https://careers.google.com/", "hub": "Gachibowli / Financial District", "kind": "existing"},
     {"company": "Amazon", "url": "https://www.amazon.jobs/", "hub": "Financial District / Hitec", "kind": "existing"},
-    {"company": "Apple", "url": "https://jobs.apple.com/", "hub": "Gachibowli / FD", "kind": "apple"},
+    {"company": "Apple", "url": "https://jobs.apple.com/", "hub": "RMZ Nexity / Knowledge City", "kind": "apple"},
     {"company": "Meta", "url": "https://www.metacareers.com/", "hub": "Gachibowli", "kind": "custom"},
     {"company": "LinkedIn", "url": "https://careers.linkedin.com/", "hub": "Gachibowli", "kind": "custom"},
     {"company": "Uber", "url": "https://uber.wd1.myworkdayjobs.com/en-US/UberJobs", "hub": "Gachibowli", "kind": "existing"},
@@ -145,7 +145,7 @@ PORTALS = [
     {"company": "HighRadius", "url": "https://www.highradius.com/careers/", "hub": "Madhapur / Hitec", "kind": "existing"},
     {"company": "Innovaccer", "url": "https://innovaccer.com/careers", "hub": "Hitec", "kind": "existing"},
     {"company": "Medtronic", "url": "https://medtronic.wd1.myworkdayjobs.com/en-US/MedtronicCareers", "hub": "Hitec", "kind": "existing"},
-    {"company": "Amgen", "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers", "hub": "Gachibowli", "kind": "existing"},
+    {"company": "Amgen", "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers", "hub": "RMZ Nexity / RMZ Spire", "kind": "existing"},
     {"company": "Novartis", "url": "https://novartis.wd3.myworkdayjobs.com/en-US/careers", "hub": "Hitec", "kind": "existing"},
     {"company": "Pfizer", "url": "https://pfizer.wd1.myworkdayjobs.com/en-US/PfizerCareers", "hub": "Hitec", "kind": "existing"},
     {"company": "GSK", "url": "https://gsk.wd5.myworkdayjobs.com/en-US/GSKCareers", "hub": "Hitec", "kind": "existing"},
@@ -153,10 +153,10 @@ PORTALS = [
     {"company": "Philips", "url": "https://philips.wd3.myworkdayjobs.com/en-US/jobs-and-careers", "hub": "Hitec", "kind": "existing"},
     # --- Consulting / IT services with large Hyd campuses ---
     {"company": "Accenture", "url": "https://www.accenture.com/in-en/careers", "hub": "Hitec / Gachibowli / FD", "kind": "existing"},
-    {"company": "Deloitte", "url": "https://deloitte.wd1.myworkdayjobs.com/en-US/DeloitteCareers", "hub": "Financial District / Hitec", "kind": "existing"},
+    {"company": "Deloitte", "url": "https://deloitte.wd1.myworkdayjobs.com/en-US/DeloitteCareers", "hub": "RMZ Futura / Raheja Mindspace / FD", "kind": "existing"},
     {"company": "PwC", "url": "https://pwc.wd3.myworkdayjobs.com/en-US/External_Careers", "hub": "Financial District", "kind": "existing"},
     {"company": "EY", "url": "https://ey.wd1.myworkdayjobs.com/en-US/EYCareers", "hub": "Financial District", "kind": "existing"},
-    {"company": "KPMG", "url": "https://kpmg.wd1.myworkdayjobs.com/en-US/External", "hub": "Financial District", "kind": "workday", "api": "https://kpmg.wd1.myworkdayjobs.com/wday/cxs/kpmg/External/jobs", "site": "https://kpmg.wd1.myworkdayjobs.com/en-US/External"},
+    {"company": "KPMG", "url": "https://kpmg.wd1.myworkdayjobs.com/en-US/External", "hub": "RMZ Nexity / Knowledge City", "kind": "workday", "api": "https://kpmg.wd1.myworkdayjobs.com/wday/cxs/kpmg/External/jobs", "site": "https://kpmg.wd1.myworkdayjobs.com/en-US/External"},
     {"company": "Cognizant", "url": "https://careers.cognizant.com/", "hub": "Hitec / Gachibowli", "kind": "existing"},
     {"company": "Infosys", "url": "https://www.infosys.com/careers/", "hub": "Gachibowli / Pocharam", "kind": "existing"},
     {"company": "Wipro", "url": "https://careers.wipro.com/", "hub": "Gachibowli / Manikonda", "kind": "existing"},
@@ -201,6 +201,19 @@ PORTALS = [
     {"company": "Arcesium", "url": "https://www.arcesium.com/careers", "hub": "Financial District / Gachibowli", "kind": "custom"},
     {"company": "Blue Yonder", "url": "https://blueyonder.com/careers", "hub": "Hitec / Gachibowli", "kind": "existing"},
     {"company": "Cubic", "url": "https://www.cubic.com/careers", "hub": "Hitec", "kind": "custom"},
+    # --- Preferred near-home campuses: RMZ Nexity / Futura / Knowledge City / Raheja ---
+    {"company": "Electronic Arts", "url": "https://jobs.ea.com/", "hub": "RMZ Nexity / Knowledge City", "kind": "custom"},
+    {"company": "CGI", "url": "https://www.cgi.com/en/careers", "hub": "RMZ Nexity / RMZ Futura", "kind": "custom"},
+    {"company": "McDonalds", "url": "https://careers.mcdonalds.com/", "hub": "RMZ Nexity", "kind": "custom"},
+    {"company": "ArcelorMittal", "url": "https://jobs.arcelormittal.com/", "hub": "RMZ Nexity", "kind": "custom"},
+    {"company": "Alter Domus", "url": "https://alterdomus.com/careers/", "hub": "RMZ Nexity", "kind": "custom"},
+    {"company": "Providence", "url": "https://www.providence.org/careers", "hub": "RMZ Nexity", "kind": "custom"},
+    {"company": "People Tech", "url": "https://www.peopletech.com/careers/", "hub": "RMZ Futura", "kind": "custom"},
+    {"company": "Verizon", "url": "https://www.verizon.com/about/careers", "hub": "Raheja Mindspace", "kind": "custom"},
+    {"company": "Parexel", "url": "https://jobs.parexel.com/", "hub": "Raheja Mindspace", "kind": "custom"},
+    {"company": "Syneos Health", "url": "https://www.syneoshealth.com/careers", "hub": "Raheja Mindspace", "kind": "custom"},
+    {"company": "Colruyt", "url": "https://www.colruytgroup.com/en/careers", "hub": "Raheja Mindspace", "kind": "custom"},
+    {"company": "Hyundai Mobis", "url": "https://www.mobis.com/en/careers", "hub": "Raheja Mindspace", "kind": "custom"},
 ]
 
 EIGHTFOLD_EXTRA = [
@@ -215,6 +228,8 @@ EIGHTFOLD_EXTRA = [
     "lamresearch.com", "kla.com", "cotiviti.com", "highradius.com",
     "valuelabs.com", "genpact.com", "tcs.com", "kpmg.com",
     "arcesium.com", "sprinklr.com",
+    "ea.com", "cgi.com", "mcdonalds.com", "arcelormittal.com",
+    "alterdomus.com", "providence.org", "verizon.com", "parexel.com",
 ]
 
 JOB_HREF = re.compile(

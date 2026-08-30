@@ -5,7 +5,8 @@ Resume: `data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx` (uploaded base; tail
 Current CTC: 52 LPA | Expected CTC: 60 LPA | Notice: Immediate  
 Phone: +91 8790251698 | Email: rafi.success@gmail.com
 
-**Areas:** Madhapur, Gachibowli, Financial District, HITEC City, Nanakramguda, Kondapur, Raidurg, Hyderabad, or Remote India.  
+**Areas:** Prefer offices in **RMZ Nexity, RMZ Futura, Knowledge City, Knowledge Park, Raheja Mindspace** (Madhapur / HITEC City / Raidurg — close to home). Also Gachibowli, Financial District, Nanakramguda, Kondapur, Hyderabad, or Remote India.  
+**Preferred campus companies:** Amgen, EA, KPMG, Providence, Apple, McDonald’s, CGI, ArcelorMittal, HSBC, Alter Domus, Deloitte, Darwinbox, plus Raheja tenants (Accenture, IBM, Qualcomm, Tech Mahindra, Meta, Oracle, Wells Fargo, Cognizant, …). See `data/preferred_campuses.json`.  
 **Roles:** Technical / Solution / Software / Cloud / .NET Architect, Principal / Staff Engineer, Technical Lead, Engineering Manager, Senior Software / Backend / Full Stack / .NET.  
 **Skip:** DevOps / SRE, TTEC, Keyloop, Redwood, Salesforce / ServiceNow / SAP / PEGA, Java-only or other-city office roles.  
 **Cap:** 4 jobs per company. **Pace:** 50 applications / day, about 1000 in 20 days.

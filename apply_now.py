@@ -112,6 +112,15 @@ SKIP_IDS = {
 }
 
 APPLIED_PATH = ROOT / "data" / "applied_ids.json"
+PREFERRED_CAMPUSES_PATH = ROOT / "data" / "preferred_campuses.json"
+# Owner (Madhapur / HITEC City): Grade-A campuses within a short commute.
+NEAR_HOME_LOC = re.compile(
+    r"madhapur|hite[c]?c|raidurg|knowledge city|knowledge park|"
+    r"mindspace|raheja|\brmz\b|nexity|inorbit",
+    re.I,
+)
+_PREFERRED_ALIAS_KEYS: set[str] | None = None
+_PREFERRED_CAMPUS_RE: re.Pattern[str] | None = None
 
 
 def log(event):
@@ -540,6 +549,70 @@ def company_key(name: str) -> str:
     return re.sub(r"[^a-z0-9]", "", (name or "").lower())
 
 
+def _load_preferred_campuses() -> dict:
+    if not PREFERRED_CAMPUSES_PATH.exists():
+        return {}
+    try:
+        data = json.loads(PREFERRED_CAMPUSES_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def preferred_alias_keys() -> set[str]:
+    """Normalized company keys for RMZ / Nexity / Knowledge City / Raheja tenants."""
+    global _PREFERRED_ALIAS_KEYS
+    if _PREFERRED_ALIAS_KEYS is not None:
+        return _PREFERRED_ALIAS_KEYS
+    keys: set[str] = set()
+    for row in _load_preferred_campuses().get("companies") or []:
+        if not isinstance(row, dict):
+            continue
+        keys.add(company_key(row.get("name")))
+        for alias in row.get("aliases") or []:
+            keys.add(company_key(alias))
+    keys.discard("")
+    _PREFERRED_ALIAS_KEYS = keys
+    return keys
+
+
+def preferred_campus_blob_re() -> re.Pattern[str]:
+    global _PREFERRED_CAMPUS_RE
+    if _PREFERRED_CAMPUS_RE is not None:
+        return _PREFERRED_CAMPUS_RE
+    aliases = ["rmz", "nexity", "mindspace", "raheja", "knowledge city", "knowledge park"]
+    for row in _load_preferred_campuses().get("campuses") or []:
+        if not isinstance(row, dict):
+            continue
+        aliases.append(str(row.get("name") or ""))
+        aliases.extend(str(a) for a in (row.get("aliases") or []))
+    parts = [re.escape(a.strip()) for a in aliases if a and a.strip()]
+    _PREFERRED_CAMPUS_RE = re.compile("|".join(sorted(set(parts), key=len, reverse=True)), re.I)
+    return _PREFERRED_CAMPUS_RE
+
+
+def is_preferred_campus_company(name: str) -> bool:
+    key = company_key(name)
+    if not key:
+        return False
+    prefs = preferred_alias_keys()
+    if key in prefs:
+        return True
+    # "kpmgglobalservicesprivatelimited" should match alias "kpmg".
+    return any(len(p) >= 5 and (key.startswith(p) or p.startswith(key)) for p in prefs)
+
+
+def is_preferred_campus_job(job: dict) -> bool:
+    """True for preferred-campus tenants or JDs that name those buildings."""
+    if is_preferred_campus_company(job.get("company") or ""):
+        return True
+    blob = " ".join(
+        str(job.get(k) or "")
+        for k in ("location", "title", "url", "apply_url", "company")
+    )
+    return bool(preferred_campus_blob_re().search(blob))
+
+
 def load_applied_ids() -> dict:
     if not APPLIED_PATH.exists():
         return {}
@@ -891,8 +964,9 @@ def queue() -> list[dict]:
             if not re.search(r"hyderabad|telangana", loc, re.I):
                 continue
         if not re.search(r"hyderabad|telangana", loc, re.I):
-            if not (re.search(r"remote|wfh|work from home", loc, re.I) and re.search(r"\bindia\b", loc, re.I)):
-                continue
+            if not NEAR_HOME_LOC.search(loc):
+                if not (re.search(r"remote|wfh|work from home", loc, re.I) and re.search(r"\bindia\b", loc, re.I)):
+                    continue
         row = dict(job)
         row["apply_url"] = apply_url(job)
         row["portal_rank"] = portal_rank(row)
@@ -1000,6 +1074,7 @@ def queue_sort_key(job: dict) -> tuple:
     if rank is None:
         rank = portal_rank(job)
     return (
+        0 if is_preferred_campus_job(job) else 1,
         -int(rank),
         -int(job.get("match_score") or match_score(job)),
         job.get("company") or "",
@@ -1029,10 +1104,14 @@ def match_score(job: dict) -> int:
         score += 8
     if re.search(r"microservices|distributed|kafka|aws|azure|cloud|architect", title):
         score += 8
-    if re.search(r"hyderabad|telangana|gachibowli|madhapur|nanakramguda|hitec|hitech", loc):
+    if NEAR_HOME_LOC.search(loc):
+        score += 28
+    elif re.search(r"hyderabad|telangana|gachibowli|nanakramguda|hitec|hitech", loc):
         score += 16
     elif re.search(r"remote", loc) and re.search(r"india", loc):
         score += 10
+    if is_preferred_campus_job(job):
+        score += 50
     rank = job.get("portal_rank")
     if rank is None:
         rank = portal_rank(job)

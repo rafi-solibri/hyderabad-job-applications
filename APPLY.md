@@ -109,6 +109,11 @@ Leave honeypot fields empty.
 - No per-company application cap. Duplicate company+title listings are still
   collapsed. Skip Salesforce/SAP/PEGA, Java-mandatory, DevOps-primary, and
   out-of-scope titles already in `apply_now.py`.
+- Prefer companies in **RMZ Nexity / Futura / Spire, Knowledge City,
+  Knowledge Park, and Raheja Mindspace** (Madhapur / HITEC City commute).
+  List + score boost: `data/preferred_campuses.json` and
+  `apply_now.is_preferred_campus_job()`. Those leftovers go first within
+  career portals and within other boards.
 - Resume base for every apply is
   `data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx` (owner upload).
   `tailor_resume.for_job()` copies that file and overlays headline / summary /

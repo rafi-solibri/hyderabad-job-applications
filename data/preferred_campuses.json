@@ -1,0 +1,84 @@
+{
+  "note": "Owner lives in Madhapur / HITEC City. Prefer companies in nearby Grade-A campuses. JPMC/Chase and PEGA/Salesforce remain skip-forever.",
+  "nearHome": [
+    "Madhapur",
+    "HITEC City",
+    "Knowledge City",
+    "Knowledge Park",
+    "Raidurg",
+    "Inorbit Mall Road"
+  ],
+  "campuses": [
+    {
+      "name": "RMZ Nexity",
+      "area": "Knowledge City / Raidurg / Inorbit Mall Road",
+      "aliases": ["rmz nexity", "nexity"]
+    },
+    {
+      "name": "RMZ Futura",
+      "area": "HITEC City / Cyber Gateway",
+      "aliases": ["rmz futura"]
+    },
+    {
+      "name": "RMZ Spire",
+      "area": "HITEC City",
+      "aliases": ["rmz spire"]
+    },
+    {
+      "name": "Raheja Mindspace",
+      "area": "Madhapur / HITEC City",
+      "aliases": ["raheja", "mindspace"]
+    },
+    {
+      "name": "Knowledge City",
+      "area": "Raidurg / HITEC City",
+      "aliases": ["knowledge city", "hyderabad knowledge city"]
+    },
+    {
+      "name": "Knowledge Park",
+      "area": "HITEC City",
+      "aliases": ["knowledge park"]
+    }
+  ],
+  "companies": [
+    {"name": "Amgen", "aliases": ["amgen"], "campus": "RMZ Nexity / RMZ Spire"},
+    {"name": "Electronic Arts", "aliases": ["electronicarts", "ea", "easports"], "campus": "RMZ Nexity"},
+    {"name": "KPMG", "aliases": ["kpmg", "kpmgglobalservices"], "campus": "RMZ Nexity"},
+    {"name": "Providence", "aliases": ["providence", "providenceindia"], "campus": "RMZ Nexity"},
+    {"name": "Apple", "aliases": ["apple", "appleinc"], "campus": "RMZ Nexity / Knowledge City"},
+    {"name": "McDonalds", "aliases": ["mcdonalds", "mcdonald"], "campus": "RMZ Nexity"},
+    {"name": "CGI", "aliases": ["cgi"], "campus": "RMZ Nexity / RMZ Futura"},
+    {"name": "ArcelorMittal", "aliases": ["arcelormittal"], "campus": "RMZ Nexity"},
+    {"name": "HSBC", "aliases": ["hsbc"], "campus": "RMZ Nexity / Knowledge City"},
+    {"name": "Alter Domus", "aliases": ["alterdomus"], "campus": "RMZ Nexity"},
+    {"name": "Deloitte", "aliases": ["deloitte"], "campus": "RMZ Futura / Raheja Mindspace"},
+    {"name": "Darwinbox", "aliases": ["darwinbox"], "campus": "RMZ Futura"},
+    {"name": "Zenoti", "aliases": ["zenoti"], "campus": "RMZ Futura"},
+    {"name": "People Tech", "aliases": ["peopletech", "peopletechgroup"], "campus": "RMZ Futura"},
+    {"name": "Microsoft", "aliases": ["microsoft", "microsoftcorp"], "campus": "Knowledge City"},
+    {"name": "Synchrony", "aliases": ["synchrony"], "campus": "Knowledge City"},
+    {"name": "Accenture", "aliases": ["accenture"], "campus": "Raheja Mindspace"},
+    {"name": "IBM", "aliases": ["ibm"], "campus": "Raheja Mindspace"},
+    {"name": "Tech Mahindra", "aliases": ["techmahindra"], "campus": "Raheja Mindspace"},
+    {"name": "Qualcomm", "aliases": ["qualcomm"], "campus": "Raheja Mindspace"},
+    {"name": "Bank of America", "aliases": ["bankofamerica"], "campus": "Raheja Mindspace"},
+    {"name": "Meta", "aliases": ["meta", "facebook"], "campus": "Raheja Mindspace / Knowledge City"},
+    {"name": "Novartis", "aliases": ["novartis"], "campus": "Raheja Mindspace"},
+    {"name": "GE", "aliases": ["gevernova", "generalelectric"], "campus": "Raheja Mindspace"},
+    {"name": "Verizon", "aliases": ["verizon"], "campus": "Raheja Mindspace"},
+    {"name": "Broadcom", "aliases": ["broadcom"], "campus": "Raheja Mindspace"},
+    {"name": "Oracle", "aliases": ["oracle"], "campus": "Raheja Mindspace"},
+    {"name": "Wells Fargo", "aliases": ["wellsfargo", "thewellsfargofoundation"], "campus": "Raheja Mindspace"},
+    {"name": "OpenText", "aliases": ["opentext"], "campus": "Raheja Mindspace"},
+    {"name": "Cognizant", "aliases": ["cognizant"], "campus": "Raheja Mindspace"},
+    {"name": "UnitedHealth", "aliases": ["unitedhealth", "unitedhealthgroup", "optum"], "campus": "Raheja Mindspace"},
+    {"name": "Persistent", "aliases": ["persistent"], "campus": "Raheja Mindspace"},
+    {"name": "Thomson Reuters", "aliases": ["thomsonreuters"], "campus": "Raheja Mindspace"},
+    {"name": "Amazon", "aliases": ["amazon"], "campus": "Raheja Mindspace / HITEC City"},
+    {"name": "Parexel", "aliases": ["parexel"], "campus": "Raheja Mindspace"},
+    {"name": "Syneos Health", "aliases": ["syneos", "syneoshealth"], "campus": "Raheja Mindspace"},
+    {"name": "Zensar", "aliases": ["zensar"], "campus": "Raheja Mindspace"},
+    {"name": "Colruyt", "aliases": ["colruyt"], "campus": "Raheja Mindspace"},
+    {"name": "Hyundai Mobis", "aliases": ["hyundaimobis"], "campus": "Raheja Mindspace"}
+  ]
+}

@@ -33,7 +33,22 @@
   "howHeard": "Company Careers Website",
   "resumePath": "data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx",
   "baseResumePath": "data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx",
-  "targetAreas": ["Madhapur", "Gachibowli", "Financial District", "HITEC City", "Nanakramguda", "Kondapur", "Hyderabad"],
+  "targetAreas": [
+    "Madhapur",
+    "HITEC City",
+    "Knowledge City",
+    "Knowledge Park",
+    "Raidurg",
+    "Raheja Mindspace",
+    "RMZ Nexity",
+    "RMZ Futura",
+    "Gachibowli",
+    "Financial District",
+    "Nanakramguda",
+    "Kondapur",
+    "Hyderabad"
+  ],
+  "preferredCampusesPath": "data/preferred_campuses.json",
   "targetTitles": [
     "Technical Architect",
     "Principal Engineer",

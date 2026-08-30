@@ -5101,33 +5101,39 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
         else:
             boards.append(job)
 
-    def career_rank(job: dict) -> int:
+    def career_rank(job: dict) -> tuple:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
         if "greenhouse" in u or "lever.co" in u or "ashbyhq.com" in u:
-            return 0
-        if "smartrecruiters.com" in u:
-            return 1
-        if "myworkdayjobs" in u:
-            return 2
-        return 5
+            ats = 0
+        elif "smartrecruiters.com" in u:
+            ats = 1
+        elif "myworkdayjobs" in u:
+            ats = 2
+        else:
+            ats = 5
+        pref = 0 if apply_now.is_preferred_campus_job(job) else 1
+        return (pref, ats, -int(job.get("match_score") or apply_now.match_score(job)))
 
     career.sort(key=career_rank)
 
-    def board_rank(job: dict) -> int:
+    def board_rank(job: dict) -> tuple:
         u = ((job.get("apply_url") or job.get("url") or "") + "").lower()
         if "naukri.com" in u:
-            return 0
-        if "instahyre.com" in u:
-            return 1
-        if "foundit.in" in u:
-            return 2
-        if "indeed.com" in u:
-            return 3
-        if "cutshort" in u:
-            return 8
-        if "linkedin.com" in u:
-            return 9
-        return 5
+            board = 0
+        elif "instahyre.com" in u:
+            board = 1
+        elif "foundit.in" in u:
+            board = 2
+        elif "indeed.com" in u:
+            board = 3
+        elif "cutshort" in u:
+            board = 8
+        elif "linkedin.com" in u:
+            board = 9
+        else:
+            board = 5
+        pref = 0 if apply_now.is_preferred_campus_job(job) else 1
+        return (pref, board, -int(job.get("match_score") or apply_now.match_score(job)))
 
     boards.sort(key=board_rank)
     if linkedin_blocked_now():
