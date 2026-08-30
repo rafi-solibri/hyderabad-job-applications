@@ -180,7 +180,7 @@ PORTALS = [
     # --- Industrial / auto / energy ---
     {"company": "Honeywell", "url": "https://honeywell.wd1.myworkdayjobs.com/en-US/External", "hub": "Gachibowli / Hitec", "kind": "existing"},
     {"company": "Siemens", "url": "https://siemens.wd3.myworkdayjobs.com/en-US/External", "hub": "Gachibowli", "kind": "existing"},
-    {"company": "GE", "url": "https://ge.wd5.myworkdayjobs.com/en-US/GE_ExternalCareer", "hub": "Hitec", "kind": "existing"},
+    {"company": "GE Vernova", "url": "https://ge.wd5.myworkdayjobs.com/en-US/GE_ExternalCareer", "hub": "Raheja Mindspace", "kind": "existing"},
     {"company": "Bosch", "url": "https://bosch.wd1.myworkdayjobs.com/en-US/External", "hub": "Gachibowli", "kind": "existing"},
     {"company": "ABB", "url": "https://abb.wd3.myworkdayjobs.com/en-US/External", "hub": "Hitec", "kind": "existing"},
     {"company": "Schneider", "url": "https://schneider.wd3.myworkdayjobs.com/en-US/External", "hub": "Hitec", "kind": "existing"},
@@ -518,6 +518,9 @@ def main():
 
     eightfold_search(jobs)
     print(f"New GCC raw rows: {len(jobs)}", flush=True)
+
+    import discover_preferred_campuses
+    discover_preferred_campuses.collect(jobs)
 
     live = {}
     for j in jobs:

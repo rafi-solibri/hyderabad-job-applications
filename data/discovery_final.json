@@ -1,22 +1,77 @@
 [
   {
+    "company": "Amgen",
+    "title": "SAP Technical Architect - PFF",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/SAP-Technical-Architect---PFF_R-237932-1",
+    "ats": "Workday",
+    "job_id": "SAP-Technical-Architect---PFF_R-237932-1",
+    "already_applied": false,
+    "match_score": 200,
+    "over_cap": false
+  },
+  {
+    "company": "Amgen",
+    "title": "Principal Software Engineer",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer_R-248018-1",
+    "ats": "Workday",
+    "job_id": "Principal-Software-Engineer_R-248018-1",
+    "already_applied": false,
+    "match_score": 186,
+    "over_cap": false
+  },
+  {
+    "company": "Amgen",
+    "title": "Principal Software Engineer \u2013 Clinical Data Foundation",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "ats": "Workday",
+    "job_id": "Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "already_applied": false,
+    "match_score": 186,
+    "over_cap": false
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Lead Software Engineer (KAFKA, MULESOFT, IDMC, APIGEE, API Development & Integration)",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Lead-Software-Engineer--KAFKA--MULESOFT--IDMC--APIGEE--API-Development---Integration-_R-563674-1",
+    "ats": "Foundit",
+    "job_id": "62357688",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 184
+  },
+  {
+    "company": "Amgen",
+    "title": "Senior Software Engineer",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "ats": "Workday",
+    "job_id": "Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "already_applied": false,
+    "match_score": 164,
+    "over_cap": false
+  },
+  {
+    "company": "Amgen",
+    "title": "Senior Software Engineer",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Senior-Software-Engineer_R-247078-1",
+    "ats": "Workday",
+    "job_id": "Senior-Software-Engineer_R-247078-1",
+    "already_applied": false,
+    "match_score": 164,
+    "over_cap": true
+  },
+  {
     "company": "Baker Hughes",
     "title": "SAP HCM/Payroll Solution Architect",
     "location": "Hyderabad, Bengaluru, Malaysia, Mumbai, Kuala Lumpur, India",
     "url": "https://careers.bakerhughes.com/global/en/job/R166461/SAP-HCM-Payroll-Solution-Architect",
     "ats": "Foundit",
     "job_id": "64404587",
-    "already_applied": false,
-    "match_score": 150,
-    "over_cap": false
-  },
-  {
-    "company": "Cubic Corporation",
-    "title": "Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad-Telangana/Solution-Architect_REQ_49677",
-    "ats": "Foundit",
-    "job_id": "64658078",
     "already_applied": false,
     "match_score": 150,
     "over_cap": false
@@ -44,17 +99,6 @@
     "match_score": 136
   },
   {
-    "company": "The Wells Fargo Foundation",
-    "title": "Principal Engineer - Generative AI Data & Analytics",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer---Generative-AI-Data---Analytics_R-560217",
-    "ats": "Foundit",
-    "job_id": "60437943",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 136
-  },
-  {
     "company": "TTEC India Customer Solutions Private Limited",
     "title": "Systems Software Principal Engineer",
     "location": "Delhi, Hyderabad, Bengaluru",
@@ -64,28 +108,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 136
-  },
-  {
-    "company": "The Wells Fargo Foundation",
-    "title": "Lead Software Engineer (KAFKA, MULESOFT, IDMC, APIGEE, API Development & Integration)",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Lead-Software-Engineer--KAFKA--MULESOFT--IDMC--APIGEE--API-Development---Integration-_R-563674-1",
-    "ats": "Foundit",
-    "job_id": "62357688",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 134
-  },
-  {
-    "company": "Analog Devices, Inc. (ADI)",
-    "title": "Staff Engineer, Digital Design Engineering",
-    "location": "Hyderabad, India",
-    "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
-    "ats": "Foundit",
-    "job_id": "64689072",
-    "already_applied": false,
-    "match_score": 128,
-    "over_cap": false
   },
   {
     "company": "Experian",
@@ -132,17 +154,6 @@
     "over_cap": false
   },
   {
-    "company": "Currenex State Street Trust Company",
-    "title": "Senior Software Engineer - Data Integration, Officer",
-    "location": "Hyderabad, India",
-    "url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
-    "ats": "Foundit",
-    "job_id": "64606204",
-    "already_applied": false,
-    "match_score": 114,
-    "over_cap": false
-  },
-  {
     "company": "Freshworks",
     "title": "Lead Software Engineer - Machine Learning",
     "location": "Hyderabad  in",
@@ -152,17 +163,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 110
-  },
-  {
-    "company": "Thermo Fisher Scientific",
-    "title": "Staff Engineer, Electrical",
-    "location": "Hyderabad",
-    "url": "https://jobs.thermofisher.com/global/en/job/R-01352375/Staff-Engineer,-Electrical",
-    "ats": "Foundit",
-    "job_id": "61432770",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 108
   },
   {
     "company": "The Depository Trust & clearing Corporation",
@@ -176,6 +176,241 @@
     "match_score": 106
   },
   {
+    "company": "Accenture",
+    "title": "Cloud Technical Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/61934442",
+    "ats": "Foundit",
+    "job_id": "61934442",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 40
+  },
+  {
+    "company": "Accenture",
+    "title": "Enterprise Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/61688113",
+    "ats": "Foundit",
+    "job_id": "61688113",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 40
+  },
+  {
+    "company": "Accenture",
+    "title": "Enterprise Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/61788254",
+    "ats": "Foundit",
+    "job_id": "61788254",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 40
+  },
+  {
+    "company": "Accenture",
+    "title": "Enterprise Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/61422028",
+    "ats": "Foundit",
+    "job_id": "61422028",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 40
+  },
+  {
+    "company": "Accenture",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/63144656",
+    "ats": "Foundit",
+    "job_id": "63144656",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 40
+  },
+  {
+    "company": "Accenture",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/61426532",
+    "ats": "Foundit",
+    "job_id": "61426532",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 40
+  },
+  {
+    "company": "Accenture",
+    "title": "Solution Architect",
+    "location": "7-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-7-to-12-years-270726919404",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-7-to-12-years-270726919404",
+    "ats": "Naukri",
+    "job_id": "270726919404",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": true
+  },
+  {
+    "company": "Accenture",
+    "title": "Solution Architect",
+    "location": "7-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-7-to-12-years-270726920660",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-7-to-12-years-270726920660",
+    "ats": "Naukri",
+    "job_id": "270726920660",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": true
+  },
+  {
+    "company": "Accenture",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/63734707",
+    "ats": "Foundit",
+    "job_id": "63734707",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": true
+  },
+  {
+    "company": "Accenture",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/64125659",
+    "ats": "Foundit",
+    "job_id": "64125659",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": true
+  },
+  {
+    "company": "Accenture",
+    "title": "Solution Architect",
+    "location": "15-20 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-15-to-20-years-240826913616",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-15-to-20-years-240826913616",
+    "ats": "Naukri",
+    "job_id": "240826913616",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": true
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Solution Architect Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4456300501/",
+    "ats": "Foundit",
+    "job_id": "63639577",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": false
+  },
+  {
+    "company": "People tech",
+    "title": "SAP Technical Architect",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/34355504",
+    "ats": "Foundit",
+    "job_id": "34355504",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": false
+  },
+  {
+    "company": "Synchrony",
+    "title": "AVP, Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4451087090/",
+    "ats": "Foundit",
+    "job_id": "62296688",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 40
+  },
+  {
+    "company": "Synchrony",
+    "title": "AVP, Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4456167426/",
+    "ats": "Foundit",
+    "job_id": "63633053",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": true
+  },
+  {
+    "company": "Tech Mahindra",
+    "title": "SAP BTP Solution Architect",
+    "location": "15-24 Yrs Not disclosed Hybrid - Hyderabad, Pune, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-sap-btp-solution-architect-tech-mahindra-hyderabad-pune-bengaluru-15-to-24-years-170326010185",
+    "apply_url": "https://www.naukri.com/job-listings-sap-btp-solution-architect-tech-mahindra-hyderabad-pune-bengaluru-15-to-24-years-170326010185",
+    "ats": "Naukri",
+    "job_id": "170326010185",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": false
+  },
+  {
+    "company": "Zensar Technologies",
+    "title": "SAP ABAP Technical Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4451101699/",
+    "ats": "Foundit",
+    "job_id": "62954727",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 40
+  },
+  {
+    "company": "Zensar Technologies",
+    "title": "Wealth Management Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4451616904/",
+    "ats": "Foundit",
+    "job_id": "62527191",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 40
+  },
+  {
+    "company": "Zensar Technologies",
+    "title": "RTR Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4451103264/",
+    "ats": "Foundit",
+    "job_id": "63475077",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": false
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Engineer Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4450322592/",
+    "ats": "Foundit",
+    "job_id": "63065616",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 34
+  },
+  {
+    "company": "Syneos Health",
+    "title": "Principal Engineer Cloud Automation and Standards",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4438686785/",
+    "ats": "Foundit",
+    "job_id": "58756207",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 34
+  },
+  {
     "company": "Perficient",
     "title": "Azure Databricks_Technical Architect",
     "location": "Hyderabad, India",
@@ -185,6 +420,205 @@
     "already_applied": false,
     "match_score": 30,
     "over_cap": false
+  },
+  {
+    "company": "Amazon Alliance",
+    "title": "Principal Software Engineer, Delivery Experience (DEX)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4455904009/",
+    "ats": "Foundit",
+    "job_id": "64054296",
+    "already_applied": false,
+    "match_score": 26,
+    "over_cap": false
+  },
+  {
+    "company": "Amazon Alliance",
+    "title": "Principal Software Engineer, Amazon Shipping",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4455905761/",
+    "ats": "Foundit",
+    "job_id": "64058216",
+    "already_applied": false,
+    "match_score": 26,
+    "over_cap": false
+  },
+  {
+    "company": "Amazon Robotics",
+    "title": "Principal Software Engineer, Amazon Shipping",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4444115755/",
+    "ats": "Foundit",
+    "job_id": "63144367",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "Amazon Robotics",
+    "title": "Principal Software Engineer, Delivery Experience (DEX)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4443033916/",
+    "ats": "Foundit",
+    "job_id": "63086963",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "Amazon Robotics",
+    "title": "Principal Software Engineer, Amazon Shipping",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4455905761/",
+    "ats": "Foundit",
+    "job_id": "64667996",
+    "already_applied": false,
+    "match_score": 26,
+    "over_cap": true
+  },
+  {
+    "company": "mcdonald's global office in india",
+    "title": "Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4335861330/",
+    "ats": "Foundit",
+    "job_id": "55392734",
+    "already_applied": false,
+    "match_score": 26,
+    "over_cap": false
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4429921506/",
+    "ats": "Foundit",
+    "job_id": "58153857",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4449493814/",
+    "ats": "Foundit",
+    "job_id": "61663187",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4448186492/",
+    "ats": "Foundit",
+    "job_id": "61531692",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4406850984/",
+    "ats": "Foundit",
+    "job_id": "51223923",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineering Manager - Databases",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4416671516/",
+    "ats": "Foundit",
+    "job_id": "57411559",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineering Manager- GitHub India",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4415356816/",
+    "ats": "Foundit",
+    "job_id": "53799399",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "providence india",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4444497671/",
+    "ats": "Foundit",
+    "job_id": "60054748",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "providence india",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4440541839/",
+    "ats": "Foundit",
+    "job_id": "59184633",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 26
+  },
+  {
+    "company": "Synchrony",
+    "title": "AVP Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4444445737/",
+    "ats": "Foundit",
+    "job_id": "63131903",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "Synchrony",
+    "title": "AVP Sys Admin & AI Solution Architect (L10)",
+    "location": "7-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-avp-sys-admin-ai-solution-architect-l10-synchrony-international-services-hyderabad-7-to-12-years-150726503982",
+    "apply_url": "https://www.naukri.com/job-listings-avp-sys-admin-ai-solution-architect-l10-synchrony-international-services-hyderabad-7-to-12-years-150726503982",
+    "ats": "Naukri",
+    "job_id": "150726503982",
+    "already_applied": false,
+    "match_score": 24,
+    "over_cap": false
+  },
+  {
+    "company": "ge vernova",
+    "title": "Staff Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4384141331/",
+    "ats": "Foundit",
+    "job_id": "58154695",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 18
+  },
+  {
+    "company": "Apple",
+    "title": "Senior Engineering Manager - RAD - Ops Business Process Reengineering",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/60660553",
+    "ats": "Foundit",
+    "job_id": "60660553",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 16
   },
   {
     "company": "Cubic Transportation Systems",
@@ -215,6 +649,72 @@
     "url": "https://www.linkedin.com/jobs/view/4440673109/",
     "ats": "Foundit",
     "job_id": "63102686",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 16
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Group Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4449493814/",
+    "ats": "Foundit",
+    "job_id": "63097279",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 16
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Group Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4454035034/",
+    "ats": "Foundit",
+    "job_id": "62958607",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 16
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Group Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4438206770/",
+    "ats": "Foundit",
+    "job_id": "58667653",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 16
+  },
+  {
+    "company": "Opentext",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/34478671",
+    "ats": "Foundit",
+    "job_id": "34478671",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 16
+  },
+  {
+    "company": "providence india",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4441643248/",
+    "ats": "Foundit",
+    "job_id": "59322516",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 16
+  },
+  {
+    "company": "Synchrony",
+    "title": "VP Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4443553674/",
+    "ats": "Foundit",
+    "job_id": "62204575",
     "already_applied": false,
     "over_cap": false,
     "match_score": 16
@@ -262,6 +762,139 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 6
+  },
+  {
+    "company": "Apple",
+    "title": "Senior Software Engineer - Digital Asset Management",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/59949178",
+    "ats": "Foundit",
+    "job_id": "59949178",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 4
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4454036028/",
+    "ats": "Foundit",
+    "job_id": "62681468",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 4
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4451079071/",
+    "ats": "Foundit",
+    "job_id": "62054457",
+    "already_applied": false,
+    "over_cap": true,
+    "match_score": 4
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer - Product",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4346629509/",
+    "ats": "Foundit",
+    "job_id": "48633141",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": 4
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4456198506/",
+    "ats": "Foundit",
+    "job_id": "63471826",
+    "already_applied": false,
+    "match_score": 4,
+    "over_cap": true
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4457317930/",
+    "ats": "Foundit",
+    "job_id": "64055687",
+    "already_applied": false,
+    "match_score": 4,
+    "over_cap": true
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4456717284/",
+    "ats": "Foundit",
+    "job_id": "63745724",
+    "already_applied": false,
+    "match_score": 4,
+    "over_cap": true
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4456721272/",
+    "ats": "Foundit",
+    "job_id": "64055692",
+    "already_applied": false,
+    "match_score": 4,
+    "over_cap": true
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4446759520/",
+    "ats": "Foundit",
+    "job_id": "60902657",
+    "already_applied": false,
+    "match_score": 4,
+    "over_cap": true
+  },
+  {
+    "company": "Mind Waveai Solutions",
+    "title": "Solution Architect - Node.js",
+    "location": "10-12 Yrs Not disclosed Hybrid - Hyderabad(Madhapur)",
+    "url": "https://www.naukri.com/job-listings-solution-architect-node-js-mind-waveai-solutions-hyderabad-10-to-12-years-230726036438",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-node-js-mind-waveai-solutions-hyderabad-10-to-12-years-230726036438",
+    "ats": "Naukri",
+    "job_id": "230726036438",
+    "already_applied": false,
+    "match_score": 2,
+    "over_cap": false
+  },
+  {
+    "company": "Qualcomm",
+    "title": "Design Verification - Senior Staff Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/59660675",
+    "ats": "Foundit",
+    "job_id": "59660675",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -2
+  },
+  {
+    "company": "Apple",
+    "title": "Senior Quality Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/60480787",
+    "ats": "Foundit",
+    "job_id": "60480787",
+    "already_applied": false,
+    "over_cap": false,
+    "match_score": -4
   },
   {
     "company": "blackbaud india",
@@ -339,130 +972,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -6
-  },
-  {
-    "company": "Accenture",
-    "title": "Cloud Technical Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/61934442",
-    "ats": "Foundit",
-    "job_id": "61934442",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -10
-  },
-  {
-    "company": "Accenture",
-    "title": "Enterprise Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/61688113",
-    "ats": "Foundit",
-    "job_id": "61688113",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -10
-  },
-  {
-    "company": "Accenture",
-    "title": "Enterprise Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/61788254",
-    "ats": "Foundit",
-    "job_id": "61788254",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -10
-  },
-  {
-    "company": "Accenture",
-    "title": "Enterprise Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/61422028",
-    "ats": "Foundit",
-    "job_id": "61422028",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -10
-  },
-  {
-    "company": "Accenture",
-    "title": "Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/63144656",
-    "ats": "Foundit",
-    "job_id": "63144656",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -10
-  },
-  {
-    "company": "Accenture",
-    "title": "Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/61426532",
-    "ats": "Foundit",
-    "job_id": "61426532",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -10
-  },
-  {
-    "company": "Accenture",
-    "title": "Solution Architect",
-    "location": "7-12 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-7-to-12-years-270726919404",
-    "apply_url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-7-to-12-years-270726919404",
-    "ats": "Naukri",
-    "job_id": "270726919404",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": true
-  },
-  {
-    "company": "Accenture",
-    "title": "Solution Architect",
-    "location": "7-12 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-7-to-12-years-270726920660",
-    "apply_url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-7-to-12-years-270726920660",
-    "ats": "Naukri",
-    "job_id": "270726920660",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": true
-  },
-  {
-    "company": "Accenture",
-    "title": "Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/63734707",
-    "ats": "Foundit",
-    "job_id": "63734707",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": true
-  },
-  {
-    "company": "Accenture",
-    "title": "Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/64125659",
-    "ats": "Foundit",
-    "job_id": "64125659",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": true
-  },
-  {
-    "company": "Accenture",
-    "title": "Solution Architect",
-    "location": "15-20 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-15-to-20-years-240826913616",
-    "apply_url": "https://www.naukri.com/job-listings-solution-architect-accenture-solutions-pvt-ltd-hyderabad-15-to-20-years-240826913616",
-    "ats": "Naukri",
-    "job_id": "240826913616",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": true
   },
   {
     "company": "Allianz Partners",
@@ -895,29 +1404,6 @@
     "match_score": -10
   },
   {
-    "company": "Microsoft Corp",
-    "title": "Solution Architect Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4456300501/",
-    "ats": "Foundit",
-    "job_id": "63639577",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": false
-  },
-  {
-    "company": "Mind Waveai Solutions",
-    "title": "Solution Architect - Node.js",
-    "location": "10-12 Yrs Not disclosed Hybrid - Hyderabad(Madhapur)",
-    "url": "https://www.naukri.com/job-listings-solution-architect-node-js-mind-waveai-solutions-hyderabad-10-to-12-years-230726036438",
-    "apply_url": "https://www.naukri.com/job-listings-solution-architect-node-js-mind-waveai-solutions-hyderabad-10-to-12-years-230726036438",
-    "ats": "Naukri",
-    "job_id": "230726036438",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": false
-  },
-  {
     "company": "Mindstech",
     "title": "Software Architect - AMI",
     "location": "Hyderabad",
@@ -1026,17 +1512,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -10
-  },
-  {
-    "company": "People tech",
-    "title": "SAP Technical Architect",
-    "location": "Hyderabad",
-    "url": "https://www.foundit.in/job/34355504",
-    "ats": "Foundit",
-    "job_id": "34355504",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": false
   },
   {
     "company": "Prolifics Corporation",
@@ -1261,28 +1736,6 @@
     "match_score": -10
   },
   {
-    "company": "Synchrony",
-    "title": "AVP, Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4451087090/",
-    "ats": "Foundit",
-    "job_id": "62296688",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -10
-  },
-  {
-    "company": "Synchrony",
-    "title": "AVP, Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4456167426/",
-    "ats": "Foundit",
-    "job_id": "63633053",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": true
-  },
-  {
     "company": "Syniti",
     "title": "Solution Architect",
     "location": "Hyderabad, India",
@@ -1325,18 +1778,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -10
-  },
-  {
-    "company": "Tech Mahindra",
-    "title": "SAP BTP Solution Architect",
-    "location": "15-24 Yrs Not disclosed Hybrid - Hyderabad, Pune, Bengaluru",
-    "url": "https://www.naukri.com/job-listings-sap-btp-solution-architect-tech-mahindra-hyderabad-pune-bengaluru-15-to-24-years-170326010185",
-    "apply_url": "https://www.naukri.com/job-listings-sap-btp-solution-architect-tech-mahindra-hyderabad-pune-bengaluru-15-to-24-years-170326010185",
-    "ats": "Naukri",
-    "job_id": "170326010185",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": false
   },
   {
     "company": "techdome",
@@ -1460,39 +1901,6 @@
     "over_cap": false
   },
   {
-    "company": "Zensar Technologies",
-    "title": "SAP ABAP Technical Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4451101699/",
-    "ats": "Foundit",
-    "job_id": "62954727",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -10
-  },
-  {
-    "company": "Zensar Technologies",
-    "title": "Wealth Management Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4451616904/",
-    "ats": "Foundit",
-    "job_id": "62527191",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -10
-  },
-  {
-    "company": "Zensar Technologies",
-    "title": "RTR Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4451103264/",
-    "ats": "Foundit",
-    "job_id": "63475077",
-    "already_applied": false,
-    "match_score": -10,
-    "over_cap": false
-  },
-  {
     "company": "ZF Group",
     "title": "Senior Solution Architect",
     "location": "Hyderabad, India",
@@ -1586,17 +1994,6 @@
     "over_cap": false
   },
   {
-    "company": "Microsoft Corp",
-    "title": "Principal Engineer Architect",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4450322592/",
-    "ats": "Foundit",
-    "job_id": "63065616",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -16
-  },
-  {
     "company": "Nasuni",
     "title": "Principal Software Engineer - Cloud Services",
     "location": "Hyderabad, India",
@@ -1617,72 +2014,6 @@
     "already_applied": false,
     "match_score": -16,
     "over_cap": false
-  },
-  {
-    "company": "Syneos Health",
-    "title": "Principal Engineer Cloud Automation and Standards",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4438686785/",
-    "ats": "Foundit",
-    "job_id": "58756207",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -16
-  },
-  {
-    "company": "Amazon Alliance",
-    "title": "Principal Software Engineer, Delivery Experience (DEX)",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4455904009/",
-    "ats": "Foundit",
-    "job_id": "64054296",
-    "already_applied": false,
-    "match_score": -24,
-    "over_cap": false
-  },
-  {
-    "company": "Amazon Alliance",
-    "title": "Principal Software Engineer, Amazon Shipping",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4455905761/",
-    "ats": "Foundit",
-    "job_id": "64058216",
-    "already_applied": false,
-    "match_score": -24,
-    "over_cap": false
-  },
-  {
-    "company": "Amazon Robotics",
-    "title": "Principal Software Engineer, Amazon Shipping",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4444115755/",
-    "ats": "Foundit",
-    "job_id": "63144367",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "Amazon Robotics",
-    "title": "Principal Software Engineer, Delivery Experience (DEX)",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4443033916/",
-    "ats": "Foundit",
-    "job_id": "63086963",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "Amazon Robotics",
-    "title": "Principal Software Engineer, Amazon Shipping",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4455905761/",
-    "ats": "Foundit",
-    "job_id": "64667996",
-    "already_applied": false,
-    "match_score": -24,
-    "over_cap": true
   },
   {
     "company": "Anblicks",
@@ -1928,17 +2259,6 @@
     "match_score": -24
   },
   {
-    "company": "mcdonald's global office in india",
-    "title": "Principal Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4335861330/",
-    "ats": "Foundit",
-    "job_id": "55392734",
-    "already_applied": false,
-    "match_score": -24,
-    "over_cap": false
-  },
-  {
     "company": "Medtronic",
     "title": "Senior Principal Software Engineer",
     "location": "Hyderabad, India",
@@ -2006,72 +2326,6 @@
     "over_cap": false
   },
   {
-    "company": "Microsoft Corp",
-    "title": "Principal Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4429921506/",
-    "ats": "Foundit",
-    "job_id": "58153857",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4449493814/",
-    "ats": "Foundit",
-    "job_id": "61663187",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4448186492/",
-    "ats": "Foundit",
-    "job_id": "61531692",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -24
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4406850984/",
-    "ats": "Foundit",
-    "job_id": "51223923",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -24
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineering Manager - Databases",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4416671516/",
-    "ats": "Foundit",
-    "job_id": "57411559",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineering Manager- GitHub India",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4415356816/",
-    "ats": "Foundit",
-    "job_id": "53799399",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
     "company": "Nasuni",
     "title": "Principal Software Engineer - C++ Linux",
     "location": "Hyderabad, India",
@@ -2136,28 +2390,6 @@
     "already_applied": false,
     "match_score": -24,
     "over_cap": false
-  },
-  {
-    "company": "providence india",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4444497671/",
-    "ats": "Foundit",
-    "job_id": "60054748",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "providence india",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4440541839/",
-    "ats": "Foundit",
-    "job_id": "59184633",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -24
   },
   {
     "company": "randstad enterprise",
@@ -2287,17 +2519,6 @@
     "url": "https://www.linkedin.com/jobs/view/4345477079/",
     "ats": "Foundit",
     "job_id": "42230150",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "Synchrony",
-    "title": "AVP Principal Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4444445737/",
-    "ats": "Foundit",
-    "job_id": "63131903",
     "already_applied": false,
     "over_cap": false,
     "match_score": -24
@@ -2560,18 +2781,6 @@
     "match_score": -26
   },
   {
-    "company": "Synchrony",
-    "title": "AVP Sys Admin & AI Solution Architect (L10)",
-    "location": "7-12 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-avp-sys-admin-ai-solution-architect-l10-synchrony-international-services-hyderabad-7-to-12-years-150726503982",
-    "apply_url": "https://www.naukri.com/job-listings-avp-sys-admin-ai-solution-architect-l10-synchrony-international-services-hyderabad-7-to-12-years-150726503982",
-    "ats": "Naukri",
-    "job_id": "150726503982",
-    "already_applied": false,
-    "match_score": -26,
-    "over_cap": false
-  },
-  {
     "company": "arrise solutions (india) pvt. ltd.",
     "title": "Software Architect - Frontend",
     "location": "Hyderabad, India",
@@ -2746,17 +2955,6 @@
     "job_id": "62541451",
     "already_applied": false,
     "over_cap": true,
-    "match_score": -32
-  },
-  {
-    "company": "ge vernova",
-    "title": "Staff Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4384141331/",
-    "ats": "Foundit",
-    "job_id": "58154695",
-    "already_applied": false,
-    "over_cap": false,
     "match_score": -32
   },
   {
@@ -3221,17 +3419,6 @@
     "already_applied": false,
     "match_score": -34,
     "over_cap": false
-  },
-  {
-    "company": "Apple",
-    "title": "Senior Engineering Manager - RAD - Ops Business Process Reengineering",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/60660553",
-    "ats": "Foundit",
-    "job_id": "60660553",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -34
   },
   {
     "company": "AST SpaceMobile",
@@ -4086,39 +4273,6 @@
     "over_cap": false
   },
   {
-    "company": "Microsoft Corp",
-    "title": "Principal Group Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4449493814/",
-    "ats": "Foundit",
-    "job_id": "63097279",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -34
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Group Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4454035034/",
-    "ats": "Foundit",
-    "job_id": "62958607",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -34
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Group Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4438206770/",
-    "ats": "Foundit",
-    "job_id": "58667653",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -34
-  },
-  {
     "company": "momentum financial services group",
     "title": "Lead Software Engineer",
     "location": "Hyderabad, India",
@@ -4273,17 +4427,6 @@
     "match_score": -34
   },
   {
-    "company": "Opentext",
-    "title": "Lead Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://www.foundit.in/job/34478671",
-    "ats": "Foundit",
-    "job_id": "34478671",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -34
-  },
-  {
     "company": "Orbital",
     "title": "Technical Lead",
     "location": "Hyderabad, India",
@@ -4387,17 +4530,6 @@
     "match_score": -34
   },
   {
-    "company": "providence india",
-    "title": "Lead Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4441643248/",
-    "ats": "Foundit",
-    "job_id": "59322516",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -34
-  },
-  {
     "company": "Qapita",
     "title": "Engineering Manager",
     "location": "Hyderabad, India",
@@ -4493,17 +4625,6 @@
     "url": "https://www.foundit.in/job/34489846",
     "ats": "Foundit",
     "job_id": "34489846",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -34
-  },
-  {
-    "company": "Synchrony",
-    "title": "VP Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4443553674/",
-    "ats": "Foundit",
-    "job_id": "62204575",
     "already_applied": false,
     "over_cap": false,
     "match_score": -34
@@ -5043,17 +5164,6 @@
     "match_score": -44
   },
   {
-    "company": "Apple",
-    "title": "Senior Software Engineer - Digital Asset Management",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/59949178",
-    "ats": "Foundit",
-    "job_id": "59949178",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -46
-  },
-  {
     "company": "Artech Infosystems Private Limited",
     "title": "Senior Software Engineer Backend",
     "location": "Hyderabad",
@@ -5261,94 +5371,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -46
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4454036028/",
-    "ats": "Foundit",
-    "job_id": "62681468",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -46
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4451079071/",
-    "ats": "Foundit",
-    "job_id": "62054457",
-    "already_applied": false,
-    "over_cap": true,
-    "match_score": -46
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Senior Software Engineer - Product",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4346629509/",
-    "ats": "Foundit",
-    "job_id": "48633141",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -46
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4456198506/",
-    "ats": "Foundit",
-    "job_id": "63471826",
-    "already_applied": false,
-    "match_score": -46,
-    "over_cap": true
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4457317930/",
-    "ats": "Foundit",
-    "job_id": "64055687",
-    "already_applied": false,
-    "match_score": -46,
-    "over_cap": true
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4456717284/",
-    "ats": "Foundit",
-    "job_id": "63745724",
-    "already_applied": false,
-    "match_score": -46,
-    "over_cap": true
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4456721272/",
-    "ats": "Foundit",
-    "job_id": "64055692",
-    "already_applied": false,
-    "match_score": -46,
-    "over_cap": true
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Senior Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4446759520/",
-    "ats": "Foundit",
-    "job_id": "60902657",
-    "already_applied": false,
-    "match_score": -46,
-    "over_cap": true
   },
   {
     "company": "Mphasis",
@@ -5627,17 +5649,6 @@
     "match_score": -52
   },
   {
-    "company": "Qualcomm",
-    "title": "Design Verification - Senior Staff Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/59660675",
-    "ats": "Foundit",
-    "job_id": "59660675",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -52
-  },
-  {
     "company": "SiFive",
     "title": "Staff Engineer - CPU Verification",
     "location": "Hyderabad, India",
@@ -5691,17 +5702,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -52
-  },
-  {
-    "company": "Apple",
-    "title": "Senior Quality Engineering Manager",
-    "location": "Hyderabad, India",
-    "url": "https://www.foundit.in/job/60480787",
-    "ats": "Foundit",
-    "job_id": "60480787",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": -54
   },
   {
     "company": "arrise solutions (india) pvt. ltd.",
@@ -5836,6 +5836,184 @@
     "over_cap": false
   },
   {
+    "company": "Amazon",
+    "title": "Solution Architect, AGS-APJ-India-ISV-SA",
+    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
+    "url": "https://www.amazon.jobs/en/jobs/3202138",
+    "ats": "Amazon",
+    "job_id": "3202138",
+    "already_applied": true,
+    "over_cap": true,
+    "match_score": 200
+  },
+  {
+    "company": "Amgen",
+    "title": "Principal Solution Architect",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Solution-Architect_R-216344",
+    "ats": "Workday",
+    "job_id": "Principal-Solution-Architect_R-216344",
+    "already_applied": true,
+    "match_score": 200
+  },
+  {
+    "company": "Amgen",
+    "title": "Principal Solution Architect",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Solution-Architect_R-216678",
+    "ats": "Workday",
+    "job_id": "Principal-Solution-Architect_R-216678",
+    "already_applied": true,
+    "match_score": 200
+  },
+  {
+    "company": "Amgen",
+    "title": "SAP Technical Architect - Serialization",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/SAP-Technical-Architect---Serialization_R-237927",
+    "ats": "Workday",
+    "job_id": "SAP-Technical-Architect---Serialization_R-237927",
+    "already_applied": true,
+    "match_score": 200
+  },
+  {
+    "company": "Broadcom",
+    "title": "Senior Software Architect",
+    "location": "IND-Hyderabad 115 IT Park Area",
+    "url": "https://broadcom.wd1.myworkdayjobs.com/en-US/External_Career/job/IND-Hyderabad-115-IT-Park-Area/Senior-Software-Architect_R025606-3",
+    "ats": "Workday",
+    "job_id": "Senior-Software-Architect_R025606-3",
+    "already_applied": true,
+    "company_applied_count": 2,
+    "match_score": 200
+  },
+  {
+    "company": "Amazon",
+    "title": "Principal Software Engineer, Amazon Shipping",
+    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
+    "url": "https://www.amazon.jobs/en/jobs/10486766",
+    "ats": "Amazon",
+    "job_id": "10486766",
+    "already_applied": true,
+    "company_applied_count": 5,
+    "match_score": 186
+  },
+  {
+    "company": "Amazon",
+    "title": "Principal Software Engineer, Delivery Experience (DEX)",
+    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
+    "url": "https://www.amazon.jobs/en/jobs/10403400",
+    "ats": "Amazon",
+    "job_id": "10403400",
+    "already_applied": true,
+    "company_applied_count": 5,
+    "match_score": 186
+  },
+  {
+    "company": "Amgen",
+    "title": "Principal Software Engineer",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer_R-194415",
+    "ats": "Workday",
+    "job_id": "Principal-Software-Engineer_R-194415",
+    "already_applied": true,
+    "match_score": 186
+  },
+  {
+    "company": "Amgen",
+    "title": "Principal Engineer (Chemical Engineering)",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Engineer_R-249067",
+    "ats": "Workday",
+    "job_id": "Principal-Engineer_R-249067",
+    "already_applied": true,
+    "match_score": 186
+  },
+  {
+    "company": "Amgen",
+    "title": "Principal Engineer - Continuous Improvement Lead",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Engineer---Continuous-Improvement-Lead_R-240393",
+    "ats": "Workday",
+    "job_id": "Principal-Engineer---Continuous-Improvement-Lead_R-240393",
+    "already_applied": true,
+    "match_score": 186
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://careers.microsoft.com/us/en/job/1832298/Principal-Software-Engineer?jobsource=linkedin&utm_source=Job+Board&utm_campaign=linkedin-feed&mode=apply&iis=LinkedIn",
+    "ats": "Foundit",
+    "job_id": "48704890",
+    "already_applied": true,
+    "over_cap": true,
+    "match_score": 186
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://apply.careers.microsoft.com/careers/job/1970393556654501?utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
+    "ats": "Foundit",
+    "job_id": "48633299",
+    "already_applied": true,
+    "over_cap": true,
+    "match_score": 186
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Principal Engineer - Generative AI Data & Analytics",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer---Generative-AI-Data---Analytics_R-560217",
+    "ats": "Foundit",
+    "job_id": "60437943",
+    "already_applied": true,
+    "over_cap": false,
+    "match_score": 186
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Principal Engineer - Martech",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer---Martech_R-564444",
+    "ats": "Foundit",
+    "job_id": "60967636",
+    "already_applied": true,
+    "over_cap": false,
+    "match_score": 186
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer_R-569003",
+    "ats": "Foundit",
+    "job_id": "63410078",
+    "already_applied": true,
+    "match_score": 186
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Lead-Software-Engineer_R-557080",
+    "ats": "Foundit",
+    "job_id": "63646712",
+    "already_applied": true,
+    "match_score": 176
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Lead-Software-Engineer_R-557069",
+    "ats": "Foundit",
+    "job_id": "63646706",
+    "already_applied": true,
+    "match_score": 176
+  },
+  {
     "company": "Coupa Software",
     "title": "Sr Lead Software Engineer - Full Stack (.NET with React)(12+ years) - 11787",
     "location": "Hyderabad, Indi, India",
@@ -5848,25 +6026,68 @@
   },
   {
     "company": "Amazon",
-    "title": "Solution Architect, AGS-APJ-India-ISV-SA",
+    "title": "Sr. Software Development Engineer, Payroll Tax & Accounting Tech",
     "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
-    "url": "https://www.amazon.jobs/en/jobs/3202138",
+    "url": "https://www.amazon.jobs/en/jobs/3190158",
     "ats": "Amazon",
-    "job_id": "3202138",
+    "job_id": "3190158",
     "already_applied": true,
+    "company_applied_count": 5,
     "over_cap": true,
-    "match_score": 150
+    "match_score": 164
   },
   {
-    "company": "Broadcom",
-    "title": "Senior Software Architect",
-    "location": "IND-Hyderabad 115 IT Park Area",
-    "url": "https://broadcom.wd1.myworkdayjobs.com/en-US/External_Career/job/IND-Hyderabad-115-IT-Park-Area/Senior-Software-Architect_R025606-3",
-    "ats": "Workday",
-    "job_id": "Senior-Software-Architect_R025606-3",
+    "company": "Amazon",
+    "title": "Senior Software Development Engineer, AZA",
+    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
+    "url": "https://www.amazon.jobs/en/jobs/10488478",
+    "ats": "Amazon",
+    "job_id": "10488478",
     "already_applied": true,
-    "company_applied_count": 2,
-    "match_score": 150
+    "company_applied_count": 5,
+    "match_score": 164
+  },
+  {
+    "company": "Amazon",
+    "title": "Senior Software Development Engineer, AZA",
+    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
+    "url": "https://www.amazon.jobs/en/jobs/10486367",
+    "ats": "Amazon",
+    "job_id": "10486367",
+    "already_applied": true,
+    "company_applied_count": 5,
+    "match_score": 164
+  },
+  {
+    "company": "Amazon",
+    "title": "Senior Software Development Engineer, Global Logistics",
+    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
+    "url": "https://www.amazon.jobs/en/jobs/10484739",
+    "ats": "Amazon",
+    "job_id": "10484739",
+    "already_applied": true,
+    "company_applied_count": 5,
+    "match_score": 164
+  },
+  {
+    "company": "Amgen",
+    "title": "Senior Software Engineer \u2013 Clinical Data Foundation",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Senior-Software-Engineer---Clinical-Data-Foundation_R-237961",
+    "ats": "Workday",
+    "job_id": "Senior-Software-Engineer---Clinical-Data-Foundation_R-237961",
+    "already_applied": true,
+    "match_score": 164
+  },
+  {
+    "company": "Amgen",
+    "title": "Manager Software Development Engineer",
+    "location": "India - Hyderabad",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Manager-Software-Development-Engineer_R-248334",
+    "ats": "Workday",
+    "job_id": "Manager-Software-Development-Engineer_R-248334",
+    "already_applied": true,
+    "match_score": 156
   },
   {
     "company": "Charles Schwab",
@@ -5875,6 +6096,17 @@
     "url": "https://www.schwabjobs.com/job/hyderabad/solutions-architect-brokerage-services/33995/91969140928",
     "ats": "Phenom",
     "job_id": "91969140928",
+    "already_applied": true,
+    "match_score": 150,
+    "over_cap": false
+  },
+  {
+    "company": "Cubic Corporation",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://cubic.wd1.myworkdayjobs.com/en-US/cubic_global_careers/job/Hyderabad-Telangana/Solution-Architect_REQ_49677",
+    "ats": "Foundit",
+    "job_id": "64658078",
     "already_applied": true,
     "match_score": 150,
     "over_cap": false
@@ -5923,28 +6155,6 @@
     "match_score": 144
   },
   {
-    "company": "Amazon",
-    "title": "Principal Software Engineer, Amazon Shipping",
-    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
-    "url": "https://www.amazon.jobs/en/jobs/10486766",
-    "ats": "Amazon",
-    "job_id": "10486766",
-    "already_applied": true,
-    "company_applied_count": 5,
-    "match_score": 136
-  },
-  {
-    "company": "Amazon",
-    "title": "Principal Software Engineer, Delivery Experience (DEX)",
-    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
-    "url": "https://www.amazon.jobs/en/jobs/10403400",
-    "ats": "Amazon",
-    "job_id": "10403400",
-    "already_applied": true,
-    "company_applied_count": 5,
-    "match_score": 136
-  },
-  {
     "company": "Blue Yonder",
     "title": "Staff Software Engineer II -  ReactJS, Java8, Microservices, Springboot & Cloud",
     "location": "Hyderabad, India",
@@ -5962,28 +6172,6 @@
     "ats": "Foundit",
     "job_id": "63580243",
     "already_applied": true,
-    "match_score": 136
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://careers.microsoft.com/us/en/job/1832298/Principal-Software-Engineer?jobsource=linkedin&utm_source=Job+Board&utm_campaign=linkedin-feed&mode=apply&iis=LinkedIn",
-    "ats": "Foundit",
-    "job_id": "48704890",
-    "already_applied": true,
-    "over_cap": true,
-    "match_score": 136
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://apply.careers.microsoft.com/careers/job/1970393556654501?utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
-    "ats": "Foundit",
-    "job_id": "48633299",
-    "already_applied": true,
-    "over_cap": true,
     "match_score": 136
   },
   {
@@ -6072,27 +6260,6 @@
     "match_score": 136
   },
   {
-    "company": "The Wells Fargo Foundation",
-    "title": "Principal Engineer - Martech",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer---Martech_R-564444",
-    "ats": "Foundit",
-    "job_id": "60967636",
-    "already_applied": true,
-    "over_cap": false,
-    "match_score": 136
-  },
-  {
-    "company": "The Wells Fargo Foundation",
-    "title": "Principal Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Principal-Engineer_R-569003",
-    "ats": "Foundit",
-    "job_id": "63410078",
-    "already_applied": true,
-    "match_score": 136
-  },
-  {
     "company": "twilio",
     "title": "Principal Engineer (L5)",
     "location": "Remote - India",
@@ -6124,6 +6291,17 @@
     "already_applied": true,
     "company_applied_count": 6,
     "match_score": 130
+  },
+  {
+    "company": "Analog Devices, Inc. (ADI)",
+    "title": "Staff Engineer, Digital Design Engineering",
+    "location": "Hyderabad, India",
+    "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/India-Hyderabad/Staff-Engineer--Digital-Design-Engineering_R261542?locationCountry=c4f78be1a8f14da0ab49ce1162348a5e",
+    "ats": "Foundit",
+    "job_id": "64689072",
+    "already_applied": true,
+    "match_score": 128,
+    "over_cap": false
   },
   {
     "company": "crunchyroll",
@@ -6417,26 +6595,6 @@
     "match_score": 126
   },
   {
-    "company": "The Wells Fargo Foundation",
-    "title": "Lead Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Lead-Software-Engineer_R-557080",
-    "ats": "Foundit",
-    "job_id": "63646712",
-    "already_applied": true,
-    "match_score": 126
-  },
-  {
-    "company": "The Wells Fargo Foundation",
-    "title": "Lead Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Lead-Software-Engineer_R-557069",
-    "ats": "Foundit",
-    "job_id": "63646706",
-    "already_applied": true,
-    "match_score": 126
-  },
-  {
     "company": "Zf Friedrich",
     "title": "Sr. Technical Lead- Functional Safety",
     "location": "Hyderabad, India",
@@ -6523,49 +6681,15 @@
     "match_score": 116
   },
   {
-    "company": "Amazon",
-    "title": "Sr. Software Development Engineer, Payroll Tax & Accounting Tech",
-    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
-    "url": "https://www.amazon.jobs/en/jobs/3190158",
-    "ats": "Amazon",
-    "job_id": "3190158",
+    "company": "Currenex State Street Trust Company",
+    "title": "Senior Software Engineer - Data Integration, Officer",
+    "location": "Hyderabad, India",
+    "url": "https://careers.statestreet.com/global/en/job/R-796658/Senior-Software-Engineer-Data-Integration-Officer",
+    "ats": "Foundit",
+    "job_id": "64606204",
     "already_applied": true,
-    "company_applied_count": 5,
-    "over_cap": true,
-    "match_score": 114
-  },
-  {
-    "company": "Amazon",
-    "title": "Senior Software Development Engineer, AZA",
-    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
-    "url": "https://www.amazon.jobs/en/jobs/10488478",
-    "ats": "Amazon",
-    "job_id": "10488478",
-    "already_applied": true,
-    "company_applied_count": 5,
-    "match_score": 114
-  },
-  {
-    "company": "Amazon",
-    "title": "Senior Software Development Engineer, AZA",
-    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
-    "url": "https://www.amazon.jobs/en/jobs/10486367",
-    "ats": "Amazon",
-    "job_id": "10486367",
-    "already_applied": true,
-    "company_applied_count": 5,
-    "match_score": 114
-  },
-  {
-    "company": "Amazon",
-    "title": "Senior Software Development Engineer, Global Logistics",
-    "location": "IN, TS, Hyderabad Hyderabad, Telangana, IND",
-    "url": "https://www.amazon.jobs/en/jobs/10484739",
-    "ats": "Amazon",
-    "job_id": "10484739",
-    "already_applied": true,
-    "company_applied_count": 5,
-    "match_score": 114
+    "match_score": 114,
+    "over_cap": false
   },
   {
     "company": "Currenex State Street Trust Company",
@@ -6751,6 +6875,17 @@
     "match_score": 108
   },
   {
+    "company": "Thermo Fisher Scientific",
+    "title": "Staff Engineer, Electrical",
+    "location": "Hyderabad",
+    "url": "https://jobs.thermofisher.com/global/en/job/R-01352375/Staff-Engineer,-Electrical",
+    "ats": "Foundit",
+    "job_id": "61432770",
+    "already_applied": true,
+    "over_cap": false,
+    "match_score": 108
+  },
+  {
     "company": "Charles Schwab",
     "title": "Senior Manager Software Development And Engineering Lead Pl",
     "location": "Hyderabad",
@@ -6803,6 +6938,111 @@
     "match_score": 106
   },
   {
+    "company": "Optum",
+    "title": "Senior Software Engineer I (.Net React and Azure)",
+    "location": "6-11 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-i-net-react-and-azure-optum-global-solutions-india-private-limited-hyderabad-6-to-11-years-200826933013",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-i-net-react-and-azure-optum-global-solutions-india-private-limited-hyderabad-6-to-11-years-200826933013",
+    "ats": "Naukri",
+    "job_id": "200826933013",
+    "already_applied": true,
+    "match_score": 52,
+    "over_cap": false
+  },
+  {
+    "company": "Arcelormittal",
+    "title": "Senior .Net Developer",
+    "location": "6-11 Yrs 30-45 Lacs PA Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-11-years-290726010655",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-11-years-290726010655",
+    "ats": "Naukri",
+    "job_id": "290726010655",
+    "already_applied": true,
+    "match_score": 44,
+    "over_cap": false
+  },
+  {
+    "company": "Arcelormittal",
+    "title": "Senior .Net Developer",
+    "location": "6-10 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-10-years-070826026962",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-10-years-070826026962",
+    "ats": "Naukri",
+    "job_id": "070826026962",
+    "already_applied": true,
+    "match_score": 44,
+    "over_cap": true
+  },
+  {
+    "company": "CGI",
+    "title": "Senior .Net Developer",
+    "location": "5-8 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-cgi-hyderabad-5-to-8-years-270726028689",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-cgi-hyderabad-5-to-8-years-270726028689",
+    "ats": "Naukri",
+    "job_id": "270726028689",
+    "already_applied": true,
+    "match_score": 44,
+    "over_cap": false
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Senior Software Engineer - .Net",
+    "location": "4-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-net-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-190826927772",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-net-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-190826927772",
+    "ats": "Naukri",
+    "job_id": "190826927772",
+    "already_applied": true,
+    "match_score": 44,
+    "over_cap": false
+  },
+  {
+    "company": "Colruyt Group India",
+    "title": "Solution Architect HYD",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solution-architect-hyd-colruyt-it-consultancy-india-pvt-ltd-hyderabad-5-to-10-years-070826504162",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-hyd-colruyt-it-consultancy-india-pvt-ltd-hyderabad-5-to-10-years-070826504162",
+    "ats": "Naukri",
+    "job_id": "070826504162",
+    "already_applied": true,
+    "match_score": 40
+  },
+  {
+    "company": "Deloitte",
+    "title": "Application Architect - Data Security and Cloud",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-440365-application-architect-data-security-and-cloud-at-deloitte-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "440365",
+    "already_applied": true,
+    "match_score": 40
+  },
+  {
+    "company": "Synchrony",
+    "title": "AVP, Solution Architect (L11)",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-10-to-15-years-200826503502",
+    "apply_url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-10-to-15-years-200826503502",
+    "ats": "Naukri",
+    "job_id": "200826503502",
+    "already_applied": true,
+    "match_score": 40,
+    "over_cap": false
+  },
+  {
+    "company": "Synchrony",
+    "title": "AVP, Solution Architect (L11)",
+    "location": "7-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-7-to-12-years-110826502386",
+    "apply_url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-7-to-12-years-110826502386",
+    "ats": "Naukri",
+    "job_id": "110826502386",
+    "already_applied": true,
+    "match_score": 40,
+    "over_cap": true
+  },
+  {
     "company": "Clean Harbors",
     "title": ".Net TEchnical Architect",
     "location": "12-18 Yrs Not disclosed Hyderabad",
@@ -6849,6 +7089,120 @@
     "match_score": 30
   },
   {
+    "company": "Amgen Inc",
+    "title": "Principal Software Engineer - Clinical Data Foundation",
+    "location": "12-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-clinical-data-foundation-amgen-inc-hyderabad-12-to-15-years-200726932678",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-clinical-data-foundation-amgen-inc-hyderabad-12-to-15-years-200726932678",
+    "ats": "Naukri",
+    "job_id": "200726932678",
+    "already_applied": true,
+    "match_score": 26,
+    "over_cap": false
+  },
+  {
+    "company": "Amgen Inc",
+    "title": "Principal Software Engineer",
+    "location": "7-11 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-amgen-inc-hyderabad-7-to-11-years-110826937374",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-amgen-inc-hyderabad-7-to-11-years-110826937374",
+    "ats": "Naukri",
+    "job_id": "110826937374",
+    "already_applied": true,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4448865535/",
+    "ats": "Foundit",
+    "job_id": "63125953",
+    "already_applied": true,
+    "over_cap": false,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4435567890/",
+    "ats": "Foundit",
+    "job_id": "57687625",
+    "already_applied": true,
+    "over_cap": true,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4426785996/",
+    "ats": "Foundit",
+    "job_id": "56379284",
+    "already_applied": true,
+    "over_cap": true,
+    "match_score": 26
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4408788254/",
+    "ats": "Foundit",
+    "job_id": "51997505",
+    "already_applied": true,
+    "over_cap": true,
+    "match_score": 26
+  },
+  {
+    "company": "Optum",
+    "title": "Principal Software Engineer",
+    "location": "11-16 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-optum-global-solutions-india-private-limited-hyderabad-11-to-16-years-190826927566",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-optum-global-solutions-india-private-limited-hyderabad-11-to-16-years-190826927566",
+    "ats": "Naukri",
+    "job_id": "190826927566",
+    "already_applied": true,
+    "match_score": 26,
+    "over_cap": false
+  },
+  {
+    "company": "Providence College Of Engineering",
+    "title": "Principal Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-10-to-15-years-240726506589",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-10-to-15-years-240726506589",
+    "ats": "Naukri",
+    "job_id": "240726506589",
+    "already_applied": true,
+    "match_score": 26,
+    "over_cap": false
+  },
+  {
+    "company": "Providence College Of Engineering",
+    "title": "Principal Software Engineer",
+    "location": "9-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-9-to-14-years-220726502963",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-9-to-14-years-220726502963",
+    "ats": "Naukri",
+    "job_id": "220726502963",
+    "already_applied": true,
+    "match_score": 26,
+    "over_cap": true
+  },
+  {
+    "company": "Providence Global Center",
+    "title": "Principal Software Engineer",
+    "location": "9-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-9-to-14-years-110626505114",
+    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-9-to-14-years-110626505114",
+    "ats": "Naukri",
+    "job_id": "110626505114",
+    "already_applied": true,
+    "match_score": 26
+  },
+  {
     "company": "Simcorp",
     "title": "Principal software engineer (Angular , C# and Azure)",
     "location": "3-8 Yrs Not disclosed Hyderabad",
@@ -6860,6 +7214,127 @@
     "match_score": 24
   },
   {
+    "company": "Amazon",
+    "title": "Staff Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-439305-staff-software-engineer-at-amazon-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439305",
+    "already_applied": true,
+    "over_cap": true,
+    "match_score": 18
+  },
+  {
+    "company": "ArcelorMittal",
+    "title": "Staff Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-429639-staff-software-engineer-at-arcelormittal-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "429639",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
+    "company": "Broadcom",
+    "title": "Staff Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-200826501435",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-200826501435",
+    "ats": "Naukri",
+    "job_id": "200826501435",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
+    "company": "Broadcom",
+    "title": "Staff Software Engineer",
+    "location": "11-20 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-11-to-20-years-180826501324",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-11-to-20-years-180826501324",
+    "ats": "Naukri",
+    "job_id": "180826501324",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
+    "company": "Broadcom",
+    "title": "Staff Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270726502084",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270726502084",
+    "ats": "Naukri",
+    "job_id": "270726502084",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
+    "company": "Broadcom",
+    "title": "Staff Software Engineer",
+    "location": "11-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-11-to-15-years-270826501603",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-11-to-15-years-270826501603",
+    "ats": "Naukri",
+    "job_id": "270826501603",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
+    "company": "Broadcom",
+    "title": "Staff software engineer",
+    "location": "8-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-8-to-12-years-270826501607",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-8-to-12-years-270826501607",
+    "ats": "Naukri",
+    "job_id": "270826501607",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
+    "company": "Broadcom",
+    "title": "Staff Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270826501620",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270826501620",
+    "ats": "Naukri",
+    "job_id": "270826501620",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
+    "company": "Broadcom",
+    "title": "Staff Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270826501618",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270826501618",
+    "ats": "Naukri",
+    "job_id": "270826501618",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
+    "company": "Thomson Reuters",
+    "title": "Staff Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-220726502060",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-220726502060",
+    "ats": "Naukri",
+    "job_id": "220726502060",
+    "already_applied": true,
+    "match_score": 18,
+    "over_cap": false
+  },
+  {
+    "company": "Thomson Reuters",
+    "title": "Staff Software Engineer I",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-staff-software-engineer-i-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-100726500378",
+    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-i-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-100726500378",
+    "ats": "Naukri",
+    "job_id": "100726500378",
+    "already_applied": true,
+    "match_score": 18
+  },
+  {
     "company": "ANSR",
     "title": "Principal Engineer - IT Software (.Net)",
     "location": "Hyderabad, India",
@@ -6868,6 +7343,108 @@
     "job_id": "62960104",
     "already_applied": true,
     "over_cap": false,
+    "match_score": 16
+  },
+  {
+    "company": "Optum",
+    "title": "Lead Software Engineer",
+    "location": "7-10 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-optum-hyderabad-7-to-10-years-250826026663",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-optum-hyderabad-7-to-10-years-250826026663",
+    "ats": "Naukri",
+    "job_id": "250826026663",
+    "already_applied": true,
+    "match_score": 16,
+    "over_cap": false
+  },
+  {
+    "company": "Providence College Of Engineering",
+    "title": "Lead Software Engineer",
+    "location": "6-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-providence-global-center-hyderabad-6-to-9-years-110826502355",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-providence-global-center-hyderabad-6-to-9-years-110826502355",
+    "ats": "Naukri",
+    "job_id": "110826502355",
+    "already_applied": true,
+    "match_score": 16,
+    "over_cap": false
+  },
+  {
+    "company": "Tech Mahindra",
+    "title": "Technical Lead",
+    "location": "7-12 Yrs Not disclosed Hybrid - Hyderabad, Noida, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-tech-mahindra-noida-hyderabad-bengaluru-7-to-12-years-200826016264",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-tech-mahindra-noida-hyderabad-bengaluru-7-to-12-years-200826016264",
+    "ats": "Naukri",
+    "job_id": "200826016264",
+    "already_applied": true,
+    "match_score": 16,
+    "over_cap": false
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Lead Software Engineer",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-140826930973",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-140826930973",
+    "ats": "Naukri",
+    "job_id": "140826930973",
+    "already_applied": true,
+    "match_score": 16
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Lead Software Engineer",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-140826914973",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-140826914973",
+    "ats": "Naukri",
+    "job_id": "140826914973",
+    "already_applied": true,
+    "match_score": 16
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Lead Software Engineer",
+    "location": "9-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935434",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935434",
+    "ats": "Naukri",
+    "job_id": "050826935434",
+    "already_applied": true,
+    "match_score": 16
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Lead Software Engineer",
+    "location": "9-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935411",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935411",
+    "ats": "Naukri",
+    "job_id": "050826935411",
+    "already_applied": true,
+    "match_score": 16
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Lead Software Engineer",
+    "location": "9-14 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935381",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935381",
+    "ats": "Naukri",
+    "job_id": "050826935381",
+    "already_applied": true,
+    "match_score": 16
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Lead Software Engineer",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-10-to-15-years-260826925763",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-10-to-15-years-260826925763",
+    "ats": "Naukri",
+    "job_id": "260826925763",
+    "already_applied": true,
     "match_score": 16
   },
   {
@@ -6938,6 +7515,51 @@
     "match_score": 6
   },
   {
+    "company": "Amazon",
+    "title": "Sr. Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-439255-sr-software-engineer-at-amazon-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439255",
+    "already_applied": true,
+    "over_cap": true,
+    "match_score": 4
+  },
+  {
+    "company": "Amgen Inc",
+    "title": "Senior Software Engineer",
+    "location": "8-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-amgen-inc-hyderabad-8-to-12-years-270826920041",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-amgen-inc-hyderabad-8-to-12-years-270826920041",
+    "ats": "Naukri",
+    "job_id": "270826920041",
+    "already_applied": true,
+    "match_score": 4,
+    "over_cap": false
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Senior Software Engineer",
+    "location": "6-11 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-6-to-11-years-260826927502",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-6-to-11-years-260826927502",
+    "ats": "Naukri",
+    "job_id": "260826927502",
+    "already_applied": true,
+    "match_score": 4
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Senior Software Engineer",
+    "location": "4-9 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-170826927823",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-170826927823",
+    "ats": "Naukri",
+    "job_id": "170826927823",
+    "already_applied": true,
+    "match_score": 4
+  },
+  {
     "company": "Intelex Systems",
     "title": "Senior .NET Developer (Azure PaaS, Angular, C#)",
     "location": "3-8 Yrs Not disclosed Hyderabad(Gachibowli)",
@@ -6957,18 +7579,6 @@
     "apply_url": "https://www.naukri.com/job-listings-lead-senior-fullstack-developer-net-core-react-js-azure-newvision-software-a-softserve-company-bhopal-hyderabad-pune-5-to-8-years-240826032904",
     "ats": "Naukri",
     "job_id": "240826032904",
-    "already_applied": true,
-    "match_score": 2,
-    "over_cap": false
-  },
-  {
-    "company": "Optum",
-    "title": "Senior Software Engineer I (.Net React and Azure)",
-    "location": "6-11 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-senior-software-engineer-i-net-react-and-azure-optum-global-solutions-india-private-limited-hyderabad-6-to-11-years-200826933013",
-    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-i-net-react-and-azure-optum-global-solutions-india-private-limited-hyderabad-6-to-11-years-200826933013",
-    "ats": "Naukri",
-    "job_id": "200826933013",
     "already_applied": true,
     "match_score": 2,
     "over_cap": false
@@ -7010,30 +7620,6 @@
     "over_cap": false
   },
   {
-    "company": "Arcelormittal",
-    "title": "Senior .Net Developer",
-    "location": "6-11 Yrs 30-45 Lacs PA Hybrid - Hyderabad",
-    "url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-11-years-290726010655",
-    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-11-years-290726010655",
-    "ats": "Naukri",
-    "job_id": "290726010655",
-    "already_applied": true,
-    "match_score": -6,
-    "over_cap": false
-  },
-  {
-    "company": "Arcelormittal",
-    "title": "Senior .Net Developer",
-    "location": "6-10 Yrs Not disclosed Hybrid - Hyderabad",
-    "url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-10-years-070826026962",
-    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-arcelormittal-hyderabad-6-to-10-years-070826026962",
-    "ats": "Naukri",
-    "job_id": "070826026962",
-    "already_applied": true,
-    "match_score": -6,
-    "over_cap": true
-  },
-  {
     "company": "Beghou Consulting",
     "title": "Senior .Net Developer",
     "location": "4-9 Yrs Not disclosed Hyderabad",
@@ -7065,18 +7651,6 @@
     "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-bluvin-solutions-hyderabad-7-to-12-years-140826009924",
     "ats": "Naukri",
     "job_id": "140826009924",
-    "already_applied": true,
-    "match_score": -6,
-    "over_cap": false
-  },
-  {
-    "company": "CGI",
-    "title": "Senior .Net Developer",
-    "location": "5-8 Yrs Not disclosed Hybrid - Hyderabad",
-    "url": "https://www.naukri.com/job-listings-senior-net-developer-cgi-hyderabad-5-to-8-years-270726028689",
-    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-cgi-hyderabad-5-to-8-years-270726028689",
-    "ats": "Naukri",
-    "job_id": "270726028689",
     "already_applied": true,
     "match_score": -6,
     "over_cap": false
@@ -7185,18 +7759,6 @@
     "job_id": "140826914934",
     "already_applied": true,
     "match_score": -6
-  },
-  {
-    "company": "Wells Fargo",
-    "title": "Senior Software Engineer - .Net",
-    "location": "4-9 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-senior-software-engineer-net-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-190826927772",
-    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-net-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-190826927772",
-    "ats": "Naukri",
-    "job_id": "190826927772",
-    "already_applied": true,
-    "match_score": -6,
-    "over_cap": false
   },
   {
     "company": "Y&L Consulting",
@@ -7376,17 +7938,6 @@
     "match_score": -10
   },
   {
-    "company": "Colruyt Group India",
-    "title": "Solution Architect HYD",
-    "location": "5-10 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-solution-architect-hyd-colruyt-it-consultancy-india-pvt-ltd-hyderabad-5-to-10-years-070826504162",
-    "apply_url": "https://www.naukri.com/job-listings-solution-architect-hyd-colruyt-it-consultancy-india-pvt-ltd-hyderabad-5-to-10-years-070826504162",
-    "ats": "Naukri",
-    "job_id": "070826504162",
-    "already_applied": true,
-    "match_score": -10
-  },
-  {
     "company": "Covalense Global",
     "title": "Solution Architect",
     "location": "20-25 Yrs Not disclosed Hyderabad",
@@ -7428,16 +7979,6 @@
     "apply_url": "https://www.naukri.com/job-listings-solution-architect-dazn-group-hyderabad-10-to-12-years-030626503660",
     "ats": "Naukri",
     "job_id": "030626503660",
-    "already_applied": true,
-    "match_score": -10
-  },
-  {
-    "company": "Deloitte",
-    "title": "Application Architect - Data Security and Cloud",
-    "location": "Hyderabad",
-    "url": "https://www.instahyre.com/job-440365-application-architect-data-security-and-cloud-at-deloitte-hyderabad/",
-    "ats": "Instahyre",
-    "job_id": "440365",
     "already_applied": true,
     "match_score": -10
   },
@@ -7941,30 +8482,6 @@
     "over_cap": false
   },
   {
-    "company": "Synchrony",
-    "title": "AVP, Solution Architect (L11)",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-10-to-15-years-200826503502",
-    "apply_url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-10-to-15-years-200826503502",
-    "ats": "Naukri",
-    "job_id": "200826503502",
-    "already_applied": true,
-    "match_score": -10,
-    "over_cap": false
-  },
-  {
-    "company": "Synchrony",
-    "title": "AVP, Solution Architect (L11)",
-    "location": "7-12 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-7-to-12-years-110826502386",
-    "apply_url": "https://www.naukri.com/job-listings-avp-solution-architect-l11-synchrony-international-services-hyderabad-7-to-12-years-110826502386",
-    "ats": "Naukri",
-    "job_id": "110826502386",
-    "already_applied": true,
-    "match_score": -10,
-    "over_cap": true
-  },
-  {
     "company": "TAO Digital",
     "title": "Technical Architect",
     "location": "4-9 Yrs Not disclosed Hyderabad",
@@ -8209,29 +8726,6 @@
     "already_applied": true,
     "match_score": -24,
     "over_cap": false
-  },
-  {
-    "company": "Amgen Inc",
-    "title": "Principal Software Engineer - Clinical Data Foundation",
-    "location": "12-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-principal-software-engineer-clinical-data-foundation-amgen-inc-hyderabad-12-to-15-years-200726932678",
-    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-clinical-data-foundation-amgen-inc-hyderabad-12-to-15-years-200726932678",
-    "ats": "Naukri",
-    "job_id": "200726932678",
-    "already_applied": true,
-    "match_score": -24,
-    "over_cap": false
-  },
-  {
-    "company": "Amgen Inc",
-    "title": "Principal Software Engineer",
-    "location": "7-11 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-principal-software-engineer-amgen-inc-hyderabad-7-to-11-years-110826937374",
-    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-amgen-inc-hyderabad-7-to-11-years-110826937374",
-    "ats": "Naukri",
-    "job_id": "110826937374",
-    "already_applied": true,
-    "match_score": -24
   },
   {
     "company": "Blue Yonder",
@@ -8505,97 +8999,6 @@
     "match_score": -24
   },
   {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4448865535/",
-    "ats": "Foundit",
-    "job_id": "63125953",
-    "already_applied": true,
-    "over_cap": false,
-    "match_score": -24
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4435567890/",
-    "ats": "Foundit",
-    "job_id": "57687625",
-    "already_applied": true,
-    "over_cap": true,
-    "match_score": -24
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4426785996/",
-    "ats": "Foundit",
-    "job_id": "56379284",
-    "already_applied": true,
-    "over_cap": true,
-    "match_score": -24
-  },
-  {
-    "company": "Microsoft Corp",
-    "title": "Principal Software Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4408788254/",
-    "ats": "Foundit",
-    "job_id": "51997505",
-    "already_applied": true,
-    "over_cap": true,
-    "match_score": -24
-  },
-  {
-    "company": "Optum",
-    "title": "Principal Software Engineer",
-    "location": "11-16 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-principal-software-engineer-optum-global-solutions-india-private-limited-hyderabad-11-to-16-years-190826927566",
-    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-optum-global-solutions-india-private-limited-hyderabad-11-to-16-years-190826927566",
-    "ats": "Naukri",
-    "job_id": "190826927566",
-    "already_applied": true,
-    "match_score": -24,
-    "over_cap": false
-  },
-  {
-    "company": "Providence College Of Engineering",
-    "title": "Principal Software Engineer",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-10-to-15-years-240726506589",
-    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-10-to-15-years-240726506589",
-    "ats": "Naukri",
-    "job_id": "240726506589",
-    "already_applied": true,
-    "match_score": -24,
-    "over_cap": false
-  },
-  {
-    "company": "Providence College Of Engineering",
-    "title": "Principal Software Engineer",
-    "location": "9-14 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-9-to-14-years-220726502963",
-    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-9-to-14-years-220726502963",
-    "ats": "Naukri",
-    "job_id": "220726502963",
-    "already_applied": true,
-    "match_score": -24,
-    "over_cap": true
-  },
-  {
-    "company": "Providence Global Center",
-    "title": "Principal Software Engineer",
-    "location": "9-14 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-9-to-14-years-110626505114",
-    "apply_url": "https://www.naukri.com/job-listings-principal-software-engineer-providence-global-center-hyderabad-9-to-14-years-110626505114",
-    "ats": "Naukri",
-    "job_id": "110626505114",
-    "already_applied": true,
-    "match_score": -24
-  },
-  {
     "company": "Redwood Software India",
     "title": "Principal Software Engineer",
     "location": "11-15 Yrs Not disclosed Hybrid - Hyderabad",
@@ -8756,27 +9159,6 @@
     "match_score": -30
   },
   {
-    "company": "Amazon",
-    "title": "Staff Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://www.instahyre.com/job-439305-staff-software-engineer-at-amazon-hyderabad/",
-    "ats": "Instahyre",
-    "job_id": "439305",
-    "already_applied": true,
-    "over_cap": true,
-    "match_score": -32
-  },
-  {
-    "company": "ArcelorMittal",
-    "title": "Staff Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://www.instahyre.com/job-429639-staff-software-engineer-at-arcelormittal-hyderabad/",
-    "ats": "Instahyre",
-    "job_id": "429639",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
     "company": "Blue Yonder",
     "title": "IN-Staff Software Engineer",
     "location": "10-15 Yrs Not disclosed Hyderabad",
@@ -8795,83 +9177,6 @@
     "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-ii-blue-yonder-hyderabad-12-to-17-years-100626500382",
     "ats": "Naukri",
     "job_id": "100626500382",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
-    "company": "Broadcom",
-    "title": "Staff Software Engineer",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-200826501435",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-200826501435",
-    "ats": "Naukri",
-    "job_id": "200826501435",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
-    "company": "Broadcom",
-    "title": "Staff Software Engineer",
-    "location": "11-20 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-11-to-20-years-180826501324",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-11-to-20-years-180826501324",
-    "ats": "Naukri",
-    "job_id": "180826501324",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
-    "company": "Broadcom",
-    "title": "Staff Software Engineer",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270726502084",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270726502084",
-    "ats": "Naukri",
-    "job_id": "270726502084",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
-    "company": "Broadcom",
-    "title": "Staff Software Engineer",
-    "location": "11-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-11-to-15-years-270826501603",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-11-to-15-years-270826501603",
-    "ats": "Naukri",
-    "job_id": "270826501603",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
-    "company": "Broadcom",
-    "title": "Staff software engineer",
-    "location": "8-12 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-8-to-12-years-270826501607",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-8-to-12-years-270826501607",
-    "ats": "Naukri",
-    "job_id": "270826501607",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
-    "company": "Broadcom",
-    "title": "Staff Software Engineer",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270826501620",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270826501620",
-    "ats": "Naukri",
-    "job_id": "270826501620",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
-    "company": "Broadcom",
-    "title": "Staff Software Engineer",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270826501618",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-broadcom-hyderabad-10-to-15-years-270826501618",
-    "ats": "Naukri",
-    "job_id": "270826501618",
     "already_applied": true,
     "match_score": -32
   },
@@ -9363,29 +9668,6 @@
     "url": "https://www.foundit.in/job/63634669",
     "ats": "Foundit",
     "job_id": "63634669",
-    "already_applied": true,
-    "match_score": -32
-  },
-  {
-    "company": "Thomson Reuters",
-    "title": "Staff Software Engineer",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-220726502060",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-220726502060",
-    "ats": "Naukri",
-    "job_id": "220726502060",
-    "already_applied": true,
-    "match_score": -32,
-    "over_cap": false
-  },
-  {
-    "company": "Thomson Reuters",
-    "title": "Staff Software Engineer I",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-staff-software-engineer-i-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-100726500378",
-    "apply_url": "https://www.naukri.com/job-listings-staff-software-engineer-i-thomson-reuters-india-pvt-ltd-hyderabad-10-to-15-years-100726500378",
-    "ats": "Naukri",
-    "job_id": "100726500378",
     "already_applied": true,
     "match_score": -32
   },
@@ -10311,6 +10593,17 @@
     "over_cap": true
   },
   {
+    "company": "Kornferry",
+    "title": "Senior Software Development Engineer-Dot Net",
+    "location": "14-18 Yrs 40-70 Lacs PA Hyderabad, Raidurg",
+    "url": "https://www.naukri.com/job-listings-senior-software-development-engineer-dot-net-kornferry-raidurg-hyderabad-14-to-18-years-190826012904",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-development-engineer-dot-net-kornferry-raidurg-hyderabad-14-to-18-years-190826012904",
+    "ats": "Naukri",
+    "job_id": "190826012904",
+    "already_applied": true,
+    "match_score": -34
+  },
+  {
     "company": "Lecan Solutions",
     "title": "Technical Lead",
     "location": "5-12 Yrs 15-35 Lacs PA Hyderabad, Chennai, Bengaluru",
@@ -10427,6 +10720,18 @@
     "match_score": -34
   },
   {
+    "company": "Menucoster",
+    "title": "Senior Backend Engineer (TypeScript / NestJS)",
+    "location": "5-10 Yrs 35-45 Lacs PA Hyderabad(HITEC City)",
+    "url": "https://www.naukri.com/job-listings-senior-backend-engineer-typescript-nestjs-menucoster-hyderabad-5-to-10-years-240826005986",
+    "apply_url": "https://www.naukri.com/job-listings-senior-backend-engineer-typescript-nestjs-menucoster-hyderabad-5-to-10-years-240826005986",
+    "ats": "Naukri",
+    "job_id": "240826005986",
+    "already_applied": true,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "Milestone Technologies",
     "title": "Agentforce Technical Lead",
     "location": "8-13 Yrs 30-40 Lacs PA Hybrid - Hyderabad, Kochi, Bengaluru",
@@ -10508,18 +10813,6 @@
     "over_cap": false
   },
   {
-    "company": "Optum",
-    "title": "Lead Software Engineer",
-    "location": "7-10 Yrs Not disclosed Hybrid - Hyderabad",
-    "url": "https://www.naukri.com/job-listings-lead-software-engineer-optum-hyderabad-7-to-10-years-250826026663",
-    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-optum-hyderabad-7-to-10-years-250826026663",
-    "ats": "Naukri",
-    "job_id": "250826026663",
-    "already_applied": true,
-    "match_score": -34,
-    "over_cap": false
-  },
-  {
     "company": "Palni",
     "title": "Databricks Technical Lead",
     "location": "10-15 Yrs Not disclosed Hyderabad",
@@ -10583,18 +10876,6 @@
     "apply_url": "https://www.naukri.com/job-listings-technical-lead-abap-prolifics-hyderabad-8-to-10-years-110826502526",
     "ats": "Naukri",
     "job_id": "110826502526",
-    "already_applied": true,
-    "match_score": -34,
-    "over_cap": false
-  },
-  {
-    "company": "Providence College Of Engineering",
-    "title": "Lead Software Engineer",
-    "location": "6-9 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-lead-software-engineer-providence-global-center-hyderabad-6-to-9-years-110826502355",
-    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-providence-global-center-hyderabad-6-to-9-years-110826502355",
-    "ats": "Naukri",
-    "job_id": "110826502355",
     "already_applied": true,
     "match_score": -34,
     "over_cap": false
@@ -10772,18 +11053,6 @@
     "over_cap": false
   },
   {
-    "company": "Tech Mahindra",
-    "title": "Technical Lead",
-    "location": "7-12 Yrs Not disclosed Hybrid - Hyderabad, Noida, Bengaluru",
-    "url": "https://www.naukri.com/job-listings-technical-lead-tech-mahindra-noida-hyderabad-bengaluru-7-to-12-years-200826016264",
-    "apply_url": "https://www.naukri.com/job-listings-technical-lead-tech-mahindra-noida-hyderabad-bengaluru-7-to-12-years-200826016264",
-    "ats": "Naukri",
-    "job_id": "200826016264",
-    "already_applied": true,
-    "match_score": -34,
-    "over_cap": false
-  },
-  {
     "company": "Technoflair Solutions India",
     "title": "Technical Leads",
     "location": "5-8 Yrs Not disclosed Hyderabad",
@@ -10877,72 +11146,6 @@
     "match_score": -34
   },
   {
-    "company": "Wells Fargo",
-    "title": "Lead Software Engineer",
-    "location": "5-10 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-140826930973",
-    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-140826930973",
-    "ats": "Naukri",
-    "job_id": "140826930973",
-    "already_applied": true,
-    "match_score": -34
-  },
-  {
-    "company": "Wells Fargo",
-    "title": "Lead Software Engineer",
-    "location": "5-10 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-140826914973",
-    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-140826914973",
-    "ats": "Naukri",
-    "job_id": "140826914973",
-    "already_applied": true,
-    "match_score": -34
-  },
-  {
-    "company": "Wells Fargo",
-    "title": "Lead Software Engineer",
-    "location": "9-14 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935434",
-    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935434",
-    "ats": "Naukri",
-    "job_id": "050826935434",
-    "already_applied": true,
-    "match_score": -34
-  },
-  {
-    "company": "Wells Fargo",
-    "title": "Lead Software Engineer",
-    "location": "9-14 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935411",
-    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935411",
-    "ats": "Naukri",
-    "job_id": "050826935411",
-    "already_applied": true,
-    "match_score": -34
-  },
-  {
-    "company": "Wells Fargo",
-    "title": "Lead Software Engineer",
-    "location": "9-14 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935381",
-    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-9-to-14-years-050826935381",
-    "ats": "Naukri",
-    "job_id": "050826935381",
-    "already_applied": true,
-    "match_score": -34
-  },
-  {
-    "company": "Wells Fargo",
-    "title": "Lead Software Engineer",
-    "location": "10-15 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-10-to-15-years-260826925763",
-    "apply_url": "https://www.naukri.com/job-listings-lead-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-10-to-15-years-260826925763",
-    "ats": "Naukri",
-    "job_id": "260826925763",
-    "already_applied": true,
-    "match_score": -34
-  },
-  {
     "company": "Wonderbiz Technologies",
     "title": "Dot Net Fullstack Technical Lead",
     "location": "8-12 Yrs Not disclosed Hyderabad",
@@ -10975,29 +11178,6 @@
     "already_applied": true,
     "over_cap": false,
     "match_score": -44
-  },
-  {
-    "company": "Amazon",
-    "title": "Sr. Software Engineer",
-    "location": "Hyderabad",
-    "url": "https://www.instahyre.com/job-439255-sr-software-engineer-at-amazon-hyderabad/",
-    "ats": "Instahyre",
-    "job_id": "439255",
-    "already_applied": true,
-    "over_cap": true,
-    "match_score": -46
-  },
-  {
-    "company": "Amgen Inc",
-    "title": "Senior Software Engineer",
-    "location": "8-12 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-senior-software-engineer-amgen-inc-hyderabad-8-to-12-years-270826920041",
-    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-amgen-inc-hyderabad-8-to-12-years-270826920041",
-    "ats": "Naukri",
-    "job_id": "270826920041",
-    "already_applied": true,
-    "match_score": -46,
-    "over_cap": false
   },
   {
     "company": "ansrsource",
@@ -11214,29 +11394,6 @@
     "job_id": "417491",
     "already_applied": true,
     "match_score": -46
-  },
-  {
-    "company": "Kornferry",
-    "title": "Senior Software Development Engineer-Dot Net",
-    "location": "14-18 Yrs 40-70 Lacs PA Hyderabad, Raidurg",
-    "url": "https://www.naukri.com/job-listings-senior-software-development-engineer-dot-net-kornferry-raidurg-hyderabad-14-to-18-years-190826012904",
-    "apply_url": "https://www.naukri.com/job-listings-senior-software-development-engineer-dot-net-kornferry-raidurg-hyderabad-14-to-18-years-190826012904",
-    "ats": "Naukri",
-    "job_id": "190826012904",
-    "already_applied": true,
-    "match_score": -46
-  },
-  {
-    "company": "Menucoster",
-    "title": "Senior Backend Engineer (TypeScript / NestJS)",
-    "location": "5-10 Yrs 35-45 Lacs PA Hyderabad(HITEC City)",
-    "url": "https://www.naukri.com/job-listings-senior-backend-engineer-typescript-nestjs-menucoster-hyderabad-5-to-10-years-240826005986",
-    "apply_url": "https://www.naukri.com/job-listings-senior-backend-engineer-typescript-nestjs-menucoster-hyderabad-5-to-10-years-240826005986",
-    "ats": "Naukri",
-    "job_id": "240826005986",
-    "already_applied": true,
-    "match_score": -46,
-    "over_cap": false
   },
   {
     "company": "Milwaukee Tool",
@@ -11461,28 +11618,6 @@
     "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-instrumentation-viasat-india-private-limited-hyderabad-chennai-7-to-12-years-140826914911",
     "ats": "Naukri",
     "job_id": "140826914911",
-    "already_applied": true,
-    "match_score": -46
-  },
-  {
-    "company": "Wells Fargo",
-    "title": "Senior Software Engineer",
-    "location": "6-11 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-6-to-11-years-260826927502",
-    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-6-to-11-years-260826927502",
-    "ats": "Naukri",
-    "job_id": "260826927502",
-    "already_applied": true,
-    "match_score": -46
-  },
-  {
-    "company": "Wells Fargo",
-    "title": "Senior Software Engineer",
-    "location": "4-9 Yrs Not disclosed Hyderabad",
-    "url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-170826927823",
-    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-wells-fargo-international-solutions-private-ltd-hyderabad-4-to-9-years-170826927823",
-    "ats": "Naukri",
-    "job_id": "170826927823",
     "already_applied": true,
     "match_score": -46
   },

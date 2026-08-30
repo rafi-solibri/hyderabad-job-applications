@@ -463,7 +463,7 @@ def merge_and_write(jobs):
     for j in open_jobs:
         key = (apply_now.company_key(j.get("company")), str(j.get("job_id") or j.get("url") or "")[:80])
         j["over_cap"] = key not in chosen_keys
-    queue.sort(key=lambda j: (-int(j.get("match_score") or 0), j.get("company") or "", j.get("title") or ""))
+    queue.sort(key=apply_now.queue_sort_key)
     (ROOT / "data" / "discovery_final.json").write_text(json.dumps(unique, indent=2), encoding="utf-8")
     (ROOT / "data" / "discovery_batch.json").write_text(json.dumps(queue, indent=2), encoding="utf-8")
     lines = [

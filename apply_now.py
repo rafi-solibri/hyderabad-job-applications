@@ -638,18 +638,18 @@ def job_match_keys(job: dict) -> set[str]:
         text = str(url)
         for m in re.finditer(r"(?:jobs/|token=|gh_jid=|jid=|/job/)(\d{6,}|[a-f0-9-]{20,})", text, re.I):
             keys.add(m.group(1))
-        for m in re.finditer(r"(R-?\d{4,}(?:-\d+)?)", text):
+        # Require a Workday R-token, not the R inside JR-019229.
+        for m in re.finditer(r"(?<![A-Za-z0-9])(R-\d{4,}(?:-\d+)?|R\d{5,}(?:-\d+)?)", text):
             full = m.group(1)
             keys.add(full)
             # Workday often uses R-796658 on Phenom and R-796658-1 on applyManually.
-            base = re.sub(r"-\d+$", "", full)
-            if base != full:
-                keys.add(base)
+            if re.fullmatch(r"R-\d{4,}-\d+", full):
+                keys.add(re.sub(r"-\d+$", "", full))
     ck = company_key(job.get("company"))
     title = re.sub(r"\s+", " ", (job.get("title") or "").strip().lower())
     if ck and title:
         keys.add(f"{ck}|{title}")
-    return {k for k in keys if k}
+    return {k for k in keys if k and k not in {"R", "r"} and len(k) >= 4}
 
 
 def is_applied(job: dict) -> bool:

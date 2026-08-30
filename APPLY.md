@@ -133,6 +133,7 @@ Leave honeypot fields empty.
 | `simplify_copilot.py` | Autofill this page / Continue; skip Tailor Resume |
 | `google_auth.py` | Sign in rafi.success Chrome from `.env` |
 | `apply_now.py` | Queue, scoring, persist applied |
+| `discover_preferred_campuses.py` | Live search of RMZ / Knowledge City / Raheja tenants; leftovers first |
 | `form_memory.py` | Learned answers on later forms |
 | `tailor_resume.py` | Copy uploaded base resume + overlay truthful JD keywords |
 | `notify_daily_email.py` | Email rafi.success@gmail.com when the daily apply finishes |
