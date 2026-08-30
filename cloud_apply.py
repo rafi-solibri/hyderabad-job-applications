@@ -22,6 +22,7 @@ import apply_now
 import ats_fill
 import form_memory
 import google_auth
+import linkedin_guard
 import notify_daily_email
 import simplify_copilot
 import tailor_resume
@@ -53,9 +54,8 @@ NAUKRI_BOT_BLOCKED = False
 GOOGLE_SIGNIN_BLOCKED = False
 GOOGLE_2FA_PARKED = False
 LINKEDIN_RESTRICTED = False
-LINKEDIN_RESTRICTED_NOTE = "LinkedIn account temporarily restricted until 2026-08-22"
-# 22 Aug 2026 8:30 PM PDT. Session-skip until then; do not persist-skip guest walls.
-LINKEDIN_RESTRICTED_UNTIL = datetime(2026, 8, 23, 3, 30, tzinfo=timezone.utc)
+LINKEDIN_RESTRICTED_NOTE = linkedin_guard.restriction_note()
+# Honor data/linkedin_guard.json (30 Aug 2026 7:43 PM PDT). Session-skip only.
 _RECAPTCHA_CLICKS = 0
 ICIMS_LOGIN_CLICKED = False
 ICIMS_CONTINUE_CLICKS = 0
@@ -310,28 +310,35 @@ def already_applied_visible(page) -> bool:
 
 
 def linkedin_account_restricted(page) -> bool:
+    global LINKEDIN_RESTRICTED, LINKEDIN_RESTRICTED_NOTE
     try:
         url = (page.url or "").lower()
-        blob = ((page.title() or "") + " " + page_text(page)[:3500]).lower()
+        blob = ((page.title() or "") + " " + page_text(page)[:3500])
     except Exception:
         return False
     if "linkedin.com" not in url:
         return False
-    return bool(re.search(r"temporarily restricted|restriction will be lifted", blob))
+    if not re.search(r"temporarily restricted|restriction will be lifted", blob, re.I):
+        return False
+    linkedin_guard.mark_restricted(blob)
+    LINKEDIN_RESTRICTED = True
+    LINKEDIN_RESTRICTED_NOTE = linkedin_guard.restriction_note()
+    return True
 
 
 def linkedin_blocked_now() -> bool:
     """True while the LinkedIn account restriction is in force. Session-skip only."""
     if LINKEDIN_RESTRICTED:
         return True
-    return datetime.now(timezone.utc) < LINKEDIN_RESTRICTED_UNTIL
+    return linkedin_guard.blocked_now()
 
 
 def persist_skip_all_linkedin(note: str | None = None) -> int:
-    """Account restriction is not a guest wall. Do not reopen LinkedIn until it lifts."""
-    global LINKEDIN_RESTRICTED
+    """Session-skip LinkedIn leftovers until the restriction lifts. Do not persist-skip."""
+    global LINKEDIN_RESTRICTED, LINKEDIN_RESTRICTED_NOTE
     LINKEDIN_RESTRICTED = True
-    note = note or LINKEDIN_RESTRICTED_NOTE
+    note = note or linkedin_guard.restriction_note()
+    LINKEDIN_RESTRICTED_NOTE = note
     apply_now.BATCH = apply_now.load_all_discovered()
     n = 0
     for job in apply_now.queue():
@@ -340,10 +347,9 @@ def persist_skip_all_linkedin(note: str | None = None) -> int:
             continue
         if apply_now.is_applied(job):
             continue
-        apply_now.persist_skipped({**job, "status": "SKIPPED"}, note)
         SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
         n += 1
-    print(f"  Skipping {n} LinkedIn leftovers — {note}.", flush=True)
+    print(f"  Session-skip {n} LinkedIn leftovers — {note}.", flush=True)
     return n
 
 
@@ -4208,9 +4214,13 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         return "submitted"
     recover_wrong_board(page, job)
     cancel_incomplete_editors(page)
-    copilot_start = simplify_copilot.start_application(page)
-    if copilot_start:
-        page.wait_for_timeout(600)
+    on_linkedin = linkedin_guard.is_linkedin_job(job, page.url or "")
+    use_copilot = (not on_linkedin) or linkedin_guard.allow_copilot()
+    copilot_start = ""
+    if use_copilot:
+        copilot_start = simplify_copilot.start_application(page)
+        if copilot_start:
+            page.wait_for_timeout(600)
     fill_identity(page)
     auth = try_portal_auth(page)
     if auth == "failed":
@@ -4235,7 +4245,9 @@ def fill_and_advance(page, job: dict, resume: str) -> str:
         upload_resume(page, resume)
     except Exception:
         pass
-    copilot_step = simplify_copilot.follow(page)
+    copilot_step = ""
+    if use_copilot:
+        copilot_step = simplify_copilot.follow(page)
     if copilot_step == "submitted" or is_success(page):
         return "submitted"
     if copilot_step == "stuck":
@@ -4632,10 +4644,20 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
     else:
         ICIMS_PASSWORD_SUBMITS = 0
 
-    resume = job.get("resume_path") or RESUME
+    if not tailor_resume.is_tailored_path(job.get("resume_path")):
+        row["status"] = "SKIPPED"
+        row["note"] = "tailored resume required — will not apply the untailored base"
+        print("  No tailored resume for this job. Not applying.", flush=True)
+        return row
+    resume = job.get("resume_path")
     learned = 0
     try:
         if navigate:
+            if linkedin_guard.is_profile_url(url):
+                row["status"] = "SKIPPED"
+                row["note"] = "refusing LinkedIn profile URL (restriction trigger)"
+                print("  Skipping LinkedIn /in/ profile URL.", flush=True)
+                return row
             page.goto(url, wait_until="domcontentloaded", timeout=35000)
             page.wait_for_timeout(800)
         else:
@@ -4723,7 +4745,10 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 fill_foundit_native_login(page)
         except Exception:
             pass
-        copilot_start = simplify_copilot.start_application(page)
+        on_linkedin = linkedin_guard.is_linkedin_job(job, page.url or url)
+        copilot_start = ""
+        if (not on_linkedin) or linkedin_guard.allow_copilot():
+            copilot_start = simplify_copilot.start_application(page)
         if copilot_start:
             page.wait_for_timeout(800)
         closed = False
@@ -5136,29 +5161,35 @@ def interleave_boards_and_career(jobs: list[dict], limit: int) -> list[dict]:
         return (pref, board, -int(job.get("match_score") or apply_now.match_score(job)))
 
     boards.sort(key=board_rank)
+    linkedin_jobs = [j for j in boards if linkedin_guard.is_linkedin_job(j)]
+    other_boards = [j for j in boards if not linkedin_guard.is_linkedin_job(j)]
     if linkedin_blocked_now():
-        boards = [
-            j for j in boards
-            if "linkedin.com" not in ((j.get("apply_url") or j.get("url") or "")).lower()
-        ]
+        linkedin_jobs = []
+    else:
+        linkedin_jobs = linkedin_jobs[: linkedin_guard.remaining_this_run()]
     if FOUNDIT_AKAMAI_BLOCKED:
-        boards = [
-            j for j in boards
+        other_boards = [
+            j for j in other_boards
             if "foundit.in" not in ((j.get("apply_url") or j.get("url") or "")).lower()
         ]
     if NAUKRI_BOT_BLOCKED:
-        boards = [
-            j for j in boards
+        other_boards = [
+            j for j in other_boards
             if "naukri.com" not in ((j.get("apply_url") or j.get("url") or "")).lower()
         ]
+    cap = limit or 10**9
     out: list[dict] = []
-    b = c = 0
-    while len(out) < (limit or 10**9) and (b < len(boards) or c < len(career)):
-        for _ in range(3):
-            if b < len(boards) and len(out) < (limit or 10**9):
-                out.append(boards[b])
+    b = c = li = 0
+    while len(out) < cap and (b < len(other_boards) or c < len(career) or li < len(linkedin_jobs)):
+        take_other = 2 if linkedin_jobs else 3
+        for _ in range(take_other):
+            if b < len(other_boards) and len(out) < cap:
+                out.append(other_boards[b])
                 b += 1
-        if c < len(career) and len(out) < (limit or 10**9):
+        if li < len(linkedin_jobs) and len(out) < cap:
+            out.append(linkedin_jobs[li])
+            li += 1
+        if c < len(career) and len(out) < cap:
             out.append(career[c])
             c += 1
     return out
@@ -5527,9 +5558,10 @@ def watch_open_application(wait_seconds: int) -> list[dict]:
             flush=True,
         )
         try:
-            job["resume_path"] = tailor_resume.for_job(job)
-        except Exception:
-            job["resume_path"] = RESUME
+            job["resume_path"] = tailor_resume.require_for_job(job)
+        except Exception as exc:
+            print(f"  Tailor failed ({exc}). Not applying without a tailored resume.", flush=True)
+            return results
         row = apply_one(page, job, wait_seconds=wait_seconds, navigate=False)
         results.append(row)
         if row.get("ok") and row.get("status") == "SUBMITTED":
@@ -6084,10 +6116,16 @@ def main(
                     print("  Amazon sign-in already parked. Leaving that tab; skipping this duplicate.", flush=True)
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
                     continue
-                if linkedin_blocked_now() and "linkedin.com" in apply_url:
-                    SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
-                    print("  LinkedIn restricted until 22 Aug 8:30 PM PDT. Next leftover.", flush=True)
-                    continue
+                if linkedin_guard.is_linkedin_job(job, apply_url):
+                    skip_li, why = linkedin_guard.should_skip_apply()
+                    if skip_li:
+                        SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                        print(f"  {why}. Next leftover.", flush=True)
+                        continue
+                    if linkedin_guard.is_profile_url(apply_url):
+                        SESSION_SKIP_KEYS.update(apply_now.job_match_keys(job))
+                        print("  Skipping LinkedIn profile URL (restriction trigger).", flush=True)
+                        continue
                 linkedin_parked = any(
                     "linkedin.com/checkpoint" in ((p.url or "").lower())
                     for p in context.pages
@@ -6119,11 +6157,15 @@ def main(
                     print("  Naukri bot wall this session. Next leftover.", flush=True)
                     continue
                 try:
-                    job["resume_path"] = tailor_resume.for_job(job)
+                    job["resume_path"] = tailor_resume.require_for_job(job)
                     print(f"  Tailored: {tailor_resume.CURRENT.get('headline')}", flush=True)
+                    print(f"  Resume: {job['resume_path']}", flush=True)
                 except Exception as exc:
-                    job["resume_path"] = RESUME
-                    print(f"  Tailor failed ({exc}); using architect resume.", flush=True)
+                    print(f"  Tailor failed ({exc}). Not applying without a tailored resume.", flush=True)
+                    continue
+                if linkedin_guard.is_linkedin_job(job, apply_url):
+                    linkedin_guard.wait_before_apply()
+                    linkedin_guard.record_attempt()
                 navigate = True
                 if OWNER_PRESENT:
                     open_page = pick_open_apply_page(context)

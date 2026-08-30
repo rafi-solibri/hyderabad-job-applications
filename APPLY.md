@@ -103,9 +103,18 @@ Leave honeypot fields empty.
 
 ## Queue / matching
 
-- Career portals and other boards in the same loop (3:1).
-  Naukri / LinkedIn / Indeed / Cutshort / Foundit / Instahyre are Easy Apply —
-  start them immediately; do not hold them behind slow Workday forms.
+- Career portals and other boards in the same loop (3:1, or 2 other + 1 LinkedIn
+  + 1 career when LinkedIn is open). Naukri / LinkedIn / Indeed / Cutshort /
+  Foundit / Instahyre are Easy Apply — start them immediately; do not hold
+  them behind slow Workday forms.
+- **LinkedIn (do not get restricted again):** LinkedIn blamed high-volume
+  *profile data* access via a third-party tool. Until the stated lift time in
+  `data/linkedin_guard.json` (30 Aug 2026 7:43 PM PDT / 31 Aug 02:43 UTC),
+  session-skip LinkedIn only — do **not** persist-skip leftovers. After it
+  lifts: apply **12 Easy Applies per run** (15/day max), **90s** between them,
+  **no Simplify Copilot** on LinkedIn, never open `/in/` or Recruiter profiles,
+  Easy Apply on `jobs/view` only. If a restriction or checkpoint page appears,
+  stop LinkedIn for the rest of the run. Do not scrape Voyager people APIs.
 - No per-company application cap. Duplicate company+title listings are still
   collapsed. Skip Salesforce/SAP/PEGA, Java-mandatory, DevOps-primary, and
   out-of-scope titles already in `apply_now.py`.
@@ -116,9 +125,11 @@ Leave honeypot fields empty.
   career portals and within other boards.
 - Resume base for every apply is
   `data/resume/Mohammed_Abdul_Rafi_Ahmed_Resume.docx` (owner upload).
-  `tailor_resume.for_job()` copies that file and overlays headline / summary /
-  competency order from the JD only. Do **not** invent skills. Do **not**
-  rebuild or upload `Rafi_Resume_Technical_Architect.docx` (old XML stub).
+  `tailor_resume.require_for_job()` copies that file and overlays headline /
+  summary / competency order from the JD only. **Every application must use
+  that tailored file.** If tailoring fails, skip the job — never upload the
+  untailored base or `Rafi_Resume_Technical_Architect.docx` (old XML stub).
+  Do **not** invent skills.
   Persist submitted, closed-404, and locked/rejected-login jobs in
   `data/applied_ids.json` so they are never reopened.
 - After each apply-runner code fix, commit, push the feature branch, and
@@ -134,6 +145,7 @@ Leave honeypot fields empty.
 | `google_auth.py` | Sign in rafi.success Chrome from `.env` |
 | `apply_now.py` | Queue, scoring, persist applied |
 | `discover_preferred_campuses.py` | Live search of RMZ / Knowledge City / Raheja tenants; leftovers first |
+| `linkedin_guard.py` | LinkedIn restriction window, 12/run Easy Apply cap, no Copilot |
 | `form_memory.py` | Learned answers on later forms |
 | `tailor_resume.py` | Copy uploaded base resume + overlay truthful JD keywords |
 | `notify_daily_email.py` | Email rafi.success@gmail.com when the daily apply finishes |

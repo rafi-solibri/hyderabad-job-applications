@@ -122,6 +122,9 @@ def fetch_jd(job: dict) -> str:
         return cache.read_text(encoding="utf-8", errors="replace")
     url = job.get("url") or job.get("apply_url") or ""
     blob = f"{job.get('title') or ''} {job.get('company') or ''} {job.get('location') or ''}"
+    if url and re.search(r"linkedin\.com/(in|recruiter|sales)/", url, re.I):
+        cache.write_text(blob, encoding="utf-8")
+        return blob
     if url:
         req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html,*/*"})
         try:
@@ -622,6 +625,42 @@ def for_job(job: dict) -> str:
         "base": str(BASE_RESUME.resolve()) if BASE_RESUME.exists() else "",
     })
     return CURRENT["path"]
+
+
+def is_tailored_path(path: str | None) -> bool:
+    """True only for a per-JD overlay, never the base file or the old XML stub."""
+    if not path:
+        return False
+    p = Path(path)
+    try:
+        p = p.resolve()
+    except Exception:
+        return False
+    if not p.exists() or p.stat().st_size < 50_000:
+        return False
+    name = p.name.lower()
+    if "technical_architect" in name and "tailored" not in str(p).lower():
+        return False
+    try:
+        if p == BASE_RESUME.resolve():
+            return False
+    except Exception:
+        pass
+    return "tailored" in str(p).lower() or name.startswith("rafi_ahmed_")
+
+
+def require_for_job(job: dict) -> str:
+    """Build a tailored resume or raise. Never fall back to the untailored base."""
+    last: Exception | None = None
+    for _ in range(2):
+        try:
+            path = for_job(job)
+            if is_tailored_path(path):
+                return path
+            last = RuntimeError(f"tailor wrote a non-tailored file: {path}")
+        except Exception as exc:
+            last = exc
+    raise RuntimeError(f"tailored resume required before apply: {last}")
 
 
 def upload(page, path: str | None = None) -> bool:

@@ -142,9 +142,12 @@ def apply_current(page, job: dict) -> dict:
         return row
     try_login(page)
     try:
-        job["resume_path"] = tailor_resume.for_job(job)
-    except Exception:
-        job["resume_path"] = RESUME
+        job["resume_path"] = tailor_resume.require_for_job(job)
+    except Exception as exc:
+        print(f"  Tailor failed ({exc}). Not applying without a tailored resume.", flush=True)
+        row["status"] = "SKIPPED"
+        row["note"] = "tailored resume required"
+        return row
     cloud_apply.dismiss_overlays(page)
     cloud_apply.click_apply_gate(page)
     cloud_apply.fill_identity(page)

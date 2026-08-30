@@ -88,7 +88,7 @@ def main() -> None:
     if nxt:
         try:
             import tailor_resume
-            path = tailor_resume.for_job(nxt)
+            path = tailor_resume.require_for_job(nxt)
             print(f"TAILORED {path}")
             print(f"HEADLINE {tailor_resume.CURRENT.get('headline')}")
         except Exception as exc:

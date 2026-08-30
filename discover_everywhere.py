@@ -445,7 +445,7 @@ def pull_remote_boards(jobs):
 def pull_linkedin_guest(jobs):
     print("LinkedIn guest search...", flush=True)
     cards = 0
-    for q in QUERIES[:5]:
+    for q in QUERIES[:3]:
         qs = urllib.parse.urlencode({
             "keywords": q,
             "location": "Hyderabad, Telangana, India",
@@ -466,7 +466,7 @@ def pull_linkedin_guest(jobs):
         ):
             cards += 1
             d.add(jobs, "linkedin", m.group(2).strip(), "Hyderabad, India", m.group(1).split("?")[0], "LinkedIn", "")
-        time.sleep(0.4)
+        time.sleep(2.5)
     print(f"  LinkedIn cards {cards}", flush=True)
 
 

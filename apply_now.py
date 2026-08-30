@@ -1171,12 +1171,12 @@ def main():
             print(f"\n[{i}/{len(jobs)}] {job['company']}: {job['title']}", flush=True)
             try:
                 try:
-                    job["resume_path"] = tailor_resume.for_job(job)
+                    job["resume_path"] = tailor_resume.require_for_job(job)
                     print(f"  Tailored resume: {job['resume_path']}", flush=True)
                     print(f"  Headline: {tailor_resume.CURRENT.get('headline')}", flush=True)
                 except Exception as exc:
-                    job["resume_path"] = RESUME
-                    print(f"  Resume tailor failed ({exc}); using master resume.", flush=True)
+                    print(f"  Resume tailor failed ({exc}). Not applying without a tailored resume.", flush=True)
+                    continue
                 firefox_real.open_new_tab(page, job["apply_url"])
                 page.wait_for_timeout(1400)
                 page.bring_to_front()
