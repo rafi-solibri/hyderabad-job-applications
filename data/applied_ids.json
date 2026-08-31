@@ -8292,5 +8292,145 @@
     "note": "State Street R-796658 persist-skip (Phenom leftover; Workday applyManually STUCK / WAITING_EXPIRED). Do not hammer.",
     "status": "SKIPPED",
     "ts": "2026-08-30T06:04:32.261586+00:00"
+  },
+  "R-248018-1": {
+    "company": "Amgen",
+    "title": "Principal Software Engineer",
+    "job_id": "Principal-Software-Engineer_R-248018-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer_R-248018-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:14:35.871367+00:00"
+  },
+  "R-248018": {
+    "company": "Amgen",
+    "title": "Principal Software Engineer",
+    "job_id": "Principal-Software-Engineer_R-248018-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer_R-248018-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:14:35.871367+00:00"
+  },
+  "amgen|principal software engineer": {
+    "company": "Amgen",
+    "title": "Principal Software Engineer",
+    "job_id": "Principal-Software-Engineer_R-248018-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer_R-248018-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:14:35.871367+00:00"
+  },
+  "R-239051": {
+    "company": "Amgen",
+    "title": "Principal Software Engineer – Clinical Data Foundation",
+    "job_id": "Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:14:53.707224+00:00"
+  },
+  "R-239051-1": {
+    "company": "Amgen",
+    "title": "Principal Software Engineer – Clinical Data Foundation",
+    "job_id": "Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:14:53.707224+00:00"
+  },
+  "amgen|principal software engineer – clinical data foundation": {
+    "company": "Amgen",
+    "title": "Principal Software Engineer – Clinical Data Foundation",
+    "job_id": "Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:14:53.707224+00:00"
+  },
+  "R-244063-1": {
+    "company": "Amgen",
+    "title": "Senior Software Engineer",
+    "job_id": "Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:15:12.144452+00:00"
+  },
+  "R-244063": {
+    "company": "Amgen",
+    "title": "Senior Software Engineer",
+    "job_id": "Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:15:12.144452+00:00"
+  },
+  "amgen|senior software engineer": {
+    "company": "Amgen",
+    "title": "Senior Software Engineer",
+    "job_id": "Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:15:12.144452+00:00"
+  },
+  "61167970": {
+    "company": "NationsBenefits",
+    "title": "Staff Engineer (.Net Full stack Developer)",
+    "job_id": "61167970",
+    "url": "https://www.linkedin.com/jobs/view/4445994854/",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-31T06:57:44.167844+00:00"
+  },
+  "nationsbenefits|staff engineer (.net full stack developer)": {
+    "company": "NationsBenefits",
+    "title": "Staff Engineer (.Net Full stack Developer)",
+    "job_id": "61167970",
+    "url": "https://www.linkedin.com/jobs/view/4445994854/",
+    "note": "Simplify Copilot",
+    "ts": "2026-08-31T06:57:44.167844+00:00"
+  },
+  "60059128": {
+    "company": "Kumaran Systems",
+    "title": "Technical Lead .NET Full Stack",
+    "job_id": "60059128",
+    "url": "https://www.linkedin.com/jobs/view/4440673970/",
+    "note": "already applied",
+    "ts": "2026-08-31T06:58:51.200096+00:00"
+  },
+  "kumaransystems|technical lead .net full stack": {
+    "company": "Kumaran Systems",
+    "title": "Technical Lead .NET Full Stack",
+    "job_id": "60059128",
+    "url": "https://www.linkedin.com/jobs/view/4440673970/",
+    "note": "already applied",
+    "ts": "2026-08-31T06:58:51.200096+00:00"
+  },
+  "Principal-Software-Engineer_R-248018-1": {
+    "company": "Amgen",
+    "title": "Principal Software Engineer",
+    "job_id": "Principal-Software-Engineer_R-248018-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer_R-248018-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:14:35.871367+00:00"
+  },
+  "Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1": {
+    "company": "Amgen",
+    "title": "Principal Software Engineer – Clinical Data Foundation",
+    "job_id": "Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:14:53.707224+00:00"
+  },
+  "Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1": {
+    "company": "Amgen",
+    "title": "Senior Software Engineer",
+    "job_id": "Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-08-31T07:15:12.144452+00:00"
   }
 }

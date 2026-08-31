@@ -58,3 +58,5 @@
   https://www.instahyre.com/job-440698-senior-software-engineer-ii-at-ansrsource-hyderabad/
 - **2026-08-29T05:57:24Z** SUBMITTED **Arcesium** — Solutions Architect
   https://www.instahyre.com/job-440980-solutions-architect-at-arcesium-2-bangalore-hyderabad/
+- **2026-08-31T06:57:18Z** SUBMITTED **NationsBenefits** — Staff Engineer (.Net Full stack Developer)
+  https://nationsbenefits.breezy.hr/p/b4719cc53589-staff-engineer-net-full-stack-developer/apply
