@@ -11,28 +11,6 @@
     "over_cap": false
   },
   {
-    "company": "Amgen",
-    "title": "Principal Software Engineer",
-    "location": "India - Hyderabad",
-    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer_R-248018-1",
-    "ats": "Workday",
-    "job_id": "Principal-Software-Engineer_R-248018-1",
-    "already_applied": false,
-    "match_score": 186,
-    "over_cap": false
-  },
-  {
-    "company": "Amgen",
-    "title": "Principal Software Engineer \u2013 Clinical Data Foundation",
-    "location": "India - Hyderabad",
-    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
-    "ats": "Workday",
-    "job_id": "Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1",
-    "already_applied": false,
-    "match_score": 186,
-    "over_cap": false
-  },
-  {
     "company": "The Wells Fargo Foundation",
     "title": "Lead Software Engineer (KAFKA, MULESOFT, IDMC, APIGEE, API Development & Integration)",
     "location": "Hyderabad, India",
@@ -42,17 +20,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 184
-  },
-  {
-    "company": "Amgen",
-    "title": "Senior Software Engineer",
-    "location": "India - Hyderabad",
-    "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
-    "ats": "Workday",
-    "job_id": "Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1",
-    "already_applied": false,
-    "match_score": 164,
-    "over_cap": false
   },
   {
     "company": "Accenture",
@@ -86,6 +53,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 40
+  },
+  {
+    "company": "Accenture",
+    "title": "Technical Architect - AI",
+    "location": "Bangalore,Chennai,Hyderabad",
+    "url": "https://www.instahyre.com/job-440945-technical-architect-ai-at-accenture-2-bangalore-chennai-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "440945",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": false
   },
   {
     "company": "Microsoft Corp",
@@ -164,6 +142,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 40
+  },
+  {
+    "company": "amazon web services (aws)",
+    "title": "Solution Architect, AGS-APJ-India-ISV-SA",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4455911842/",
+    "ats": "Foundit",
+    "job_id": "65002034",
+    "already_applied": false,
+    "match_score": 40,
+    "over_cap": false
   },
   {
     "company": "Microsoft Corp",
@@ -277,6 +266,17 @@
   },
   {
     "company": "Synchrony",
+    "title": "AVP , Principal Engineer - AI Agent Engineering",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4459834023/",
+    "ats": "Foundit",
+    "job_id": "64721018",
+    "already_applied": false,
+    "match_score": 26,
+    "over_cap": false
+  },
+  {
+    "company": "Synchrony",
     "title": "AVP Principal Engineer",
     "location": "Hyderabad, India",
     "url": "https://www.linkedin.com/jobs/view/4444445737/",
@@ -293,6 +293,17 @@
     "url": "https://www.linkedin.com/jobs/view/4335861330/",
     "ats": "Foundit",
     "job_id": "55392734",
+    "already_applied": false,
+    "match_score": 26,
+    "over_cap": false
+  },
+  {
+    "company": "providence india",
+    "title": "Principal Engineering Program Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4456575423/",
+    "ats": "Foundit",
+    "job_id": "64720570",
     "already_applied": false,
     "match_score": 26,
     "over_cap": false
@@ -341,6 +352,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 16
+  },
+  {
+    "company": "Cognizant Consulting",
+    "title": "Engineering Manager",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4457472964/",
+    "ats": "Foundit",
+    "job_id": "64697180",
+    "already_applied": false,
+    "match_score": 16,
+    "over_cap": false
   },
   {
     "company": "Microsoft Corp",
@@ -418,6 +440,28 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 4
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer - Windows Systems",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4456198506/",
+    "ats": "Foundit",
+    "job_id": "64952481",
+    "already_applied": false,
+    "match_score": 4,
+    "over_cap": false
+  },
+  {
+    "company": "providence india",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4441972621/",
+    "ats": "Foundit",
+    "job_id": "59537396",
+    "already_applied": false,
+    "match_score": 4,
+    "over_cap": false
   },
   {
     "company": "Qualcomm",
@@ -594,28 +638,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 16
-  },
-  {
-    "company": "NationsBenefits",
-    "title": "Staff Engineer (.Net Full stack Developer)",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4445994854/",
-    "ats": "Foundit",
-    "job_id": "61167970",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 8
-  },
-  {
-    "company": "Kumaran Systems",
-    "title": "Technical Lead .NET Full Stack",
-    "location": "Hyderabad, India",
-    "url": "https://www.linkedin.com/jobs/view/4440673970/",
-    "ats": "Foundit",
-    "job_id": "60059128",
-    "already_applied": false,
-    "over_cap": false,
-    "match_score": 6
   },
   {
     "company": "Simba Technologies",
@@ -1137,6 +1159,17 @@
     "match_score": -10
   },
   {
+    "company": "Petadata Software LLC",
+    "title": "Senior Technical Architect Scalable Multi-Tenant Systems",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4459604923/",
+    "ats": "Foundit",
+    "job_id": "64713101",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
     "company": "Prolifics Corporation",
     "title": "ESB Solution Architect",
     "location": "Hyderabad",
@@ -1170,6 +1203,17 @@
     "over_cap": false
   },
   {
+    "company": "RevUnit",
+    "title": "Senior Software Architect/Technical Lead",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4460388916/",
+    "ats": "Foundit",
+    "job_id": "64742306",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
     "company": "Rimini Street",
     "title": "Principal Solution Architect, SAP",
     "location": "Hyderabad, India",
@@ -1188,6 +1232,17 @@
     "apply_url": "https://www.naukri.com/job-listings-solution-architect-ai-ml-rinalytics-advisors-hyderabad-10-to-15-years-100626503113",
     "ats": "Naukri",
     "job_id": "100626503113",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Roche",
+    "title": "PI Web Solution Architect - RDT Global Products & GPS",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4459184051/",
+    "ats": "Foundit",
+    "job_id": "64711890",
     "already_applied": false,
     "match_score": -10,
     "over_cap": false
@@ -1457,6 +1512,17 @@
     "match_score": -10
   },
   {
+    "company": "genzeon technology solutions",
+    "title": "Technical Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/64975840",
+    "ats": "Foundit",
+    "job_id": "64975840",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
     "company": "healthfirst technologies",
     "title": "Technical Architect",
     "location": "Hyderabad, India",
@@ -1562,6 +1628,17 @@
     "url": "https://www.linkedin.com/jobs/view/4457097946/",
     "ats": "Foundit",
     "job_id": "64057242",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "shure india",
+    "title": "Engineer Staff Managing, Cloud Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4452433103/",
+    "ats": "Foundit",
+    "job_id": "64974705",
     "already_applied": false,
     "match_score": -10,
     "over_cap": false
@@ -1726,6 +1803,17 @@
     "over_cap": false
   },
   {
+    "company": "envisioned strategy consulting private limited",
+    "title": "Enterprise Integration Architect & Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4449202317/",
+    "ats": "Foundit",
+    "job_id": "64979725",
+    "already_applied": false,
+    "match_score": -16,
+    "over_cap": false
+  },
+  {
     "company": "Anblicks",
     "title": "Principal Engineer",
     "location": "Hyderabad, India",
@@ -1746,6 +1834,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -24
+  },
+  {
+    "company": "Arcadis",
+    "title": "Principal Engineer Substation Secondary Design",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4458009166/",
+    "ats": "Foundit",
+    "job_id": "64722468",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Arcesium",
@@ -1802,6 +1901,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -24
+  },
+  {
+    "company": "Google India",
+    "title": "Senior Staff Software Engineer, Google Cloud",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4458385313/",
+    "ats": "Foundit",
+    "job_id": "64722448",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Google India",
@@ -1978,6 +2088,28 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -24
+  },
+  {
+    "company": "PepsiCo",
+    "title": "SWE & App Arch Assoc Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.pepsicojobs.com/india/jobs/458392?lang=en-us&previousLocale=en-IN",
+    "ats": "Foundit",
+    "job_id": "57394052",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
+  },
+  {
+    "company": "PepsiCo",
+    "title": "SWE - Assoc Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.pepsicojobs.com/india/jobs/449773?lang=en-us&previousLocale=en-IN",
+    "ats": "Foundit",
+    "job_id": "64912762",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
   },
   {
     "company": "Phenom",
@@ -2391,6 +2523,17 @@
     "match_score": -26
   },
   {
+    "company": "Vanguard",
+    "title": "Application Engineering Technical Lead -II (Senior Developer - Angular & AWS Cloud)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4460124173/",
+    "ats": "Foundit",
+    "job_id": "64712283",
+    "already_applied": false,
+    "match_score": -26,
+    "over_cap": false
+  },
+  {
     "company": "aifa labs",
     "title": "AI Solution Architect",
     "location": "Hyderabad, India",
@@ -2419,6 +2562,17 @@
     "url": "https://www.linkedin.com/jobs/view/4456826565/",
     "ats": "Foundit",
     "job_id": "64009882",
+    "already_applied": false,
+    "match_score": -26,
+    "over_cap": false
+  },
+  {
+    "company": "vanguard india",
+    "title": "Application Engineering Technical Lead -II (Senior Developer - Angular & AWS Cloud)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4458664085/",
+    "ats": "Foundit",
+    "job_id": "64757913",
     "already_applied": false,
     "match_score": -26,
     "over_cap": false
@@ -2556,6 +2710,17 @@
     "over_cap": false
   },
   {
+    "company": "Druva",
+    "title": "Senior Staff Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4459820458/",
+    "ats": "Foundit",
+    "job_id": "64720880",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
+  },
+  {
     "company": "Emburse",
     "title": "Staff Engineer I ( Node.JS)",
     "location": "Hyderabad, India",
@@ -2653,6 +2818,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -32
+  },
+  {
+    "company": "Nagarro",
+    "title": "Senior Staff Engineer, Workato",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4412578440/",
+    "ats": "Foundit",
+    "job_id": "58137224",
+    "already_applied": false,
+    "match_score": -32,
+    "over_cap": false
   },
   {
     "company": "Outreach",
@@ -3137,6 +3313,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -34
+  },
+  {
+    "company": "D. E. Shaw",
+    "title": "Lead Software Engineer (Fullstack)",
+    "location": "Bangalore,Gurgaon,Hyderabad",
+    "url": "https://www.instahyre.com/job-439092-lead-software-engineer-fullstack-at-d-e-bangalore-gurgaon-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "439092",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "DealerSocket",
@@ -3823,6 +4010,28 @@
     "over_cap": false
   },
   {
+    "company": "TIDE",
+    "title": "Engineering Manager, Member Accession Marketing India, Hyderabad",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4459370577/",
+    "ats": "Foundit",
+    "job_id": "64760224",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "Techwave",
+    "title": "Technical Lead SAP Commerce (Hybris)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4460511711/",
+    "ats": "Foundit",
+    "job_id": "64794987",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "The Depository Trust & Clearing Corporation (DTCC)",
     "title": "Lead Software Engineer",
     "location": "Hyderabad, India",
@@ -4046,6 +4255,17 @@
     "over_cap": false
   },
   {
+    "company": "charles schwab india",
+    "title": "Senior Engineering Manager - Software Development (PL)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4443289181/",
+    "ats": "Foundit",
+    "job_id": "64991978",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "d. e. shaw india private limited",
     "title": "Engineering Manager (Windows Engineer)",
     "location": "Hyderabad, India",
@@ -4145,6 +4365,17 @@
     "match_score": -34
   },
   {
+    "company": "fpt india",
+    "title": "FPT Software - Splunk Technical Lead - Observability &amp Monitoring",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/64988245",
+    "ats": "Foundit",
+    "job_id": "64988245",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "innovapptive inc",
     "title": "Engineering Manager (AI)",
     "location": "Hyderabad, India",
@@ -4233,12 +4464,45 @@
     "match_score": -34
   },
   {
+    "company": "talendroid technologies",
+    "title": "Engineering Manager / Team Lead",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/64736250",
+    "ats": "Foundit",
+    "job_id": "64736250",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "the hartford india",
     "title": "Technical Lead",
     "location": "Hyderabad, India",
     "url": "https://www.linkedin.com/jobs/view/4380479504/",
     "ats": "Foundit",
     "job_id": "47127558",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "vanguard india",
+    "title": "Application Engineering Technical Lead - II",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4435540966/",
+    "ats": "Foundit",
+    "job_id": "64989587",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "vanguard india",
+    "title": "Technical Lead - Payments / Money Movement",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4430355958/",
+    "ats": "Foundit",
+    "job_id": "64989596",
     "already_applied": false,
     "match_score": -34,
     "over_cap": false
@@ -4275,6 +4539,28 @@
     "job_id": "080626024724",
     "already_applied": false,
     "match_score": -38,
+    "over_cap": false
+  },
+  {
+    "company": "Softility Inc.,",
+    "title": "Senior Software Engineer \u2013Distributed Systems & Stream Processing",
+    "location": "Hyderabad, India",
+    "url": "https://www.softility.com/current-openings/senior-software-engineer-distributed-systems-stream-processing/",
+    "ats": "Foundit",
+    "job_id": "64701799",
+    "already_applied": false,
+    "match_score": -38,
+    "over_cap": false
+  },
+  {
+    "company": "ANSR",
+    "title": "Principal Engineer, IT Machine Learning",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4459181057/",
+    "ats": "Foundit",
+    "job_id": "64696905",
+    "already_applied": false,
+    "match_score": -40,
     "over_cap": false
   },
   {
@@ -4476,6 +4762,17 @@
     "match_score": -46
   },
   {
+    "company": "Clean Harbors",
+    "title": "Senior Software Engineer - SSE II",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4453686204/",
+    "ats": "Foundit",
+    "job_id": "64720564",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
+  },
+  {
     "company": "CyberArk",
     "title": "Senior Software Engineer - C++",
     "location": "Hyderabad",
@@ -4542,6 +4839,17 @@
     "match_score": -46
   },
   {
+    "company": "Globallogic Ukraine",
+    "title": "Senior Software Engineer, SaaS Control Plane IRC303076",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4457109366/",
+    "ats": "Foundit",
+    "job_id": "64696624",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
+  },
+  {
     "company": "Gramener",
     "title": "Technical Architect _ Python / Gen AI Applications",
     "location": "Hyderabad, India",
@@ -4573,6 +4881,28 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -46
+  },
+  {
+    "company": "Marriott International",
+    "title": "Senior Software Engineer I",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-441166-senior-software-engineer-i-at-marriott-international-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "441166",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
+  },
+  {
+    "company": "Marriott International",
+    "title": "Senior Software Engineer II",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-441163-senior-software-engineer-ii-at-marriott-international-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "441163",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "Mphasis",
@@ -4751,6 +5081,17 @@
     "match_score": -46
   },
   {
+    "company": "ansrsource",
+    "title": "Associate - Senior Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-441226-associate-senior-software-engineer-at-ansrsource-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "441226",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
+  },
+  {
     "company": "costco it",
     "title": "Senior Software Engineer",
     "location": "Hyderabad, India",
@@ -4916,6 +5257,17 @@
     "match_score": -52
   },
   {
+    "company": "shure india",
+    "title": "Associate Staff Engineer / Senior Engineer, System Verification",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4442644822/",
+    "ats": "Foundit",
+    "job_id": "64989399",
+    "already_applied": false,
+    "match_score": -52,
+    "over_cap": false
+  },
+  {
     "company": "Franklin Templeton",
     "title": "Lead Software Engineer (Python, Django, React)",
     "location": "Hyderabad",
@@ -5043,6 +5395,17 @@
     "url": "https://www.foundit.in/job/35466497",
     "ats": "Foundit",
     "job_id": "35466497",
+    "already_applied": false,
+    "match_score": -66,
+    "over_cap": false
+  },
+  {
+    "company": "franklin templeton india",
+    "title": "Senior Software Engineer (Python, Django, React, PostgreSQL)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4458380506/",
+    "ats": "Foundit",
+    "job_id": "64806954",
     "already_applied": false,
     "match_score": -66,
     "over_cap": false

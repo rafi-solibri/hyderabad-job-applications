@@ -8432,5 +8432,104 @@
     "note": "all portal passwords rejected or account locked",
     "status": "AUTH_FAILED",
     "ts": "2026-08-31T07:15:12.144452+00:00"
+  },
+  "65003612": {
+    "company": "The Wells Fargo Foundation",
+    "title": "Senior Software Engineer - Ab Initio Administrator",
+    "job_id": "65003612",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Senior-Software-Engineer---Ab-Initio-Administrator_R-569710",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-09-01T05:38:01.998828+00:00"
+  },
+  "thewellsfargofoundation|senior software engineer - ab initio administrator": {
+    "company": "The Wells Fargo Foundation",
+    "title": "Senior Software Engineer - Ab Initio Administrator",
+    "job_id": "65003612",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Senior-Software-Engineer---Ab-Initio-Administrator_R-569710",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-09-01T05:38:01.998828+00:00"
+  },
+  "R-569710": {
+    "company": "The Wells Fargo Foundation",
+    "title": "Senior Software Engineer - Ab Initio Administrator",
+    "job_id": "65003612",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Senior-Software-Engineer---Ab-Initio-Administrator_R-569710",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-09-01T05:38:01.998828+00:00"
+  },
+  "pepsico|swe & app arch assoc principal engineer": {
+    "company": "PepsiCo",
+    "title": "SWE & App Arch Assoc Principal Engineer",
+    "job_id": "57394052",
+    "url": "https://www.pepsicojobs.com/india/jobs/458392?lang=en-us&previousLocale=en-IN",
+    "note": "PepsiCo iCIMS login GDPR loop STUCK x2 1 Sep 2026; persist-skip, do not hammer",
+    "status": "STUCK",
+    "ts": "2026-09-01T05:43:58.382021+00:00"
+  },
+  "57394052": {
+    "company": "PepsiCo",
+    "title": "SWE & App Arch Assoc Principal Engineer",
+    "job_id": "57394052",
+    "url": "https://www.pepsicojobs.com/india/jobs/458392?lang=en-us&previousLocale=en-IN",
+    "note": "PepsiCo iCIMS login GDPR loop STUCK x2 1 Sep 2026; persist-skip, do not hammer",
+    "status": "STUCK",
+    "ts": "2026-09-01T05:43:58.382021+00:00"
+  },
+  "458392": {
+    "company": "PepsiCo",
+    "title": "SWE & App Arch Assoc Principal Engineer",
+    "job_id": "57394052",
+    "url": "https://www.pepsicojobs.com/india/jobs/458392?lang=en-us&previousLocale=en-IN",
+    "note": "PepsiCo iCIMS login GDPR loop STUCK x2 1 Sep 2026; persist-skip, do not hammer",
+    "status": "STUCK",
+    "ts": "2026-09-01T05:43:58.382021+00:00"
+  },
+  "64912762": {
+    "company": "PepsiCo",
+    "title": "SWE - Assoc Principal Engineer",
+    "job_id": "64912762",
+    "url": "https://www.pepsicojobs.com/india/jobs/449773?lang=en-us&previousLocale=en-IN",
+    "note": "PepsiCo iCIMS login GDPR loop STUCK x2 1 Sep 2026; persist-skip, do not hammer",
+    "status": "STUCK",
+    "ts": "2026-09-01T05:43:58.390455+00:00"
+  },
+  "pepsico|swe - assoc principal engineer": {
+    "company": "PepsiCo",
+    "title": "SWE - Assoc Principal Engineer",
+    "job_id": "64912762",
+    "url": "https://www.pepsicojobs.com/india/jobs/449773?lang=en-us&previousLocale=en-IN",
+    "note": "PepsiCo iCIMS login GDPR loop STUCK x2 1 Sep 2026; persist-skip, do not hammer",
+    "status": "STUCK",
+    "ts": "2026-09-01T05:43:58.390455+00:00"
+  },
+  "449773": {
+    "company": "PepsiCo",
+    "title": "SWE - Assoc Principal Engineer",
+    "job_id": "64912762",
+    "url": "https://www.pepsicojobs.com/india/jobs/449773?lang=en-us&previousLocale=en-IN",
+    "note": "PepsiCo iCIMS login GDPR loop STUCK x2 1 Sep 2026; persist-skip, do not hammer",
+    "status": "STUCK",
+    "ts": "2026-09-01T05:43:58.390455+00:00"
+  },
+  "64701799": {
+    "company": "Softility Inc.,",
+    "title": "Senior Software Engineer –Distributed Systems & Stream Processing",
+    "job_id": "64701799",
+    "url": "https://www.softility.com/current-openings/senior-software-engineer-distributed-systems-stream-processing/",
+    "note": "Softility company-site form WAITING_EXPIRED 1 Sep 2026; persist-skip",
+    "status": "WAITING_EXPIRED",
+    "ts": "2026-09-01T05:43:58.401783+00:00"
+  },
+  "softilityinc|senior software engineer –distributed systems & stream processing": {
+    "company": "Softility Inc.,",
+    "title": "Senior Software Engineer –Distributed Systems & Stream Processing",
+    "job_id": "64701799",
+    "url": "https://www.softility.com/current-openings/senior-software-engineer-distributed-systems-stream-processing/",
+    "note": "Softility company-site form WAITING_EXPIRED 1 Sep 2026; persist-skip",
+    "status": "WAITING_EXPIRED",
+    "ts": "2026-09-01T05:43:58.401783+00:00"
   }
 }

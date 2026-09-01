@@ -3653,7 +3653,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/61934442",
-    "ts": "2026-08-31T06:50:30.977578+00:00"
+    "ts": "2026-09-01T05:37:13.141713+00:00"
   },
   {
     "company": "Globallogic India",
@@ -3829,5 +3829,64 @@
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/34669768",
     "ts": "2026-08-31T07:15:13.201365+00:00"
+  },
+  {
+    "company": "The Wells Fargo Foundation",
+    "title": "Senior Software Engineer - Ab Initio Administrator",
+    "location": "Hyderabad, India",
+    "url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Senior-Software-Engineer---Ab-Initio-Administrator_R-569710",
+    "ats": "Foundit",
+    "job_id": "65003612",
+    "apply_url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad-India/Senior-Software-Engineer---Ab-Initio-Administrator_R-569710",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/Hyderabad%2C-India/Senior-Software-Engineer---Ab-Initio-Administrator_R-569710/apply/applyManually",
+    "ts": "2026-09-01T05:37:28.107827+00:00"
+  },
+  {
+    "company": "PepsiCo",
+    "title": "SWE & App Arch Assoc Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.pepsicojobs.com/india/jobs/458392?lang=en-us&previousLocale=en-IN",
+    "ats": "Foundit",
+    "job_id": "57394052",
+    "apply_url": "https://www.pepsicojobs.com/india/jobs/458392?lang=en-us&previousLocale=en-IN",
+    "ok": false,
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://globalcareers-pepsico.icims.com/jobs/458392/login?_sp=b2987e7f-249e-4468-896f-2b0aee68458a.1788241363193",
+    "ts": "2026-09-01T05:42:41.713350+00:00",
+    "fields_learned": 0
+  },
+  {
+    "company": "PepsiCo",
+    "title": "SWE - Assoc Principal Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.pepsicojobs.com/india/jobs/449773?lang=en-us&previousLocale=en-IN",
+    "ats": "Foundit",
+    "job_id": "64912762",
+    "apply_url": "https://www.pepsicojobs.com/india/jobs/449773?lang=en-us&previousLocale=en-IN",
+    "ok": false,
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://globalcareers-pepsico.icims.com/jobs/449773/login?_sp=b2987e7f-249e-4468-896f-2b0aee68458a.1788241458018",
+    "ts": "2026-09-01T05:44:16.589032+00:00",
+    "fields_learned": 0
+  },
+  {
+    "company": "Softility Inc.,",
+    "title": "Senior Software Engineer –Distributed Systems & Stream Processing",
+    "location": "Hyderabad, India",
+    "url": "https://www.softility.com/current-openings/senior-software-engineer-distributed-systems-stream-processing/",
+    "ats": "Foundit",
+    "job_id": "64701799",
+    "apply_url": "https://www.softility.com/current-openings/senior-software-engineer-distributed-systems-stream-processing/",
+    "ok": false,
+    "status": "WAITING_EXPIRED",
+    "note": "waited 15s; learned 0 fields",
+    "final_url": "https://www.softility.com/current-openings/senior-software-engineer-distributed-systems-stream-processing/",
+    "ts": "2026-09-01T05:45:51.490970+00:00",
+    "fields_learned": 0
   }
 ]

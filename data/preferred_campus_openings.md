@@ -1,19 +1,17 @@
 # Preferred campus openings
 
-Run date: 2026-08-30
+Run date: 2026-09-01
 
 Live Hyderabad / near-home roles at RMZ Nexity, RMZ Futura, RMZ Spire, Knowledge City / Park, and Raheja Mindspace tenants.
 Company career leftovers are scored +50 and sorted first in `apply_now.queue()`.
 
-**In-scope leftovers: 34** (3 career portal, 31 board) across **14** companies.
+**In-scope leftovers: 31** (0 career portal, 31 board) across **13** companies.
 
 ## Career-portal leftovers (apply first)
 
 | # | Score | Company | Title | Location | Link |
 |---|------:|---------|-------|----------|------|
-| 1 | 186 | Amgen | Principal Software Engineer | India - Hyderabad | https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer_R-248018-1 |
-| 2 | 186 | Amgen | Principal Software Engineer – Clinical Data Foundation | India - Hyderabad | https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Principal-Software-Engineer---Clinical-Data-Foundation_R-239051-1 |
-| 3 | 164 | Amgen | Senior Software Engineer | India - Hyderabad | https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/India---Hyderabad/Specialist-Software-Engineer-Full-Stack-Development-_R-244063-1 |
+| | | none | | | |
 
 ## Board leftovers (LinkedIn / Foundit / Naukri)
 
@@ -55,6 +53,7 @@ Company career leftovers are scored +50 and sorted first in `apply_now.queue()`.
 
 Searched, but no leftover architect / principal / staff / EM / senior software role in Hyderabad after applied/skip filters:
 
+- Amgen
 - Electronic Arts
 - KPMG
 - CGI

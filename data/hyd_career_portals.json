@@ -5,7 +5,7 @@
     "hub": "Financial District",
     "kind": "smashfly",
     "note": "",
-    "matched_jobs": 5
+    "matched_jobs": 3
   },
   {
     "company": "Charles Schwab India",
@@ -218,7 +218,7 @@
   {
     "company": "HSBC",
     "url": "https://hsbc.wd3.myworkdayjobs.com/en-US/External",
-    "hub": "Gachibowli / FD",
+    "hub": "RMZ Nexity / Knowledge City / FD",
     "kind": "existing",
     "note": "",
     "matched_jobs": 0
@@ -453,12 +453,12 @@
     "hub": "Financial District / Hitec",
     "kind": "existing",
     "note": "",
-    "matched_jobs": 0
+    "matched_jobs": 4
   },
   {
     "company": "Apple",
     "url": "https://jobs.apple.com/",
-    "hub": "Gachibowli / FD",
+    "hub": "RMZ Nexity / Knowledge City",
     "kind": "apple",
     "note": "",
     "matched_jobs": 0
@@ -541,7 +541,7 @@
     "hub": "Hitec",
     "kind": "existing",
     "note": "",
-    "matched_jobs": 0
+    "matched_jobs": 3
   },
   {
     "company": "Analog Devices",
@@ -874,10 +874,10 @@
   {
     "company": "Amgen",
     "url": "https://amgen.wd1.myworkdayjobs.com/en-US/Careers",
-    "hub": "Gachibowli",
+    "hub": "RMZ Nexity / RMZ Spire",
     "kind": "existing",
     "note": "",
-    "matched_jobs": 0
+    "matched_jobs": 7
   },
   {
     "company": "Novartis",
@@ -930,7 +930,7 @@
   {
     "company": "Deloitte",
     "url": "https://deloitte.wd1.myworkdayjobs.com/en-US/DeloitteCareers",
-    "hub": "Financial District / Hitec",
+    "hub": "RMZ Futura / Raheja Mindspace / FD",
     "kind": "existing",
     "note": "",
     "matched_jobs": 0
@@ -954,7 +954,7 @@
   {
     "company": "KPMG",
     "url": "https://kpmg.wd1.myworkdayjobs.com/en-US/External",
-    "hub": "Financial District",
+    "hub": "RMZ Nexity / Knowledge City",
     "kind": "workday",
     "note": "",
     "matched_jobs": 0
@@ -1136,9 +1136,9 @@
     "matched_jobs": 0
   },
   {
-    "company": "GE",
+    "company": "GE Vernova",
     "url": "https://ge.wd5.myworkdayjobs.com/en-US/GE_ExternalCareer",
-    "hub": "Hitec",
+    "hub": "Raheja Mindspace",
     "kind": "existing",
     "note": "",
     "matched_jobs": 0
@@ -1291,6 +1291,102 @@
     "company": "Cubic",
     "url": "https://www.cubic.com/careers",
     "hub": "Hitec",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "Electronic Arts",
+    "url": "https://jobs.ea.com/",
+    "hub": "RMZ Nexity / Knowledge City",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "CGI",
+    "url": "https://www.cgi.com/en/careers",
+    "hub": "RMZ Nexity / RMZ Futura",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "McDonalds",
+    "url": "https://careers.mcdonalds.com/",
+    "hub": "RMZ Nexity",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "ArcelorMittal",
+    "url": "https://jobs.arcelormittal.com/",
+    "hub": "RMZ Nexity",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "Alter Domus",
+    "url": "https://alterdomus.com/careers/",
+    "hub": "RMZ Nexity",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "Providence",
+    "url": "https://www.providence.org/careers",
+    "hub": "RMZ Nexity",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "People Tech",
+    "url": "https://www.peopletech.com/careers/",
+    "hub": "RMZ Futura",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "Verizon",
+    "url": "https://www.verizon.com/about/careers",
+    "hub": "Raheja Mindspace",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "Parexel",
+    "url": "https://jobs.parexel.com/",
+    "hub": "Raheja Mindspace",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "Syneos Health",
+    "url": "https://www.syneoshealth.com/careers",
+    "hub": "Raheja Mindspace",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "Colruyt",
+    "url": "https://www.colruytgroup.com/en/careers",
+    "hub": "Raheja Mindspace",
+    "kind": "custom",
+    "note": "",
+    "matched_jobs": 0
+  },
+  {
+    "company": "Hyundai Mobis",
+    "url": "https://www.mobis.com/en/careers",
+    "hub": "Raheja Mindspace",
     "kind": "custom",
     "note": "",
     "matched_jobs": 0

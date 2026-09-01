@@ -1,9 +1,9 @@
 # Hyderabad company career portals
 
-Official career sites for GCCs and product companies in **Madhapur / HITEC City / Knowledge City / Raheja Mindspace / RMZ**, plus Gachibowli, Financial District, Nanakramguda, Raidurg, Kondapur. Preferred near-home campuses are in `data/preferred_campuses.json`.
+Official career sites for GCCs and product companies in **Madhapur / HITEC City, Gachibowli, and Financial District** (plus Nanakramguda, Raidurg, Kondapur).
 These are now in the discovery catalog. `existing` = already searched via Workday/GH/Lever; others were added this run.
 
-**162 portals**
+**174 portals**
 
 | Company | Hub | Career site | Status |
 |---------|-----|-------------|--------|
@@ -34,7 +34,7 @@ These are now in the discovery catalog. `existing` = already searched via Workda
 | Morgan Stanley | Financial District | https://morganstanley.wd1.myworkdayjobs.com/en-US/external | existing |
 | Citi | Financial District | https://citi.wd5.myworkdayjobs.com/en-US/2 | existing |
 | Barclays | Financial District | https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays | existing |
-| HSBC | Gachibowli / FD | https://hsbc.wd3.myworkdayjobs.com/en-US/External | existing |
+| HSBC | RMZ Nexity / Knowledge City / FD | https://hsbc.wd3.myworkdayjobs.com/en-US/External | existing |
 | Deutsche Bank | Financial District | https://db.wd3.myworkdayjobs.com/en-US/ExternalCareerSite | existing |
 | Standard Chartered | Financial District | https://standardchartered.wd3.myworkdayjobs.com/en-US/Careers | existing |
 | Capital One | Gachibowli | https://capitalone.wd1.myworkdayjobs.com/en-US/Capital_One | existing |
@@ -64,7 +64,7 @@ These are now in the discovery catalog. `existing` = already searched via Workda
 | Microsoft | Gachibowli / Hitec | https://jobs.careers.microsoft.com/ | existing |
 | Google | Gachibowli / Financial District | https://careers.google.com/ | existing |
 | Amazon | Financial District / Hitec | https://www.amazon.jobs/ | existing |
-| Apple | Gachibowli / FD | https://jobs.apple.com/ | apple |
+| Apple | RMZ Nexity / Knowledge City | https://jobs.apple.com/ | apple |
 | Meta | Gachibowli | https://www.metacareers.com/ | custom |
 | LinkedIn | Gachibowli | https://careers.linkedin.com/ | custom |
 | Uber | Gachibowli | https://uber.wd1.myworkdayjobs.com/en-US/UberJobs | existing |
@@ -116,17 +116,17 @@ These are now in the discovery catalog. `existing` = already searched via Workda
 | HighRadius | Madhapur / Hitec | https://www.highradius.com/careers/ | existing |
 | Innovaccer | Hitec | https://innovaccer.com/careers | existing |
 | Medtronic | Hitec | https://medtronic.wd1.myworkdayjobs.com/en-US/MedtronicCareers | existing |
-| Amgen | Gachibowli | https://amgen.wd1.myworkdayjobs.com/en-US/Careers | existing |
+| Amgen | RMZ Nexity / RMZ Spire | https://amgen.wd1.myworkdayjobs.com/en-US/Careers | existing |
 | Novartis | Hitec | https://novartis.wd3.myworkdayjobs.com/en-US/careers | existing |
 | Pfizer | Hitec | https://pfizer.wd1.myworkdayjobs.com/en-US/PfizerCareers | existing |
 | GSK | Hitec | https://gsk.wd5.myworkdayjobs.com/en-US/GSKCareers | existing |
 | J&J | Hitec | https://johnsonandjohnson.wd5.myworkdayjobs.com/en-US/jnj | existing |
 | Philips | Hitec | https://philips.wd3.myworkdayjobs.com/en-US/jobs-and-careers | existing |
 | Accenture | Hitec / Gachibowli / FD | https://www.accenture.com/in-en/careers | existing |
-| Deloitte | Financial District / Hitec | https://deloitte.wd1.myworkdayjobs.com/en-US/DeloitteCareers | existing |
+| Deloitte | RMZ Futura / Raheja Mindspace / FD | https://deloitte.wd1.myworkdayjobs.com/en-US/DeloitteCareers | existing |
 | PwC | Financial District | https://pwc.wd3.myworkdayjobs.com/en-US/External_Careers | existing |
 | EY | Financial District | https://ey.wd1.myworkdayjobs.com/en-US/EYCareers | existing |
-| KPMG | Financial District | https://kpmg.wd1.myworkdayjobs.com/en-US/External | workday |
+| KPMG | RMZ Nexity / Knowledge City | https://kpmg.wd1.myworkdayjobs.com/en-US/External | workday |
 | Cognizant | Hitec / Gachibowli | https://careers.cognizant.com/ | existing |
 | Infosys | Gachibowli / Pocharam | https://www.infosys.com/careers/ | existing |
 | Wipro | Gachibowli / Manikonda | https://careers.wipro.com/ | existing |
@@ -149,7 +149,7 @@ These are now in the discovery catalog. `existing` = already searched via Workda
 | Publicis Sapient | Hitec | https://careers.publicissapient.com/ | existing |
 | Honeywell | Gachibowli / Hitec | https://honeywell.wd1.myworkdayjobs.com/en-US/External | existing |
 | Siemens | Gachibowli | https://siemens.wd3.myworkdayjobs.com/en-US/External | existing |
-| GE | Hitec | https://ge.wd5.myworkdayjobs.com/en-US/GE_ExternalCareer | existing |
+| GE Vernova | Raheja Mindspace | https://ge.wd5.myworkdayjobs.com/en-US/GE_ExternalCareer | existing |
 | Bosch | Gachibowli | https://bosch.wd1.myworkdayjobs.com/en-US/External | existing |
 | ABB | Hitec | https://abb.wd3.myworkdayjobs.com/en-US/External | existing |
 | Schneider | Hitec | https://schneider.wd3.myworkdayjobs.com/en-US/External | existing |
@@ -169,3 +169,15 @@ These are now in the discovery catalog. `existing` = already searched via Workda
 | Arcesium | Financial District / Gachibowli | https://www.arcesium.com/careers | custom |
 | Blue Yonder | Hitec / Gachibowli | https://blueyonder.com/careers | existing |
 | Cubic | Hitec | https://www.cubic.com/careers | custom |
+| Electronic Arts | RMZ Nexity / Knowledge City | https://jobs.ea.com/ | custom |
+| CGI | RMZ Nexity / RMZ Futura | https://www.cgi.com/en/careers | custom |
+| McDonalds | RMZ Nexity | https://careers.mcdonalds.com/ | custom |
+| ArcelorMittal | RMZ Nexity | https://jobs.arcelormittal.com/ | custom |
+| Alter Domus | RMZ Nexity | https://alterdomus.com/careers/ | custom |
+| Providence | RMZ Nexity | https://www.providence.org/careers | custom |
+| People Tech | RMZ Futura | https://www.peopletech.com/careers/ | custom |
+| Verizon | Raheja Mindspace | https://www.verizon.com/about/careers | custom |
+| Parexel | Raheja Mindspace | https://jobs.parexel.com/ | custom |
+| Syneos Health | Raheja Mindspace | https://www.syneoshealth.com/careers | custom |
+| Colruyt | Raheja Mindspace | https://www.colruytgroup.com/en/careers | custom |
+| Hyundai Mobis | Raheja Mindspace | https://www.mobis.com/en/careers | custom |
