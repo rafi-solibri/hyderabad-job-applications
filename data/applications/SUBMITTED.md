@@ -60,3 +60,13 @@
   https://www.instahyre.com/job-440980-solutions-architect-at-arcesium-2-bangalore-hyderabad/
 - **2026-08-31T06:57:18Z** SUBMITTED **NationsBenefits** — Staff Engineer (.Net Full stack Developer)
   https://nationsbenefits.breezy.hr/p/b4719cc53589-staff-engineer-net-full-stack-developer/apply
+- **2026-09-01T06:43:29Z** SUBMITTED **Accenture** — Technical Architect - AI
+  https://www.instahyre.com/job-440945-technical-architect-ai-at-accenture-2-bangalore-chennai-hyderabad/
+- **2026-09-01T06:57:06Z** SUBMITTED **D. E. Shaw** — Lead Software Engineer (Fullstack)
+  https://www.instahyre.com/job-439092-lead-software-engineer-fullstack-at-d-e-bangalore-gurgaon-hyderabad/
+- **2026-09-01T06:57:30Z** SUBMITTED **Marriott International** — Senior Software Engineer I
+  https://www.instahyre.com/job-441166-senior-software-engineer-i-at-marriott-international-hyderabad/
+- **2026-09-01T06:58:36Z** SUBMITTED **Marriott International** — Senior Software Engineer II
+  https://www.instahyre.com/job-441163-senior-software-engineer-ii-at-marriott-international-hyderabad/
+- **2026-09-01T06:58:43Z** SUBMITTED **ansrsource** — Associate - Senior Software Engineer
+  https://www.instahyre.com/job-441226-associate-senior-software-engineer-at-ansrsource-hyderabad/

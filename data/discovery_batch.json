@@ -674,6 +674,18 @@
     "over_cap": false
   },
   {
+    "company": "Blackbaud",
+    "title": "Laureate, Software Engineer - .NET Architecture",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-laureate-software-engineer-net-architecture-blackbaud-hyderabad-10-to-15-years-280426500111",
+    "apply_url": "https://www.naukri.com/job-listings-laureate-software-engineer-net-architecture-blackbaud-hyderabad-10-to-15-years-280426500111",
+    "ats": "Naukri",
+    "job_id": "280426500111",
+    "already_applied": false,
+    "match_score": -6,
+    "over_cap": false
+  },
+  {
     "company": "Cendyn",
     "title": "Senior Software Engineer - Dotnet",
     "location": "Hyderabad, India",
@@ -823,6 +835,18 @@
     "url": "https://www.capgemini.com/in-en/jobs/371297-en_GB_SAPBTP/SAP%20Solution%20Architect%20-%20Presales",
     "ats": "Foundit",
     "job_id": "63634266",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Celebal Technologies",
+    "title": "Solution Architect",
+    "location": "6-11 Yrs Not disclosed Hyderabad, Noida, Pune, Gurugram, Jaipur, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-solution-architect-celebal-technologies-noida-hyderabad-pune-gurugram-jaipur-bengaluru-6-to-11-years-310826501523",
+    "apply_url": "https://www.naukri.com/job-listings-solution-architect-celebal-technologies-noida-hyderabad-pune-gurugram-jaipur-bengaluru-6-to-11-years-310826501523",
+    "ats": "Naukri",
+    "job_id": "310826501523",
     "already_applied": false,
     "match_score": -10,
     "over_cap": false
@@ -2090,28 +2114,6 @@
     "match_score": -24
   },
   {
-    "company": "PepsiCo",
-    "title": "SWE & App Arch Assoc Principal Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.pepsicojobs.com/india/jobs/458392?lang=en-us&previousLocale=en-IN",
-    "ats": "Foundit",
-    "job_id": "57394052",
-    "already_applied": false,
-    "match_score": -24,
-    "over_cap": false
-  },
-  {
-    "company": "PepsiCo",
-    "title": "SWE - Assoc Principal Engineer",
-    "location": "Hyderabad, India",
-    "url": "https://www.pepsicojobs.com/india/jobs/449773?lang=en-us&previousLocale=en-IN",
-    "ats": "Foundit",
-    "job_id": "64912762",
-    "already_applied": false,
-    "match_score": -24,
-    "over_cap": false
-  },
-  {
     "company": "Phenom",
     "title": "Principal Engineer",
     "location": "Hyderabad, India",
@@ -3183,6 +3185,30 @@
     "match_score": -34
   },
   {
+    "company": "Bankai Informatics",
+    "title": "AS/400 Technical Lead Data Extraction",
+    "location": "7-12 Yrs 18-32.5 Lacs PA Hyderabad",
+    "url": "https://www.naukri.com/job-listings-as-400-technical-lead-data-extraction-bankai-informatics-hyderabad-7-to-12-years-310826014423",
+    "apply_url": "https://www.naukri.com/job-listings-as-400-technical-lead-data-extraction-bankai-informatics-hyderabad-7-to-12-years-310826014423",
+    "ats": "Naukri",
+    "job_id": "310826014423",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
+    "company": "BharatHire.Com Private Limited",
+    "title": "Technical Lead/ Senior Software Engineer",
+    "location": "4-9 Yrs 20-35 Lacs PA Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-senior-software-engineer-bharathire-com-private-limited-hyderabad-4-to-9-years-310826913659",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-senior-software-engineer-bharathire-com-private-limited-hyderabad-4-to-9-years-310826913659",
+    "ats": "Naukri",
+    "job_id": "310826913659",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "Billtrust",
     "title": "Lead Software Engineer",
     "location": "Hyderabad, India",
@@ -3558,6 +3584,18 @@
     "match_score": -34
   },
   {
+    "company": "Hackajob",
+    "title": "Senior Lead Software Engineer",
+    "location": "6-11 Yrs 35-60 Lacs PA Hybrid - Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-senior-lead-software-engineer-hackajob-hyderabad-chennai-bengaluru-6-to-11-years-310826014784",
+    "apply_url": "https://www.naukri.com/job-listings-senior-lead-software-engineer-hackajob-hyderabad-chennai-bengaluru-6-to-11-years-310826014784",
+    "ats": "Naukri",
+    "job_id": "310826014784",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "Happiest Minds Technologies",
     "title": "TECHNICAL LEAD - LEAD",
     "location": "Hyderabad, India",
@@ -3920,6 +3958,18 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -34
+  },
+  {
+    "company": "PwC",
+    "title": "Technical Lead",
+    "location": "8-13 Yrs Not disclosed Hybrid - Hyderabad, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-pwc-hyderabad-bengaluru-8-to-13-years-310826007799",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-pwc-hyderabad-bengaluru-8-to-13-years-310826007799",
+    "ats": "Naukri",
+    "job_id": "310826007799",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Qapita",
@@ -4542,17 +4592,6 @@
     "over_cap": false
   },
   {
-    "company": "Softility Inc.,",
-    "title": "Senior Software Engineer \u2013Distributed Systems & Stream Processing",
-    "location": "Hyderabad, India",
-    "url": "https://www.softility.com/current-openings/senior-software-engineer-distributed-systems-stream-processing/",
-    "ats": "Foundit",
-    "job_id": "64701799",
-    "already_applied": false,
-    "match_score": -38,
-    "over_cap": false
-  },
-  {
     "company": "ANSR",
     "title": "Principal Engineer, IT Machine Learning",
     "location": "Hyderabad, India",
@@ -4691,6 +4730,18 @@
     "url": "https://www.foundit.in/job/64146941",
     "ats": "Foundit",
     "job_id": "64146941",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
+  },
+  {
+    "company": "Aveva",
+    "title": "Senior Software Engineer",
+    "location": "7-14 Yrs 25-40 Lacs PA Hyderabad, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-aveva-hyderabad-bengaluru-7-to-14-years-310826026837",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-aveva-hyderabad-bengaluru-7-to-14-years-310826026837",
+    "ats": "Naukri",
+    "job_id": "310826026837",
     "already_applied": false,
     "match_score": -46,
     "over_cap": false

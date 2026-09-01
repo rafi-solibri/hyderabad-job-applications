@@ -5,12 +5,12 @@ Run date: 2026-09-01
 Added Microsoft, Google, SmartRecruiters, Workable, extra Greenhouse/Lever/Ashby boards, and more Workday career sites.
 Same filters: yesterday’s titles, Hyderabad or Remote/Hybrid India, 60 LPA (unknown CTC kept).
 
-- Unique in-scope: **1114**
-- Already applied: **532**
-- Open: **582**
-- Ready to apply (best matches, under 3/company): **490**
+- Unique in-scope: **1127**
+- Already applied: **537**
+- Open: **590**
+- Ready to apply (best matches, under 3/company): **494**
 
-By source (open): Foundit 534, Naukri 39, Instahyre 7, Workday 1, SmartRecruiters 1
+By source (open): Foundit 531, Naukri 50, Instahyre 7, Workday 1, SmartRecruiters 1
 
 ## Ready to apply
 
@@ -77,136 +77,136 @@ By source (open): Foundit 534, Naukri 39, Instahyre 7, Workday 1, SmartRecruiter
 | 59 | Simba Technologies | Lead Software Engineer (C#Dot Net Core, React/Angular.js) | Hyderabad | Foundit | https://www.foundit.in/job/37598442 |
 | 60 | wonderbiz technologies pvt. | .Net Full Stack Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4440881199/ |
 | 61 | Mind Waveai Solutions | Solution Architect - Node.js | 10-12 Yrs Not disclosed Hybrid - Hyderab | Naukri | https://www.naukri.com/job-listings-solution-architect-node-js-mind-waveai-solutions-hyderabad-10-to-12-years-230726036438 |
-| 62 | Cendyn | Senior Software Engineer - Dotnet | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4416641757/ |
-| 63 | Qentelli | .NET Architect | Hyderabad | Foundit | https://www.foundit.in/job/34669768 |
-| 64 | Techno-comp Computer Services Private Limited | .Net Architect | Hyderabad | Foundit | https://www.foundit.in/job/58929975 |
-| 65 | ValueMomentum | Sr .Net Architect | Hyderabad, Pune | Foundit | https://www.foundit.in/job/34514449 |
-| 66 | blackbaud india | Laureate - .Net Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454903356/ |
-| 67 | nationsbenefits india | .NET Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4311377250/ |
-| 68 | Allianz Partners | Senior Technical Architect - Enterprise Architecture | Hyderabad, Chennai, Pune | Foundit | https://www.foundit.in/job/34906922 |
-| 69 | Arcesium | Principal Solution Architect - CPD, FDSA Functional | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4442034187/ |
-| 70 | Blue Yonder | Sr Enterprise Technical Architect (Planning) - GPTS Consulting | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441228105/ |
-| 71 | Blue Yonder | Sr Enterprise Technical Architect (SCPO) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457358665/ |
-| 72 | Blue Yonder | Sr Enterprise Technical Architect (TMS) - GPTS Consulting | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441228105/ |
-| 73 | Blue5Green | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4375157708/ |
-| 74 | COTIVITI | Associate Technical Architect | Hyderabad | Foundit | https://www.foundit.in/job/35466714 |
-| 75 | Capgemini | SAP Solution Architect - Presales | Bengaluru, Gurugram, Hyderabad, Mumbai,  | Foundit | https://www.capgemini.com/in-en/jobs/371297-en_GB_SAPBTP/SAP%20Solution%20Architect%20-%20Presales |
-| 76 | Celigo | Software Architect (AI/ML) | Hyderabad | Foundit | https://www.foundit.in/job/38021076 |
-| 77 | Chubb | Senior Solution Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/59778056 |
-| 78 | Clean Harbors | Oracle CX - Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457306857/ |
-| 79 | Clean Harbors | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454006996/ |
-| 80 | Cubic Transportation Systems | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4458735350/ |
-| 81 | CyberArk | Software Architect - Identity Governance | Hyderabad | Foundit | https://www.foundit.in/job/37510582 |
-| 82 | Dreamz Hire | Ai Ml Engineer / AIML - Solution Architect / Prinicpal Architect | 9-14 Yrs 40-60 Lacs PA Hyderabad, Bengal | Naukri | https://www.naukri.com/job-listings-ai-ml-engineer-aiml-solution-architect-prinicpal-architect-dreamz-hire-hyderabad-bengaluru-9-to-14-years-280826003496 |
-| 83 | Droisys | Solution Architect Data Cloud | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443178522/ |
-| 84 | Ensoft Consulting Pte Ltd | Technical Product Lead / Solution Architect | Bengaluru, Hyderabad, Noida | Foundit | https://www.foundit.in/job/62348756 |
-| 85 | Genzeon | Microsoft Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443499234/ |
-| 86 | Genzeon Corporation | Retail Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/34907290 |
-| 87 | Grid Dynamics | AI Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443321947/ |
-| 88 | HighRadius | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449564163/ |
-| 89 | Impetus Technologies | Sr. Technical Architect - Snowflake / DBT | Hyderabad, Bengaluru, Chennai | Foundit | https://www.foundit.in/job/34870708 |
-| 90 | Infor | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435982521/ |
-| 91 | Kanerika Software | Presales Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/38026438 |
-| 92 | Kudzuinfotech Private Limited | SAP - RAR Solution Architect | Hyderabad, Bengaluru, Chennai | Foundit | https://www.foundit.in/job/33466501 |
-| 93 | LTM | Technical Architect | Bengaluru, Chennai, Hyderabad | Foundit | https://www.foundit.in/job/63138456 |
-| 94 | Larsen & Toubro Limited | Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/33626774 |
-| 95 | Launch IT Consulting | Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/34927277 |
-| 96 | Macquarie Group | Data Governance Technology Lead / Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445859790/ |
-| 97 | Mahindra Satyam | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452221934/ |
-| 98 | Medtronic | Principal IT Technologist - SAP WM Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4258002033/ |
-| 99 | Mindstech | Software Architect - AMI | Hyderabad | Foundit | https://www.foundit.in/job/34503276 |
-| 100 | Mindstech | Software Architect - Device and communication protocol (Smart Meteri | Hyderabad | Foundit | https://www.foundit.in/job/34503246 |
-| 101 | NVIDIA | System Software Architect, Programmable Vision Accelerator | Hyderabad | Foundit | https://www.foundit.in/job/34502086 |
-| 102 | NomiSo | Principal Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4284796969/ |
-| 103 | NomiSo | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4325885152/ |
-| 104 | Palo Alto Networks | Principal Software Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/60673392 |
-| 105 | Palo Alto Networks | Senior Principal Software Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/60811614 |
-| 106 | Petadata Software LLC | Senior Technical Architect Scalable Multi-Tenant Systems | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4459604923/ |
-| 107 | Prolifics Corporation | ESB Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/34849497 |
-| 108 | Purview India Consulting And Services Llp | Solution Architect | Hyderabad, Pune | Foundit | https://www.foundit.in/job/33717268 |
-| 109 | Purview India Consulting And Services Llp | Solution Architect OBRM | Hyderabad, Chennai, Bengaluru | Foundit | https://www.foundit.in/job/34099035 |
-| 110 | RevUnit | Senior Software Architect/Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4460388916/ |
-| 111 | Rimini Street | Principal Solution Architect, SAP | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4436187926/ |
-| 112 | Rinalytics Advisors | Solution Architect AI / ML | 10-15 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-solution-architect-ai-ml-rinalytics-advisors-hyderabad-10-to-15-years-100626503113 |
-| 113 | Roche | PI Web Solution Architect - RDT Global Products & GPS | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4459184051/ |
-| 114 | S2 Integrators | SAP Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4414162014/ |
-| 115 | Sandhata Technologies private Limited | Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/35480073 |
-| 116 | Seven N Half Private Limited | VLSI Backend Architect | Bengaluru, Hyderabad | Foundit | https://www.foundit.in/job/58097113 |
-| 117 | Simba Technologies | Solution Architect - EPM | Hyderabad | Foundit | https://www.foundit.in/job/37599141 |
-| 118 | Solugenix | AI Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445970815/ |
-| 119 | Solugenix | Software Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455723013/ |
-| 120 | Stolt-Nielsen | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4448858320/ |
-| 121 | Storable | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4270943974/ |
-| 122 | Straive | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446632306/ |
-| 123 | Syniti | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4432538952/ |
-| 124 | Syntax | SAP SD Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4426744123/ |
-| 125 | Tachyon Technologies | SAP S/4HANA Presales & Functional Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451585015/ |
-| 126 | Tachyon Technologies | SAP Technical - Presales solution architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451571691/ |
-| 127 | Trigyn Technologies Limited | Technical Architect | Hyderabad, Chennai, Pune | Foundit | https://www.foundit.in/job/34013872 |
-| 128 | Unison Group New Zealand | Databricks- Resident Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4410521052/ |
-| 129 | ValGenesis | Software Architect, Enterprise Mobile Applications | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4395055876/ |
-| 130 | Venito It Solutions Private Limited | Oracle Solution Architect | Bengaluru, Delhi, Hyderabad | Foundit | https://www.foundit.in/job/62478273 |
-| 131 | WonderBotz | Solution Architect - Tungsten | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4432596059/ |
-| 132 | Yash Technologies | Sr. Solution Architect - AI Job | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455681556/ |
-| 133 | Yash Technologies Private Limited | SAP PP QM / Solution Architect - SS | Hyderabad, Bengaluru, Pune | Foundit | https://www.foundit.in/job/34113986 |
-| 134 | Yash Technologies Private Limited | SAP SD HANA Solution Architect | Hyderabad, Pune | Foundit | https://www.foundit.in/job/33993427 |
-| 135 | ZF Group | Senior Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4440455575/ |
-| 136 | bilvantis technologies | J2EE Technical Architect (Exp: 12+ Yrs) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441737108/ |
-| 137 | dazn india | Senior Software Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4242571043/ |
-| 138 | genzeon technology solutions | Technical Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/64975840 |
-| 139 | healthfirst technologies | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4330403992/ |
-| 140 | innovapptive inc | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454599574/ |
-| 141 | letitbex ai | SAP GTS Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454996249/ |
-| 142 | massmutual india | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446089017/ |
-| 143 | mindsuite informatics private limited | Solution Architect Technology Working Group Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4239962358/ |
-| 144 | modmed india | Senior Software Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4400708113/ |
-| 145 | modmed india | Senior Software Architect 2 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435047960/ |
-| 146 | seosaph-infotech | Principal Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4403305265/ |
-| 147 | seosaph-infotech | Seosaph Infotech - Principal Solution Architect - System Design | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4433543421/ |
-| 148 | shimentox technologies | Senior Solution Architect Data & AI | Databricks | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457097946/ |
-| 149 | shure india | Engineer Staff Managing, Cloud Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452433103/ |
-| 150 | spydra | Technical Solutions Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4330386826/ |
-| 151 | storable india | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4357367415/ |
-| 152 | techdome | Principal Software Architect Regulated Systems (Healthcare & Payment | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450526280/ |
-| 153 | thryve digital health llp | AI ML Solution Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/61151005 |
-| 154 | wsa - wonderful sound for all | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4439421602/ |
-| 155 | Intrics Solutions | Senior / Lead .Net FullStack Developer | 10-20 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-senior-lead-net-fullstack-developer-intrics-solutions-hyderabad-10-to-20-years-180826040348 |
-| 156 | NTT DATA, Inc. | Lead .NET Full Stack Developer | 10-20 Yrs Not disclosed Hybrid - Hyderab | Naukri | https://www.naukri.com/job-listings-lead-net-full-stack-developer-ntt-data-inc-noida-hyderabad-gurugram-10-to-20-years-140826019624 |
-| 157 | NextPower Capital | Lead Software Engineer (Python & .NET) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4414709224/ |
-| 158 | Pyramid It Consulting | Lead .Net Developer (US Mortgage) | 8-13 Yrs Not disclosed Hybrid - Hyderaba | Naukri | https://www.naukri.com/job-listings-lead-net-developer-us-mortgage-pyramid-it-consulting-noida-hyderabad-8-to-13-years-210726031249 |
-| 159 | Pyramid It Consulting | Sr/Lead .Net Developer - US Mortgage | 8-12 Yrs 20-35 Lacs PA Hybrid - Hyderaba | Naukri | https://www.naukri.com/job-listings-sr-lead-net-developer-us-mortgage-pyramid-it-consulting-noida-hyderabad-thiruvananthapuram-8-to-12-years-060726020702 |
-| 160 | Simcorp | Lead .Net Developer For Artificial Intelligence Team | 0-5 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-lead-net-developer-for-artificial-intelligence-team-simcorp-hyderabad-0-to-5-years-090726500499 |
-| 161 | FactSet | Principal Software Engineer - Cloud Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444915106/ |
-| 162 | Nasuni | Principal Software Engineer - Cloud Services | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4386300117/ |
-| 163 | PepsiCo | Cloud Assoc Principal Engineer | Hyderabad, India | Foundit | https://www.foundit.in/job/64684124 |
-| 164 | envisioned strategy consulting private limited | Enterprise Integration Architect & Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449202317/ |
-| 165 | Anblicks | Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457098556/ |
-| 166 | Arcadis | Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4417948606/ |
-| 167 | Arcadis | Principal Engineer Substation Secondary Design | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4458009166/ |
-| 168 | Arcesium | Senior Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4425826777/ |
-| 169 | Arcesium | Senior Principal Engineer- Linux & Infrastructure | Hyderabad | Foundit | https://www.foundit.in/job/34269814 |
-| 170 | Blue Yonder | Staff Software Engineer I - NodeJS, Microservices | 10-13 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-staff-software-engineer-i-nodejs-microservices-jda-software-hyderabad-10-to-13-years-180826502385 |
-| 171 | Cbre | Sr/Principal Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455355973/ |
-| 172 | Coinbase India Services | Principal Software Engineer, Backend | Hyderabad, Kolkata, Mumbai | Foundit | https://www.foundit.in/job/37103546 |
-| 173 | Google India | Senior Staff Software Engineer, Google Cloud | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4458385313/ |
-| 174 | Google India | Senior Staff Software Engineer, Google Cloud Storage | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443119675/ |
-| 175 | Google India | Staff Software Engineer, Google Cloud Backup and DR | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457472613/ |
-| 176 | Google India | Staff Software Engineer, Infrastructure, Google Cloud | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4426652536/ |
-| 177 | Innominds Software Inc | Full Stack Lead / Principal Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34164400 |
-| 178 | Innominds Software Inc | Principal Engineer / Technical Lead | Hyderabad, Bengaluru, Pune | Foundit | https://www.foundit.in/job/34164558 |
-| 179 | Innovapptive | Staff Principal Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34950952 |
-| 180 | Invesco | Principal Engineer I, BI & Analytics | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4416807161/ |
-| 181 | Jpmorgan & Co | Principal Software Engineer -Forward Deployment Engineer - Databrick | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4456387221/ |
-| 182 | Kanerika Software Private Limited | Principal Software Engineer | Ahmedabad, Hyderabad, Indore | Foundit | https://www.foundit.in/job/35484127 |
-| 183 | Matillion | Principal Software Engineer - Release Engineering | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4344169950/ |
-| 184 | Medtronic | Senior Principal Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4363422615/ |
-| 185 | Micron Technology | Hardware Engineer DMTS/SMTS/MTS/Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4439855237/ |
-| 186 | Micron Technology | Principal Engineer, TD Device Characterization | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4410850223/ |
-| 187 | Nasuni | Principal Software Engineer - C++ Linux | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4426705890/ |
-| 188 | Nasuni | Principal Software Engineer File System | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4434983254/ |
-| 189 | Palo Alto Networks | Principal Software Engineer | Hyderabad, India | Foundit | https://www.foundit.in/job/60452865 |
-| 190 | PepsiCo | SWE & App Arch Assoc Principal Engineer | Hyderabad, India | Foundit | https://www.pepsicojobs.com/india/jobs/458392?lang=en-us&previousLocale=en-IN |
-| 191 | PepsiCo | SWE - Assoc Principal Engineer | Hyderabad, India | Foundit | https://www.pepsicojobs.com/india/jobs/449773?lang=en-us&previousLocale=en-IN |
+| 62 | Blackbaud | Laureate, Software Engineer - .NET Architecture | 10-15 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-laureate-software-engineer-net-architecture-blackbaud-hyderabad-10-to-15-years-280426500111 |
+| 63 | Cendyn | Senior Software Engineer - Dotnet | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4416641757/ |
+| 64 | Qentelli | .NET Architect | Hyderabad | Foundit | https://www.foundit.in/job/34669768 |
+| 65 | Techno-comp Computer Services Private Limited | .Net Architect | Hyderabad | Foundit | https://www.foundit.in/job/58929975 |
+| 66 | ValueMomentum | Sr .Net Architect | Hyderabad, Pune | Foundit | https://www.foundit.in/job/34514449 |
+| 67 | blackbaud india | Laureate - .Net Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454903356/ |
+| 68 | nationsbenefits india | .NET Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4311377250/ |
+| 69 | Allianz Partners | Senior Technical Architect - Enterprise Architecture | Hyderabad, Chennai, Pune | Foundit | https://www.foundit.in/job/34906922 |
+| 70 | Arcesium | Principal Solution Architect - CPD, FDSA Functional | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4442034187/ |
+| 71 | Blue Yonder | Sr Enterprise Technical Architect (Planning) - GPTS Consulting | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441228105/ |
+| 72 | Blue Yonder | Sr Enterprise Technical Architect (SCPO) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457358665/ |
+| 73 | Blue Yonder | Sr Enterprise Technical Architect (TMS) - GPTS Consulting | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441228105/ |
+| 74 | Blue5Green | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4375157708/ |
+| 75 | COTIVITI | Associate Technical Architect | Hyderabad | Foundit | https://www.foundit.in/job/35466714 |
+| 76 | Capgemini | SAP Solution Architect - Presales | Bengaluru, Gurugram, Hyderabad, Mumbai,  | Foundit | https://www.capgemini.com/in-en/jobs/371297-en_GB_SAPBTP/SAP%20Solution%20Architect%20-%20Presales |
+| 77 | Celebal Technologies | Solution Architect | 6-11 Yrs Not disclosed Hyderabad, Noida, | Naukri | https://www.naukri.com/job-listings-solution-architect-celebal-technologies-noida-hyderabad-pune-gurugram-jaipur-bengaluru-6-to-11-years-310826501523 |
+| 78 | Celigo | Software Architect (AI/ML) | Hyderabad | Foundit | https://www.foundit.in/job/38021076 |
+| 79 | Chubb | Senior Solution Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/59778056 |
+| 80 | Clean Harbors | Oracle CX - Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457306857/ |
+| 81 | Clean Harbors | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454006996/ |
+| 82 | Cubic Transportation Systems | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4458735350/ |
+| 83 | CyberArk | Software Architect - Identity Governance | Hyderabad | Foundit | https://www.foundit.in/job/37510582 |
+| 84 | Dreamz Hire | Ai Ml Engineer / AIML - Solution Architect / Prinicpal Architect | 9-14 Yrs 40-60 Lacs PA Hyderabad, Bengal | Naukri | https://www.naukri.com/job-listings-ai-ml-engineer-aiml-solution-architect-prinicpal-architect-dreamz-hire-hyderabad-bengaluru-9-to-14-years-280826003496 |
+| 85 | Droisys | Solution Architect Data Cloud | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443178522/ |
+| 86 | Ensoft Consulting Pte Ltd | Technical Product Lead / Solution Architect | Bengaluru, Hyderabad, Noida | Foundit | https://www.foundit.in/job/62348756 |
+| 87 | Genzeon | Microsoft Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443499234/ |
+| 88 | Genzeon Corporation | Retail Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/34907290 |
+| 89 | Grid Dynamics | AI Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443321947/ |
+| 90 | HighRadius | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449564163/ |
+| 91 | Impetus Technologies | Sr. Technical Architect - Snowflake / DBT | Hyderabad, Bengaluru, Chennai | Foundit | https://www.foundit.in/job/34870708 |
+| 92 | Infor | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435982521/ |
+| 93 | Kanerika Software | Presales Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/38026438 |
+| 94 | Kudzuinfotech Private Limited | SAP - RAR Solution Architect | Hyderabad, Bengaluru, Chennai | Foundit | https://www.foundit.in/job/33466501 |
+| 95 | LTM | Technical Architect | Bengaluru, Chennai, Hyderabad | Foundit | https://www.foundit.in/job/63138456 |
+| 96 | Larsen & Toubro Limited | Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/33626774 |
+| 97 | Launch IT Consulting | Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/34927277 |
+| 98 | Macquarie Group | Data Governance Technology Lead / Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445859790/ |
+| 99 | Mahindra Satyam | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452221934/ |
+| 100 | Medtronic | Principal IT Technologist - SAP WM Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4258002033/ |
+| 101 | Mindstech | Software Architect - AMI | Hyderabad | Foundit | https://www.foundit.in/job/34503276 |
+| 102 | Mindstech | Software Architect - Device and communication protocol (Smart Meteri | Hyderabad | Foundit | https://www.foundit.in/job/34503246 |
+| 103 | NVIDIA | System Software Architect, Programmable Vision Accelerator | Hyderabad | Foundit | https://www.foundit.in/job/34502086 |
+| 104 | NomiSo | Principal Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4284796969/ |
+| 105 | NomiSo | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4325885152/ |
+| 106 | Palo Alto Networks | Principal Software Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/60673392 |
+| 107 | Palo Alto Networks | Senior Principal Software Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/60811614 |
+| 108 | Petadata Software LLC | Senior Technical Architect Scalable Multi-Tenant Systems | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4459604923/ |
+| 109 | Prolifics Corporation | ESB Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/34849497 |
+| 110 | Purview India Consulting And Services Llp | Solution Architect | Hyderabad, Pune | Foundit | https://www.foundit.in/job/33717268 |
+| 111 | Purview India Consulting And Services Llp | Solution Architect OBRM | Hyderabad, Chennai, Bengaluru | Foundit | https://www.foundit.in/job/34099035 |
+| 112 | RevUnit | Senior Software Architect/Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4460388916/ |
+| 113 | Rimini Street | Principal Solution Architect, SAP | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4436187926/ |
+| 114 | Rinalytics Advisors | Solution Architect AI / ML | 10-15 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-solution-architect-ai-ml-rinalytics-advisors-hyderabad-10-to-15-years-100626503113 |
+| 115 | Roche | PI Web Solution Architect - RDT Global Products & GPS | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4459184051/ |
+| 116 | S2 Integrators | SAP Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4414162014/ |
+| 117 | Sandhata Technologies private Limited | Solution Architect | Hyderabad | Foundit | https://www.foundit.in/job/35480073 |
+| 118 | Seven N Half Private Limited | VLSI Backend Architect | Bengaluru, Hyderabad | Foundit | https://www.foundit.in/job/58097113 |
+| 119 | Simba Technologies | Solution Architect - EPM | Hyderabad | Foundit | https://www.foundit.in/job/37599141 |
+| 120 | Solugenix | AI Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445970815/ |
+| 121 | Solugenix | Software Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455723013/ |
+| 122 | Stolt-Nielsen | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4448858320/ |
+| 123 | Storable | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4270943974/ |
+| 124 | Straive | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446632306/ |
+| 125 | Syniti | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4432538952/ |
+| 126 | Syntax | SAP SD Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4426744123/ |
+| 127 | Tachyon Technologies | SAP S/4HANA Presales & Functional Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451585015/ |
+| 128 | Tachyon Technologies | SAP Technical - Presales solution architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451571691/ |
+| 129 | Trigyn Technologies Limited | Technical Architect | Hyderabad, Chennai, Pune | Foundit | https://www.foundit.in/job/34013872 |
+| 130 | Unison Group New Zealand | Databricks- Resident Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4410521052/ |
+| 131 | ValGenesis | Software Architect, Enterprise Mobile Applications | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4395055876/ |
+| 132 | Venito It Solutions Private Limited | Oracle Solution Architect | Bengaluru, Delhi, Hyderabad | Foundit | https://www.foundit.in/job/62478273 |
+| 133 | WonderBotz | Solution Architect - Tungsten | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4432596059/ |
+| 134 | Yash Technologies | Sr. Solution Architect - AI Job | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455681556/ |
+| 135 | Yash Technologies Private Limited | SAP PP QM / Solution Architect - SS | Hyderabad, Bengaluru, Pune | Foundit | https://www.foundit.in/job/34113986 |
+| 136 | Yash Technologies Private Limited | SAP SD HANA Solution Architect | Hyderabad, Pune | Foundit | https://www.foundit.in/job/33993427 |
+| 137 | ZF Group | Senior Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4440455575/ |
+| 138 | bilvantis technologies | J2EE Technical Architect (Exp: 12+ Yrs) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441737108/ |
+| 139 | dazn india | Senior Software Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4242571043/ |
+| 140 | genzeon technology solutions | Technical Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/64975840 |
+| 141 | healthfirst technologies | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4330403992/ |
+| 142 | innovapptive inc | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454599574/ |
+| 143 | letitbex ai | SAP GTS Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454996249/ |
+| 144 | massmutual india | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446089017/ |
+| 145 | mindsuite informatics private limited | Solution Architect Technology Working Group Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4239962358/ |
+| 146 | modmed india | Senior Software Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4400708113/ |
+| 147 | modmed india | Senior Software Architect 2 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435047960/ |
+| 148 | seosaph-infotech | Principal Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4403305265/ |
+| 149 | seosaph-infotech | Seosaph Infotech - Principal Solution Architect - System Design | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4433543421/ |
+| 150 | shimentox technologies | Senior Solution Architect Data & AI | Databricks | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457097946/ |
+| 151 | shure india | Engineer Staff Managing, Cloud Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452433103/ |
+| 152 | spydra | Technical Solutions Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4330386826/ |
+| 153 | storable india | Technical Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4357367415/ |
+| 154 | techdome | Principal Software Architect Regulated Systems (Healthcare & Payment | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450526280/ |
+| 155 | thryve digital health llp | AI ML Solution Architect | Hyderabad, India | Foundit | https://www.foundit.in/job/61151005 |
+| 156 | wsa - wonderful sound for all | Solution Architect | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4439421602/ |
+| 157 | Intrics Solutions | Senior / Lead .Net FullStack Developer | 10-20 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-senior-lead-net-fullstack-developer-intrics-solutions-hyderabad-10-to-20-years-180826040348 |
+| 158 | NTT DATA, Inc. | Lead .NET Full Stack Developer | 10-20 Yrs Not disclosed Hybrid - Hyderab | Naukri | https://www.naukri.com/job-listings-lead-net-full-stack-developer-ntt-data-inc-noida-hyderabad-gurugram-10-to-20-years-140826019624 |
+| 159 | NextPower Capital | Lead Software Engineer (Python & .NET) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4414709224/ |
+| 160 | Pyramid It Consulting | Lead .Net Developer (US Mortgage) | 8-13 Yrs Not disclosed Hybrid - Hyderaba | Naukri | https://www.naukri.com/job-listings-lead-net-developer-us-mortgage-pyramid-it-consulting-noida-hyderabad-8-to-13-years-210726031249 |
+| 161 | Pyramid It Consulting | Sr/Lead .Net Developer - US Mortgage | 8-12 Yrs 20-35 Lacs PA Hybrid - Hyderaba | Naukri | https://www.naukri.com/job-listings-sr-lead-net-developer-us-mortgage-pyramid-it-consulting-noida-hyderabad-thiruvananthapuram-8-to-12-years-060726020702 |
+| 162 | Simcorp | Lead .Net Developer For Artificial Intelligence Team | 0-5 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-lead-net-developer-for-artificial-intelligence-team-simcorp-hyderabad-0-to-5-years-090726500499 |
+| 163 | FactSet | Principal Software Engineer - Cloud Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444915106/ |
+| 164 | Nasuni | Principal Software Engineer - Cloud Services | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4386300117/ |
+| 165 | PepsiCo | Cloud Assoc Principal Engineer | Hyderabad, India | Foundit | https://www.foundit.in/job/64684124 |
+| 166 | envisioned strategy consulting private limited | Enterprise Integration Architect & Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449202317/ |
+| 167 | Anblicks | Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457098556/ |
+| 168 | Arcadis | Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4417948606/ |
+| 169 | Arcadis | Principal Engineer Substation Secondary Design | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4458009166/ |
+| 170 | Arcesium | Senior Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4425826777/ |
+| 171 | Arcesium | Senior Principal Engineer- Linux & Infrastructure | Hyderabad | Foundit | https://www.foundit.in/job/34269814 |
+| 172 | Blue Yonder | Staff Software Engineer I - NodeJS, Microservices | 10-13 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-staff-software-engineer-i-nodejs-microservices-jda-software-hyderabad-10-to-13-years-180826502385 |
+| 173 | Cbre | Sr/Principal Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455355973/ |
+| 174 | Coinbase India Services | Principal Software Engineer, Backend | Hyderabad, Kolkata, Mumbai | Foundit | https://www.foundit.in/job/37103546 |
+| 175 | Google India | Senior Staff Software Engineer, Google Cloud | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4458385313/ |
+| 176 | Google India | Senior Staff Software Engineer, Google Cloud Storage | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443119675/ |
+| 177 | Google India | Staff Software Engineer, Google Cloud Backup and DR | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457472613/ |
+| 178 | Google India | Staff Software Engineer, Infrastructure, Google Cloud | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4426652536/ |
+| 179 | Innominds Software Inc | Full Stack Lead / Principal Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34164400 |
+| 180 | Innominds Software Inc | Principal Engineer / Technical Lead | Hyderabad, Bengaluru, Pune | Foundit | https://www.foundit.in/job/34164558 |
+| 181 | Innovapptive | Staff Principal Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34950952 |
+| 182 | Invesco | Principal Engineer I, BI & Analytics | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4416807161/ |
+| 183 | Jpmorgan & Co | Principal Software Engineer -Forward Deployment Engineer - Databrick | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4456387221/ |
+| 184 | Kanerika Software Private Limited | Principal Software Engineer | Ahmedabad, Hyderabad, Indore | Foundit | https://www.foundit.in/job/35484127 |
+| 185 | Matillion | Principal Software Engineer - Release Engineering | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4344169950/ |
+| 186 | Medtronic | Senior Principal Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4363422615/ |
+| 187 | Micron Technology | Hardware Engineer DMTS/SMTS/MTS/Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4439855237/ |
+| 188 | Micron Technology | Principal Engineer, TD Device Characterization | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4410850223/ |
+| 189 | Nasuni | Principal Software Engineer - C++ Linux | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4426705890/ |
+| 190 | Nasuni | Principal Software Engineer File System | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4434983254/ |
+| 191 | Palo Alto Networks | Principal Software Engineer | Hyderabad, India | Foundit | https://www.foundit.in/job/60452865 |
 | 192 | Phenom | Principal Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4375136716/ |
 | 193 | Phenom | Principal Engineer - Product Development | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4427921963/ |
 | 194 | Phenom | Product Principal Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34786718 |
@@ -304,208 +304,212 @@ By source (open): Foundit 534, Naukri 39, Instahyre 7, Workday 1, SmartRecruiter
 | 286 | Auditoria.AI | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4367691537/ |
 | 287 | Auditoria.AI | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4367414291/ |
 | 288 | Backbase | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4439986733/ |
-| 289 | Billtrust | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443242844/ |
-| 290 | Charles Schwab | Senior Engineering Manager - Software Development (PL) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452259787/ |
-| 291 | Chubb | Engineering Manager -Full Stack(NodeJS) | Hyderabad, India | Foundit | https://www.foundit.in/job/60058728 |
-| 292 | Chubb | Global Authentication Engineering Manager | Hyderabad, India | Foundit | https://www.foundit.in/job/64009999 |
-| 293 | Chubb | Technical Lead Duck Creek Claims | Hyderabad, India | Foundit | https://www.foundit.in/job/61167840 |
-| 294 | CitiusTech | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4456185132/ |
-| 295 | Coinbase India Services | Engineering Manager - Platform - Developer Experience | Hyderabad, Kolkata, Mumbai | Foundit | https://www.foundit.in/job/37109577 |
-| 296 | Creditsafe Technology | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4440114809/ |
-| 297 | Cubic Transportation Systems | Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435196877/ |
-| 298 | Cyara | Senior Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446616452/ |
-| 299 | Cyient | Manufacturing Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4428537526/ |
-| 300 | Cyient | Mechanical Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4428537526/ |
-| 301 | D. E. Shaw | Lead Software Engineer (Fullstack) | Bangalore,Gurgaon,Hyderabad | Instahyre | https://www.instahyre.com/job-439092-lead-software-engineer-fullstack-at-d-e-bangalore-gurgaon-hyderabad/ |
-| 302 | DealerSocket | Lead Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/35480584 |
-| 303 | DealerSocket | Software Engineering Manager | Hyderabad | Foundit | https://www.foundit.in/job/35480493 |
-| 304 | Einfochips | Senior Engineer / Technical Lead | Ahmedabad, Hyderabad | Foundit | https://www.foundit.in/job/34804113 |
-| 305 | Einfochips Limited | Senior Engineer / Technical Lead (Linux BSP) | Hyderabad, Bengaluru, Chennai | Foundit | https://www.foundit.in/job/34190816 |
-| 306 | Envoy Global | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455290701/ |
-| 307 | Epam Systems | AI Engineering Manager | 13-15 Yrs Not disclosed Hyderabad, Pune, | Naukri | https://www.naukri.com/job-listings-ai-engineering-manager-epam-systems-india-private-limited-hyderabad-pune-chennai-13-to-15-years-070826911333 |
-| 308 | Eruvaka Technologies | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451673152/ |
-| 309 | FactSet | Engineering Manager - Modern Data Pipeline | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444575971/ |
-| 310 | FactSet | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453895200/ |
-| 311 | FactSet | Lead Software Engineer - Feeds | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4432248620/ |
-| 312 | FactSet Systems India Private Limited | Lead Software Engineer - IBS | Hyderabad | Foundit | https://www.foundit.in/job/34352267 |
-| 313 | Fanatics | Software Engineering Manager - Financial & SCM Systems | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4448529615/ |
-| 314 | Flipkart Leap | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4368097357/ |
-| 315 | Flipkart Marketplace | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4368097357/ |
-| 316 | GSPANN | Technical Lead | Hyderabad | Foundit | https://www.foundit.in/job/34840975 |
-| 317 | Google India | Engineering Manager, Software Engineering | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443158956/ |
-| 318 | Google India | SAP Applications Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454439074/ |
-| 319 | Google India | Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4442227202/ |
-| 320 | Google India | Software Engineering Manager, Enterprise Data Platform | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4437559847/ |
-| 321 | Google India | Software Engineering Manager, Payments Platform | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452383098/ |
-| 322 | HCL TechBee | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4254860008/ |
-| 323 | Happiest Minds Technologies | TECHNICAL LEAD - LEAD | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4337457564/ |
-| 324 | Hartree Partners | Oracle Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453661549/ |
-| 325 | Hexagon Capability Center India Private Limited | Technical Lead | Hyderabad | Foundit | https://www.foundit.in/job/34297804 |
-| 326 | HighRadius | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450454778/ |
-| 327 | Hive Financial Systems | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4351993761/ |
-| 328 | Inductive Quotient Analytics | Technical Lead AI & Application Development | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446964835/ |
-| 329 | Infinite Computer Solutions | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447577818/ |
-| 330 | Innovapptive | Engineering Manager | Hyderabad | Foundit | https://www.foundit.in/job/34951076 |
-| 331 | Innovapptive | Innovapptive - Engineering Manager - AI (7-12 yrs) | 7-12 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-innovapptive-engineering-manager-ai-7-12-yrs-innovapptive-global-solutions-pvt-ltd-hyderabad-7-to-12-years-070826015375 |
-| 332 | Insight Global | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4225970594/ |
-| 333 | Jpmorgan & Co | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453376069/ |
-| 334 | KEKA TECHNOLOGIES | Engineering Manager | Hyderabad | Foundit | https://www.foundit.in/job/35474617 |
-| 335 | KEKA TECHNOLOGIES | Lead Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/35474661 |
-| 336 | Kanerika Inc | Infrastructure Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444360943/ |
-| 337 | Keka HR | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4350354223/ |
-| 338 | L&T Technology Services | Technical Lead | Hyderabad, India | Foundit | https://www.foundit.in/job/60902196 |
-| 339 | Larsen & Toubro | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450328450/ |
-| 340 | MSD | Technical Lead, Software Engineering, Data Context Layer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450765956/ |
-| 341 | Medtronic | Senior Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4456320127/ |
-| 342 | NTT Data | Principal Agentic AI Engineer / Hands-on Technical Lead | Hyderabad, India | Foundit | https://careers-inc.nttdata.com/job/Hyderabad-Principal-Agentic-AI-Engineer-Hands-on-Technical-Lead-TG/1417482600/ |
-| 343 | NTT Data | SAP Technical Lead (Tools) | Hyderabad, India | Foundit | https://careers-inc.nttdata.com/job/Hyderabad-SAP-Technical-Lead-%28Tools%29-TG/1406650200/ |
-| 344 | NTT Data | Sr. Technical Lead NetSuite | Hyderabad, India | Foundit | https://careers-inc.nttdata.com/job/Hyderabad-Sr_-Technical-Lead-NetSuite-TG/1420468600/ |
-| 345 | Narwal | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4350105219/ |
-| 346 | Ncr Atleos | SW Engineering Manager II | Hyderabad | Foundit | https://www.foundit.in/job/37112935 |
-| 347 | Niit Technologies | Technical Lead- Angular | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4345398712/ |
-| 348 | NomiSo | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451181442/ |
-| 349 | OSI Digital | Dot Net Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443315643/ |
-| 350 | Olympus Corporation | R&D India Mechanical Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447279047/ |
-| 351 | Olympus Corporation | R&D India System Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447285103/ |
-| 352 | Orbital | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4430125105/ |
-| 353 | Pegasystems | Senior Delivery Excellence Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4433970170/ |
-| 354 | Principal Financial Group | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452994636/ |
-| 355 | Prolifics Corporation | Technical Lead (SAP ABAP) | Hyderabad | Foundit | https://www.foundit.in/job/34848937 |
-| 356 | Qapita | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4397305244/ |
-| 357 | Redpin Therapeutics | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4325588498/ |
-| 358 | SS&C Technologies | Lead Software Engineer - Full stack Lead - PA26ITOFFQ3067 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447019423/ |
-| 359 | SWISS RE | Engineering Manager | Hyderabad | Foundit | https://www.foundit.in/job/34489846 |
-| 360 | SimCorp | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4434971333/ |
-| 361 | SimCorp | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4431657470/ |
-| 362 | TIDE | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4263367777/ |
-| 363 | TIDE | Engineering Manager, Member Accession Marketing | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4263367777/ |
-| 364 | TIDE | Engineering Manager, Member Accession Marketing India, Hyderabad | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4459370577/ |
-| 365 | Techwave | Technical Lead SAP Commerce (Hybris) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4460511711/ |
-| 366 | The Depository Trust & Clearing Corporation (DTCC) | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4421659913/ |
-| 367 | The Depository Trust Clearing Corp | Lead Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34480287 |
-| 368 | The Depository Trust Clearing Corp | Lead Software Engineer (Lead Mainframe Developer) | Hyderabad | Foundit | https://www.foundit.in/job/34480219 |
-| 369 | Uber | Sr Engineering Manager - Merchant Platform | Hyderabad | Foundit | https://www.foundit.in/job/35478846 |
-| 370 | ValGenesis | Lead Software Engineer - Full Stack | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4421927789/ |
-| 371 | ValGenesis | Lead Software Engineer, Fullstack | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4437238555/ |
-| 372 | Valuelabs | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449388429/ |
-| 373 | Vanguard | Application Engineering Technical Lead - II | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435818533/ |
-| 374 | Vanguard | Technical Lead - Payments / Money Movement | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4419481932/ |
-| 375 | Veeva Systems | Engineering Manager - Test Automation | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441765821/ |
-| 376 | VidaXL | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4281241811/ |
-| 377 | Walkingtree Resources | ERP Technical Lead | 5-9 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-erp-technical-lead-walkingtree-resources-pvt-ltd-hyderabad-5-to-9-years-110826501323 |
-| 378 | Walkingtree Resources | Technical Lead ERP | 7-12 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-technical-lead-erp-walkingtree-resources-pvt-ltd-hyderabad-7-to-12-years-270726503549 |
-| 379 | WinWire Technologies | Technical Lead - Data Science | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451522218/ |
-| 380 | ZF | Technical Lead-AI/ML, Generative AI & Agentic AI | 6-11 Yrs Not disclosed Hyderabad, Hydera | Naukri | https://www.naukri.com/job-listings-technical-lead-ai-ml-generative-ai-agentic-ai-zf-india-private-limited-hyderabad-hyderabad-6-to-11-years-280726924266 |
-| 381 | ZF Group | Technical Lead-AI/ML, Generative AI & Agentic AI | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453866015/ |
-| 382 | Zaggle | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452381088/ |
-| 383 | ZeMoSo Technologies | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4339560442/ |
-| 384 | bilvantis technologies | J2EE Technical Lead (Exp: 8+ Yrs to 12 Yrs) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441735090/ |
-| 385 | bristol myers squibb eu policy | Sr. Engineering Manager-AI | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455874183/ |
-| 386 | charles schwab india | Senior Engineering Manager - Software Development (PL) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443289181/ |
-| 387 | d. e. shaw india private limited | Engineering Manager (Windows Engineer) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4335635192/ |
-| 388 | dazn india | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457303460/ |
-| 389 | deutsche borse group | Leading Associate Vice President - IAM Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457305150/ |
-| 390 | ensemble global | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4422354430/ |
-| 391 | ensemble global | Senior Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446562808/ |
-| 392 | eternal robotics | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446651098/ |
-| 393 | evernorth health services | Senior Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450121325/ |
-| 394 | evernorth health services | Senior Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449570135/ |
-| 395 | evernorth health services | Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451900087/ |
-| 396 | fpt india | FPT Software - Splunk Technical Lead - Observability &amp Monitoring | Hyderabad, India | Foundit | https://www.foundit.in/job/64988245 |
-| 397 | innovapptive inc | Engineering Manager (AI) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444537795/ |
-| 398 | innovapptive inc | Engineering Manager(Integrations) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444545110/ |
-| 399 | marriott tech accelerator | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453113612/ |
-| 400 | momentum financial services group | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4422448552/ |
-| 401 | ntt data north america | SAP Technical Lead (Tools) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4438238034/ |
-| 402 | ntt data north america | SAP Technical Lead (Tools)SAP Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4438238034/ |
-| 403 | ntt data north america | Sr. Technical Lead NetSuite | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455734699/ |
-| 404 | solera holdings, llc. | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4326596941/ |
-| 405 | talendroid technologies | Engineering Manager / Team Lead | Hyderabad, India | Foundit | https://www.foundit.in/job/64736250 |
-| 406 | the hartford india | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4380479504/ |
-| 407 | vanguard india | Application Engineering Technical Lead - II | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435540966/ |
-| 408 | vanguard india | Technical Lead - Payments / Money Movement | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4430355958/ |
-| 409 | wsa - wonderful sound for all | Engineering Manager - Customer Identity & Access Management (CIAM) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452926557/ |
-| 410 | Boomi Software | Principal Software Engineer - Security Architect | Hyderabad, Bengaluru, Chennai | Foundit | https://www.foundit.in/job/34935603 |
-| 411 | Profex Tech | Senior Backend Engineer || Remote || Node.js,GraphQL,AWS stack | 7-10 Yrs 40-50 Lacs PA Hyderabad, Delhi  | Naukri | https://www.naukri.com/job-listings-senior-backend-engineer-remote-node-js-graphql-aws-stack-profex-tech-hyderabad-delhi-ncr-mumbai-all-areas-7-to-10-years-080626024724 |
-| 412 | Softility Inc., | Senior Software Engineer –Distributed Systems & Stream Processing | Hyderabad, India | Foundit | https://www.softility.com/current-openings/senior-software-engineer-distributed-systems-stream-processing/ |
-| 413 | ANSR | Principal Engineer, IT Machine Learning | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4459181057/ |
-| 414 | Aegan Technologies Private Limited | Principal Software Engineer – Python | Chennai, Hyderabad | Foundit | https://www.foundit.in/job/59039744 |
-| 415 | Arcadis | Principal Engineer - Electrical | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4408196868/ |
-| 416 | Arcadis | Senior Engineer/Associate Principal Engineer - HVAC | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4424886791/ |
-| 417 | Blue Yonder | Staff Software Engineer - Python, React & Cloud | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4374384177/ |
-| 418 | Globallogic Ukraine | UI / UX Principal Engineer ((AI & Quality Engineering)) IRC300112 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444030355/ |
-| 419 | Infineon Technologies | Principal Engineer Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4438647270/ |
-| 420 | Micron Technology | Lead Principal Engineer, Design Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4410848230/ |
-| 421 | Micron Technology | Principal Engineer - Memory Circuit Design Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4424554676/ |
-| 422 | Micron Technology | Principal Engineer, Project Design Verification Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4410844212/ |
-| 423 | Renesas Electronics | Principal Engineer - Design Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443357818/ |
-| 424 | microchip technology inc. | Principal Engineer, Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4414653526/ |
-| 425 | Artech Infosystems Private Limited | Senior Software Engineer Backend | Hyderabad | Foundit | https://www.foundit.in/job/64146941 |
-| 426 | Billtrust | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4448096228/ |
-| 427 | COTIVITI | Senior Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/35466628 |
-| 428 | Cendyn | Senior Software Engineer - Angular | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4437772992/ |
-| 429 | Cendyn | Senior Software Engineer - Knowland | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4437772992/ |
-| 430 | Chubb | Senior Software Engineer | Hyderabad, India | Foundit | https://www.foundit.in/job/64010010 |
-| 431 | Chubb | Senior Software Engineer Full Stack (Angular) | Hyderabad, India | Foundit | https://www.foundit.in/job/60460590 |
-| 432 | Clean Harbors | Senior Software Engineer - SSE II | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453686204/ |
-| 433 | CyberArk | Senior Software Engineer - C++ | Hyderabad | Foundit | https://www.foundit.in/job/37509810 |
-| 434 | Diligente Technologies | Senior Software Engineer Backend | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4340338550/ |
-| 435 | Ensono | Senior Software Engineer, Mainframe AMS | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453511966/ |
-| 436 | FactSet | Senior Software Engineer-Golang-API Gateway | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449560628/ |
-| 437 | FactSet Systems India Private Limited | Senior Software Engineer-Portfolio Commentary | Hyderabad | Foundit | https://www.foundit.in/job/34352290 |
-| 438 | GHX Europe | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4419298529/ |
-| 439 | Globallogic Ukraine | Senior Software Engineer, SaaS Control Plane IRC303076 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457109366/ |
-| 440 | Gramener | Technical Architect _ Python / Gen AI Applications | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4413611897/ |
-| 441 | Home.LLC | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4234211503/ |
-| 442 | Mahindra Satyam | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447375504/ |
-| 443 | Marriott International | Senior Software Engineer I | Hyderabad | Instahyre | https://www.instahyre.com/job-441166-senior-software-engineer-i-at-marriott-international-hyderabad/ |
-| 444 | Marriott International | Senior Software Engineer II | Hyderabad | Instahyre | https://www.instahyre.com/job-441163-senior-software-engineer-ii-at-marriott-international-hyderabad/ |
-| 445 | Mphasis | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445724141/ |
-| 446 | Nasuni | Senior Software Engineer - Systems (Platform) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4448309653/ |
-| 447 | Nasuni | Senior Software Engineer File System | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454002192/ |
-| 448 | Plume | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450294222/ |
-| 449 | Seismic | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4398141219/ |
-| 450 | Seismic | Senior Software Engineer II (Ruby on Rails) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443825170/ |
-| 451 | Seismic | Senior Software Engineer II - Platform & Integrations (Backend) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441352528/ |
-| 452 | Sentinelone | Senior Software Engineer in Test | Hyderabad, Chennai, Pune | Foundit | https://www.foundit.in/job/35466958 |
-| 453 | Storable | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4325981962/ |
-| 454 | Synechron | Senior Software Engineer | Hyderabad, India | Foundit | https://www.foundit.in/job/62054304 |
-| 455 | TechnoGen | Senior Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34849860 |
-| 456 | The Glove | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4312013336/ |
-| 457 | Truveta | Senior Software Engineer (Full-Stack) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4402820786/ |
-| 458 | ValGenesis | Senior Software Engineer, Full-stack | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4356141066/ |
-| 459 | Vanguard | Technical Lead - Fund Accounting Platforms (AWS/Python) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4419484415/ |
-| 460 | Xtglobal Infotech Limited | Senior Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/62356491 |
-| 461 | ansrsource | Associate - Senior Software Engineer | Hyderabad | Instahyre | https://www.instahyre.com/job-441226-associate-senior-software-engineer-at-ansrsource-hyderabad/ |
-| 462 | costco it | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4394618040/ |
-| 463 | ensemble global | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4442585642/ |
-| 464 | epergne solutions | Software Engineer/Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4375198486/ |
-| 465 | phigital care | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4431251541/ |
-| 466 | the edge partnership - the edge in asia | Associate Director: AI Solution Architect (Cybersecurity Architectur | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453520647/ |
-| 467 | Gap Inc. | Data Engineer-Staff Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4434749222/ |
-| 468 | Proarch Technology Services | Technical Lead -Data Engineer | Hyderabad | Foundit | https://www.foundit.in/job/37807405 |
-| 469 | Vanguard | Technical Lead Data Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445350065/ |
-| 470 | Globallogic India | UI / UX Staff Engineer ((AI & Quality Engineering)) IRC300110 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443167273/ |
-| 471 | Marvell Technology - Multimedia Solutions Business | Design Verification Senior Staff Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4411532861/ |
-| 472 | SiFive | Staff Engineer - CPU Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446769231/ |
-| 473 | SiFive | Staff Engineer - Design Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435103211/ |
-| 474 | Silicon Labs | Staff Engineer - AMS Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4379183759/ |
-| 475 | Silicon Labs | Staff/Senior Staff Engineer - AMS Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4206725116/ |
-| 476 | Thermo Fisher Scientific | Sr Staff Engineer, Electrical | Hyderabad, India | Foundit | https://www.foundit.in/job/62824318 |
-| 477 | shure india | Associate Staff Engineer / Senior Engineer, System Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4442644822/ |
-| 478 | Franklin Templeton | Lead Software Engineer (Python, Django, React) | Hyderabad | Foundit | https://www.foundit.in/job/34927543 |
-| 479 | Franklin Templeton | Lead Software Engineer (Python, Django, React, AI Based Applications | Hyderabad | Foundit | https://www.foundit.in/job/34927881 |
-| 480 | IBaseIT | IBaseIT - Lead Software Engineer - Python | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4431171130/ |
-| 481 | IBaseIT | IBaseIT - Lead Software Engineer - Python/FastAPI | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445422280/ |
-| 482 | Indium | Technical Lead - Python/Golang | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4456166255/ |
-| 483 | S&P Global | Software Engineering Manager, Backend Development (Python) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4326823335/ |
-| 484 | The Depository Trust & Clearing Corporation (DTCC) | Oracle Fusion HCM Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446366828/ |
-| 485 | arrise solutions (india) pvt. ltd. | Engineering Manager - Frontend | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4387825673/ |
-| 486 | sunstripe | Engineering Manager - Data Center Electrical Design - AI/Hyperscale | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451616657/ |
-| 487 | Sentinelone | Senior Software Engineer - Python & Golang , cloud, design, DS/Algo | Hyderabad, Chennai, Pune | Foundit | https://www.foundit.in/job/35466829 |
-| 488 | Artech Infosystems Private Limited | Senior Software Engineer - Quality | Hyderabad | Foundit | https://www.foundit.in/job/64146925 |
-| 489 | COTIVITI | Senior Software Engineer - Python | Hyderabad | Foundit | https://www.foundit.in/job/35466497 |
-| 490 | franklin templeton india | Senior Software Engineer (Python, Django, React, PostgreSQL) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4458380506/ |
+| 289 | Bankai Informatics | AS/400 Technical Lead Data Extraction | 7-12 Yrs 18-32.5 Lacs PA Hyderabad | Naukri | https://www.naukri.com/job-listings-as-400-technical-lead-data-extraction-bankai-informatics-hyderabad-7-to-12-years-310826014423 |
+| 290 | BharatHire.Com Private Limited | Technical Lead/ Senior Software Engineer | 4-9 Yrs 20-35 Lacs PA Hybrid - Hyderabad | Naukri | https://www.naukri.com/job-listings-technical-lead-senior-software-engineer-bharathire-com-private-limited-hyderabad-4-to-9-years-310826913659 |
+| 291 | Billtrust | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443242844/ |
+| 292 | Charles Schwab | Senior Engineering Manager - Software Development (PL) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452259787/ |
+| 293 | Chubb | Engineering Manager -Full Stack(NodeJS) | Hyderabad, India | Foundit | https://www.foundit.in/job/60058728 |
+| 294 | Chubb | Global Authentication Engineering Manager | Hyderabad, India | Foundit | https://www.foundit.in/job/64009999 |
+| 295 | Chubb | Technical Lead Duck Creek Claims | Hyderabad, India | Foundit | https://www.foundit.in/job/61167840 |
+| 296 | CitiusTech | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4456185132/ |
+| 297 | Coinbase India Services | Engineering Manager - Platform - Developer Experience | Hyderabad, Kolkata, Mumbai | Foundit | https://www.foundit.in/job/37109577 |
+| 298 | Creditsafe Technology | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4440114809/ |
+| 299 | Cubic Transportation Systems | Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435196877/ |
+| 300 | Cyara | Senior Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446616452/ |
+| 301 | Cyient | Manufacturing Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4428537526/ |
+| 302 | Cyient | Mechanical Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4428537526/ |
+| 303 | D. E. Shaw | Lead Software Engineer (Fullstack) | Bangalore,Gurgaon,Hyderabad | Instahyre | https://www.instahyre.com/job-439092-lead-software-engineer-fullstack-at-d-e-bangalore-gurgaon-hyderabad/ |
+| 304 | DealerSocket | Lead Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/35480584 |
+| 305 | DealerSocket | Software Engineering Manager | Hyderabad | Foundit | https://www.foundit.in/job/35480493 |
+| 306 | Einfochips | Senior Engineer / Technical Lead | Ahmedabad, Hyderabad | Foundit | https://www.foundit.in/job/34804113 |
+| 307 | Einfochips Limited | Senior Engineer / Technical Lead (Linux BSP) | Hyderabad, Bengaluru, Chennai | Foundit | https://www.foundit.in/job/34190816 |
+| 308 | Envoy Global | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455290701/ |
+| 309 | Epam Systems | AI Engineering Manager | 13-15 Yrs Not disclosed Hyderabad, Pune, | Naukri | https://www.naukri.com/job-listings-ai-engineering-manager-epam-systems-india-private-limited-hyderabad-pune-chennai-13-to-15-years-070826911333 |
+| 310 | Eruvaka Technologies | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451673152/ |
+| 311 | FactSet | Engineering Manager - Modern Data Pipeline | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444575971/ |
+| 312 | FactSet | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453895200/ |
+| 313 | FactSet | Lead Software Engineer - Feeds | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4432248620/ |
+| 314 | FactSet Systems India Private Limited | Lead Software Engineer - IBS | Hyderabad | Foundit | https://www.foundit.in/job/34352267 |
+| 315 | Fanatics | Software Engineering Manager - Financial & SCM Systems | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4448529615/ |
+| 316 | Flipkart Leap | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4368097357/ |
+| 317 | Flipkart Marketplace | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4368097357/ |
+| 318 | GSPANN | Technical Lead | Hyderabad | Foundit | https://www.foundit.in/job/34840975 |
+| 319 | Google India | Engineering Manager, Software Engineering | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443158956/ |
+| 320 | Google India | SAP Applications Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454439074/ |
+| 321 | Google India | Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4442227202/ |
+| 322 | Google India | Software Engineering Manager, Enterprise Data Platform | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4437559847/ |
+| 323 | Google India | Software Engineering Manager, Payments Platform | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452383098/ |
+| 324 | HCL TechBee | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4254860008/ |
+| 325 | Hackajob | Senior Lead Software Engineer | 6-11 Yrs 35-60 Lacs PA Hybrid - Hyderaba | Naukri | https://www.naukri.com/job-listings-senior-lead-software-engineer-hackajob-hyderabad-chennai-bengaluru-6-to-11-years-310826014784 |
+| 326 | Happiest Minds Technologies | TECHNICAL LEAD - LEAD | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4337457564/ |
+| 327 | Hartree Partners | Oracle Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453661549/ |
+| 328 | Hexagon Capability Center India Private Limited | Technical Lead | Hyderabad | Foundit | https://www.foundit.in/job/34297804 |
+| 329 | HighRadius | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450454778/ |
+| 330 | Hive Financial Systems | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4351993761/ |
+| 331 | Inductive Quotient Analytics | Technical Lead AI & Application Development | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446964835/ |
+| 332 | Infinite Computer Solutions | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447577818/ |
+| 333 | Innovapptive | Engineering Manager | Hyderabad | Foundit | https://www.foundit.in/job/34951076 |
+| 334 | Innovapptive | Innovapptive - Engineering Manager - AI (7-12 yrs) | 7-12 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-innovapptive-engineering-manager-ai-7-12-yrs-innovapptive-global-solutions-pvt-ltd-hyderabad-7-to-12-years-070826015375 |
+| 335 | Insight Global | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4225970594/ |
+| 336 | Jpmorgan & Co | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453376069/ |
+| 337 | KEKA TECHNOLOGIES | Engineering Manager | Hyderabad | Foundit | https://www.foundit.in/job/35474617 |
+| 338 | KEKA TECHNOLOGIES | Lead Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/35474661 |
+| 339 | Kanerika Inc | Infrastructure Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444360943/ |
+| 340 | Keka HR | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4350354223/ |
+| 341 | L&T Technology Services | Technical Lead | Hyderabad, India | Foundit | https://www.foundit.in/job/60902196 |
+| 342 | Larsen & Toubro | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450328450/ |
+| 343 | MSD | Technical Lead, Software Engineering, Data Context Layer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450765956/ |
+| 344 | Medtronic | Senior Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4456320127/ |
+| 345 | NTT Data | Principal Agentic AI Engineer / Hands-on Technical Lead | Hyderabad, India | Foundit | https://careers-inc.nttdata.com/job/Hyderabad-Principal-Agentic-AI-Engineer-Hands-on-Technical-Lead-TG/1417482600/ |
+| 346 | NTT Data | SAP Technical Lead (Tools) | Hyderabad, India | Foundit | https://careers-inc.nttdata.com/job/Hyderabad-SAP-Technical-Lead-%28Tools%29-TG/1406650200/ |
+| 347 | NTT Data | Sr. Technical Lead NetSuite | Hyderabad, India | Foundit | https://careers-inc.nttdata.com/job/Hyderabad-Sr_-Technical-Lead-NetSuite-TG/1420468600/ |
+| 348 | Narwal | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4350105219/ |
+| 349 | Ncr Atleos | SW Engineering Manager II | Hyderabad | Foundit | https://www.foundit.in/job/37112935 |
+| 350 | Niit Technologies | Technical Lead- Angular | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4345398712/ |
+| 351 | NomiSo | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451181442/ |
+| 352 | OSI Digital | Dot Net Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443315643/ |
+| 353 | Olympus Corporation | R&D India Mechanical Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447279047/ |
+| 354 | Olympus Corporation | R&D India System Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447285103/ |
+| 355 | Orbital | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4430125105/ |
+| 356 | Pegasystems | Senior Delivery Excellence Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4433970170/ |
+| 357 | Principal Financial Group | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452994636/ |
+| 358 | Prolifics Corporation | Technical Lead (SAP ABAP) | Hyderabad | Foundit | https://www.foundit.in/job/34848937 |
+| 359 | PwC | Technical Lead | 8-13 Yrs Not disclosed Hybrid - Hyderaba | Naukri | https://www.naukri.com/job-listings-technical-lead-pwc-hyderabad-bengaluru-8-to-13-years-310826007799 |
+| 360 | Qapita | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4397305244/ |
+| 361 | Redpin Therapeutics | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4325588498/ |
+| 362 | SS&C Technologies | Lead Software Engineer - Full stack Lead - PA26ITOFFQ3067 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447019423/ |
+| 363 | SWISS RE | Engineering Manager | Hyderabad | Foundit | https://www.foundit.in/job/34489846 |
+| 364 | SimCorp | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4434971333/ |
+| 365 | SimCorp | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4431657470/ |
+| 366 | TIDE | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4263367777/ |
+| 367 | TIDE | Engineering Manager, Member Accession Marketing | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4263367777/ |
+| 368 | TIDE | Engineering Manager, Member Accession Marketing India, Hyderabad | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4459370577/ |
+| 369 | Techwave | Technical Lead SAP Commerce (Hybris) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4460511711/ |
+| 370 | The Depository Trust & Clearing Corporation (DTCC) | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4421659913/ |
+| 371 | The Depository Trust Clearing Corp | Lead Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34480287 |
+| 372 | The Depository Trust Clearing Corp | Lead Software Engineer (Lead Mainframe Developer) | Hyderabad | Foundit | https://www.foundit.in/job/34480219 |
+| 373 | Uber | Sr Engineering Manager - Merchant Platform | Hyderabad | Foundit | https://www.foundit.in/job/35478846 |
+| 374 | ValGenesis | Lead Software Engineer - Full Stack | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4421927789/ |
+| 375 | ValGenesis | Lead Software Engineer, Fullstack | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4437238555/ |
+| 376 | Valuelabs | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449388429/ |
+| 377 | Vanguard | Application Engineering Technical Lead - II | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435818533/ |
+| 378 | Vanguard | Technical Lead - Payments / Money Movement | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4419481932/ |
+| 379 | Veeva Systems | Engineering Manager - Test Automation | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441765821/ |
+| 380 | VidaXL | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4281241811/ |
+| 381 | Walkingtree Resources | ERP Technical Lead | 5-9 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-erp-technical-lead-walkingtree-resources-pvt-ltd-hyderabad-5-to-9-years-110826501323 |
+| 382 | Walkingtree Resources | Technical Lead ERP | 7-12 Yrs Not disclosed Hyderabad | Naukri | https://www.naukri.com/job-listings-technical-lead-erp-walkingtree-resources-pvt-ltd-hyderabad-7-to-12-years-270726503549 |
+| 383 | WinWire Technologies | Technical Lead - Data Science | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451522218/ |
+| 384 | ZF | Technical Lead-AI/ML, Generative AI & Agentic AI | 6-11 Yrs Not disclosed Hyderabad, Hydera | Naukri | https://www.naukri.com/job-listings-technical-lead-ai-ml-generative-ai-agentic-ai-zf-india-private-limited-hyderabad-hyderabad-6-to-11-years-280726924266 |
+| 385 | ZF Group | Technical Lead-AI/ML, Generative AI & Agentic AI | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453866015/ |
+| 386 | Zaggle | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452381088/ |
+| 387 | ZeMoSo Technologies | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4339560442/ |
+| 388 | bilvantis technologies | J2EE Technical Lead (Exp: 8+ Yrs to 12 Yrs) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441735090/ |
+| 389 | bristol myers squibb eu policy | Sr. Engineering Manager-AI | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455874183/ |
+| 390 | charles schwab india | Senior Engineering Manager - Software Development (PL) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443289181/ |
+| 391 | d. e. shaw india private limited | Engineering Manager (Windows Engineer) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4335635192/ |
+| 392 | dazn india | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457303460/ |
+| 393 | deutsche borse group | Leading Associate Vice President - IAM Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457305150/ |
+| 394 | ensemble global | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4422354430/ |
+| 395 | ensemble global | Senior Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446562808/ |
+| 396 | eternal robotics | Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446651098/ |
+| 397 | evernorth health services | Senior Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450121325/ |
+| 398 | evernorth health services | Senior Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449570135/ |
+| 399 | evernorth health services | Software Engineering Manager | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451900087/ |
+| 400 | fpt india | FPT Software - Splunk Technical Lead - Observability &amp Monitoring | Hyderabad, India | Foundit | https://www.foundit.in/job/64988245 |
+| 401 | innovapptive inc | Engineering Manager (AI) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444537795/ |
+| 402 | innovapptive inc | Engineering Manager(Integrations) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444545110/ |
+| 403 | marriott tech accelerator | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453113612/ |
+| 404 | momentum financial services group | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4422448552/ |
+| 405 | ntt data north america | SAP Technical Lead (Tools) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4438238034/ |
+| 406 | ntt data north america | SAP Technical Lead (Tools)SAP Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4438238034/ |
+| 407 | ntt data north america | Sr. Technical Lead NetSuite | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4455734699/ |
+| 408 | solera holdings, llc. | Lead Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4326596941/ |
+| 409 | talendroid technologies | Engineering Manager / Team Lead | Hyderabad, India | Foundit | https://www.foundit.in/job/64736250 |
+| 410 | the hartford india | Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4380479504/ |
+| 411 | vanguard india | Application Engineering Technical Lead - II | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435540966/ |
+| 412 | vanguard india | Technical Lead - Payments / Money Movement | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4430355958/ |
+| 413 | wsa - wonderful sound for all | Engineering Manager - Customer Identity & Access Management (CIAM) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4452926557/ |
+| 414 | Boomi Software | Principal Software Engineer - Security Architect | Hyderabad, Bengaluru, Chennai | Foundit | https://www.foundit.in/job/34935603 |
+| 415 | Profex Tech | Senior Backend Engineer || Remote || Node.js,GraphQL,AWS stack | 7-10 Yrs 40-50 Lacs PA Hyderabad, Delhi  | Naukri | https://www.naukri.com/job-listings-senior-backend-engineer-remote-node-js-graphql-aws-stack-profex-tech-hyderabad-delhi-ncr-mumbai-all-areas-7-to-10-years-080626024724 |
+| 416 | ANSR | Principal Engineer, IT Machine Learning | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4459181057/ |
+| 417 | Aegan Technologies Private Limited | Principal Software Engineer – Python | Chennai, Hyderabad | Foundit | https://www.foundit.in/job/59039744 |
+| 418 | Arcadis | Principal Engineer - Electrical | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4408196868/ |
+| 419 | Arcadis | Senior Engineer/Associate Principal Engineer - HVAC | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4424886791/ |
+| 420 | Blue Yonder | Staff Software Engineer - Python, React & Cloud | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4374384177/ |
+| 421 | Globallogic Ukraine | UI / UX Principal Engineer ((AI & Quality Engineering)) IRC300112 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4444030355/ |
+| 422 | Infineon Technologies | Principal Engineer Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4438647270/ |
+| 423 | Micron Technology | Lead Principal Engineer, Design Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4410848230/ |
+| 424 | Micron Technology | Principal Engineer - Memory Circuit Design Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4424554676/ |
+| 425 | Micron Technology | Principal Engineer, Project Design Verification Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4410844212/ |
+| 426 | Renesas Electronics | Principal Engineer - Design Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443357818/ |
+| 427 | microchip technology inc. | Principal Engineer, Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4414653526/ |
+| 428 | Artech Infosystems Private Limited | Senior Software Engineer Backend | Hyderabad | Foundit | https://www.foundit.in/job/64146941 |
+| 429 | Aveva | Senior Software Engineer | 7-14 Yrs 25-40 Lacs PA Hyderabad, Bengal | Naukri | https://www.naukri.com/job-listings-senior-software-engineer-aveva-hyderabad-bengaluru-7-to-14-years-310826026837 |
+| 430 | Billtrust | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4448096228/ |
+| 431 | COTIVITI | Senior Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/35466628 |
+| 432 | Cendyn | Senior Software Engineer - Angular | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4437772992/ |
+| 433 | Cendyn | Senior Software Engineer - Knowland | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4437772992/ |
+| 434 | Chubb | Senior Software Engineer | Hyderabad, India | Foundit | https://www.foundit.in/job/64010010 |
+| 435 | Chubb | Senior Software Engineer Full Stack (Angular) | Hyderabad, India | Foundit | https://www.foundit.in/job/60460590 |
+| 436 | Clean Harbors | Senior Software Engineer - SSE II | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453686204/ |
+| 437 | CyberArk | Senior Software Engineer - C++ | Hyderabad | Foundit | https://www.foundit.in/job/37509810 |
+| 438 | Diligente Technologies | Senior Software Engineer Backend | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4340338550/ |
+| 439 | Ensono | Senior Software Engineer, Mainframe AMS | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453511966/ |
+| 440 | FactSet | Senior Software Engineer-Golang-API Gateway | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4449560628/ |
+| 441 | FactSet Systems India Private Limited | Senior Software Engineer-Portfolio Commentary | Hyderabad | Foundit | https://www.foundit.in/job/34352290 |
+| 442 | GHX Europe | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4419298529/ |
+| 443 | Globallogic Ukraine | Senior Software Engineer, SaaS Control Plane IRC303076 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4457109366/ |
+| 444 | Gramener | Technical Architect _ Python / Gen AI Applications | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4413611897/ |
+| 445 | Home.LLC | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4234211503/ |
+| 446 | Mahindra Satyam | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4447375504/ |
+| 447 | Marriott International | Senior Software Engineer I | Hyderabad | Instahyre | https://www.instahyre.com/job-441166-senior-software-engineer-i-at-marriott-international-hyderabad/ |
+| 448 | Marriott International | Senior Software Engineer II | Hyderabad | Instahyre | https://www.instahyre.com/job-441163-senior-software-engineer-ii-at-marriott-international-hyderabad/ |
+| 449 | Mphasis | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445724141/ |
+| 450 | Nasuni | Senior Software Engineer - Systems (Platform) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4448309653/ |
+| 451 | Nasuni | Senior Software Engineer File System | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4454002192/ |
+| 452 | Plume | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4450294222/ |
+| 453 | Seismic | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4398141219/ |
+| 454 | Seismic | Senior Software Engineer II (Ruby on Rails) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443825170/ |
+| 455 | Seismic | Senior Software Engineer II - Platform & Integrations (Backend) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4441352528/ |
+| 456 | Sentinelone | Senior Software Engineer in Test | Hyderabad, Chennai, Pune | Foundit | https://www.foundit.in/job/35466958 |
+| 457 | Storable | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4325981962/ |
+| 458 | Synechron | Senior Software Engineer | Hyderabad, India | Foundit | https://www.foundit.in/job/62054304 |
+| 459 | TechnoGen | Senior Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/34849860 |
+| 460 | The Glove | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4312013336/ |
+| 461 | Truveta | Senior Software Engineer (Full-Stack) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4402820786/ |
+| 462 | ValGenesis | Senior Software Engineer, Full-stack | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4356141066/ |
+| 463 | Vanguard | Technical Lead - Fund Accounting Platforms (AWS/Python) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4419484415/ |
+| 464 | Xtglobal Infotech Limited | Senior Software Engineer | Hyderabad | Foundit | https://www.foundit.in/job/62356491 |
+| 465 | ansrsource | Associate - Senior Software Engineer | Hyderabad | Instahyre | https://www.instahyre.com/job-441226-associate-senior-software-engineer-at-ansrsource-hyderabad/ |
+| 466 | costco it | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4394618040/ |
+| 467 | ensemble global | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4442585642/ |
+| 468 | epergne solutions | Software Engineer/Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4375198486/ |
+| 469 | phigital care | Senior Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4431251541/ |
+| 470 | the edge partnership - the edge in asia | Associate Director: AI Solution Architect (Cybersecurity Architectur | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4453520647/ |
+| 471 | Gap Inc. | Data Engineer-Staff Software Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4434749222/ |
+| 472 | Proarch Technology Services | Technical Lead -Data Engineer | Hyderabad | Foundit | https://www.foundit.in/job/37807405 |
+| 473 | Vanguard | Technical Lead Data Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445350065/ |
+| 474 | Globallogic India | UI / UX Staff Engineer ((AI & Quality Engineering)) IRC300110 | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4443167273/ |
+| 475 | Marvell Technology - Multimedia Solutions Business | Design Verification Senior Staff Engineer | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4411532861/ |
+| 476 | SiFive | Staff Engineer - CPU Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446769231/ |
+| 477 | SiFive | Staff Engineer - Design Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4435103211/ |
+| 478 | Silicon Labs | Staff Engineer - AMS Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4379183759/ |
+| 479 | Silicon Labs | Staff/Senior Staff Engineer - AMS Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4206725116/ |
+| 480 | Thermo Fisher Scientific | Sr Staff Engineer, Electrical | Hyderabad, India | Foundit | https://www.foundit.in/job/62824318 |
+| 481 | shure india | Associate Staff Engineer / Senior Engineer, System Verification | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4442644822/ |
+| 482 | Franklin Templeton | Lead Software Engineer (Python, Django, React) | Hyderabad | Foundit | https://www.foundit.in/job/34927543 |
+| 483 | Franklin Templeton | Lead Software Engineer (Python, Django, React, AI Based Applications | Hyderabad | Foundit | https://www.foundit.in/job/34927881 |
+| 484 | IBaseIT | IBaseIT - Lead Software Engineer - Python | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4431171130/ |
+| 485 | IBaseIT | IBaseIT - Lead Software Engineer - Python/FastAPI | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4445422280/ |
+| 486 | Indium | Technical Lead - Python/Golang | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4456166255/ |
+| 487 | S&P Global | Software Engineering Manager, Backend Development (Python) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4326823335/ |
+| 488 | The Depository Trust & Clearing Corporation (DTCC) | Oracle Fusion HCM Technical Lead | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4446366828/ |
+| 489 | arrise solutions (india) pvt. ltd. | Engineering Manager - Frontend | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4387825673/ |
+| 490 | sunstripe | Engineering Manager - Data Center Electrical Design - AI/Hyperscale | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4451616657/ |
+| 491 | Sentinelone | Senior Software Engineer - Python & Golang , cloud, design, DS/Algo | Hyderabad, Chennai, Pune | Foundit | https://www.foundit.in/job/35466829 |
+| 492 | Artech Infosystems Private Limited | Senior Software Engineer - Quality | Hyderabad | Foundit | https://www.foundit.in/job/64146925 |
+| 493 | COTIVITI | Senior Software Engineer - Python | Hyderabad | Foundit | https://www.foundit.in/job/35466497 |
+| 494 | franklin templeton india | Senior Software Engineer (Python, Django, React, PostgreSQL) | Hyderabad, India | Foundit | https://www.linkedin.com/jobs/view/4458380506/ |
 
 ## Open but at company cap
 
@@ -549,8 +553,10 @@ By source (open): Foundit 534, Naukri 39, Instahyre 7, Workday 1, SmartRecruiter
 - solera holdings, llc.: Principal Software Engineer — https://www.linkedin.com/jobs/view/4354912417/
 - solera holdings, llc.: Principal Software Engineer — https://www.linkedin.com/jobs/view/4455412608/
 - TriNet: Principal Software Engineer — https://www.linkedin.com/jobs/view/4441983046/
+- Cognida: AI Solutions Architect — https://www.naukri.com/job-listings-ai-solutions-architect-cognida-hyderabad-14-to-18-years-130626014858
 - Celigo: Staff Software Engineer — https://www.instahyre.com/job-422353-staff-software-engineer-at-celigo-hyderabad/
 - Cohere Health: Staff Software Engineer, Integration — https://www.naukri.com/job-listings-staff-software-engineer-integration-cohere-health-hyderabad-12-to-18-years-310726030194
+- Druva: Senior Staff Software Engineer — https://www.naukri.com/job-listings-senior-staff-software-engineer-druva-inc-hyderabad-6-to-9-years-310826505709
 - Experian: Senior Staff Engineer ( AI ) — https://www.linkedin.com/jobs/view/4453352627/
 - Renesas Electronics: Staff Engineer, Design Enablement — https://www.linkedin.com/jobs/view/4430918828/
 - Renesas Electronics: Staff Engineer / Sr Engineer / Engineer, Validation — https://www.linkedin.com/jobs/view/4413427609/
@@ -561,6 +567,7 @@ By source (open): Foundit 534, Naukri 39, Instahyre 7, Workday 1, SmartRecruiter
 - TriNet: Staff Software Engineer — https://www.linkedin.com/jobs/view/4423526927/
 - TriNet: Staff Software Engineer — https://www.linkedin.com/jobs/view/4423543084/
 - Uber: Sr Staff Software Engineer — https://www.naukri.com/job-listings-sr-staff-software-engineer-uber-india-research-and-development-private-limited-hyderabad-14-to-19-years-210826932163
+- BharatHire.Com Private Limited: Technical Lead/ Senior Software Engineer — https://www.naukri.com/job-listings-technical-lead-senior-software-engineer-bharathire-com-private-limited-hyderabad-pune-bengaluru-4-to-9-years-310826913265
 - Billtrust: Lead Software Engineer — https://www.linkedin.com/jobs/view/4458216827/
 - bristol myers squibb eu policy: Sr. Engineering Manager-AI — https://www.linkedin.com/jobs/view/4455874183/
 - Eruvaka Technologies: Engineering Manager — https://www.naukri.com/job-listings-engineering-manager-eruvaka-technologies-hyderabad-10-to-15-years-250826027289
@@ -595,6 +602,7 @@ By source (open): Foundit 534, Naukri 39, Instahyre 7, Workday 1, SmartRecruiter
 - vanguard india: Application Engineering Technical Lead - II — https://www.linkedin.com/jobs/view/4430365947/
 - vanguard india: Application Engineering Technical Lead - II — https://www.linkedin.com/jobs/view/4439885343/
 - vanguard india: Application Engineering Technical Lead - II — https://www.linkedin.com/jobs/view/4458977751/
+- ZF: Technical Lead-AI/ML, Generative AI & Agentic AI — https://www.naukri.com/job-listings-technical-lead-ai-ml-generative-ai-agentic-ai-zf-india-private-limited-hyderabad-7-to-12-years-310826917126
 - Blue Yonder: Staff Software Engineer - Python, React & Cloud — https://www.naukri.com/job-listings-staff-software-engineer-python-react-cloud-blue-yonder-hyderabad-10-to-13-years-091225501019
 - Renesas Electronics: Principal Engineer - Design Verification — https://www.linkedin.com/jobs/view/4443352906/
 - Renesas Electronics: Principal Engineer - Design Verification — https://www.linkedin.com/jobs/view/4443357818/
