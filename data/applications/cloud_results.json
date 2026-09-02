@@ -4393,5 +4393,20 @@
     "note": "submitted after Apply",
     "final_url": "https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/",
     "ts": "2026-09-02T06:32:41.137146+00:00"
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Principal Software Engineering Manager - Databases",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4416671516/",
+    "ats": "Foundit",
+    "job_id": "57411559",
+    "apply_url": "https://www.linkedin.com/jobs/view/4416671516/",
+    "ok": false,
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://apply.careers.microsoft.com/careers/apply?pid=1970393556867191&utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
+    "ts": "2026-09-02T06:32:48.981404+00:00",
+    "fields_learned": 0
   }
 ]
