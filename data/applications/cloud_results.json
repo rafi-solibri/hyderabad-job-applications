@@ -3653,7 +3653,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/61934442",
-    "ts": "2026-09-02T05:33:09.765253+00:00"
+    "ts": "2026-09-02T06:12:29.076708+00:00"
   },
   {
     "company": "Globallogic India",
@@ -3696,8 +3696,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://www.linkedin.com/feed/",
-    "ts": "2026-09-01T06:44:03.177759+00:00",
+    "final_url": "https://www.linkedin.com/jobs/view/4456300501/",
+    "ts": "2026-09-02T06:12:44.244000+00:00",
     "fields_learned": 0
   },
   {
@@ -3712,7 +3712,7 @@
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
     "final_url": "https://apply.careers.microsoft.com/careers/apply?pid=1970393556957527&utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
-    "ts": "2026-09-01T06:52:49.169362+00:00",
+    "ts": "2026-09-02T06:20:13.549230+00:00",
     "fields_learned": 0
   },
   {
@@ -3754,10 +3754,10 @@
     "job_id": "62296688",
     "apply_url": "https://www.linkedin.com/jobs/view/4451087090/",
     "ok": false,
-    "status": "ERROR",
-    "note": "Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.linkedin.com/jobs/view/4451087090/\nCall log:\n  - navigating to \"https://www.linkedin.com/jobs/view/4451087090/\", waiting until \"domcontentloaded\"\n",
-    "final_url": "about:blank",
-    "ts": "2026-09-01T06:45:42.474544+00:00"
+    "status": "CLOSED",
+    "note": "job posting gone",
+    "final_url": "https://www.linkedin.com/jobs/view/4451087090/",
+    "ts": "2026-09-02T06:14:47.193884+00:00"
   },
   {
     "company": "providence india",
@@ -3928,7 +3928,7 @@
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
     "final_url": "https://www.linkedin.com/jobs/view/4451616904/",
-    "ts": "2026-09-01T06:48:42.478058+00:00",
+    "ts": "2026-09-02T06:16:17.075820+00:00",
     "fields_learned": 0
   },
   {
@@ -3954,11 +3954,10 @@
     "job_id": "65002034",
     "apply_url": "https://www.linkedin.com/jobs/view/4455911842/",
     "ok": false,
-    "status": "STUCK",
-    "note": "copilot/form loop — skipped to next job",
-    "final_url": "chrome-error://chromewebdata/",
-    "ts": "2026-09-01T06:51:12.714551+00:00",
-    "fields_learned": 0
+    "status": "OWNER_SIGNIN",
+    "note": "Amazon sign-in parked for the owner; tab stays open",
+    "final_url": "https://passport.amazon.jobs/",
+    "ts": "2026-09-02T06:18:43.548405+00:00"
   },
   {
     "company": "Celebal Technologies",
@@ -4028,7 +4027,7 @@
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
     "final_url": "https://www.linkedin.com/jobs/view/4438686785/",
-    "ts": "2026-09-01T06:54:33.978188+00:00",
+    "ts": "2026-09-02T06:21:59.855729+00:00",
     "fields_learned": 0
   },
   {
@@ -4071,7 +4070,7 @@
     "status": "OWNER_SIGNIN",
     "note": "Amazon sign-in parked for the owner; tab stays open",
     "final_url": "https://passport.amazon.jobs/",
-    "ts": "2026-09-01T06:56:57.829401+00:00"
+    "ts": "2026-09-02T06:24:23.074251+00:00"
   },
   {
     "company": "D. E. Shaw",
@@ -4113,7 +4112,7 @@
     "status": "OWNER_SIGNIN",
     "note": "Amazon sign-in parked for the owner; tab stays open",
     "final_url": "https://passport.amazon.jobs/",
-    "ts": "2026-09-01T06:58:27.830364+00:00"
+    "ts": "2026-09-02T06:25:53.073803+00:00"
   },
   {
     "company": "Marriott International",
@@ -4152,10 +4151,10 @@
     "job_id": "63144367",
     "apply_url": "https://www.linkedin.com/jobs/view/4444115755/",
     "ok": false,
-    "status": "ERROR",
-    "note": "Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.linkedin.com/jobs/view/4444115755/\nCall log:\n  - navigating to \"https://www.linkedin.com/jobs/view/4444115755/\", waiting until \"domcontentloaded\"\n",
-    "final_url": "about:blank",
-    "ts": "2026-09-01T06:59:57.838749+00:00"
+    "status": "CLOSED",
+    "note": "job posting gone",
+    "final_url": "https://www.linkedin.com/jobs/view/4444115755/",
+    "ts": "2026-09-02T06:27:23.073864+00:00"
   },
   {
     "company": "Amazon Robotics",
@@ -4170,5 +4169,173 @@
     "note": "job posting gone",
     "final_url": "https://www.linkedin.com/jobs/view/4443033916/",
     "ts": "2026-09-01T07:01:27.829559+00:00"
+  },
+  {
+    "company": "Cognizant",
+    "title": "Principal Technical Architect",
+    "location": "13-16 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-principal-technical-architect-cognizant-hyderabad-13-to-16-years-310826021256",
+    "ats": "Naukri",
+    "job_id": "310826021256",
+    "apply_url": "https://www.naukri.com/job-listings-principal-technical-architect-cognizant-hyderabad-13-to-16-years-310826021256",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-principal-technical-architect-cognizant-hyderabad-13-to-16-years-310826021256",
+    "ts": "2026-09-02T06:12:26.710741+00:00"
+  },
+  {
+    "company": "BharatHire.Com Private Limited",
+    "title": "Senior Software Engineer/Technical Lead/Technical Architect-F2F",
+    "location": "4-9 Yrs 20-35 Lacs PA Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-software-engineer-technical-lead-technical-architect-f2f-bharathire-com-private-limited-hyderabad-4-to-9-years-310826913667",
+    "ats": "Naukri",
+    "job_id": "310826913667",
+    "apply_url": "https://www.naukri.com/job-listings-senior-software-engineer-technical-lead-technical-architect-f2f-bharathire-com-private-limited-hyderabad-4-to-9-years-310826913667",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-senior-software-engineer-technical-lead-technical-architect-f2f-bharathire-com-private-limited-hyderabad-4-to-9-years-310826913667",
+    "ts": "2026-09-02T06:18:53.979183+00:00"
+  },
+  {
+    "company": "Bilvantis",
+    "title": "Technical Architect",
+    "location": "10-20 Yrs Not disclosed Hyderabad, Pune, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-architect-bilvantis-hyderabad-pune-bengaluru-10-to-20-years-020926012550",
+    "ats": "Naukri",
+    "job_id": "020926012550",
+    "apply_url": "https://www.naukri.com/job-listings-technical-architect-bilvantis-hyderabad-pune-bengaluru-10-to-20-years-020926012550",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-technical-architect-bilvantis-hyderabad-pune-bengaluru-10-to-20-years-020926012550",
+    "ts": "2026-09-02T06:21:53.296881+00:00"
+  },
+  {
+    "company": "Genpact",
+    "title": "Senior Technical Architect - Banking and Automation",
+    "location": "15-24 Yrs 40-60 Lacs PA Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-senior-technical-architect-banking-and-automation-genpact-hyderabad-chennai-bengaluru-15-to-24-years-270826030203",
+    "ats": "Naukri",
+    "job_id": "270826030203",
+    "apply_url": "https://www.naukri.com/job-listings-senior-technical-architect-banking-and-automation-genpact-hyderabad-chennai-bengaluru-15-to-24-years-270826030203",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-senior-technical-architect-banking-and-automation-genpact-hyderabad-chennai-bengaluru-15-to-24-years-270826030203",
+    "ts": "2026-09-02T06:21:57.086359+00:00"
+  },
+  {
+    "company": "Intellics Global Services",
+    "title": "Reltio MDM Senior Technical Architect",
+    "location": "16-20 Yrs Not disclosed Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-reltio-mdm-senior-technical-architect-intellics-global-services-hyderabad-chennai-bengaluru-16-to-20-years-310826003389",
+    "ats": "Naukri",
+    "job_id": "310826003389",
+    "apply_url": "https://www.naukri.com/job-listings-reltio-mdm-senior-technical-architect-intellics-global-services-hyderabad-chennai-bengaluru-16-to-20-years-310826003389",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-reltio-mdm-senior-technical-architect-intellics-global-services-hyderabad-chennai-bengaluru-16-to-20-years-310826003389",
+    "ts": "2026-09-02T06:24:17.459463+00:00"
+  },
+  {
+    "company": "Vlink",
+    "title": "GenAI Ops Solution Architect",
+    "location": "10-15 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-genai-ops-solution-architect-vlink-hyderabad-10-to-15-years-010926033714",
+    "ats": "Naukri",
+    "job_id": "010926033714",
+    "apply_url": "https://www.naukri.com/job-listings-genai-ops-solution-architect-vlink-hyderabad-10-to-15-years-010926033714",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-genai-ops-solution-architect-vlink-hyderabad-10-to-15-years-010926033714",
+    "ts": "2026-09-02T06:24:20.290233+00:00"
+  },
+  {
+    "company": "WinWire",
+    "title": "Technical Architect",
+    "location": "11-18 Yrs Not disclosed Hybrid - Hyderabad, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-architect-winwire-hyderabad-bengaluru-11-to-18-years-010926017710",
+    "ats": "Naukri",
+    "job_id": "010926017710",
+    "apply_url": "https://www.naukri.com/job-listings-technical-architect-winwire-hyderabad-bengaluru-11-to-18-years-010926017710",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-technical-architect-winwire-hyderabad-bengaluru-11-to-18-years-010926017710",
+    "ts": "2026-09-02T06:24:32.419146+00:00"
+  },
+  {
+    "company": "Agriitex Systems And Services",
+    "title": "Feedzai Migration Technical Lead Principal Architect",
+    "location": "12-18 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-feedzai-migration-technical-lead-principal-architect-bilvantis-technologies-hyderabad-12-to-18-years-270226501854",
+    "ats": "Naukri",
+    "job_id": "270226501854",
+    "apply_url": "https://www.naukri.com/job-listings-feedzai-migration-technical-lead-principal-architect-bilvantis-technologies-hyderabad-12-to-18-years-270226501854",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-feedzai-migration-technical-lead-principal-architect-bilvantis-technologies-hyderabad-12-to-18-years-270226501854",
+    "ts": "2026-09-02T06:24:36.123074+00:00"
+  },
+  {
+    "company": "Medtronic",
+    "title": "Engineering Manager",
+    "location": "15-20 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-engineering-manager-india-medtronic-pvt-ltd-hyderabad-15-to-20-years-010926504319",
+    "ats": "Naukri",
+    "job_id": "010926504319",
+    "apply_url": "https://www.naukri.com/job-listings-engineering-manager-india-medtronic-pvt-ltd-hyderabad-15-to-20-years-010926504319",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-engineering-manager-india-medtronic-pvt-ltd-hyderabad-15-to-20-years-010926504319",
+    "ts": "2026-09-02T06:26:02.457747+00:00"
+  },
+  {
+    "company": "WinWire",
+    "title": "Technical Lead - Agentic AI",
+    "location": "8-13 Yrs Not disclosed Hybrid - Hyderabad, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-technical-lead-agentic-ai-winwire-hyderabad-bengaluru-8-to-13-years-180626014820",
+    "ats": "Naukri",
+    "job_id": "180626014820",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-agentic-ai-winwire-hyderabad-bengaluru-8-to-13-years-180626014820",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-technical-lead-agentic-ai-winwire-hyderabad-bengaluru-8-to-13-years-180626014820",
+    "ts": "2026-09-02T06:26:06.300093+00:00"
+  },
+  {
+    "company": "Walkingtree Resources",
+    "title": "Technical Lead/Architect (Gen AI)",
+    "location": "6-7 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-lead-architect-gen-ai-walkingtree-resources-pvt-ltd-hyderabad-6-to-7-years-290526506509",
+    "ats": "Naukri",
+    "job_id": "290526506509",
+    "apply_url": "https://www.naukri.com/job-listings-technical-lead-architect-gen-ai-walkingtree-resources-pvt-ltd-hyderabad-6-to-7-years-290526506509",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-technical-lead-architect-gen-ai-walkingtree-resources-pvt-ltd-hyderabad-6-to-7-years-290526506509",
+    "ts": "2026-09-02T06:27:26.455596+00:00"
+  },
+  {
+    "company": "Aveva",
+    "title": "Senior Full Stack Developer",
+    "location": "7-12 Yrs 28-38 Lacs PA Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-full-stack-developer-aveva-hyderabad-7-to-12-years-010926022605",
+    "ats": "Naukri",
+    "job_id": "010926022605",
+    "apply_url": "https://www.naukri.com/job-listings-senior-full-stack-developer-aveva-hyderabad-7-to-12-years-010926022605",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-senior-full-stack-developer-aveva-hyderabad-7-to-12-years-010926022605",
+    "ts": "2026-09-02T06:27:30.077329+00:00"
   }
 ]
