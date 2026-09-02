@@ -1,7 +1,7 @@
 Daily Hyderabad career-portal apply — 2026-09-02
 
 Submitted today: 3
-Today's apply statuses: CLOSED 2, OWNER_SIGNIN 3, STUCK 12, SUBMITTED 12
+Today's apply statuses: CLOSED 2, OWNER_SIGNIN 3, STUCK 18, SUBMITTED 16
 Still leftover: 0 career / 395 other-board
 Expected CTC: 60 LPA | Current: 52 LPA | Notice: Immediate
 Agent: https://cursor.com/automations/979f38ce-9c62-11f1-ba66-0e7d0216e441
@@ -15,6 +15,7 @@ Submitted
   https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/
 
 Blocked / stuck career portals today
+- Microsoft Corp — Solution Architect Manager (STUCK)
 - Microsoft Corp — Principal Engineer Architect (STUCK)
 - Microsoft Corp — Principal Engineering Manager (STUCK)
 - Microsoft Corp — Principal Software Engineering Manager (STUCK)

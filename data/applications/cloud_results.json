@@ -3653,7 +3653,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/61934442",
-    "ts": "2026-09-02T06:12:29.076708+00:00"
+    "ts": "2026-09-02T07:04:44.677544+00:00"
   },
   {
     "company": "Globallogic India",
@@ -3696,8 +3696,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://www.linkedin.com/jobs/view/4456300501/",
-    "ts": "2026-09-02T06:12:44.244000+00:00",
+    "final_url": "https://apply.careers.microsoft.com/careers/apply?pid=1970393556946160&utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
+    "ts": "2026-09-02T07:04:59.525422+00:00",
     "fields_learned": 0
   },
   {
@@ -3928,7 +3928,7 @@
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
     "final_url": "https://www.linkedin.com/jobs/view/4451616904/",
-    "ts": "2026-09-02T06:16:17.075820+00:00",
+    "ts": "2026-09-02T07:06:39.247927+00:00",
     "fields_learned": 0
   },
   {
@@ -3957,7 +3957,7 @@
     "status": "OWNER_SIGNIN",
     "note": "Amazon sign-in parked for the owner; tab stays open",
     "final_url": "https://passport.amazon.jobs/",
-    "ts": "2026-09-02T06:18:43.548405+00:00"
+    "ts": "2026-09-02T07:08:49.951286+00:00"
   },
   {
     "company": "Celebal Technologies",
@@ -4408,5 +4408,145 @@
     "final_url": "https://apply.careers.microsoft.com/careers/apply?pid=1970393556867191&utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
     "ts": "2026-09-02T06:32:48.981404+00:00",
     "fields_learned": 0
+  },
+  {
+    "company": "Wells Fargo",
+    "title": "Engineering Manager",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-engineering-manager-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-250826921738",
+    "ats": "Naukri",
+    "job_id": "250826921738",
+    "apply_url": "https://www.naukri.com/job-listings-engineering-manager-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-250826921738",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-engineering-manager-wells-fargo-international-solutions-private-ltd-hyderabad-5-to-10-years-250826921738",
+    "ts": "2026-09-02T07:04:41.146205+00:00"
+  },
+  {
+    "company": "4S Advisory",
+    "title": "Azure Cloud Solution Architect",
+    "location": "14-18 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-azure-cloud-solution-architect-4s-advisory-hyderabad-14-to-18-years-020926915478",
+    "ats": "Naukri",
+    "job_id": "020926915478",
+    "apply_url": "https://www.naukri.com/job-listings-azure-cloud-solution-architect-4s-advisory-hyderabad-14-to-18-years-020926915478",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-azure-cloud-solution-architect-4s-advisory-hyderabad-14-to-18-years-020926915478",
+    "ts": "2026-09-02T07:08:59.078815+00:00"
+  },
+  {
+    "company": "4S Advisory",
+    "title": "Senior Full Stack Developer - .Net & Vue/Angular",
+    "location": "8-12 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-full-stack-developer-net-vue-angular-4s-advisory-hyderabad-8-to-12-years-020926915531",
+    "ats": "Naukri",
+    "job_id": "020926915531",
+    "apply_url": "https://www.naukri.com/job-listings-senior-full-stack-developer-net-vue-angular-4s-advisory-hyderabad-8-to-12-years-020926915531",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-senior-full-stack-developer-net-vue-angular-4s-advisory-hyderabad-8-to-12-years-020926915531",
+    "ts": "2026-09-02T07:09:01.704311+00:00"
+  },
+  {
+    "company": "ABM Executive Search",
+    "title": "Senior Engineering Manager - AWS (14-20 yrs)",
+    "location": "14-20 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-engineering-manager-aws-14-20-yrs-abm-executive-search-private-limited-hyderabad-14-to-20-years-260826009591",
+    "ats": "Naukri",
+    "job_id": "260826009591",
+    "apply_url": "https://www.naukri.com/job-listings-senior-engineering-manager-aws-14-20-yrs-abm-executive-search-private-limited-hyderabad-14-to-20-years-260826009591",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-senior-engineering-manager-aws-14-20-yrs-abm-executive-search-private-limited-hyderabad-14-to-20-years-260826009591",
+    "ts": "2026-09-02T07:09:04.289640+00:00"
+  },
+  {
+    "company": "Mancer Consulting Services",
+    "title": "Engineering Manager - Platform (10-15 yrs)",
+    "location": "10-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-engineering-manager-platform-10-15-yrs-mancer-consulting-services-pvt-ltd-hyderabad-10-to-15-years-260626023693",
+    "ats": "Naukri",
+    "job_id": "260626023693",
+    "apply_url": "https://www.naukri.com/job-listings-engineering-manager-platform-10-15-yrs-mancer-consulting-services-pvt-ltd-hyderabad-10-to-15-years-260626023693",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-engineering-manager-platform-10-15-yrs-mancer-consulting-services-pvt-ltd-hyderabad-10-to-15-years-260626023693",
+    "ts": "2026-09-02T07:09:08.018970+00:00"
+  },
+  {
+    "company": "Mouri Tech",
+    "title": "Technical Engineering Manager",
+    "location": "15-22 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-technical-engineering-manager-mouri-tech-hyderabad-15-to-22-years-310726023221",
+    "ats": "Naukri",
+    "job_id": "310726023221",
+    "apply_url": "https://www.naukri.com/job-listings-technical-engineering-manager-mouri-tech-hyderabad-15-to-22-years-310726023221",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-technical-engineering-manager-mouri-tech-hyderabad-15-to-22-years-310726023221",
+    "ts": "2026-09-02T07:09:11.663771+00:00"
+  },
+  {
+    "company": "TIE-UPS",
+    "title": "Chief Engineering Manager -  Substation Design ( Oil & Gas )",
+    "location": "15-20 Yrs Not disclosed Hyderabad, Indore, Chennai, Bengaluru, Delhi / NCR, Mumbai (All Areas)",
+    "url": "https://www.naukri.com/job-listings-chief-engineering-manager-substation-design-oil-gas-tie-ups-indore-hyderabad-chennai-bengaluru-delhi-ncr-mumbai-all-areas-15-to-20-years-290726014654",
+    "ats": "Naukri",
+    "job_id": "290726014654",
+    "apply_url": "https://www.naukri.com/job-listings-chief-engineering-manager-substation-design-oil-gas-tie-ups-indore-hyderabad-chennai-bengaluru-delhi-ncr-mumbai-all-areas-15-to-20-years-290726014654",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "already applied",
+    "final_url": "https://www.naukri.com/job-listings-chief-engineering-manager-substation-design-oil-gas-tie-ups-indore-hyderabad-chennai-bengaluru-delhi-ncr-mumbai-all-areas-15-to-20-years-290726014654",
+    "ts": "2026-09-02T07:09:14.189308+00:00"
+  },
+  {
+    "company": "Texas Instruments",
+    "title": "Validation Engineering Manager",
+    "location": "5-10 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-validation-engineering-manager-texas-instruments-india-ltd-hyderabad-5-to-10-years-310326502512",
+    "ats": "Naukri",
+    "job_id": "310326502512",
+    "apply_url": "https://www.naukri.com/job-listings-validation-engineering-manager-texas-instruments-india-ltd-hyderabad-5-to-10-years-310326502512",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-validation-engineering-manager-texas-instruments-india-ltd-hyderabad-5-to-10-years-310326502512",
+    "ts": "2026-09-02T07:09:16.723160+00:00"
+  },
+  {
+    "company": "Ensemble Health Partners",
+    "title": "Senior Manager, Software Engineering",
+    "location": "14-19 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-manager-software-engineering-ensemble-health-partners-india-hyderabad-14-to-19-years-290726501586",
+    "ats": "Naukri",
+    "job_id": "290726501586",
+    "apply_url": "https://www.naukri.com/job-listings-senior-manager-software-engineering-ensemble-health-partners-india-hyderabad-14-to-19-years-290726501586",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-senior-manager-software-engineering-ensemble-health-partners-india-hyderabad-14-to-19-years-290726501586",
+    "ts": "2026-09-02T07:09:20.369800+00:00"
+  },
+  {
+    "company": "Mancer Consulting Services",
+    "title": "Senior Engineering Manager/Development Manager - Quality Assurance (10-16 yrs)",
+    "location": "10-16 Yrs 50-70 Lacs PA Hyderabad, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-senior-engineering-manager-development-manager-quality-assurance-10-16-yrs-mancer-consulting-services-pvt-ltd-hyderabad-bengaluru-10-to-16-years-270726012285",
+    "ats": "Naukri",
+    "job_id": "270726012285",
+    "apply_url": "https://www.naukri.com/job-listings-senior-engineering-manager-development-manager-quality-assurance-10-16-yrs-mancer-consulting-services-pvt-ltd-hyderabad-bengaluru-10-to-16-years-270726012285",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-senior-engineering-manager-development-manager-quality-assurance-10-16-yrs-mancer-consulting-services-pvt-ltd-hyderabad-bengaluru-10-to-16-years-270726012285",
+    "ts": "2026-09-02T07:09:24.124609+00:00"
   }
 ]
