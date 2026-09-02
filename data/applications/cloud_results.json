@@ -3726,8 +3726,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://apply.careers.microsoft.com/careers/apply?pid=1970393556957951",
-    "ts": "2026-09-01T07:02:57.834252+00:00",
+    "final_url": "https://apply.careers.microsoft.com/careers/apply?pid=1970393556868375&utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
+    "ts": "2026-09-02T06:28:53.073535+00:00",
     "fields_learned": 0
   },
   {
@@ -3742,7 +3742,7 @@
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
     "final_url": "https://apply.careers.microsoft.com/careers/apply?pid=1970393556939533&utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
-    "ts": "2026-08-31T07:06:48.262156+00:00",
+    "ts": "2026-09-02T06:30:44.090805+00:00",
     "fields_learned": 0
   },
   {
@@ -4337,5 +4337,61 @@
     "note": "already applied",
     "final_url": "https://www.naukri.com/job-listings-senior-full-stack-developer-aveva-hyderabad-7-to-12-years-010926022605",
     "ts": "2026-09-02T06:27:30.077329+00:00"
+  },
+  {
+    "company": "HYLAND",
+    "title": "Lead Software Security Architect (Cloud Security)",
+    "location": "8-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-security-architect-cloud-security-hyland-software-hyderabad-8-to-13-years-190526500421",
+    "ats": "Naukri",
+    "job_id": "190526500421",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-security-architect-cloud-security-hyland-software-hyderabad-8-to-13-years-190526500421",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-lead-software-security-architect-cloud-security-hyland-software-hyderabad-8-to-13-years-190526500421",
+    "ts": "2026-09-02T06:30:32.476491+00:00"
+  },
+  {
+    "company": "FedEx",
+    "title": "Solution Architect",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-436579-solution-architect-at-fedex-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "436579",
+    "apply_url": "https://www.instahyre.com/job-436579-solution-architect-at-fedex-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-436579-solution-architect-at-fedex-hyderabad/",
+    "ts": "2026-09-02T06:30:35.875033+00:00"
+  },
+  {
+    "company": "Tide",
+    "title": "SDE 3 - Flutter",
+    "location": "Bangalore,Delhi,Hyderabad",
+    "url": "https://www.instahyre.com/job-424586-sde-3-flutter-at-tide-bangalore-delhi-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "424586",
+    "apply_url": "https://www.instahyre.com/job-424586-sde-3-flutter-at-tide-bangalore-delhi-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-424586-sde-3-flutter-at-tide-bangalore-delhi-hyderabad/",
+    "ts": "2026-09-02T06:32:23.281407+00:00"
+  },
+  {
+    "company": "Uber Freight",
+    "title": "Sr. Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "404101",
+    "apply_url": "https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/",
+    "ts": "2026-09-02T06:32:41.137146+00:00"
   }
 ]

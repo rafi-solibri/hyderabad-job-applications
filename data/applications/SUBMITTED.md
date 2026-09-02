@@ -70,3 +70,9 @@
   https://www.instahyre.com/job-441163-senior-software-engineer-ii-at-marriott-international-hyderabad/
 - **2026-09-01T06:58:43Z** SUBMITTED **ansrsource** — Associate - Senior Software Engineer
   https://www.instahyre.com/job-441226-associate-senior-software-engineer-at-ansrsource-hyderabad/
+- **2026-09-02T06:30:35Z** SUBMITTED **FedEx** — Solution Architect
+  https://www.instahyre.com/job-436579-solution-architect-at-fedex-hyderabad/
+- **2026-09-02T06:32:23Z** SUBMITTED **Tide** — SDE 3 - Flutter
+  https://www.instahyre.com/job-424586-sde-3-flutter-at-tide-bangalore-delhi-hyderabad/
+- **2026-09-02T06:32:41Z** SUBMITTED **Uber Freight** — Sr. Software Engineer
+  https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/

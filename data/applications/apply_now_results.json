@@ -3795,5 +3795,57 @@
     "status": "SUBMITTED",
     "note": "already applied",
     "final_url": "https://www.naukri.com/job-listings-senior-full-stack-developer-aveva-hyderabad-7-to-12-years-010926022605"
+  },
+  {
+    "company": "HYLAND",
+    "title": "Lead Software Security Architect (Cloud Security)",
+    "location": "8-13 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-lead-software-security-architect-cloud-security-hyland-software-hyderabad-8-to-13-years-190526500421",
+    "ats": "Naukri",
+    "job_id": "190526500421",
+    "apply_url": "https://www.naukri.com/job-listings-lead-software-security-architect-cloud-security-hyland-software-hyderabad-8-to-13-years-190526500421",
+    "ok": false,
+    "status": "STUCK",
+    "note": "Naukri company-site apply",
+    "final_url": "https://www.naukri.com/job-listings-lead-software-security-architect-cloud-security-hyland-software-hyderabad-8-to-13-years-190526500421"
+  },
+  {
+    "company": "FedEx",
+    "title": "Solution Architect",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-436579-solution-architect-at-fedex-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "436579",
+    "apply_url": "https://www.instahyre.com/job-436579-solution-architect-at-fedex-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-436579-solution-architect-at-fedex-hyderabad/"
+  },
+  {
+    "company": "Tide",
+    "title": "SDE 3 - Flutter",
+    "location": "Bangalore,Delhi,Hyderabad",
+    "url": "https://www.instahyre.com/job-424586-sde-3-flutter-at-tide-bangalore-delhi-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "424586",
+    "apply_url": "https://www.instahyre.com/job-424586-sde-3-flutter-at-tide-bangalore-delhi-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-424586-sde-3-flutter-at-tide-bangalore-delhi-hyderabad/"
+  },
+  {
+    "company": "Uber Freight",
+    "title": "Sr. Software Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "404101",
+    "apply_url": "https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/"
   }
 ]
