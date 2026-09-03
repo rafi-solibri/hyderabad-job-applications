@@ -3653,7 +3653,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/61934442",
-    "ts": "2026-09-02T13:56:14.875450+00:00"
+    "ts": "2026-09-03T05:32:23.265342+00:00"
   },
   {
     "company": "Globallogic India",
@@ -3695,9 +3695,9 @@
     "apply_url": "https://www.linkedin.com/jobs/view/4456300501/",
     "ok": false,
     "status": "STUCK",
-    "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://apply.careers.microsoft.com/careers/apply?pid=1970393556946160&utm_source=linkedin&domain=microsoft.com&src=LinkedIn",
-    "ts": "2026-09-02T07:04:59.525422+00:00",
+    "note": "no page progress — next job",
+    "final_url": "https://www.linkedin.com/checkpoint/challenge/AgGY8t0Yt3mXEAAAAaBl0mW-GM244MPVLZX8L_GSDwGyFu0ofqbTKo4WzwysuLjq57_WlDPl8IR4Nh2tWyhba8clhz7V2g?ut=1GSpd6SQo_Qso1",
+    "ts": "2026-09-03T05:51:16.691975+00:00",
     "fields_learned": 0
   },
   {
@@ -4560,8 +4560,36 @@
     "ok": false,
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://career-schwab.icims.com/jobs/login?loginOnly=1&redirect=search&mobile=false&width=1230&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240&css_submitMode=1&universalLogin=1&hashed=184347607&code=qjsm-7lOVpOKCC8AauzF3MSTHJJfpMBSay8yupDA-R5Lm&state=6799341ba5be15202b9a79d93c2ff173330092c5a4095b0e96fb85f2b9cb1dfe",
-    "ts": "2026-09-02T13:58:20.598968+00:00",
+    "final_url": "https://career-schwab.icims.com/jobs/search?hashed=673319564&back=none&redirect=search",
+    "ts": "2026-09-03T05:34:27.761635+00:00",
     "fields_learned": 0
+  },
+  {
+    "company": "ScaleOrange Technologies",
+    "title": "Senior Backend Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "441718",
+    "apply_url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
+    "ts": "2026-09-03T05:50:57.586393+00:00"
+  },
+  {
+    "company": "Syniti",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://careers.syniti.com/job/Hyderabad-Solution-Architect/1402724400/",
+    "ats": "Foundit",
+    "job_id": "57046236",
+    "apply_url": "https://careers.syniti.com/job/Hyderabad-Solution-Architect/1402724400/",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://career8.successfactors.com/career?_s.crb=sIF1UMTY4LKKE%252fMpjlpbkjC%252bwLlO5qlGJfEe72Cvbw8%253d",
+    "ts": "2026-09-03T05:51:57.019758+00:00"
   }
 ]

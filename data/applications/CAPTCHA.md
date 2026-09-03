@@ -16,3 +16,6 @@
 - **NEED CAPTCHA** Cubic Transportation Systems — Principal Software Engineer (.Net)
   https://www.linkedin.com/checkpoint/challenge/AgGVVHl6CdfnlAAAAaBBxcNyxn52Qa6cs4klfowY-Yaroqg7vF5xCPcWVmchgiHXEyOrF-HY72FKVEufwQVsxlOrxWm18g
   LinkedIn security verification on the 27 Aug 05:30 UTC daily VM. Solve in Desktop / Take control. Session-skip remaining LinkedIn until then.
+- **NEED CAPTCHA** Charles Schwab — Sr Manager Software Development And Engineering Senior Pl
+  https://career-ind-schwab.icims.com/jobs/124303/sr-manager%2c-software-development-%26-engineering-senior-%28pl%29/login
+  iCIMS hCaptcha on returning-candidate login. Solve in Desktop / Take control. Do not persist-skip. Do not hammer login.

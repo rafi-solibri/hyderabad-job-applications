@@ -201,10 +201,14 @@ def is_login_or_captcha(page) -> str | None:
             return None
         return "LOGIN_BLOCKED"
     try:
-        n = page.locator("iframe[title*='hCaptcha' i], iframe[src*='hcaptcha'][title*='challenge' i]").count()
+        n = page.locator(
+            "iframe[src*='hcaptcha'][src*='challenge'], "
+            "iframe[title*='hCaptcha' i], "
+            "iframe[src*='hcaptcha'][title*='challenge' i]"
+        ).count()
         if n:
             for i in range(min(n, 4)):
-                loc = page.locator("iframe[title*='hCaptcha' i], iframe[src*='hcaptcha']").nth(i)
+                loc = page.locator("iframe[src*='hcaptcha'], iframe[title*='hCaptcha' i]").nth(i)
                 try:
                     if loc.is_visible():
                         box = loc.bounding_box() or {}
@@ -212,6 +216,13 @@ def is_login_or_captcha(page) -> str | None:
                             return "CAPTCHA"
                 except Exception:
                     continue
+    except Exception:
+        pass
+    try:
+        for frame in page.frames:
+            fu = (frame.url or "").lower()
+            if "hcaptcha.com" in fu and "challenge" in fu:
+                return "CAPTCHA"
     except Exception:
         pass
     blob = page_text(page)[:4000]
@@ -5352,6 +5363,10 @@ def _keep_tab(url: str) -> bool:
         return True
     if "login.icims.com" in u:
         return True
+    if "icims.com" in u and ("/login" in u or "hcaptcha" in u):
+        return True
+    if "schwab" in u and "icims.com" in u:
+        return True
     if "passport.amazon.jobs" in u or u.rstrip("/").endswith("passport.amazon.jobs"):
         return True
     for parked in PARKED_CAPTCHA_URLS:
@@ -6187,6 +6202,21 @@ def main(
                     "OWNER_SIGNIN", "NEED_INPUT",
                 }:
                     SESSION_SKIP_KEYS.update(apply_now.job_match_keys(row) | apply_now.job_match_keys(job))
+                elif row.get("status") == "STUCK":
+                    stuck_u = (
+                        (row.get("apply_url") or row.get("url") or row.get("final_url") or "")
+                        + " "
+                        + str(row.get("company") or job.get("company") or "")
+                    ).lower()
+                    # iCIMS/Schwab login loops are captcha/rate-limit — do not hammer.
+                    if "icims.com" in stuck_u or "schwab" in stuck_u:
+                        SESSION_SKIP_KEYS.update(
+                            apply_now.job_match_keys(row) | apply_now.job_match_keys(job)
+                        )
+                        print(
+                            "  Session-skip this iCIMS/Schwab leftover (do not hammer login).",
+                            flush=True,
+                        )
                 if row.get("ok") and row.get("status") == "SUBMITTED":
                     apply_now.persist_applied(row, row.get("note") or "cloud_apply submitted")
                     note = (row.get("note") or "").lower()

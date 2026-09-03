@@ -76,3 +76,5 @@
   https://www.instahyre.com/job-424586-sde-3-flutter-at-tide-bangalore-delhi-hyderabad/
 - **2026-09-02T06:32:41Z** SUBMITTED **Uber Freight** — Sr. Software Engineer
   https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/
+- **2026-09-03T05:50:57Z** SUBMITTED **ScaleOrange Technologies** — Senior Backend Engineer
+  https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/

@@ -3977,5 +3977,31 @@
     "status": "STUCK",
     "note": "Naukri company-site apply",
     "final_url": "https://www.naukri.com/job-listings-senior-engineering-manager-development-manager-quality-assurance-10-16-yrs-mancer-consulting-services-pvt-ltd-hyderabad-bengaluru-10-to-16-years-270726012285"
+  },
+  {
+    "company": "ScaleOrange Technologies",
+    "title": "Senior Backend Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "441718",
+    "apply_url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/"
+  },
+  {
+    "company": "Syniti",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://careers.syniti.com/job/Hyderabad-Solution-Architect/1402724400/",
+    "ats": "Foundit",
+    "job_id": "57046236",
+    "apply_url": "https://careers.syniti.com/job/Hyderabad-Solution-Architect/1402724400/",
+    "ok": false,
+    "status": "AUTH_FAILED",
+    "note": "all portal passwords rejected or account locked",
+    "final_url": "https://career8.successfactors.com/career?_s.crb=sIF1UMTY4LKKE%252fMpjlpbkjC%252bwLlO5qlGJfEe72Cvbw8%253d"
   }
 ]

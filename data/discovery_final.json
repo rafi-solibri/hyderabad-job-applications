@@ -33,6 +33,17 @@
     "over_cap": false
   },
   {
+    "company": "Syniti",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://careers.syniti.com/job/Hyderabad-Solution-Architect/1402724400/",
+    "ats": "Foundit",
+    "job_id": "57046236",
+    "already_applied": false,
+    "match_score": 150,
+    "over_cap": false
+  },
+  {
     "company": "Blue Yonder",
     "title": "Staff Software Engineer I - NodeJS, Microservices, Cloud & Typescript/JavaScript",
     "location": "Hyderabad, India",
@@ -565,6 +576,17 @@
     "over_cap": false
   },
   {
+    "company": "SimCorp",
+    "title": "Principal Software Engineer (C .NET with Azure)",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4461769422/",
+    "ats": "Foundit",
+    "job_id": "65259758",
+    "already_applied": false,
+    "match_score": 24,
+    "over_cap": false
+  },
+  {
     "company": "Synchrony",
     "title": "AVP Sys Admin & AI Solution Architect (L10)",
     "location": "7-12 Yrs Not disclosed Hyderabad",
@@ -847,6 +869,17 @@
     "url": "https://www.linkedin.com/jobs/view/4457317932/",
     "ats": "Foundit",
     "job_id": "63744959",
+    "already_applied": false,
+    "match_score": 4,
+    "over_cap": true
+  },
+  {
+    "company": "Microsoft Corp",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4461733341/",
+    "ats": "Foundit",
+    "job_id": "65260025",
     "already_applied": false,
     "match_score": 4,
     "over_cap": true
@@ -1234,6 +1267,17 @@
     "url": "https://www.foundit.in/job/64975840",
     "ats": "Foundit",
     "job_id": "64975840",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
+    "company": "Gramener",
+    "title": "Technical Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4282536333/",
+    "ats": "Foundit",
+    "job_id": "36344981",
     "already_applied": false,
     "match_score": -10,
     "over_cap": false
@@ -1877,7 +1921,7 @@
     "ats": "Foundit",
     "job_id": "56982725",
     "already_applied": false,
-    "over_cap": false,
+    "over_cap": true,
     "match_score": -10
   },
   {
@@ -4330,6 +4374,17 @@
     "over_cap": false
   },
   {
+    "company": "Flutter International PLC",
+    "title": "Senior Engineering Manager - Data Enablement",
+    "location": "Hyderabad",
+    "url": "https://www.foundit.in/job/40035909",
+    "ats": "Foundit",
+    "job_id": "40035909",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "fpt india",
     "title": "FPT Software - Splunk Technical Lead - Observability &amp Monitoring",
     "location": "Hyderabad, India",
@@ -5504,6 +5559,17 @@
     "match_score": -34
   },
   {
+    "company": "Verisk",
+    "title": "Technical Lead",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4461720655/",
+    "ats": "Foundit",
+    "job_id": "65265771",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
+  },
+  {
     "company": "VidaXL",
     "title": "Technical Lead",
     "location": "Hyderabad, India",
@@ -6113,6 +6179,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -46
+  },
+  {
+    "company": "ScaleOrange Technologies",
+    "title": "Senior Backend Engineer",
+    "location": "Hyderabad",
+    "url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "441718",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "Seismic",

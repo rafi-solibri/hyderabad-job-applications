@@ -9227,5 +9227,39 @@
     "note": "Naukri company-site apply",
     "status": "STUCK",
     "ts": "2026-09-02T07:09:26.467893+00:00"
+  },
+  "scaleorangetechnologies|senior backend engineer": {
+    "company": "ScaleOrange Technologies",
+    "title": "Senior Backend Engineer",
+    "job_id": "441718",
+    "url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
+    "note": "submitted after Apply",
+    "ts": "2026-09-03T05:51:15.180679+00:00"
+  },
+  "441718": {
+    "company": "ScaleOrange Technologies",
+    "title": "Senior Backend Engineer",
+    "job_id": "441718",
+    "url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
+    "note": "submitted after Apply",
+    "ts": "2026-09-03T05:51:15.180679+00:00"
+  },
+  "57046236": {
+    "company": "Syniti",
+    "title": "Solution Architect",
+    "job_id": "57046236",
+    "url": "https://careers.syniti.com/job/Hyderabad-Solution-Architect/1402724400/",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-09-03T05:52:12.009720+00:00"
+  },
+  "syniti|solution architect": {
+    "company": "Syniti",
+    "title": "Solution Architect",
+    "job_id": "57046236",
+    "url": "https://careers.syniti.com/job/Hyderabad-Solution-Architect/1402724400/",
+    "note": "all portal passwords rejected or account locked",
+    "status": "AUTH_FAILED",
+    "ts": "2026-09-03T05:52:12.009720+00:00"
   }
 }
