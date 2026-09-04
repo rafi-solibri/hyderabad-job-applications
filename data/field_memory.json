@@ -514,10 +514,10 @@
     },
     "first name*": {
       "label": "First Name*",
-      "value": "Rafi Ahmed",
-      "count": 28,
-      "name": "FirstName",
-      "updated": "2026-08-31T07:08:56.320692+00:00",
+      "value": "rafi.success@gmail.com",
+      "count": 45,
+      "name": "email",
+      "updated": "2026-09-04T06:23:31.756031+00:00",
       "source": "form"
     },
     "disability status": {
@@ -1191,75 +1191,97 @@
       "name": "awsm_form_privacy_policy",
       "updated": "2026-09-01T05:42:13.909795+00:00",
       "source": "form"
+    },
+    "start date month*": {
+      "label": "Start date month*",
+      "value": "Immediate / ASAP",
+      "count": 1,
+      "name": "start-date-month-0",
+      "updated": "2026-09-04T06:14:43.322574+00:00",
+      "source": "form"
+    },
+    "degree*": {
+      "label": "Degree*",
+      "value": "B.Tech",
+      "count": 1,
+      "name": "degree--0",
+      "updated": "2026-09-04T06:14:43.322593+00:00",
+      "source": "form"
+    },
+    "which of the following best describes how you use ai tools today?*": {
+      "label": "Which of the following best describes how you use AI tools today?*",
+      "value": "Yes. I use Claude and ChatGPT for architecture documentation, design exploration, and reviewing trade-offs. I verify all technical decisions myself.",
+      "count": 1,
+      "name": "question_68905631",
+      "updated": "2026-09-04T06:14:43.322609+00:00",
+      "source": "form"
+    },
+    "please confirm receipt of the above linked global data privacy notice and us arbitration agreement.*": {
+      "label": "Please confirm receipt of the above linked Global Data Privacy Notice and US Arbitration Agreement.*",
+      "value": "Agree",
+      "count": 1,
+      "name": "question_68905629",
+      "updated": "2026-09-04T06:14:43.322655+00:00",
+      "source": "form"
+    },
+    "i understand that coinbase may use ai tools to assist in the application and interview process. *": {
+      "label": "I understand that Coinbase may use AI tools to assist in the application and interview process. *",
+      "value": "Yes. I use Claude and ChatGPT for architecture documentation, design exploration, and reviewing trade-offs. I verify all technical decisions myself.",
+      "count": 1,
+      "name": "question_68905630",
+      "updated": "2026-09-04T06:14:43.322668+00:00",
+      "source": "form"
+    },
+    "are you legally authorized to work in the country where this position is located?*": {
+      "label": "Are you legally authorized to work in the country where this position is located?*",
+      "value": "Yes",
+      "count": 1,
+      "name": "question_68905632",
+      "updated": "2026-09-04T06:14:43.322677+00:00",
+      "source": "form"
+    },
+    "will you require sponsorship for employment visa status now or in the future?*": {
+      "label": "Will you require sponsorship for employment visa status now or in the future?*",
+      "value": "No",
+      "count": 1,
+      "name": "question_68905633",
+      "updated": "2026-09-04T06:14:43.322685+00:00",
+      "source": "form"
+    },
+    "are you a current government official or were you a government official in the last five years (e.g., employee of a government agency or a government owned/controlled company, holder of public office or a civil service p": {
+      "label": "Are you a current government official or were you a government official in the last five years (e.g., employee of a government agency or a government owned/controlled company, hold",
+      "value": "Yes",
+      "count": 1,
+      "name": "question_68905634",
+      "updated": "2026-09-04T06:14:43.322707+00:00",
+      "source": "form"
+    },
+    "are you a close relative of a government official (i.e., child/step-child, spouse/partner, parent/guardian, aunt/uncle, first cousin, in-law)?*": {
+      "label": "Are you a close relative of a government official (i.e., child/step-child, spouse/partner, parent/guardian, aunt/uncle, first cousin, in-law)?*",
+      "value": "No",
+      "count": 1,
+      "name": "question_68905635",
+      "updated": "2026-09-04T06:14:43.322719+00:00",
+      "source": "form"
+    },
+    "to your knowledge, do you or a close relative currently hold a role, have a significant financial interest in, or maintain a close personal relationship with a senior leader at a company connected to coinbase that could": {
+      "label": "To your knowledge, do you or a close relative currently hold a role, have a significant financial interest in, or maintain a close personal relationship with a senior leader at a c",
+      "value": "No",
+      "count": 1,
+      "name": "question_68905636",
+      "updated": "2026-09-04T06:14:43.322740+00:00",
+      "source": "form"
+    },
+    "to your knowledge, were you referred to this position by a senior leader or decision‑maker at a current or prospective institutional client, business partner, or vendor of coinbase?*": {
+      "label": "To your knowledge, were you referred to this position by a senior leader or decision‑maker at a current or prospective institutional client, business partner, or vendor of Coinbase",
+      "value": "V.R. Siddhartha Engineering College",
+      "count": 1,
+      "name": "question_68905637",
+      "updated": "2026-09-04T06:14:43.322766+00:00",
+      "source": "form"
     }
   },
   "history": [
-    {
-      "ts": "2026-08-18T04:06:15.593915+00:00",
-      "company": "gitlab",
-      "title": "Manager, Solutions Architect - India",
-      "fields": [
-        {
-          "label": "Country",
-          "value": "e"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:06:17.644372+00:00",
-      "company": "gitlab",
-      "title": "Manager, Solutions Architect - India",
-      "fields": [
-        {
-          "label": "Country",
-          "value": "extensions"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:08:12.995571+00:00",
-      "company": "twilio",
-      "title": "Principal Engineer (L5)",
-      "fields": [
-        {
-          "label": "What is the source of your right to work where this role is listed?*",
-          "value": "Yes"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:13:45.873929+00:00",
-      "company": "zenoti",
-      "title": "Lead Engineer - Full Stack (AI)",
-      "fields": [
-        {
-          "label": "Country*",
-          "value": "rafi.success@gmail.com"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:16:39.735490+00:00",
-      "company": "gitlab",
-      "title": "Manager, Solutions Architect - India",
-      "fields": [
-        {
-          "label": "Veteran Status",
-          "value": "I am not a protected veteran"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:19:41.558759+00:00",
-      "company": "twilio",
-      "title": "Principal Engineer (L5)",
-      "fields": [
-        {
-          "label": "By checking this box, I consent to Twilio collecting, storing, and processing my responses to the demographic data surveys above.*",
-          "value": "1"
-        }
-      ]
-    },
     {
       "ts": "2026-08-18T04:20:57.222349+00:00",
       "company": "zenoti",
@@ -2283,6 +2305,160 @@
         {
           "label": "By using this form you agree with the storage and handling of your data by this website. *",
           "value": "yes"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T06:13:07.896293+00:00",
+      "company": "highradius",
+      "title": "Principal Product Solution Architect",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T06:14:43.322784+00:00",
+      "company": "coinbase",
+      "title": "Staff Software Engineer, Security Platform",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        },
+        {
+          "label": "Start date month*",
+          "value": "Immediate / ASAP"
+        },
+        {
+          "label": "Degree*",
+          "value": "B.Tech"
+        },
+        {
+          "label": "Which of the following best describes how you use AI tools today?*",
+          "value": "Yes. I use Claude and ChatGPT for architecture documentation, design exploration, and reviewing trade-offs. I verify all technical decisions myself."
+        },
+        {
+          "label": "Please confirm receipt of the above linked Global Data Privacy Notice and US Arbitration Agreement.*",
+          "value": "Agree"
+        },
+        {
+          "label": "I understand that Coinbase may use AI tools to assist in the application and interview process. *",
+          "value": "Yes. I use Claude and ChatGPT for architecture documentation, design exploration, and reviewing trade-offs. I verify all technical decisions myself."
+        },
+        {
+          "label": "Are you legally authorized to work in the country where this position is located?*",
+          "value": "Yes"
+        },
+        {
+          "label": "Will you require sponsorship for employment visa status now or in the future?*",
+          "value": "No"
+        },
+        {
+          "label": "Are you a current government official or were you a government official in the last five years (e.g., employee of a government agency or a government owned/controlled company, hold",
+          "value": "Yes"
+        },
+        {
+          "label": "Are you a close relative of a government official (i.e., child/step-child, spouse/partner, parent/guardian, aunt/uncle, first cousin, in-law)?*",
+          "value": "No"
+        },
+        {
+          "label": "To your knowledge, do you or a close relative currently hold a role, have a significant financial interest in, or maintain a close personal relationship with a senior leader at a c",
+          "value": "No"
+        },
+        {
+          "label": "To your knowledge, were you referred to this position by a senior leader or decision‑maker at a current or prospective institutional client, business partner, or vendor of Coinbase",
+          "value": "V.R. Siddhartha Engineering College"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T06:20:18.174407+00:00",
+      "company": "highradius",
+      "title": "Principal Product Solution Architect",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T06:21:16.847433+00:00",
+      "company": "coinbase",
+      "title": "Staff Software Engineer, Security Platform",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T06:22:32.247798+00:00",
+      "company": "highradius",
+      "title": "Principal Product Solution Architect",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T06:23:31.756250+00:00",
+      "company": "coinbase",
+      "title": "Staff Software Engineer, Security Platform",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
         }
       ]
     }

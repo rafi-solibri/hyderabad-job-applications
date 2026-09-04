@@ -76,7 +76,7 @@ def pull_instahyre(jobs):
     print("Instahyre...", flush=True)
     offset = 0
     seen = 0
-    for _ in range(60):
+    for _ in range(180):
         data, status = fetch_json(
             f"https://www.instahyre.com/api/v1/job_search/?offset={offset}&limit=50"
         )

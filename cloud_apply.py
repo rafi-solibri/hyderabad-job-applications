@@ -5794,8 +5794,10 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
         # Owner 21 Aug 2026: AMD iCIMS Auth0 rejected every stored portal password.
         if "careers.amd.com" in u or "login.icims.com" in u and "amd" in u:
             continue
-        if linkedin_blocked_now() and "linkedin.com" in u:
-            continue
+        if "linkedin.com" in u:
+            skip_li, _why = linkedin_guard.should_skip_apply()
+            if skip_li or linkedin_blocked_now():
+                continue
         if GOOGLE_SIGNIN_BLOCKED and any(
             h in u for h in ("linkedin.com", "naukri.com", "indeed.com", "instahyre.com")
         ):

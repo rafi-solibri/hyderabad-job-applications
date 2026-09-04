@@ -1,11 +1,12 @@
 {
   "restricted_until": "2026-09-10T03:37:00+00:00",
-  "note": "LinkedIn temporarily restricted until 2026-09-10T03:37:00+00:00 \u2014 session-skip only",
+  "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner never applies LinkedIn",
   "day": "2026-09-03",
   "day_count": 1,
   "last_apply_ts": "2026-09-03T05:51:16.673223+00:00",
   "copilot_on_linkedin": false,
   "per_run": 12,
   "per_day": 15,
-  "min_gap_sec": 90
+  "min_gap_sec": 90,
+  "leave_to_other_automation": true
 }

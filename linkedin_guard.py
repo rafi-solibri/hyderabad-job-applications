@@ -69,6 +69,9 @@ def _empty_state() -> dict:
         "per_run": PER_RUN,
         "per_day": PER_DAY,
         "min_gap_sec": MIN_GAP_SEC,
+        # This 11 AM career-portal runner must never Easy Apply LinkedIn.
+        # MyRepo automation beb6ef8e (Daily 9 AM) owns LinkedIn volume.
+        "leave_to_other_automation": True,
     }
 
 
@@ -188,7 +191,20 @@ def remaining_this_run() -> int:
     return max(0, min(per_run - _RUN_COUNT, remaining_today()))
 
 
+def leave_to_other_automation() -> bool:
+    """True: this repo never Easy Applies LinkedIn (9 AM MyRepo owns that)."""
+    state = load()
+    if "leave_to_other_automation" not in state:
+        return True
+    return bool(state.get("leave_to_other_automation"))
+
+
 def should_skip_apply() -> tuple[bool, str]:
+    if leave_to_other_automation():
+        return True, (
+            "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — "
+            "this runner session-skips LinkedIn so a second volume spike cannot restrict the account"
+        )
     if blocked_now():
         return True, restriction_note()
     if remaining_this_run() <= 0:

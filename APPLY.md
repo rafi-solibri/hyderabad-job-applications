@@ -107,14 +107,14 @@ Leave honeypot fields empty.
   + 1 career when LinkedIn is open). Naukri / LinkedIn / Indeed / Cutshort /
   Foundit / Instahyre are Easy Apply — start them immediately; do not hold
   them behind slow Workday forms.
-- **LinkedIn (do not get restricted again):** LinkedIn blamed high-volume
-  *profile data* access via a third-party tool. Until the stated lift time in
-  `data/linkedin_guard.json` (30 Aug 2026 7:43 PM PDT / 31 Aug 02:43 UTC),
-  session-skip LinkedIn only — do **not** persist-skip leftovers. After it
-  lifts: apply **12 Easy Applies per run** (15/day max), **90s** between them,
-  **no Simplify Copilot** on LinkedIn, never open `/in/` or Recruiter profiles,
-  Easy Apply on `jobs/view` only. If a restriction or checkpoint page appears,
-  stop LinkedIn for the rest of the run. Do not scrape Voyager people APIs.
+- **LinkedIn (never apply from this runner):** The dedicated **LinkedIn Daily
+  9 AM** automation in MyRepo (`beb6ef8e-908f-11f1-ba66-0e7d0216e441`) owns
+  Easy Apply. This 11 AM career-portal runner **session-skips every LinkedIn
+  leftover** (`linkedin_guard.leave_to_other_automation`). Two runners on the
+  same account caused the Sept 3 checkpoint / restriction. Do **not** persist-skip
+  leftovers. Never open `/in/` or Recruiter profiles. Never load Simplify Copilot
+  on a LinkedIn tab. Do not scrape Voyager people APIs. If a checkpoint still
+  appears from leftover tabs, stop LinkedIn for the rest of the run.
 - No per-company application cap. Duplicate company+title listings are still
   collapsed. Skip Salesforce/SAP/PEGA, Java-mandatory, DevOps-primary, and
   out-of-scope titles already in `apply_now.py`.
