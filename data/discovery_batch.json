@@ -442,17 +442,6 @@
     "over_cap": false
   },
   {
-    "company": "Syniti",
-    "title": "Solution Architect",
-    "location": "Hyderabad, India",
-    "url": "https://careers.syniti.com/job/Hyderabad-Solution-Architect/1402724400/",
-    "ats": "Foundit",
-    "job_id": "57046236",
-    "already_applied": false,
-    "match_score": 150,
-    "over_cap": false
-  },
-  {
     "company": "Blue Yonder",
     "title": "Staff Software Engineer I - NodeJS, Microservices, Cloud & Typescript/JavaScript",
     "location": "Hyderabad, India",
@@ -530,6 +519,17 @@
     "over_cap": false
   },
   {
+    "company": "Microchip Technology",
+    "title": "Principal Engineer, Verification",
+    "location": "Hyderabad, India",
+    "url": "https://wd5.myworkdaysite.com/en-US/recruiting/microchiphr/External/job/India---Hyderabad/Principal-Engineer--Verification_R1898-25-7",
+    "ats": "Foundit",
+    "job_id": "38092107",
+    "already_applied": false,
+    "match_score": 116,
+    "over_cap": false
+  },
+  {
     "company": "Freshworks",
     "title": "Lead Software Engineer - Machine Learning",
     "location": "Hyderabad  in",
@@ -561,6 +561,18 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 106
+  },
+  {
+    "company": "ECS ME",
+    "title": "Solutions Architect - MS Azure & O365",
+    "location": "12-15 Yrs Not disclosed Hyderabad",
+    "url": "https://www.naukri.com/job-listings-solutions-architect-ms-azure-o365-ecs-me-llc-hyderabad-12-to-15-years-270126502116",
+    "apply_url": "https://www.naukri.com/job-listings-solutions-architect-ms-azure-o365-ecs-me-llc-hyderabad-12-to-15-years-270126502116",
+    "ats": "Naukri",
+    "job_id": "270126502116",
+    "already_applied": false,
+    "match_score": 30,
+    "over_cap": false
   },
   {
     "company": "Perficient",
@@ -618,6 +630,17 @@
     "match_score": 16
   },
   {
+    "company": "EPAM",
+    "title": "Lead Software Engineer - .NET",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/65422797",
+    "ats": "Foundit",
+    "job_id": "65422797",
+    "already_applied": false,
+    "match_score": 6,
+    "over_cap": false
+  },
+  {
     "company": "Simba Technologies",
     "title": "Lead Software Engineer (C#Dot Net Core, React/Angular.js)",
     "location": "Hyderabad",
@@ -647,6 +670,18 @@
     "apply_url": "https://www.naukri.com/job-listings-solution-architect-node-js-mind-waveai-solutions-hyderabad-10-to-12-years-230726036438",
     "ats": "Naukri",
     "job_id": "230726036438",
+    "already_applied": false,
+    "match_score": 2,
+    "over_cap": false
+  },
+  {
+    "company": "Mouri Tech",
+    "title": "Senior .NET Developer with Azure and AI Experience",
+    "location": "8-13 Yrs Not disclosed Hybrid - Hyderabad",
+    "url": "https://www.naukri.com/job-listings-senior-net-developer-with-azure-and-ai-experience-mouri-tech-hyderabad-8-to-13-years-310826026578",
+    "apply_url": "https://www.naukri.com/job-listings-senior-net-developer-with-azure-and-ai-experience-mouri-tech-hyderabad-8-to-13-years-310826026578",
+    "ats": "Naukri",
+    "job_id": "310826026578",
     "already_applied": false,
     "match_score": 2,
     "over_cap": false
@@ -1568,6 +1603,17 @@
     "match_score": -10
   },
   {
+    "company": "mattel, inc.",
+    "title": "BY ESP Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4462065711/",
+    "ats": "Foundit",
+    "job_id": "65414618",
+    "already_applied": false,
+    "match_score": -10,
+    "over_cap": false
+  },
+  {
     "company": "mindsuite informatics private limited",
     "title": "Solution Architect Technology Working Group Lead",
     "location": "Hyderabad, India",
@@ -1899,6 +1945,17 @@
     "url": "https://www.linkedin.com/jobs/view/4455355973/",
     "ats": "Foundit",
     "job_id": "65032119",
+    "already_applied": false,
+    "match_score": -24,
+    "over_cap": false
+  },
+  {
+    "company": "Chubb",
+    "title": "Principal Engineer - Integration Lead",
+    "location": "Hyderabad, India",
+    "url": "https://www.foundit.in/job/65410211",
+    "ats": "Foundit",
+    "job_id": "65410211",
     "already_applied": false,
     "match_score": -24,
     "over_cap": false
@@ -2533,6 +2590,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -26
+  },
+  {
+    "company": "ideateq inc.",
+    "title": "Technical Lead/Architect",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4459545069/",
+    "ats": "Foundit",
+    "job_id": "65422782",
+    "already_applied": false,
+    "match_score": -26,
+    "over_cap": false
   },
   {
     "company": "iteria.us",
@@ -3259,6 +3327,18 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -34
+  },
+  {
+    "company": "Connexions Data",
+    "title": "SAP S4HANA ABAP Technical Lead",
+    "location": "12-20 Yrs 30-45 Lacs PA Hyderabad, Chennai, Bengaluru",
+    "url": "https://www.naukri.com/job-listings-sap-s4hana-abap-technical-lead-connexions-data-hyderabad-chennai-bengaluru-12-to-20-years-020926036029",
+    "apply_url": "https://www.naukri.com/job-listings-sap-s4hana-abap-technical-lead-connexions-data-hyderabad-chennai-bengaluru-12-to-20-years-020926036029",
+    "ats": "Naukri",
+    "job_id": "020926036029",
+    "already_applied": false,
+    "match_score": -34,
+    "over_cap": false
   },
   {
     "company": "Creditsafe Technology",
@@ -4895,6 +4975,17 @@
     "match_score": -46
   },
   {
+    "company": "Lyric",
+    "title": "Senior Software Engineer II",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4460009319/",
+    "ats": "Foundit",
+    "job_id": "65421702",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
+  },
+  {
     "company": "Mahindra Satyam",
     "title": "Senior Software Engineer",
     "location": "Hyderabad, India",
@@ -4904,6 +4995,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -46
+  },
+  {
+    "company": "Minfy",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4462168590/",
+    "ats": "Foundit",
+    "job_id": "65407056",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "Mphasis",
@@ -4948,17 +5050,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -46
-  },
-  {
-    "company": "ScaleOrange Technologies",
-    "title": "Senior Backend Engineer",
-    "location": "Hyderabad",
-    "url": "https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/",
-    "ats": "Instahyre",
-    "job_id": "441718",
-    "already_applied": false,
-    "match_score": -46,
-    "over_cap": false
   },
   {
     "company": "Seismic",
@@ -5124,6 +5215,17 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": -46
+  },
+  {
+    "company": "hireologist",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://www.linkedin.com/jobs/view/4461717470/",
+    "ats": "Foundit",
+    "job_id": "65421785",
+    "already_applied": false,
+    "match_score": -46,
+    "over_cap": false
   },
   {
     "company": "phigital care",

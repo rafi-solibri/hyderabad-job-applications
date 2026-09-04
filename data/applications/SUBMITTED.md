@@ -78,3 +78,5 @@
   https://www.instahyre.com/job-404101-sr-software-engineer-at-uber-freight-hyderabad/
 - **2026-09-03T05:50:57Z** SUBMITTED **ScaleOrange Technologies** — Senior Backend Engineer
   https://www.instahyre.com/job-441718-senior-backend-engineer-at-scaleorange-technologies-hyderabad/
+- **2026-09-04T05:48:56Z** SUBMITTED **TA Digital** — Staff Software Engineer
+  https://www.instahyre.com/job-441742-staff-software-engineer-at-ta-digital-hyderabad/

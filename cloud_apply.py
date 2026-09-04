@@ -5464,6 +5464,48 @@ def persist_existing_closed() -> None:
         apply_now.persist_skipped(row, row.get("note") or "closed posting — cannot submit")
 
 
+def seed_session_skips_from_today() -> None:
+    """Same-day iCIMS/Schwab STUCK and Foundit Akamai: session-skip only, do not hammer."""
+    global FOUNDIT_AKAMAI_BLOCKED
+    if not RESULTS.exists():
+        return
+    try:
+        rows = json.loads(RESULTS.read_text(encoding="utf-8"))
+    except Exception:
+        return
+    today = datetime.now(timezone.utc).date().isoformat()
+    schwab_n = 0
+    for row in rows:
+        ts = str(row.get("ts") or "")
+        if not ts.startswith(today):
+            continue
+        status = (row.get("status") or "").upper()
+        note = (row.get("note") or "").lower()
+        blob = " ".join(
+            [
+                str(row.get("company") or ""),
+                str(row.get("apply_url") or ""),
+                str(row.get("url") or ""),
+                str(row.get("final_url") or ""),
+                note,
+            ]
+        ).lower()
+        if status == "STUCK" and ("icims.com" in blob or "schwab" in blob):
+            SESSION_SKIP_KEYS.update(apply_now.job_match_keys(row))
+            schwab_n += 1
+        if "foundit.in" in blob and (
+            "akamai" in note or "board blocked" in note or "foundit still blocked" in note
+        ):
+            FOUNDIT_AKAMAI_BLOCKED = True
+    if schwab_n:
+        print(
+            f"  Same-day session-skip {schwab_n} iCIMS/Schwab STUCK (do not hammer login).",
+            flush=True,
+        )
+    if FOUNDIT_AKAMAI_BLOCKED:
+        print("  Same-day Foundit Akamai still blocking this Chrome session.", flush=True)
+
+
 def pick_open_apply_page(context):
     """Prefer the live ATS form the owner can see. Never pick Gmail or parked LinkedIn CAPTCHA."""
     skip = (
@@ -5979,6 +6021,7 @@ def main(
     form_memory.seed_from_learned()
     seed_parked_captcha_urls()
     persist_existing_closed()
+    seed_session_skips_from_today()
     queue = apply_now.queue()
     try_jobs, blocked_board = public_queue(queue, allow_aggregators=True)
     try_jobs = leftover_career_jobs(try_jobs)
@@ -6057,7 +6100,7 @@ def main(
             and not GOOGLE_SIGNIN_BLOCKED
             and not GOOGLE_2FA_PARKED
             and not NAUKRI_BOT_BLOCKED
-            and _naukri_leftover_n(leftover_career_jobs(pending)) == 0
+            and not leftover_career_jobs(pending)
         ):
             print("  Searching Naukri in Chrome for Quick apply leftovers...", flush=True)
             discover_naukri_in_chrome(context)
