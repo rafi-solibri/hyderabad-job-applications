@@ -5239,5 +5239,33 @@
     "note": "job posting gone",
     "final_url": "https://jobs.smartrecruiters.com/Experian/744000148215213-senior-staff-engineer",
     "ts": "2026-09-11T05:56:28.718559+00:00"
+  },
+  {
+    "company": "Blue Yonder",
+    "title": "Lead Software Engineer - PLSQL, Unix Batch Scripting & Node JS",
+    "location": "Hyderabad, India",
+    "url": "https://jda.wd5.myworkdayjobs.com/en-US/JDA_Careers/job/Hyderabad/Lead-Software-Engineer---PLSQL--Unix-Batch-Scripting---Node-JS_262313",
+    "ats": "Foundit",
+    "job_id": "66237065",
+    "apply_url": "https://jda.wd5.myworkdayjobs.com/en-US/JDA_Careers/job/Hyderabad/Lead-Software-Engineer---PLSQL--Unix-Batch-Scripting---Node-JS_262313",
+    "ok": false,
+    "status": "STUCK",
+    "note": "ATS URL unchanged — next job",
+    "final_url": "https://jda.wd5.myworkdayjobs.com/en-US/JDA_Careers/job/Hyderabad/Lead-Software-Engineer---PLSQL--Unix-Batch-Scripting---Node-JS_262313/apply/applyManually",
+    "ts": "2026-09-11T05:56:31.463505+00:00"
+  },
+  {
+    "company": "PwC",
+    "title": "IN-Manager_Senior Data Technical Lead_D&A_Advisory_Hyderabad",
+    "location": "Hyderabad",
+    "url": "https://pwc.wd3.myworkdayjobs.com/Global_Experienced_Careers/job/Hyderabad---Salarpuria/IN-Senior-Associate-Azure-Fabric-Engineer-Data-Analytics-Advisory-Bangalore_751882WD-1",
+    "ats": "Foundit",
+    "job_id": "65599898",
+    "apply_url": "https://pwc.wd3.myworkdayjobs.com/Global_Experienced_Careers/job/Hyderabad---Salarpuria/IN-Senior-Associate-Azure-Fabric-Engineer-Data-Analytics-Advisory-Bangalore_751882WD-1",
+    "ok": false,
+    "status": "STUCK",
+    "note": "ATS URL unchanged — next job",
+    "final_url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Hyderabad---Salarpuria/IN-Senior-Associate-Azure-Fabric-Engineer-Data-Analytics-Advisory-Bangalore_751882WD-1/apply/applyManually",
+    "ts": "2026-09-11T05:57:47.656673+00:00"
   }
 ]
