@@ -5108,8 +5108,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
-    "final_url": "https://www.linkedin.com/jobs/view/4462160972?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYCkmLi5Fya3SNEaco2U51RzN3GSUFTS2rBiLy2XAKKMhI2-EVj54TNCdhRm_2H_F9dBFDFDcr1CK5uoLkzxG8Wk3Y3OKHFAXA&ccuid=75181907707",
-    "ts": "2026-09-11T05:49:42.246442+00:00"
+    "final_url": "https://www.linkedin.com/jobs/view/4462160972?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYCkmLi5Fya3SNEaco2U51RzN3GSUFTS2rBiLy2XAKKMhI2-EVj54TNCdhRm_2H_F9dBFDFDcr1CK5uoLkzxG8Wk3Y3OKHFAXA&ccuid=75182138282",
+    "ts": "2026-09-11T06:07:14.007643+00:00"
   },
   {
     "company": "Firstsource",
@@ -5122,8 +5122,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
-    "final_url": "https://www.linkedin.com/jobs/view/4462786638?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYEOLYGS2xp3ZvpFBFHUBkTa8_wEcysTL5F0rxKFTuTEwr9PnWKiNYCmEIbGSMoVnnAfE4ZGxIiui90q6UmVN-9B68bfdcwIVg&ccuid=75181925762",
-    "ts": "2026-09-11T05:51:01.892674+00:00"
+    "final_url": "https://www.linkedin.com/jobs/view/4462786638?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYEOLYGS2xp3ZvpFBFHUBkTa8_wEcysTL5F0rxKFTuTEwr9PnWKiNYCmEIbGSMoVnnAfE4ZGxIiui90q6UmVN-9B68bfdcwIVg&ccuid=75182138759",
+    "ts": "2026-09-11T06:07:16.264702+00:00"
   },
   {
     "company": "D. E. Shaw",
@@ -5164,8 +5164,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
-    "final_url": "https://www.linkedin.com/jobs/view/4460450171?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYDRSZ6BWixnzAU3Zhv0hHpS_64AGiQTjUnS42uLrxYGVizgOy6DZL4H0jaAFLccXu99kPVRIOARFp1xWj4cNbBg_XfUfcMdHA&ccuid=75181926328",
-    "ts": "2026-09-11T05:51:04.263293+00:00"
+    "final_url": "https://www.linkedin.com/jobs/view/4460450171?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYDRSZ6BWixnzAU3Zhv0hHpS_64AGiQTjUnS42uLrxYGVizgOy6DZL4H0jaAFLccXu99kPVRIOARFp1xWj4cNbBg_XfUfcMdHA&ccuid=75182139260",
+    "ts": "2026-09-11T06:07:18.490094+00:00"
   },
   {
     "company": "upgrad rekrut",
@@ -5282,5 +5282,35 @@
     "final_url": "https://fa-evmm-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2444/apply/section/1/?location=India&locationId=300000000471745&locationLevel=country&mode=location",
     "ts": "2026-09-11T05:58:51.364391+00:00",
     "fields_learned": 55
+  },
+  {
+    "company": "Arrow Electronics India Private Limited",
+    "title": "Technical Lead (Silicon Validation)",
+    "location": "Hyderabad, India",
+    "url": "https://careers.arrow.com/us/en/job/R248260/Technical-Lead-Silicon-Validation",
+    "ats": "Foundit",
+    "job_id": "66343899",
+    "apply_url": "https://careers.arrow.com/us/en/job/R248260/Technical-Lead-Silicon-Validation",
+    "ok": false,
+    "status": "STUCK",
+    "note": "leftover fields; owner sleeping — next job",
+    "final_url": "https://careers.arrow.com/us/en/apply?jobSeqNo=ARELUSR248260ENUS&step=2&stepname=personalInformation",
+    "ts": "2026-09-11T06:04:16.118856+00:00",
+    "fields_learned": 5
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Sr Manager Software Development And Engineering Lead Pl",
+    "location": "Hyderabad",
+    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-lead-pl/33727/100388457136",
+    "ats": "Phenom",
+    "job_id": "100388457136",
+    "apply_url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-lead-pl/33727/100388457136",
+    "ok": false,
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://career-schwab.icims.com/jobs/login?loginOnly=1&redirect=search&mobile=false&width=1230&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240&css_submitMode=1&universalLogin=1&hashed=184347607&code=4_TblQ92TrI7Ep0nDRdAh4hLKBo4pmNfzqHjp4Z9YTj-g&state=8c42b1148dfda1955f8ea61e3f520298b42864c9438b1c79fa01d9249bb88f0a",
+    "ts": "2026-09-11T06:05:28.424517+00:00",
+    "fields_learned": 0
   }
 ]
