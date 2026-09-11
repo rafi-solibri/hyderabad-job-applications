@@ -4796,6 +4796,8 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 fill_foundit_native_login(page)
         except Exception:
             pass
+        if leave_linkedin_to_other_automation(page, row):
+            return row
         on_linkedin = linkedin_guard.is_linkedin_job(job, page.url or url)
         copilot_start = ""
         if (not on_linkedin) or linkedin_guard.allow_copilot():
