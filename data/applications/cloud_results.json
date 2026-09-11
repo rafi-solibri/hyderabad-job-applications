@@ -4797,10 +4797,10 @@
     "apply_url": "https://boards.greenhouse.io/embed/job_app?for=highradius&token=7802439003",
     "ok": false,
     "status": "WAITING_EXPIRED",
-    "note": "waited 15s; learned 3 fields",
+    "note": "waited 15s; learned 6 fields",
     "final_url": "https://job-boards.greenhouse.io/embed/job_app?for=highradius&token=7802439003",
-    "ts": "2026-09-11T05:36:32.622322+00:00",
-    "fields_learned": 6
+    "ts": "2026-09-11T05:49:44.532619+00:00",
+    "fields_learned": 9
   },
   {
     "company": "T-Mobile",
@@ -5121,10 +5121,9 @@
     "apply_url": "https://click.appcast.io/t/2IQqfro5moRCHt0vRkKy1iKEUKaMY-cpd6OvpSCNLjwHR5cJR4TcXcURuIFt2wywdv8E_u4EZnLHC-OxbDAjcQ==",
     "ok": false,
     "status": "STUCK",
-    "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://www.linkedin.com/jobs/view/aws-connect-technical-architect-at-firstsource-4462786638/",
-    "ts": "2026-09-11T05:45:12.837817+00:00",
-    "fields_learned": 0
+    "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
+    "final_url": "https://www.linkedin.com/jobs/view/4462786638?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYEOLYGS2xp3ZvpFBFHUBkTa8_wEcysTL5F0rxKFTuTEwr9PnWKiNYCmEIbGSMoVnnAfE4ZGxIiui90q6UmVN-9B68bfdcwIVg&ccuid=75181925762",
+    "ts": "2026-09-11T05:51:01.892674+00:00"
   },
   {
     "company": "D. E. Shaw",
@@ -5153,5 +5152,48 @@
     "note": "submitted after Apply",
     "final_url": "https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/",
     "ts": "2026-09-11T05:49:35.072747+00:00"
+  },
+  {
+    "company": "Backbase",
+    "title": "Staff Engineer (Payment Domain Expert)",
+    "location": "Hyderabad, India",
+    "url": "https://click.appcast.io/t/o6MHHZfK4Rc-GvWBOpQL3wGALtu0Eyld2m0RJnY0auOtYZARzAzyb7BDac1TOYvTgQvFfi7p22YicCUhkFI0Zg==",
+    "ats": "Foundit",
+    "job_id": "66329381",
+    "apply_url": "https://click.appcast.io/t/o6MHHZfK4Rc-GvWBOpQL3wGALtu0Eyld2m0RJnY0auOtYZARzAzyb7BDac1TOYvTgQvFfi7p22YicCUhkFI0Zg==",
+    "ok": false,
+    "status": "STUCK",
+    "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
+    "final_url": "https://www.linkedin.com/jobs/view/4460450171?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYDRSZ6BWixnzAU3Zhv0hHpS_64AGiQTjUnS42uLrxYGVizgOy6DZL4H0jaAFLccXu99kPVRIOARFp1xWj4cNbBg_XfUfcMdHA&ccuid=75181926328",
+    "ts": "2026-09-11T05:51:04.263293+00:00"
+  },
+  {
+    "company": "upgrad rekrut",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://click.appcast.io/t/m2JZbZRqmD1S9BjnitFpVVOnUW3zdiSXvOdQibr30B0jLkIaLYacaurhkcq6uDML-6KWm-HXggHsAhyUG1FB8A==",
+    "ats": "Foundit",
+    "job_id": "66328598",
+    "apply_url": "https://click.appcast.io/t/m2JZbZRqmD1S9BjnitFpVVOnUW3zdiSXvOdQibr30B0jLkIaLYacaurhkcq6uDML-6KWm-HXggHsAhyUG1FB8A==",
+    "ok": false,
+    "status": "STUCK",
+    "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
+    "final_url": "https://www.linkedin.com/jobs/view/4460719761?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYGfeY9424p7yiAtKi_DZgPZb95tHnf5Z5KrbDHZRW4T0Hme-PIfBXbef6nNzHIuVSGBQW_5QKeo-mQP8Th-DUhJIBJFBa5WPA&ccuid=75181926834",
+    "ts": "2026-09-11T05:51:06.584981+00:00"
+  },
+  {
+    "company": "mongodb",
+    "title": "Solutions Architect",
+    "location": "Bengaluru; Gurugram; Hyderabad",
+    "url": "https://www.mongodb.com/careers/job/?gh_jid=8173661",
+    "ats": "Greenhouse",
+    "job_id": "8173661",
+    "apply_url": "https://job-boards.greenhouse.io/mongodb/jobs/8173661",
+    "ok": false,
+    "status": "WAITING_EXPIRED",
+    "note": "waited 15s; learned 0 fields",
+    "final_url": "https://www.mongodb.com/careers/jobs/8173661",
+    "ts": "2026-09-11T05:51:09.679601+00:00",
+    "fields_learned": 0
   }
 ]
