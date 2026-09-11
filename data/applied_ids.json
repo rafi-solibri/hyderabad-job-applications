@@ -9824,7 +9824,7 @@
     "job_id": "99705569696",
     "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/99705569696",
     "note": "closed posting — cannot submit",
-    "ts": "2026-09-11T05:40:47.880483+00:00"
+    "ts": "2026-09-11T05:31:10.608465+00:00"
   },
   "charlesschwab|sr manager software development and engineering senior pl": {
     "company": "Charles Schwab",
@@ -9832,15 +9832,7 @@
     "job_id": "99705569696",
     "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/99705569696",
     "note": "closed posting — cannot submit",
-    "ts": "2026-09-11T05:40:47.880483+00:00"
-  },
-  "442234": {
-    "company": "D. E. Shaw",
-    "title": "Principal Architect - ManCo",
-    "job_id": "442234",
-    "url": "https://www.instahyre.com/job-442234-principal-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/",
-    "note": "submitted after Apply",
-    "ts": "2026-09-11T05:49:31.967530+00:00"
+    "ts": "2026-09-11T05:31:10.608465+00:00"
   },
   "deshaw|principal architect - manco": {
     "company": "D. E. Shaw",
@@ -9848,15 +9840,15 @@
     "job_id": "442234",
     "url": "https://www.instahyre.com/job-442234-principal-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/",
     "note": "submitted after Apply",
-    "ts": "2026-09-11T05:49:31.967530+00:00"
+    "ts": "2026-09-11T05:49:34.141777+00:00"
   },
-  "nemetschekgroup|technical lead - fullstack": {
-    "company": "Nemetschek Group",
-    "title": "Technical Lead - Fullstack",
-    "job_id": "442291",
-    "url": "https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/",
+  "442234": {
+    "company": "D. E. Shaw",
+    "title": "Principal Architect - ManCo",
+    "job_id": "442234",
+    "url": "https://www.instahyre.com/job-442234-principal-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/",
     "note": "submitted after Apply",
-    "ts": "2026-09-11T05:49:38.990135+00:00"
+    "ts": "2026-09-11T05:49:34.141777+00:00"
   },
   "442291": {
     "company": "Nemetschek Group",
@@ -9864,15 +9856,15 @@
     "job_id": "442291",
     "url": "https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/",
     "note": "submitted after Apply",
-    "ts": "2026-09-11T05:49:38.990135+00:00"
+    "ts": "2026-09-11T05:49:41.199345+00:00"
   },
-  "66237316": {
-    "company": "Experian",
-    "title": "Senior Staff Engineer",
-    "job_id": "66237316",
-    "url": "https://jobs.smartrecruiters.com/Experian/744000148215213-senior-staff-engineer",
-    "note": "closed posting — cannot submit",
-    "ts": "2026-09-11T05:59:36.147348+00:00"
+  "nemetschekgroup|technical lead - fullstack": {
+    "company": "Nemetschek Group",
+    "title": "Technical Lead - Fullstack",
+    "job_id": "442291",
+    "url": "https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/",
+    "note": "submitted after Apply",
+    "ts": "2026-09-11T05:49:41.199345+00:00"
   },
   "experian|senior staff engineer": {
     "company": "Experian",
@@ -9880,6 +9872,14 @@
     "job_id": "66237316",
     "url": "https://jobs.smartrecruiters.com/Experian/744000148215213-senior-staff-engineer",
     "note": "closed posting — cannot submit",
-    "ts": "2026-09-11T05:59:36.147348+00:00"
+    "ts": "2026-09-11T05:56:30.169438+00:00"
+  },
+  "66237316": {
+    "company": "Experian",
+    "title": "Senior Staff Engineer",
+    "job_id": "66237316",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000148215213-senior-staff-engineer",
+    "note": "closed posting — cannot submit",
+    "ts": "2026-09-11T05:56:30.169438+00:00"
   }
 }

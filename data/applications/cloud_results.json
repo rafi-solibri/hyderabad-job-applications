@@ -3653,7 +3653,7 @@
     "status": "STUCK",
     "note": "board blocked this environment (access denied)",
     "final_url": "https://www.foundit.in/job/61934442",
-    "ts": "2026-09-11T05:37:34.170145+00:00"
+    "ts": "2026-09-11T05:25:41.353998+00:00"
   },
   {
     "company": "Globallogic India",
@@ -4561,7 +4561,7 @@
     "status": "CLOSED",
     "note": "job posting gone",
     "final_url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/99705569696",
-    "ts": "2026-09-11T05:40:44.311803+00:00"
+    "ts": "2026-09-11T05:31:07.082773+00:00"
   },
   {
     "company": "ScaleOrange Technologies",
@@ -4799,7 +4799,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 15s; learned 6 fields",
     "final_url": "https://job-boards.greenhouse.io/embed/job_app?for=highradius&token=7802439003",
-    "ts": "2026-09-11T06:06:41.167672+00:00",
+    "ts": "2026-09-11T05:49:44.532619+00:00",
     "fields_learned": 9
   },
   {
@@ -4856,7 +4856,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 15s; learned 3 fields",
     "final_url": "https://job-boards.greenhouse.io/embed/job_app?token=8167571&for=coinbase&gh_jid=8167571",
-    "ts": "2026-09-11T06:07:52.739169+00:00",
+    "ts": "2026-09-11T05:53:33.229424+00:00",
     "fields_learned": 6
   },
   {
@@ -5098,6 +5098,34 @@
     "ts": "2026-09-04T06:19:38.882677+00:00"
   },
   {
+    "company": "ANSR",
+    "title": "Principal Solution Architect, IT Software",
+    "location": "Hyderabad, India",
+    "url": "https://click.appcast.io/t/XVmSLhjZNjkrttXVNsT8Lu-vPkrRosyS5y2s7Tvl1U7XLDV2CogLxjVQEEvLGIk0ZW357Nu-MNQ673YX18bitw==",
+    "ats": "Foundit",
+    "job_id": "66330432",
+    "apply_url": "https://click.appcast.io/t/XVmSLhjZNjkrttXVNsT8Lu-vPkrRosyS5y2s7Tvl1U7XLDV2CogLxjVQEEvLGIk0ZW357Nu-MNQ673YX18bitw==",
+    "ok": false,
+    "status": "STUCK",
+    "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
+    "final_url": "https://www.linkedin.com/jobs/view/4462160972?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYCkmLi5Fya3SNEaco2U51RzN3GSUFTS2rBiLy2XAKKMhI2-EVj54TNCdhRm_2H_F9dBFDFDcr1CK5uoLkzxG8Wk3Y3OKHFAXA&ccuid=75182138282",
+    "ts": "2026-09-11T06:07:14.007643+00:00"
+  },
+  {
+    "company": "Firstsource",
+    "title": "AWS Connect Technical Architect",
+    "location": "Hyderabad, India",
+    "url": "https://click.appcast.io/t/2IQqfro5moRCHt0vRkKy1iKEUKaMY-cpd6OvpSCNLjwHR5cJR4TcXcURuIFt2wywdv8E_u4EZnLHC-OxbDAjcQ==",
+    "ats": "Foundit",
+    "job_id": "66328329",
+    "apply_url": "https://click.appcast.io/t/2IQqfro5moRCHt0vRkKy1iKEUKaMY-cpd6OvpSCNLjwHR5cJR4TcXcURuIFt2wywdv8E_u4EZnLHC-OxbDAjcQ==",
+    "ok": false,
+    "status": "STUCK",
+    "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
+    "final_url": "https://www.linkedin.com/jobs/view/4462786638?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYEOLYGS2xp3ZvpFBFHUBkTa8_wEcysTL5F0rxKFTuTEwr9PnWKiNYCmEIbGSMoVnnAfE4ZGxIiui90q6UmVN-9B68bfdcwIVg&ccuid=75182138759",
+    "ts": "2026-09-11T06:07:16.264702+00:00"
+  },
+  {
     "company": "D. E. Shaw",
     "title": "Principal Architect - ManCo",
     "location": "Bangalore,Gurgaon,Hyderabad",
@@ -5109,7 +5137,7 @@
     "status": "SUBMITTED",
     "note": "submitted after Apply",
     "final_url": "https://www.instahyre.com/job-442234-principal-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/",
-    "ts": "2026-09-11T05:49:14.995911+00:00"
+    "ts": "2026-09-11T05:49:28.030626+00:00"
   },
   {
     "company": "Nemetschek Group",
@@ -5123,37 +5151,80 @@
     "status": "SUBMITTED",
     "note": "submitted after Apply",
     "final_url": "https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/",
-    "ts": "2026-09-11T05:49:32.898438+00:00"
+    "ts": "2026-09-11T05:49:35.072747+00:00"
   },
   {
-    "company": "ANSR",
-    "title": "Principal Solution Architect, IT Software",
+    "company": "Backbase",
+    "title": "Staff Engineer (Payment Domain Expert)",
     "location": "Hyderabad, India",
-    "url": "https://click.appcast.io/t/XVmSLhjZNjkrttXVNsT8Lu-vPkrRosyS5y2s7Tvl1U7XLDV2CogLxjVQEEvLGIk0ZW357Nu-MNQ673YX18bitw==",
+    "url": "https://click.appcast.io/t/o6MHHZfK4Rc-GvWBOpQL3wGALtu0Eyld2m0RJnY0auOtYZARzAzyb7BDac1TOYvTgQvFfi7p22YicCUhkFI0Zg==",
     "ats": "Foundit",
-    "job_id": "66330432",
-    "apply_url": "https://click.appcast.io/t/XVmSLhjZNjkrttXVNsT8Lu-vPkrRosyS5y2s7Tvl1U7XLDV2CogLxjVQEEvLGIk0ZW357Nu-MNQ673YX18bitw==",
+    "job_id": "66329381",
+    "apply_url": "https://click.appcast.io/t/o6MHHZfK4Rc-GvWBOpQL3wGALtu0Eyld2m0RJnY0auOtYZARzAzyb7BDac1TOYvTgQvFfi7p22YicCUhkFI0Zg==",
     "ok": false,
     "status": "STUCK",
-    "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://www.linkedin.com/jobs/view/4462160972/?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&mcid=6853763504395177984",
-    "ts": "2026-09-11T05:54:35.253232+00:00",
+    "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
+    "final_url": "https://www.linkedin.com/jobs/view/4460450171?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYDRSZ6BWixnzAU3Zhv0hHpS_64AGiQTjUnS42uLrxYGVizgOy6DZL4H0jaAFLccXu99kPVRIOARFp1xWj4cNbBg_XfUfcMdHA&ccuid=75182139260",
+    "ts": "2026-09-11T06:07:18.490094+00:00"
+  },
+  {
+    "company": "upgrad rekrut",
+    "title": "Senior Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://click.appcast.io/t/m2JZbZRqmD1S9BjnitFpVVOnUW3zdiSXvOdQibr30B0jLkIaLYacaurhkcq6uDML-6KWm-HXggHsAhyUG1FB8A==",
+    "ats": "Foundit",
+    "job_id": "66328598",
+    "apply_url": "https://click.appcast.io/t/m2JZbZRqmD1S9BjnitFpVVOnUW3zdiSXvOdQibr30B0jLkIaLYacaurhkcq6uDML-6KWm-HXggHsAhyUG1FB8A==",
+    "ok": false,
+    "status": "STUCK",
+    "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
+    "final_url": "https://www.linkedin.com/jobs/view/4460719761?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYGfeY9424p7yiAtKi_DZgPZb95tHnf5Z5KrbDHZRW4T0Hme-PIfBXbef6nNzHIuVSGBQW_5QKeo-mQP8Th-DUhJIBJFBa5WPA&ccuid=75181926834",
+    "ts": "2026-09-11T05:51:06.584981+00:00"
+  },
+  {
+    "company": "mongodb",
+    "title": "Solutions Architect",
+    "location": "Bengaluru; Gurugram; Hyderabad",
+    "url": "https://www.mongodb.com/careers/job/?gh_jid=8173661",
+    "ats": "Greenhouse",
+    "job_id": "8173661",
+    "apply_url": "https://job-boards.greenhouse.io/mongodb/jobs/8173661",
+    "ok": false,
+    "status": "WAITING_EXPIRED",
+    "note": "waited 15s; learned 0 fields",
+    "final_url": "https://www.mongodb.com/careers/jobs/8173661",
+    "ts": "2026-09-11T05:51:09.679601+00:00",
     "fields_learned": 0
   },
   {
-    "company": "Firstsource",
-    "title": "AWS Connect Technical Architect",
+    "company": "newrelic",
+    "title": "Lead Software Engineer",
     "location": "Hyderabad, India",
-    "url": "https://click.appcast.io/t/2IQqfro5moRCHt0vRkKy1iKEUKaMY-cpd6OvpSCNLjwHR5cJR4TcXcURuIFt2wywdv8E_u4EZnLHC-OxbDAjcQ==",
-    "ats": "Foundit",
-    "job_id": "66328329",
-    "apply_url": "https://click.appcast.io/t/2IQqfro5moRCHt0vRkKy1iKEUKaMY-cpd6OvpSCNLjwHR5cJR4TcXcURuIFt2wywdv8E_u4EZnLHC-OxbDAjcQ==",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
+    "ats": "Greenhouse",
+    "job_id": "5201237008",
+    "apply_url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
     "ok": false,
     "status": "STUCK",
-    "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://www.linkedin.com/jobs/view/aws-connect-technical-architect-at-firstsource-4462786638/",
-    "ts": "2026-09-11T05:51:49.878503+00:00",
-    "fields_learned": 0
+    "note": "leftover fields; owner sleeping — next job",
+    "final_url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
+    "ts": "2026-09-11T05:52:07.821474+00:00",
+    "fields_learned": 10
+  },
+  {
+    "company": "twilio",
+    "title": "Senior Engineering Manager (L5)",
+    "location": "Remote - India",
+    "url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ats": "Greenhouse",
+    "job_id": "8001804",
+    "apply_url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ok": false,
+    "status": "STUCK",
+    "note": "leftover fields; owner sleeping — next job",
+    "final_url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ts": "2026-09-11T05:55:10.473855+00:00",
+    "fields_learned": 10
   },
   {
     "company": "Experian",
@@ -5167,7 +5238,7 @@
     "status": "CLOSED",
     "note": "job posting gone",
     "final_url": "https://jobs.smartrecruiters.com/Experian/744000148215213-senior-staff-engineer",
-    "ts": "2026-09-11T05:59:34.704749+00:00"
+    "ts": "2026-09-11T05:56:28.718559+00:00"
   },
   {
     "company": "Blue Yonder",
@@ -5181,7 +5252,7 @@
     "status": "STUCK",
     "note": "ATS URL unchanged — next job",
     "final_url": "https://jda.wd5.myworkdayjobs.com/en-US/JDA_Careers/job/Hyderabad/Lead-Software-Engineer---PLSQL--Unix-Batch-Scripting---Node-JS_262313/apply/applyManually",
-    "ts": "2026-09-11T05:59:37.440848+00:00"
+    "ts": "2026-09-11T05:56:31.463505+00:00"
   },
   {
     "company": "PwC",
@@ -5195,7 +5266,7 @@
     "status": "STUCK",
     "note": "ATS URL unchanged — next job",
     "final_url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Hyderabad---Salarpuria/IN-Senior-Associate-Azure-Fabric-Engineer-Data-Analytics-Advisory-Bangalore_751882WD-1/apply/applyManually",
-    "ts": "2026-09-11T06:00:54.310165+00:00"
+    "ts": "2026-09-11T05:57:47.656673+00:00"
   },
   {
     "company": "Tata Teleservices",
@@ -5208,9 +5279,9 @@
     "ok": false,
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://fa-evmm-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2444/apply/email?location=India&locationId=300000000471745&locationLevel=country&mode=location",
-    "ts": "2026-09-11T06:01:58.845540+00:00",
-    "fields_learned": 0
+    "final_url": "https://fa-evmm-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2444/apply/section/1/?location=India&locationId=300000000471745&locationLevel=country&mode=location",
+    "ts": "2026-09-11T05:58:51.364391+00:00",
+    "fields_learned": 55
   },
   {
     "company": "Arrow Electronics India Private Limited",
@@ -5224,7 +5295,7 @@
     "status": "STUCK",
     "note": "leftover fields; owner sleeping — next job",
     "final_url": "https://careers.arrow.com/us/en/apply?jobSeqNo=ARELUSR248260ENUS&step=2&stepname=personalInformation",
-    "ts": "2026-09-11T06:03:36.909438+00:00",
+    "ts": "2026-09-11T06:04:16.118856+00:00",
     "fields_learned": 5
   },
   {
@@ -5238,8 +5309,8 @@
     "ok": false,
     "status": "STUCK",
     "note": "copilot/form loop — skipped to next job",
-    "final_url": "https://career-schwab.icims.com/jobs/login?loginOnly=1&redirect=search&mobile=false&width=1230&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240&css_submitMode=1&universalLogin=1&hashed=184347607&code=aNmxiNYQTjpT4FXFbgTlr2LDPnx8Qw4kDP5aFGgyRqp2w&state=9a6ccf6aaa2a07a93f61ad22cf8f4d45947c0b50c0d29e34635d1979014bf697",
-    "ts": "2026-09-11T06:04:54.503151+00:00",
+    "final_url": "https://career-schwab.icims.com/jobs/login?loginOnly=1&redirect=search&mobile=false&width=1230&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240&css_submitMode=1&universalLogin=1&hashed=184347607&code=4_TblQ92TrI7Ep0nDRdAh4hLKBo4pmNfzqHjp4Z9YTj-g&state=8c42b1148dfda1955f8ea61e3f520298b42864c9438b1c79fa01d9249bb88f0a",
+    "ts": "2026-09-11T06:05:28.424517+00:00",
     "fields_learned": 0
   }
 ]

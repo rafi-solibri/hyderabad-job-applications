@@ -44,6 +44,17 @@
     "over_cap": false
   },
   {
+    "company": "mongodb",
+    "title": "Solutions Architect",
+    "location": "Bengaluru; Gurugram; Hyderabad",
+    "url": "https://www.mongodb.com/careers/job/?gh_jid=8173661",
+    "ats": "Greenhouse",
+    "job_id": "8173661",
+    "already_applied": false,
+    "match_score": 150,
+    "over_cap": false
+  },
+  {
     "company": "Tata Teleservices",
     "title": "Solution Architect",
     "location": "Hyderabad, India",
@@ -165,6 +176,17 @@
     "match_score": 126
   },
   {
+    "company": "newrelic",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
+    "ats": "Greenhouse",
+    "job_id": "5201237008",
+    "already_applied": false,
+    "match_score": 126,
+    "over_cap": false
+  },
+  {
     "company": "PwC",
     "title": "IN-Manager_Senior Data Technical Lead_D&A_Advisory_Hyderabad",
     "location": "Hyderabad",
@@ -195,6 +217,17 @@
     "job_id": "8167571",
     "already_applied": false,
     "match_score": 122,
+    "over_cap": false
+  },
+  {
+    "company": "twilio",
+    "title": "Senior Engineering Manager (L5)",
+    "location": "Remote - India",
+    "url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ats": "Greenhouse",
+    "job_id": "8001804",
+    "already_applied": false,
+    "match_score": 120,
     "over_cap": false
   },
   {
@@ -4162,22 +4195,22 @@
   },
   {
     "company": "Renesas",
-    "title": "Sr Staff Engineer, STA & PNR",
+    "title": "Senior Staff Engineer- DFT",
     "location": "Hyderabad",
-    "url": "https://www.foundit.in/job/36822883",
+    "url": "https://www.foundit.in/job/36822882",
     "ats": "Foundit",
-    "job_id": "36822883",
+    "job_id": "36822882",
     "already_applied": false,
     "match_score": -32,
     "over_cap": false
   },
   {
     "company": "Renesas",
-    "title": "Senior Staff Engineer- DFT",
+    "title": "Sr Staff Engineer, STA & PNR",
     "location": "Hyderabad",
-    "url": "https://www.foundit.in/job/36822882",
+    "url": "https://www.foundit.in/job/36822883",
     "ats": "Foundit",
-    "job_id": "36822882",
+    "job_id": "36822883",
     "already_applied": false,
     "match_score": -32,
     "over_cap": false
@@ -8678,6 +8711,16 @@
     "job_id": "7687216003",
     "already_applied": true,
     "company_applied_count": 12,
+    "match_score": 126
+  },
+  {
+    "company": "newrelic",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5256109008",
+    "ats": "Greenhouse",
+    "job_id": "5256109008",
+    "already_applied": true,
     "match_score": 126
   },
   {
