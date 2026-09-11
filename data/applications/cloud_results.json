@@ -5267,5 +5267,20 @@
     "note": "ATS URL unchanged — next job",
     "final_url": "https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/Hyderabad---Salarpuria/IN-Senior-Associate-Azure-Fabric-Engineer-Data-Analytics-Advisory-Bangalore_751882WD-1/apply/applyManually",
     "ts": "2026-09-11T05:57:47.656673+00:00"
+  },
+  {
+    "company": "Tata Teleservices",
+    "title": "Solution Architect",
+    "location": "Hyderabad, India",
+    "url": "https://fa-evmm-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/2444?location=India&locationId=300000000471745&locationLevel=country&mode=location",
+    "ats": "Foundit",
+    "job_id": "65749811",
+    "apply_url": "https://fa-evmm-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/2444?location=India&locationId=300000000471745&locationLevel=country&mode=location",
+    "ok": false,
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://fa-evmm-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2444/apply/section/1/?location=India&locationId=300000000471745&locationLevel=country&mode=location",
+    "ts": "2026-09-11T05:58:51.364391+00:00",
+    "fields_learned": 55
   }
 ]
