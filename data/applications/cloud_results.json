@@ -4856,7 +4856,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 15s; learned 3 fields",
     "final_url": "https://job-boards.greenhouse.io/embed/job_app?token=8167571&for=coinbase&gh_jid=8167571",
-    "ts": "2026-09-11T05:38:56.021467+00:00",
+    "ts": "2026-09-11T05:53:33.229424+00:00",
     "fields_learned": 6
   },
   {
@@ -5195,5 +5195,49 @@
     "final_url": "https://www.mongodb.com/careers/jobs/8173661",
     "ts": "2026-09-11T05:51:09.679601+00:00",
     "fields_learned": 0
+  },
+  {
+    "company": "newrelic",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
+    "ats": "Greenhouse",
+    "job_id": "5201237008",
+    "apply_url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
+    "ok": false,
+    "status": "STUCK",
+    "note": "leftover fields; owner sleeping — next job",
+    "final_url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
+    "ts": "2026-09-11T05:52:07.821474+00:00",
+    "fields_learned": 10
+  },
+  {
+    "company": "twilio",
+    "title": "Senior Engineering Manager (L5)",
+    "location": "Remote - India",
+    "url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ats": "Greenhouse",
+    "job_id": "8001804",
+    "apply_url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ok": false,
+    "status": "STUCK",
+    "note": "leftover fields; owner sleeping — next job",
+    "final_url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ts": "2026-09-11T05:55:10.473855+00:00",
+    "fields_learned": 10
+  },
+  {
+    "company": "Experian",
+    "title": "Senior Staff Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://jobs.smartrecruiters.com/Experian/744000148215213-senior-staff-engineer",
+    "ats": "Foundit",
+    "job_id": "66237316",
+    "apply_url": "https://jobs.smartrecruiters.com/Experian/744000148215213-senior-staff-engineer",
+    "ok": false,
+    "status": "CLOSED",
+    "note": "job posting gone",
+    "final_url": "https://jobs.smartrecruiters.com/Experian/744000148215213-senior-staff-engineer",
+    "ts": "2026-09-11T05:56:28.718559+00:00"
   }
 ]

@@ -515,9 +515,9 @@
     "first name*": {
       "label": "First Name*",
       "value": "rafi.success@gmail.com",
-      "count": 96,
+      "count": 114,
       "name": "email",
-      "updated": "2026-09-11T05:53:05.534983+00:00",
+      "updated": "2026-09-11T05:56:17.432013+00:00",
       "source": "form"
     },
     "disability status": {
@@ -1287,79 +1287,17 @@
       "name": "question_15829374008",
       "updated": "2026-09-11T05:53:05.535000+00:00",
       "source": "form"
+    },
+    "are you legally authorized to work in the country in which this role is located?*": {
+      "label": "Are you legally authorized to work in the country in which this role is located?*",
+      "value": "Yes",
+      "count": 1,
+      "name": "question_67583319",
+      "updated": "2026-09-11T05:55:29.007524+00:00",
+      "source": "form"
     }
   },
   "history": [
-    {
-      "ts": "2026-08-18T04:40:59.014287+00:00",
-      "company": "gitlab",
-      "title": "Senior Threat Intelligence Engineer",
-      "fields": [
-        {
-          "label": "First Name*",
-          "value": "Mohammed Abdul Rafi"
-        },
-        {
-          "label": "LinkedIn Profile*",
-          "value": "https://www.linkedin.com/in/rafi-ahmed-mohammed-abdul-151644ba/"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:44:16.579764+00:00",
-      "company": "gitlab",
-      "title": "Senior Threat Intelligence Engineer",
-      "fields": [
-        {
-          "label": "First Name*",
-          "value": "Rafi Ahmed"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:45:21.211878+00:00",
-      "company": "twilio",
-      "title": "Software Architect (L6)",
-      "fields": [
-        {
-          "label": "First Name*",
-          "value": "Mohammed Abdul Rafi"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:45:42.801320+00:00",
-      "company": "twilio",
-      "title": "Software Architect (L6)",
-      "fields": [
-        {
-          "label": "Preferred First Name",
-          "value": "Raf"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:45:47.450113+00:00",
-      "company": "twilio",
-      "title": "Software Architect (L6)",
-      "fields": [
-        {
-          "label": "Preferred First Name",
-          "value": "Rafi"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-18T04:47:29.968484+00:00",
-      "company": "gitlab",
-      "title": "Senior Threat Intelligence Engineer",
-      "fields": [
-        {
-          "label": "First Name*",
-          "value": "Rafi Ahmed"
-        }
-      ]
-    },
     {
       "ts": "2026-08-18T04:51:42.677470+00:00",
       "company": "gitlab",
@@ -2595,6 +2533,124 @@
         {
           "label": "Current country of residence* India",
           "value": "India"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T05:53:18.758663+00:00",
+      "company": "newrelic",
+      "title": "Lead Software Engineer",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T05:53:57.255041+00:00",
+      "company": "coinbase",
+      "title": "Staff Software Engineer, Security Platform",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T05:54:53.235930+00:00",
+      "company": "coinbase",
+      "title": "Staff Software Engineer, Security Platform",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T05:55:29.007556+00:00",
+      "company": "twilio",
+      "title": "Senior Engineering Manager (L5)",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        },
+        {
+          "label": "Are you legally authorized to work in the country in which this role is located?*",
+          "value": "Yes"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T05:56:06.282469+00:00",
+      "company": "twilio",
+      "title": "Senior Engineering Manager (L5)",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T05:56:17.432082+00:00",
+      "company": "twilio",
+      "title": "Senior Engineering Manager (L5)",
+      "fields": [
+        {
+          "label": "First Name*",
+          "value": "Rafi Ahmed"
+        },
+        {
+          "label": "First Name*",
+          "value": "Mohammed Abdul"
+        },
+        {
+          "label": "First Name*",
+          "value": "rafi.success@gmail.com"
         }
       ]
     }
