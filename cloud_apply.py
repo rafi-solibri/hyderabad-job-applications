@@ -344,6 +344,25 @@ def linkedin_blocked_now() -> bool:
     return linkedin_guard.blocked_now()
 
 
+def leave_linkedin_to_other_automation(page, row: dict) -> bool:
+    """Abort if the tab is LinkedIn. The 9 AM MyRepo runner owns Easy Apply."""
+    try:
+        u = (page.url or "") if page is not None else ""
+    except Exception:
+        u = ""
+    blob = " ".join([u, str(row.get("apply_url") or ""), str(row.get("url") or "")])
+    if not linkedin_guard.is_linkedin_job(row, blob):
+        return False
+    skip, why = linkedin_guard.should_skip_apply()
+    if not skip:
+        return False
+    row["status"] = "SKIPPED"
+    row["note"] = why
+    row["final_url"] = u or row.get("apply_url") or ""
+    print(f"  {why}. Closing this tab (do not Easy Apply from this runner).", flush=True)
+    return True
+
+
 def persist_skip_all_linkedin(note: str | None = None) -> int:
     """Session-skip LinkedIn leftovers until the restriction lifts. Do not persist-skip."""
     global LINKEDIN_RESTRICTED, LINKEDIN_RESTRICTED_NOTE
@@ -387,6 +406,10 @@ def fill_identity(page) -> None:
                     loc.fill(str(value), timeout=1500)
         except Exception:
             continue
+    try:
+        ats_fill.fill_phone_country_india(page)
+    except Exception:
+        pass
     fill_email_fields(page)
 
 
@@ -4203,6 +4226,13 @@ def follow_apply_tab(page, job: dict | None = None):
 
 def fill_and_advance(page, job: dict, resume: str) -> str:
     """Fill Copilot + memory and click Next/Submit. Returns submitted|clicked|none."""
+    probe = {
+        "apply_url": (job or {}).get("apply_url") or "",
+        "url": (job or {}).get("url") or "",
+        "ats": (job or {}).get("ats") or "",
+    }
+    if leave_linkedin_to_other_automation(page, probe):
+        return "linkedin_skip"
     _dismiss_native_file_dialog()
     dismiss_overlays(page)
     if captcha_puzzle_visible(page):
@@ -4472,6 +4502,14 @@ def wait_for_human(page, job: dict, seconds: int, resume: str | None = None) -> 
                     "note": "all portal passwords rejected or account locked",
                     "learned": learned,
                 }
+            if step == "linkedin_skip":
+                print("  LinkedIn leftover left for the 9 AM automation. Next leftover.", flush=True)
+                return {
+                    "ok": False,
+                    "status": "SKIPPED",
+                    "note": linkedin_guard.should_skip_apply()[1],
+                    "learned": learned,
+                }
             if step == "captcha":
                 notify_captcha(job, page)
                 if OWNER_PRESENT:
@@ -4673,6 +4711,8 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
             page.wait_for_timeout(800)
         else:
             page.wait_for_timeout(400)
+        if leave_linkedin_to_other_automation(page, row):
+            return row
         title0 = ""
         try:
             title0 = page.title() or ""
@@ -4965,6 +5005,11 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
                 row["status"] = "SUBMITTED"
                 row["final_url"] = page.url
                 row["note"] = "Simplify Copilot"
+                return row
+            if step == "linkedin_skip":
+                row["status"] = "SKIPPED"
+                row["note"] = linkedin_guard.should_skip_apply()[1]
+                row["final_url"] = page.url
                 return row
             if step == "auth_failed":
                 row["status"] = "AUTH_FAILED"
@@ -5809,6 +5854,9 @@ def leftover_career_jobs(try_jobs: list[dict]) -> list[dict]:
         if FOUNDIT_AKAMAI_BLOCKED and "foundit.in" in u:
             continue
         if NAUKRI_BOT_BLOCKED and "naukri.com" in u:
+            continue
+        # Appcast cards almost always bounce to LinkedIn Easy Apply.
+        if "appcast.io" in u or "click.appcast.io" in u:
             continue
         out.append(job)
     return out

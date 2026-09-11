@@ -1,6 +1,6 @@
 # Preferred campus openings
 
-Run date: 2026-09-04
+Run date: 2026-09-11
 
 Live Hyderabad / near-home roles at RMZ Nexity, RMZ Futura, RMZ Spire, Knowledge City / Park, and Raheja Mindspace tenants.
 Company career leftovers are scored +50 and sorted first in `apply_now.queue()`.

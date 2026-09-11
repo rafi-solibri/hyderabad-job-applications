@@ -271,6 +271,89 @@ def _click_best_option(page, value: str) -> bool:
         return False
 
 
+def fill_phone_country_india(page) -> bool:
+    """Greenhouse / intl-tel-input: set phone country to India (+91)."""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if "greenhouse" not in url and "job-boards." not in url:
+        # Still try when the widget is visible (embedded GH forms).
+        pass
+    try:
+        already = page.evaluate(
+            """() => {
+              const flag = document.querySelector('.iti__selected-flag, .iti__selected-country');
+              const code = (flag && (flag.getAttribute('title') || flag.getAttribute('aria-label') || flag.innerText || '')) + '';
+              if (/india|\\+91/i.test(code)) return true;
+              const hidden = document.querySelector('input[name*=country], input.iti__country-code, select[name*=country]');
+              const v = ((hidden && hidden.value) || '') + '';
+              return /^(in|india|91|\\+91)$/i.test(v.trim());
+            }"""
+        )
+        if already:
+            return False
+    except Exception:
+        pass
+    for opener in (
+        ".iti__selected-flag",
+        ".iti__selected-country",
+        "button[aria-label='Select country']",
+        "button[aria-label*='selected country' i]",
+        "input[placeholder='Select a country']",
+        "#country",
+    ):
+        try:
+            loc = page.locator(opener).first
+            if not loc.count() or not loc.is_visible():
+                continue
+            loc.click(timeout=1500)
+            page.wait_for_timeout(280)
+            try:
+                search = page.locator(
+                    ".iti__search-input, input[placeholder*='Search' i], input[aria-label*='Search' i]"
+                ).first
+                if search.count() and search.is_visible():
+                    search.fill("India")
+                    page.wait_for_timeout(250)
+            except Exception:
+                pass
+            for choice in (
+                "[data-country-code='in']",
+                ".iti__country[data-country-code='in']",
+                "[role=option]",
+            ):
+                try:
+                    hit = page.locator(choice).filter(has_text=re.compile(r"India", re.I)).first
+                    if choice.startswith("[data-country-code") or choice.startswith(".iti__"):
+                        hit = page.locator(choice).first
+                    if hit.count() and hit.is_visible():
+                        hit.click(timeout=1500)
+                        print("  Set phone country to India (+91).", flush=True)
+                        return True
+                except Exception:
+                    continue
+            try:
+                page.keyboard.type("India", delay=30)
+                page.wait_for_timeout(250)
+                page.keyboard.press("Enter")
+                print("  Set phone country to India (+91) via typeahead.", flush=True)
+                return True
+            except Exception:
+                pass
+        except Exception:
+            continue
+    try:
+        loc = page.locator("select#country, select[name='country'], select[name='country_id']").first
+        if loc.count() and loc.is_visible():
+            if _select_native(loc, "India"):
+                print("  Set country dropdown to India.", flush=True)
+                return True
+    except Exception:
+        pass
+    return False
+
+
 def fill_empty_dropdowns(page, infer) -> int:
     """Fill visible empty selects / comboboxes using inferred answers."""
     filled = 0

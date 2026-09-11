@@ -1,8 +1,8 @@
 {
   "restricted_until": "2026-09-10T03:37:00+00:00",
-  "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner never applies LinkedIn",
-  "day": "2026-09-03",
-  "day_count": 1,
+  "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation \u2014 this runner never applies LinkedIn",
+  "day": "2026-09-11",
+  "day_count": 0,
   "last_apply_ts": "2026-09-03T05:51:16.673223+00:00",
   "copilot_on_linkedin": false,
   "per_run": 12,
