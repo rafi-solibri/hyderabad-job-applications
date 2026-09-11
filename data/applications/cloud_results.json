@@ -5096,5 +5096,62 @@
     "note": "submitted after Apply",
     "final_url": "https://www.instahyre.com/job-435678-engineering-lead-at-adosx-hyderabad/",
     "ts": "2026-09-04T06:19:38.882677+00:00"
+  },
+  {
+    "company": "ANSR",
+    "title": "Principal Solution Architect, IT Software",
+    "location": "Hyderabad, India",
+    "url": "https://click.appcast.io/t/XVmSLhjZNjkrttXVNsT8Lu-vPkrRosyS5y2s7Tvl1U7XLDV2CogLxjVQEEvLGIk0ZW357Nu-MNQ673YX18bitw==",
+    "ats": "Foundit",
+    "job_id": "66330432",
+    "apply_url": "https://click.appcast.io/t/XVmSLhjZNjkrttXVNsT8Lu-vPkrRosyS5y2s7Tvl1U7XLDV2CogLxjVQEEvLGIk0ZW357Nu-MNQ673YX18bitw==",
+    "ok": false,
+    "status": "STUCK",
+    "note": "LinkedIn Easy Apply is owned by the 9 AM MyRepo automation — this runner session-skips LinkedIn so a second volume spike cannot restrict the account",
+    "final_url": "https://www.linkedin.com/jobs/view/4462160972?trk=li_Foundit-LI-IN_IN_careers_jobsgtm_d75534d0-39ad-4328-8e18-52229fb7e6b2_job-dist&utm_medium=jobdist&mcid=6853763504395177984&utm_source=Foundit-LI-IN&ePP=CwEAAAGgjYCkmLi5Fya3SNEaco2U51RzN3GSUFTS2rBiLy2XAKKMhI2-EVj54TNCdhRm_2H_F9dBFDFDcr1CK5uoLkzxG8Wk3Y3OKHFAXA&ccuid=75181907707",
+    "ts": "2026-09-11T05:49:42.246442+00:00"
+  },
+  {
+    "company": "Firstsource",
+    "title": "AWS Connect Technical Architect",
+    "location": "Hyderabad, India",
+    "url": "https://click.appcast.io/t/2IQqfro5moRCHt0vRkKy1iKEUKaMY-cpd6OvpSCNLjwHR5cJR4TcXcURuIFt2wywdv8E_u4EZnLHC-OxbDAjcQ==",
+    "ats": "Foundit",
+    "job_id": "66328329",
+    "apply_url": "https://click.appcast.io/t/2IQqfro5moRCHt0vRkKy1iKEUKaMY-cpd6OvpSCNLjwHR5cJR4TcXcURuIFt2wywdv8E_u4EZnLHC-OxbDAjcQ==",
+    "ok": false,
+    "status": "STUCK",
+    "note": "copilot/form loop — skipped to next job",
+    "final_url": "https://www.linkedin.com/jobs/view/aws-connect-technical-architect-at-firstsource-4462786638/",
+    "ts": "2026-09-11T05:45:12.837817+00:00",
+    "fields_learned": 0
+  },
+  {
+    "company": "D. E. Shaw",
+    "title": "Principal Architect - ManCo",
+    "location": "Bangalore,Gurgaon,Hyderabad",
+    "url": "https://www.instahyre.com/job-442234-principal-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "442234",
+    "apply_url": "https://www.instahyre.com/job-442234-principal-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-442234-principal-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/",
+    "ts": "2026-09-11T05:49:28.030626+00:00"
+  },
+  {
+    "company": "Nemetschek Group",
+    "title": "Technical Lead - Fullstack",
+    "location": "Bangalore,Hyderabad",
+    "url": "https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/",
+    "ats": "Instahyre",
+    "job_id": "442291",
+    "apply_url": "https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/",
+    "ok": true,
+    "status": "SUBMITTED",
+    "note": "submitted after Apply",
+    "final_url": "https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/",
+    "ts": "2026-09-11T05:49:35.072747+00:00"
   }
 ]

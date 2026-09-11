@@ -4757,6 +4757,14 @@ def apply_one(page, job: dict, wait_seconds: int = 0, navigate: bool = True, all
         except Exception:
             pass
         on_linkedin = linkedin_guard.is_linkedin_job(job, page.url or url)
+        if on_linkedin:
+            skip_li, why = linkedin_guard.should_skip_apply()
+            if skip_li:
+                row["status"] = "STUCK"
+                row["final_url"] = page.url
+                row["note"] = why
+                print(f"  {why}. Next leftover.", flush=True)
+                return row
         copilot_start = ""
         if (not on_linkedin) or linkedin_guard.allow_copilot():
             copilot_start = simplify_copilot.start_application(page)

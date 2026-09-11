@@ -126,3 +126,7 @@
   https://www.instahyre.com/job-433276-senior-software-engineer-at-stolt-nielsen-hyderabad/
 - **2026-09-04T06:19:38Z** SUBMITTED **ADOSX** — Engineering Lead
   https://www.instahyre.com/job-435678-engineering-lead-at-adosx-hyderabad/
+- **2026-09-11T05:49:28Z** SUBMITTED **D. E. Shaw** — Principal Architect - ManCo
+  https://www.instahyre.com/job-442234-principal-architect-manco-at-d-e-bangalore-gurgaon-hyderabad/
+- **2026-09-11T05:49:35Z** SUBMITTED **Nemetschek Group** — Technical Lead - Fullstack
+  https://www.instahyre.com/job-442291-technical-lead-fullstack-at-nemetschek-group-bangalore-hyderabad/
