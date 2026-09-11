@@ -44,6 +44,17 @@
     "over_cap": false
   },
   {
+    "company": "mongodb",
+    "title": "Solutions Architect",
+    "location": "Bengaluru; Gurugram; Hyderabad",
+    "url": "https://www.mongodb.com/careers/job/?gh_jid=8173661",
+    "ats": "Greenhouse",
+    "job_id": "8173661",
+    "already_applied": false,
+    "match_score": 150,
+    "over_cap": false
+  },
+  {
     "company": "Tata Teleservices",
     "title": "Solution Architect",
     "location": "Hyderabad, India",
@@ -165,6 +176,17 @@
     "match_score": 126
   },
   {
+    "company": "newrelic",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
+    "ats": "Greenhouse",
+    "job_id": "5201237008",
+    "already_applied": false,
+    "match_score": 126,
+    "over_cap": false
+  },
+  {
     "company": "PwC",
     "title": "IN-Manager_Senior Data Technical Lead_D&A_Advisory_Hyderabad",
     "location": "Hyderabad",
@@ -198,6 +220,17 @@
     "over_cap": false
   },
   {
+    "company": "twilio",
+    "title": "Senior Engineering Manager (L5)",
+    "location": "Remote - India",
+    "url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ats": "Greenhouse",
+    "job_id": "8001804",
+    "already_applied": false,
+    "match_score": 120,
+    "over_cap": false
+  },
+  {
     "company": "Microchip Technology",
     "title": "Principal Engineer, Verification",
     "location": "Hyderabad, India",
@@ -218,28 +251,6 @@
     "already_applied": false,
     "over_cap": false,
     "match_score": 110
-  },
-  {
-    "company": "Charles Schwab",
-    "title": "Sr Manager Software Development And Engineering Senior Pl",
-    "location": "Hyderabad",
-    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/99705569696",
-    "ats": "Phenom",
-    "job_id": "99705569696",
-    "already_applied": false,
-    "match_score": 106,
-    "over_cap": false
-  },
-  {
-    "company": "Charles Schwab",
-    "title": "Sr Manager Software Development And Engineering Senior Pl",
-    "location": "Hyderabad",
-    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/100071640800",
-    "ats": "Phenom",
-    "job_id": "100071640800",
-    "already_applied": false,
-    "match_score": 106,
-    "over_cap": true
   },
   {
     "company": "Charles Schwab",
@@ -8703,6 +8714,16 @@
     "match_score": 126
   },
   {
+    "company": "newrelic",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5256109008",
+    "ats": "Greenhouse",
+    "job_id": "5256109008",
+    "already_applied": true,
+    "match_score": 126
+  },
+  {
     "company": "NXP",
     "title": "Lead Software Engineer \u2013 AI Operators",
     "location": "Hyderabad",
@@ -9067,6 +9088,28 @@
     "already_applied": true,
     "over_cap": false,
     "match_score": 108
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Sr Manager Software Development And Engineering Senior Pl",
+    "location": "Hyderabad",
+    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/99705569696",
+    "ats": "Phenom",
+    "job_id": "99705569696",
+    "already_applied": true,
+    "match_score": 106,
+    "over_cap": false
+  },
+  {
+    "company": "Charles Schwab",
+    "title": "Sr Manager Software Development And Engineering Senior Pl",
+    "location": "Hyderabad",
+    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/100071640800",
+    "ats": "Phenom",
+    "job_id": "100071640800",
+    "already_applied": true,
+    "match_score": 106,
+    "over_cap": true
   },
   {
     "company": "Charles Schwab",

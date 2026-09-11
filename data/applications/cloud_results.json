@@ -4799,7 +4799,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 15s; learned 3 fields",
     "final_url": "https://job-boards.greenhouse.io/embed/job_app?for=highradius&token=7802439003",
-    "ts": "2026-09-11T05:25:56.900136+00:00",
+    "ts": "2026-09-11T05:36:32.622322+00:00",
     "fields_learned": 6
   },
   {
@@ -4856,7 +4856,7 @@
     "status": "WAITING_EXPIRED",
     "note": "waited 15s; learned 3 fields",
     "final_url": "https://job-boards.greenhouse.io/embed/job_app?token=8167571&for=coinbase&gh_jid=8167571",
-    "ts": "2026-09-11T05:28:08.425236+00:00",
+    "ts": "2026-09-11T05:33:35.338391+00:00",
     "fields_learned": 6
   },
   {

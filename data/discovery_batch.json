@@ -497,6 +497,17 @@
     "over_cap": false
   },
   {
+    "company": "mongodb",
+    "title": "Solutions Architect",
+    "location": "Bengaluru; Gurugram; Hyderabad",
+    "url": "https://www.mongodb.com/careers/job/?gh_jid=8173661",
+    "ats": "Greenhouse",
+    "job_id": "8173661",
+    "already_applied": false,
+    "match_score": 150,
+    "over_cap": false
+  },
+  {
     "company": "Blue Yonder",
     "title": "Staff Software Engineer I - NodeJS, Microservices, Cloud & Typescript/JavaScript",
     "location": "Hyderabad, India",
@@ -618,6 +629,17 @@
     "over_cap": false
   },
   {
+    "company": "newrelic",
+    "title": "Lead Software Engineer",
+    "location": "Hyderabad, India",
+    "url": "https://job-boards.greenhouse.io/newrelic/jobs/5201237008",
+    "ats": "Greenhouse",
+    "job_id": "5201237008",
+    "already_applied": false,
+    "match_score": 126,
+    "over_cap": false
+  },
+  {
     "company": "coinbase",
     "title": "Staff Software Engineer, Security Platform",
     "location": "Remote - India",
@@ -626,6 +648,17 @@
     "job_id": "8167571",
     "already_applied": false,
     "match_score": 122,
+    "over_cap": false
+  },
+  {
+    "company": "twilio",
+    "title": "Senior Engineering Manager (L5)",
+    "location": "Remote - India",
+    "url": "https://job-boards.greenhouse.io/twilio/jobs/8001804",
+    "ats": "Greenhouse",
+    "job_id": "8001804",
+    "already_applied": false,
+    "match_score": 120,
     "over_cap": false
   },
   {
@@ -657,17 +690,6 @@
     "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-lead-pl/33727/100388457136",
     "ats": "Phenom",
     "job_id": "100388457136",
-    "already_applied": false,
-    "match_score": 106,
-    "over_cap": false
-  },
-  {
-    "company": "Charles Schwab",
-    "title": "Sr Manager Software Development And Engineering Senior Pl",
-    "location": "Hyderabad",
-    "url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/99705569696",
-    "ats": "Phenom",
-    "job_id": "99705569696",
     "already_applied": false,
     "match_score": 106,
     "over_cap": false
