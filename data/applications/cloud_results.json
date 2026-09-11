@@ -4558,10 +4558,10 @@
     "job_id": "99705569696",
     "apply_url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/99705569696",
     "ok": false,
-    "status": "STUCK",
-    "note": "ATS URL unchanged — next job",
-    "final_url": "https://login.icims.com/u/login/identifier?state=hqFo2SAyZjRfR090VDVKZWJHb01HYWZpSFRpX05yLTVja2xHRKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDhERUNFRlhjNlBlOThEdS1VZFFsYV8wNVVUNXM3OFM0o2NpZNkgS0pBOTVEeEhPUE5PNTZVYU5SZFJZNTdwem42Q01IY22lb3JnaWS0b3JnX2dGWldEUExkNnRaNzhra06nb3JnbmFtZalzY2h3YWItOTc",
-    "ts": "2026-09-04T05:33:23.980344+00:00"
+    "status": "CLOSED",
+    "note": "job posting gone",
+    "final_url": "https://www.schwabjobs.com/job/hyderabad/sr-manager-software-development-and-engineering-senior-pl/33995/99705569696",
+    "ts": "2026-09-11T05:31:07.082773+00:00"
   },
   {
     "company": "ScaleOrange Technologies",
@@ -4796,11 +4796,11 @@
     "job_id": "7802439003",
     "apply_url": "https://boards.greenhouse.io/embed/job_app?for=highradius&token=7802439003",
     "ok": false,
-    "status": "STUCK",
-    "note": "no page progress — next job",
+    "status": "WAITING_EXPIRED",
+    "note": "waited 15s; learned 3 fields",
     "final_url": "https://job-boards.greenhouse.io/embed/job_app?for=highradius&token=7802439003",
-    "ts": "2026-09-04T06:22:13.846687+00:00",
-    "fields_learned": 3
+    "ts": "2026-09-11T05:25:56.900136+00:00",
+    "fields_learned": 6
   },
   {
     "company": "T-Mobile",
@@ -4853,11 +4853,11 @@
     "job_id": "8167571",
     "apply_url": "https://job-boards.greenhouse.io/coinbase/jobs/8167571",
     "ok": false,
-    "status": "STUCK",
-    "note": "no page progress — next job",
+    "status": "WAITING_EXPIRED",
+    "note": "waited 15s; learned 3 fields",
     "final_url": "https://job-boards.greenhouse.io/embed/job_app?token=8167571&for=coinbase&gh_jid=8167571",
-    "ts": "2026-09-04T06:23:06.899013+00:00",
-    "fields_learned": 3
+    "ts": "2026-09-11T05:28:08.425236+00:00",
+    "fields_learned": 6
   },
   {
     "company": "Coupang",
